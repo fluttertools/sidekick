@@ -5,11 +5,10 @@ import 'package:fvm_app/components/atoms/typography.dart';
 import 'package:fvm_app/components/molecules/github_info_display.dart';
 import 'package:fvm_app/components/molecules/package_score_display.dart';
 
-import 'package:fvm_app/providers/project_dependencies.provider.dart';
+import 'package:fvm_app/providers/packages.provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:fvm_app/utils/github_parse.dart';
 
 import 'package:fvm_app/utils/open_link.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,7 +18,7 @@ class PackagesScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final packages = useProvider(projectDependenciesProvider);
+    final packages = useProvider(packagesProvider);
 
     return packages.when(
         data: (data) {
@@ -41,9 +40,9 @@ class PackagesScreen extends HookWidget {
                             backgroundColor: Colors.black26,
                             child: Text(position.toString()),
                           ),
-                          title: Text(pkg.package.name),
+                          title: Text(pkg.name),
                           subtitle: Text(
-                            pkg.package.description,
+                            pkg.description,
                             maxLines: 2,
                             style: Theme.of(context).textTheme.caption,
                           ),
@@ -53,9 +52,7 @@ class PackagesScreen extends HookWidget {
                         Row(
                           children: [
                             GithubInfoDisplay(
-                              key: Key(pkg.package.name),
-                              repoSlug: getRepoSlugFromPubspec(
-                                  pkg.package.latestPubspec),
+                              repo: pkg.repo,
                             ),
                             Expanded(
                               child: Column(
@@ -63,14 +60,14 @@ class PackagesScreen extends HookWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      TypographyCaption(pkg.package.version),
+                                      Caption(pkg.version),
                                       const SizedBox(width: 10),
                                       const Text('·'),
                                       const SizedBox(width: 10),
                                       TextButton(
                                         child: const Text('details'),
                                         onPressed: () async {
-                                          await openLink(pkg.package.url);
+                                          await openLink(pkg.url);
                                         },
                                       ),
                                       const SizedBox(width: 10),
@@ -79,8 +76,7 @@ class PackagesScreen extends HookWidget {
                                       TextButton(
                                         child: const Text('changelog'),
                                         onPressed: () async {
-                                          await openLink(
-                                              pkg.package.changelogUrl);
+                                          await openLink(pkg.changelogUrl);
                                         },
                                       ),
                                       const SizedBox(width: 10),
@@ -89,8 +85,7 @@ class PackagesScreen extends HookWidget {
                                       TextButton(
                                         child: const Text('website'),
                                         onPressed: () async {
-                                          await openLink(pkg
-                                              .package.latestPubspec.homepage);
+                                          await openLink(pkg.homepage);
                                         },
                                       ),
                                       const SizedBox(width: 10),

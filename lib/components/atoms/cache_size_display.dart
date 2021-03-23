@@ -18,7 +18,7 @@ class CacheSizeDisplay extends HookWidget {
     }
 
     return Container(
-      child: TypographyCaption('Storage $cacheSize'),
+      child: Caption('Storage $cacheSize'),
     );
   }
 }

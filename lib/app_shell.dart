@@ -18,7 +18,7 @@ import 'package:fvm_app/components/organisms/info_drawer.dart';
 
 import 'package:fvm_app/screens/explore_screen.dart';
 import 'package:fvm_app/screens/home_screen.dart';
-import 'package:fvm_app/screens/projects_screen.dart';
+import 'package:fvm_app/screens/apps_screen.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -28,7 +28,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 final pages = [
   HomeScreen(key: UniqueKey()),
-  ProjectsScreen(key: UniqueKey()),
+  AppsScreen(key: UniqueKey()),
   ExploreScreen(key: UniqueKey()),
   PackagesScreen(key: UniqueKey()),
   SettingsScreen(key: UniqueKey()),

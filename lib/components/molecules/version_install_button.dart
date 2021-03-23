@@ -6,11 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+const installedMsg = 'Version is installed';
+const notInstalledMsg = 'Version not installed. Click to install.';
 
 class VersionInstallButton extends HookWidget {
   final VersionDto version;
-  final bool expanded;
-  const VersionInstallButton(this.version, {this.expanded = false, Key key})
+  final bool warningIcon;
+  const VersionInstallButton(this.version, {this.warningIcon = false, Key key})
       : super(key: key);
 
   @override
@@ -59,37 +63,11 @@ class VersionInstallButton extends HookWidget {
         return const Icon(Icons.check, size: 20);
       }
 
+      // Display warning icon instead of download arrow
+      if (warningIcon) {
+        return const Icon(MdiIcons.alert, size: 20);
+      }
       return const Icon(Icons.arrow_downward, size: 20);
-    }
-
-    Widget collapsedButton() {
-      return SizedBox(
-        height: 50,
-        width: 50,
-        child: Center(
-          child: FlatButton(
-            color: Colors.white10,
-            onPressed: version.isInstalled ? () {} : onInstall,
-            child: installIcon(),
-          ),
-        ),
-      );
-    }
-
-    Widget expandedButton() {
-      return Container(
-        width: 100,
-        child: FlatButton.icon(
-          color: Colors.white10,
-          onPressed: version.isInstalled ? () {} : onInstall,
-          icon: installIcon(),
-          label: Text(
-            version.isInstalled ? 'Install' : 'Installed',
-            maxLines: 1,
-            overflow: TextOverflow.clip,
-          ),
-        ),
-      );
     }
 
     return MouseRegion(
@@ -105,7 +83,12 @@ class VersionInstallButton extends HookWidget {
       },
       child: Opacity(
         opacity: version.isInstalled ? 0.3 : 1,
-        child: expanded ? expandedButton() : collapsedButton(),
+        child: TextButton(
+          onPressed: version.isInstalled ? null : onInstall,
+          child: Tooltip(
+              message: version.isInstalled ? installedMsg : notInstalledMsg,
+              child: installIcon()),
+        ),
       ),
     );
   }

@@ -35,7 +35,7 @@ class InfoDrawer extends HookWidget {
       return Drawer(
         child: Container(
           color: Theme.of(context).cardColor,
-          child: const Center(child: TypographyCaption('Nothing selected')),
+          child: const Center(child: Caption('Nothing selected')),
         ),
       );
     }
@@ -44,7 +44,7 @@ class InfoDrawer extends HookWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).cardColor,
         appBar: AppBar(
-          title: TypographyTitle(selected.name),
+          title: Heading(selected.name),
           leading: IconButton(
             icon: const Icon(Icons.close),
             iconSize: 20,
@@ -58,7 +58,7 @@ class InfoDrawer extends HookWidget {
           margin: const EdgeInsets.all(0),
           child: VersionInstallButton(
             selected,
-            expanded: true,
+            warningIcon: true,
           ),
         ),
         body: Scrollbar(

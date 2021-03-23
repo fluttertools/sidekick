@@ -25,7 +25,7 @@ class VersionInstalledItem extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TypographySubheading(version.name),
+          Subheading(version.name),
           VersionInstalledStatus(version),
         ],
       ),

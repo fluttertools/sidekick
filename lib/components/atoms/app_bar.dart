@@ -9,7 +9,7 @@ class FvmAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: TypographyTitle(title),
+      title: Heading(title),
       centerTitle: false,
       actions: actions,
       bottom: const PreferredSize(

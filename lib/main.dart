@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('fvm');
-    setWindowMinSize(const Size(700, 500));
+    setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
   }
   runApp(ProviderScope(child: FvmApp()));

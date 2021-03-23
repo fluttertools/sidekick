@@ -28,7 +28,7 @@ class VersionItem extends StatelessWidget {
         ),
       ),
       child: FvmListTile(
-        title: TypographySubheading(version.name),
+        title: Subheading(version.name),
         onTap: () {
           context.read(selectedInfoProvider).selectVersion(version);
         },

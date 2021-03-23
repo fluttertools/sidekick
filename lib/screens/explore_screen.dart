@@ -41,14 +41,15 @@ class ExploreScreen extends HookWidget {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              title: const TypographyTitle('Channels'),
+              elevation: 0,
+              title: const Heading('Channels'),
               actions: [
                 Tooltip(
                   message:
                       '''Allows access to functionality that is unsable, and latest cutting edge.''',
                   child: Row(
                     children: [
-                      const TypographyCaption('Advanced'),
+                      const Caption('Advanced'),
                       SizedBox(
                         height: 10,
                         width: 60,
@@ -92,10 +93,10 @@ class ExploreScreen extends HookWidget {
                     child: Row(
                       children: [
                         const SizedBox(width: 10),
-                        const TypographySubheading('Master'),
+                        const Subheading('Master'),
                         const SizedBox(width: 20),
                         const Expanded(
-                          child: TypographyCaption(
+                          child: Caption(
                               '''The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.'''),
                         ),
                         const SizedBox(width: 20),
@@ -110,6 +111,7 @@ class ExploreScreen extends HookWidget {
             SliverAppBar(
               automaticallyImplyLeading: false,
               expandedHeight: 120.0,
+              elevation: 1,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               pinned: true,
               excludeHeaderSemantics: true,
@@ -151,7 +153,7 @@ class ExploreScreen extends HookWidget {
                   children: [
                     Row(
                       children: [
-                        const TypographyTitle('Versions'),
+                        const Heading('Versions'),
                         const SizedBox(width: 10),
                         Chip(label: Text(releases.length.toString())),
                       ],

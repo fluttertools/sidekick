@@ -13,17 +13,16 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:fvm_app/components/molecules/empty_data_set/empty_projects.dart';
 import 'package:fvm_app/components/molecules/project_item.dart';
 import 'package:fvm_app/providers/projects_provider.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 
-class ProjectsScreen extends HookWidget {
-  const ProjectsScreen({Key key}) : super(key: key);
+class AppsScreen extends HookWidget {
+  const AppsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final projects = useProvider(projectsProvider.state);
     final filteredProjects = useState(projects.list);
     final settings = useProvider(settingsProvider.state);
-
-    final controller = useScrollController();
 
     useEffect(() {
       if (settings.onlyProjectsWithFvm) {
@@ -46,14 +45,14 @@ class ProjectsScreen extends HookWidget {
     }
 
     return FvmScreen(
-      title: 'Flutter Projects',
+      title: 'Apps',
       actions: [
-        FlatButton.icon(
-          label: const TypographyCaption('Refresh'),
+        TextButton.icon(
+          label: const Caption('Refresh'),
           icon: const Icon(MdiIcons.refresh, size: 20),
           onPressed: () async {
             await context.read(projectsProvider).scan();
-            notify('Projects Refreshed');
+            notify('Apps Refreshed');
           },
         ),
         const VerticalDivider(
@@ -63,7 +62,7 @@ class ProjectsScreen extends HookWidget {
           message: '''Displays only projects with versions pinned.''',
           child: Row(
             children: [
-              const TypographyCaption('Only Pinned'),
+              const Caption('Only Pinned'),
               SizedBox(
                 height: 10,
                 width: 60,
@@ -81,13 +80,14 @@ class ProjectsScreen extends HookWidget {
         )
       ],
       child: Scrollbar(
-        child: ListView.builder(
-          controller: controller,
-          itemCount: filteredProjects.value.length,
-          itemBuilder: (context, index) {
-            final item = filteredProjects.value[index];
-            return ProjectItem(item, key: Key(item.projectDir.path));
-          },
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: ResponsiveGridList(
+              desiredItemWidth: 250,
+              minSpacing: 10,
+              children: filteredProjects.value.map((project) {
+                return ProjectItem(project, key: Key(project.projectDir.path));
+              }).toList()),
         ),
       ),
     );

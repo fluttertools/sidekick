@@ -21,6 +21,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  custom_pop_up_menu: ^1.2.0
+  truncate: ^3.0.1
+  responsive_grid: ^1.2.1+1
+  
+  flutter_cache: ^0.0.7
   pubspec_parse: ^0.1.5
   github: ^7.0.3
 
@@ -38,7 +43,7 @@ dependencies:
   
   async: ^2.4.2
   pubspec_yaml: ^2.0.1
-  url_launcher: ^5.7.10
+  url_launcher: ^6.0.2
   watcher: ^0.9.7+15
   google_fonts: ^1.1.1
   filesize: ^1.0.4

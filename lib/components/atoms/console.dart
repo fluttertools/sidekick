@@ -49,14 +49,14 @@ class Console extends HookWidget {
           children: [
             const SizedBox(width: 20),
             installedList.isNotEmpty
-                ? TypographyCaption('${installedList.length} Versions')
-                : const TypographyCaption('Versions'),
+                ? Caption('${installedList.length} Versions')
+                : const Caption('Versions'),
             const SizedBox(width: 20),
             const CacheSizeDisplay(),
             const SizedBox(width: 20),
             projects.loading
-                ? const TypographyCaption('Loading Projects...')
-                : TypographyCaption('${projects.list.length} Projects'),
+                ? const Caption('Loading Projects...')
+                : Caption('${projects.list.length} Projects'),
             const SizedBox(width: 20),
           ],
         ),
@@ -82,7 +82,7 @@ class Console extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextStdout(lines.value.first),
+                      StdoutText(lines.value.first),
                     ],
                   ),
                 ),
@@ -94,12 +94,12 @@ class Console extends HookWidget {
                     itemBuilder: (context, index) {
                       final line = lines.value[index];
                       if (line == OutputType.stdout) {
-                        return TextStdout(
+                        return StdoutText(
                           lines.value[index],
                           key: Key(lines.value[index]),
                         );
                       } else {
-                        return TextStdout(
+                        return StdoutText(
                           lines.value[index],
                           key: Key(lines.value[index]),
                         );

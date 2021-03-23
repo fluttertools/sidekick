@@ -14,7 +14,7 @@ class ChannelShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
+    return OutlinedButton(
       onPressed: () {
         context.read(selectedInfoProvider).selectVersion(channel);
       },
@@ -27,10 +27,10 @@ class ChannelShowcase extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TypographyTitle(channel.name),
-                TypographySubheading(channel.release.version),
+                Heading(channel.name),
+                Subheading(channel.release.version),
                 const SizedBox(height: 5),
-                TypographyCaption(
+                Caption(
                   DateTimeFormat.relative(
                     channel.release.releaseDate,
                     appendIfAfter: 'ago',

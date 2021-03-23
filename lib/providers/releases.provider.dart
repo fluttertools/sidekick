@@ -22,6 +22,10 @@ ReleasesProviderPayload _mapVersions(List<ReleaseDto> list) {
   final beta = <ReleaseDto>[];
   final dev = <ReleaseDto>[];
   final stable = <ReleaseDto>[];
+
+  // Create map of releases
+  final allReleasesMap = {for (var v in list) v.name: v};
+
   for (var item in list) {
     if (item.release.channel == Channel.beta) {
       beta.add(item);

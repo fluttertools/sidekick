@@ -2,6 +2,7 @@ import 'package:fvm_app/constants.dart';
 import 'package:fvm_app/dto/channel.dto.dart';
 import 'package:fvm_app/dto/master.dto.dart';
 import 'package:fvm_app/dto/release.dto.dart';
+import 'package:fvm_app/dto/version.dto.dart';
 
 import 'package:fvm_app/providers/fvm_cache.provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,6 +13,7 @@ class AppReleasesState {
   List<ChannelDto> installedChannels;
   List<ReleaseDto> versions;
   List<ReleaseDto> installedVersions;
+  Map<String, VersionDto> allVersions;
   MasterDto master;
   AppReleasesState({
     this.channels,
@@ -19,11 +21,13 @@ class AppReleasesState {
     this.versions,
     this.installedVersions,
     this.master,
+    this.allVersions,
   }) {
     channels = <ChannelDto>[];
     installedChannels = <ChannelDto>[];
     versions = <ReleaseDto>[];
     installedVersions = <ReleaseDto>[];
+    allVersions = {};
   }
 }
 
@@ -104,5 +108,14 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     }
   }
 
+  final allVersions = [...releasesState.versions, ...releasesState.channels];
+  releasesState.allVersions = {for (var v in allVersions) v.name: v};
+
   return releasesState;
+});
+
+final getVersionProvider =
+    Provider.family<VersionDto, String>((ref, versionName) {
+  final state = ref.watch(releasesStateProvider);
+  return state.allVersions[versionName];
 });
