@@ -21,7 +21,7 @@ jobs:
           echo "Install create-dmg"
           brew install create-dmg
 
-          ./scripts/create-mac-dmg.sh
+          ./scripts/create_mac_dmg.sh
       - name: Create Version Number
         id: versions
         run: |
