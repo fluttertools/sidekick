@@ -1,15 +1,16 @@
 #!/bin/sh
-test -f FVM-Installer.dmg && rm FVM-Installer.dmg
+test -f sidekick.dmg && rm sidekick.dmg
 create-dmg \
-  --volname "FVM Installer" \
-  --volicon "fvm_installer_icon.icns" \
+  --volname "Sidekick Installer" \
+  --volicon "./assets/sidekick_installer.icns" \
+  --background "./assets/dmg_background.png" \
   --window-pos 200 120 \
-  --window-size 800 529 \
+  --window-size 800 530 \
   --icon-size 130 \
   --text-size 14 \
-  --icon "fvm.app" 260 250 \
-  --hide-extension "fvm.app" \
+  --icon "Sidekick.app" 260 250 \
+  --hide-extension "Sidekick.app" \
   --app-drop-link 540 250 \
   --hdiutil-quiet \
-  "fvm.dmg" \
-  "Release/"
+  "build/macos/Build/Products/Release/Sidekick.dmg" \
+  "build/macos/Build/Products/Release/Sidekick.app"

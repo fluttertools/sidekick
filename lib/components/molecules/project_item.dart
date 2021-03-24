@@ -1,16 +1,16 @@
 import 'package:flutter/rendering.dart';
-import 'package:fvm_app/components/atoms/typography.dart';
-import 'package:fvm_app/components/molecules/project_version_select.dart';
-import 'package:fvm_app/components/molecules/version_install_button.dart';
+import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/components/molecules/project_version_select.dart';
+import 'package:sidekick/components/molecules/version_install_button.dart';
 
-import 'package:fvm_app/providers/flutter_releases.provider.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 
-import 'package:fvm_app/providers/installed_versions.provider.dart';
+import 'package:sidekick/providers/installed_versions.provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
-import 'package:fvm_app/utils/open_link.dart';
+import 'package:sidekick/utils/open_link.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

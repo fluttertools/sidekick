@@ -1,4 +1,4 @@
-import 'package:fvm_app/components/atoms/typography.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 import 'package:flutter/material.dart';
 
 class FvmAppBar extends StatelessWidget {

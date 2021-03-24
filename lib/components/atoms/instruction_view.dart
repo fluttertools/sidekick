@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:fvm_app/utils/open_link.dart';
+import 'package:sidekick/utils/open_link.dart';
 
 class InstructionView extends StatelessWidget {
   final String name;

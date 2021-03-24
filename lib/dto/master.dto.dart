@@ -1,4 +1,4 @@
-import 'package:fvm_app/dto/channel.dto.dart';
+import 'package:sidekick/dto/channel.dto.dart';
 
 import 'package:flutter/material.dart';
 

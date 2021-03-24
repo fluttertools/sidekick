@@ -1,4 +1,4 @@
-import 'package:fvm_app/dto/version.dto.dart';
+import 'package:sidekick/dto/version.dto.dart';
 import 'package:fvm/fvm.dart';
 
 import 'package:state_notifier/state_notifier.dart';

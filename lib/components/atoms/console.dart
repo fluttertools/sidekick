@@ -1,8 +1,8 @@
-import 'package:fvm_app/components/atoms/cache_size_display.dart';
-import 'package:fvm_app/components/atoms/typography.dart';
-import 'package:fvm_app/providers/installed_versions.provider.dart';
-import 'package:fvm_app/providers/fvm_console_provider.dart';
-import 'package:fvm_app/providers/projects_provider.dart';
+import 'package:sidekick/components/atoms/cache_size_display.dart';
+import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/providers/installed_versions.provider.dart';
+import 'package:sidekick/providers/fvm_console_provider.dart';
+import 'package:sidekick/providers/projects_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

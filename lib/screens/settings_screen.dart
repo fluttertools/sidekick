@@ -1,7 +1,7 @@
-import 'package:fvm_app/components/atoms/screen.dart';
-import 'package:fvm_app/providers/projects_provider.dart';
-import 'package:fvm_app/providers/settings.provider.dart';
-import 'package:fvm_app/utils/notify.dart';
+import 'package:sidekick/components/atoms/screen.dart';
+import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/utils/notify.dart';
 import 'package:file_chooser/file_chooser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

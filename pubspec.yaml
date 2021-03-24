@@ -1,4 +1,4 @@
-name: fvm_app
+name: sidekick
 description: Flutter Version Manager.
 
 # The following line prevents the package from being accidentally published to

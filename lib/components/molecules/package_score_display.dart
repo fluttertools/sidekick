@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fvm_app/components/atoms/typography.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 
 class PackageScoreDisplay extends StatelessWidget {

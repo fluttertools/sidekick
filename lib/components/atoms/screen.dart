@@ -1,4 +1,4 @@
-import 'package:fvm_app/components/atoms/app_bar.dart';
+import 'package:sidekick/components/atoms/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class FvmScreen extends StatelessWidget {

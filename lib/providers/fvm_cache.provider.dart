@@ -6,8 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
-import 'package:fvm_app/utils/debounce.dart';
-import 'package:fvm_app/utils/dir_stat.dart';
+import 'package:sidekick/utils/debounce.dart';
+import 'package:sidekick/utils/dir_stat.dart';
 
 import 'package:fvm/constants.dart' as fvm_constants;
 import 'package:fvm/fvm.dart';

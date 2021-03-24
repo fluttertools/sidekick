@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = fvm
+PRODUCT_NAME = Sidekick
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.fvm.app
+PRODUCT_BUNDLE_IDENTIFIER = app.fvm.sidekick
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2020 com.example. All rights reserved.

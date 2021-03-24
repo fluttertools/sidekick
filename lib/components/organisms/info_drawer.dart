@@ -1,12 +1,12 @@
-import 'package:fvm_app/components/atoms/typography.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 
-import 'package:fvm_app/components/molecules/cache_info_tile.dart';
-import 'package:fvm_app/components/molecules/reference_info_tile.dart';
-import 'package:fvm_app/components/molecules/release_info_section.dart';
-import 'package:fvm_app/components/molecules/version_install_button.dart';
-import 'package:fvm_app/providers/selected_info_provider.dart';
+import 'package:sidekick/components/molecules/cache_info_tile.dart';
+import 'package:sidekick/components/molecules/reference_info_tile.dart';
+import 'package:sidekick/components/molecules/release_info_section.dart';
+import 'package:sidekick/components/molecules/version_install_button.dart';
+import 'package:sidekick/providers/selected_info_provider.dart';
 
-import 'package:fvm_app/utils/layout_size.dart';
+import 'package:sidekick/utils/layout_size.dart';
 
 import 'package:flutter/material.dart';
 

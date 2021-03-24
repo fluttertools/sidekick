@@ -1,5 +1,5 @@
-import 'package:fvm_app/components/atoms/empty_data_set.dart';
-import 'package:fvm_app/providers/navigation_provider.dart';
+import 'package:sidekick/components/atoms/empty_data_set.dart';
+import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';

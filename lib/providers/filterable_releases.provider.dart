@@ -1,5 +1,5 @@
-import 'package:fvm_app/dto/release.dto.dart';
-import 'package:fvm_app/providers/releases.provider.dart';
+import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/providers/releases.provider.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -1,4 +1,4 @@
-import 'package:fvm_app/providers/navigation_provider.dart';
+import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

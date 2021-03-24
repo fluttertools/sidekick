@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:fvm_app/app_shell.dart';
+import 'package:sidekick/app_shell.dart';
 
-import 'package:fvm_app/theme.dart';
+import 'package:sidekick/theme.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

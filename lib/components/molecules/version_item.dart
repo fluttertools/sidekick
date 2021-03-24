@@ -1,10 +1,10 @@
-import 'package:fvm_app/components/atoms/list_tile.dart';
-import 'package:fvm_app/components/atoms/typography.dart';
+import 'package:sidekick/components/atoms/list_tile.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 
-import 'package:fvm_app/components/molecules/version_install_button.dart';
+import 'package:sidekick/components/molecules/version_install_button.dart';
 
-import 'package:fvm_app/dto/version.dto.dart';
-import 'package:fvm_app/providers/selected_info_provider.dart';
+import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/providers/selected_info_provider.dart';
 
 import 'package:flutter/material.dart';
 

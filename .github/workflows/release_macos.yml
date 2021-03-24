@@ -1,0 +1,58 @@
+on:
+  release:
+    types:
+      - created
+jobs:
+  on-push-main:
+    runs-on: macos-latest
+    env:
+      MACOS_APP_RELEASE_PATH: build/macos/Build/Products/Release
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+      - name: Enable MacOs
+        run: flutter config --enable-macos-desktop
+      - name: Build macOS app
+        run: flutter build macos --release
+      - name: Create a dmg
+        run: |
+          echo "Install create-dmg"
+          brew install create-dmg
+
+          ./scripts/create-mac-dmg.sh
+      - name: Create Version Number
+        id: versions
+        run: |
+          git fetch
+          VERSION_WITHOUT_SUFFIX="$(grep 'version:' pubspec.yaml | awk '{ print $2 }' | cut -d'+' -f 1)"
+          function parse_git_hash() {
+            git rev-list --count origin/main
+          }
+          MAIN_COUNT=$(parse_git_hash)
+          APP_VERSION="$VERSION_WITHOUT_SUFFIX+$MAIN_COUNT"
+          echo "::set-output name=version::$(echo $APP_VERSION)"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.versions.outputs.version }}
+          release_name: Release ${{ steps.versions.outputs.version }}
+          body: |
+             Release Notes
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/macos/Build/Products/Release/Sidekick.dmg
+          asset_name: Sidekick.dmg
+          asset_content_type: application/octet-stream
+        

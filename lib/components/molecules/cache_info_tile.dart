@@ -1,9 +1,9 @@
-import 'package:fvm_app/components/atoms/cache_date_display.dart';
-import 'package:fvm_app/components/atoms/copy_button.dart';
-import 'package:fvm_app/components/atoms/group_tile.dart';
-import 'package:fvm_app/components/atoms/list_tile.dart';
-import 'package:fvm_app/components/atoms/typography.dart';
-import 'package:fvm_app/dto/version.dto.dart';
+import 'package:sidekick/components/atoms/cache_date_display.dart';
+import 'package:sidekick/components/atoms/copy_button.dart';
+import 'package:sidekick/components/atoms/group_tile.dart';
+import 'package:sidekick/components/atoms/list_tile.dart';
+import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/dto/version.dto.dart';
 import 'package:flutter/material.dart';
 
 class CacheInfoTile extends StatelessWidget {

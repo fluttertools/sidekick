@@ -1,4 +1,4 @@
-import 'package:fvm_app/dto/version.dto.dart';
+import 'package:sidekick/dto/version.dto.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
