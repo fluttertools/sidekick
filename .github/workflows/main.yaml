@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-  name: "Build ${{ matrix.sdk-version }} / ${{ matrix.os }}"
+  name: "Build ${{ matrix.os }}"
   runs-on: ${{ matrix.os }}
   defaults:
     run:
