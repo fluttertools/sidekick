@@ -7,35 +7,70 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    name: "Build ${{ matrix.os }}"
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: packages/app
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        sdk-version: [dev] #, dev]
-        include:
-          - os: macOS-latest
-            TARGET: macos
-          - os: ubuntu-latest
-            TARGET: linux
-          - os: windows-latest
-            TARGET: windows
+  build-linux:
+    name: "Build Linux"
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Flutter ${{ matrix.sdk-version }}
-        uses: DanTup/gh-actions/setup-flutter@master
-        with:
-          channel: ${{ matrix.sdk-version }}
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v1.4.0
+
+      - name: Install Linux build tools
+        run: sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev
+
+      - name: Enable desktop
+        run: flutter config --enable-linux-desktop
 
       - name: Analyze Flutter
-        run: flutter analyze
+        run: flutter pub get
 
-      - name: Build Release App
-        run: flutter build ${{ matrix.TARGET }}
+      - name: Flutter build app
+        run: flutter build linux
+  build-macos:
+    name: "Build MacOS"
+    runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v1.4.0
+
+      - name: Set Up XCode
+        uses: devbotsxyz/xcode-select@v1.1.0
+
+      - name: Enable desktop
+        run: flutter config --enable-macos-desktop
+
+      - name: Analyze Flutter
+        run: flutter pub get
+
+      - name: Flutter build app
+        run: flutter build macos
+
+  build-windows:
+    name: "Build Windows"
+    runs-on: windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v1.4.0
+
+      - name: Enable desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Analyze Flutter
+        run: flutter pub get
+
+      - name: Flutter build app
+        run: flutter build windows
