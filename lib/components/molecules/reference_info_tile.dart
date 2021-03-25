@@ -1,10 +1,12 @@
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/utils/channel_descriptions.dart';
 import 'package:flutter/material.dart';
+import 'package:sidekick/utils/open_link.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
   final VersionDto version;
@@ -14,9 +16,27 @@ class ReferenceInfoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     // Display channell reference if it's a release
     if (!version.isChannel) {
-      return FvmListTile(
-        title: const Text('Channel'),
-        trailing: Chip(label: Text(version.release.channelName)),
+      return Column(
+        children: [
+          FvmListTile(
+            title: const Text('Channel'),
+            trailing: Chip(label: Text(version.release.channelName)),
+          ),
+          const Divider(),
+          FvmListTile(
+            title: const Text('Release Notes'),
+            trailing: IconButton(
+              icon: const Icon(
+                Icons.open_in_new,
+                size: 20,
+              ),
+              onPressed: () async {
+                await openLink(kFlutterTagsUrl + version.name);
+              },
+            ),
+          ),
+          const Divider()
+        ],
       );
     }
 
