@@ -12,7 +12,7 @@ import 'package:window_size/window_size.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle('fvm');
+    setWindowTitle('Sidekick');
     setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
   }
@@ -25,7 +25,7 @@ class FvmApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OKToast(
       child: MaterialApp(
-        title: 'fvm',
+        title: 'Sidekick',
         debugShowCheckedModeBanner: false,
         theme: darkTheme(),
         home: const AppShell(),

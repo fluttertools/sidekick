@@ -3,18 +3,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:sidekick/utils/http_cache.dart';
+
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
 
 const cacheKey = 'dependencies_cache_key';
 
-final client = PubClient(client: CacheHttpClient());
+final client = PubClient();
 
 final github = GitHub(
   auth: Authentication.anonymous(),
-  client: CacheHttpClient(),
 );
 
 class PackageDetail {
