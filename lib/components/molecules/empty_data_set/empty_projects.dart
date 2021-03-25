@@ -28,8 +28,11 @@ class EmptyProjects extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            RaisedButton.icon(
-              padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+            ElevatedButton.icon(
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.resolveWith(
+                (states) => const EdgeInsets.fromLTRB(30, 15, 30, 15),
+              )),
               onPressed: () {
                 context
                     .read(navigationProvider)
