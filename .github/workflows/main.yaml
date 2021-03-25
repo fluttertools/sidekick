@@ -8,34 +8,34 @@ on:
 
 jobs:
   build:
-  name: "Build ${{ matrix.os }}"
-  runs-on: ${{ matrix.os }}
-  defaults:
-    run:
-      working-directory: packages/app
-  strategy:
-    matrix:
-      os: [windows-latest, ubuntu-latest, macos-latest]
-      sdk-version: [dev] #, dev]
-      include:
-        - os: macOS-latest
-          TARGET: macos
-        - os: ubuntu-latest
-          TARGET: linux
-        - os: windows-latest
-          TARGET: windows
+    name: "Build ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: packages/app
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        sdk-version: [dev] #, dev]
+        include:
+          - os: macOS-latest
+            TARGET: macos
+          - os: ubuntu-latest
+            TARGET: linux
+          - os: windows-latest
+            TARGET: windows
 
-  steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 0
-    - name: Setup Flutter ${{ matrix.sdk-version }}
-      uses: DanTup/gh-actions/setup-flutter@master
-      with:
-        channel: ${{ matrix.sdk-version }}
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - name: Setup Flutter ${{ matrix.sdk-version }}
+        uses: DanTup/gh-actions/setup-flutter@master
+        with:
+          channel: ${{ matrix.sdk-version }}
 
-    - name: Analyze Flutter
-      run: flutter analyze
+      - name: Analyze Flutter
+        run: flutter analyze
 
-    - name: Build Release App
-      run: flutter build ${{ matrix.TARGET }}
+      - name: Build Release App
+        run: flutter build ${{ matrix.TARGET }}
