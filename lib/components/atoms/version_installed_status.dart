@@ -35,6 +35,8 @@ class VersionInstalledStatus extends StatelessWidget {
       currentRelease = channel.sdkVersion;
     }
 
+    if (version is MasterDto) {}
+
     // If channel version installed is not the same as current, or if its master
     if (currentRelease == latestRelease || version is MasterDto) {
       return Row(
