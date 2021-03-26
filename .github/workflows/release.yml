@@ -1,68 +1,203 @@
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
 
-name: Create Release
+name: Release Artifacts
 
 jobs:
-  release:
-    name: Create Release
+  build-linux:
+    name: "Build Linux"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/app
-    container:
-      image: google/dart:latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Install dependencies
-        run: pub get
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@master
+
+      - name: Install Linux build tools
+        run: sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev
+
+      - name: Enable desktop
+        run: flutter config --enable-linux-desktop
+
       - name: Install Cider
-        run: pub global activate cider
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        run: flutter pub global activate cider
+
+      - name: Set new Flutter version
+        run: cider version ${{ github.event.release.tag_name }}
+
+      - name: Write constants
+        uses: DamianReeves/write-file-action@v1.0
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: true
-          prerelease: false
-  build:
-    name: "Build ${{ matrix.sdk-version }} / ${{ matrix.os }}"
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: packages/app
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        sdk-version: [dev] #, dev]
-        include:
-          - os: macOS-latest
-            TARGET: macos
-          - os: ubuntu-latest
-            TARGET: linux
-          - os: windows-latest
-            TARGET: windows
+          path: lib/version.dart
+          contents: |
+            const appVersion = "${{ github.event.release.tag_name }}";
+          write-mode: overwrite
+
+      - name: Flutter get packages
+        run: flutter pub get
+
+      - name: Flutter build app
+        run: flutter build linux
+
+      - name: Compress artifacts
+        uses: TheDoctor0/zip-release@0.4.1
+        with:
+          filename: linux-${{ github.event.release.tag_name }}.zip
+
+      - name: Upload files to a GitHub release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          # GitHub token.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Local file to upload.
+          file: linux-${{ github.event.release.tag_name }}.zip
+          # Tag to use as a release.
+          tag: ${{ github.ref }}
+
+  build-macos:
+    name: "Build MacOS"
+    runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Flutter ${{ matrix.sdk-version }}
-        uses: DanTup/gh-actions/setup-flutter@master
-        with:
-          channel: ${{ matrix.sdk-version }}
+      - uses: actions/checkout@v2.3.4
 
-      - name: Analyze Flutter
-        run: flutter analyze
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@master
 
-      - name: Build Release App
-        run: flutter build ${{ matrix.TARGET }}
+      - name: Set Up XCode
+        uses: devbotsxyz/xcode-select@v1.1.0
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Enable desktop
+        run: flutter config --enable-macos-desktop
+
+      - name: Install Cider
+        run: flutter pub global activate cider
+
+      - name: Set new Flutter version
+        run: cider version ${{ github.event.release.tag_name }}
+
+      - name: Write constants
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: lib/version.dart
+          contents: |
+            const appVersion = "${{ github.event.release.tag_name }}";
+          write-mode: overwrite
+
+      - name: Flutter get packages
+        run: flutter pub get
+
+      - name: Flutter build app
+        run: flutter build macos
+
+      - name: Create dmg
+        run: |
+          ./scripts/create_mac_dmg.sh
+
+      - name: Compress artifacts
+        run: zip -r macos-${{ github.event.release.tag_name }}.zip build/macos/Build/Products/Release
+
+      - name: Upload artifacts to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          # GitHub token.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Local file to upload.
+          file: macos-${{ github.event.release.tag_name }}.zip
+          # Tag to use as a release.
+          tag: ${{ github.ref }}
+
+      - name: Upload DMG to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          # GitHub token.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Local file to upload.
+          file: build/macos/Build/Products/Release/Sidekick.dmg
+          asset_name: Sidekick-macos-${{ github.event.release.tag_name }}.msix
+          # Tag to use as a release.
+          tag: ${{ github.ref }}
+
+  build-windows:
+    name: "Build Windows"
+    runs-on: windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@master
+
+      - name: Enable desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Install Cider
+        run: flutter pub global activate cider
+
+      - name: Set new Flutter version
+        run: cider version ${{ github.event.release.tag_name }}
+
+      - name: Write MSIX
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: pubspec.yaml
+          contents: |
+            msix_config:
+              display_name: Sidekick
+              publisher_display_name: Sidekick Contributors
+              identity_name: app.fvm.sidekick
+              msix_version: ${{ github.event.release.tag_name }}.0
+              logo_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              start_menu_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              tile_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              icons_background_color: transparent
+              architecture: x64
+              capabilities: "internetClient,removableStorage"
+          write-mode: append
+
+      - name: Write constants
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: lib/version.dart
+          contents: |
+            const appVersion = "${{ github.event.release.tag_name }}";
+          write-mode: overwrite
+
+      - name: Flutter get packages
+        run: flutter pub get
+
+      - name: Flutter build app
+        run: flutter build windows
+
+      - name: Create MSIX
+        run: flutter pub run msix:create
+
+      - name: Compress artifacts
+        run: tar.exe -a -c -f windows-${{ github.event.release.tag_name }}.zip build/windows/Runner/release
+
+      - name: Upload artifacts to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: windows-${{ github.event.release.tag_name }}.zip
+          tag: ${{ github.ref }}
+
+      - name: Upload MSIX to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/windows/Runner/release/sidekick.msix
+          asset_name: Sidekick-windows-${{ github.event.release.tag_name }}.msix
+          tag: ${{ github.ref }}
