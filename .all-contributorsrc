@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "aguilaair",
+      "name": "Eduardo M.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29983481?v=4",
+      "profile": "http://eduardom.dev",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "sidekick",
+  "projectOwner": "leoafarias",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
