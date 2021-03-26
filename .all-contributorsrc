@@ -2,9 +2,22 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 50,
   "commit": false,
   "contributors": [
+    {
+      "login": "leoafarias",
+      "name": "Leo Farias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/435833?v=4",
+      "profile": "https://github.com/leoafarias",
+      "contributions": [
+        "code",
+        "ideas",
+        "design",
+        "doc",
+        "maintenance"
+      ]
+    },
     {
       "login": "aguilaair",
       "name": "Eduardo M.",
@@ -22,5 +35,6 @@
   "projectOwner": "leoafarias",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
