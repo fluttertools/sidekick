@@ -41,7 +41,9 @@ class Console extends HookWidget {
       crossFadeState:
           processing ? CrossFadeState.showSecond : CrossFadeState.showFirst,
       firstChild: Container(
-        color: Colors.black45,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black45
+            : Colors.black12,
         height: 40,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

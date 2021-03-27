@@ -36,7 +36,7 @@ ThemeData lightTheme() {
     dividerColor: Colors.black12,
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      color: Colors.white,
+      color: Colors.black12,
     ),
     // cardColor: const Color(0xFF222222),
 
