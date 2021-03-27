@@ -52,6 +52,7 @@ dependencies:
   flutter_hooks: ^0.14.1
   path_provider: ^1.6.24
   file_chooser: ^0.1.6
+  pub_semver: ^1.4.4
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
