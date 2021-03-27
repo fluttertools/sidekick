@@ -27,7 +27,9 @@ class FvmApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Sidekick',
         debugShowCheckedModeBanner: false,
-        theme: darkTheme(),
+        theme: lightTheme(),
+        darkTheme: darkTheme(),
+        themeMode: ThemeMode.system,
         home: const AppShell(),
       ),
     );

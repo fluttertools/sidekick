@@ -108,44 +108,91 @@ class AppShell extends HookWidget {
             Container(
               child: Row(
                 children: <Widget>[
-                  NavigationRail(
-                    leading: const SizedBox(height: 10),
-                    selectedIndex: selectedIndex.value,
-                    minWidth: kNavigationWidth,
-                    minExtendedWidth: kNavigationWidthExtended,
-                    extended: !LayoutSize.isSmall,
-                    onDestinationSelected: (index) {
-                      // If its search
-                      if (index == 5) {
-                        showSearch.value = true;
-                      } else {
-                        navigation.goTo(NavigationRoutes.values[index]);
-                      }
+                  LayoutBuilder(
+                    builder: (_, constraints) {
+                      return SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints:
+                              BoxConstraints(minHeight: constraints.maxHeight),
+                          child: IntrinsicHeight(
+                            child: NavigationRail(
+                              leading: Container(
+                                padding: const EdgeInsets.only(
+                                  bottom: 15,
+                                  left: 15,
+                                  right: 15,
+                                  top: 25,
+                                ),
+                                //constraints: BoxConstraints(maxWidth: 15),
+                                child: Padding(
+                                  padding: LayoutSize.isSmall
+                                      ? EdgeInsets.zero
+                                      : const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                        ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        "assets/logo.png",
+                                        width: 50,
+                                        gaplessPlayback: true,
+                                      ),
+                                      LayoutSize.isSmall
+                                          ? Container()
+                                          : Text(
+                                              " Sidekick",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline5,
+                                            )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              selectedIndex: selectedIndex.value,
+                              minWidth: kNavigationWidth,
+                              minExtendedWidth: kNavigationWidthExtended,
+                              extended: !LayoutSize.isSmall,
+                              onDestinationSelected: (index) {
+                                // If its search
+                                if (index == 5) {
+                                  showSearch.value = true;
+                                } else {
+                                  navigation
+                                      .goTo(NavigationRoutes.values[index]);
+                                }
+                              },
+                              labelType: NavigationRailLabelType.none,
+                              destinations: [
+                                NavButton(
+                                  label: 'Dashboard',
+                                  iconData: Icons.category,
+                                ),
+                                NavButton(
+                                  label: 'Projects',
+                                  iconData: MdiIcons.folderMultiple,
+                                ),
+                                NavButton(
+                                  label: 'Explore',
+                                  iconData: Icons.explore,
+                                ),
+                                NavButton(
+                                  label: 'Packages',
+                                  iconData: MdiIcons.package,
+                                ),
+                                NavButton(
+                                  label: 'Settings',
+                                  iconData: Icons.settings,
+                                ),
+                                NavButton(
+                                    label: 'Search', iconData: Icons.search),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
                     },
-                    labelType: NavigationRailLabelType.none,
-                    destinations: [
-                      NavButton(
-                        label: 'Dashboard',
-                        iconData: Icons.category,
-                      ),
-                      NavButton(
-                        label: 'Projects',
-                        iconData: MdiIcons.folderMultiple,
-                      ),
-                      NavButton(
-                        label: 'Explore',
-                        iconData: Icons.explore,
-                      ),
-                      NavButton(
-                        label: 'Packages',
-                        iconData: MdiIcons.package,
-                      ),
-                      NavButton(
-                        label: 'Settings',
-                        iconData: Icons.settings,
-                      ),
-                      NavButton(label: 'Search', iconData: Icons.search),
-                    ],
                   ),
                   const VerticalDivider(thickness: 1, width: 1),
                   // This is the main content.

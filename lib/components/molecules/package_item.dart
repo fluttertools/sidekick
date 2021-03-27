@@ -22,7 +22,14 @@ class PackageItem extends StatelessWidget {
           FvmListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.black26,
-              child: Text(position.toString()),
+              child: Text(
+                position.toString(),
+                style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                ),
+              ),
             ),
             title: Text(package.name),
             subtitle: Text(
