@@ -5,7 +5,6 @@ import 'package:sidekick/providers/fvm_queue.provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:sidekick/dto/version.dto.dart';
