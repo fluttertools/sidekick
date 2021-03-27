@@ -26,7 +26,7 @@ void downloadRelease(String release) async {
     url =
         "$kGithubSidekickUrl/releases/download/$release/Sidekick-windows-$release.msix";
     file = File("${fileLocation}msix");
-  } else if (Platform.isWindows) {
+  } else if (Platform.isMacOS) {
     url =
         "$kGithubSidekickUrl/releases/download/$release/Sidekick-macos-$release.dmg";
     file = File("${fileLocation}dmg");
@@ -64,15 +64,11 @@ void checkForUpdates() async {
     return;
   }
 
-  var latestRelease = await GitHub(
-          // TODO: Add Custom token
-          auth: Authentication.anonymous())
+  final latestRelease = await GitHub(auth: Authentication.anonymous())
       .repositories
-      .getLatestRelease(
-        RepositorySlug("leoafarias", "sidekick"),
-      );
+      .getLatestRelease(RepositorySlug("leoafarias", "sidekick"));
 
-  var latestVersion = Version.parse(latestRelease.tagName);
+  final latestVersion = Version.parse(latestRelease.tagName);
 
   if (latestVersion > installedVersion) {
     ToastFuture toast;
