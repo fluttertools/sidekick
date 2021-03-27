@@ -10,7 +10,7 @@ class SectionHeaderDelegate extends SliverPersistentHeaderDelegate {
     this.title,
     this.count = 0,
     this.onPress,
-    this.height = 50,
+    this.height = 60,
   });
 
   @override
@@ -20,10 +20,18 @@ class SectionHeaderDelegate extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return Container(
-      color: Colors.black38,
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: Theme.of(context).cardColor.withOpacity(0.2),
+      ),
       child: ListTile(
-        title: Text(title),
-        trailing: Text('${count.toString()} Found'),
+        title: Text(
+          title,
+        ),
+        trailing: Text(
+          '${count.toString()} Found',
+        ),
         onTap: onPress,
       ),
     );

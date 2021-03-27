@@ -60,7 +60,11 @@ class VersionInstallButton extends HookWidget {
       }
 
       if (version.isInstalled) {
-        return const Icon(Icons.check, size: 20);
+        return const Icon(
+          Icons.check,
+          size: 20,
+          color: Colors.cyan,
+        );
       }
 
       // Display warning icon instead of download arrow
@@ -83,9 +87,10 @@ class VersionInstallButton extends HookWidget {
       },
       child: Opacity(
         opacity: version.isInstalled ? 0.3 : 1,
-        child: TextButton(
-          onPressed: version.isInstalled ? null : onInstall,
-          child: Tooltip(
+        child: IconButton(
+          onPressed: version.isInstalled ? onInstall : onInstall,
+          splashRadius: 20,
+          icon: Tooltip(
               message: version.isInstalled ? installedMsg : notInstalledMsg,
               child: installIcon()),
         ),
