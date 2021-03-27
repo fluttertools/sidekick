@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:pubspec_parse/pubspec_parse.dart';
 
 import 'package:github/github.dart';
@@ -9,7 +7,7 @@ import 'package:pub_api_client/pub_api_client.dart';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:sidekick/dto/package_detail.dto.dart';
 
-const cacheKey = 'dependencies_cache_key';
+const cacheKey = 'dependencies_cache_key10';
 
 final client = PubClient();
 
@@ -21,7 +19,8 @@ Map<String, PubPackage> mapPackages;
 
 /// Fetches all packages info from pub.dev
 Future<List<PackageDetail>> fetchAllDependencies(
-    Map<String, int> packagesCount) async {
+  Map<String, int> packagesCount,
+) async {
   final response = await cache.remember(
     cacheKey,
     () async {
@@ -53,20 +52,16 @@ List<PubPackage> _getTopValidPackages(
 
   // Filter to only valid packages
   final validPackages = packages.where((dep) => dep.name != null).toList();
-  final mapValidPackages = Map<String, PubPackage>.fromIterable(validPackages,
-      key: (v) => v.name, value: (v) => v);
 
-  // Sort based on count
-  final sortedKeys = mapValidPackages.keys.toList()
-    ..sort((k1, k2) => packagesCount[k1].compareTo(packagesCount[k2]));
-
-  final reversedSortedKeys = sortedKeys.reversed.toList();
+  // Sort descending based on count
+  validPackages.sort(
+    (p1, p2) => packagesCount[p2.name].compareTo(packagesCount[p1.name]),
+  );
 
   // Limit number of results
-  reversedSortedKeys.length = max;
+  validPackages.length = max;
 
-  /// Return only PubPackages within the top keys
-  return reversedSortedKeys.map((key) => mapValidPackages[key]).toList();
+  return validPackages;
 }
 
 Future<List<PackageDetail>> _complementPackageInfo(

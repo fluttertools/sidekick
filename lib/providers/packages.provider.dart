@@ -9,6 +9,10 @@ final packagesProvider = FutureProvider((ref) async {
   final projects = ref.watch(projectsProvider.state);
   final packages = <String, int>{};
 
+  if (projects.list.isEmpty) {
+    return [];
+  }
+
   for (var project in projects.list) {
     final pubspec = project.pubspec;
     final deps = pubspec.dependencies.toList();
