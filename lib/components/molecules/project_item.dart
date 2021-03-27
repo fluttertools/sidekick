@@ -38,10 +38,14 @@ class ProjectItem extends HookWidget {
                 child: ListTile(
                   leading: const Icon(MdiIcons.alphaPBox),
                   title: Subheading(project.name),
-                  trailing: IconButton(
-                    iconSize: 20,
-                    icon: const Icon(MdiIcons.cog),
-                    onPressed: () {},
+                  trailing: Tooltip(
+                    message: "Open in your IDE (Coming Soon)",
+                    child: IconButton(
+                      iconSize: 20,
+                      splashRadius: 20,
+                      icon: const Icon(MdiIcons.microsoftVisualStudioCode),
+                      onPressed: () {},
+                    ),
                   ),
                 ),
               ),
@@ -68,14 +72,19 @@ class ProjectItem extends HookWidget {
               Row(
                 children: [
                   const SizedBox(width: 10),
-                  TextButton(
-                    onPressed: () {
-                      openLink(project.projectDir.path);
-                    },
-                    child: Text(
-                      truncate(project.projectDir.path, 25,
-                          position: TruncatePosition.middle),
-                      style: const TextStyle(fontSize: 12),
+                  Tooltip(
+                    message: "Open in explorer",
+                    child: TextButton(
+                      onPressed: () {
+                        openLink(
+                          "file://${project.projectDir.absolute.path.replaceAll("\\", "/")}",
+                        );
+                      },
+                      child: Text(
+                        truncate(project.projectDir.path, 25,
+                            position: TruncatePosition.middle),
+                        style: const TextStyle(fontSize: 12),
+                      ),
                     ),
                   ),
                   const Spacer(),

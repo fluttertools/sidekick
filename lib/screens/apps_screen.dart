@@ -83,7 +83,7 @@ class AppsScreen extends HookWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: ResponsiveGridList(
-              desiredItemWidth: 250,
+              desiredItemWidth: 290,
               minSpacing: 10,
               children: filteredProjects.value.map((project) {
                 return ProjectItem(project, key: Key(project.projectDir.path));
