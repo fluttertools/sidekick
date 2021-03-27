@@ -148,6 +148,14 @@ jobs:
 
       - name: Set new Flutter version
         run: cider version ${{ github.event.release.tag_name }}
+        
+      - name: Generate MSIX-compatible version
+        uses: ashley-taylor/regex-property-action@1.2
+        id: msixver
+        with:
+          value: ${{ github.event.release.tag_name }}
+          regex: \-\w+
+          replacement: ""
 
       - name: Write MSIX
         uses: DamianReeves/write-file-action@v1.0
@@ -158,7 +166,7 @@ jobs:
               display_name: Sidekick
               publisher_display_name: Sidekick Contributors
               identity_name: app.fvm.sidekick
-              msix_version: ${{ github.event.release.tag_name }}.0
+              msix_version: ${{steps.msixver.outputs.value }}
               logo_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
               start_menu_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
               tile_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
