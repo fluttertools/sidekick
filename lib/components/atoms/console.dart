@@ -66,7 +66,9 @@ class Console extends HookWidget {
       secondChild: GestureDetector(
         onTap: onExpand,
         child: Container(
-          color: Colors.black45,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.black45
+              : Colors.black12,
           height: expand ? 160 : 40,
           constraints: expand
               ? const BoxConstraints(maxHeight: 160)
