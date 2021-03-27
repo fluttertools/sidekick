@@ -1,0 +1,40 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 50,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "leoafarias",
+      "name": "Leo Farias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/435833?v=4",
+      "profile": "https://github.com/leoafarias",
+      "contributions": [
+        "code",
+        "ideas",
+        "design",
+        "doc",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "aguilaair",
+      "name": "Eduardo M.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29983481?v=4",
+      "profile": "http://eduardom.dev",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "sidekick",
+  "projectOwner": "leoafarias",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "none"
+}
