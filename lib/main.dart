@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:sidekick/app_shell.dart';
 
 import 'package:sidekick/theme.dart';
-import 'package:sidekick/utils/manage_updates.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,7 +23,6 @@ class FvmApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    checkForUpdates();
     return OKToast(
       child: MaterialApp(
         title: 'Sidekick',
