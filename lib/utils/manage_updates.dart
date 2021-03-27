@@ -1,25 +1,36 @@
 import 'dart:io';
 
+import 'package:sidekick/constants.dart';
 import 'package:sidekick/utils/open_link.dart';
-import 'package:archive/archive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:github/github.dart';
 //import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart' as provider;
-import 'package:version/version.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 import '../components/molecules/update_card.dart';
 import '../version.dart';
 
 void downloadRelease(String release) async {
+  String url;
+  File file;
+
   var directory = await provider.getDownloadsDirectory();
+
   var fileLocation =
-      "${directory.absolute.path}${Platform.pathSeparator}CRel-$release.";
-  var url =
-      "https://github.com/aguilaair/Companion/releases/download/$release/${Platform.operatingSystem.toLowerCase()}-$release.zip";
-  var file = File("${fileLocation}zip");
+      "${directory.absolute.path}${Platform.pathSeparator}sidekick-$release.";
+
+  if (Platform.isWindows) {
+    url =
+        "$kGithubSidekickUrl/releases/download/$release/Sidekick-windows-$release.msix";
+    file = File("${fileLocation}msix");
+  } else if (Platform.isWindows) {
+    url =
+        "$kGithubSidekickUrl/releases/download/$release/Sidekick-macos-$release.dmg";
+    file = File("${fileLocation}dmg");
+  }
 
   if (!await file.exists()) {
     showToast("Downloading...", duration: const Duration(seconds: 30));
@@ -29,33 +40,11 @@ void downloadRelease(String release) async {
   } else {
     showToast("File already downloaded, opening...");
   }
-  openInstaller(file, fileLocation);
+  openInstaller(file);
 }
 
-void openInstaller(File file, String fileLocation) {
-  if (Platform.isWindows) {
-    installWindows(file, fileLocation);
-  } else if (Platform.isMacOS) {
-    installMacOS(file, fileLocation);
-  } else {
-    openLink("file://${fileLocation.replaceAll("\\", "/")}zip");
-  }
-}
-
-void installWindows(File file, String path) async {
-  var decompressed = ZipDecoder().decodeBytes(file.readAsBytesSync());
-  var msix =
-      decompressed.files.firstWhere((element) => element.name.contains("msix"));
-  await File("${path}msix").writeAsBytes(msix.content);
-  openLink("file://${path.replaceAll("\\", "/")}msix");
-}
-
-void installMacOS(File file, String path) async {
-  var decompressed = ZipDecoder().decodeBytes(file.readAsBytesSync());
-  var dmg =
-      decompressed.files.firstWhere((element) => element.name.contains("dmg"));
-  await File("${path}dmg").writeAsBytes(dmg.content);
-  openLink("file://${path.replaceAll("\\", "/")}dmg");
+void openInstaller(File file) {
+  openLink("file://${file.absolute.path.replaceAll("\\", "/")}");
 }
 
 void checkForUpdates() async {
@@ -71,7 +60,7 @@ void checkForUpdates() async {
           auth: Authentication.anonymous())
       .repositories
       .getLatestRelease(
-        RepositorySlug("aguilaair", "companion"),
+        RepositorySlug("leofarias", "sidekick"),
       );
 
   var latestVersion = Version.parse(latestRelease.tagName);
