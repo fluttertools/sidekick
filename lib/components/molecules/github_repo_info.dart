@@ -4,15 +4,19 @@ import 'package:github/github.dart';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class GithubInfoDisplay extends StatelessWidget {
+class GithubRepoInfo extends StatelessWidget {
   final Repository repo;
-  const GithubInfoDisplay({
-    this.repo,
+  const GithubRepoInfo(
+    this.repo, {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Check if repo is null
+    if (repo == null) {
+      return Container();
+    }
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,

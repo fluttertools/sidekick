@@ -46,9 +46,10 @@ class PackageDetail {
         url = json['url'],
         homepage = json['homepage'],
         changelogUrl = json['changelogUrl'],
-        score = PackageScore.fromJson(json['score']),
+        score =
+            json['score'] != null ? PackageScore.fromJson(json['score']) : 0,
         count = json['count'],
-        repo = Repository.fromJson(json['repo']);
+        repo = json['repo'] != null ? Repository.fromJson(json['repo']) : null;
 
   Map<String, dynamic> toJson() => {
         'name': name,

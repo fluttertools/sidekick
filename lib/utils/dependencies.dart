@@ -7,7 +7,7 @@ import 'package:pub_api_client/pub_api_client.dart';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:sidekick/dto/package_detail.dto.dart';
 
-const cacheKey = 'dependencies_cache_key10';
+const cacheKey = 'dependencies_cache_key';
 
 final client = PubClient();
 

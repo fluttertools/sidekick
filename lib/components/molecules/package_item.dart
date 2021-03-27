@@ -3,7 +3,7 @@ import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/molecules/github_info_display.dart';
+import 'package:sidekick/components/molecules/github_repo_info.dart';
 import 'package:sidekick/components/molecules/package_score_display.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
 import 'package:sidekick/utils/open_link.dart';
@@ -35,9 +35,7 @@ class PackageItem extends StatelessWidget {
           const Divider(thickness: 0.5),
           Row(
             children: [
-              GithubInfoDisplay(
-                repo: package.repo,
-              ),
+              GithubRepoInfo(package.repo),
               Expanded(
                 child: Column(
                   children: [
