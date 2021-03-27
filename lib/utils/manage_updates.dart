@@ -35,8 +35,17 @@ void downloadRelease(String release) async {
   if (!await file.exists()) {
     showToast("Downloading...", duration: const Duration(seconds: 30));
     var res = await http.get(url);
-    await file.writeAsBytes(res.bodyBytes);
-    showToast("Release downloaded! Opening...", dismissOtherToast: true);
+    if (res.statusCode == 200) {
+      await file.writeAsBytes(res.bodyBytes);
+      showToast("Release downloaded! Opening...", dismissOtherToast: true);
+    } else {
+      showToast(
+        "There was an issue downloading the file, plese try again later."
+        "\nCode ${res.statusCode}",
+        dismissOtherToast: true,
+      );
+      return;
+    }
   } else {
     showToast("File already downloaded, opening...");
   }
