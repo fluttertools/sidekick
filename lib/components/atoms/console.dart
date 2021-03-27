@@ -43,7 +43,7 @@ class Console extends HookWidget {
       firstChild: Container(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.black45
-            : Colors.black12,
+            : const Color(0xFFF5F5F5),
         height: 40,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +68,7 @@ class Console extends HookWidget {
         child: Container(
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.black45
-              : Colors.black12,
+              : const Color(0xFFF5F5F5),
           height: expand ? 160 : 40,
           constraints: expand
               ? const BoxConstraints(maxHeight: 160)
