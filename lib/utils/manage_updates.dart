@@ -60,7 +60,7 @@ void checkForUpdates() async {
           auth: Authentication.anonymous())
       .repositories
       .getLatestRelease(
-        RepositorySlug("leofarias", "sidekick"),
+        RepositorySlug("leoafarias", "sidekick"),
       );
 
   var latestVersion = Version.parse(latestRelease.tagName);
