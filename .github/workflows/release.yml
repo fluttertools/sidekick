@@ -154,7 +154,7 @@ jobs:
         id: msixver
         with:
           value: ${{ github.event.release.tag_name }}
-          regex: \-\w+
+          regex: (\-\w+)|(\+\w+)
           replacement: ""
 
       - name: Write MSIX
