@@ -70,7 +70,8 @@ class ProjectItem extends HookWidget {
                   const SizedBox(width: 10),
                   TextButton(
                     onPressed: () {
-                      openLink(project.projectDir.path);
+                      openLink(
+                          "file://${project.projectDir.absolute.path.replaceAll("\\", "/")}");
                     },
                     child: Text(
                       truncate(project.projectDir.path, 25,
