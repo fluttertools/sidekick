@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:pubspec_parse/pubspec_parse.dart';
 
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
+import 'package:sidekick/dto/package_detail.dto.dart';
 
 const cacheKey = 'dependencies_cache_key';
 
@@ -16,72 +15,12 @@ final github = GitHub(
   auth: Authentication.anonymous(),
 );
 
-class PackageDetail {
-  @required
-  final String name;
-  @required
-  final String description;
-  @required
-  final String version;
-  @required
-  final String url;
-  @required
-  final String homepage;
-  @required
-  final String changelogUrl;
-  @required
-  final PackageScore score;
-  @required
-  final int count;
-  @required
-  final Repository repo;
-  PackageDetail({
-    this.name,
-    this.description,
-    this.version,
-    this.url,
-    this.homepage,
-    this.changelogUrl,
-    this.score,
-    this.count,
-    this.repo,
-  });
-
-  int compareTo(PackageDetail other) {
-    if (other.count > count) return -1;
-    if (other.count == count) return 0;
-    return 1;
-  }
-
-  PackageDetail.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        description = json['description'],
-        version = json['version'],
-        url = json['url'],
-        homepage = json['homepage'],
-        changelogUrl = json['changelogUrl'],
-        score = PackageScore.fromJson(json['score']),
-        count = json['count'],
-        repo = Repository.fromJson(json['repo']);
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'description': description,
-        'version': version,
-        'url': url,
-        'homepage': homepage,
-        'changelogUrl': changelogUrl,
-        'score': score,
-        'count': count,
-        'repo': repo,
-      };
-}
-
 Map<String, PubPackage> mapPackages;
 
 /// Fetches all packages info from pub.dev
-Future<List<PackageDetail>> fetchAllPackages(
-    Map<String, int> packagesCount) async {
+Future<List<PackageDetail>> fetchAllDependencies(
+  Map<String, int> packagesCount,
+) async {
   final response = await cache.remember(
     cacheKey,
     () async {
@@ -113,20 +52,16 @@ List<PubPackage> _getTopValidPackages(
 
   // Filter to only valid packages
   final validPackages = packages.where((dep) => dep.name != null).toList();
-  final mapValidPackages = Map<String, PubPackage>.fromIterable(validPackages,
-      key: (v) => v.name, value: (v) => v);
 
-  // Sort based on count
-  final sortedKeys = mapValidPackages.keys.toList()
-    ..sort((k1, k2) => packagesCount[k1].compareTo(packagesCount[k2]));
-
-  final reversedSortedKeys = sortedKeys.reversed.toList();
+  // Sort descending based on count
+  validPackages.sort(
+    (p1, p2) => packagesCount[p2.name].compareTo(packagesCount[p1.name]),
+  );
 
   // Limit number of results
-  reversedSortedKeys.length = max;
+  validPackages.length = max;
 
-  /// Return only PubPackages within the top keys
-  return reversedSortedKeys.map((key) => mapValidPackages[key]).toList();
+  return validPackages;
 }
 
 Future<List<PackageDetail>> _complementPackageInfo(

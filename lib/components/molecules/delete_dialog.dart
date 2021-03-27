@@ -18,13 +18,13 @@ void showDeleteDialog(
         buttonPadding: const EdgeInsets.all(15),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
-          FlatButton(
+          TextButton(
             child: const Text("Cancel"),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
-          FlatButton(
+          TextButton(
             child: const Text("Confirm"),
             onPressed: () async {
               Navigator.of(context).pop();
