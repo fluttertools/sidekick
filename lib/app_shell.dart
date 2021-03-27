@@ -124,23 +124,30 @@ class AppShell extends HookWidget {
                                   top: 25,
                                 ),
                                 //constraints: BoxConstraints(maxWidth: 15),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Image.asset(
-                                      "assets/logo.png",
-                                      width: 50,
-                                      gaplessPlayback: true,
-                                    ),
-                                    LayoutSize.isSmall
-                                        ? Container()
-                                        : Text(
-                                            " Sidekick",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline5,
-                                          )
-                                  ],
+                                child: Padding(
+                                  padding: LayoutSize.isSmall
+                                      ? EdgeInsets.zero
+                                      : const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                        ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        "assets/logo.png",
+                                        width: 50,
+                                        gaplessPlayback: true,
+                                      ),
+                                      LayoutSize.isSmall
+                                          ? Container()
+                                          : Text(
+                                              " Sidekick",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline5,
+                                            )
+                                    ],
+                                  ),
                                 ),
                               ),
                               selectedIndex: selectedIndex.value,
