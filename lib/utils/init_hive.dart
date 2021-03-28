@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> initHive() async {
   final docPath = await getApplicationSupportDirectory();
   try {
-    Hive.init("${docPath.path}/app.fvm.sidekick");
+    Hive.initFlutter("${docPath.path}/app.fvm.sidekick");
     await Hive.openBox("settings");
     await Hive.openBox("theme");
   } on FileSystemException catch (e) {
