@@ -8,9 +8,11 @@ const settingsBoxName = 'app_settings';
 class AppSettingsService {
   static Box<AppSettings> _box;
   // ignore: prefer_final_fields
-
+  static bool _initialized = false;
   static Future<void> init() async {
+    await Hive.initFlutter();
     _box = await Hive.openBox<AppSettings>(settingsBoxName);
+    _initialized = true;
   }
 
   static Future<void> save(AppSettings settings) async {
@@ -18,14 +20,13 @@ class AppSettingsService {
   }
 
   static Future<AppSettings> read() async {
-    final settings = await _box.get(AppSettings.key);
-    if (settings == null) {
-      return AppSettings();
-    }
-    return settings;
-  }
+    // Make sure its initialized
 
-  static Future<void> listen() {}
+    if (!_initialized) {
+      await init();
+    }
+    return await _box.get(AppSettings.key);
+  }
 
   static Future<AppSettings> reset() async {
     /// Will set all AppSettings to default
