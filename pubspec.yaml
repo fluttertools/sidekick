@@ -57,12 +57,12 @@ dependencies:
       path: plugins/window_size
 
   pub_api_client: ^1.0.9
-  # fvm:
-  #   git:
-  #     url: https://github.com/leoafarias/fvm.git
-  #     ref: feature/next
   fvm:
-    path: ../fvm
+    git:
+      url: https://github.com/leoafarias/fvm.git
+      ref: feature/next
+  # fvm:
+  #   path: ../fvm
 
 dev_dependencies:
   build_runner: ^1.10.6
