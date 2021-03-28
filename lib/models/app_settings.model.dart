@@ -2,13 +2,13 @@ import 'dart:convert';
 
 class AppSettings {
   static const key = 'app_settings';
-  List<String> flutterProjectDir;
+  List<String> flutterProjectsDir;
   bool advancedMode;
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
 
   AppSettings({
-    this.flutterProjectDir = const [],
+    this.flutterProjectsDir = const [],
     this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
@@ -19,7 +19,7 @@ class AppSettings {
 
   factory AppSettings.fromMap(Map<String, dynamic> json) {
     return AppSettings(
-      flutterProjectDir:
+      flutterProjectsDir:
           (json['flutterProjectsDir'] as List<dynamic>).cast<String>(),
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       advancedMode: json['advancedMode'] as bool ?? false,
@@ -32,7 +32,7 @@ class AppSettings {
 
   Map<String, dynamic> toMap() {
     return {
-      'flutterProjectsDir': flutterProjectDir,
+      'flutterProjectsDir': flutterProjectsDir,
       'projectPaths': projectPaths,
       'advancedMode': advancedMode,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
