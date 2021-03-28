@@ -39,6 +39,7 @@ class SettingsScreen extends HookWidget {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         sections: [
           SettingsSection(
+            title: "FVM Settings",
             tiles: [
               SettingsTile(
                 title: 'Flutter Projects',
@@ -85,6 +86,119 @@ This will disable Google's crash reporting and analytics, when installing a new 
                   await handleSave();
                 },
               ),
+            ],
+          ),
+          SettingsSection(
+            title: "App Settings",
+            tiles: [
+              SettingsTile(
+                title: "Theme",
+                subtitle: "Which theme to start the app with.",
+                leading: const Icon(Icons.color_lens_rounded),
+                trailing: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).dividerColor.withOpacity(0.02),
+                  ),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  constraints:
+                      const BoxConstraints(minWidth: 110, maxWidth: 165),
+                  child: DropdownButton(
+                    items: const [
+                      DropdownMenuItem(
+                        child: Text("System"),
+                        value: "system",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Light"),
+                        value: "light",
+                      ),
+                      DropdownMenuItem(
+                        child: Text("Dark"),
+                        value: "dark",
+                      ),
+                    ],
+                    onChanged: (brightness) {
+                      settings.app.themeMode = brightness;
+                      handleSave();
+                    },
+                    value: settings.app.themeMode,
+                    underline: Container(),
+                  ),
+                ),
+              ),
+              /*SettingsTile(
+                title: "Github Token",
+                leading: const Icon(MdiIcons.github),
+                subtitle: "The token will be used to fetch"
+                    " data for your installed packages",
+                trailing: Container(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  constraints:
+                      const BoxConstraints(maxWidth: 390, minWidth: 50),
+                  child: ValueListenableBuilder(
+                    valueListenable: Hive.box("settings").listenable(),
+                    builder: (context, value, child) => TextField(
+                      expands: false,
+                      maxLength: 40,
+                      autocorrect: false,
+                      onChanged: (text) => value.put("gh_token", text),
+                      decoration: InputDecoration(
+                        hintText: value.get("gh_token"),
+                        counterText: "",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),*/
+              /*SettingsTile(
+                title: "Open projects with",
+                subtitle: "Select what program to open pages as."
+                    " Currently only VS Code is available.",
+                leading: const Icon(Icons.code_rounded),
+                trailing: ValueListenableBuilder(
+                  builder: (context, value, child) => Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).dividerColor.withOpacity(0.02),
+                    ),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    constraints:
+                        const BoxConstraints(minWidth: 220, maxWidth: 250),
+                    child: DropdownButton(
+                      items: [
+                        ...ideMap.values.map((element) {
+                          return DropdownMenuItem(
+                            child: Row(
+                              children: [
+                                Icon(element.icon),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(element.name),
+                              ],
+                            ),
+                            value: element.identifier,
+                          );
+                        }).toList()
+                      ],
+                      onChanged: (val) {
+                        value.put("open_ide", val);
+                      },
+                      value: value.get("open_ide", defaultValue: "vsCode"),
+                      underline: Container(),
+                    ),
+                  ),
+                  valueListenable: Hive.box('settings').listenable(),
+                ),
+              ),
+              const SettingsTile(
+                title: "App version",
+                subtitle: "App version and updates",
+                leading: Icon(Icons.info_outline_rounded),
+                trailing: AppVersionInfo(),
+              ),*/
             ],
           ),
         ],

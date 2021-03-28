@@ -9,12 +9,14 @@ class AppSettings {
   bool advancedMode;
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
+  String themeMode;
 
   AppSettings({
     this.flutterProjectsDir = const [],
     this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
+    this.themeMode = "system",
   });
 
   factory AppSettings.fromJson(String str) =>
@@ -27,6 +29,7 @@ class AppSettings {
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       advancedMode: json['advancedMode'] as bool ?? false,
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
+      themeMode: json['themeMode'] as String,
     );
   }
 
@@ -55,6 +58,7 @@ class AppSettings {
       'projectPaths': projectPaths,
       'advancedMode': advancedMode,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
+      'themeMode': themeMode,
     };
   }
 }
