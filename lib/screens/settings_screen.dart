@@ -1,4 +1,5 @@
 import 'package:sidekick/components/atoms/screen.dart';
+import 'package:sidekick/components/molecules/app_version_info.dart';
 import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
@@ -192,13 +193,13 @@ This will disable Google's crash reporting and analytics, when installing a new 
                   ),
                   valueListenable: Hive.box('settings').listenable(),
                 ),
-              ),
+              ),*/
               const SettingsTile(
                 title: "App version",
                 subtitle: "App version and updates",
                 leading: Icon(Icons.info_outline_rounded),
                 trailing: AppVersionInfo(),
-              ),*/
+              ),
             ],
           ),
         ],
