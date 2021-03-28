@@ -17,12 +17,12 @@ class ConsoleLine {
 
 final combinedConsoleProvider = StreamProvider.autoDispose((ref) {
   return StreamGroup.merge([
-    FVM.console.stdout.stream,
-    FVM.console.stderr.stream,
-    FVM.console.warning.stream,
-    FVM.console.info.stream,
-    FVM.console.fine.stream,
-    FVM.console.error.stream,
+    FVMClient.console.stdout.stream,
+    FVMClient.console.stderr.stream,
+    FVMClient.console.warning.stream,
+    FVMClient.console.info.stream,
+    FVMClient.console.fine.stream,
+    FVMClient.console.error.stream,
   ])
       .transform(utf8.decoder)
       // .transform(const LineSplitter())

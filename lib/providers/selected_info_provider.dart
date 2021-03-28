@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class InfoDetail {
   VersionDto version;
-  FlutterProject project;
+  FlutterApp project;
   InfoDetail({this.version, this.project});
 
   factory InfoDetail.fromMap(Map<String, dynamic> map) {
@@ -39,7 +39,7 @@ class InfoProvider extends StateNotifier<InfoDetail> {
   }
 
   // ignore: use_setters_to_change_properties
-  void selectProject(FlutterProject project) {
+  void selectProject(FlutterApp project) {
     state.project = project;
     _updateState();
   }

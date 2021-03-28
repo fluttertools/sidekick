@@ -1,4 +1,5 @@
 import 'package:sidekick/components/atoms/setup_button.dart';
+import 'package:sidekick/components/atoms/version_installed_status_master.dart';
 import 'package:sidekick/dto/master.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/dto/channel.dto.dart';
@@ -25,6 +26,7 @@ class VersionInstalledStatus extends StatelessWidget {
     var currentRelease = version.release?.version;
     var latestRelease = version.release?.version;
 
+    // If pending setup
     if (version.needSetup) {
       return SetupButton(version: version);
     }
@@ -36,7 +38,7 @@ class VersionInstalledStatus extends StatelessWidget {
     }
 
     // If channel version installed is not the same as current, or if its master
-    if (currentRelease == latestRelease || version is MasterDto) {
+    if (currentRelease == latestRelease) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -50,6 +52,11 @@ class VersionInstalledStatus extends StatelessWidget {
               : const SizedBox(height: 0),
         ],
       );
+    }
+
+    // If version is master
+    if (version is MasterDto) {
+      return VersionInstallStatusMaster(version);
     }
 
     // Default fallback

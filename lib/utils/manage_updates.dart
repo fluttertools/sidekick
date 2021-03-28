@@ -30,6 +30,15 @@ void downloadRelease(String release) async {
     url =
         "$kGithubSidekickUrl/releases/download/$release/Sidekick-macos-$release.dmg";
     file = File("${fileLocation}dmg");
+  } else if (Platform.isLinux) {
+    url = "$kGithubSidekickUrl/releases/download/$release/linux-$release.zip";
+    file = File("${fileLocation}zip");
+  } else {
+    showToast(
+      "Auto-updating is currently not supported via the app for this platform.",
+    );
+    openLink("$kGithubSidekickUrl/releases/latest");
+    return;
   }
 
   if (!await file.exists()) {

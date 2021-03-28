@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/version_installed_status.dart';
+import 'package:sidekick/components/atoms/version_install_status.dart';
 import 'package:sidekick/components/molecules/version_installed_actions.dart';
 import 'package:sidekick/dto/version.dto.dart';
 
