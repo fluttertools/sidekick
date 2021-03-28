@@ -31,7 +31,7 @@ void main() async {
   runApp(ProviderScope(child: FvmApp()));
 }
 
-class FvmApp extends HookWidget {
+class FvmApp extends StatelessWidget {
   // This widget is the root of your application.
 
   @override
