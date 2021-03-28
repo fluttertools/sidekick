@@ -60,7 +60,9 @@ dependencies:
 
   pub_api_client: ^1.0.9
   fvm:
-    git: https://github.com/leoafarias/fvm.git
+    git:
+      url: https://github.com/leoafarias/fvm.git
+      ref: master
 
 dev_dependencies:
   build_runner: ^1.10.6
