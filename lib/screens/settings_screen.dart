@@ -1,5 +1,5 @@
 import 'package:sidekick/components/atoms/screen.dart';
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 import 'package:file_chooser/file_chooser.dart';
@@ -17,18 +17,18 @@ class SettingsScreen extends HookWidget {
     final provider = useProvider(settingsProvider);
     final settings = useProvider(settingsProvider.state);
     final projects = useProvider(projectsProvider);
-    final prevProjectsDir = usePrevious(settings.flutterProjectsDir);
+    final prevProjectsDir = usePrevious(settings.app.flutterProjectsDir);
 
     Future<void> handleSave() async {
       try {
         await provider.save(settings);
-        if (prevProjectsDir != settings.flutterProjectsDir) {
+        if (prevProjectsDir != settings.app.flutterProjectsDir) {
           await projects.scan();
         }
         notify('Settings have been saved');
       } on Exception {
         notifyError('Could not refresh projects');
-        settings.flutterProjectsDir = prevProjectsDir;
+        settings.app.flutterProjectsDir = prevProjectsDir;
         await provider.save(settings);
       }
     }
@@ -42,7 +42,7 @@ class SettingsScreen extends HookWidget {
             tiles: [
               SettingsTile(
                 title: 'Flutter Projects',
-                subtitle: settings.flutterProjectsDir,
+                subtitle: settings.app.flutterProjectsDir[0],
                 leading: const Icon(MdiIcons.folderHome),
                 subtitleTextStyle: Theme.of(context).textTheme.caption,
                 onTap: () async {
@@ -53,7 +53,8 @@ class SettingsScreen extends HookWidget {
 
                   // Save if a path is selected
                   if (fileResult.paths.isNotEmpty) {
-                    settings.flutterProjectsDir = fileResult.paths.single;
+                    settings.app.flutterProjectsDir[0] =
+                        fileResult.paths.single;
                   }
 
                   await handleSave();
@@ -65,10 +66,10 @@ class SettingsScreen extends HookWidget {
 This will disable Google's crash reporting and analytics, when installing a new version.""",
                 leading: const Icon(MdiIcons.bug),
                 switchActiveColor: Theme.of(context).accentColor,
-                switchValue: settings.noAnalytics ?? false,
+                switchValue: settings.fvm.noAnalytics ?? false,
                 subtitleTextStyle: Theme.of(context).textTheme.caption,
                 onToggle: (value) async {
-                  settings.noAnalytics = value;
+                  settings.fvm.noAnalytics = value;
                   await handleSave();
                 },
               ),
@@ -79,9 +80,9 @@ This will disable Google's crash reporting and analytics, when installing a new 
                 leading: const Icon(MdiIcons.cogSync),
                 switchActiveColor: Theme.of(context).accentColor,
                 subtitleTextStyle: Theme.of(context).textTheme.caption,
-                switchValue: settings.skipSetup ?? false,
+                switchValue: settings.fvm.skipSetup ?? false,
                 onToggle: (value) async {
-                  settings.skipSetup = value;
+                  settings.fvm.skipSetup = value;
                   await handleSave();
                 },
               ),
