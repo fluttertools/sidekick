@@ -81,7 +81,7 @@ class _AppVersionInfoState extends State<AppVersionInfo> {
       GitHub(auth: Authentication.anonymous())
           .repositories
           .getLatestRelease(
-            RepositorySlug("aguilaair", "companion"),
+            RepositorySlug("leoafarias", "sidekick"),
           )
           .then(
         (value) {
