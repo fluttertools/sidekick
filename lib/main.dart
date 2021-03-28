@@ -14,6 +14,7 @@ import 'package:window_size/window_size.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Sidekick');
     setWindowMinSize(const Size(800, 500));
