@@ -36,13 +36,7 @@ class FvmApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appSettings = useProvider(settingsProvider.state).app;
-    ThemeMode themeMode;
-    if (appSettings == null) {
-      themeMode = ThemeMode.system;
-    } else {
-      themeMode = getThemeMode(appSettings.themeMode);
-    }
+    var themeMode = getThemeMode(AppSettingsService.readIsOpen().themeMode);
     return OKToast(
       child: MaterialApp(
         title: 'Sidekick',
