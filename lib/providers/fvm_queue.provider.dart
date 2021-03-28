@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
@@ -55,13 +55,15 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     state = FvmQueue(activeItem: null, queue: Queue());
   }
 
-  Settings get settings {
-    return ref.read(settingsProvider.state);
+  FvmSettings get settings {
+    return ref.read(settingsProvider.state).fvm;
   }
 
-  void install(String version, {bool skipSetup = true}) async {
+  void install(String version, {bool skipSetup}) async {
+    skipSetup ??= settings.skipSetup;
     final action =
-        settings.skipSetup ? QueueAction.install : QueueAction.installAndSetup;
+        skipSetup ? QueueAction.install : QueueAction.installAndSetup;
+
     _addToQueue(version, action: action);
     runQueue();
   }
@@ -96,28 +98,28 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     // Run through actions
     switch (item.action) {
       case QueueAction.install:
-        await FVM.install(item.name);
+        await FVMClient.install(item.name);
         notify('Version ${item.name} has been installed');
         break;
       case QueueAction.setupOnly:
-        await FVM.setup(item.name);
+        await FVMClient.setup(item.name);
         await notify('Version ${item.name} has finished setup.');
         await _checkAndDisableAnalytics(item.name);
         notify('Version ${item.name} has finished setup');
 
         break;
       case QueueAction.installAndSetup:
-        await FVM.install(item.name);
-        await FVM.setup(item.name);
+        await FVMClient.install(item.name);
+        await FVMClient.setup(item.name);
         await notify('Version ${item.name} has been installed');
         await _checkAndDisableAnalytics(item.name);
         break;
       case QueueAction.channelUpgrade:
-        await FVM.upgrade(item.name);
+        await FVMClient.upgradeChannel(item.name);
         notify('Channel ${item.name} has been upgraded');
         break;
       case QueueAction.remove:
-        await FVM.remove(item.name);
+        await FVMClient.remove(item.name);
         notify('Version ${item.name} has been removed');
         break;
       default:
@@ -136,8 +138,8 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
-  Future<void> pinVersion(FlutterProject project, String version) async {
-    await FlutterProjectRepo.pinVersion(project, version);
+  Future<void> pinVersion(FlutterApp project, String version) async {
+    await FlutterAppService.pinVersion(project, version);
     await ref.read(projectsProvider).reloadOne(project);
     await notify('Version $version pinned to ${project.name}');
   }
@@ -149,7 +151,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
 
   Future<void> _checkAndDisableAnalytics(String version) async {
     if (settings.noAnalytics) {
-      await FVM.noAnalytics(version);
+      await FVMClient.disableTracking(version);
     }
   }
 }

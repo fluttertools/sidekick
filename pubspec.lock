@@ -133,7 +133,7 @@ packages:
       name: cli_util
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   clock:
     dependency: transitive
     description:
@@ -189,7 +189,7 @@ packages:
       name: date_format
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.9"
+    version: "2.0.2"
   date_time_format:
     dependency: "direct main"
     description:
@@ -314,8 +314,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: master
-      resolved-ref: c744db96ac5d769cf8ca73ffa4189bf1281c62c8
+      ref: "feature/next"
+      resolved-ref: f9d694e9c99ddb7a8ac45605b84bfa402b0e0959
       url: "https://github.com/leoafarias/fvm.git"
     source: git
     version: "1.3.8"
@@ -424,6 +424,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  list_ext:
+    dependency: "direct main"
+    description:
+      name: list_ext
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   logging:
     dependency: transitive
     description:
@@ -571,13 +578,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
-  pretty_json:
-    dependency: transitive
-    description:
-      name: pretty_json
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   process:
     dependency: transitive
     description:
@@ -620,6 +620,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1+1"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   responsive_grid:
     dependency: "direct main"
     description:
@@ -841,7 +848,7 @@ packages:
       name: version
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.1"
+    version: "2.0.0"
   watcher:
     dependency: "direct main"
     description:

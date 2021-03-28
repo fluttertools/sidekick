@@ -12,7 +12,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import 'package:sidekick/components/molecules/empty_data_set/empty_projects.dart';
 import 'package:sidekick/components/molecules/project_item.dart';
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class AppsScreen extends HookWidget {
@@ -24,15 +24,17 @@ class AppsScreen extends HookWidget {
     final filteredProjects = useState(projects.list);
     final settings = useProvider(settingsProvider.state);
 
+    final appSettings = settings.app;
+
     useEffect(() {
-      if (settings.onlyProjectsWithFvm) {
+      if (appSettings.onlyProjectsWithFvm) {
         filteredProjects.value =
             projects.list.where((p) => p.pinnedVersion != null).toList();
       } else {
         filteredProjects.value = projects.list;
       }
       return;
-    }, [projects, settings.onlyProjectsWithFvm]);
+    }, [projects, appSettings.onlyProjectsWithFvm]);
 
     if (projects.loading) {
       return const Center(
@@ -68,9 +70,9 @@ class AppsScreen extends HookWidget {
                 width: 60,
                 child: Switch(
                   activeColor: Colors.cyan,
-                  value: settings.onlyProjectsWithFvm,
+                  value: appSettings.onlyProjectsWithFvm,
                   onChanged: (active) async {
-                    settings.onlyProjectsWithFvm = active;
+                    appSettings.onlyProjectsWithFvm = active;
                     await context.read(settingsProvider).save(settings);
                   },
                 ),

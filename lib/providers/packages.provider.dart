@@ -1,4 +1,4 @@
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/utils/dependencies.dart';
 
 import 'package:pub_api_client/pub_api_client.dart';

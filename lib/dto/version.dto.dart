@@ -20,5 +20,5 @@ abstract class VersionDto {
     @required this.isInstalled,
     @required this.needSetup,
     this.isChannel = false,
-  }) : installedDir = Directory(join(kVersionsDir.path, name));
+  }) : installedDir = Directory(join(kFvmCacheDir.path, name));
 }

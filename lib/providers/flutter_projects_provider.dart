@@ -11,19 +11,21 @@ import 'package:sidekick/providers/settings.provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:state_notifier/state_notifier.dart';
+import 'package:list_ext/list_ext.dart';
 
-final projectsScanProvider = FutureProvider<List<FlutterProject>>((ref) {
-  final settings = ref.watch(settingsProvider.state);
-  if (settings.flutterProjectsDir == null) {
+final projectsScanProvider = FutureProvider<List<FlutterApp>>((ref) {
+  final settings = ref.watch(settingsProvider.state).app;
+  // TODO: Check for projects array
+  if (settings.firstProjectDir == null) {
     throw Exception('A Flutter Projects directory must be selected');
   } else {
-    return FlutterProjectRepo.scanDirectory();
+    return FlutterAppService.scanDirectory();
   }
 });
 
 // ignore: top_level_function_literal_block
 final projectsPerVersionProvider = Provider((ref) {
-  final list = <String, List<FlutterProject>>{};
+  final list = <String, List<FlutterApp>>{};
   final projects = ref.watch(projectsProvider.state);
 
   if (projects == null || projects.list.isEmpty) {
@@ -49,7 +51,7 @@ final projectsProvider = StateNotifierProvider<ProjectsProvider>((ref) {
 });
 
 class ProjectsProviderState {
-  List<FlutterProject> list;
+  List<FlutterApp> list;
   bool loading;
   String error;
 
@@ -75,46 +77,50 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     reloadAll();
   }
 
-  SettingsProvider get _settings {
+  SettingsProvider get _settingsProvider {
     return ref.read<SettingsProvider>(settingsProvider);
   }
 
   Future<void> scan() async {
-    final settings = await _settings.read();
+    final settings = await _settingsProvider.readAppSettings();
+    // TODO: Support multiple paths
+    final projectDir = settings.firstProjectDir;
+
     // Return if there is no directory to scan
-    if (settings.flutterProjectsDir == null) {
+    if (settings.firstProjectDir == null) {
       return;
     }
-    final projects = await FlutterProjectRepo.scanDirectory(
-      rootDir: Directory(settings.flutterProjectsDir),
+    final projects = await FlutterAppService.scanDirectory(
+      rootDir: Directory(projectDir),
     );
     // Set project paths
     settings.projectPaths = projects.map((project) {
       return project.projectDir.path;
     }).toList();
-    await _settings.save(settings);
+    await _settingsProvider.saveAppSettings(settings);
     await reloadAll();
   }
 
-  Future<void> pinVersion(FlutterProject project, String version) async {
-    await FlutterProjectRepo.pinVersion(project, version);
+  Future<void> pinVersion(FlutterApp project, String version) async {
+    await FlutterAppService.pinVersion(project, version);
     await reloadOne(project);
   }
 
   Future<void> reloadAll() async {
     state.loading = true;
-    final settings = await _settings.read();
+    final settings = await _settingsProvider.readAppSettings();
     if (settings.projectPaths == null) {}
     final directories = settings.projectPaths.map((path) => path).toList();
-    state.list = await FlutterProjectRepo.fetchProjects(directories);
+    state.list = await FlutterAppService.fetchProjects(directories);
     state = state;
     state.loading = false;
   }
 
-  Future<void> reloadOne(FlutterProject project) async {
+  Future<void> reloadOne(FlutterApp project) async {
     final index = state.list.indexWhere((item) => item == project);
 
-    state.list[index] = await FlutterProjectRepo.getOne(project.projectDir);
+    state.list[index] =
+        await FlutterAppService.getByDirectory(project.projectDir);
     state = state;
   }
 }

@@ -26,17 +26,17 @@ final fvmCacheProvider = StateNotifierProvider<FvmCacheProvider>((ref) {
   return FvmCacheProvider(ref: ref, initialState: []);
 });
 
-class FvmCacheProvider extends StateNotifier<List<LocalVersion>> {
+class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   ProviderReference ref;
-  List<LocalVersion> channels;
-  List<LocalVersion> versions;
+  List<CacheVersion> channels;
+  List<CacheVersion> versions;
 
   StreamSubscription<WatchEvent> directoryWatcher;
   final _debouncer = Debouncer(milliseconds: 20000);
 
   FvmCacheProvider({
     this.ref,
-    List<LocalVersion> initialState,
+    List<CacheVersion> initialState,
   }) : super(initialState) {
     reloadState();
     // Load State again while listening to directory
@@ -46,14 +46,14 @@ class FvmCacheProvider extends StateNotifier<List<LocalVersion>> {
   }
 
   Future<void> _setTotalCacheSize() async {
-    final stat = await getDirectorySize(fvm_constants.kVersionsDir.path);
+    final stat = await getDirectorySize(fvm_constants.kFvmCacheDir.path);
     ref.read(fvmCacheSizeProvider).state = stat.friendlySize;
   }
 
   Future<void> reloadState() async {
     // Cancel debounce to avoid running twice with no new state change
     _debouncer.cancel();
-    final localVersions = await LocalVersionRepo.getAll();
+    final localVersions = await CacheService.getAllVersions();
     state = localVersions;
 
     channels = localVersions.where((item) => item.isChannel).toList();
@@ -61,14 +61,14 @@ class FvmCacheProvider extends StateNotifier<List<LocalVersion>> {
     _setTotalCacheSize();
   }
 
-  LocalVersion getChannel(String name) {
+  CacheVersion getChannel(String name) {
     return channels.firstWhere(
       (c) => c.name == name,
       orElse: () => null,
     );
   }
 
-  LocalVersion getVersion(String name) {
+  CacheVersion getVersion(String name) {
     // ignore: avoid_function_literals_in_foreach_calls
     return versions.firstWhere(
       (v) => v.name == name,

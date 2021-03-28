@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # list_ext: ^1.0.2
+  list_ext: ^1.0.2
   flutter:
     sdk: flutter
   hive_flutter: ^1.0.0
@@ -59,7 +61,9 @@ dependencies:
   fvm:
     git:
       url: https://github.com/leoafarias/fvm.git
-      ref: master
+      ref: feature/next
+  # fvm:
+  #   path: ../fvm
 
 dev_dependencies:
   hive_generator: ^1.0.0
