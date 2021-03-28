@@ -32,42 +32,58 @@ class InfoDrawer extends HookWidget {
     }
 
     if (selected == null) {
-      return Drawer(
-        child: Container(
-          color: Theme.of(context).cardColor,
-          child: const Center(child: Caption('Nothing selected')),
+      return Container(
+        decoration: BoxDecoration(
+          border: Border(
+            left: BorderSide(color: Theme.of(context).dividerColor, width: 0.5),
+          ),
+        ),
+        child: Drawer(
+          elevation: 0,
+          child: Container(
+            color: Theme.of(context).cardColor,
+            child: const Center(child: Caption('Nothing selected')),
+          ),
         ),
       );
     }
 
-    return Drawer(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).cardColor,
-        appBar: AppBar(
-          title: Heading(selected.name),
-          leading: IconButton(
-            icon: const Icon(Icons.close),
-            iconSize: 20,
-            splashRadius: 20,
-            onPressed: onClose,
-          ),
-          shadowColor: Colors.transparent,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(color: Theme.of(context).dividerColor, width: 0.5),
         ),
-        bottomNavigationBar: Container(
-          padding: const EdgeInsets.all(10),
-          margin: const EdgeInsets.all(0),
-          child: VersionInstallButton(
-            selected,
-            warningIcon: true,
+      ),
+      child: Drawer(
+        elevation: 0,
+        child: Scaffold(
+          backgroundColor: Theme.of(context).cardColor,
+          appBar: AppBar(
+            title: Heading(selected.name),
+            leading: IconButton(
+              icon: const Icon(Icons.close),
+              iconSize: 20,
+              splashRadius: 20,
+              onPressed: onClose,
+            ),
+            shadowColor: Colors.transparent,
           ),
-        ),
-        body: Scrollbar(
-          child: ListView(
-            children: [
-              ReferenceInfoTile(selected),
-              CacheInfoTile(selected),
-              ReleaseInfoSection(selected)
-            ],
+          bottomNavigationBar: Container(
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(0),
+            child: VersionInstallButton(
+              selected,
+              warningIcon: true,
+            ),
+          ),
+          body: Scrollbar(
+            child: ListView(
+              children: [
+                ReferenceInfoTile(selected),
+                CacheInfoTile(selected),
+                ReleaseInfoSection(selected)
+              ],
+            ),
           ),
         ),
       ),
