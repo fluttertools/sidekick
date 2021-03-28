@@ -32,7 +32,7 @@ class AppReleasesState {
 }
 
 final flutterReleasesProvider =
-    FutureProvider<FlutterReleases>((_) => FVM.getFlutterReleases());
+    FutureProvider<FlutterReleases>((_) => FVMClient.getFlutterReleases());
 
 // ignore: top_level_function_literal_block
 final releasesStateProvider = Provider<AppReleasesState>((ref) {
