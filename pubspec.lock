@@ -424,6 +424,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  list_ext:
+    dependency: "direct main"
+    description:
+      name: list_ext
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   logging:
     dependency: transitive
     description:
@@ -613,6 +620,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1+1"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   responsive_grid:
     dependency: "direct main"
     description:

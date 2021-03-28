@@ -17,18 +17,18 @@ class SettingsScreen extends HookWidget {
     final provider = useProvider(settingsProvider);
     final settings = useProvider(settingsProvider.state);
     final projects = useProvider(projectsProvider);
-    final prevProjectsDir = usePrevious(settings.app.flutterProjectsDir);
+    final prevProjectsDir = usePrevious(settings.app.firstProjectDir);
 
     Future<void> handleSave() async {
       try {
         await provider.save(settings);
-        if (prevProjectsDir != settings.app.flutterProjectsDir) {
+        if (prevProjectsDir != settings.app.firstProjectDir) {
           await projects.scan();
         }
         notify('Settings have been saved');
       } on Exception {
         notifyError('Could not refresh projects');
-        settings.app.flutterProjectsDir = prevProjectsDir;
+        settings.app.firstProjectDir = prevProjectsDir;
         await provider.save(settings);
       }
     }
@@ -42,7 +42,7 @@ class SettingsScreen extends HookWidget {
             tiles: [
               SettingsTile(
                 title: 'Flutter Projects',
-                subtitle: settings.app.flutterProjectsDir[0],
+                subtitle: settings.app.firstProjectDir,
                 leading: const Icon(MdiIcons.folderHome),
                 subtitleTextStyle: Theme.of(context).textTheme.caption,
                 onTap: () async {
@@ -53,8 +53,7 @@ class SettingsScreen extends HookWidget {
 
                   // Save if a path is selected
                   if (fileResult.paths.isNotEmpty) {
-                    settings.app.flutterProjectsDir[0] =
-                        fileResult.paths.single;
+                    settings.app.firstProjectDir = fileResult.paths.single;
                   }
 
                   await handleSave();

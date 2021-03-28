@@ -16,7 +16,7 @@ import 'package:list_ext/list_ext.dart';
 final projectsScanProvider = FutureProvider<List<FlutterApp>>((ref) {
   final settings = ref.watch(settingsProvider.state).app;
   // TODO: Check for projects array
-  if (settings.flutterProjectsDir.isNullOrEmpty) {
+  if (settings.firstProjectDir == null) {
     throw Exception('A Flutter Projects directory must be selected');
   } else {
     return FlutterAppService.scanDirectory();
@@ -84,10 +84,10 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
   Future<void> scan() async {
     final settings = await _settingsProvider.readAppSettings();
     // TODO: Support multiple paths
-    final projectDir = settings.flutterProjectsDir[1];
+    final projectDir = settings.firstProjectDir;
 
     // Return if there is no directory to scan
-    if (settings.flutterProjectsDir == null) {
+    if (settings.firstProjectDir == null) {
       return;
     }
     final projects = await FlutterAppService.scanDirectory(

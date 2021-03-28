@@ -1,16 +1,17 @@
 import 'dart:convert';
 
 import 'package:hive/hive.dart';
+import 'package:list_ext/list_ext.dart';
 
 class AppSettings {
   static const key = 'app_settings';
-  String flutterProjectsDir;
+  List<String> flutterProjectsDir;
   bool advancedMode;
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
 
   AppSettings({
-    this.flutterProjectsDir,
+    this.flutterProjectsDir = const [],
     this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
@@ -21,11 +22,28 @@ class AppSettings {
 
   factory AppSettings.fromMap(Map<String, dynamic> json) {
     return AppSettings(
-      flutterProjectsDir: json['flutterProjectsDir'] as String,
+      flutterProjectsDir:
+          (json['flutterProjectsDir'] as List<dynamic>).cast<String>(),
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       advancedMode: json['advancedMode'] as bool ?? false,
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
     );
+  }
+
+  String get firstProjectDir {
+    if (flutterProjectsDir.isNotNullOrEmpty) {
+      return flutterProjectsDir.first;
+    } else {
+      return null;
+    }
+  }
+
+  set firstProjectDir(String path) {
+    if (flutterProjectsDir.isNotNullOrEmpty) {
+      flutterProjectsDir.first = path;
+    } else {
+      flutterProjectsDir.add(path);
+    }
   }
 
   /// Converts Master Secret to Json
@@ -47,7 +65,8 @@ class AppSettingsAdapter extends TypeAdapter<AppSettings> {
 
   @override
   AppSettings read(BinaryReader reader) {
-    return AppSettings.fromMap(reader.readMap());
+    final value = reader.readMap();
+    return AppSettings.fromMap(value);
   }
 
   @override

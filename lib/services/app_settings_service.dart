@@ -1,8 +1,7 @@
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sidekick/models/app_settings.model.dart';
 
-const settingsBoxName = 'app_settings';
+const settingsBoxName = 'box_app_settings';
 
 // ignore: avoid_classes_with_only_static_members
 class AppSettingsService {
@@ -10,7 +9,6 @@ class AppSettingsService {
   // ignore: prefer_final_fields
   static bool _initialized = false;
   static Future<void> init() async {
-    await Hive.initFlutter();
     _box = await Hive.openBox<AppSettings>(settingsBoxName);
     _initialized = true;
   }
@@ -25,7 +23,12 @@ class AppSettingsService {
     if (!_initialized) {
       await init();
     }
-    return await _box.get(AppSettings.key);
+    final settings = await _box.get(AppSettings.key);
+    if (settings == null) {
+      return AppSettings();
+    } else {
+      return settings;
+    }
   }
 
   static Future<AppSettings> reset() async {

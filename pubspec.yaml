@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   # list_ext: ^1.0.2
+  list_ext: ^1.0.2
   flutter:
     sdk: flutter
   hive_flutter: ^1.0.0
