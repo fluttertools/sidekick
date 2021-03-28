@@ -88,7 +88,7 @@ class VersionInstallButton extends HookWidget {
       child: Opacity(
         opacity: version.isInstalled ? 0.3 : 1,
         child: IconButton(
-          onPressed: version.isInstalled ? onInstall : onInstall,
+          onPressed: version.isInstalled ? () {} : onInstall,
           splashRadius: 20,
           icon: Tooltip(
               message: version.isInstalled ? installedMsg : notInstalledMsg,
