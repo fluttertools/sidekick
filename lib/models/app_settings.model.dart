@@ -42,7 +42,7 @@ class AppSettings {
     if (flutterProjectsDir.isNotNullOrEmpty) {
       flutterProjectsDir.first = path;
     } else {
-      flutterProjectsDir.add(path);
+      flutterProjectsDir = [path];
     }
   }
 
@@ -65,7 +65,8 @@ class AppSettingsAdapter extends TypeAdapter<AppSettings> {
 
   @override
   AppSettings read(BinaryReader reader) {
-    final value = reader.readMap();
+    // FIXME: Check why subtype does not match
+    final value = Map<String, dynamic>.from(reader.readMap());
     return AppSettings.fromMap(value);
   }
 
