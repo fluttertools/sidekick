@@ -41,8 +41,13 @@ class ExploreScreen extends HookWidget {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              elevation: 0,
-              title: const Heading('Channels'),
+              flexibleSpace: Container(
+                color: Theme.of(context).appBarTheme.color,
+              ),
+              title: Text(
+                'Channels',
+                style: Theme.of(context).textTheme.headline6,
+              ),
               actions: [
                 Tooltip(
                   message:
