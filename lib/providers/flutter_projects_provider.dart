@@ -11,12 +11,11 @@ import 'package:sidekick/providers/settings.provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:state_notifier/state_notifier.dart';
-import 'package:list_ext/list_ext.dart';
 
 final projectsScanProvider = FutureProvider<List<FlutterApp>>((ref) {
   final settings = ref.watch(settingsProvider.state).app;
   // TODO: Check for projects array
-  if (settings.flutterProjectsDir.isNullOrEmpty) {
+  if (settings.flutterProjectsDir == null) {
     throw Exception('A Flutter Projects directory must be selected');
   } else {
     return FlutterAppService.scanDirectory();

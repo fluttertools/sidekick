@@ -61,7 +61,7 @@ class SettingsProvider extends StateNotifier<Settings> {
     await FvmSettingsService.save(settings);
   }
 
-  void reload() {
-    state = state;
+  Future<void> reload() async {
+    await _load();
   }
 }

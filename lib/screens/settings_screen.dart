@@ -42,7 +42,7 @@ class SettingsScreen extends HookWidget {
             tiles: [
               SettingsTile(
                 title: 'Flutter Projects',
-                subtitle: settings.app.flutterProjectsDir[0],
+                subtitle: settings.app.flutterProjectsDir,
                 leading: const Icon(MdiIcons.folderHome),
                 subtitleTextStyle: Theme.of(context).textTheme.caption,
                 onTap: () async {
@@ -53,8 +53,7 @@ class SettingsScreen extends HookWidget {
 
                   // Save if a path is selected
                   if (fileResult.paths.isNotEmpty) {
-                    settings.app.flutterProjectsDir[0] =
-                        fileResult.paths.single;
+                    settings.app.flutterProjectsDir = fileResult.paths.single;
                   }
 
                   await handleSave();
