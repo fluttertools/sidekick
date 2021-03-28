@@ -53,6 +53,8 @@ dependencies:
   path_provider: ^1.6.24
   file_chooser: ^0.1.6
   pub_semver: ^1.4.4
+  hive: ^1.4.4
+  hive_flutter: ^0.3.1
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
