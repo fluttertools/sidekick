@@ -5,48 +5,60 @@ import 'package:sidekick/models/app_settings.model.dart';
 import 'package:sidekick/services/app_settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-class AllSettings {
-  final AppSettings appSettings;
-  final FvmSettings fvmSettings;
-  AllSettings({this.appSettings, this.fvmSettings});
+class Settings {
+  final AppSettings app;
+  final FvmSettings fvm;
+  Settings({this.app, this.fvm});
 }
 
-final settingsRepoProvider = Provider((_) => AllSettings());
+final settingsRepoProvider = Provider((_) => Settings());
 
 final settingsProvider = StateNotifierProvider<SettingsProvider>((ref) {
-  return SettingsProvider(initialState: AllSettings());
+  return SettingsProvider(initialState: Settings());
 });
 
-class SettingsProvider extends StateNotifier<AllSettings> {
-  SettingsProvider({AllSettings initialState}) : super(initialState) {
+class SettingsProvider extends StateNotifier<Settings> {
+  SettingsProvider({Settings initialState}) : super(initialState) {
     // Set initial settings from local storage
     _load();
   }
 
   Future<void> _load() async {
-    final fvmSettings = await FvmSettings.read();
+    final settings = await read();
+    state = settings;
+  }
+
+  Future<Settings> read() async {
+    final fvmSettings = await FvmSettingsService.read();
     final appSettings = await AppSettingsService.read();
-    state = AllSettings(
-      appSettings: appSettings,
-      fvmSettings: fvmSettings,
+    return Settings(
+      app: appSettings,
+      fvm: fvmSettings,
     );
   }
 
-  Future<AllSettings> read() async {
-    return state;
-  }
-
   Future<AppSettings> readAppSettings() async {
-    return state.appSettings;
+    final settings = await read();
+    return settings.app;
   }
 
   Future<FvmSettings> readFvmSettings() async {
-    return state.fvmSettings;
+    final settings = await read();
+    return settings.fvm;
   }
 
-  Future<void> save(AllSettings settings) async {
-    await settings.fvmSettings.save();
-    await AppSettingsService.save(settings.appSettings);
+  Future<void> save(Settings settings) async {
+    await FvmSettingsService.save(settings.fvm);
+    await AppSettingsService.save(settings.app);
+    state = settings;
+  }
+
+  Future<void> saveAppSettings(AppSettings settings) async {
+    await AppSettingsService.save(settings);
+  }
+
+  Future<void> saveFvmSettings(FvmSettings settings) async {
+    await FvmSettingsService.save(settings);
   }
 
   void reload() {
