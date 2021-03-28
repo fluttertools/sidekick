@@ -11,7 +11,7 @@ import 'package:sidekick/dto/version.dto.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ProjectVersionSelect extends StatelessWidget {
-  final FlutterProject project;
+  final FlutterApp project;
   final List<VersionDto> versions;
 
   const ProjectVersionSelect({
