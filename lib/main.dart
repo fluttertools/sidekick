@@ -15,7 +15,9 @@ import 'package:window_size/window_size.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppSettingsService.init();
+  Hive.registerAdapter(AppSettingsAdapter());
+  await Hive.initFlutter();
+  await AppSettingsService.init();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Sidekick');
