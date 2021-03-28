@@ -32,9 +32,17 @@ class SettingsProvider extends StateNotifier<AllSettings> {
     );
   }
 
-  // Future<AllSettings> read() async {
-  //   return state;
-  // }
+  Future<AllSettings> read() async {
+    return state;
+  }
+
+  Future<AppSettings> readAppSettings() async {
+    return state.appSettings;
+  }
+
+  Future<FvmSettings> readFvmSettings() async {
+    return state.fvmSettings;
+  }
 
   Future<void> save(AllSettings settings) async {
     await settings.fvmSettings.save();
