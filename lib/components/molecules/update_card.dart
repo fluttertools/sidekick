@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class UpdateAvailableCard extends StatelessWidget {
   const UpdateAvailableCard(
-    this.installl,
+    this.install,
     this.toastDismiss, {
     Key key,
   }) : super(key: key);
 
-  final Function installl;
+  final Function install;
   final Function toastDismiss;
 
   @override
@@ -32,7 +32,7 @@ class UpdateAvailableCard extends StatelessWidget {
               width: 15,
             ),
             OutlinedButton.icon(
-              onPressed: installl,
+              onPressed: install,
               icon: const Icon(
                 Icons.file_download,
                 size: 18,

@@ -2,48 +2,35 @@ import 'dart:io';
 
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/utils/open_link.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:github/github.dart';
-//import 'package:hive/hive.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:oktoast/oktoast.dart';
-import 'package:path_provider/path_provider.dart' as provider;
-import 'package:pub_semver/pub_semver.dart';
+import 'package:path_provider/path_provider.dart';
 
-import '../components/molecules/update_card.dart';
-import '../version.dart';
+import 'package:path/path.dart' as path;
 
-void downloadRelease(String release) async {
-  String url;
-  File file;
+final platform = Platform.operatingSystem;
 
-  var directory = await provider.getDownloadsDirectory();
+const downloadBaseUrl = "$kGithubSidekickUrl/releases/download";
 
-  var fileLocation =
-      "${directory.absolute.path}${Platform.pathSeparator}sidekick-$release.";
+String getDownloadReleaseUrl(String release) {
+  return "$downloadBaseUrl/$release/Sidekick-$platform-$release.$platformExt";
+}
 
-  if (Platform.isWindows) {
-    url =
-        "$kGithubSidekickUrl/releases/download/$release/Sidekick-windows-$release.msix";
-    file = File("${fileLocation}msix");
-  } else if (Platform.isMacOS) {
-    url =
-        "$kGithubSidekickUrl/releases/download/$release/Sidekick-macos-$release.dmg";
-    file = File("${fileLocation}dmg");
-  } else if (Platform.isLinux) {
-    url = "$kGithubSidekickUrl/releases/download/$release/linux-$release.zip";
-    file = File("${fileLocation}zip");
-  } else {
-    showToast(
-      "Auto-updating is currently not supported via the app for this platform.",
-    );
-    openLink("$kGithubSidekickUrl/releases/latest");
-    return;
-  }
+Future<File> getFileLocation(String release) async {
+  final downloadDir = await getDownloadsDirectory();
+  final filePath = path.join(
+      downloadDir.absolute.path, "sidekick-$release", ".$platformExt");
+  return File(filePath);
+}
+
+Future<void> downloadRelease(String release) async {
+  final downloadUrl = getDownloadReleaseUrl(release);
+  final file = await getFileLocation(release);
 
   if (!await file.exists()) {
     showToast("Downloading...", duration: const Duration(seconds: 30));
-    var res = await http.get(url);
+    var res = await http.get(downloadUrl);
     if (res.statusCode == 200) {
       await file.writeAsBytes(res.bodyBytes);
       showToast("Release downloaded! Opening...", dismissOtherToast: true);
@@ -61,45 +48,27 @@ void downloadRelease(String release) async {
   openInstaller(file);
 }
 
-void openInstaller(File file) {
+Future<void> openInstaller(File file) async {
   openLink("file://${file.absolute.path.replaceAll("\\", "/")}");
 }
 
-void checkForUpdates() async {
-  var installedVersion;
-  try {
-    installedVersion = Version.parse(appVersion);
-  } on FormatException catch (_) {
-    return;
-  }
+String get platformExt {
+  switch (platform) {
+    case 'windows':
+      {
+        return 'msix';
+      }
+      break;
+    case 'macos':
+      {
+        return 'dmg';
+      }
+      break;
 
-  final latestRelease = await GitHub(auth: Authentication.anonymous())
-      .repositories
-      .getLatestRelease(RepositorySlug("leoafarias", "sidekick"));
-
-  final latestVersion = Version.parse(latestRelease.tagName);
-
-  if (latestVersion > installedVersion) {
-    ToastFuture toast;
-
-    void dismisstoast() {
-      toast.dismiss(showAnim: true);
-    }
-
-    toast = showToastWidget(
-      UpdateAvailableCard(() {
-        downloadRelease(latestRelease.tagName);
-        Future.delayed(const Duration(seconds: 1)).then((_) {
-          dismisstoast();
-        });
-      }, dismisstoast),
-      //backgroundColor: Colors.green,
-      handleTouch: true,
-      position: const ToastPosition(
-        align: Alignment(0.95, 0.95),
-      ),
-      duration: const Duration(seconds: 60),
-      //textPadding: const EdgeInsets.all(20),
-    );
+    default:
+      {
+        return 'zip';
+      }
+      break;
   }
 }

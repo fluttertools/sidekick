@@ -8,7 +8,6 @@ import 'package:sidekick/providers/selected_info_provider.dart';
 import 'package:sidekick/screens/packages_screen.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 import 'package:sidekick/utils/layout_size.dart';
-import 'package:sidekick/utils/manage_updates.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -89,11 +88,6 @@ class AppShell extends HookWidget {
         });
       }
     }, [selectedInfo, LayoutSize.size]);
-
-    useEffect(() {
-      checkForUpdates();
-      return;
-    }, []);
 
     return KBShortcutManager(
       onRouteShortcut: handleIndexShortcut,
