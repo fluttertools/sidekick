@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:github/github.dart';
-import 'package:hive/hive.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:sidekick/utils/check_update.dart';
 import 'package:sidekick/utils/manage_updates.dart';
 import 'package:sidekick/version.dart';
-import 'package:version/version.dart';
 
-class AppVersionInfo extends StatefulWidget {
+class AppVersionInfo extends HookWidget {
   const AppVersionInfo({Key key}) : super(key: key);
 
   @override
-  _AppVersionInfoState createState() => _AppVersionInfoState();
-}
-
-class _AppVersionInfoState extends State<AppVersionInfo> {
-  Version latestversion;
-  Version installedVersion;
-  bool isNewerAvailable = false;
-
-  @override
   Widget build(BuildContext context) {
-    if (latestversion == null) updateGithubLatestVersion();
-    if (installedVersion == null) {
-      try {
-        installedVersion = Version.parse(appVersion);
-      } on FormatException catch (_) {
-        installedVersion = Version(0, 0, 1);
-      }
+    final latestRelease = useState<LatestVersion>();
+
+    Future<void> setLatestVersion() async {
+      final latest = await checkLatestRelease();
+      latestRelease.value = latest;
     }
+
+    useEffect(() {
+      setLatestVersion();
+      return;
+    }, []);
+
+    if (latestRelease == null) {
+      return Container();
+    }
+
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -49,10 +46,8 @@ class _AppVersionInfoState extends State<AppVersionInfo> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "$installedVersion",
-                  ),
-                  Text("${latestversion ?? "Unknown"}")
+                  const Text(appVersion),
+                  Text("${latestRelease.value.latestVersion}")
                 ],
               ),
             ],
@@ -61,42 +56,19 @@ class _AppVersionInfoState extends State<AppVersionInfo> {
             width: 20,
           ),
           OutlinedButton.icon(
-            onPressed: updateGithubLatestVersion,
+            onPressed: () {
+              downloadRelease(latestRelease.value.latestVersion);
+            },
             icon: const Icon(
               Icons.file_download,
               size: 18,
             ),
             label: Text(
-              isNewerAvailable ? "Install Now" : "Refresh",
+              latestRelease.value.needUpdate ? "Install Now" : "Refresh",
             ),
           ),
         ],
       ),
     );
-  }
-
-  void updateGithubLatestVersion() {
-    if (isNewerAvailable) {
-      downloadRelease(latestversion.toString());
-    } else {
-      GitHub(auth: Authentication.anonymous())
-          .repositories
-          .getLatestRelease(
-            RepositorySlug("leoafarias", "sidekick"),
-          )
-          .then(
-        (value) {
-          setState(() {
-            latestversion = Version.parse(value.tagName);
-            isNewerAvailable = (latestversion > installedVersion);
-          });
-        },
-      ).catchError((e) {
-        showToast(
-          "Error getting latest GitHub release",
-          position: ToastPosition.bottom,
-        );
-      });
-    }
   }
 }
