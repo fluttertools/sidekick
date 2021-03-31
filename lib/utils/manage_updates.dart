@@ -1,13 +1,11 @@
 import 'dart:io';
 
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/utils/open_link.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:oktoast/oktoast.dart';
-import 'package:path_provider/path_provider.dart';
-
 import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
+import 'package:sidekick/constants.dart';
+import 'package:sidekick/utils/open_link.dart';
 
 final platform = Platform.operatingSystem;
 
@@ -19,8 +17,8 @@ String getDownloadReleaseUrl(String release) {
 
 Future<File> getFileLocation(String release) async {
   final downloadDir = await getDownloadsDirectory();
-  final filePath = path.join(
-      downloadDir.absolute.path, "sidekick-$release", ".$platformExt");
+  final filePath =
+      path.join(downloadDir.absolute.path, "sidekick-$release.$platformExt");
   return File(filePath);
 }
 
