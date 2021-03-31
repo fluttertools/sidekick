@@ -12,16 +12,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-final projectsScanProvider = FutureProvider<List<Project>>((ref) {
-  final settings = ref.watch(settingsProvider.state).app;
-  // TODO: Check for projects array
-  if (settings.firstProjectDir == null) {
-    throw Exception('A Flutter Projects directory must be selected');
-  } else {
-    return ProjectService.scanDirectory();
-  }
-});
-
 // ignore: top_level_function_literal_block
 final projectsPerVersionProvider = Provider((ref) {
   final list = <String, List<Project>>{};
@@ -89,7 +79,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     if (settings.firstProjectDir == null) {
       return;
     }
-    final projects = await ProjectService.scanDirectory(
+    final projects = await FVMClient.scanDirectory(
       rootDir: Directory(projectDir),
     );
     // Set project paths
@@ -107,18 +97,30 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
 
   Future<void> reloadAll() async {
     state.loading = true;
+
+    /// Get settings
     final settings = await _settingsProvider.readAppSettings();
-    if (settings.projectPaths == null) {}
-    final directories = settings.projectPaths.map((path) => path).toList();
-    state.list = await ProjectService.fetchProjects(directories);
+
+    /// Get cached path for projects
+    final projectPaths = settings.projectPaths;
+    if (projectPaths != null) {
+      final directories = projectPaths.map((p) => Directory(p)).toList();
+      state.list = await FVMClient.fetchProjects(directories);
+    } else {
+      state.list = [];
+    }
+
     state = state;
     state.loading = false;
   }
 
   Future<void> reloadOne(Project project) async {
     final index = state.list.indexWhere((item) => item == project);
+    // Add project to index
+    state.list[index] =
+        await FVMClient.getProjectByDirectory(project.projectDir);
 
-    state.list[index] = await ProjectService.getByDirectory(project.projectDir);
+    // Update state
     state = state;
   }
 }

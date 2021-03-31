@@ -28,7 +28,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<Settings> read() async {
-    final fvmSettings = await SettingsService.read();
+    final fvmSettings = await FVMClient.readSettings();
     final appSettings = await AppSettingsService.read();
     return Settings(
       app: appSettings,
@@ -47,7 +47,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<void> save(Settings settings) async {
-    await SettingsService.save(settings.fvm);
+    await FVMClient.saveSettings(settings.fvm);
     await AppSettingsService.save(settings.app);
     state = settings;
   }
@@ -57,7 +57,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<void> saveFvmSettings(FvmSettings settings) async {
-    await SettingsService.save(settings);
+    await FVMClient.saveSettings(settings);
   }
 
   void reload() {

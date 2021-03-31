@@ -50,7 +50,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   Future<void> reloadState() async {
     // Cancel debounce to avoid running twice with no new state change
     _debouncer.cancel();
-    final localVersions = await CacheService.getAllVersions();
+    final localVersions = await FVMClient.getCachedVersions();
     state = localVersions;
 
     channels = localVersions.where((item) => item.isChannel).toList();

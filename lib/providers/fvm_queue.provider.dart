@@ -149,7 +149,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
 
   Future<void> _checkAndDisableAnalytics(String version) async {
     if (settings.noAnalytics) {
-      await FVMClient.disableTracking(version);
+      await FVMClient.disableFlutterTracking(version);
     }
   }
 }
