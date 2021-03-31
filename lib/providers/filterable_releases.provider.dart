@@ -1,8 +1,8 @@
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/releases.provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/providers/releases.provider.dart';
 
 final filterProvider = StateProvider<Channel>((_) => null);
 

@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/utils/open_link.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:github/github.dart';
 //import 'package:hive/hive.dart';
@@ -9,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart' as provider;
 import 'package:pub_semver/pub_semver.dart';
+import 'package:sidekick/constants.dart';
+import 'package:sidekick/utils/open_link.dart';
 
 import '../components/molecules/update_card.dart';
 import '../version.dart';

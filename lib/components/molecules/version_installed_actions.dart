@@ -1,11 +1,10 @@
-import 'package:sidekick/providers/selected_info_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import 'package:sidekick/components/molecules/delete_dialog.dart';
 import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
+import 'package:sidekick/providers/selected_info_provider.dart';
 
 enum InstalledActions { remove, detail }
 

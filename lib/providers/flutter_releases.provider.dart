@@ -1,12 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fvm/fvm.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/master.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';
-
 import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fvm/fvm.dart';
 
 class AppReleasesState {
   List<ChannelDto> channels;

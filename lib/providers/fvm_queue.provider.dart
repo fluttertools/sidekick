@@ -1,14 +1,12 @@
 import 'dart:collection';
 
-import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:sidekick/providers/flutter_projects_provider.dart';
-import 'package:sidekick/providers/settings.provider.dart';
-import 'package:sidekick/utils/notify.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
-
+import 'package:sidekick/providers/flutter_projects_provider.dart';
+import 'package:sidekick/providers/fvm_cache.provider.dart';
+import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class FvmQueue {
@@ -138,8 +136,8 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
-  Future<void> pinVersion(FlutterApp project, String version) async {
-    await FlutterAppService.pinVersion(project, version);
+  Future<void> pinVersion(Project project, String version) async {
+    await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider).reloadOne(project);
     await notify('Version $version pinned to ${project.name}');
   }

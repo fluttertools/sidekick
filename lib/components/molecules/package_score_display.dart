@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/typography.dart';
 import 'package:pub_api_client/pub_api_client.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 
 class PackageScoreDisplay extends StatelessWidget {
   final PackageScore score;

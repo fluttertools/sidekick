@@ -1,5 +1,4 @@
 import 'package:fvm/fvm.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/models/app_settings.model.dart';
 import 'package:sidekick/services/app_settings_service.dart';
@@ -29,7 +28,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<Settings> read() async {
-    final fvmSettings = await FvmSettingsService.read();
+    final fvmSettings = await SettingsService.read();
     final appSettings = await AppSettingsService.read();
     return Settings(
       app: appSettings,
@@ -48,7 +47,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<void> save(Settings settings) async {
-    await FvmSettingsService.save(settings.fvm);
+    await SettingsService.save(settings.fvm);
     await AppSettingsService.save(settings.app);
     state = settings;
   }
@@ -58,7 +57,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<void> saveFvmSettings(FvmSettings settings) async {
-    await FvmSettingsService.save(settings);
+    await SettingsService.save(settings);
   }
 
   void reload() {
