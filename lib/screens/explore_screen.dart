@@ -1,18 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/sliver_app_bar_title.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/channel_showcase.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
 import 'package:sidekick/providers/channels.provider.dart';
-
 import 'package:sidekick/providers/filterable_releases.provider.dart';
 import 'package:sidekick/providers/master.provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:fvm/fvm.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/utils/extensions.dart';
 
 class ExploreScreen extends HookWidget {
@@ -25,11 +22,6 @@ class ExploreScreen extends HookWidget {
     final channels = useProvider(channelsProvider);
     final master = useProvider(masterProvider);
     final settings = useProvider(settingsProvider.state);
-
-    final channelKeys = channelValues.map.keys.toList();
-    // Add all filter
-    channelKeys.add('All');
-    channelKeys.sort();
 
     if (releases == null || channels.all.isEmpty) {
       return const Center(child: CircularProgressIndicator());
@@ -164,15 +156,19 @@ class ExploreScreen extends HookWidget {
                       ],
                     ),
                     DropdownButton<String>(
-                      value: channelValues.reverse[filter.state] ?? 'All',
+                      value: filter.state.name,
                       icon: const Icon(Icons.filter_list),
                       underline: Container(),
-                      items: channelKeys.map((key) {
+                      items: Filter.values.map((filter) {
                         return DropdownMenuItem(
-                            value: key, child: Text(key.capitalize()));
+                          value: filter.name,
+                          child: Text(
+                            filter.name.capitalize(),
+                          ),
+                        );
                       }).toList(),
-                      onChanged: (newValue) {
-                        filter.state = channelValues.map[newValue];
+                      onChanged: (value) {
+                        filter.state = filterFromName(value);
                       },
                     ),
                   ],

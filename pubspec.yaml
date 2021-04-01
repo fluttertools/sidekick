@@ -61,7 +61,7 @@ dependencies:
   fvm:
     git:
       url: https://github.com/leoafarias/fvm.git
-      ref: feature/next
+      ref: master
   # fvm:
   #   path: ../fvm
 

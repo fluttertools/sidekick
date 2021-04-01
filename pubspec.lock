@@ -314,11 +314,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/next"
-      resolved-ref: f9d694e9c99ddb7a8ac45605b84bfa402b0e0959
+      ref: master
+      resolved-ref: ed79db4595ba340b4ffd52e08276176f83e0f18e
       url: "https://github.com/leoafarias/fvm.git"
     source: git
-    version: "1.3.8"
+    version: "2.0.0-dev.3"
   github:
     dependency: "direct main"
     description:

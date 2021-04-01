@@ -1,6 +1,5 @@
-import 'package:sidekick/dto/release.dto.dart';
-
 import 'package:flutter/material.dart';
+import 'package:sidekick/dto/release.dto.dart';
 
 class ReleaseList extends StatelessWidget {
   final ReleaseDto release;
