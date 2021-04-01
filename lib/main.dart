@@ -7,7 +7,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:sidekick/app_shell.dart';
 import 'package:sidekick/models/app_settings.model.dart';
-
 import 'package:sidekick/services/app_settings_service.dart';
 import 'package:sidekick/theme.dart';
 import 'package:window_size/window_size.dart';
