@@ -7,15 +7,16 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:sidekick/app_shell.dart';
 import 'package:sidekick/models/app_settings.model.dart';
-
 import 'package:sidekick/services/app_settings_service.dart';
 import 'package:sidekick/theme.dart';
+import 'package:sidekick/utils/get_theme_mode.dart';
 import 'package:window_size/window_size.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(AppSettingsAdapter());
   await Hive.initFlutter();
+  // await Hive.deleteBoxFromDisk('settings');
   await AppSettingsService.init();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -31,14 +32,14 @@ class FvmApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themeMode = getThemeMode(AppSettingsService.readIsOpen().themeMode);
+    final themeMode = AppSettingsService.read().themeMode;
     return OKToast(
       child: MaterialApp(
         title: 'Sidekick',
         debugShowCheckedModeBanner: false,
         theme: lightTheme(),
         darkTheme: darkTheme(),
-        themeMode: themeMode,
+        themeMode: getThemeMode(themeMode),
         home: const AppShell(),
       ),
     );

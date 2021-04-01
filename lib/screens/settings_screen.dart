@@ -8,6 +8,7 @@ import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
+import 'package:sidekick/version.dart';
 
 class SettingsScreen extends HookWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -92,38 +93,28 @@ This will disable Google's crash reporting and analytics, when installing a new 
             title: "App Settings",
             tiles: [
               SettingsTile(
-                title: "Theme",
-                subtitle: "Which theme to start the app with.",
+                title: "Dark Mode",
                 leading: const Icon(Icons.color_lens_rounded),
-                trailing: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).dividerColor.withOpacity(0.02),
-                  ),
-                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  constraints:
-                      const BoxConstraints(minWidth: 110, maxWidth: 165),
-                  child: DropdownButton(
-                    items: const [
-                      DropdownMenuItem(
-                        child: Text("System"),
-                        value: "system",
-                      ),
-                      DropdownMenuItem(
-                        child: Text("Light"),
-                        value: "light",
-                      ),
-                      DropdownMenuItem(
-                        child: Text("Dark"),
-                        value: "dark",
-                      ),
-                    ],
-                    onChanged: (brightness) {
-                      settings.app.themeMode = brightness;
-                      handleSave();
-                    },
-                    value: settings.app.themeMode,
-                    underline: Container(),
-                  ),
+                trailing: DropdownButton(
+                  value: settings.app.themeMode.toString(),
+                  items: const [
+                    DropdownMenuItem(
+                      child: Text("System"),
+                      value: 'system',
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Light"),
+                      value: 'light',
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Dark"),
+                      value: 'dark',
+                    ),
+                  ],
+                  onChanged: (themeMode) {
+                    settings.app.themeMode = themeMode;
+                    handleSave();
+                  },
                 ),
               ),
               /*SettingsTile(
@@ -195,9 +186,8 @@ This will disable Google's crash reporting and analytics, when installing a new 
               ),*/
               const SettingsTile(
                 title: "App version",
-                subtitle: "App version and updates",
                 leading: Icon(Icons.info_outline_rounded),
-                trailing: AppVersionInfo(),
+                trailing: Text(appVersion),
               ),
             ],
           ),

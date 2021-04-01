@@ -16,7 +16,7 @@ class AppSettings {
     this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
-    this.themeMode = "system",
+    this.themeMode = 'system',
   });
 
   factory AppSettings.fromJson(String str) =>
@@ -65,7 +65,7 @@ class AppSettings {
 
 class AppSettingsAdapter extends TypeAdapter<AppSettings> {
   @override
-  int get typeId => 0; // this is unique, no other Adapter can have the same id.
+  int get typeId => 1; // this is unique, no other Adapter can have the same id.
 
   @override
   AppSettings read(BinaryReader reader) {

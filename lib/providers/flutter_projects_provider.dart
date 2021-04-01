@@ -105,7 +105,11 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     final projectPaths = settings.projectPaths;
     if (projectPaths != null) {
       final directories = projectPaths.map((p) => Directory(p)).toList();
-      state.list = await FVMClient.fetchProjects(directories);
+
+      final projects = await FVMClient.fetchProjects(directories);
+
+      /// Check if its flutter project
+      state.list = projects.where((p) => p.isFlutterProject).toList();
     } else {
       state.list = [];
     }

@@ -6,20 +6,22 @@ import 'package:sidekick/version.dart';
 class LatestVersion {
   final bool needUpdate;
   final String latestVersion;
+  final String currentVersion;
 
   /// Constructor
   LatestVersion({
     this.needUpdate,
     this.latestVersion,
+    this.currentVersion,
   });
 }
 
 /// Helper method to easily check for updates on [packageName]
 /// comparing with [currentVersion] returns `LatestVersion`
 Future<LatestVersion> checkLatestRelease() async {
-  final latestRelease = await GitHub(auth: Authentication.anonymous())
-      .repositories
-      .getLatestRelease(RepositorySlug("leoafarias", "sidekick"));
+  final latestRelease = await GitHub(
+    auth: Authentication.anonymous(),
+  ).repositories.getLatestRelease(RepositorySlug("leoafarias", "sidekick"));
 
   final latestVersion = Version.parse((latestRelease.tagName));
   final currentVersion = Version.parse(appVersion);
@@ -28,6 +30,7 @@ Future<LatestVersion> checkLatestRelease() async {
 
   return LatestVersion(
     needUpdate: needUpdate,
-    latestVersion: latestRelease.tagName,
+    latestVersion: latestVersion.toString(),
+    currentVersion: currentVersion.toString(),
   );
 }

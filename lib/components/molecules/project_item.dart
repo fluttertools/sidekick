@@ -20,7 +20,7 @@ class ProjectItem extends HookWidget {
   Widget build(BuildContext context) {
     final installedVersions = useProvider(installedVersionsProvider);
     final version = useProvider(getVersionProvider(project.pinnedVersion));
-    final description = project.pubspec.description.valueOr(() => '');
+    final description = project.pubspec.description?.valueOr(() => '');
 
     final needInstall = version != null && project.pinnedVersion != null;
 
