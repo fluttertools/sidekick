@@ -1,17 +1,15 @@
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-
-import 'package:sidekick/providers/channels.provider.dart';
-import 'package:sidekick/providers/releases.provider.dart';
-
-import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/dto/channel.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/providers/channels.provider.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
+import 'package:sidekick/providers/releases.provider.dart';
 
 enum SearchResultGroup { channel, project, stable, beta, dev }
 
 class SearchResults {
-  final List<FlutterApp> projects;
+  final List<Project> projects;
   final List<ChannelDto> channels;
   // Releases
   final List<ReleaseDto> stableReleases;
@@ -53,7 +51,7 @@ final searchResultsProvider = Provider((ref) {
   // Split query into multiple search terms
   final searchTerms = query.split(' ');
 
-  final projectResults = <FlutterApp>[];
+  final projectResults = <Project>[];
   final channelResults = <ChannelDto>[];
   final stableReleaseResults = <ReleaseDto>[];
   final betaReleaseResults = <ReleaseDto>[];

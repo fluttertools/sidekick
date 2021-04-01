@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:pubspec_parse/pubspec_parse.dart';
-
+import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
-import 'package:flutter_cache/flutter_cache.dart' as cache;
+import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
 
 const cacheKey = 'dependencies_cache_key';

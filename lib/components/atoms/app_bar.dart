@@ -1,5 +1,5 @@
-import 'package:sidekick/components/atoms/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 
 class FvmAppBar extends StatelessWidget {
   final String title;

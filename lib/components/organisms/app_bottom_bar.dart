@@ -1,10 +1,8 @@
-import 'package:sidekick/components/atoms/console.dart';
-
-import 'package:sidekick/providers/fvm_queue.provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/components/atoms/console.dart';
+import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 class AppBottomBar extends HookWidget {
   const AppBottomBar({Key key}) : super(key: key);

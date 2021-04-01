@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/dto/channel.dto.dart';
-import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 class VersionInstallStatusMaster extends StatelessWidget {

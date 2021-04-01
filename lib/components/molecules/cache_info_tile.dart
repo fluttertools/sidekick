@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:sidekick/components/atoms/cache_date_display.dart';
 import 'package:sidekick/components/atoms/copy_button.dart';
 import 'package:sidekick/components/atoms/group_tile.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/dto/version.dto.dart';
-import 'package:flutter/material.dart';
 
 class CacheInfoTile extends StatelessWidget {
   final VersionDto version;

@@ -1,5 +1,5 @@
-import 'package:sidekick/components/atoms/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:sidekick/components/atoms/app_bar.dart';
 
 class FvmScreen extends StatelessWidget {
   final String title;
