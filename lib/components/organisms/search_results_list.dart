@@ -1,9 +1,9 @@
-import 'package:sidekick/components/atoms/sliver_section_header.dart';
+import 'package:flutter/material.dart';
 import 'package:sidekick/components/atoms/sliver_section.dart';
+import 'package:sidekick/components/atoms/sliver_section_header.dart';
 import 'package:sidekick/components/molecules/project_item.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
 import 'package:sidekick/providers/search_results_provider.dart';
-import 'package:flutter/material.dart';
 
 class SearchResultsList extends StatelessWidget {
   final SearchResults results;

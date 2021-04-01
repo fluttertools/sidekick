@@ -1,8 +1,7 @@
+import 'package:fvm/fvm.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
-import 'package:fvm/fvm.dart';
-
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ReleasesProviderPayload {
   final List<ReleaseDto> all;

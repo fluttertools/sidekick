@@ -1,10 +1,10 @@
-import 'package:sidekick/dto/version.dto.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
-import 'package:sidekick/providers/fvm_queue.provider.dart';
-import 'package:sidekick/providers/flutter_projects_provider.dart';
-import 'package:sidekick/utils/notify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/providers/flutter_projects_provider.dart';
+import 'package:sidekick/providers/fvm_queue.provider.dart';
+import 'package:sidekick/providers/installed_versions.provider.dart';
+import 'package:sidekick/utils/notify.dart';
 
 Future<void> pruneVersionsDialog(BuildContext context) async {
   final toDelete = <VersionDto>[];

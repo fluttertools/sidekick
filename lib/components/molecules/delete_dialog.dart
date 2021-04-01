@@ -1,6 +1,5 @@
-import 'package:sidekick/dto/version.dto.dart';
-
 import 'package:flutter/material.dart';
+import 'package:sidekick/dto/version.dto.dart';
 
 void showDeleteDialog(
   BuildContext context, {

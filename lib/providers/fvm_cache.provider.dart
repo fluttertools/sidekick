@@ -1,16 +1,13 @@
 import 'dart:async';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:state_notifier/state_notifier.dart';
-import 'package:watcher/watcher.dart';
-import 'package:sidekick/utils/debounce.dart';
-import 'package:sidekick/utils/dir_stat.dart';
-
 import 'package:fvm/constants.dart' as fvm_constants;
 import 'package:fvm/fvm.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/utils/debounce.dart';
+import 'package:sidekick/utils/dir_stat.dart';
+import 'package:state_notifier/state_notifier.dart';
+import 'package:watcher/watcher.dart';
 
 @deprecated
 enum InstalledStatus {
@@ -53,7 +50,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   Future<void> reloadState() async {
     // Cancel debounce to avoid running twice with no new state change
     _debouncer.cancel();
-    final localVersions = await CacheService.getAllVersions();
+    final localVersions = await FVMClient.getCachedVersions();
     state = localVersions;
 
     channels = localVersions.where((item) => item.isChannel).toList();

@@ -1,12 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fvm/fvm.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/master.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';
-
 import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fvm/fvm.dart';
 
 class AppReleasesState {
   List<ChannelDto> channels;
@@ -56,8 +55,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
   // Set Master separetely because workflow is very different
   final masterInstalled = installedVersions.getChannel(kMasterChannel);
-  final masterVersion =
-      masterInstalled != null ? masterInstalled.sdkVersion : null;
+  final masterVersion = FVMClient.getSdkVersionSync(masterInstalled);
 
   releasesState.master = MasterDto(
     name: kMasterChannel,
@@ -67,11 +65,13 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   );
 
   // Loop through available channels NOT including master
-  for (var name in kAvailableChannels) {
+  for (var name in kReleaseChannels) {
     final latestRelease = flutterChannels[name];
     final installedChannel = installedVersions.getChannel(name);
-    final sdkVersion =
-        installedChannel == null ? null : installedChannel.sdkVersion;
+
+    // Get sdk version
+    final sdkVersion = FVMClient.getSdkVersionSync(installedChannel);
+
     final channelDto = ChannelDto(
       name: name,
       isInstalled: installedChannel != null,
@@ -93,7 +93,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
     // Check if version is found in installed versions
     final installedVersion = installedVersions.getVersion(item.version);
-    final sdkVersion = installedVersion?.sdkVersion;
+    final sdkVersion = FVMClient.getSdkVersionSync(installedVersion);
 
     final version = ReleaseDto(
       name: item.version,

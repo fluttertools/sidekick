@@ -1,8 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-
-import 'package:flutter/material.dart';
 import 'package:sidekick/components/molecules/github_repo_info.dart';
 import 'package:sidekick/components/molecules/package_score_display.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';

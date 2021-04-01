@@ -1,8 +1,7 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pub_api_client/pub_api_client.dart';
 import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/utils/dependencies.dart';
-
-import 'package:pub_api_client/pub_api_client.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // ignore: top_level_function_literal_block
 final packagesProvider = FutureProvider((ref) async {

@@ -1,13 +1,11 @@
-import 'package:sidekick/dto/version.dto.dart';
 import 'package:fvm/fvm.dart';
-
-import 'package:state_notifier/state_notifier.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/dto/version.dto.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 class InfoDetail {
   VersionDto version;
-  FlutterApp project;
+  Project project;
   InfoDetail({this.version, this.project});
 
   factory InfoDetail.fromMap(Map<String, dynamic> map) {
@@ -39,7 +37,7 @@ class InfoProvider extends StateNotifier<InfoDetail> {
   }
 
   // ignore: use_setters_to_change_properties
-  void selectProject(FlutterApp project) {
+  void selectProject(Project project) {
     state.project = project;
     _updateState();
   }

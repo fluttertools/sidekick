@@ -1,7 +1,7 @@
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
+import 'package:sidekick/dto/channel.dto.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 
 class ChannelsProviderPayload {
   final List<ChannelDto> all;

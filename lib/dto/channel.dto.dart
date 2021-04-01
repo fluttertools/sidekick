@@ -1,7 +1,6 @@
-import 'package:sidekick/dto/version.dto.dart';
-
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
+import 'package:sidekick/dto/version.dto.dart';
 
 class ChannelDto extends VersionDto {
   /// Latest version of the channel

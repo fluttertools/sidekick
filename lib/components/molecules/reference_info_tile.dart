@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
@@ -5,7 +6,6 @@ import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/utils/channel_descriptions.dart';
-import 'package:flutter/material.dart';
 import 'package:sidekick/utils/open_link.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
