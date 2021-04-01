@@ -27,15 +27,17 @@ void main() async {
 
 class FvmApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
+    var themeMode = getThemeMode(AppSettingsService.readIsOpen().themeMode);
     return OKToast(
       child: MaterialApp(
         title: 'Sidekick',
         debugShowCheckedModeBanner: false,
         theme: lightTheme(),
         darkTheme: darkTheme(),
-        themeMode: ThemeMode.system,
+        themeMode: themeMode,
         home: const AppShell(),
       ),
     );

@@ -23,7 +23,17 @@ class AppSettingsService {
     if (!_initialized) {
       await init();
     }
-    final settings = await _box.get(AppSettings.key);
+    final settings = _box.get(AppSettings.key);
+    if (settings == null) {
+      return AppSettings();
+    } else {
+      return settings;
+    }
+  }
+
+  /// Only use this is you know that the box has already been opened
+  static AppSettings readIsOpen() {
+    final settings = _box.get(AppSettings.key);
     if (settings == null) {
       return AppSettings();
     } else {

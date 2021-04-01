@@ -18,7 +18,6 @@ import 'package:sidekick/screens/home_screen.dart';
 import 'package:sidekick/screens/packages_screen.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 import 'package:sidekick/utils/layout_size.dart';
-import 'package:sidekick/utils/manage_updates.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -83,11 +82,6 @@ class AppShell extends HookWidget {
         });
       }
     }, [selectedInfo, LayoutSize.size]);
-
-    useEffect(() {
-      checkForUpdates();
-      return;
-    }, []);
 
     return KBShortcutManager(
       onRouteShortcut: handleIndexShortcut,
