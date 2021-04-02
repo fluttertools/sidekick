@@ -9,7 +9,7 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // ignore: top_level_function_literal_block
@@ -66,12 +66,9 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     reloadAll();
   }
 
-  SettingsProvider get _settingsProvider {
-    return ref.read<SettingsProvider>(settingsProvider);
-  }
-
   Future<void> scan() async {
-    final settings = await _settingsProvider.readAppSettings();
+    final settings = await SettingsService.read();
+
     // TODO: Support multiple paths
     final projectDir = settings.firstProjectDir;
 
@@ -86,7 +83,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     settings.projectPaths = projects.map((project) {
       return project.projectDir.path;
     }).toList();
-    await _settingsProvider.saveAppSettings(settings);
+    await SettingsService.save(settings);
     await reloadAll();
   }
 
@@ -99,11 +96,11 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     state.loading = true;
 
     /// Get settings
-    final settings = await _settingsProvider.readAppSettings();
+    final settings = await SettingsService.read();
 
     /// Get cached path for projects
     final projectPaths = settings.projectPaths;
-    if (projectPaths != null) {
+    if (projectPaths.isNotEmpty) {
       final directories = projectPaths.map((p) => Directory(p)).toList();
 
       final projects = await FVMClient.fetchProjects(directories);
@@ -113,8 +110,8 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     } else {
       state.list = [];
     }
-
     state = state;
+
     state.loading = false;
   }
 

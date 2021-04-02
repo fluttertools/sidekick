@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/setup_button.dart';
-import 'package:sidekick/components/atoms/version_installed_status_master.dart';
+import 'package:sidekick/components/molecules/version_installed_status_master.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/master.dto.dart';
 import 'package:sidekick/dto/version.dto.dart';

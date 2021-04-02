@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
-ThemeMode getThemeMode(String raw) {
-  if (raw == "light") {
+class SettingsThemeMode {
+  static const light = 'light';
+  static const dark = 'dark';
+  static const system = 'system';
+  const SettingsThemeMode();
+}
+
+ThemeMode getThemeMode(String themeMode) {
+  if (themeMode == SettingsThemeMode.light) {
     return ThemeMode.light;
-  } else if (raw == "dark") {
+  } else if (themeMode == SettingsThemeMode.dark) {
     return ThemeMode.dark;
   } else {
     return ThemeMode.system;

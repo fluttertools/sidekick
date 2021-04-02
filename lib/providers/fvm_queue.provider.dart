@@ -102,15 +102,12 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
       case QueueAction.setupOnly:
         await FVMClient.setup(item.name);
         await notify('Version ${item.name} has finished setup.');
-        await _checkAndDisableAnalytics(item.name);
         notify('Version ${item.name} has finished setup');
-
         break;
       case QueueAction.installAndSetup:
         await FVMClient.install(item.name);
         await FVMClient.setup(item.name);
         await notify('Version ${item.name} has been installed');
-        await _checkAndDisableAnalytics(item.name);
         break;
       case QueueAction.channelUpgrade:
         await FVMClient.upgradeChannel(item.name);
@@ -145,11 +142,5 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
   Future<void> _addToQueue(String version, {QueueAction action}) async {
     state.queue.add(QueueItem(name: version, action: action));
     state = state.update();
-  }
-
-  Future<void> _checkAndDisableAnalytics(String version) async {
-    if (settings.noAnalytics) {
-      await FVMClient.disableFlutterTracking(version);
-    }
   }
 }

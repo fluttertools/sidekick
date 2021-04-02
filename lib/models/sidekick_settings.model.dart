@@ -2,34 +2,37 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:list_ext/list_ext.dart';
+import 'package:sidekick/utils/get_theme_mode.dart';
 
-class AppSettings {
-  static const key = 'app_settings';
+class SidekickSettings {
+  static const key = 'settings_key';
   List<String> flutterProjectsDir;
   bool advancedMode;
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
   String themeMode;
+  bool flutterAnalytics;
 
-  AppSettings({
+  SidekickSettings({
     this.flutterProjectsDir = const [],
     this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
-    this.themeMode = 'system',
+    this.themeMode = SettingsThemeMode.system,
+    this.flutterAnalytics = false,
   });
 
-  factory AppSettings.fromJson(String str) =>
-      AppSettings.fromMap(json.decode(str));
+  factory SidekickSettings.fromJson(String str) =>
+      SidekickSettings.fromMap(json.decode(str));
 
-  factory AppSettings.fromMap(Map<String, dynamic> json) {
-    return AppSettings(
+  factory SidekickSettings.fromMap(Map<String, dynamic> json) {
+    return SidekickSettings(
       flutterProjectsDir:
           (json['flutterProjectsDir'] as List<dynamic>).cast<String>(),
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       advancedMode: json['advancedMode'] as bool ?? false,
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
-      themeMode: json['themeMode'] as String,
+      themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
     );
   }
 
@@ -63,19 +66,19 @@ class AppSettings {
   }
 }
 
-class AppSettingsAdapter extends TypeAdapter<AppSettings> {
+class SidekickSettingsAdapter extends TypeAdapter<SidekickSettings> {
   @override
   int get typeId => 1; // this is unique, no other Adapter can have the same id.
 
   @override
-  AppSettings read(BinaryReader reader) {
+  SidekickSettings read(BinaryReader reader) {
     // FIXME: Check why subtype does not match
     final value = Map<String, dynamic>.from(reader.readMap());
-    return AppSettings.fromMap(value);
+    return SidekickSettings.fromMap(value);
   }
 
   @override
-  void write(BinaryWriter writer, AppSettings obj) {
+  void write(BinaryWriter writer, SidekickSettings obj) {
     writer.writeMap(obj.toMap());
   }
 }

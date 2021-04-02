@@ -52,9 +52,9 @@ class ExploreScreen extends HookWidget {
                         width: 60,
                         child: Switch(
                           activeColor: Colors.cyan,
-                          value: settings.app.advancedMode,
+                          value: settings.sidekick.advancedMode,
                           onChanged: (active) async {
-                            settings.app.advancedMode = active;
+                            settings.sidekick.advancedMode = active;
                             await context.read(settingsProvider).save(settings);
                           },
                         ),
@@ -75,7 +75,7 @@ class ExploreScreen extends HookWidget {
             SliverToBoxAdapter(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                height: settings.app.advancedMode ? 80 : 0,
+                height: settings.sidekick.advancedMode ? 80 : 0,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(

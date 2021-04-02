@@ -20,8 +20,8 @@ version: 1.0.0-alpha.2
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
-dependencies:
-  # list_ext: ^1.0.2
+dependencies:  
+  modal_bottom_sheet: ^2.0.0
   flutter:
     sdk: flutter
   list_ext: ^1.0.2
@@ -58,12 +58,12 @@ dependencies:
       path: plugins/window_size
 
   pub_api_client: ^1.0.9
-  fvm:
-    git:
-      url: https://github.com/leoafarias/fvm.git
-      ref: master
   # fvm:
-  #   path: ../fvm
+  #   git:
+  #     url: https://github.com/leoafarias/fvm.git
+  #     ref: master
+  fvm:
+    path: ../fvm
 
 dev_dependencies:
   hive_generator: ^1.0.0

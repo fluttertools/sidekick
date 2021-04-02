@@ -12,10 +12,10 @@ import 'package:sidekick/components/organisms/search_bar.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/providers/selected_info_provider.dart';
-import 'package:sidekick/screens/apps_screen.dart';
 import 'package:sidekick/screens/explore_screen.dart';
 import 'package:sidekick/screens/home_screen.dart';
 import 'package:sidekick/screens/packages_screen.dart';
+import 'package:sidekick/screens/projects_screen.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 import 'package:sidekick/utils/layout_size.dart';
 
@@ -23,7 +23,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
 
 final pages = [
   HomeScreen(key: UniqueKey()),
-  AppsScreen(key: UniqueKey()),
+  ProjectsScreen(key: UniqueKey()),
   ExploreScreen(key: UniqueKey()),
   PackagesScreen(key: UniqueKey()),
   SettingsScreen(key: UniqueKey()),

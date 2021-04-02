@@ -12,8 +12,8 @@ import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
-class AppsScreen extends HookWidget {
-  const AppsScreen({Key key}) : super(key: key);
+class ProjectsScreen extends HookWidget {
+  const ProjectsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +21,17 @@ class AppsScreen extends HookWidget {
     final filteredProjects = useState(projects.list);
     final settings = useProvider(settingsProvider.state);
 
-    final appSettings = settings.app;
+    final appSettings = settings.sidekick;
 
     useEffect(() {
       if (appSettings.onlyProjectsWithFvm) {
         filteredProjects.value =
             projects.list.where((p) => p.pinnedVersion != null).toList();
       } else {
-        filteredProjects.value = projects.list;
+        filteredProjects.value = [...projects.list];
       }
       return;
-    }, [projects, appSettings.onlyProjectsWithFvm]);
+    }, [projects.list]);
 
     if (projects.loading) {
       return const Center(
@@ -54,29 +54,6 @@ class AppsScreen extends HookWidget {
             notify('Apps Refreshed');
           },
         ),
-        const VerticalDivider(
-          width: 40,
-        ),
-        Tooltip(
-          message: '''Displays only projects with versions pinned.''',
-          child: Row(
-            children: [
-              const Caption('Only Pinned'),
-              SizedBox(
-                height: 10,
-                width: 60,
-                child: Switch(
-                  activeColor: Colors.cyan,
-                  value: appSettings.onlyProjectsWithFvm,
-                  onChanged: (active) async {
-                    appSettings.onlyProjectsWithFvm = active;
-                    await context.read(settingsProvider).save(settings);
-                  },
-                ),
-              ),
-            ],
-          ),
-        )
       ],
       child: Scrollbar(
         child: Padding(
