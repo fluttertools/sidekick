@@ -1,13 +1,14 @@
+import 'package:file_chooser/file_chooser.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 
-class SettingsSectionFvm extends StatelessWidget {
+class SettingsSectionProjects extends StatelessWidget {
   final Settings settings;
   final Function() onSave;
 
-  const SettingsSectionFvm(
+  const SettingsSectionProjects(
     this.settings,
     this.onSave, {
     Key key,
@@ -15,25 +16,50 @@ class SettingsSectionFvm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> handleChooseDirectory() async {
+      final fileResult = await showOpenPanel(
+        allowedFileTypes: [],
+        canSelectDirectories: true,
+      );
+
+      // Save if a path is selected
+      if (fileResult.paths.isNotEmpty) {
+        settings.sidekick.firstProjectDir = fileResult.paths.single;
+      }
+
+      await onSave();
+    }
+
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text('FVM', style: Theme.of(context).textTheme.headline6),
+          Text('Projects', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile.switchTile(
-            title: 'Disable tracking',
-            subtitle: "This will disable Google's crash reporting"
-                "and analytics, when installing a new version",
-            leading: const Icon(MdiIcons.bug),
-            switchActiveColor: Theme.of(context).accentColor,
-            switchValue: settings.flutterAnalyticsEnabled ?? false,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            onToggle: (value) {
-              settings.flutterAnalyticsEnabled = value;
-              onSave();
-            },
-          ),
+          SettingsTile(
+              title: 'Flutter Projects',
+              subtitle: settings.sidekick.firstProjectDir,
+              leading: const Icon(MdiIcons.folderHome),
+              subtitleTextStyle: Theme.of(context).textTheme.caption,
+              trailing: TextButton(
+                onPressed: handleChooseDirectory,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text('Choose'),
+                      const Icon(MdiIcons.menuDown)
+                    ],
+                  ),
+                ),
+              )
+              // trailing: ElevatedButton.icon(
+              //   label: const Text('Choose'),
+              //   icon: const Icon(MdiIcons.chevronDown),
+              //   onPressed: handleChooseDirectory,
+              // ),
+              ),
         ],
       ),
     );

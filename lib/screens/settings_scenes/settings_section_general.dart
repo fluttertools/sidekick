@@ -26,6 +26,8 @@ class SettingsSectionGeneral extends StatelessWidget {
             title: "Theme",
             leading: const Icon(Icons.color_lens_rounded),
             trailing: DropdownButton(
+              underline: Container(),
+              isDense: true,
               value: settings.sidekick.themeMode.toString(),
               items: const [
                 DropdownMenuItem(

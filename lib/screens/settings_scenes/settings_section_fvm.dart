@@ -1,32 +1,16 @@
-import 'package:file_chooser/file_chooser.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 
-class SettingsSectionProjects extends StatelessWidget {
+class SettingsSectionFvm extends StatelessWidget {
   final Settings settings;
   final Function() onSave;
 
-  const SettingsSectionProjects(
+  const SettingsSectionFvm(
     this.settings,
     this.onSave, {
     Key key,
   }) : super(key: key);
-
-  Future<void> handleChooseDirectory() async {
-    final fileResult = await showOpenPanel(
-      allowedFileTypes: [],
-      canSelectDirectories: true,
-    );
-
-    // Save if a path is selected
-    if (fileResult.paths.isNotEmpty) {
-      settings.sidekick.firstProjectDir = fileResult.paths.single;
-    }
-
-    await onSave();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +18,33 @@ class SettingsSectionProjects extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text('Projects', style: Theme.of(context).textTheme.headline6),
+          Text('FVM', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile(
-            title: 'Flutter Projects',
-            subtitle: settings.sidekick.firstProjectDir,
-            leading: const Icon(MdiIcons.folderHome),
+          const Divider(),
+          SettingsTile.switchTile(
+            title: 'Git Cache',
+            subtitle: "This will cache the main Flutter repository"
+                " for faster and smaller installs",
+            switchActiveColor: Theme.of(context).accentColor,
+            switchValue: settings.fvm.gitCache ?? false,
             subtitleTextStyle: Theme.of(context).textTheme.caption,
-            trailing: ElevatedButton.icon(
-              label: const Text('Choose'),
-              icon: const Icon(MdiIcons.chevronDown),
-              onPressed: handleChooseDirectory,
-            ),
+            onToggle: (value) {
+              settings.fvm.gitCache = value;
+              onSave();
+            },
+          ),
+          const Divider(),
+          SettingsTile.switchTile(
+            title: 'Skip setup Flutter on install',
+            subtitle: "This will only clone Flutter and not install"
+                "dependencies after a new version is installed.",
+            switchActiveColor: Theme.of(context).accentColor,
+            subtitleTextStyle: Theme.of(context).textTheme.caption,
+            switchValue: settings.fvm.skipSetup ?? false,
+            onToggle: (value) {
+              settings.fvm.skipSetup = value;
+              onSave();
+            },
           ),
         ],
       ),

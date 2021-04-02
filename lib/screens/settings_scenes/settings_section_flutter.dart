@@ -22,29 +22,15 @@ class SettingsSectionFlutter extends StatelessWidget {
           Text('Flutter', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           SettingsTile.switchTile(
-            title: 'Git Cache',
-            subtitle: "This will cache the main Flutter repository"
-                " for faster and smaller installs",
-            leading: const Icon(MdiIcons.git),
+            title: 'Disable tracking',
+            subtitle: "This will disable Google's crash reporting"
+                "and analytics, when installing a new version",
+            leading: const Icon(MdiIcons.bug),
             switchActiveColor: Theme.of(context).accentColor,
-            switchValue: settings.fvm.gitCache ?? false,
+            switchValue: settings.flutterAnalyticsEnabled ?? false,
             subtitleTextStyle: Theme.of(context).textTheme.caption,
             onToggle: (value) {
-              settings.fvm.gitCache = value;
-              onSave();
-            },
-          ),
-          const Divider(),
-          SettingsTile.switchTile(
-            title: 'Skip setup Flutter on install',
-            subtitle: "This will only clone Flutter and not install"
-                "dependencies after a new version is installed.",
-            leading: const Icon(MdiIcons.cogSync),
-            switchActiveColor: Theme.of(context).accentColor,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            switchValue: settings.fvm.skipSetup ?? false,
-            onToggle: (value) {
-              settings.fvm.skipSetup = value;
+              settings.flutterAnalyticsEnabled = value;
               onSave();
             },
           ),

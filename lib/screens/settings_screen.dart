@@ -70,7 +70,10 @@ class SettingsScreen extends HookWidget {
                   children: sections.mapIndexed(
                     (section, idx) {
                       return ListTile(
-                        title: Text(section),
+                        title: Text(
+                          section,
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
                         selected: currentSection.value == idx,
                         onTap: () => changeSection(idx),
                       );
