@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SettingsTile extends StatelessWidget {
+class FvmSettingsTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
@@ -8,7 +8,7 @@ class SettingsTile extends StatelessWidget {
   final Function() onTap;
   final bool selected;
 
-  const SettingsTile({
+  const FvmSettingsTile({
     Key key,
     @required this.title,
     this.subtitle,
