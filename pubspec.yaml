@@ -21,9 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:  
-  modal_bottom_sheet: ^2.0.0
   flutter:
     sdk: flutter
+  
+  modal_bottom_sheet: ^2.0.0
   list_ext: ^1.0.2
   hive_flutter: ^1.0.0
   hive: ^2.0.0
@@ -48,7 +49,7 @@ dependencies:
   filesize: ^1.0.4
   hooks_riverpod: ^0.12.1
   date_time_format: ^2.0.1
-  flutter_hooks: ^0.14.1
+  flutter_hooks: ^0.15.0
   path_provider: ^2.0.1
   file_chooser: ^0.1.6
   pub_semver: ^1.4.4

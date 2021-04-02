@@ -6,7 +6,6 @@ class FvmSettingsTile extends StatelessWidget {
   final IconData icon;
   final Widget trailing;
   final Function() onTap;
-  final bool selected;
 
   const FvmSettingsTile({
     Key key,
@@ -15,7 +14,6 @@ class FvmSettingsTile extends StatelessWidget {
     this.icon,
     this.trailing,
     this.onTap,
-    this.selected = false,
   }) : super(key: key);
 
   @override
@@ -27,7 +25,6 @@ class FvmSettingsTile extends StatelessWidget {
       leading: icon != null ? Icon(icon) : null,
       trailing: trailing,
       selectedTileColor: Colors.white12,
-      selected: selected,
       onTap: onTap,
     );
   }
