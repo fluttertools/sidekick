@@ -57,6 +57,14 @@ class ProjectsProviderState {
   factory ProjectsProviderState.error(dynamic err) {
     return ProjectsProviderState(error: err.toString());
   }
+
+  ProjectsProviderState clone() {
+    return ProjectsProviderState(
+      list: [...list],
+      loading: loading,
+      error: error,
+    );
+  }
 }
 
 class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
@@ -67,6 +75,9 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
   }
 
   Future<void> scan() async {
+    state.loading = true;
+    state.list = [];
+    _forceStateUpdate();
     final settings = await SettingsService.read();
 
     // TODO: Support multiple paths
@@ -92,8 +103,15 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     await reloadOne(project);
   }
 
-  Future<void> reloadAll() async {
+  void _forceStateUpdate() {
+    state = state.clone();
+  }
+
+  /// Triggers a full project reload. Adds a 1 second delay on update
+  /// if [withDelay] is true for better UI feedback
+  Future<void> reloadAll({bool withDelay = false}) async {
     state.loading = true;
+    _forceStateUpdate();
 
     /// Get settings
     final settings = await SettingsService.read();
@@ -102,7 +120,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     final projectPaths = settings.projectPaths;
     if (projectPaths.isNotEmpty) {
       final directories = projectPaths.map((p) => Directory(p)).toList();
-
+      // Go get info for each project
       final projects = await FVMClient.fetchProjects(directories);
 
       /// Check if its flutter project
@@ -110,9 +128,15 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     } else {
       state.list = [];
     }
-    state = state;
 
+    /// This is used for
+    if (withDelay) {
+      await Future.delayed(const Duration(seconds: 1));
+    }
+    // Set loading to false
     state.loading = false;
+
+    _forceStateUpdate();
   }
 
   Future<void> reloadOne(Project project) async {
@@ -122,6 +146,6 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
         await FVMClient.getProjectByDirectory(project.projectDir);
 
     // Update state
-    state = state;
+    _forceStateUpdate();
   }
 }

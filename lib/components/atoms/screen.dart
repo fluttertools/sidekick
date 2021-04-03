@@ -1,22 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/app_bar.dart';
+import 'package:sidekick/components/atoms/blur_background.dart';
+import 'package:sidekick/components/atoms/typography.dart';
 
-class FvmScreen extends StatelessWidget {
+class Screen extends StatelessWidget {
   final String title;
   final List<Widget> actions;
+  final bool processing;
   final Widget child;
-  const FvmScreen({this.title, this.actions, this.child, Key key})
+  const Screen(
+      {this.title,
+      this.actions = const [],
+      this.processing = false,
+      this.child,
+      Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60.0),
-        child: FvmAppBar(
-          title: title,
-          actions: actions ?? [const SizedBox(height: 0, width: 0)],
+        preferredSize: const Size.fromHeight(60),
+        child: Stack(
+          children: [
+            const BlurBackground(),
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  height: 59,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context).dividerColor,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Heading(title),
+                      const Spacer(),
+                      ...actions,
+                      const SizedBox(width: 10),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 1,
+                  child: processing
+                      ? const LinearProgressIndicator()
+                      : Container(),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
       body: child,

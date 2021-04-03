@@ -3,11 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/cache_size_display.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/providers/flutter_projects_provider.dart';
 import 'package:sidekick/providers/fvm_console_provider.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
 
 class Console extends HookWidget {
   final List<ConsoleLine> lines;
@@ -26,8 +23,6 @@ class Console extends HookWidget {
   Widget build(BuildContext context) {
     final output = useProvider(combinedConsoleProvider);
     final lines = useState<List<String>>(['']);
-    final installedList = useProvider(installedVersionsProvider);
-    final projects = useProvider(projectsProvider.state);
 
     useValueChanged(output, (_, __) {
       lines.value.insert(0, output.data.value);
@@ -45,23 +40,7 @@ class Console extends HookWidget {
             ? Colors.black45
             : const Color(0xFFF5F5F5),
         height: 40,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(width: 20),
-            installedList.isNotEmpty
-                ? Caption('${installedList.length} Versions')
-                : const Caption('Versions'),
-            const SizedBox(width: 20),
-            const CacheSizeDisplay(),
-            const SizedBox(width: 20),
-            projects.loading
-                ? const Caption('Loading Projects...')
-                : Caption('${projects.list.length} Projects'),
-            const SizedBox(width: 20),
-          ],
-        ),
+        child: Container(),
       ),
       secondChild: GestureDetector(
         onTap: onExpand,

@@ -40,29 +40,7 @@ class ExploreScreen extends HookWidget {
                 'Channels',
                 style: Theme.of(context).textTheme.headline6,
               ),
-              actions: [
-                Tooltip(
-                  message:
-                      '''Allows access to functionality that is unsable, and latest cutting edge.''',
-                  child: Row(
-                    children: [
-                      const Caption('Advanced'),
-                      SizedBox(
-                        height: 10,
-                        width: 60,
-                        child: Switch(
-                          activeColor: Colors.cyan,
-                          value: settings.sidekick.advancedMode,
-                          onChanged: (active) async {
-                            settings.sidekick.advancedMode = active;
-                            await context.read(settingsProvider).save(settings);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+              actions: [Container()],
               centerTitle: false,
               automaticallyImplyLeading: false,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,

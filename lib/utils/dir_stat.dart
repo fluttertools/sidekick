@@ -13,10 +13,10 @@ class DirectorySizeInfo {
   });
 }
 
-Future<DirectorySizeInfo> getDirectorySize(String dirPath) async {
+Future<DirectorySizeInfo> getDirectorySize(Directory dir) async {
   var fileCount = 0;
   var totalSize = 0;
-  var dir = Directory(dirPath);
+
   try {
     if (await dir.exists()) {
       await dir.list(recursive: true, followLinks: false).forEach((entity) {

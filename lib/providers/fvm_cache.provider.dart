@@ -43,7 +43,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }
 
   Future<void> _setTotalCacheSize() async {
-    final stat = await getDirectorySize(fvm_constants.kFvmCacheDir.path);
+    final stat = await getDirectorySize(fvm_constants.kFvmCacheDir);
     ref.read(fvmCacheSizeProvider).state = stat.friendlySize;
   }
 

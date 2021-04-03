@@ -22,6 +22,17 @@ class SettingsSectionGeneral extends StatelessWidget {
         children: [
           Text('General', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
+          SettingsTile.switchTile(
+            title: "Advanced Mode",
+            subtitle: 'Enables more advanced and experimental functionality.',
+            leading: const Icon(Icons.info_outline_rounded),
+            switchValue: settings.sidekick.advancedMode,
+            onToggle: (value) {
+              settings.sidekick.advancedMode = value;
+              onSave();
+            },
+          ),
+          const Divider(),
           SettingsTile(
             title: "Theme",
             leading: const Icon(Icons.color_lens_rounded),

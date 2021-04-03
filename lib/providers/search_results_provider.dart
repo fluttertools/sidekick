@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/channels.provider.dart';
-import 'package:sidekick/providers/flutter_projects_provider.dart';
+import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/providers/releases.provider.dart';
 
 enum SearchResultGroup { channel, project, stable, beta, dev }

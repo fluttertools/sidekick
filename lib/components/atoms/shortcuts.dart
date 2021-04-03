@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 
 class NavigationIntent extends Intent {
@@ -7,27 +9,22 @@ class NavigationIntent extends Intent {
   const NavigationIntent({this.route});
 }
 
-class KBShortcutManager extends StatefulWidget {
+class KBShortcutManager extends HookWidget {
   final Widget child;
-
-  final Function(NavigationRoutes) onRouteShortcut;
-  final FocusNode focusNode;
-  // final KBShortcuts shortcuts;
 
   const KBShortcutManager({
     Key key,
-    this.onRouteShortcut,
     this.child,
-    this.focusNode,
   }) : super(key: key);
 
   @override
-  _KBShortcutManagerState createState() => _KBShortcutManagerState();
-}
-
-class _KBShortcutManagerState extends State<KBShortcutManager> {
-  @override
   Widget build(BuildContext context) {
+    final focusNode = useFocusNode();
+    // Handles route change
+    void handleRouteChange(NavigationRoutes route) {
+      context.read(navigationProvider).goTo(route);
+    }
+
     return Shortcuts(
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(
@@ -48,22 +45,18 @@ class _KBShortcutManagerState extends State<KBShortcutManager> {
         ): const NavigationIntent(route: NavigationRoutes.packagesScreen),
         LogicalKeySet(
           LogicalKeyboardKey.metaLeft,
-          LogicalKeyboardKey.digit5,
-        ): const NavigationIntent(route: NavigationRoutes.settingsScreen),
-        LogicalKeySet(
-          LogicalKeyboardKey.metaLeft,
           LogicalKeyboardKey.keyF,
         ): const NavigationIntent(route: NavigationRoutes.searchScreen),
       },
       child: Actions(
         actions: <Type, Action<Intent>>{
           NavigationIntent: CallbackAction<NavigationIntent>(
-              onInvoke: (intent) => widget.onRouteShortcut(intent.route)),
+              onInvoke: (intent) => handleRouteChange(intent.route)),
         },
         child: Focus(
           autofocus: true,
-          focusNode: widget.focusNode,
-          child: widget.child,
+          focusNode: focusNode,
+          child: child,
         ),
       ),
     );

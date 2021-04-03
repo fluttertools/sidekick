@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 NavigationRailDestination NavButton({IconData iconData, String label}) {
   return NavigationRailDestination(
     icon: Icon(iconData, size: 20),
-    selectedIcon: Icon(
-      iconData,
-      size: 20,
-      color: Colors.cyan,
-    ),
+    selectedIcon: Icon(iconData, size: 20, color: Colors.cyan),
     label: Text(label),
   );
 }

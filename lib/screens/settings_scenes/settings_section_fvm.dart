@@ -20,7 +20,6 @@ class SettingsSectionFvm extends StatelessWidget {
         children: [
           Text('FVM', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          const Divider(),
           SettingsTile.switchTile(
             title: 'Git Cache',
             subtitle: "This will cache the main Flutter repository"

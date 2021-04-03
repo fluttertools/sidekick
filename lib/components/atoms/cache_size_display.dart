@@ -16,7 +16,7 @@ class CacheSizeDisplay extends HookWidget {
     }
 
     return Container(
-      child: Caption('Storage $cacheSize'),
+      child: Caption('Total size: $cacheSize'),
     );
   }
 }

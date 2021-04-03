@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/components/atoms/cache_size_display.dart';
 import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_versions.dart';
 import 'package:sidekick/components/molecules/version_installed_item.dart';
@@ -13,23 +13,27 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final list = useProvider(installedVersionsProvider);
+    final installedList = useProvider(installedVersionsProvider);
 
-    if (list == null) {
+    if (installedList == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (list.isEmpty) {
+    if (installedList.isEmpty) {
       return const EmptyVersions();
     }
 
-    return FvmScreen(
+    return Screen(
       title: 'Installed Versions',
       actions: [
+        Text('${installedList.length} versions'),
+        const SizedBox(width: 20),
+        const CacheSizeDisplay(),
+        const SizedBox(width: 20),
         Tooltip(
           message: 'Clean up unused versions.',
-          child: IconButton(
-            icon: const Icon(MdiIcons.broom, size: 20),
+          child: OutlinedButton(
+            child: const Text('Clean up'),
             onPressed: () async {
               await pruneVersionsDialog(context);
             },
@@ -38,10 +42,10 @@ class HomeScreen extends HookWidget {
       ],
       child: Scrollbar(
         child: ListView.separated(
-          itemCount: list.length,
+          itemCount: installedList.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
-            return VersionInstalledItem(list[index]);
+            return VersionInstalledItem(installedList[index]);
           },
         ),
       ),

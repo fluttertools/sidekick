@@ -5,42 +5,56 @@ import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:sidekick/components/atoms/blur_background.dart';
 import 'package:sidekick/components/organisms/search_results_list.dart';
 import 'package:sidekick/hooks/floating_search_bar_controller.dart';
+import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/providers/search_results_provider.dart';
 
 class SearchBar extends HookWidget {
-  final bool showSearch;
-  final Function(bool) onFocusChanged;
+  // final bool showSearch;
+  // final Function(bool) onFocusChanged;
   const SearchBar({
     Key key,
-    @required this.onFocusChanged,
-    @required this.showSearch,
+    // @required this.onFocusChanged,
+    // @required this.showSearch,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final queryProvider = useProvider(searchQueryProvider);
+    final currentRoute = useProvider(navigationProvider.state);
     final results = useProvider(searchResultsProvider);
     final isLoading = useState(false);
     final controller = useFloatingSearchBarController();
+    final showSearch = useState(false);
 
-    // ignore: missing_return
-    useEffect(() {
-      if (showSearch) {
+    useValueChanged(currentRoute, (_, __) {
+      showSearch.value = currentRoute == NavigationRoutes.searchScreen;
+    });
+
+    useValueChanged(showSearch.value, (_, __) {
+      if (showSearch.value) {
         controller.open();
       } else {
         controller.clear();
         controller.close();
       }
-    }, [showSearch]);
+    });
+
+    // ignore: avoid_positional_boolean_parameters
+    void onFocusChanged(bool focus) {
+      if (!focus) {
+        context.read(navigationProvider).goBack();
+      }
+    }
 
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 250),
-      crossFadeState:
-          showSearch ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+      crossFadeState: showSearch.value
+          ? CrossFadeState.showSecond
+          : CrossFadeState.showFirst,
       firstChild: const SizedBox(height: 0),
       secondChild: Container(
         constraints: BoxConstraints(
-          maxHeight: showSearch ? MediaQuery.of(context).size.height : 0,
+          maxHeight: showSearch.value ? MediaQuery.of(context).size.height : 0,
         ),
         child: Stack(
           fit: StackFit.expand,
@@ -58,6 +72,7 @@ class SearchBar extends HookWidget {
               transitionDuration: const Duration(milliseconds: 300),
               transitionCurve: Curves.easeInOut,
               margins: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+
               physics: const BouncingScrollPhysics(),
               debounceDelay: const Duration(milliseconds: 200),
               maxWidth: MediaQuery.of(context).size.width / 1.5,

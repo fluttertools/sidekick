@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:sidekick/components/atoms/loading_indicator.dart';
+import 'package:sidekick/components/atoms/refresh_button.dart';
 import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_projects.dart';
 import 'package:sidekick/components/molecules/project_item.dart';
-import 'package:sidekick/providers/flutter_projects_provider.dart';
+import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
@@ -33,36 +32,38 @@ class ProjectsScreen extends HookWidget {
       return;
     }, [projects.list]);
 
-    if (projects.loading) {
-      return const Center(
-        child: LoadingIndicator(),
-      );
-    }
-
-    if (filteredProjects.value.isEmpty) {
+    if (filteredProjects.value.isEmpty && !projects.loading) {
       return const EmptyProjects();
     }
 
-    return FvmScreen(
-      title: 'Apps',
+    void onRefresh() async {
+      await context.read(projectsProvider).reloadAll(withDelay: true);
+      notify('Apps Refreshed');
+    }
+
+    return Screen(
+      title: 'Projects',
+      processing: projects.loading,
       actions: [
-        TextButton.icon(
-          label: const Caption('Refresh'),
-          icon: const Icon(MdiIcons.refresh, size: 20),
-          onPressed: () async {
-            await context.read(projectsProvider).scan();
-            notify('Apps Refreshed');
-          },
+        Caption('${projects.list.length} Projects'),
+        const SizedBox(width: 20),
+        RefreshButton(
+          refreshing: projects.loading,
+          onPressed: onRefresh,
         ),
       ],
       child: Scrollbar(
         child: Padding(
-          padding: const EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(left: 10),
           child: ResponsiveGridList(
               desiredItemWidth: 290,
-              minSpacing: 10,
+              minSpacing: 0,
               children: filteredProjects.value.map((project) {
-                return ProjectItem(project, key: Key(project.projectDir.path));
+                return Padding(
+                  padding: const EdgeInsets.only(top: 10, right: 10),
+                  child:
+                      ProjectItem(project, key: Key(project.projectDir.path)),
+                );
               }).toList()),
         ),
       ),

@@ -48,6 +48,10 @@ class PackageItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
+                        Caption('${package.count.toString()} projects'),
+                        const SizedBox(width: 10),
+                        const Text('·'),
+                        const SizedBox(width: 10),
                         Caption(package.version),
                         const SizedBox(width: 10),
                         const Text('·'),

@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/nav_button.dart';
 import 'package:sidekick/components/atoms/shortcuts.dart';
+import 'package:sidekick/components/atoms/top_app_bar.dart';
 import 'package:sidekick/components/organisms/app_bottom_bar.dart';
 import 'package:sidekick/components/organisms/info_drawer.dart';
 import 'package:sidekick/components/organisms/search_bar.dart';
@@ -16,7 +17,6 @@ import 'package:sidekick/screens/explore_screen.dart';
 import 'package:sidekick/screens/home_screen.dart';
 import 'package:sidekick/screens/packages_screen.dart';
 import 'package:sidekick/screens/projects_screen.dart';
-import 'package:sidekick/screens/settings_screen.dart';
 import 'package:sidekick/utils/layout_size.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -26,7 +26,6 @@ final pages = [
   ProjectsScreen(key: UniqueKey()),
   ExploreScreen(key: UniqueKey()),
   PackagesScreen(key: UniqueKey()),
-  SettingsScreen(key: UniqueKey()),
 ];
 
 class AppShell extends HookWidget {
@@ -40,23 +39,10 @@ class AppShell extends HookWidget {
     final selectedInfo = useProvider(selectedInfoProvider.state);
 
     final selectedIndex = useState(0);
-    final showSearch = useState(false);
 
-    final focusNode = useFocusNode();
-
-    void handleIndexShortcut(NavigationRoutes route) {
-      // TODO: Remove this workaround for keyboard shorcut access search
-      if (route == NavigationRoutes.searchScreen) {
-        showSearch.value = true;
-      }
-      navigation.goTo(route);
-    }
-
-    // Set current index or search based on route change
     useValueChanged(currentRoute, (_, __) {
-      if (currentRoute == NavigationRoutes.searchScreen) {
-        showSearch.value = true;
-      } else {
+      // Do not set index if its search
+      if (currentRoute != NavigationRoutes.searchScreen) {
         selectedIndex.value = currentRoute.index;
       }
     });
@@ -84,96 +70,77 @@ class AppShell extends HookWidget {
     }, [selectedInfo, LayoutSize.size]);
 
     return KBShortcutManager(
-      onRouteShortcut: handleIndexShortcut,
-      focusNode: focusNode,
       child: Scaffold(
         key: _scaffoldKey,
-        endDrawer: !LayoutSize.isLarge ? const InfoDrawer() : Container(),
-        bottomNavigationBar: const AppBottomBar(),
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Container(
-              child: Row(
-                children: <Widget>[
-                  NavigationRail(
-                    leading: const SizedBox(height: 10),
-                    selectedIndex: selectedIndex.value,
-                    minWidth: kNavigationWidth,
-                    minExtendedWidth: kNavigationWidthExtended,
-                    extended: !LayoutSize.isSmall,
-                    onDestinationSelected: (index) {
-                      // If its search
-                      if (index == 5) {
-                        showSearch.value = true;
-                      } else {
+            Scaffold(
+              endDrawer: !LayoutSize.isLarge ? const InfoDrawer() : Container(),
+              appBar: const TopAppBar(),
+              bottomNavigationBar: const AppBottomBar(),
+              body: Container(
+                child: Row(
+                  children: <Widget>[
+                    NavigationRail(
+                      selectedIndex: selectedIndex.value,
+                      minWidth: kNavigationWidth,
+                      minExtendedWidth: kNavigationWidthExtended,
+                      extended: !LayoutSize.isSmall,
+                      onDestinationSelected: (index) {
                         navigation.goTo(NavigationRoutes.values[index]);
-                      }
-                    },
-                    labelType: NavigationRailLabelType.none,
-                    destinations: [
-                      NavButton(
-                        label: 'Dashboard',
-                        iconData: Icons.category,
-                      ),
-                      NavButton(
-                        label: 'Projects',
-                        iconData: MdiIcons.folderMultiple,
-                      ),
-                      NavButton(
-                        label: 'Explore',
-                        iconData: Icons.explore,
-                      ),
-                      NavButton(
-                        label: 'Packages',
-                        iconData: MdiIcons.package,
-                      ),
-                      NavButton(
-                        label: 'Settings',
-                        iconData: Icons.settings,
-                      ),
-                      NavButton(label: 'Search', iconData: Icons.search),
-                    ],
-                  ),
-                  const VerticalDivider(thickness: 1, width: 1),
-                  // This is the main content.
-                  Expanded(
-                    child: PageTransitionSwitcher(
-                      duration: const Duration(milliseconds: 250),
-                      reverse: selectedIndex.value <
-                          (navigation.previous.index ?? 0),
-                      child: pages[selectedIndex.value],
-                      transitionBuilder: (
-                        child,
-                        animation,
-                        secondaryAnimation,
-                      ) {
-                        return SharedAxisTransition(
-                          fillColor: Colors.transparent,
-                          child: child,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          transitionType: SharedAxisTransitionType.vertical,
-                        );
                       },
+                      destinations: [
+                        NavButton(
+                          label: 'Dashboard',
+                          iconData: Icons.category,
+                        ),
+                        NavButton(
+                          label: 'Projects',
+                          iconData: MdiIcons.folderMultiple,
+                        ),
+                        NavButton(
+                          label: 'Explore',
+                          iconData: Icons.explore,
+                        ),
+                        NavButton(
+                          label: 'Packages',
+                          iconData: MdiIcons.package,
+                        ),
+                      ],
                     ),
-                  ),
-                  LayoutSize.isLarge
-                      ? const VerticalDivider(width: 0)
-                      : Container(),
-                  LayoutSize.isLarge ? const InfoDrawer() : Container()
-                ],
+                    const VerticalDivider(thickness: 1, width: 1),
+                    // This is the main content.
+                    Expanded(
+                      child: PageTransitionSwitcher(
+                        duration: const Duration(milliseconds: 250),
+                        reverse: selectedIndex.value <
+                            (navigation.previous.index ?? 0),
+                        child: pages[selectedIndex.value],
+                        transitionBuilder: (
+                          child,
+                          animation,
+                          secondaryAnimation,
+                        ) {
+                          return SharedAxisTransition(
+                            fillColor: Colors.transparent,
+                            child: child,
+                            animation: animation,
+                            secondaryAnimation: secondaryAnimation,
+                            transitionType: SharedAxisTransitionType.vertical,
+                          );
+                        },
+                      ),
+                    ),
+                    LayoutSize.isLarge
+                        ? const VerticalDivider(width: 0)
+                        : Container(),
+                    LayoutSize.isLarge ? const InfoDrawer() : Container()
+                  ],
+                ),
               ),
             ),
-            SearchBar(
-              showSearch: showSearch.value,
-              onFocusChanged: (focus) async {
-                // focusNode.requestFocus();
-                if (showSearch.value != focus) {
-                  showSearch.value = focus;
-                }
-              },
-            ),
+            const SearchBar(),
           ],
         ),
       ),

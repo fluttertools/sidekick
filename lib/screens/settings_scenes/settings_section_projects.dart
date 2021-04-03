@@ -47,9 +47,9 @@ class SettingsSectionProjects extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text('Choose'),
-                      const Icon(MdiIcons.menuDown)
+                    children: const [
+                      Text('Choose'),
+                      Icon(MdiIcons.menuDown),
                     ],
                   ),
                 ),

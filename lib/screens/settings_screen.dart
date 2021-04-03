@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/screens/settings_scenes/settings_section_flutter.dart';
 import 'package:sidekick/screens/settings_scenes/settings_section_fvm.dart';
@@ -36,11 +35,6 @@ class SettingsScreen extends HookWidget {
       currentSection.value = idx;
       controller.jumpToPage(idx);
     }
-    // showMaterialModalBottomSheet(
-    //   enableDrag: false,
-    //   context: context,
-    //   builder: (context) => const SettingsScreen(),
-    // );
 
     Future<void> handleSave() async {
       try {
@@ -55,17 +49,19 @@ class SettingsScreen extends HookWidget {
       return Container();
     }
 
-    return FvmScreen(
-      title: 'Settings',
-      actions: [
-        // IconButton(
-        //   icon: const Icon(Icons.close),
-        //   onPressed: () {
-        //     Navigator.of(context).pop();
-        //   },
-        // )
-      ],
-      child: Container(
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
+      body: Container(
         child: Row(
           children: [
             const SizedBox(width: 50),
@@ -85,7 +81,7 @@ class SettingsScreen extends HookWidget {
                           section,
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
-                        selectedTileColor: Theme.of(context).focusColor,
+                        selectedTileColor: Theme.of(context).hoverColor,
                         selected: currentSection.value == idx,
                         onTap: () => changeSection(idx),
                       );
