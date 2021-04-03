@@ -11,7 +11,6 @@ class SidekickSettings {
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
   String themeMode;
-  bool flutterAnalytics;
 
   SidekickSettings({
     this.flutterProjectsDir = const [],
@@ -19,7 +18,6 @@ class SidekickSettings {
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
-    this.flutterAnalytics = false,
   });
 
   factory SidekickSettings.fromJson(String str) =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/get_theme_mode.dart';
@@ -16,6 +17,27 @@ class SettingsSectionGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Dialog to confirm theme change
+    Future<void> changeThemeDialog() {
+      return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Changing theme will close your settings screen"),
+          buttonPadding: const EdgeInsets.all(15),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
+      );
+    }
+
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
@@ -25,8 +47,11 @@ class SettingsSectionGeneral extends StatelessWidget {
           SettingsTile.switchTile(
             title: "Advanced Mode",
             subtitle: 'Enables more advanced and experimental functionality.',
-            leading: const Icon(Icons.info_outline_rounded),
+            leading: const Icon(MdiIcons.fire),
             switchValue: settings.sidekick.advancedMode,
+            titleTextStyle: Theme.of(context).textTheme.bodyText1,
+            switchActiveColor: Theme.of(context).accentColor,
+            subtitleTextStyle: Theme.of(context).textTheme.caption,
             onToggle: (value) {
               settings.sidekick.advancedMode = value;
               onSave();
@@ -54,9 +79,12 @@ class SettingsSectionGeneral extends StatelessWidget {
                   value: SettingsThemeMode.dark,
                 ),
               ],
-              onChanged: (themeMode) {
+              onChanged: (themeMode) async {
                 settings.sidekick.themeMode = themeMode;
                 onSave();
+                await changeThemeDialog();
+
+                Navigator.of(context).pop();
               },
             ),
           ),

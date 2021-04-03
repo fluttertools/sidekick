@@ -27,6 +27,7 @@ class SettingsScreen extends HookWidget {
   Widget build(BuildContext context) {
     final provider = useProvider(settingsProvider);
     final settings = useProvider(settingsProvider.state);
+
     final currentSection = useState(0);
 
     final controller = usePageController(initialPage: 0);
@@ -34,6 +35,10 @@ class SettingsScreen extends HookWidget {
     void changeSection(int idx) {
       currentSection.value = idx;
       controller.jumpToPage(idx);
+    }
+
+    if (settings.sidekick == null) {
+      return Container();
     }
 
     Future<void> handleSave() async {
@@ -45,12 +50,11 @@ class SettingsScreen extends HookWidget {
       }
     }
 
-    if (settings.sidekick == null) {
-      return Container();
-    }
-
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -90,7 +94,7 @@ class SettingsScreen extends HookWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 60),
             Expanded(
               flex: 3,
               child: PageView(

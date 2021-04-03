@@ -38,7 +38,7 @@ class ProjectsScreen extends HookWidget {
 
     void onRefresh() async {
       await context.read(projectsProvider).reloadAll(withDelay: true);
-      notify('Apps Refreshed');
+      notify('Projects Refreshed');
     }
 
     return Screen(

@@ -7,16 +7,47 @@ import 'package:state_notifier/state_notifier.dart';
 
 class FlutterSettings {
   bool analytics;
+  bool macos;
+  bool linux;
+  bool windows;
+  bool web;
+  FlutterSettings({
+    this.analytics = true,
+    this.linux = false,
+    this.macos = false,
+    this.windows = false,
+    this.web = false,
+  });
+
+  factory FlutterSettings.fromMap(Map<String, bool> map) {
+    return FlutterSettings(
+      analytics: map['analytics'],
+      macos: map['macos'],
+      windows: map['windows'],
+      linux: map['linux'],
+      web: map['web'],
+    );
+  }
+  Map<String, bool> toMap() {
+    return {
+      "analytics": analytics,
+      "macos": macos,
+      "linux": linux,
+      "windows": windows,
+      "web": web,
+    };
+  }
 }
 
 class Settings {
   SidekickSettings sidekick;
   FvmSettings fvm;
-  bool flutterAnalyticsEnabled;
+  FlutterSettings flutter;
+
   Settings({
     this.sidekick,
     this.fvm,
-    this.flutterAnalyticsEnabled,
+    this.flutter,
   }) {
     if (fvm == null) {
       fvm = FvmSettings();
@@ -24,12 +55,16 @@ class Settings {
     if (sidekick == null) {
       sidekick = SidekickSettings();
     }
+
+    if (flutter == null) {
+      flutter = FlutterSettings();
+    }
   }
 
   Settings copy() => Settings(
         sidekick: SidekickSettings.fromJson(sidekick.toJson()),
         fvm: FvmSettings.fromJson(fvm.toJson()),
-        flutterAnalyticsEnabled: flutterAnalyticsEnabled,
+        flutter: FlutterSettings.fromMap(flutter.toMap()),
       );
 }
 
@@ -69,13 +104,12 @@ class SettingsProvider extends StateNotifier<Settings> {
     }
   }
 
-  Future<void> _checkAnalyticsChanges(bool flutterAnalyticsEnabled) async {
-    final changed =
-        flutterAnalyticsEnabled != prevState.flutterAnalyticsEnabled;
+  Future<void> _checkAnalyticsChanges(FlutterSettings settings) async {
+    final changed = settings != prevState.flutter;
     // Return if nothing changed
     if (changed) {
       // Toggle analytics
-      await FVMClient.setFlutterAnalytics(flutterAnalyticsEnabled);
+      await FVMClient.setFlutterConfig(settings.toMap());
     }
   }
 
@@ -91,12 +125,12 @@ class SettingsProvider extends StateNotifier<Settings> {
   Future<void> _loadState() async {
     final fvmSettings = await FVMClient.readSettings();
     final appSettings = SettingsService.read();
-    final flutterAnalyticsEnabled = await FVMClient.checkFlutterAnalytics();
+    final flutterSettings = await FVMClient.getFlutterConfig();
     state = Settings(
       // Set state
       sidekick: appSettings,
       fvm: fvmSettings,
-      flutterAnalyticsEnabled: flutterAnalyticsEnabled,
+      flutter: FlutterSettings.fromMap(flutterSettings),
     );
 
     /// First run if it's null set
@@ -113,7 +147,7 @@ class SettingsProvider extends StateNotifier<Settings> {
       state = state.copy();
       await _checkFvmSettingsChanges(settings.fvm);
       await _checkAppSettingsChanges(settings.sidekick);
-      await _checkAnalyticsChanges(settings.flutterAnalyticsEnabled);
+      await _checkAnalyticsChanges(settings.flutter);
       // Set previous state only after success
       prevState = state.copy();
     } on Exception {

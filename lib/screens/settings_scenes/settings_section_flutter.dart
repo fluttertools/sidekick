@@ -21,18 +21,75 @@ class SettingsSectionFlutter extends StatelessWidget {
         children: [
           Text('Flutter', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile.switchTile(
-            title: 'Disable tracking',
-            subtitle: "This will disable Google's crash reporting"
-                "and analytics, when installing a new version",
-            leading: const Icon(MdiIcons.bug),
-            switchActiveColor: Theme.of(context).accentColor,
-            switchValue: settings.flutterAnalyticsEnabled ?? false,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            onToggle: (value) {
-              settings.flutterAnalyticsEnabled = value;
-              onSave();
-            },
+          SettingsSection(
+            title: 'Analytics',
+            tiles: [
+              SettingsTile.switchTile(
+                title: 'Disable tracking',
+                subtitle: "This will disable Flutter analytics",
+                leading: const Icon(MdiIcons.googleAnalytics),
+                switchActiveColor: Theme.of(context).accentColor,
+                switchValue: !settings.flutter.analytics,
+                subtitleTextStyle: Theme.of(context).textTheme.caption,
+                onToggle: (value) {
+                  settings.flutter.analytics = !value;
+                  onSave();
+                },
+              ),
+            ],
+          ),
+          SettingsSection(
+            title: 'Platforms',
+            tiles: [
+              SettingsTile.switchTile(
+                title: 'Web',
+                leading: const Icon(MdiIcons.googleChrome),
+                titleTextStyle: Theme.of(context).textTheme.bodyText1,
+                switchActiveColor: Theme.of(context).accentColor,
+                subtitleTextStyle: Theme.of(context).textTheme.caption,
+                switchValue: settings.flutter.web,
+                onToggle: (value) {
+                  settings.flutter.web = value;
+                  onSave();
+                },
+              ),
+              SettingsTile.switchTile(
+                title: 'MacOS',
+                leading: const Icon(MdiIcons.apple),
+                titleTextStyle: Theme.of(context).textTheme.bodyText1,
+                switchActiveColor: Theme.of(context).accentColor,
+                switchValue: settings.flutter.macos,
+                subtitleTextStyle: Theme.of(context).textTheme.caption,
+                onToggle: (value) {
+                  settings.flutter.macos = value;
+                  onSave();
+                },
+              ),
+              SettingsTile.switchTile(
+                title: 'Windows',
+                leading: const Icon(MdiIcons.microsoftWindows),
+                titleTextStyle: Theme.of(context).textTheme.bodyText1,
+                switchActiveColor: Theme.of(context).accentColor,
+                switchValue: settings.flutter.windows,
+                subtitleTextStyle: Theme.of(context).textTheme.caption,
+                onToggle: (value) {
+                  settings.flutter.windows = value;
+                  onSave();
+                },
+              ),
+              SettingsTile.switchTile(
+                title: 'Linux',
+                leading: const Icon(MdiIcons.linux),
+                titleTextStyle: Theme.of(context).textTheme.bodyText1,
+                switchActiveColor: Theme.of(context).accentColor,
+                switchValue: settings.flutter.linux,
+                subtitleTextStyle: Theme.of(context).textTheme.caption,
+                onToggle: (value) {
+                  settings.flutter.linux = value;
+                  onSave();
+                },
+              ),
+            ],
           ),
         ],
       ),
