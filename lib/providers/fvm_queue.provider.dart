@@ -94,31 +94,34 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     state = state.update();
 
     // Run through actions
-    switch (item.action) {
-      case QueueAction.install:
-        await FVMClient.install(item.name);
-        notify('Version ${item.name} has been installed');
-        break;
-      case QueueAction.setupOnly:
-        await FVMClient.setup(item.name);
-        await notify('Version ${item.name} has finished setup.');
-        notify('Version ${item.name} has finished setup');
-        break;
-      case QueueAction.installAndSetup:
-        await FVMClient.install(item.name);
-        await FVMClient.setup(item.name);
-        await notify('Version ${item.name} has been installed');
-        break;
-      case QueueAction.channelUpgrade:
-        await FVMClient.upgradeChannel(item.name);
-        notify('Channel ${item.name} has been upgraded');
-        break;
-      case QueueAction.remove:
-        await FVMClient.remove(item.name);
-        notify('Version ${item.name} has been removed');
-        break;
-      default:
-        break;
+    try {
+      switch (item.action) {
+        case QueueAction.install:
+          await FVMClient.install(item.name);
+          notify('Version ${item.name} has been installed');
+          break;
+        case QueueAction.setupOnly:
+          await FVMClient.setup(item.name);
+          notify('Version ${item.name} has finished setup');
+          break;
+        case QueueAction.installAndSetup:
+          await FVMClient.install(item.name);
+          await FVMClient.setup(item.name);
+          await notify('Version ${item.name} has been installed');
+          break;
+        case QueueAction.channelUpgrade:
+          await FVMClient.upgradeChannel(item.name);
+          notify('Channel ${item.name} has been upgraded');
+          break;
+        case QueueAction.remove:
+          await FVMClient.remove(item.name);
+          notify('Version ${item.name} has been removed');
+          break;
+        default:
+          break;
+      }
+    } on Exception catch (e) {
+      notifyError(e.toString());
     }
     // Check if action is to setup only
 
