@@ -1,10 +1,9 @@
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/channels.provider.dart';
+import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:sidekick/providers/projects_provider.dart';
-import 'package:sidekick/providers/releases.provider.dart';
 
 enum SearchResultGroup { channel, project, stable, beta, dev }
 
@@ -12,9 +11,9 @@ class SearchResults {
   final List<Project> projects;
   final List<ChannelDto> channels;
   // Releases
-  final List<ReleaseDto> stableReleases;
-  final List<ReleaseDto> betaReleases;
-  final List<ReleaseDto> devReleases;
+  final List<VersionDto> stableReleases;
+  final List<VersionDto> betaReleases;
+  final List<VersionDto> devReleases;
 
   SearchResults({
     this.projects = const [],
@@ -38,8 +37,7 @@ final searchQueryProvider = StateProvider<String>((_) => null);
 // ignore: top_level_function_literal_block
 final searchResultsProvider = Provider((ref) {
   final query = ref.watch(searchQueryProvider).state;
-  final channels = ref.watch(channelsProvider);
-  final releases = ref.watch(releasesProvider);
+  final releaseState = ref.watch(releasesStateProvider);
 
   final projects = ref.watch(projectsProvider.state);
 
@@ -53,9 +51,9 @@ final searchResultsProvider = Provider((ref) {
 
   final projectResults = <Project>[];
   final channelResults = <ChannelDto>[];
-  final stableReleaseResults = <ReleaseDto>[];
-  final betaReleaseResults = <ReleaseDto>[];
-  final devReleaseResults = <ReleaseDto>[];
+  final stableReleaseResults = <VersionDto>[];
+  final betaReleaseResults = <VersionDto>[];
+  final devReleaseResults = <VersionDto>[];
 
   // We look for multiple terms, make sure result only shows up once
   final uniques = <String, bool>{};
@@ -89,7 +87,7 @@ final searchResultsProvider = Provider((ref) {
     });
 
     // ignore: avoid_function_literals_in_foreach_calls
-    releases.all.forEach((release) {
+    releaseState.releases.forEach((release) {
       // Get channel name to pass to map
       final channelName = release.release.channelName;
 
@@ -102,6 +100,7 @@ final searchResultsProvider = Provider((ref) {
         uniques[release.name] = true;
 
         // Map releases to channel groups
+        // TODO: remove this logic and use filterable
         switch (release.release.channel) {
           case Channel.stable:
             stableReleaseResults.add(release);
@@ -119,7 +118,7 @@ final searchResultsProvider = Provider((ref) {
     });
 
     // ignore: avoid_function_literals_in_foreach_calls
-    channels.all.forEach((channel) {
+    releaseState.channels.forEach((channel) {
       // Only unique results
       if (uniques[channel.name] == true) return;
 

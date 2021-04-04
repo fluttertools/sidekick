@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 
 void showDeleteDialog(
   BuildContext context, {
-  VersionDto item,
+  ReleaseDto item,
   @required Function onDelete,
 }) {
   // flutter defined function

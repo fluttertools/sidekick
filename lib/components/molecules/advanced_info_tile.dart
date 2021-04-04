@@ -3,11 +3,11 @@ import 'package:sidekick/components/atoms/copy_button.dart';
 import 'package:sidekick/components/atoms/group_tile.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/utils/open_link.dart';
 
 class AdvancedInfoTile extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
   const AdvancedInfoTile(this.version, {Key key}) : super(key: key);
 
   @override

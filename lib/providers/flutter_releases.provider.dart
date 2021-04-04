@@ -10,28 +10,32 @@ import 'package:sidekick/providers/fvm_cache.provider.dart';
 class AppReleasesState {
   MasterDto master;
   List<ChannelDto> channels;
-  List<ChannelDto> cachedChannels;
-  List<ReleaseDto> versions;
-  List<ReleaseDto> cachedVersion;
-  Map<String, VersionDto> allMap;
+  List<VersionDto> releases;
+  Map<String, ReleaseDto> allMap;
   AppReleasesState({
     this.channels,
-    this.cachedChannels,
-    this.versions,
-    this.cachedVersion,
+    this.releases,
     this.master,
     this.allMap,
   }) {
     channels = <ChannelDto>[];
-    cachedChannels = <ChannelDto>[];
-    versions = <ReleaseDto>[];
-    cachedVersion = <ReleaseDto>[];
+    releases = <VersionDto>[];
     allMap = {};
   }
 
   /// Returns all releases and channels
-  List<VersionDto> get all {
-    return [master, ...channels, ...versions];
+  List<ReleaseDto> get all {
+    final versions = [...channels, ...releases];
+    if (master != null) {
+      versions.insert(0, master);
+    }
+
+    return versions;
+  }
+
+  /// Returns all releases and channels that are cached
+  List<ReleaseDto> get allCached {
+    return all.where((version) => version.isCached).toList();
   }
 }
 
@@ -89,9 +93,6 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     );
 
     releasesState.channels.add(channelDto);
-    if (channelDto.isCached) {
-      releasesState.cachedChannels.add(channelDto);
-    }
   }
 
   for (var item in flutterReleases) {
@@ -101,27 +102,24 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     final cacheVersion = installedVersions.getVersion(item.version);
     final sdkVersion = FVMClient.getSdkVersionSync(cacheVersion);
 
-    final version = ReleaseDto(
+    final version = VersionDto(
       name: item.version,
       release: item,
       cache: cacheVersion,
       needSetup: sdkVersion == null,
     );
 
-    releasesState.versions.add(version);
-    if (version.isCached) {
-      releasesState.cachedVersion.add(version);
-    }
+    releasesState.releases.add(version);
   }
 
-  final allVersions = [...releasesState.versions, ...releasesState.channels];
+  final allVersions = [...releasesState.releases, ...releasesState.channels];
   releasesState.allMap = {for (var v in allVersions) v.name: v};
 
   return releasesState;
 });
 
 final getVersionProvider =
-    Provider.family<VersionDto, String>((ref, versionName) {
+    Provider.family<ReleaseDto, String>((ref, versionName) {
   final state = ref.watch(releasesStateProvider);
   return state.allMap[versionName];
 });

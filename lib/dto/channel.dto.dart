@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 
-class ChannelDto extends VersionDto {
+class ChannelDto extends ReleaseDto {
   /// Latest version of the channel
   Release currentRelease;
   final String sdkVersion;

@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_cache.provider.dart';
 import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
@@ -30,7 +30,7 @@ class FvmQueue {
 }
 
 class QueueItem {
-  final VersionDto version;
+  final ReleaseDto version;
   final QueueAction action;
   QueueItem({this.version, this.action});
 }
@@ -58,7 +58,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     return ref.read(settingsProvider.state).fvm;
   }
 
-  void install(VersionDto version, {bool skipSetup}) async {
+  void install(ReleaseDto version, {bool skipSetup}) async {
     skipSetup ??= settings.skipSetup;
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
@@ -67,17 +67,17 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
-  void setup(VersionDto version) {
+  void setup(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.setupOnly);
     runQueue();
   }
 
-  void upgrade(VersionDto version) {
+  void upgrade(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.channelUpgrade);
     runQueue();
   }
 
-  void remove(VersionDto version) {
+  void remove(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.remove);
     runQueue();
   }
@@ -143,7 +143,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     await notify('Version $version pinned to ${project.name}');
   }
 
-  Future<void> _addToQueue(VersionDto version, {QueueAction action}) async {
+  Future<void> _addToQueue(ReleaseDto version, {QueueAction action}) async {
     state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
   }

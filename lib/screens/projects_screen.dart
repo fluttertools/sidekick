@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:sidekick/components/atoms/checkbox.dart';
 import 'package:sidekick/components/atoms/refresh_button.dart';
 import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/atoms/typography.dart';
@@ -20,10 +21,8 @@ class ProjectsScreen extends HookWidget {
     final filteredProjects = useState(projects.list);
     final settings = useProvider(settingsProvider.state);
 
-    final appSettings = settings.sidekick;
-
     useEffect(() {
-      if (appSettings.onlyProjectsWithFvm) {
+      if (settings.sidekick.onlyProjectsWithFvm) {
         filteredProjects.value =
             projects.list.where((p) => p.pinnedVersion != null).toList();
       } else {
@@ -47,6 +46,18 @@ class ProjectsScreen extends HookWidget {
       actions: [
         Caption('${projects.list.length} Projects'),
         const SizedBox(width: 20),
+        Tooltip(
+          message: 'Only display projects with FVM configured',
+          child: CheckButton(
+            label: 'FVM only',
+            value: settings.sidekick.onlyProjectsWithFvm,
+            onChanged: (value) async {
+              settings.sidekick.onlyProjectsWithFvm = value;
+              await context.read(settingsProvider).save(settings);
+            },
+          ),
+        ),
+        const SizedBox(width: 20),
         RefreshButton(
           refreshing: projects.loading,
           onPressed: onRefresh,
@@ -61,8 +72,10 @@ class ProjectsScreen extends HookWidget {
               children: filteredProjects.value.map((project) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 10, right: 10),
-                  child:
-                      ProjectItem(project, key: Key(project.projectDir.path)),
+                  child: ProjectItem(
+                    project,
+                    key: Key(project.projectDir.path),
+                  ),
                 );
               }).toList()),
         ),

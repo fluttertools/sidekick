@@ -8,7 +8,6 @@ import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
 import 'package:sidekick/utils/open_link.dart';
 import 'package:truncate/truncate.dart';
 
@@ -18,7 +17,8 @@ class ProjectItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final installedVersions = useProvider(installedVersionsProvider);
+    final cachedVersions = useProvider(releasesStateProvider).allCached;
+
     final version = useProvider(getVersionProvider(project.pinnedVersion));
     final description = project.pubspec.description?.valueOr(() => '');
 
@@ -77,7 +77,7 @@ class ProjectItem extends HookWidget {
                         );
                       },
                       child: Text(
-                        truncate(project.projectDir.path, 25,
+                        truncate(project.projectDir.path, 20,
                             position: TruncatePosition.middle),
                         style: const TextStyle(fontSize: 12),
                       ),
@@ -89,7 +89,7 @@ class ProjectItem extends HookWidget {
                       : const SizedBox(height: 0, width: 0),
                   ProjectVersionSelect(
                     project: project,
-                    versions: installedVersions,
+                    versions: cachedVersions ?? [],
                   ),
                 ],
               )

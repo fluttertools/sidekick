@@ -5,11 +5,11 @@ import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/components/molecules/version_installed_status_master.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/master.dto.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 class VersionInstalledStatus extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
 
   const VersionInstalledStatus(this.version, {Key key}) : super(key: key);
 

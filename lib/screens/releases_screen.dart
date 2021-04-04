@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
-import 'package:sidekick/providers/filterable_versions.provider.dart';
+import 'package:sidekick/providers/filterable_releases.provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/extensions.dart';
 
@@ -13,7 +13,7 @@ class ReleasesScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final filter = useProvider(filterProvider);
-    final versions = useProvider(filterableVersionsProvider);
+    final versions = useProvider(filterableReleasesProvider);
 
     final settings = useProvider(settingsProvider.state);
 

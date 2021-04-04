@@ -36,7 +36,7 @@ Filter filterFromName(String name) {
 final filterProvider = StateProvider<Filter>((_) => Filter.all);
 
 // ignore: top_level_function_literal_block
-final filterableVersionsProvider = Provider((ref) {
+final filterableReleasesProvider = Provider((ref) {
   final filter = ref.watch(filterProvider).state;
   final releases = ref.watch(releasesStateProvider);
 

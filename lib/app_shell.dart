@@ -55,29 +55,24 @@ class AppShell extends HookWidget {
       final hasInfo = selectedInfo.version != null;
 
       // Open drawer if not large layout and its not open
-      if (hasInfo && !isOpen && !LayoutSize.isLarge) {
+      if (hasInfo && !isOpen) {
         SchedulerBinding.instance.addPostFrameCallback((_) {
           _scaffoldKey.currentState.openEndDrawer();
         });
       }
 
       // Close drawer layout if its large and its already open
-      if (LayoutSize.isLarge && isOpen) {
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          Navigator.pop(context);
-        });
-      }
-    }, [selectedInfo, LayoutSize.size]);
+    }, [selectedInfo]);
 
     return KBShortcutManager(
       child: Scaffold(
-        key: _scaffoldKey,
         body: Stack(
           fit: StackFit.expand,
           children: [
             Scaffold(
-              endDrawer: !LayoutSize.isLarge ? const InfoDrawer() : Container(),
+              endDrawer: const InfoDrawer(),
               appBar: const TopAppBar(),
+              key: _scaffoldKey,
               bottomNavigationBar: const AppBottomBar(),
               body: Container(
                 child: Row(
@@ -132,10 +127,6 @@ class AppShell extends HookWidget {
                         },
                       ),
                     ),
-                    LayoutSize.isLarge
-                        ? const VerticalDivider(width: 0)
-                        : Container(),
-                    LayoutSize.isLarge ? const InfoDrawer() : Container()
                   ],
                 ),
               ),

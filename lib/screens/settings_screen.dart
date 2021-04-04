@@ -13,8 +13,8 @@ import 'package:sidekick/utils/utils.dart';
 const sections = ['General', 'Projects', 'FVM', 'Flutter'];
 const sectionIcons = [
   MdiIcons.tune,
-  MdiIcons.folderMultiple,
-  MdiIcons.hammerScrewdriver,
+  MdiIcons.folderSettings,
+  MdiIcons.layers,
   MdiIcons.console
 ];
 

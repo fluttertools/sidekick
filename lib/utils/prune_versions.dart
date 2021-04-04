@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
 import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
 Future<void> pruneVersionsDialog(BuildContext context) async {
-  final toDelete = <VersionDto>[];
-  final list = context.read(installedVersionsProvider);
+  final toDelete = <ReleaseDto>[];
+  final releases = context.read(releasesStateProvider);
 
   final projects = context.read(projectsPerVersionProvider);
-  for (var version in list) {
+  for (var version in releases.allCached) {
     if (projects[version.name] == null) {
       toDelete.add(version);
     }

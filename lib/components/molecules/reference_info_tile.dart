@@ -4,12 +4,12 @@ import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/utils/channel_descriptions.dart';
 import 'package:sidekick/utils/open_link.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
   const ReferenceInfoTile(this.version, {Key key}) : super(key: key);
 
   @override

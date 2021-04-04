@@ -21,22 +21,19 @@ class SettingsSectionFlutter extends StatelessWidget {
         children: [
           Text('Flutter', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsSection(
-            title: 'Analytics',
-            tiles: [
-              SettingsTile.switchTile(
-                title: 'Disable tracking',
-                subtitle: "This will disable Flutter analytics",
-                leading: const Icon(MdiIcons.googleAnalytics),
-                switchActiveColor: Theme.of(context).accentColor,
-                switchValue: !settings.flutter.analytics,
-                subtitleTextStyle: Theme.of(context).textTheme.caption,
-                onToggle: (value) {
-                  settings.flutter.analytics = !value;
-                  onSave();
-                },
-              ),
-            ],
+          SettingsTile.switchTile(
+            title: 'Analytics & Crash Reporting',
+            subtitle: "When a flutter command crashes it attempts"
+                " to send a crash report to Google in order to help"
+                " Google contribute improvements to Flutter over time",
+            leading: const Icon(MdiIcons.bug),
+            switchActiveColor: Theme.of(context).accentColor,
+            switchValue: !settings.flutter.analytics,
+            subtitleTextStyle: Theme.of(context).textTheme.caption,
+            onToggle: (value) {
+              settings.flutter.analytics = !value;
+              onSave();
+            },
           ),
           SettingsSection(
             title: 'Platforms',
