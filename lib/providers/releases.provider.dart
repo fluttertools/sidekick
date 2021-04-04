@@ -48,9 +48,14 @@ ReleasesProviderPayload _mapVersions(List<ReleaseDto> list) {
 }
 
 // ignore: top_level_function_literal_block
-final installedReleasesProvider = Provider((ref) {
+final masterProvider = Provider((ref) {
+  return ref.watch(releasesStateProvider).master;
+});
+
+// ignore: top_level_function_literal_block
+final cachedReleasesProvider = Provider((ref) {
   final state = ref.watch(releasesStateProvider);
-  return _mapVersions(state.installedVersions);
+  return _mapVersions(state.cachedVersion);
 });
 
 // ignore: top_level_function_literal_block

@@ -8,36 +8,42 @@ import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/providers/fvm_cache.provider.dart';
 
 class AppReleasesState {
-  List<ChannelDto> channels;
-  List<ChannelDto> installedChannels;
-  List<ReleaseDto> versions;
-  List<ReleaseDto> installedVersions;
-  Map<String, VersionDto> allVersions;
   MasterDto master;
+  List<ChannelDto> channels;
+  List<ChannelDto> cachedChannels;
+  List<ReleaseDto> versions;
+  List<ReleaseDto> cachedVersion;
+  Map<String, VersionDto> allMap;
   AppReleasesState({
     this.channels,
-    this.installedChannels,
+    this.cachedChannels,
     this.versions,
-    this.installedVersions,
+    this.cachedVersion,
     this.master,
-    this.allVersions,
+    this.allMap,
   }) {
     channels = <ChannelDto>[];
-    installedChannels = <ChannelDto>[];
+    cachedChannels = <ChannelDto>[];
     versions = <ReleaseDto>[];
-    installedVersions = <ReleaseDto>[];
-    allVersions = {};
+    cachedVersion = <ReleaseDto>[];
+    allMap = {};
+  }
+
+  /// Returns all releases and channels
+  List<VersionDto> get all {
+    return [master, ...channels, ...versions];
   }
 }
 
-final flutterReleasesProvider =
-    FutureProvider<FlutterReleases>((_) => FVMClient.getFlutterReleases());
+final _fetchFlutterReleases = FutureProvider<FlutterReleases>(
+  (_) => FVMClient.getFlutterReleases(),
+);
 
 // ignore: top_level_function_literal_block
 final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Filter only version that are valid releases
   var payload = FlutterReleases();
-  ref.watch(flutterReleasesProvider).whenData((value) => payload = value);
+  ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
   final installedVersions = ref.watch(fvmCacheProvider);
 
   // Watch this state change for refresh
@@ -54,12 +60,12 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   }
 
   // Set Master separetely because workflow is very different
-  final masterInstalled = installedVersions.getChannel(kMasterChannel);
-  final masterVersion = FVMClient.getSdkVersionSync(masterInstalled);
+  final masterCache = installedVersions.getChannel(kMasterChannel);
+  final masterVersion = FVMClient.getSdkVersionSync(masterCache);
 
   releasesState.master = MasterDto(
     name: kMasterChannel,
-    isInstalled: masterInstalled != null,
+    cache: masterCache,
     needSetup: masterVersion == null,
     sdkVersion: masterVersion,
   );
@@ -67,14 +73,14 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Loop through available channels NOT including master
   for (var name in kReleaseChannels) {
     final latestRelease = flutterChannels[name];
-    final installedChannel = installedVersions.getChannel(name);
+    final channelCache = installedVersions.getChannel(name);
 
     // Get sdk version
-    final sdkVersion = FVMClient.getSdkVersionSync(installedChannel);
+    final sdkVersion = FVMClient.getSdkVersionSync(channelCache);
 
     final channelDto = ChannelDto(
       name: name,
-      isInstalled: installedChannel != null,
+      cache: channelCache,
       needSetup: sdkVersion == null,
       sdkVersion: sdkVersion,
       // Get version for the channel
@@ -83,8 +89,8 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     );
 
     releasesState.channels.add(channelDto);
-    if (channelDto.isInstalled) {
-      releasesState.installedChannels.add(channelDto);
+    if (channelDto.isCached) {
+      releasesState.cachedChannels.add(channelDto);
     }
   }
 
@@ -92,24 +98,24 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     if (item == null) return null;
 
     // Check if version is found in installed versions
-    final installedVersion = installedVersions.getVersion(item.version);
-    final sdkVersion = FVMClient.getSdkVersionSync(installedVersion);
+    final cacheVersion = installedVersions.getVersion(item.version);
+    final sdkVersion = FVMClient.getSdkVersionSync(cacheVersion);
 
     final version = ReleaseDto(
       name: item.version,
       release: item,
-      isInstalled: installedVersion != null,
+      cache: cacheVersion,
       needSetup: sdkVersion == null,
     );
 
     releasesState.versions.add(version);
-    if (version.isInstalled) {
-      releasesState.installedVersions.add(version);
+    if (version.isCached) {
+      releasesState.cachedVersion.add(version);
     }
   }
 
   final allVersions = [...releasesState.versions, ...releasesState.channels];
-  releasesState.allVersions = {for (var v in allVersions) v.name: v};
+  releasesState.allMap = {for (var v in allVersions) v.name: v};
 
   return releasesState;
 });
@@ -117,5 +123,5 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 final getVersionProvider =
     Provider.family<VersionDto, String>((ref, versionName) {
   final state = ref.watch(releasesStateProvider);
-  return state.allVersions[versionName];
+  return state.allMap[versionName];
 });

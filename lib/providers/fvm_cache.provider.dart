@@ -27,6 +27,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   ProviderReference ref;
   List<CacheVersion> channels;
   List<CacheVersion> versions;
+  List<CacheVersion> all;
 
   StreamSubscription<WatchEvent> directoryWatcher;
   final _debouncer = Debouncer(milliseconds: 20000);
@@ -55,6 +56,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
 
     channels = localVersions.where((item) => item.isChannel).toList();
     versions = localVersions.where((item) => item.isChannel == false).toList();
+    all = [...channels, ...versions];
     _setTotalCacheSize();
   }
 

@@ -9,16 +9,16 @@ class ChannelDto extends VersionDto {
 
   ChannelDto({
     @required String name,
-    @required bool isInstalled,
     @required Release release,
+    @required CacheVersion cache,
     @required needSetup,
     @required this.sdkVersion,
     @required this.currentRelease,
   }) : super(
           name: name,
           release: release,
-          isInstalled: isInstalled,
           needSetup: needSetup,
           isChannel: true,
+          cache: cache,
         );
 }

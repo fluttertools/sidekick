@@ -12,7 +12,7 @@ class CacheInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!version.isInstalled) {
+    if (!version.isCached) {
       return const SizedBox(height: 0);
     }
     return FvmGroupListTile(
@@ -25,8 +25,9 @@ class CacheInfoTile extends StatelessWidget {
         const Divider(height: 0),
         FvmListTile(
           title: const Text('Cache Location'),
-          subtitle: Caption(version.installedDir.path),
-          trailing: CopyButton(version.installedDir.path),
+          subtitle: Caption(version.cache.dir.path),
+          //TODO: Open in directory
+          trailing: CopyButton(version.cache.dir.path),
         ),
       ],
     );

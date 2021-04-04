@@ -9,8 +9,7 @@ import 'package:sidekick/providers/selected_info_provider.dart';
 class VersionItem extends StatelessWidget {
   final VersionDto version;
 
-  VersionItem(this.version)
-      : super(key: Key('${version.name}${version.release.channel}'));
+  const VersionItem(this.version, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -60,5 +60,5 @@ final channelsProvider = Provider((ref) {
 // ignore: top_level_function_literal_block
 final installedChannelsProvider = Provider((ref) {
   final provider = ref.watch(releasesStateProvider);
-  return _mapChannels(provider.installedChannels);
+  return _mapChannels(provider.cachedChannels);
 });

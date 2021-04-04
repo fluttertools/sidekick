@@ -1,24 +1,22 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:fvm/constants.dart';
 import 'package:fvm/fvm.dart';
-import 'package:path/path.dart';
 
 abstract class VersionDto {
   final String name;
-  bool isInstalled;
   Release release;
+  CacheVersion cache;
   bool needSetup;
   bool isChannel;
 
-  /// Directory of the version if its installed
-  Directory installedDir;
   VersionDto({
     @required this.name,
     @required this.release,
-    @required this.isInstalled,
     @required this.needSetup,
+    @required this.cache,
     this.isChannel = false,
-  }) : installedDir = Directory(join(kFvmCacheDir.path, name));
+  });
+
+  bool get isCached {
+    return cache != null;
+  }
 }

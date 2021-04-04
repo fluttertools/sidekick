@@ -69,7 +69,7 @@ class VersionInstalledStatus extends StatelessWidget {
           icon: const Icon(MdiIcons.triangle, size: 15),
           label: Text(version.release?.version),
           onPressed: () {
-            context.read(fvmQueueProvider).upgrade(version.name);
+            context.read(fvmQueueProvider).upgrade(version);
           },
         ),
       ],

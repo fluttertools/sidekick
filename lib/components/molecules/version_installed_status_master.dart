@@ -31,7 +31,7 @@ class VersionInstallStatusMaster extends StatelessWidget {
           child: IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
-              context.read(fvmQueueProvider).upgrade(masterChannel.name);
+              context.read(fvmQueueProvider).upgrade(masterChannel);
             },
           ),
         ),

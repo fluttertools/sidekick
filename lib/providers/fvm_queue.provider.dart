@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
+import 'package:sidekick/dto/version.dto.dart';
 import 'package:sidekick/providers/fvm_cache.provider.dart';
 import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
@@ -29,9 +30,9 @@ class FvmQueue {
 }
 
 class QueueItem {
-  final String name;
+  final VersionDto version;
   final QueueAction action;
-  QueueItem({this.name, this.action});
+  QueueItem({this.version, this.action});
 }
 
 enum QueueAction {
@@ -57,7 +58,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     return ref.read(settingsProvider.state).fvm;
   }
 
-  void install(String version, {bool skipSetup}) async {
+  void install(VersionDto version, {bool skipSetup}) async {
     skipSetup ??= settings.skipSetup;
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
@@ -66,17 +67,17 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
-  void setup(String version) {
+  void setup(VersionDto version) {
     _addToQueue(version, action: QueueAction.setupOnly);
     runQueue();
   }
 
-  void upgrade(String version) {
+  void upgrade(VersionDto version) {
     _addToQueue(version, action: QueueAction.channelUpgrade);
     runQueue();
   }
 
-  void remove(String version) {
+  void remove(VersionDto version) {
     _addToQueue(version, action: QueueAction.remove);
     runQueue();
   }
@@ -97,25 +98,25 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     try {
       switch (item.action) {
         case QueueAction.install:
-          await FVMClient.install(item.name);
-          notify('Version ${item.name} has been installed');
+          await FVMClient.install(item.version.name);
+          notify('Version ${item.version.name} has been installed');
           break;
         case QueueAction.setupOnly:
-          await FVMClient.setup(item.name);
-          notify('Version ${item.name} has finished setup');
+          await FVMClient.setup(item.version.name);
+          notify('Version ${item.version.name} has finished setup');
           break;
         case QueueAction.installAndSetup:
-          await FVMClient.install(item.name);
-          await FVMClient.setup(item.name);
-          await notify('Version ${item.name} has been installed');
+          await FVMClient.install(item.version.name);
+          await FVMClient.setup(item.version.name);
+          await notify('Version ${item.version.name} has been installed');
           break;
         case QueueAction.channelUpgrade:
-          await FVMClient.upgradeChannel(item.name);
-          notify('Channel ${item.name} has been upgraded');
+          await FVMClient.upgradeChannel(item.version.name);
+          notify('Channel ${item.version.name} has been upgraded');
           break;
         case QueueAction.remove:
-          await FVMClient.remove(item.name);
-          notify('Version ${item.name} has been removed');
+          await FVMClient.remove(item.version.name);
+          notify('Version ${item.version.name} has been removed');
           break;
         default:
           break;
@@ -142,8 +143,8 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     await notify('Version $version pinned to ${project.name}');
   }
 
-  Future<void> _addToQueue(String version, {QueueAction action}) async {
-    state.queue.add(QueueItem(name: version, action: action));
+  Future<void> _addToQueue(VersionDto version, {QueueAction action}) async {
+    state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
   }
 }

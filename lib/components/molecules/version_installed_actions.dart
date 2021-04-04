@@ -21,7 +21,7 @@ class VersionInstalledActions extends StatelessWidget {
       onSelected: (result) {
         if (result == InstalledActions.remove) {
           showDeleteDialog(context, item: version, onDelete: () {
-            context.read(fvmQueueProvider).remove(version.name);
+            context.read(fvmQueueProvider).remove(version);
           });
         }
 

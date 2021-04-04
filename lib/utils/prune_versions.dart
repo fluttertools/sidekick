@@ -53,7 +53,7 @@ Future<void> pruneVersionsDialog(BuildContext context) async {
               )),
               onPressed: () async {
                 for (var version in toDelete) {
-                  context.read(fvmQueueProvider).remove(version.name);
+                  context.read(fvmQueueProvider).remove(version);
                 }
 
                 Navigator.of(context).pop();

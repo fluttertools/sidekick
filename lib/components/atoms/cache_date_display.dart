@@ -14,8 +14,8 @@ class CacheDateDisplay extends HookWidget {
     final cacheDirStat = useState<FileStat>();
 
     void setCacheDir() async {
-      if (version != null && version.isInstalled == true) {
-        cacheDirStat.value = await version.installedDir.stat();
+      if (version != null && version.isCached == true) {
+        cacheDirStat.value = await version.cache.dir.stat();
       }
     }
 

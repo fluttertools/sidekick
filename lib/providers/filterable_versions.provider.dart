@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/providers/releases.provider.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 
 enum Filter {
   beta,
@@ -36,21 +36,25 @@ Filter filterFromName(String name) {
 final filterProvider = StateProvider<Filter>((_) => Filter.all);
 
 // ignore: top_level_function_literal_block
-final filterableReleasesProvider = Provider((ref) {
+final filterableVersionsProvider = Provider((ref) {
   final filter = ref.watch(filterProvider).state;
-  final versions = ref.watch(releasesProvider);
-  // var return <ReleaseDto>[];
+  final releases = ref.watch(releasesStateProvider);
 
-  switch (filter) {
-    case Filter.stable:
-      return versions.stable;
-    case Filter.beta:
-      return versions.beta;
-    case Filter.dev:
-      return versions.dev;
-    case Filter.all:
-      return versions.all;
-    default:
-      return [];
+  if (filter == Filter.all) {
+    return releases.all;
   }
+
+  final versions = releases.all.where((version) {
+    if (version.isChannel && version.name == filter.name) {
+      return true;
+    }
+
+    if (!version.isChannel && version.release.channelName == filter.name) {
+      return true;
+    }
+
+    return false;
+  });
+
+  return versions.toList();
 });

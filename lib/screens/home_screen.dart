@@ -13,20 +13,20 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final installedList = useProvider(installedVersionsProvider);
+    final cacheVersions = useProvider(installedVersionsProvider);
 
-    if (installedList == null) {
+    if (cacheVersions == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (installedList.isEmpty) {
+    if (cacheVersions.isEmpty) {
       return const EmptyVersions();
     }
 
     return Screen(
       title: 'Installed Versions',
       actions: [
-        Text('${installedList.length} versions'),
+        Text('${cacheVersions.length} versions'),
         const SizedBox(width: 20),
         const CacheSizeDisplay(),
         const SizedBox(width: 20),
@@ -42,10 +42,10 @@ class HomeScreen extends HookWidget {
       ],
       child: Scrollbar(
         child: ListView.separated(
-          itemCount: installedList.length,
+          itemCount: cacheVersions.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
-            return VersionInstalledItem(installedList[index]);
+            return VersionInstalledItem(cacheVersions[index]);
           },
         ),
       ),
