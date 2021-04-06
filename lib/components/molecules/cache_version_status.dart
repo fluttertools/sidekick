@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/setup_button.dart';
-import 'package:sidekick/components/atoms/version_installed_status_master.dart';
+import 'package:sidekick/components/molecules/cache_version_status_master.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/master.dto.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
-class VersionInstalledStatus extends StatelessWidget {
-  final VersionDto version;
+class CacheVersionStatus extends StatelessWidget {
+  final ReleaseDto version;
 
-  const VersionInstalledStatus(this.version, {Key key}) : super(key: key);
+  const CacheVersionStatus(this.version, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class VersionInstalledStatus extends StatelessWidget {
 
     // If version is master
     if (version is MasterDto) {
-      return VersionInstallStatusMaster(version);
+      return CacheVersionStatusMaster(version);
     }
 
     // Default fallback
@@ -69,7 +69,7 @@ class VersionInstalledStatus extends StatelessWidget {
           icon: const Icon(MdiIcons.triangle, size: 15),
           label: Text(version.release?.version),
           onPressed: () {
-            context.read(fvmQueueProvider).upgrade(version.name);
+            context.read(fvmQueueProvider).upgrade(version);
           },
         ),
       ],

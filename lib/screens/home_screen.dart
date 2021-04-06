@@ -1,47 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/components/atoms/cache_size_display.dart';
 import 'package:sidekick/components/atoms/screen.dart';
+import 'package:sidekick/components/molecules/cache_version_item.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_versions.dart';
-import 'package:sidekick/components/molecules/version_installed_item.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
-import 'package:sidekick/utils/prune_versions.dart';
+import 'package:sidekick/components/organisms/cleanup_unused_dialog.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final list = useProvider(installedVersionsProvider);
+    final cachedVersions = useProvider(releasesStateProvider).allCached;
 
-    if (list == null) {
+    if (cachedVersions == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (list.isEmpty) {
+    if (cachedVersions.isEmpty) {
       return const EmptyVersions();
     }
 
-    return FvmScreen(
+    return Screen(
       title: 'Installed Versions',
       actions: [
+        Text('${cachedVersions.length} versions'),
+        const SizedBox(width: 20),
+        const CacheSizeDisplay(),
+        const SizedBox(width: 20),
         Tooltip(
           message: 'Clean up unused versions.',
-          child: IconButton(
-            icon: const Icon(MdiIcons.broom, size: 20),
+          child: OutlinedButton(
+            child: const Text('Clean up'),
             onPressed: () async {
-              await pruneVersionsDialog(context);
+              await cleanupUnusedDialog(context);
             },
           ),
         )
       ],
       child: Scrollbar(
         child: ListView.separated(
-          itemCount: list.length,
+          itemCount: cachedVersions.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
-            return VersionInstalledItem(list[index]);
+            return CacheVersionItem(cachedVersions[index]);
           },
         ),
       ),

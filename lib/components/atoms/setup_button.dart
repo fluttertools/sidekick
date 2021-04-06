@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 class SetupButton extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
   const SetupButton({this.version, Key key}) : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class SetupButton extends StatelessWidget {
         iconSize: 20,
         color: Colors.cyan,
         onPressed: () {
-          context.read(fvmQueueProvider).setup(version.name);
+          context.read(fvmQueueProvider).setup(version);
         },
       ),
     );

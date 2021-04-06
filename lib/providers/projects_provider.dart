@@ -9,7 +9,7 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // ignore: top_level_function_literal_block
@@ -57,6 +57,14 @@ class ProjectsProviderState {
   factory ProjectsProviderState.error(dynamic err) {
     return ProjectsProviderState(error: err.toString());
   }
+
+  ProjectsProviderState clone() {
+    return ProjectsProviderState(
+      list: [...list],
+      loading: loading,
+      error: error,
+    );
+  }
 }
 
 class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
@@ -66,12 +74,12 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     reloadAll();
   }
 
-  SettingsProvider get _settingsProvider {
-    return ref.read<SettingsProvider>(settingsProvider);
-  }
-
   Future<void> scan() async {
-    final settings = await _settingsProvider.readAppSettings();
+    state.loading = true;
+    state.list = [];
+    _forceStateUpdate();
+    final settings = await SettingsService.read();
+
     // TODO: Support multiple paths
     final projectDir = settings.firstProjectDir;
 
@@ -86,7 +94,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     settings.projectPaths = projects.map((project) {
       return project.projectDir.path;
     }).toList();
-    await _settingsProvider.saveAppSettings(settings);
+    await SettingsService.save(settings);
     await reloadAll();
   }
 
@@ -95,23 +103,40 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     await reloadOne(project);
   }
 
-  Future<void> reloadAll() async {
+  void _forceStateUpdate() {
+    state = state.clone();
+  }
+
+  /// Triggers a full project reload. Adds a 1 second delay on update
+  /// if [withDelay] is true for better UI feedback
+  Future<void> reloadAll({bool withDelay = false}) async {
     state.loading = true;
+    _forceStateUpdate();
 
     /// Get settings
-    final settings = await _settingsProvider.readAppSettings();
+    final settings = await SettingsService.read();
 
     /// Get cached path for projects
     final projectPaths = settings.projectPaths;
-    if (projectPaths != null) {
+    if (projectPaths.isNotEmpty) {
       final directories = projectPaths.map((p) => Directory(p)).toList();
-      state.list = await FVMClient.fetchProjects(directories);
+      // Go get info for each project
+      final projects = await FVMClient.fetchProjects(directories);
+
+      /// Check if its flutter project
+      state.list = projects.where((p) => p.isFlutterProject).toList();
     } else {
       state.list = [];
     }
 
-    state = state;
+    /// This is used for
+    if (withDelay) {
+      await Future.delayed(const Duration(seconds: 1));
+    }
+    // Set loading to false
     state.loading = false;
+
+    _forceStateUpdate();
   }
 
   Future<void> reloadOne(Project project) async {
@@ -121,6 +146,6 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
         await FVMClient.getProjectByDirectory(project.projectDir);
 
     // Update state
-    state = state;
+    _forceStateUpdate();
   }
 }

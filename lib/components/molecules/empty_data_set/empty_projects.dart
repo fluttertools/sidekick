@@ -18,7 +18,7 @@ class EmptyProjects extends StatelessWidget {
           children: [
             Text(
               'No Flutter Projects Found',
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),

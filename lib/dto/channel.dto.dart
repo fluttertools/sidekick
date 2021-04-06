@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 
-class ChannelDto extends VersionDto {
+class ChannelDto extends ReleaseDto {
   /// Latest version of the channel
   Release currentRelease;
   final String sdkVersion;
 
   ChannelDto({
     @required String name,
-    @required bool isInstalled,
     @required Release release,
+    @required CacheVersion cache,
     @required needSetup,
     @required this.sdkVersion,
     @required this.currentRelease,
+    @required isGlobal,
   }) : super(
           name: name,
           release: release,
-          isInstalled: isInstalled,
           needSetup: needSetup,
           isChannel: true,
+          cache: cache,
+          isGlobal: isGlobal,
         );
 }

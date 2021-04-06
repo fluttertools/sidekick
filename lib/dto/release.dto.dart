@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/version.dto.dart';
 
-class ReleaseDto extends VersionDto {
+abstract class ReleaseDto {
+  final String name;
+  Release release;
+  CacheVersion cache;
+  bool needSetup;
+  bool isChannel;
+  bool isGlobal;
+
   ReleaseDto({
-    @required String name,
-    @required bool isInstalled,
-    @required Release release,
-    @required bool needSetup,
-  }) : super(
-          name: name,
-          release: release,
-          isInstalled: isInstalled,
-          needSetup: needSetup,
-        );
+    @required this.name,
+    @required this.release,
+    @required this.needSetup,
+    @required this.cache,
+    this.isChannel = false,
+    this.isGlobal = false,
+  });
+
+  bool get isCached {
+    return cache != null;
+  }
 }

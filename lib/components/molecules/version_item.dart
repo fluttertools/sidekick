@@ -3,14 +3,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/selected_info_provider.dart';
 
 class VersionItem extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
 
-  VersionItem(this.version)
-      : super(key: Key('${version.name}${version.release.channel}'));
+  const VersionItem(this.version, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

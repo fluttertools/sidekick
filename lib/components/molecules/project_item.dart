@@ -8,7 +8,7 @@ import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
-import 'package:sidekick/providers/installed_versions.provider.dart';
+import 'package:sidekick/screens/playground_screen.dart';
 import 'package:sidekick/utils/open_link.dart';
 import 'package:truncate/truncate.dart';
 
@@ -18,11 +18,21 @@ class ProjectItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final installedVersions = useProvider(installedVersionsProvider);
+    final cachedVersions = useProvider(releasesStateProvider).allCached;
+
     final version = useProvider(getVersionProvider(project.pinnedVersion));
-    final description = project.pubspec.description.valueOr(() => '');
+    final description = project.pubspec.description?.valueOr(() => '');
 
     final needInstall = version != null && project.pinnedVersion != null;
+
+    void openProjectPlayground() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PlaygroundScreen(),
+        ),
+      );
+    }
 
     return Container(
       height: 170,
@@ -35,12 +45,12 @@ class ProjectItem extends HookWidget {
                   leading: const Icon(MdiIcons.alphaPBox),
                   title: Subheading(project.name),
                   trailing: Tooltip(
-                    message: "Open in your IDE (Coming Soon)",
+                    message: "Open terminal playground",
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,
-                      icon: const Icon(MdiIcons.microsoftVisualStudioCode),
-                      onPressed: () {},
+                      icon: const Icon(MdiIcons.console),
+                      onPressed: openProjectPlayground,
                     ),
                   ),
                 ),
@@ -77,7 +87,7 @@ class ProjectItem extends HookWidget {
                         );
                       },
                       child: Text(
-                        truncate(project.projectDir.path, 25,
+                        truncate(project.projectDir.path, 20,
                             position: TruncatePosition.middle),
                         style: const TextStyle(fontSize: 12),
                       ),
@@ -89,7 +99,7 @@ class ProjectItem extends HookWidget {
                       : const SizedBox(height: 0, width: 0),
                   ProjectVersionSelect(
                     project: project,
-                    versions: installedVersions,
+                    versions: cachedVersions ?? [],
                   ),
                 ],
               )

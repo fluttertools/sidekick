@@ -22,7 +22,7 @@ class EmptyVersions extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              '''You do not currently have any Flutter version installed.Versions or channels that have been installed will be displayed here.''',
+              '''You do not currently have any Flutter SDK versions installed. Versions or channels that have been installed will be displayed here.''',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption,
             ),
@@ -38,7 +38,7 @@ class EmptyVersions extends StatelessWidget {
                     .goTo(NavigationRoutes.exploreScreen);
               },
               icon: const Icon(Icons.explore),
-              label: const Text('View Flutter SDK Versions'),
+              label: const Text('Explore Flutter Releases'),
             )
           ],
         ),

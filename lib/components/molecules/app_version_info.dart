@@ -21,54 +21,47 @@ class AppVersionInfo extends HookWidget {
       return;
     }, []);
 
-    if (latestRelease == null) {
-      return Container();
+    if (latestRelease.value == null) {
+      return const SizedBox(height: 0, width: 0);
     }
 
-    return Container(
-      child: Row(
+    final hasUpdate = latestRelease.value.needUpdate;
+    final latestVersion = latestRelease.value.latestVersion;
+
+    if (hasUpdate) {
+      return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("Installed Version:"),
-                  Text("Latest Version:"),
-                ],
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(appVersion),
-                  Text("${latestRelease.value.latestVersion}")
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          OutlinedButton.icon(
-            onPressed: () {
-              downloadRelease(latestRelease.value.latestVersion);
-            },
-            icon: const Icon(
-              Icons.file_download,
-              size: 18,
-            ),
-            label: Text(
-              latestRelease.value.needUpdate ? "Install Now" : "Refresh",
-            ),
+          Text('A new version of Sidekick is available ($latestVersion).'),
+          const SizedBox(width: 5),
+          TextButton(
+            child: const Text('Click here to download.'),
+            onPressed: () {},
           ),
         ],
-      ),
+      );
+    }
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(width: 5),
+        const Text(appVersion),
+        const SizedBox(width: 20),
+        Text("${latestRelease.value.latestVersion}"),
+        const SizedBox(width: 20),
+        OutlinedButton.icon(
+          icon: Icon(hasUpdate ? Icons.file_download : Icons.refresh),
+          label: Text(hasUpdate ? "Install Now" : "Refresh"),
+          onPressed: () {
+            if (hasUpdate) {
+              downloadRelease(latestRelease.value.latestVersion);
+            } else {
+              setLatestVersion();
+            }
+          },
+        ),
+      ],
     );
   }
 }

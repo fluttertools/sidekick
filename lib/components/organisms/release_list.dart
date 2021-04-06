@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sidekick/dto/release.dto.dart';
 
-class ReleaseList extends StatelessWidget {
-  final ReleaseDto release;
-  const ReleaseList(this.release, {Key key}) : super(key: key);
+class VersionsList extends StatelessWidget {
+  final List<ReleaseDto> release;
+  const VersionsList(this.release, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

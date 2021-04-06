@@ -20,8 +20,8 @@ class PackagesScreen extends HookWidget {
           if (data.isEmpty) {
             return const EmptyPackages();
           }
-          return FvmScreen(
-            title: 'Your Most Popular Packages',
+          return Screen(
+            title: 'Most Used Packages',
             child: Scrollbar(
               child: ListView.builder(
                 // separatorBuilder: (_, __) => const Divider(),

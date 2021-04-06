@@ -2,10 +2,10 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/molecules/advanced_info_tile.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 
 class ReleaseInfoSection extends StatelessWidget {
-  final VersionDto version;
+  final ReleaseDto version;
   const ReleaseInfoSection(this.version, {Key key}) : super(key: key);
 
   @override

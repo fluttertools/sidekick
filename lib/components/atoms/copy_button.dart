@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sidekick/utils/notify.dart';
 
 class CopyButton extends StatelessWidget {
   final String content;
@@ -9,9 +10,11 @@ class CopyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       iconSize: 20,
+      splashRadius: 20,
       icon: const Icon(Icons.content_copy),
       onPressed: () async {
         await Clipboard.setData(ClipboardData(text: content));
+        notify('Copied to clipboard');
       },
     );
   }

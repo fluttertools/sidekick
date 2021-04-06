@@ -3,15 +3,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/atoms/version_install_status.dart';
-import 'package:sidekick/components/molecules/version_installed_actions.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/components/molecules/cache_version_actions.dart';
+import 'package:sidekick/components/molecules/cache_version_status.dart';
+import 'package:sidekick/components/organisms/global_info_dialog.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/selected_info_provider.dart';
 
-class VersionInstalledItem extends StatelessWidget {
-  final VersionDto version;
+class CacheVersionItem extends StatelessWidget {
+  final ReleaseDto version;
 
-  const VersionInstalledItem(
+  const CacheVersionItem(
     this.version, {
     Key key,
   }) : super(key: key);
@@ -26,10 +27,21 @@ class VersionInstalledItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Subheading(version.name),
-          VersionInstalledStatus(version),
+          const SizedBox(width: 20),
+          version.isGlobal
+              ? ActionChip(
+                  label: const Caption('Global'),
+                  avatar: const Icon(MdiIcons.information, size: 20),
+                  onPressed: () {
+                    showGlobalInfoDialog(context);
+                  },
+                )
+              : Container(),
+          const Spacer(),
+          CacheVersionStatus(version),
         ],
       ),
-      trailing: VersionInstalledActions(version),
+      trailing: CacheVersionActions(version),
       onTap: () {
         context.read(selectedInfoProvider).selectVersion(version);
       },

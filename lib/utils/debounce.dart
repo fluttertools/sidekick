@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 class Debouncer {
-  final int milliseconds;
+  final Duration duration;
   VoidCallback action;
   Timer _timer;
-  Debouncer({this.milliseconds});
+  Debouncer(this.duration);
 
   // Can cancel programatically
   void cancel() {
@@ -15,7 +15,7 @@ class Debouncer {
 
   void run(VoidCallback action) {
     if (_timer != null) _timer.cancel();
-    _timer = Timer(Duration(milliseconds: milliseconds), action);
+    _timer = Timer(duration, action);
   }
 }
 

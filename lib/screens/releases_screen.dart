@@ -1,81 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/sliver_app_bar_title.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/channel_showcase.dart';
-import 'package:sidekick/components/molecules/version_install_button.dart';
+import 'package:sidekick/components/atoms/screen.dart';
+import 'package:sidekick/components/atoms/sliver_app_bar_switcher.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
-import 'package:sidekick/providers/channels.provider.dart';
 import 'package:sidekick/providers/filterable_releases.provider.dart';
-import 'package:sidekick/providers/master.provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/extensions.dart';
 
-class ExploreScreen extends HookWidget {
-  const ExploreScreen({Key key}) : super(key: key);
+import '../components/atoms/screen.dart';
+import '../components/atoms/typography.dart';
+import '../components/molecules/channel_showcase.dart';
+import '../components/molecules/version_install_button.dart';
+import '../providers/flutter_releases.provider.dart';
+
+class ReleasesScreen extends HookWidget {
+  const ReleasesScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final filter = useProvider(filterProvider);
-    final releases = useProvider(filterableReleasesProvider);
-    final channels = useProvider(channelsProvider);
-    final master = useProvider(masterProvider);
+    final versions = useProvider(filterableReleasesProvider);
+    final releases = useProvider(releasesStateProvider);
+
     final settings = useProvider(settingsProvider.state);
 
-    if (releases == null || channels.all.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+    return Screen(
+      title: 'Releases',
       child: Scrollbar(
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              flexibleSpace: Container(
-                color: Theme.of(context).appBarTheme.color,
+            SliverToBoxAdapter(
+              child: Container(
+                height: 60,
               ),
-              title: Text(
-                'Channels',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              actions: [
-                Tooltip(
-                  message:
-                      '''Allows access to functionality that is unsable, and latest cutting edge.''',
-                  child: Row(
-                    children: [
-                      const Caption('Advanced'),
-                      SizedBox(
-                        height: 10,
-                        width: 60,
-                        child: Switch(
-                          activeColor: Colors.cyan,
-                          value: settings.app.advancedMode,
-                          onChanged: (active) async {
-                            settings.app.advancedMode = active;
-                            await context.read(settingsProvider).save(settings);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-              centerTitle: false,
-              automaticallyImplyLeading: false,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              bottom: const PreferredSize(
-                preferredSize: Size.fromHeight(1),
-                child: Divider(height: 0),
-              ),
-              pinned: true,
             ),
             SliverToBoxAdapter(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                height: settings.app.advancedMode ? 80 : 0,
+                height: settings.sidekick.advancedMode ? 80 : 0,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -97,7 +60,7 @@ class ExploreScreen extends HookWidget {
                               '''The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.'''),
                         ),
                         const SizedBox(width: 20),
-                        VersionInstallButton(master),
+                        VersionInstallButton(releases.master),
                         const SizedBox(width: 10),
                       ],
                     ),
@@ -117,7 +80,7 @@ class ExploreScreen extends HookWidget {
                 collapseMode: CollapseMode.pin,
                 background: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: channels.all.map((channel) {
+                  children: releases.channels.map((channel) {
                     return Expanded(child: ChannelShowcase(channel));
                   }).toList(),
                 ),
@@ -126,7 +89,7 @@ class ExploreScreen extends HookWidget {
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: channels.all.map((channel) {
+                    children: releases.channels.map((channel) {
                       return Expanded(child: VersionItem(channel));
                     }).toList(),
                   ),
@@ -135,14 +98,13 @@ class ExploreScreen extends HookWidget {
             ),
             SliverAppBar(
               pinned: true,
-              toolbarHeight: 50,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               bottom: const PreferredSize(
                 preferredSize: Size.fromHeight(1),
                 child: Divider(height: 0),
               ),
               automaticallyImplyLeading: false,
-              actions: [Container()],
+              // actions: [Container()],
               title: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +114,7 @@ class ExploreScreen extends HookWidget {
                       children: [
                         const Heading('Versions'),
                         const SizedBox(width: 10),
-                        Chip(label: Text(releases.length.toString())),
+                        Chip(label: Text(versions.length.toString())),
                       ],
                     ),
                     DropdownButton<String>(
@@ -177,8 +139,8 @@ class ExploreScreen extends HookWidget {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return VersionItem(releases[index]);
-              }, childCount: releases.length),
+                return VersionItem(versions[index]);
+              }, childCount: versions.length),
             ),
           ],
         ),

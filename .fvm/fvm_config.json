@@ -1,3 +1,4 @@
 {
-  "flutterSdkVersion": "stable"
+  "flutterSdkVersion": "stable",
+  "environment": {}
 }

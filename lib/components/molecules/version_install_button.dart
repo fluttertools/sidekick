@@ -3,14 +3,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/dto/version.dto.dart';
+import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 const installedMsg = 'Version is installed';
 const notInstalledMsg = 'Version not installed. Click to install.';
 
 class VersionInstallButton extends HookWidget {
-  final VersionDto version;
+  final ReleaseDto version;
   final bool warningIcon;
   const VersionInstallButton(this.version, {this.warningIcon = false, Key key})
       : super(key: key);
@@ -23,7 +23,7 @@ class VersionInstallButton extends HookWidget {
 
     useEffect(() {
       final isInstalling = queueProvider.activeItem != null &&
-          queueProvider.activeItem.name == version.name;
+          queueProvider.activeItem.version == version;
 
       if (isInstalling) {
         isQueued.value = true;
@@ -31,7 +31,7 @@ class VersionInstallButton extends HookWidget {
       }
 
       final queued = queueProvider.queue.firstWhere(
-        (item) => item.name == version.name,
+        (item) => item.version == version,
         orElse: () => null,
       );
 
@@ -42,11 +42,11 @@ class VersionInstallButton extends HookWidget {
     Future<void> onInstall() async {
       isQueued.value = true;
       // Add it to queue for installation
-      context.read(fvmQueueProvider).install(version.name);
+      context.read(fvmQueueProvider).install(version);
     }
 
     Widget installIcon() {
-      if ((isQueued.value && !version.isInstalled)) {
+      if ((isQueued.value && !version.isCached)) {
         return const SizedBox(
           height: 20,
           width: 20,
@@ -57,7 +57,7 @@ class VersionInstallButton extends HookWidget {
         );
       }
 
-      if (version.isInstalled) {
+      if (version.isCached) {
         return const Icon(
           Icons.check,
           size: 20,
@@ -84,12 +84,12 @@ class VersionInstallButton extends HookWidget {
         }
       },
       child: Opacity(
-        opacity: version.isInstalled ? 0.3 : 1,
+        opacity: version.isCached ? 0.3 : 1,
         child: IconButton(
-          onPressed: version.isInstalled ? onInstall : onInstall,
+          onPressed: version.isCached ? onInstall : onInstall,
           splashRadius: 20,
           icon: Tooltip(
-              message: version.isInstalled ? installedMsg : notInstalledMsg,
+              message: version.isCached ? installedMsg : notInstalledMsg,
               child: installIcon()),
         ),
       ),
