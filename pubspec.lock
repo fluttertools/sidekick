@@ -564,6 +564,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  platform_info:
+    dependency: transitive
+    description:
+      name: platform_info
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -586,7 +593,7 @@ packages:
     source: hosted
     version: "4.2.1"
   process_run:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: process_run
       url: "https://pub.dartlang.org"
@@ -886,6 +893,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  xterm:
+    dependency: "direct main"
+    description:
+      name: xterm
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   yaml:
     dependency: transitive
     description:
@@ -895,4 +909,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.22.0"
+  flutter: ">=2.0.0"

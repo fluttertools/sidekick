@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/components/organisms/terminal.dart';
 import 'package:sidekick/dto/release.dto.dart';
 
 class PlaygroundScreen extends HookWidget {
@@ -35,11 +36,17 @@ class PlaygroundScreen extends HookWidget {
           const SizedBox(width: 10),
         ],
       ),
-      body: Row(
-        children: [
-          Container(),
-          Container(),
-        ],
+      body: Expanded(
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(),
+            Expanded(
+              flex: 1,
+              child: PlaygroundTerminal(),
+            ),
+          ],
+        ),
       ),
     );
   }

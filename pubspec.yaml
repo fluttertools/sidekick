@@ -23,6 +23,8 @@ environment:
 dependencies:  
   flutter:
     sdk: flutter
+  process_run: ^0.11.2+8
+  xterm: ^2.0.0
   list_ext: ^1.0.2
   hive_flutter: ^1.0.0
   hive: ^2.0.0
