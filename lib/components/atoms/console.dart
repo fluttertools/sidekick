@@ -39,7 +39,7 @@ class Console extends HookWidget {
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.black45
             : const Color(0xFFF5F5F5),
-        height: 0,
+        height: 40,
         child: Container(),
       ),
       secondChild: GestureDetector(
@@ -48,10 +48,10 @@ class Console extends HookWidget {
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.black45
               : const Color(0xFFF5F5F5),
-          height: expand ? 160 : 0,
+          height: expand ? 160 : 40,
           constraints: expand
               ? const BoxConstraints(maxHeight: 160)
-              : const BoxConstraints(maxHeight: 0),
+              : const BoxConstraints(maxHeight: 40),
           child: Stack(
             children: [
               AnimatedCrossFade(

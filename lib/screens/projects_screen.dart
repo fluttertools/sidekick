@@ -29,7 +29,7 @@ class ProjectsScreen extends HookWidget {
         filteredProjects.value = [...projects.list];
       }
       return;
-    }, [projects.list]);
+    }, [projects.list, settings.sidekick]);
 
     if (filteredProjects.value.isEmpty && !projects.loading) {
       return const EmptyProjects();
@@ -44,14 +44,14 @@ class ProjectsScreen extends HookWidget {
       title: 'Projects',
       processing: projects.loading,
       actions: [
-        Caption('${projects.list.length} Projects'),
+        Caption('${filteredProjects.value.length} Projects'),
         const SizedBox(width: 20),
         Tooltip(
           message: 'Only display projects with FVM configured',
           child: CheckButton(
             label: 'FVM only',
             value: settings.sidekick.onlyProjectsWithFvm,
-            onChanged: (value) async {
+            onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
               context.read(settingsProvider).save(settings);
             },

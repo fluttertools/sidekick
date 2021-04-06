@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/version_install_status.dart';
-import 'package:sidekick/components/molecules/version_installed_actions.dart';
+import 'package:sidekick/components/molecules/cache_version_actions.dart';
+import 'package:sidekick/components/molecules/cache_version_status.dart';
 import 'package:sidekick/components/organisms/global_info_dialog.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/selected_info_provider.dart';
@@ -30,24 +29,19 @@ class CacheVersionItem extends StatelessWidget {
           Subheading(version.name),
           const SizedBox(width: 20),
           version.isGlobal
-              ? MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () {
-                      showGlobalInfoDialog(context);
-                    },
-                    child: const Chip(
-                      label: Caption('Global'),
-                      avatar: Icon(MdiIcons.information, size: 20),
-                    ),
-                  ),
+              ? ActionChip(
+                  label: const Caption('Global'),
+                  avatar: const Icon(MdiIcons.information, size: 20),
+                  onPressed: () {
+                    showGlobalInfoDialog(context);
+                  },
                 )
               : Container(),
           const Spacer(),
-          VersionInstalledStatus(version),
+          CacheVersionStatus(version),
         ],
       ),
-      trailing: VersionInstalledActions(version),
+      trailing: CacheVersionActions(version),
       onTap: () {
         context.read(selectedInfoProvider).selectVersion(version);
       },

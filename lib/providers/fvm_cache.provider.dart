@@ -37,7 +37,8 @@ final unusedVersionProvider = Provider((ref) {
 
   final projects = ref.watch(projectsPerVersionProvider);
   for (var version in releases.allCached) {
-    if (projects[version.name] == null) {
+    // If its not in project and its not global
+    if (projects[version.name] == null && version.isGlobal == false) {
       unusedVersions.add(version);
     }
   }
