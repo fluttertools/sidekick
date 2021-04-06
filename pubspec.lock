@@ -315,7 +315,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "023b63ec1f29bb3e676b2a57b2f9a41453123b91"
+      resolved-ref: "1dcebd0e412994d9420eaf969ba58f1b36768d2f"
       url: "https://github.com/leoafarias/fvm.git"
     source: git
     version: "2.0.0-dev.4"
@@ -480,13 +480,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  modal_bottom_sheet:
-    dependency: "direct main"
-    description:
-      name: modal_bottom_sheet
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   msix:
     dependency: "direct dev"
     description:

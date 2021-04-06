@@ -23,8 +23,6 @@ environment:
 dependencies:  
   flutter:
     sdk: flutter
-  
-  modal_bottom_sheet: ^2.0.0
   list_ext: ^1.0.2
   hive_flutter: ^1.0.0
   hive: ^2.0.0

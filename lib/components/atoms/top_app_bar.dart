@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/screens/settings_screen.dart';
@@ -14,11 +13,12 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     // Opens setting modal
-    void openSettingsModal() {
-      showMaterialModalBottomSheet(
-        enableDrag: false,
-        context: context,
-        builder: (context) => const SettingsScreen(),
+    void openSettingsScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SettingsScreen(),
+        ),
       );
     }
 
@@ -41,7 +41,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.settings),
           iconSize: 20,
           splashRadius: 15,
-          onPressed: openSettingsModal,
+          onPressed: openSettingsScreen,
         ),
         const SizedBox(width: 10),
       ],

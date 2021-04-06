@@ -17,27 +17,6 @@ class SettingsSectionGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Dialog to confirm theme change
-    Future<void> changeThemeDialog() {
-      return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("Changing theme will close your settings screen"),
-          buttonPadding: const EdgeInsets.all(15),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-
-            TextButton(
-              child: const Text("OK"),
-              onPressed: () async {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-      );
-    }
-
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
@@ -82,9 +61,6 @@ class SettingsSectionGeneral extends StatelessWidget {
               onChanged: (themeMode) async {
                 settings.sidekick.themeMode = themeMode;
                 onSave();
-                await changeThemeDialog();
-
-                Navigator.of(context).pop();
               },
             ),
           ),
