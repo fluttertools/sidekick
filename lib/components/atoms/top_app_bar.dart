@@ -9,7 +9,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({key}) : super(key: key);
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(45);
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +28,19 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
-      title: const Heading('Sidekick'),
+      title: const Subheading('Sidekick'),
       centerTitle: true,
       actions: [
         IconButton(
           icon: const Icon(Icons.search),
-          splashRadius: 20,
+          iconSize: 20,
+          splashRadius: 15,
           onPressed: openSearchModal,
         ),
         IconButton(
           icon: const Icon(Icons.settings),
-          splashRadius: 20,
+          iconSize: 20,
+          splashRadius: 15,
           onPressed: openSettingsModal,
         ),
         const SizedBox(width: 10),

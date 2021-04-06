@@ -10,6 +10,7 @@ class MasterDto extends ChannelDto {
     @required needSetup,
     @required String sdkVersion,
     @required CacheVersion cache,
+    @required bool isGlobal,
   }) : super(
           name: name,
           needSetup: needSetup,
@@ -17,5 +18,6 @@ class MasterDto extends ChannelDto {
           release: null,
           currentRelease: null,
           cache: cache,
+          isGlobal: isGlobal,
         );
 }

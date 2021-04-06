@@ -14,11 +14,13 @@ class ChannelDto extends ReleaseDto {
     @required needSetup,
     @required this.sdkVersion,
     @required this.currentRelease,
+    @required isGlobal,
   }) : super(
           name: name,
           release: release,
           needSetup: needSetup,
           isChannel: true,
           cache: cache,
+          isGlobal: isGlobal,
         );
 }

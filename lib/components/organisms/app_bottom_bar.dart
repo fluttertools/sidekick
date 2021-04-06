@@ -20,7 +20,7 @@ class AppBottomBar extends HookWidget {
       duration: const Duration(milliseconds: 250),
       constraints: expand.value && processing
           ? const BoxConstraints(maxHeight: 141)
-          : const BoxConstraints(maxHeight: 41),
+          : const BoxConstraints(maxHeight: 1),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

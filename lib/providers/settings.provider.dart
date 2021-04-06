@@ -143,7 +143,7 @@ class SettingsProvider extends StateNotifier<Settings> {
     // Check for changes
     try {
       // Trigger refresh
-      prevState;
+
       state = state.copy();
       await _checkFvmSettingsChanges(settings.fvm);
       await _checkAppSettingsChanges(settings.sidekick);

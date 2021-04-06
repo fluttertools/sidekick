@@ -53,7 +53,7 @@ class ProjectsScreen extends HookWidget {
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) async {
               settings.sidekick.onlyProjectsWithFvm = value;
-              await context.read(settingsProvider).save(settings);
+              context.read(settingsProvider).save(settings);
             },
           ),
         ),

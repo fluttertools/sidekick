@@ -49,6 +49,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   var payload = FlutterReleases();
   ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
   final installedVersions = ref.watch(fvmCacheProvider);
+  final globalVersion = FVMClient.getGlobalVersionSync();
 
   // Watch this state change for refresh
   ref.watch(fvmCacheProvider.state);
@@ -72,6 +73,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     cache: masterCache,
     needSetup: masterVersion == null,
     sdkVersion: masterVersion,
+    isGlobal: globalVersion == kMasterChannel,
   );
 
   // Loop through available channels NOT including master
@@ -90,12 +92,13 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       // Get version for the channel
       currentRelease: payload.getReleaseFromVersion(sdkVersion),
       release: latestRelease,
+      isGlobal: globalVersion == name,
     );
 
     releasesState.channels.add(channelDto);
   }
 
-  for (var item in flutterReleases) {
+  for (final item in flutterReleases) {
     if (item == null) return null;
 
     // Check if version is found in installed versions
@@ -107,13 +110,17 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       release: item,
       cache: cacheVersion,
       needSetup: sdkVersion == null,
+      isGlobal: globalVersion == item.version,
     );
 
     releasesState.releases.add(version);
   }
 
+  /// Create a map with all the versions
   final allVersions = [...releasesState.releases, ...releasesState.channels];
-  releasesState.allMap = {for (var v in allVersions) v.name: v};
+  releasesState.allMap = {
+    for (var version in allVersions) version.name: version
+  };
 
   return releasesState;
 });

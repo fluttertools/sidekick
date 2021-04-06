@@ -7,13 +7,13 @@ class Screen extends StatelessWidget {
   final List<Widget> actions;
   final bool processing;
   final Widget child;
-  const Screen(
-      {this.title,
-      this.actions = const [],
-      this.processing = false,
-      this.child,
-      Key key})
-      : super(key: key);
+  const Screen({
+    @required this.title,
+    this.actions = const [],
+    this.processing = false,
+    this.child,
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -41,10 +41,10 @@ final filterableReleasesProvider = Provider((ref) {
   final releases = ref.watch(releasesStateProvider);
 
   if (filter == Filter.all) {
-    return releases.all;
+    return releases.releases;
   }
 
-  final versions = releases.all.where((version) {
+  final versions = releases.releases.where((version) {
     if (version.isChannel && version.name == filter.name) {
       return true;
     }

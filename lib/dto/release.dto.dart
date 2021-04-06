@@ -7,6 +7,7 @@ abstract class ReleaseDto {
   CacheVersion cache;
   bool needSetup;
   bool isChannel;
+  bool isGlobal;
 
   ReleaseDto({
     @required this.name,
@@ -14,6 +15,7 @@ abstract class ReleaseDto {
     @required this.needSetup,
     @required this.cache,
     this.isChannel = false,
+    this.isGlobal = false,
   });
 
   bool get isCached {

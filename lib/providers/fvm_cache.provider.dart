@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fvm/constants.dart' as fvm_constants;
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/providers/flutter_releases.provider.dart';
+import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/utils/debounce.dart';
 import 'package:sidekick/utils/dir_stat.dart';
 import 'package:state_notifier/state_notifier.dart';
@@ -16,7 +18,32 @@ enum InstalledStatus {
   asVersion,
 }
 
-final fvmCacheSizeProvider = StateProvider<String>((_) => null);
+final cacheSizeProvider =
+    StateProvider<DirectorySizeInfo>((_) => DirectorySizeInfo());
+
+final unusedCacheSizeProvider = FutureProvider((ref) {
+  final unused = ref.watch(unusedVersionProvider);
+  // Get all directories
+  final directories = unused.map((version) => version.cache.dir).toList();
+  return getDirectoriesSize(directories);
+});
+
+// ignore: top_level_function_literal_block
+final unusedVersionProvider = Provider((ref) {
+  final unusedVersions = <ReleaseDto>[];
+
+  /// Cannot use fvmCacheProvider to use remove action
+  final releases = ref.watch(releasesStateProvider);
+
+  final projects = ref.watch(projectsPerVersionProvider);
+  for (var version in releases.allCached) {
+    if (projects[version.name] == null) {
+      unusedVersions.add(version);
+    }
+  }
+
+  return unusedVersions;
+});
 
 /// Releases  InfoProvider
 final fvmCacheProvider = StateNotifierProvider<FvmCacheProvider>((ref) {
@@ -27,10 +54,11 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   ProviderReference ref;
   List<CacheVersion> channels;
   List<CacheVersion> versions;
+  CacheVersion global;
   List<CacheVersion> all;
 
   StreamSubscription<WatchEvent> directoryWatcher;
-  final _debouncer = Debouncer(milliseconds: 20000);
+  final _debouncer = Debouncer(const Duration(seconds: 20));
 
   FvmCacheProvider({
     this.ref,
@@ -38,14 +66,15 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }) : super(initialState) {
     reloadState();
     // Load State again while listening to directory
-    directoryWatcher = Watcher(fvm_constants.kFvmHome).events.listen((event) {
+    directoryWatcher =
+        Watcher(FVMClient.context.cacheDir.path).events.listen((event) {
       _debouncer.run(reloadState);
     });
   }
 
   Future<void> _setTotalCacheSize() async {
-    final stat = await getDirectorySize(fvm_constants.kFvmCacheDir);
-    ref.read(fvmCacheSizeProvider).state = stat.friendlySize;
+    final stat = await getDirectorySize(FVMClient.context.cacheDir);
+    ref.read(cacheSizeProvider).state = stat;
   }
 
   Future<void> reloadState() async {

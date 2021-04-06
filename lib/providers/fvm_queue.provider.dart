@@ -10,6 +10,8 @@ import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 
+import '../utils/notify.dart';
+
 class FvmQueue {
   QueueItem activeItem;
   final Queue<QueueItem> queue;
@@ -41,6 +43,7 @@ enum QueueAction {
   installAndSetup,
   channelUpgrade,
   remove,
+  setGlobal,
 }
 
 /// Releases Provider
@@ -64,22 +67,22 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
 
     _addToQueue(version, action: action);
-    runQueue();
   }
 
   void setup(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.setupOnly);
-    runQueue();
   }
 
   void upgrade(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.channelUpgrade);
-    runQueue();
   }
 
   void remove(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.remove);
-    runQueue();
+  }
+
+  void setGloabl(ReleaseDto version) {
+    _addToQueue(version, action: QueueAction.setGlobal);
   }
 
   void runQueue() async {
@@ -98,25 +101,39 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     try {
       switch (item.action) {
         case QueueAction.install:
+
+          /// Check if version is installed
+          /// This is done to avoid same version install for two
+          /// different channels
+          // final version =
+          //     ref.read(fvmCacheProvider).getVersion(item.version.name);
+          // if (version == null) {
+          // } else {
+          //   notifyError('Version ${item.version.name} is already installed.');
+          // }
           await FVMClient.install(item.version.name);
-          notify('Version ${item.version.name} has been installed');
+          notify('Version ${item.version.name} has been installed.');
           break;
         case QueueAction.setupOnly:
           await FVMClient.setup(item.version.name);
-          notify('Version ${item.version.name} has finished setup');
+          notify('Version ${item.version.name} has finished setup.');
           break;
         case QueueAction.installAndSetup:
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
-          await notify('Version ${item.version.name} has been installed');
+          await notify('Version ${item.version.name} has been installed.');
           break;
         case QueueAction.channelUpgrade:
-          await FVMClient.upgradeChannel(item.version.name);
-          notify('Channel ${item.version.name} has been upgraded');
+          await FVMClient.upgradeChannel(item.version.cache);
+          notify('Channel ${item.version.name} has been upgraded.');
           break;
         case QueueAction.remove:
           await FVMClient.remove(item.version.name);
-          notify('Version ${item.version.name} has been removed');
+          notify('Version ${item.version.name} has been removed.');
+          break;
+        case QueueAction.setGlobal:
+          await FVMClient.setGlobalVersion(item.version.cache);
+          notify('Version ${item.version.name} has been set as global.');
           break;
         default:
           break;
@@ -146,5 +163,6 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
   Future<void> _addToQueue(ReleaseDto version, {QueueAction action}) async {
     state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
+    runQueue();
   }
 }

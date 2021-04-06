@@ -1,30 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/flutter_releases.provider.dart';
+import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/providers/fvm_cache.provider.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
-import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
-Future<void> pruneVersionsDialog(BuildContext context) async {
-  final toDelete = <ReleaseDto>[];
-  final releases = context.read(releasesStateProvider);
+Future<void> cleanupUnusedDialog(BuildContext context) async {
+  final unusedVersions = context.read(unusedVersionProvider);
 
-  final projects = context.read(projectsPerVersionProvider);
-  for (var version in releases.allCached) {
-    if (projects[version.name] == null) {
-      toDelete.add(version);
-    }
-  }
-
-  if (toDelete.isEmpty) {
+  if (unusedVersions.isEmpty) {
     notify('No unused Flutter SDK versions installed');
-    return;
-  }
-
-  if (projects.isEmpty) {
-    notifyError(
-        'No projects found. Cannot determine which versions to remove.');
     return;
   }
 
@@ -32,7 +17,7 @@ Future<void> pruneVersionsDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Prune unused versions'),
+          title: const Heading('Cleanup unused versions'),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             TextButton(
@@ -52,7 +37,7 @@ Future<void> pruneVersionsDialog(BuildContext context) async {
                 (states) => const EdgeInsets.all(20),
               )),
               onPressed: () async {
-                for (var version in toDelete) {
+                for (var version in unusedVersions) {
                   context.read(fvmQueueProvider).remove(version);
                 }
 
@@ -62,21 +47,31 @@ Future<void> pruneVersionsDialog(BuildContext context) async {
           ],
           content: Container(
             constraints: const BoxConstraints(maxWidth: 350),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  '''The following versions are not being used by any project. Do you want to remove them to free up space?''',
+            child: Scrollbar(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Column(
+                      children: [
+                        const Subheading(
+                          'These version are not pinned to a project'
+                          ' Do you want to remove them to free up space?',
+                        ),
+                        const SizedBox(height: 10),
+                        ...unusedVersions.map((v) {
+                          return Column(
+                            children: [
+                              ListTile(title: Text(v.name)),
+                              const Divider(),
+                            ],
+                          );
+                        }).toList()
+                      ],
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 10),
-                Wrap(
-                  spacing: 10,
-                  direction: Axis.horizontal,
-                  children: toDelete.map((v) {
-                    return Chip(label: Text(v.name));
-                  }).toList(),
-                ),
-              ],
+              ),
             ),
           ),
         );

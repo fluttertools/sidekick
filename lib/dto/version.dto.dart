@@ -8,10 +8,12 @@ class VersionDto extends ReleaseDto {
     @required Release release,
     @required bool needSetup,
     @required CacheVersion cache,
+    @required bool isGlobal,
   }) : super(
           name: name,
           release: release,
           needSetup: needSetup,
           cache: cache,
+          isGlobal: isGlobal,
         );
 }
