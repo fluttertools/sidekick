@@ -24,8 +24,8 @@ class PlaygroundScreen extends HookWidget {
     final selectedRelease = useState<ReleaseDto>();
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      extendBody: true,
+      // extendBodyBehindAppBar: true,
+      // extendBody: false,
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Subheading('Playground'),
@@ -54,48 +54,92 @@ class PlaygroundScreen extends HookWidget {
           const SizedBox(width: 10),
         ],
       ),
-      body: Expanded(
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: CupertinoScrollbar(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
+      body: Row(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
                     children: [
-                      Expanded(
-                        child: ListView(
-                          children: releases.allCached
-                              .map(
-                                (version) => ListTile(
-                                  selected: version == selectedRelease.value,
-                                  onTap: () {
-                                    selectedRelease.value = version;
-                                  },
-                                  title: Text(
-                                    version.name,
-                                    style: TextStyle(fontSize: 12),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      ),
+                      Heading('Releases'),
                     ],
                   ),
                 ),
-              ),
+                const Divider(height: 1),
+                Expanded(
+                  child: CupertinoScrollbar(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: ListView(
+                        children: releases.allCached.map(
+                          (version) {
+                            if (version == selectedRelease.value) {
+                              return Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: ElevatedButton(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(version.name),
+                                      ),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    selectedRelease.value = version;
+                                  },
+                                ),
+                              );
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextButton(
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(version.name),
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {
+                                  selectedRelease.value = version;
+                                },
+                              ),
+                            );
+                          },
+                        ).toList(),
+                        // children: releases.allCached
+                        //     .map(
+                        //       (version) => ListTile(
+                        //         selected: version == selectedRelease.value,
+                        //         onTap: () {
+                        //           selectedRelease.value = version;
+                        //         },
+                        //         title: Text(
+                        //           version.name,
+                        //           style: const TextStyle(fontSize: 12),
+                        //         ),
+                        //       ),
+                        //     )
+                        //     .toList(),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              flex: 3,
-              child: PlaygroundTerminal(
-                project: project,
-                release: selectedRelease.value,
-              ),
+          ),
+          Expanded(
+            flex: 3,
+            child: PlaygroundTerminal(
+              project: project,
+              release: selectedRelease.value,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
