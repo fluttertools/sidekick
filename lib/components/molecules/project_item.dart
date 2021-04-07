@@ -29,7 +29,9 @@ class ProjectItem extends HookWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const PlaygroundScreen(),
+          builder: (context) => PlaygroundScreen(
+            project: project,
+          ),
         ),
       );
     }

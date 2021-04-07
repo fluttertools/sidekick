@@ -14,7 +14,6 @@ Future<int> runCmd(
     args,
     environment: environment,
     workingDirectory: workingDirectory,
-    runInShell: true,
   );
 
   terminalProcessor.stderr.addStream(process.stderr);
@@ -23,10 +22,9 @@ Future<int> runCmd(
 
   exitCode = await process.exitCode;
 
+  // await terminalProcessor.stdinSink.flush();
   // await terminalProcessor.stderr.close();
   // await terminalProcessor.stdout.close();
-  // await terminalProcessor.stdinSink.flush();
-  // terminalProcessor.stdinSink.close();
 
   return exitCode;
 }
