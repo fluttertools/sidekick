@@ -74,6 +74,7 @@ class ProjectsScreen extends HookWidget {
                   padding: const EdgeInsets.only(top: 10, right: 10),
                   child: ProjectItem(
                     project,
+                    versionSelect: true,
                     key: Key(project.projectDir.path),
                   ),
                 );

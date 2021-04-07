@@ -9,7 +9,6 @@ import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/terminal_provider.dart';
 import 'package:sidekick/utils/notify.dart';
-import 'package:sidekick/utils/terminal_processor.dart';
 
 class PlaygroundTerminal extends HookWidget {
   final Project project;
@@ -24,54 +23,42 @@ class PlaygroundTerminal extends HookWidget {
   Widget build(BuildContext context) {
     final lines = useProvider(terminalProvider.state);
     final terminal = useProvider(terminalProvider);
+    final processing = useProvider(terminalRunning).state;
 
     final textController = useTextEditingController();
     final scrollController = useScrollController();
-    final processing = useState(false);
+
     final focus = useFocusNode();
+
+    void submitCmd(
+      String value,
+    ) async {
+      try {
+        textController.clear();
+        await terminal.sendIsolate(
+          value,
+          release,
+          project,
+        );
+        // Clear controller
+        scrollController.jumpTo(0);
+      } on Exception catch (e) {
+        notifyError(e.toString());
+      }
+    }
+
+    useEffect(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await terminal.reboot(release, project);
+      });
+    }, [release]);
 
     useEffect(() {
       // Gain back focus
-      if (!processing.value) {
+      if (!processing) {
         focus.requestFocus();
       }
-    }, [processing.value]);
-
-    void submitCmd(String value) async {
-      try {
-        processing.value = true;
-
-        String execPath;
-        // TODO: Clean this up
-        final args = value.split(' ');
-        final firstArg = args.removeAt(0);
-
-        if (firstArg == 'flutter') {
-          execPath = release.cache.flutterExec;
-        } else if (firstArg == 'dart') {
-          execPath = release.cache.dartExec;
-        } else {
-          notifyError('Can only use "flutter" and "dart" commands');
-          return;
-        }
-
-        // Send command to terminal
-        terminal.add('$value');
-        // Clear controller
-        textController.clear();
-        scrollController.jumpTo(0);
-
-        await runCmd(
-          execPath,
-          args,
-          workingDirectory: project.projectDir.path,
-        );
-      } on Exception catch (e) {
-        notifyError(e.toString());
-      } finally {
-        processing.value = false;
-      }
-    }
+    }, [processing]);
 
     return Column(
       children: [
@@ -83,12 +70,15 @@ class PlaygroundTerminal extends HookWidget {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               itemBuilder: (context, index) {
                 final line = lines[index];
-                if (line.type == OutputType.stdout) {
-                  return StdoutText(line.text);
-                }
-
-                if (line.type == OutputType.stderr) {
-                  return TextStderr(line.text);
+                switch (line.type) {
+                  case OutputType.stderr:
+                    return StderrText(line.text);
+                  case OutputType.info:
+                    return StdinfoText(line.text);
+                  case OutputType.stdout:
+                    return StdoutText(line.text);
+                  default:
+                    return Container();
                 }
               },
               itemCount: lines.length,
@@ -101,7 +91,7 @@ class PlaygroundTerminal extends HookWidget {
             children: [
               Expanded(
                 child: TextField(
-                  enabled: !processing.value,
+                  enabled: !processing,
                   controller: textController,
                   onSubmitted: submitCmd,
                   focusNode: focus,
@@ -111,7 +101,7 @@ class PlaygroundTerminal extends HookWidget {
                   ),
                 ),
               ),
-              processing.value
+              processing
                   ? const SpinKitFadingFour(color: Colors.cyan, size: 15)
                   : Container()
             ],

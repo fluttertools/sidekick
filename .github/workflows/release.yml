@@ -148,7 +148,7 @@ jobs:
 
       - name: Set new Flutter version
         run: cider version ${{ github.event.release.tag_name }}
-        
+
       - name: Generate MSIX-compatible version
         uses: ashley-taylor/regex-property-action@1.2
         id: msixver

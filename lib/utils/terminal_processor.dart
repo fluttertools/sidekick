@@ -1,41 +1,67 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
 
-final terminalProcessor = TerminalProcessor();
+import 'package:sidekick/providers/terminal_provider.dart';
 
-Future<int> runCmd(
-  String cmd,
-  List<String> args, {
-  Map<String, String> environment,
-  String workingDirectory,
-}) async {
-  final process = await Process.start(
-    cmd,
-    args,
-    environment: environment,
-    workingDirectory: workingDirectory,
-  );
-
-  terminalProcessor.stderr.addStream(process.stderr);
-  terminalProcessor.stdout.addStream(process.stdout);
-  terminalProcessor.stdinSink = process.stdin;
-
-  exitCode = await process.exitCode;
-
-  // await terminalProcessor.stdinSink.flush();
-  // await terminalProcessor.stderr.close();
-  // await terminalProcessor.stdout.close();
-
-  return exitCode;
+class TerminalCmd {
+  final List<String> args;
+  final String execPath;
+  final String workingDirectory;
+  final SendPort sendPort;
+  TerminalCmd({
+    this.args,
+    this.execPath,
+    this.workingDirectory,
+    this.sendPort,
+  });
 }
 
-/// Console Controller
-class TerminalProcessor {
-  /// stdout stream
-  final stdout = StreamController<List<int>>();
+Future<void> isolateProcess(TerminalCmd cmd) async {
+  try {
+    final process = await Process.start(
+      cmd.execPath,
+      cmd.args,
+      workingDirectory: cmd.workingDirectory,
+    );
 
-  /// sderr stream
-  final stderr = StreamController<List<int>>();
+    process.stdout
+        .transform(utf8.decoder)
+        .transform(
+          const LineSplitter(),
+        )
+        .listen(
+      (event) {
+        cmd.sendPort.send(
+          ConsoleLine.stdout(event),
+        );
+      },
+    );
 
-  IOSink stdinSink;
+    process.stderr
+        .transform(utf8.decoder)
+        .transform(
+          const LineSplitter(),
+        )
+        .listen(
+      (event) {
+        cmd.sendPort.send(
+          ConsoleLine.stderr(event),
+        );
+      },
+    );
+
+    await process.exitCode;
+
+    // Trigger close receive port
+    cmd.sendPort.send(ConsoleLine.close());
+  } on Exception catch (e) {
+    cmd.sendPort.send(
+      ConsoleLine(
+        text: e.toString(),
+        type: OutputType.stderr,
+      ),
+    );
+  }
 }

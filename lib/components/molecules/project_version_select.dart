@@ -24,9 +24,7 @@ class ProjectVersionSelect extends StatelessWidget {
         // elevation: 1,
         padding: EdgeInsets.zero,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
-          // color: Colors.black38,
-          decoration: BoxDecoration(border: Border.all(color: Colors.white12)),
+          padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
           constraints: const BoxConstraints(
             maxWidth: 165,
           ),
