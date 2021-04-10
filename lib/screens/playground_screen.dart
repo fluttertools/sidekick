@@ -22,13 +22,15 @@ class PlaygroundScreen extends HookWidget {
   Widget build(BuildContext context) {
     final releases = useProvider(releasesStateProvider);
     final terminal = useProvider(terminalProvider);
-    final processing = useProvider(terminalRunning).state;
+    final processing = useProvider(terminalProvider.state).processing;
+
     final selectedRelease = useState<ReleaseDto>();
 
     useEffect(() {
       if (selectedRelease.value == null && releases.allCached.isNotEmpty) {
         selectedRelease.value = releases.allCached[0];
       }
+      return;
     }, []);
 
     return Scaffold(
@@ -141,9 +143,17 @@ class PlaygroundScreen extends HookWidget {
                   subtitle: Text(project.projectDir.path),
                   trailing: processing
                       ? OutlinedButton(
-                          child: const Text('Cancel'),
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.deepOrange,
+                            side: const BorderSide(
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                          child: const Text(
+                            'Cancel',
+                          ),
                           onPressed: () {
-                            terminal.kill();
+                            terminal.endProcess();
                           },
                         )
                       : const OutlinedButton(

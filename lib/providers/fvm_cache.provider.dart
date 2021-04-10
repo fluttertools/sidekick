@@ -28,7 +28,7 @@ final unusedCacheSizeProvider = FutureProvider((ref) {
   return getDirectoriesSize(directories);
 });
 
-// ignore: top_level_function_literal_block
+/// Provider that shows
 final unusedVersionProvider = Provider((ref) {
   final unusedVersions = <ReleaseDto>[];
 
@@ -48,10 +48,21 @@ final unusedVersionProvider = Provider((ref) {
 
 /// Releases  InfoProvider
 final fvmCacheProvider = StateNotifierProvider<FvmCacheProvider>((ref) {
-  return FvmCacheProvider(ref: ref, initialState: []);
+  return FvmCacheProvider(ref: ref);
 });
 
 class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
+  FvmCacheProvider({
+    this.ref,
+  }) : super([]) {
+    reloadState();
+    // Load State again while listening to directory
+    directoryWatcher =
+        Watcher(FVMClient.context.cacheDir.path).events.listen((event) {
+      _debouncer.run(reloadState);
+    });
+  }
+
   ProviderReference ref;
   List<CacheVersion> channels;
   List<CacheVersion> versions;
@@ -60,18 +71,6 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
 
   StreamSubscription<WatchEvent> directoryWatcher;
   final _debouncer = Debouncer(const Duration(seconds: 20));
-
-  FvmCacheProvider({
-    this.ref,
-    List<CacheVersion> initialState,
-  }) : super(initialState) {
-    reloadState();
-    // Load State again while listening to directory
-    directoryWatcher =
-        Watcher(FVMClient.context.cacheDir.path).events.listen((event) {
-      _debouncer.run(reloadState);
-    });
-  }
 
   Future<void> _setTotalCacheSize() async {
     final stat = await getDirectorySize(FVMClient.context.cacheDir);

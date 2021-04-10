@@ -10,32 +10,42 @@ import 'package:sidekick/providers/fvm_cache.provider.dart';
 class AppReleasesState {
   MasterDto master;
   List<ChannelDto> channels;
-  List<VersionDto> releases;
+  List<VersionDto> versions;
   Map<String, ReleaseDto> allMap;
   AppReleasesState({
     this.channels,
-    this.releases,
+    this.versions,
     this.master,
     this.allMap,
   }) {
     channels = <ChannelDto>[];
-    releases = <VersionDto>[];
+    versions = <VersionDto>[];
     allMap = {};
   }
 
   /// Returns all releases and channels
   List<ReleaseDto> get all {
-    final versions = [...channels, ...releases];
+    final releases = [...channels, ...versions];
     if (master != null) {
-      versions.insert(0, master);
+      releases.insert(0, master);
     }
 
-    return versions;
+    return releases;
   }
 
   /// Returns all releases and channels that are cached
   List<ReleaseDto> get allCached {
-    return all.where((version) => version.isCached).toList();
+    // final versionNames = all.map((version) => version.name).toSet();
+    // final _allCached = all.where((release) => release.isCached).toList();
+    // _allCached.retainWhere((version) => versionNames.remove(version.name));
+
+    // Only get unique cached releases
+    // Some releases replicate across channels
+    // They can only be installed once and conflict
+    return allMap.entries
+        .where((entry) => entry.value.isCached)
+        .map((entry) => entry.value)
+        .toList();
   }
 }
 
@@ -57,14 +67,14 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   final flutterReleases = payload.releases;
   final flutterChannels = payload.channels;
 
-  //Creates empty releases starte
+  //Creates empty releases state
   final releasesState = AppReleasesState();
 
   if (flutterReleases == null || installedVersions == null) {
     return releasesState;
   }
 
-  // Set Master separetely because workflow is very different
+  //  MASTER: Set Master separetely because workflow is very different
   final masterCache = installedVersions.getChannel(kMasterChannel);
   final masterVersion = FVMClient.getSdkVersionSync(masterCache);
 
@@ -76,7 +86,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     isGlobal: globalVersion == kMasterChannel,
   );
 
-  // Loop through available channels NOT including master
+  // CHANNELS: Loop through available channels NOT including master
   for (var name in kReleaseChannels) {
     final latestRelease = flutterChannels[name];
     final channelCache = installedVersions.getChannel(name);
@@ -98,6 +108,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     releasesState.channels.add(channelDto);
   }
 
+  // VERSIONS loop to create versions
   for (final item in flutterReleases) {
     if (item == null) return null;
 
@@ -113,11 +124,11 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       isGlobal: globalVersion == item.version,
     );
 
-    releasesState.releases.add(version);
+    releasesState.versions.add(version);
   }
 
   /// Create a map with all the versions
-  final allVersions = [...releasesState.releases, ...releasesState.channels];
+  final allVersions = [...releasesState.versions, ...releasesState.channels];
   releasesState.allMap = {
     for (var version in allVersions) version.name: version
   };
