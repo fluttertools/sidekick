@@ -35,7 +35,6 @@ class ReferenceInfoTile extends StatelessWidget {
               },
             ),
           ),
-          const Divider()
         ],
       );
     }

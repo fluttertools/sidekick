@@ -21,7 +21,6 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:  
-  xterm: ^2.0.0
   flutter:
     sdk: flutter
   process_run: ^0.11.2+8
@@ -37,7 +36,6 @@ dependencies:
   settings_ui: ^0.4.0
   material_floating_search_bar: ^0.2.3
   flutter_spinkit: ^4.1.2+1
-  flutter_markdown: ^0.5.1
   material_design_icons_flutter: ^4.0.5755
   animations: ^1.1.2
 

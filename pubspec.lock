@@ -265,13 +265,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.0"
-  flutter_markdown:
-    dependency: "direct main"
-    description:
-      name: flutter_markdown
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.2"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -438,13 +431,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  markdown:
-    dependency: transitive
-    description:
-      name: markdown
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   matcher:
     dependency: transitive
     description:
@@ -561,13 +547,6 @@ packages:
     dependency: transitive
     description:
       name: platform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
-  platform_info:
-    dependency: transitive
-    description:
-      name: platform_info
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
@@ -893,13 +872,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  xterm:
-    dependency: "direct main"
-    description:
-      name: xterm
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   yaml:
     dependency: transitive
     description:
@@ -909,4 +881,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.0"
+  flutter: ">=1.22.0"
