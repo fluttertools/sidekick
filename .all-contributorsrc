@@ -28,6 +28,15 @@
         "ideas",
         "doc"
       ]
+    },
+    {
+      "login": "Techno-Disaster",
+      "name": "Jayesh Nirve",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52817235?v=4",
+      "profile": "http://technodisaster.wtf",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
