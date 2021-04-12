@@ -129,7 +129,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
       state.list = [];
     }
 
-    /// This is used for
+    /// This is used for better UI feedback
     if (withDelay) {
       await Future.delayed(const Duration(seconds: 1));
     }

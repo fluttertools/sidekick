@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/setup_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/components/molecules/setup_button.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
@@ -35,7 +35,6 @@ class ReferenceInfoTile extends StatelessWidget {
               },
             ),
           ),
-          const Divider()
         ],
       );
     }

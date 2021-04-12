@@ -14,7 +14,14 @@ import 'package:truncate/truncate.dart';
 
 class ProjectItem extends HookWidget {
   final Project project;
-  const ProjectItem(this.project, {Key key}) : super(key: key);
+
+  /// Show version selector
+  final bool versionSelect;
+  const ProjectItem(
+    this.project, {
+    this.versionSelect = false,
+    key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,9 @@ class ProjectItem extends HookWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const PlaygroundScreen(),
+          builder: (context) => PlaygroundScreen(
+            project: project,
+          ),
         ),
       );
     }
@@ -49,7 +58,7 @@ class ProjectItem extends HookWidget {
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,
-                      icon: const Icon(MdiIcons.console),
+                      icon: const Icon(MdiIcons.consoleLine),
                       onPressed: openProjectPlayground,
                     ),
                   ),
@@ -94,13 +103,20 @@ class ProjectItem extends HookWidget {
                     ),
                   ),
                   const Spacer(),
-                  needInstall
-                      ? VersionInstallButton(version, warningIcon: true)
-                      : const SizedBox(height: 0, width: 0),
-                  ProjectVersionSelect(
-                    project: project,
-                    versions: cachedVersions ?? [],
-                  ),
+                  versionSelect
+                      ? Row(
+                          children: [
+                            needInstall
+                                ? VersionInstallButton(version,
+                                    warningIcon: true)
+                                : const SizedBox(height: 0, width: 0),
+                            ProjectVersionSelect(
+                              project: project,
+                              versions: cachedVersions ?? [],
+                            )
+                          ],
+                        )
+                      : Container(),
                 ],
               )
             ],

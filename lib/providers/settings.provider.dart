@@ -123,12 +123,16 @@ class SettingsProvider extends StateNotifier<Settings> {
   Settings prevState;
 
   Future<void> _loadState() async {
+    /// Update app state right away
+    final sidekickSettings = SettingsService.read();
+    state = Settings(sidekick: sidekickSettings);
+
+    //Go get async state
     final fvmSettings = await FVMClient.readSettings();
-    final appSettings = SettingsService.read();
     final flutterSettings = await FVMClient.getFlutterConfig();
     state = Settings(
       // Set state
-      sidekick: appSettings,
+      sidekick: sidekickSettings,
       fvm: fvmSettings,
       flutter: FlutterSettings.fromMap(flutterSettings),
     );

@@ -66,15 +66,34 @@ class StdoutText extends StatelessWidget {
   }
 }
 
-class TextStderr extends StatelessWidget {
+class StdinfoText extends StatelessWidget {
   final String text;
-  const TextStderr(this.text, {Key key}) : super(key: key);
+  const StdinfoText(this.text, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.ibmPlexMono().copyWith(color: Colors.deepOrange),
+      style: GoogleFonts.ibmPlexMono().copyWith(
+        fontSize: 12,
+        color: Colors.white,
+      ),
+    );
+  }
+}
+
+class StderrText extends StatelessWidget {
+  final String text;
+  const StderrText(this.text, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.ibmPlexMono().copyWith(
+        fontSize: 12,
+        color: Colors.deepOrange,
+      ),
     );
   }
 }

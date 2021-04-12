@@ -87,7 +87,7 @@ final searchResultsProvider = Provider((ref) {
     });
 
     // ignore: avoid_function_literals_in_foreach_calls
-    releaseState.releases.forEach((release) {
+    releaseState.versions.forEach((release) {
       // Get channel name to pass to map
       final channelName = release.release.channelName;
 

@@ -7,12 +7,10 @@ import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/providers/fvm_console_provider.dart';
 
 class Console extends HookWidget {
-  final List<ConsoleLine> lines;
   final bool expand;
   final bool processing;
   final Function() onExpand;
   const Console({
-    this.lines,
     this.expand = false,
     this.processing = false,
     this.onExpand,
@@ -76,17 +74,8 @@ class Console extends HookWidget {
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                     itemBuilder: (context, index) {
                       final line = lines.value[index];
-                      if (line == OutputType.stdout) {
-                        return StdoutText(
-                          lines.value[index],
-                          key: Key(lines.value[index]),
-                        );
-                      } else {
-                        return StdoutText(
-                          lines.value[index],
-                          key: Key(lines.value[index]),
-                        );
-                      }
+
+                      return StdoutText(line);
                     },
                     itemCount: lines.value.length,
                   ),
