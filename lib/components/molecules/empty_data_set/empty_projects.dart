@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/empty_data_set.dart';
-import 'package:sidekick/providers/navigation_provider.dart';
+import 'package:sidekick/screens/settings_screen.dart';
 
 class EmptyProjects extends StatelessWidget {
   const EmptyProjects({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    void openSettingsScreen() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SettingsScreen(),
+        ),
+      );
+    }
+
     return EmptyDataSet(
       icon: const Icon(MdiIcons.folder),
       child: Padding(
@@ -33,11 +41,7 @@ class EmptyProjects extends StatelessWidget {
                   padding: MaterialStateProperty.resolveWith(
                 (states) => const EdgeInsets.fromLTRB(30, 15, 30, 15),
               )),
-              onPressed: () {
-                context
-                    .read(navigationProvider)
-                    .goTo(NavigationRoutes.settingsScreen);
-              },
+              onPressed: openSettingsScreen,
               icon: const Icon(Icons.settings, size: 20),
               label: const Text('Change Settings'),
             )

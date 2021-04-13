@@ -16,8 +16,9 @@ final navigationProvider = StateNotifierProvider<NavigationProvider>((_) {
 
 class NavigationProvider extends StateNotifier<NavigationRoutes> {
   NavigationRoutes previous;
-  NavigationProvider({NavigationRoutes route = NavigationRoutes.homeScreen})
-      : previous = route,
+  NavigationProvider({
+    NavigationRoutes route = NavigationRoutes.homeScreen,
+  })  : previous = route,
         super(route);
 
   void goTo(NavigationRoutes navigation) {
