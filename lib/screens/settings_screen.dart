@@ -45,8 +45,9 @@ class SettingsScreen extends HookWidget {
       try {
         await provider.save(settings);
         notify('Settings have been saved');
-      } on Exception {
+      } on Exception catch (e) {
         notifyError('Could not save settings');
+        notifyError(e.toString());
       }
     }
 
