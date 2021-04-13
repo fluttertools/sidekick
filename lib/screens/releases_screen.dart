@@ -26,15 +26,11 @@ class ReleasesScreen extends HookWidget {
     final settings = useProvider(settingsProvider.state);
 
     return Screen(
+      extendBody: false,
       title: 'Releases',
       child: Scrollbar(
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
-              child: Container(
-                height: 60,
-              ),
-            ),
             SliverToBoxAdapter(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
@@ -72,7 +68,7 @@ class ReleasesScreen extends HookWidget {
             ),
             SliverAppBar(
               automaticallyImplyLeading: false,
-              // expandedHeight: 120.0,
+              expandedHeight: 120.0,
               elevation: 1,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               pinned: true,
