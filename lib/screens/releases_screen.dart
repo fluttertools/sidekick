@@ -57,7 +57,9 @@ class ReleasesScreen extends HookWidget {
                         const SizedBox(width: 20),
                         const Expanded(
                           child: Caption(
-                              '''The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.'''),
+                            '''The current tip-of-tree, absolute latest cutting edge build.'''
+                            '''Usually functional, though sometimes we accidentally break things.''',
+                          ),
                         ),
                         const SizedBox(width: 20),
                         VersionInstallButton(releases.master),
@@ -70,7 +72,7 @@ class ReleasesScreen extends HookWidget {
             ),
             SliverAppBar(
               automaticallyImplyLeading: false,
-              expandedHeight: 120.0,
+              // expandedHeight: 120.0,
               elevation: 1,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               pinned: true,
