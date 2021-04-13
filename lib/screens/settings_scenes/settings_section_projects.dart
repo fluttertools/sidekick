@@ -17,6 +17,8 @@ class SettingsSectionProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasProjectPath = settings.sidekick.firstProjectDir != null;
+
     Future<void> handleChooseDirectory() async {
       final fileResult = await showOpenPanel(
         allowedFileTypes: [],
@@ -50,7 +52,11 @@ class SettingsSectionProjects extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      truncate(settings.sidekick.firstProjectDir, 20,
+                      truncate(
+                          hasProjectPath
+                              ? settings.sidekick.firstProjectDir
+                              : 'Choose',
+                          20,
                           position: TruncatePosition.middle),
                     ),
                     const Icon(MdiIcons.menuDown),
