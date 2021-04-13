@@ -36,52 +36,51 @@ class ChannelShowcase extends StatelessWidget {
           ),
           side: MaterialStateProperty.resolveWith((states) => BorderSide.none),
         ),
-        child: LayoutBuilder(builder: (context, layout) {
-          return Container(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Heading(channel.name),
-                    Tooltip(
-                      message: channel.release.version,
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 65),
+        child: LayoutBuilder(
+          builder: (context, layout) {
+            return Container(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Heading(channel.name),
+                      Tooltip(
+                        message: channel.release.version,
                         child: Text(
                           channel.release.version,
-                          style: Theme.of(context).textTheme.subtitle1,
+                          style: Theme.of(context).textTheme.bodyText1,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 5),
-                    Caption(
-                      DateTimeFormat.relative(
-                        channel.release.releaseDate,
-                        appendIfAfter: 'ago',
+                      const SizedBox(height: 5),
+                      Caption(
+                        DateTimeFormat.relative(
+                          channel.release.releaseDate,
+                          appendIfAfter: 'ago',
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                LayoutSize.isSmall ? Container() : const Spacer(),
-                LayoutSize.isSmall
-                    ? Container()
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          VersionInstallButton(channel),
-                        ],
-                      )
-              ],
-            ),
-          );
-        }),
+                    ],
+                  ),
+                  LayoutSize.isSmall ? Container() : const Spacer(),
+                  LayoutSize.isSmall
+                      ? Container()
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            VersionInstallButton(channel),
+                          ],
+                        )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

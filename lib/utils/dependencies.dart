@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
-import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
 
 const cacheKey = 'dependencies_cache_key';
@@ -76,17 +75,17 @@ Future<List<PackageDetail>> _complementPackageInfo(
   return await Future.wait(packagesDetail);
 }
 
-RepositorySlug _getRepoSlug(Pubspec pubspec) {
+RepositorySlug _getRepoSlug(Uri repository, String homepage) {
   String author;
   String repo;
 
-  if (pubspec.repository != null) {
-    final paths = pubspec.repository.path.split('/');
+  if (repository != null) {
+    final paths = repository.path.split('/');
     author = paths[1];
     repo = paths[2];
   } else {
-    if (pubspec.homepage != null && pubspec.homepage.contains('github.com')) {
-      final uri = Uri.parse(pubspec.homepage);
+    if (homepage != null && homepage.contains('github.com')) {
+      final uri = Uri.parse(homepage);
       final paths = uri.path.split('/');
       author = paths[1];
       repo = paths[2];
@@ -101,10 +100,13 @@ RepositorySlug _getRepoSlug(Pubspec pubspec) {
 
 Future<PackageDetail> _assignInfo(PubPackage package, int count) async {
   final score = await client.packageScore(package.name);
+  final pubspec = package.latestPubspec;
   Repository repo;
   try {
-    repo = await github.repositories
-        .getRepository(_getRepoSlug(package.latestPubspec));
+    repo = await github.repositories.getRepository(_getRepoSlug(
+      pubspec.repository,
+      pubspec.homepage,
+    ));
   } on Exception {
     repo = null;
   }

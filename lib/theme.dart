@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Dark theme
 ThemeData darkTheme() {
   return ThemeData(
-    textTheme: GoogleFonts.ibmPlexSansTextTheme(ThemeData.dark().textTheme),
     brightness: Brightness.dark,
     primarySwatch: Colors.cyan,
     accentColor: Colors.cyan,
@@ -29,7 +27,6 @@ ThemeData darkTheme() {
 
 ThemeData lightTheme() {
   return ThemeData(
-    textTheme: GoogleFonts.ibmPlexSansTextTheme(ThemeData.light().textTheme),
     brightness: Brightness.light,
     primarySwatch: Colors.cyan,
     accentColor: Colors.cyan,

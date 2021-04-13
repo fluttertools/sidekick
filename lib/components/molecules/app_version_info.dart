@@ -9,7 +9,7 @@ class AppVersionInfo extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final latestRelease = useState<LatestVersion>();
+    final latestRelease = useState<LatestVersion>(null);
 
     Future<void> setLatestVersion() async {
       final latest = await checkLatestRelease();

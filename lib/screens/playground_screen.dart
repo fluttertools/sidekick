@@ -24,7 +24,7 @@ class PlaygroundScreen extends HookWidget {
     final terminal = useProvider(terminalProvider);
     final processing = useProvider(terminalProvider.state).processing;
 
-    final selectedRelease = useState<ReleaseDto>();
+    final selectedRelease = useState<ReleaseDto>(null);
 
     useEffect(() {
       if (selectedRelease.value == null && releases.allCached.isNotEmpty) {
@@ -75,7 +75,7 @@ class PlaygroundScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title: Text('Releases'),
+                  title: const Text('Releases'),
                   subtitle: Text('${releases.allCached.length} versions'),
                 ),
                 const Divider(height: 1),

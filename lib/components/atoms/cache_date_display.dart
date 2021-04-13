@@ -11,7 +11,7 @@ class CacheDateDisplay extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cacheDirStat = useState<FileStat>();
+    final cacheDirStat = useState<FileStat>(null);
 
     void setCacheDir() async {
       if (version != null && version.isCached == true) {

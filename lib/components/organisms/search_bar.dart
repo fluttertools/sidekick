@@ -75,7 +75,7 @@ class SearchBar extends HookWidget {
 
               physics: const BouncingScrollPhysics(),
               debounceDelay: const Duration(milliseconds: 200),
-              maxWidth: MediaQuery.of(context).size.width / 1.5,
+              width: MediaQuery.of(context).size.width / 1.5,
               backdropColor: Colors.black.withOpacity(0.5),
               onFocusChanged: onFocusChanged,
               // transition: CircularFloatingSearchBarTransition(),
