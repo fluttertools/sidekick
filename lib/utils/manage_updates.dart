@@ -27,7 +27,7 @@ Future<File> getFileLocation(String release) async {
 
 Future<void> downloadRelease(String release) async {
   final downloadUrl = getDownloadReleaseUrl(release);
-  final file = await getFileLocation('test');
+  final file = await getFileLocation(release);
 
   if (!await file.exists()) {
     notify("Downloading...");

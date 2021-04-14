@@ -16,31 +16,34 @@ class PackagesScreen extends HookWidget {
     final packages = useProvider(packagesProvider);
 
     return packages.when(
-        data: (data) {
-          if (data.isEmpty) {
-            return const EmptyPackages();
-          }
-          return Screen(
-            title: 'Most Used Packages',
-            child: Scrollbar(
-              child: ListView.builder(
-                // separatorBuilder: (_, __) => const Divider(),
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  final PackageDetail package = data[index];
-                  final position = ++index;
-                  return PackageItem(
-                    package,
-                    position: position,
-                  );
-                },
-              ),
+      data: (data) {
+        if (data.isEmpty) {
+          return const EmptyPackages();
+        }
+        return Screen(
+          title: 'Most Used Packages',
+          child: Scrollbar(
+            child: ListView.builder(
+              // separatorBuilder: (_, __) => const Divider(),
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                final PackageDetail package = data[index];
+                final position = ++index;
+                return PackageItem(
+                  package,
+                  position: position,
+                );
+              },
             ),
-          );
-        },
-        loading: () => const LoadingIndicator(),
-        error: (_, __) => Container(
-              child: const Text("There was an issue loading your packages."),
-            ));
+          ),
+        );
+      },
+      loading: () => const LoadingIndicator(),
+      error: (_, __) => Container(
+        child: const Text(
+          "There was an issue loading your packages.",
+        ),
+      ),
+    );
   }
 }
