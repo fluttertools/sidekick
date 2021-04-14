@@ -102,11 +102,17 @@ Future<PackageDetail> _assignInfo(PubPackage package, int count) async {
   final score = await client.packageScore(package.name);
   final pubspec = package.latestPubspec;
   Repository repo;
+
+  final repoSlug = _getRepoSlug(
+    pubspec.repository,
+    pubspec.homepage,
+  );
   try {
-    repo = await github.repositories.getRepository(_getRepoSlug(
-      pubspec.repository,
-      pubspec.homepage,
-    ));
+    if (repoSlug != null) {
+      repo = await github.repositories.getRepository(repoSlug);
+    } else {
+      repo = null;
+    }
   } on Exception {
     repo = null;
   }
