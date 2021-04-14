@@ -30,9 +30,10 @@ class AppShell extends HookWidget {
     final navigation = useProvider(navigationProvider);
     final currentRoute = useProvider(navigationProvider.state);
     final selectedInfo = useProvider(selectedInfoProvider.state);
-
+    // Index of item selected
     final selectedIndex = useState(0);
 
+    // Side effect when route changes
     useValueChanged(currentRoute, (_, __) {
       // Do not set index if its search
       if (currentRoute != NavigationRoutes.searchScreen) {
@@ -40,9 +41,8 @@ class AppShell extends HookWidget {
       }
     });
 
-    // Logic for displaying or hiding drawer based on layout
-    // ignore: missing_return
-    useEffect(() {
+    // Side effect when info is selected
+    useValueChanged(selectedInfo, (_, __) {
       if (_scaffoldKey.currentState == null) return;
       final isOpen = _scaffoldKey.currentState.isEndDrawerOpen;
       final hasInfo = selectedInfo.version != null;
@@ -53,10 +53,9 @@ class AppShell extends HookWidget {
           _scaffoldKey.currentState.openEndDrawer();
         });
       }
+    });
 
-      // Close drawer layout if its large and its already open
-    }, [selectedInfo]);
-
+    // Render corret page widget based on index
     Widget renderPage(int index) {
       const pages = [
         HomeScreen(),
@@ -67,10 +66,6 @@ class AppShell extends HookWidget {
 
       return pages[index];
     }
-
-    ;
-
-    ;
 
     return KBShortcutManager(
       child: Scaffold(

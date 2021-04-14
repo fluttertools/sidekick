@@ -16,6 +16,10 @@ class AppBottomBar extends HookWidget {
       expand.value = !expand.value;
     }
 
+    if (processing == false) {
+      return Container(height: 0);
+    }
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
       constraints: expand.value && processing

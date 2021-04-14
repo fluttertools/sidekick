@@ -45,11 +45,11 @@ class ProjectsScreen extends HookWidget {
       processing: projects.loading,
       actions: [
         Caption('${filteredProjects.value.length} Projects'),
-        const SizedBox(width: 20),
+        const SizedBox(width: 10),
         Tooltip(
-          message: 'Only display projects with FVM configured',
+          message: 'Only display projects that have versions pinned',
           child: CheckButton(
-            label: 'FVM only',
+            label: 'Pinned',
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
@@ -57,7 +57,7 @@ class ProjectsScreen extends HookWidget {
             },
           ),
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 10),
         RefreshButton(
           refreshing: projects.loading,
           onPressed: onRefresh,

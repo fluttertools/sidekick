@@ -2,10 +2,10 @@ import 'dart:io';
 
 //import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:oktoast/oktoast.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/constants.dart';
+import 'package:sidekick/utils/notify.dart';
 import 'package:sidekick/utils/open_link.dart';
 
 final platform = Platform.operatingSystem;
@@ -27,24 +27,23 @@ Future<File> getFileLocation(String release) async {
 
 Future<void> downloadRelease(String release) async {
   final downloadUrl = getDownloadReleaseUrl(release);
-  final file = await getFileLocation(release);
+  final file = await getFileLocation('test');
 
   if (!await file.exists()) {
-    showToast("Downloading...", duration: const Duration(seconds: 30));
+    notify("Downloading...");
     var res = await http.get(downloadUrl);
     if (res.statusCode == 200) {
       await file.writeAsBytes(res.bodyBytes);
-      showToast("Release downloaded! Opening...", dismissOtherToast: true);
+      notify("Release downloaded! Opening...");
     } else {
-      showToast(
+      notifyError(
         "There was an issue downloading the file, plese try again later."
         "\nCode ${res.statusCode}",
-        dismissOtherToast: true,
       );
       return;
     }
   } else {
-    showToast("File already downloaded, opening...");
+    notify("Opening update...");
   }
   openInstaller(file);
 }
