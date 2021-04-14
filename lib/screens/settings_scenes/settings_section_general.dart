@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:sidekick/models/sidekick_settings.model.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/get_theme_mode.dart';
+import 'package:sidekick/utils/notify.dart';
 import 'package:sidekick/version.dart';
 
 class SettingsSectionGeneral extends StatelessWidget {
   final Settings settings;
-  final Function() onSave;
+  final void Function() onSave;
 
   const SettingsSectionGeneral(
     this.settings,
@@ -17,6 +19,12 @@ class SettingsSectionGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void handleReset() async {
+      settings.sidekick = SidekickSettings();
+      onSave();
+      notify('App settings have been reset');
+    }
+
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
@@ -69,6 +77,15 @@ class SettingsSectionGeneral extends StatelessWidget {
             title: "App version",
             leading: Icon(Icons.info_outline_rounded),
             trailing: Text(appVersion),
+          ),
+          const Divider(),
+          SettingsTile(
+            title: "Reset to default settings",
+            leading: const Icon(MdiIcons.backupRestore),
+            trailing: OutlinedButton(
+              onPressed: (handleReset),
+              child: const Text('Reset'),
+            ),
           ),
         ],
       ),

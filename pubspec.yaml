@@ -50,10 +50,9 @@ dependencies:
   oktoast: ^3.0.0
   path_provider: ^2.0.1
   pub_api_client: ^1.0.9
-
   pubspec_yaml: ^2.0.1+1
   responsive_grid: ^2.0.0
-  settings_ui: ^1.0.0
+  settings_ui: ^0.6.0
   truncate: ^3.0.1
   url_launcher: ^6.0.3
   watcher: ^1.0.0
