@@ -7,10 +7,12 @@ class Screen extends StatelessWidget {
   final List<Widget> actions;
   final bool processing;
   final Widget child;
+  final bool extendBody;
   const Screen({
     @required this.title,
     this.actions = const [],
     this.processing = false,
+    this.extendBody = true,
     this.child,
     Key key,
   }) : super(key: key);
@@ -18,8 +20,8 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      extendBody: true,
+      extendBodyBehindAppBar: extendBody,
+      extendBody: extendBody,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: Stack(

@@ -28,7 +28,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
-      title: const Subheading('Sidekick'),
+      title: const Caption('Sidekick'),
       centerTitle: true,
       actions: [
         IconButton(

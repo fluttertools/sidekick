@@ -26,15 +26,11 @@ class ReleasesScreen extends HookWidget {
     final settings = useProvider(settingsProvider.state);
 
     return Screen(
+      extendBody: false,
       title: 'Releases',
       child: Scrollbar(
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
-              child: Container(
-                height: 60,
-              ),
-            ),
             SliverToBoxAdapter(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
@@ -57,7 +53,9 @@ class ReleasesScreen extends HookWidget {
                         const SizedBox(width: 20),
                         const Expanded(
                           child: Caption(
-                              '''The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.'''),
+                            '''The current tip-of-tree, absolute latest cutting edge build.'''
+                            '''Usually functional, though sometimes we accidentally break things.''',
+                          ),
                         ),
                         const SizedBox(width: 20),
                         VersionInstallButton(releases.master),
