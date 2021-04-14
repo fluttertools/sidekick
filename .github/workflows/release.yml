@@ -124,7 +124,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           # Local file to upload.
           file: build/macos/Build/Products/Release/Sidekick.dmg
-          asset_name: Sidekick-macos-${{ github.event.release.tag_name }}.dmg
+          asset_name: sidekick-macos-${{ github.event.release.tag_name }}.dmg
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
@@ -207,5 +207,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/windows/Runner/release/sidekick.msix
-          asset_name: Sidekick-windows-${{ github.event.release.tag_name }}.msix
+          asset_name: sidekick-windows-${{ github.event.release.tag_name }}.msix
           tag: ${{ github.ref }}

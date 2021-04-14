@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/components/molecules/update_available_button.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 
@@ -31,6 +32,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const Caption('Sidekick'),
       centerTitle: true,
       actions: [
+        const UpdateAvailableButton(),
         IconButton(
           icon: const Icon(Icons.search),
           iconSize: 20,
