@@ -10,9 +10,9 @@ class LatestVersion {
 
   /// Constructor
   LatestVersion({
-    this.needUpdate,
-    this.latestVersion,
-    this.currentVersion,
+    this.needUpdate = false,
+    this.latestVersion = '',
+    this.currentVersion = appVersion,
   });
 }
 

@@ -13,8 +13,6 @@ class SelectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = Theme.of(context).elevatedButtonTheme.style;
-
     return InkWell(
       onTap: onPressed,
       child: Container(
