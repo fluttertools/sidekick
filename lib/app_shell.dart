@@ -21,13 +21,6 @@ import 'package:sidekick/utils/layout_size.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-final pages = [
-  HomeScreen(key: UniqueKey()),
-  ProjectsScreen(key: UniqueKey()),
-  ReleasesScreen(key: UniqueKey()),
-  PackagesScreen(key: UniqueKey()),
-];
-
 class AppShell extends HookWidget {
   const AppShell({Key key}) : super(key: key);
 
@@ -63,6 +56,21 @@ class AppShell extends HookWidget {
 
       // Close drawer layout if its large and its already open
     }, [selectedInfo]);
+
+    Widget renderPage(int index) {
+      const pages = [
+        HomeScreen(),
+        ProjectsScreen(),
+        ReleasesScreen(),
+        PackagesScreen(),
+      ];
+
+      return pages[index];
+    }
+
+    ;
+
+    ;
 
     return KBShortcutManager(
       child: Scaffold(
@@ -111,7 +119,7 @@ class AppShell extends HookWidget {
                         duration: const Duration(milliseconds: 250),
                         reverse: selectedIndex.value <
                             (navigation.previous.index ?? 0),
-                        child: pages[selectedIndex.value],
+                        child: renderPage(selectedIndex.value),
                         transitionBuilder: (
                           child,
                           animation,

@@ -58,6 +58,7 @@ class PlaygroundTerminal extends HookWidget {
     }
 
     useEffect(() {
+      /// Cannot modify state before render
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await terminal.reboot(release, project);
       });

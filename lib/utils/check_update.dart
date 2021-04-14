@@ -19,18 +19,28 @@ class LatestVersion {
 /// Helper method to easily check for updates on [packageName]
 /// comparing with [currentVersion] returns `LatestVersion`
 Future<LatestVersion> checkLatestRelease() async {
-  final latestRelease = await GitHub(
-    auth: Authentication.anonymous(),
-  ).repositories.getLatestRelease(RepositorySlug("leoafarias", "sidekick"));
+  try {
+    final latestRelease = await GitHub(
+      auth: Authentication.anonymous(),
+    ).repositories.getLatestRelease(
+          RepositorySlug(
+            "leoafarias",
+            "sidekick",
+          ),
+        );
 
-  final latestVersion = Version.parse((latestRelease.tagName));
-  final currentVersion = Version.parse(appVersion);
+    final latestVersion = Version.parse((latestRelease.tagName));
+    final currentVersion = Version.parse(appVersion);
 
-  final needUpdate = latestVersion > currentVersion;
+    final needUpdate = latestVersion > currentVersion;
 
-  return LatestVersion(
-    needUpdate: needUpdate,
-    latestVersion: latestVersion.toString(),
-    currentVersion: currentVersion.toString(),
-  );
+    return LatestVersion(
+      needUpdate: needUpdate,
+      latestVersion: latestVersion.toString(),
+      currentVersion: currentVersion.toString(),
+    );
+  } on Exception {
+    //TODO: Need to do some error logging here
+    return LatestVersion();
+  }
 }

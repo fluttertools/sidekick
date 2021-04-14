@@ -13,13 +13,15 @@ final platform = Platform.operatingSystem;
 const downloadBaseUrl = "$kGithubSidekickUrl/releases/download";
 
 String getDownloadReleaseUrl(String release) {
-  return "$downloadBaseUrl/$release/Sidekick-$platform-$release.$platformExt";
+  return "$downloadBaseUrl/$release/sidekick-$platform-$release.$platformExt";
 }
 
 Future<File> getFileLocation(String release) async {
   final downloadDir = await getDownloadsDirectory();
-  final filePath =
-      p.join(downloadDir.absolute.path, "sidekick-$release.$platformExt");
+  final filePath = p.join(
+    downloadDir.absolute.path,
+    "sidekick-$release.$platformExt",
+  );
   return File(filePath);
 }
 
