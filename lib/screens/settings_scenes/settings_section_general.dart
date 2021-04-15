@@ -20,9 +20,38 @@ class SettingsSectionGeneral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void handleReset() async {
-      settings.sidekick = SidekickSettings();
-      onSave();
-      notify('App settings have been reset');
+      // flutter defined function
+      showDialog(
+        context: context,
+        builder: (context) {
+          // return object of type Dialog
+          return AlertDialog(
+            title: const Text("Are you sure you want to reset settings?"),
+            content: const Text(
+              'This will only reset Sidekick specific preferences',
+            ),
+            buttonPadding: const EdgeInsets.all(15),
+            actions: <Widget>[
+              // usually buttons at the bottom of the dialog
+              TextButton(
+                child: const Text("Cancel"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text("Confirm"),
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  settings.sidekick = SidekickSettings();
+                  onSave();
+                  notify('App settings have been reset');
+                },
+              ),
+            ],
+          );
+        },
+      );
     }
 
     return Container(

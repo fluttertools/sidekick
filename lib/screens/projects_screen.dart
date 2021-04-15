@@ -19,7 +19,12 @@ class ProjectsScreen extends HookWidget {
   Widget build(BuildContext context) {
     final projects = useProvider(projectsProvider.state);
     final filteredProjects = useState(projects.list);
+
     final settings = useProvider(settingsProvider.state);
+    void onRefresh() async {
+      await context.read(projectsProvider).reloadAll(withDelay: true);
+      notify('Projects Refreshed');
+    }
 
     useEffect(() {
       if (settings.sidekick.onlyProjectsWithFvm) {
@@ -32,12 +37,9 @@ class ProjectsScreen extends HookWidget {
     }, [projects.list, settings.sidekick]);
 
     if (filteredProjects.value.isEmpty && !projects.loading) {
-      return const EmptyProjects();
-    }
-
-    void onRefresh() async {
-      await context.read(projectsProvider).reloadAll(withDelay: true);
-      notify('Projects Refreshed');
+      return EmptyProjects(
+        onRetry: onRefresh,
+      );
     }
 
     return Screen(

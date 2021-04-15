@@ -17,8 +17,15 @@ Map<String, PubPackage> mapPackages;
 
 /// Fetches all packages info from pub.dev
 Future<List<PackageDetail>> fetchAllDependencies(
-  Map<String, int> packagesCount,
-) async {
+  Map<String, int> packagesCount, {
+  bool clearCache = false,
+}) async {
+  if (clearCache) {
+    cache.clear();
+  }
+  // TODO: Handle this cache better in case of error
+  // and allow for refresh
+
   final response = await cache.remember(
     cacheKey,
     () async {

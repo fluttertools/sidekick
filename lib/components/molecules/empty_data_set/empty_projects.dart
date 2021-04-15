@@ -4,7 +4,11 @@ import 'package:sidekick/components/atoms/empty_data_set.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 
 class EmptyProjects extends StatelessWidget {
-  const EmptyProjects({Key key}) : super(key: key);
+  final Function() onRetry;
+  const EmptyProjects({
+    this.onRetry,
+    key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,15 @@ class EmptyProjects extends StatelessWidget {
               onPressed: openSettingsScreen,
               icon: const Icon(Icons.settings, size: 20),
               label: const Text('Change Settings'),
-            )
+            ),
+            const SizedBox(height: 10),
+            onRetry != null
+                ? OutlinedButton.icon(
+                    onPressed: onRetry,
+                    icon: const Icon(MdiIcons.refresh, size: 20),
+                    label: const Text('Retry'),
+                  )
+                : Container()
           ],
         ),
       ),
