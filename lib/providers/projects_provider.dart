@@ -109,7 +109,9 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
 
   /// Triggers a full project reload. Adds a 1 second delay on update
   /// if [withDelay] is true for better UI feedback
-  Future<void> reloadAll({bool withDelay = false}) async {
+  Future<void> reloadAll({
+    bool withDelay = false,
+  }) async {
     state.loading = true;
     _forceStateUpdate();
 
