@@ -11,6 +11,15 @@ class PackageScoreDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (score == null ||
+        score.popularityScore == null ||
+        score.grantedPoints == null) {
+      return const SizedBox(
+        width: 0,
+        height: 0,
+      );
+    }
+
     return Container(
       width: 240,
       child: Row(
