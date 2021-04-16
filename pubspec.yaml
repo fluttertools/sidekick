@@ -56,6 +56,12 @@ dependencies:
   truncate: ^3.0.1
   url_launcher: ^6.0.3
   watcher: ^1.0.0
+  # flutter_luban: ^0.1.12
+  flutter_luban:
+    git:
+      url: https://github.com/leoafarias/flutter_luban.git
+      ref: master
+  pool: ^1.5.0
 
 dev_dependencies:
   flutter_test:

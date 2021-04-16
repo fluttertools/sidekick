@@ -5,7 +5,6 @@ import 'package:sidekick/components/molecules/setup_button.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/channel.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/utils/channel_descriptions.dart';
 import 'package:sidekick/utils/open_link.dart';
 
 class ReferenceInfoTile extends StatelessWidget {

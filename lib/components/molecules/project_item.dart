@@ -7,6 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
+import 'package:sidekick/modules/image_compression/image_compression_screen.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:sidekick/screens/playground_screen.dart';
 import 'package:sidekick/utils/open_link.dart';
@@ -43,6 +44,17 @@ class ProjectItem extends HookWidget {
       );
     }
 
+    void openImageCompression() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ImageCompressionScreen(
+            project: project,
+          ),
+        ),
+      );
+    }
+
     return Container(
       height: 170,
       child: Center(
@@ -59,7 +71,7 @@ class ProjectItem extends HookWidget {
                       iconSize: 20,
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.consoleLine),
-                      onPressed: openProjectPlayground,
+                      onPressed: openImageCompression,
                     ),
                   ),
                 ),
@@ -109,7 +121,10 @@ class ProjectItem extends HookWidget {
                             needInstall
                                 ? VersionInstallButton(version,
                                     warningIcon: true)
-                                : const SizedBox(height: 0, width: 0),
+                                : const SizedBox(
+                                    height: 0,
+                                    width: 0,
+                                  ),
                             ProjectVersionSelect(
                               project: project,
                               versions: cachedVersions ?? [],

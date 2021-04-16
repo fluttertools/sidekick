@@ -16,7 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
   await Hive.initFlutter();
-  // await Hive.deleteBoxFromDisk('settings');
+
   await SettingsService.init();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {

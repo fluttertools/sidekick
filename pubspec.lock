@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.2"
   args:
     dependency: transitive
     description:
@@ -265,6 +272,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.0"
+  flutter_luban:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "5fc4146c44392cdf92837c50969b372a8d8c799c"
+      url: "https://github.com/leoafarias/flutter_luban.git"
+    source: git
+    version: "0.1.12"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -389,6 +405,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   io:
     dependency: transitive
     description:
@@ -536,6 +559,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.11.0"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   plain_optional:
     dependency: transitive
     description:
@@ -558,7 +588,7 @@ packages:
     source: hosted
     version: "2.0.0"
   pool:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: pool
       url: "https://pub.dartlang.org"
@@ -879,6 +909,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.0"
   yaml:
     dependency: transitive
     description:
