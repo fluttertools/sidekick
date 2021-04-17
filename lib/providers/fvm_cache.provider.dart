@@ -11,16 +11,10 @@ import 'package:sidekick/utils/dir_stat.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
 
-@deprecated
-enum InstalledStatus {
-  notInstalled,
-  asChannel,
-  asVersion,
-}
-
 final cacheSizeProvider =
     StateProvider<DirectorySizeInfo>((_) => DirectorySizeInfo());
 
+// ignore: top_level_function_literal_block
 final unusedCacheSizeProvider = FutureProvider((ref) {
   final unused = ref.watch(unusedVersionProvider);
   // Get all directories
@@ -29,6 +23,7 @@ final unusedCacheSizeProvider = FutureProvider((ref) {
 });
 
 /// Provider that shows
+// ignore: top_level_function_literal_block
 final unusedVersionProvider = Provider((ref) {
   final unusedVersions = <ReleaseDto>[];
 

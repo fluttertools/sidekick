@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0"
+  before_after:
+    dependency: "direct main"
+    description:
+      name: before_after
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   boolean_selector:
     dependency: transitive
     description:
