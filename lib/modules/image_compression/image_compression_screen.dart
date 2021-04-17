@@ -1,4 +1,3 @@
-import 'package:before_after/before_after.dart';
 import 'package:filesize/filesize.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +6,12 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/loading_indicator.dart';
+import 'package:sidekick/components/atoms/local_link_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/modules/image_compression/components/image_asset_status.dart';
 import 'package:sidekick/modules/image_compression/models/image_asset.model.dart';
 import 'package:sidekick/modules/image_compression/providers/compression_activity.provider.dart';
 import 'package:sidekick/modules/image_compression/providers/project_images.provider.dart';
-import 'package:truncate/truncate.dart';
 
 class ImageCompressionScreen extends HookWidget {
   final Project project;
@@ -23,8 +22,11 @@ class ImageCompressionScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final projectImages =
-        useProvider(projectImagesProvider(project.projectDir));
+    final projectImages = useProvider(
+      projectImagesProvider(project.projectDir),
+    );
+
+    final totalStat = useProvider(compressionStatProvider);
 
     void handleCompressImages(List<ImageAsset> assets) async {
       final stopwatch = Stopwatch()..start();
@@ -32,30 +34,13 @@ class ImageCompressionScreen extends HookWidget {
       print(stopwatch.elapsed);
     }
 
-    void beforeAndAfterDialog() {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return Container(
-              child: BeforeAfter(
-                afterImage: Image.asset(
-                  '/Users/leofarias/Library/Caches/img_1618610365112.ImageFormat.png',
-                ),
-                beforeImage: Image.asset(
-                  '/Users/leofarias/Library/Caches/img_1618610365112.ImageFormat.png',
-                ),
-              ),
-            );
-          });
-    }
-
     List<DataCell> renderCells(ImageAsset asset) {
       return [
         DataCell(
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Image.asset(
-              asset.path,
+            child: Image.file(
+              asset.file,
               height: 50,
               width: 50,
             ),
@@ -67,13 +52,7 @@ class ImageCompressionScreen extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(asset.name),
-              Caption(
-                truncate(
-                  asset.path,
-                  30,
-                  position: TruncatePosition.middle,
-                ),
-              )
+              LocalLinkButton(asset.file.absolute.path)
             ],
           ),
         ),
@@ -135,12 +114,22 @@ class ImageCompressionScreen extends HookWidget {
                 dense: true,
                 title: Text(project.name),
                 subtitle: Text(project.projectDir.path),
-                trailing: IconButton(
-                  icon: const Icon(MdiIcons.zipBox),
-                  onPressed: () {
-                    beforeAndAfterDialog();
-                    // handleCompressImages(assets);
-                  },
+                trailing: Flexible(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(totalStat.original.toString()),
+                      const SizedBox(width: 10),
+                      Text(totalStat.savings.toString()),
+                      IconButton(
+                        splashRadius: 20,
+                        icon: const Icon(MdiIcons.play),
+                        onPressed: () {
+                          handleCompressImages(assets);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const Divider(height: 0),

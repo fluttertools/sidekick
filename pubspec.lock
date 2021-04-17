@@ -279,15 +279,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.0"
-  flutter_luban:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "5fc4146c44392cdf92837c50969b372a8d8c799c"
-      url: "https://github.com/leoafarias/flutter_luban.git"
-    source: git
-    version: "0.1.12"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -413,7 +404,7 @@ packages:
     source: hosted
     version: "3.1.4"
   image:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: image
       url: "https://pub.dartlang.org"
@@ -872,6 +863,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.4"
   vector_math:
     dependency: transitive
     description:

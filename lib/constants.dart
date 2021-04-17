@@ -1,3 +1,7 @@
+const kAppTitle = 'Sidekick';
+const kAppName = 'sidekick';
+const kAppBundleId = 'app.fvm.sidekick';
+
 const kNavigationWidth = 65.0;
 const kNavigationWidthExtended = 180.0;
 const kReleaseChannels = ['stable', 'beta', 'dev'];

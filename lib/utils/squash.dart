@@ -5,11 +5,14 @@ import 'dart:isolate';
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart';
 import 'package:path/path.dart' as p;
+import 'package:uuid/uuid.dart';
+
+const uuid = Uuid();
 
 class Squash {
   Squash._();
 
-  static Future<String> compressImage(SquashObject object) async {
+  static Future<File> compressImage(SquashObject object) async {
     return compute(_squashCompress, object);
   }
 
@@ -27,34 +30,59 @@ class Squash {
     return answer.first;
   }
 
-  static String _squashCompress(SquashObject object) {
-    final image = decodeImage(object.imageFile.readAsBytesSync());
+  static File _squashCompress(SquashObject object) {
+    final bytes = object.imageFile.readAsBytesSync();
+    // Check if its animated
 
-    print(object.imageFile.path);
+    final image = decodeImage(bytes);
+
     final imageExt = getImageFormatFromPath(object.imageFile.path);
 
     final tempPath = p.join(
       object.path,
-      'img_${DateTime.now().millisecondsSinceEpoch}.$imageExt',
+      'img_${uuid.v4()}.${imageExt.name}',
     );
 
     final tempFile = File(tempPath);
 
+    /// If its animation just save in temp as is
+    final animated = _isAnimated(bytes);
+    // Return if its animated
+    if (animated) {
+      tempFile.writeAsBytesSync(bytes);
+      return tempFile;
+    }
+
     switch (imageExt) {
       case ImageFormat.png:
-        tempFile.writeAsBytesSync(encodePng(image, level: object.step));
+        tempFile.writeAsBytesSync(encodePng(
+          image,
+          level: object.step,
+        ));
+
         break;
       case ImageFormat.gif:
-        tempFile.writeAsBytesSync(encodeGif(image, samplingFactor: 10));
+        tempFile.writeAsBytesSync(
+          encodeGif(image),
+        );
+
         break;
       case ImageFormat.jpeg:
-        tempFile.writeAsBytesSync(encodeJpg(image, quality: object.quality));
+        tempFile.writeAsBytesSync(
+          encodeJpg(image, quality: object.quality),
+        );
         break;
       default:
         throw Exception("Incompatible image format");
     }
 
-    return tempFile.path;
+    return tempFile;
+  }
+
+  static bool _isAnimated(List<int> bytes) {
+    final decoder = findDecoderForData(bytes);
+    final info = decoder.startDecode(bytes);
+    return info.numFrames > 1;
   }
 }
 
@@ -92,6 +120,14 @@ enum ImageFormat {
   jpeg,
   gif,
   invalid,
+}
+
+extension ImageFormatExtension on ImageFormat {
+  /// Name of the channel
+  String get name {
+    final self = this;
+    return self.toString().split('.').last;
+  }
 }
 
 ImageFormat getImageFormatFromPath(String path) {

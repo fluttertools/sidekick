@@ -6,7 +6,7 @@ import 'package:sidekick/components/atoms/sliver_app_bar_switcher.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
 import 'package:sidekick/providers/filterable_releases.provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
-import 'package:sidekick/utils/extensions.dart';
+import 'package:sidekick/utils/utils.dart';
 
 import '../components/atoms/screen.dart';
 import '../components/atoms/typography.dart';

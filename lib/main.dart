@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:sidekick/app_shell.dart';
+import 'package:sidekick/constants.dart';
 import 'package:sidekick/models/sidekick_settings.model.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:sidekick/theme.dart';
@@ -20,7 +21,7 @@ void main() async {
   await SettingsService.init();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle('Sidekick');
+    setWindowTitle(kAppTitle);
     setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
   }
@@ -37,7 +38,7 @@ class FvmApp extends StatelessWidget {
 
         return OKToast(
           child: MaterialApp(
-            title: 'Sidekick',
+            title: kAppTitle,
             debugShowCheckedModeBanner: false,
             theme: lightTheme(),
             darkTheme: darkTheme(),

@@ -27,23 +27,25 @@ class CompressActivity {
   bool get isSmaller {
     // if savings is greater than 0
     // The file is smaller now
-    return savings > 0;
+    if (completed) {
+      return original.size > compressed.size;
+    } else {
+      return false;
+    }
   }
 
-  double get savings {
-    if (completed) {
-      // Get difference to calculate savings
-      // Calculate percetage difference between compressed and original
-      final percent = (100 - ((compressed.size / original.size) * 100));
-      return percent;
+  int get savings {
+    if (isSmaller) {
+      return original.size - compressed.size;
     } else {
       return 0;
     }
   }
 
-  String get savingsFriendly {
+  String get savingsPercentage {
     if (completed) {
-      return '${savings.toStringAsFixed(1)}%';
+      final percent = (100 - ((compressed.size / original.size) * 100));
+      return '${percent.toStringAsFixed(1)}%';
     } else {
       return null;
     }
