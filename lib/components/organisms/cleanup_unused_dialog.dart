@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sidekick/components/atoms/typography.dart';
@@ -47,7 +48,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
           ],
           content: Container(
             constraints: const BoxConstraints(maxWidth: 350),
-            child: Scrollbar(
+            child: CupertinoScrollbar(
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -22,7 +23,7 @@ class PackagesScreen extends HookWidget {
         }
         return Screen(
           title: 'Most Used Packages',
-          child: Scrollbar(
+          child: CupertinoScrollbar(
             child: ListView.builder(
               // separatorBuilder: (_, __) => const Divider(),
               itemCount: data.length,
