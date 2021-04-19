@@ -8,7 +8,6 @@ import 'package:sidekick/components/atoms/local_link_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/modules/compression/compression_screen.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:sidekick/screens/playground_screen.dart';
 
@@ -43,17 +42,6 @@ class ProjectItem extends HookWidget {
       );
     }
 
-    void openImageCompression() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CompressionScreen(
-            project: project,
-          ),
-        ),
-      );
-    }
-
     return Container(
       height: 170,
       child: Center(
@@ -70,7 +58,7 @@ class ProjectItem extends HookWidget {
                       iconSize: 20,
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.consoleLine),
-                      onPressed: openImageCompression,
+                      onPressed: openProjectPlayground,
                     ),
                   ),
                 ),
