@@ -4,13 +4,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/components/atoms/local_link_button.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
 import 'package:sidekick/screens/playground_screen.dart';
-import 'package:sidekick/utils/open_link.dart';
-import 'package:truncate/truncate.dart';
 
 class ProjectItem extends HookWidget {
   final Project project;
@@ -87,21 +86,7 @@ class ProjectItem extends HookWidget {
               Row(
                 children: [
                   const SizedBox(width: 10),
-                  Tooltip(
-                    message: "Open in explorer",
-                    child: TextButton(
-                      onPressed: () {
-                        openLink(
-                          "file://${project.projectDir.absolute.path.replaceAll("\\", "/")}",
-                        );
-                      },
-                      child: Text(
-                        truncate(project.projectDir.path, 20,
-                            position: TruncatePosition.middle),
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ),
+                  LocalLinkButton(project.projectDir.absolute.path),
                   const Spacer(),
                   versionSelect
                       ? Row(
@@ -109,7 +94,10 @@ class ProjectItem extends HookWidget {
                             needInstall
                                 ? VersionInstallButton(version,
                                     warningIcon: true)
-                                : const SizedBox(height: 0, width: 0),
+                                : const SizedBox(
+                                    height: 0,
+                                    width: 0,
+                                  ),
                             ProjectVersionSelect(
                               project: project,
                               versions: cachedVersions ?? [],

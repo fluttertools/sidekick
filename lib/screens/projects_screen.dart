@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -65,7 +66,7 @@ class ProjectsScreen extends HookWidget {
           onPressed: onRefresh,
         ),
       ],
-      child: Scrollbar(
+      child: CupertinoScrollbar(
         child: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: ResponsiveGridList(

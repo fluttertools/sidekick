@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,7 +7,7 @@ import 'package:sidekick/components/atoms/sliver_app_bar_switcher.dart';
 import 'package:sidekick/components/molecules/version_item.dart';
 import 'package:sidekick/providers/filterable_releases.provider.dart';
 import 'package:sidekick/providers/settings.provider.dart';
-import 'package:sidekick/utils/extensions.dart';
+import 'package:sidekick/utils/utils.dart';
 
 import '../components/atoms/screen.dart';
 import '../components/atoms/typography.dart';
@@ -28,7 +29,7 @@ class ReleasesScreen extends HookWidget {
     return Screen(
       extendBody: false,
       title: 'Releases',
-      child: Scrollbar(
+      child: CupertinoScrollbar(
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(

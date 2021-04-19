@@ -57,16 +57,9 @@ class SettingsScreen extends HookWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close),
-            iconSize: 15,
-            splashRadius: 15,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          const SizedBox(width: 10),
+        actions: const [
+          CloseButton(),
+          SizedBox(width: 10),
         ],
       ),
       body: Container(

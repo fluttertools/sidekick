@@ -94,8 +94,15 @@ RepositorySlug _getRepoSlug(Uri repository, String homepage) {
     if (homepage != null && homepage.contains('github.com')) {
       final uri = Uri.parse(homepage);
       final paths = uri.path.split('/');
-      author = paths[1];
-      repo = paths[2];
+
+      // Some edge cases there wont be a repo attached to the url
+      if (paths.length <= 3) {
+        author = null;
+        repo = null;
+      } else {
+        author = paths[1];
+        repo = paths[2];
+      }
     }
   }
   if (author != null && repo != null) {
