@@ -1,12 +1,10 @@
 import 'dart:io';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart' as p;
-import 'package:sidekick/modules/image_compression/models/image_asset.model.dart';
+import 'package:pool/pool.dart';
+import 'package:sidekick/modules/compression/models/image_asset.model.dart';
 import 'package:sidekick/utils/scan_directory.dart';
-
-final projectImagesProvider = FutureProviderFamily<List<ImageAsset>, Directory>(
-    (_, projectDir) => scanForImages(projectDir));
+import 'package:sidekick/utils/squash.dart';
 
 Future<List<ImageAsset>> scanForImages(Directory directory) async {
   final files = await scanDirectoryForCondition(
@@ -40,4 +38,27 @@ bool _checkIsValidImage(FileSystemEntity entity) {
   } else {
     return false;
   }
+}
+
+final pool = Pool(
+  Platform.numberOfProcessors,
+  timeout: const Duration(seconds: 30),
+);
+
+Future<ImageAsset> compressImageAsset(
+  ImageAsset asset,
+  Directory tempDir,
+) async {
+  final compressObj = SquashObject(
+    imageFile: asset.file,
+    path: tempDir.path,
+    quality: 80, //first compress quality, default 80
+    step: 6, //compress quality step, bigger faster
+  );
+  // Use a pool for isolates
+  final file = await pool.withResource(() => Squash.compressImage(compressObj));
+  // Get file stat
+  final fileStat = await file.stat();
+  // Create image asset
+  return ImageAsset(file, fileStat);
 }

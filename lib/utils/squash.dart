@@ -22,12 +22,16 @@ class Squash {
       object,
       receiver.sendPort,
     );
-    void compressFn(IsolateMessage message) {}
-    await Isolate.spawn(compressFn, message);
-    final sendPort = await receiver.first;
-    final answer = ReceivePort();
-    sendPort.send([answer.sendPort, object]);
-    return answer.first;
+
+    await Isolate.spawn(_isolateFn, message);
+    final result = await receiver.first;
+
+    return result;
+  }
+
+  static void _isolateFn(IsolateMessage message) {
+    final file = _squashCompress(message.object);
+    message.sendPort.send(file);
   }
 
   static File _squashCompress(SquashObject object) {

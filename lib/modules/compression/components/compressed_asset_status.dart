@@ -1,41 +1,35 @@
 import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/modules/image_compression/components/before_after_dialog.dart';
-import 'package:sidekick/modules/image_compression/models/image_asset.model.dart';
-import 'package:sidekick/modules/image_compression/providers/compression_activity.provider.dart';
+import 'package:sidekick/modules/compression/components/before_after_dialog.dart';
+import 'package:sidekick/modules/compression/models/compression_asset.model.dart';
 
-class ImageAssetStatus extends HookWidget {
-  final ImageAsset asset;
-  const ImageAssetStatus(
+class CompressedAssetStatus extends HookWidget {
+  final CompressedAsset asset;
+  const CompressedAssetStatus(
     this.asset, {
     key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final activityProvider = useProvider(compressionActivityProvider.state);
-
-    final activity = activityProvider[asset.id];
-
-    if (activity == null) {
+    if (asset == null) {
       return const SizedBox(
         height: 0,
         width: 0,
       );
     }
 
-    if (activity.hasError) {
+    if (asset.hasError) {
       return Tooltip(
-        message: activity.errorMsg,
+        message: asset.errorMsg,
         child: const Icon(MdiIcons.alertCircle),
       );
     }
 
-    if (activity.processing) {
+    if (asset.status == CompressionStatus.started) {
       return const SizedBox(
         height: 20,
         width: 20,
@@ -43,15 +37,15 @@ class ImageAssetStatus extends HookWidget {
       );
     }
 
-    if (activity.completed && activity.isSmaller) {
+    if (asset.status == CompressionStatus.completed && asset.isSmaller) {
       return Row(
         // mainAxisSize: MainAxisSize.min,
 
         children: [
-          Caption(filesize(activity.compressed.size)),
+          Caption(filesize(asset.compressed.size)),
           const SizedBox(width: 10),
           Chip(
-            label: Caption(activity.savingsPercentage),
+            label: Caption(asset.savingsPercentage),
           ),
           const Spacer(),
           IconButton(
@@ -59,8 +53,8 @@ class ImageAssetStatus extends HookWidget {
               onPressed: () {
                 showBeforeAndAfterDialog(
                   context,
-                  before: activity.original,
-                  after: activity.compressed,
+                  before: asset.original,
+                  after: asset.compressed,
                 );
               })
         ],
@@ -68,7 +62,7 @@ class ImageAssetStatus extends HookWidget {
     }
 
     // Is completed but it was not smaller
-    if (activity.completed) {
+    if (asset.status == CompressionStatus.completed) {
       return Row(
         children: const [
           Icon(

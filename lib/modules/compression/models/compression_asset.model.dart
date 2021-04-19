@@ -1,25 +1,29 @@
-import 'package:sidekick/modules/image_compression/models/image_asset.model.dart';
+import 'package:sidekick/modules/compression/models/image_asset.model.dart';
 
-class CompressActivity {
+enum CompressionStatus {
+  idle,
+  started,
+  completed,
+}
+
+class CompressedAsset {
   final ImageAsset original;
   final ImageAsset compressed;
-  final bool processing;
-  final bool completed;
+  final CompressionStatus status;
   final bool hasError;
   final String errorMsg;
-  CompressActivity({
+  CompressedAsset({
     this.original,
     this.compressed,
-    this.processing = false,
-    this.completed = false,
+    this.status = CompressionStatus.idle,
     this.hasError = false,
     this.errorMsg = '',
   });
 
-  factory CompressActivity.start(ImageAsset original) {
-    return CompressActivity(
+  factory CompressedAsset.start(ImageAsset original) {
+    return CompressedAsset(
       original: original,
-      processing: true,
+      status: CompressionStatus.started,
     );
   }
 
@@ -27,7 +31,7 @@ class CompressActivity {
   bool get isSmaller {
     // if savings is greater than 0
     // The file is smaller now
-    if (completed) {
+    if (status == CompressionStatus.completed) {
       return original.size > compressed.size;
     } else {
       return false;
@@ -43,7 +47,7 @@ class CompressActivity {
   }
 
   String get savingsPercentage {
-    if (completed) {
+    if (status == CompressionStatus.completed) {
       final percent = (100 - ((compressed.size / original.size) * 100));
       return '${percent.toStringAsFixed(1)}%';
     } else {
@@ -51,22 +55,22 @@ class CompressActivity {
     }
   }
 
-  CompressActivity error(String message) {
-    return CompressActivity(
+  CompressedAsset error(String message) {
+    return CompressedAsset(
       original: original,
       hasError: true,
       errorMsg: message,
-      completed: false,
+      status: CompressionStatus.completed,
     );
   }
 
-  CompressActivity complete(
+  CompressedAsset complete(
     ImageAsset compressed,
   ) {
-    return CompressActivity(
+    return CompressedAsset(
       original: original,
       compressed: compressed,
-      completed: true,
+      status: CompressionStatus.completed,
     );
   }
 }

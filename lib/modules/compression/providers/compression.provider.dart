@@ -1,24 +1,33 @@
 import 'dart:io';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pool/pool.dart';
-import 'package:sidekick/modules/image_compression/models/compress_activity.model.dart';
-import 'package:sidekick/modules/image_compression/models/image_asset.model.dart';
-import 'package:sidekick/utils/squash.dart';
+import 'package:sidekick/modules/compression/compression_utils.dart';
+import 'package:sidekick/modules/compression/models/compression_asset.model.dart';
+import 'package:sidekick/modules/compression/models/image_asset.model.dart';
 import 'package:sidekick/utils/utils.dart';
 
 class TotalCompressionStat {
   final int original;
   final int savings;
+  final int totalFiles;
+  final int compressedFiles;
   TotalCompressionStat({
     this.original = 0,
     this.savings = 0,
+    this.totalFiles = 0,
+    this.compressedFiles = 0,
   });
 }
 
+final compressedListProvider = Provider((ref) {
+  final assets = ref.watch(compressedProvider.state);
+  // Turn into a list
+  return assets.entries.map((e) => e.value).toList();
+});
+
 // ignore: top_level_function_literal_block
-final compressionStatProvider = Provider((ref) {
-  final activitiesMap = ref.watch(compressionActivityProvider.state);
+final compressionTotalProvider = Provider((ref) {
+  final activitiesMap = ref.watch(compressedProvider.state);
   final activities = activitiesMap.entries.map((e) => e.value);
   // If its empty return empty total
   if (activities.isEmpty) {
@@ -30,20 +39,24 @@ final compressionStatProvider = Provider((ref) {
   // Add up total savings
   final savingsTotal = activities.map((e) => e.savings).reduce((a, b) => a + b);
 
+  final completedFiles =
+      activities.where((e) => e.status == CompressionStatus.completed).toList();
+
   return TotalCompressionStat(
-    original: originalTotal,
-    savings: savingsTotal,
-  );
+      original: originalTotal,
+      savings: savingsTotal,
+      totalFiles: activities.length,
+      compressedFiles: completedFiles.length);
 });
 
 /// Image Compression Provider
-final compressionActivityProvider =
+final compressedProvider =
     StateNotifierProvider<CompressionActivityState>((ref) {
   return CompressionActivityState(ref);
 });
 
 class CompressionActivityState
-    extends StateNotifier<Map<String, CompressActivity>> {
+    extends StateNotifier<Map<String, CompressedAsset>> {
   final ProviderReference ref;
   Directory _tempDir;
   CompressionActivityState(this.ref) : super({}) {
@@ -60,8 +73,6 @@ class CompressionActivityState
   }
 
   Future<void> _compressOne(ImageAsset asset) async {
-    state[asset.id] = CompressActivity.start(asset);
-    _notifyChange();
     try {
       final compress = await compressImageAsset(asset, _tempDir);
       // Is now completed
@@ -76,6 +87,12 @@ class CompressionActivityState
 
   Future<void> compressAll(List<ImageAsset> assets) async {
     state = {};
+
+    for (final asset in assets) {
+      state[asset.id] = CompressedAsset.start(asset);
+    }
+
+    _notifyChange();
     // Get concurrency count for worker manager
     final futures = <Future<void>>[];
 
@@ -85,27 +102,4 @@ class CompressionActivityState
     }
     await Future.wait(futures);
   }
-}
-
-final pool = Pool(
-  Platform.numberOfProcessors,
-  timeout: const Duration(seconds: 30),
-);
-
-Future<ImageAsset> compressImageAsset(
-  ImageAsset asset,
-  Directory tempDir,
-) async {
-  final compressObj = SquashObject(
-    imageFile: asset.file,
-    path: tempDir.path,
-    quality: 80, //first compress quality, default 80
-    step: 6, //compress quality step, bigger faster
-  );
-  // Use a pool for isolates
-  final file = await pool.withResource(() => Squash.compressImage(compressObj));
-  // Get file stat
-  final fileStat = await file.stat();
-  // Create image asset
-  return ImageAsset(file, fileStat);
 }
