@@ -1,11 +1,6 @@
-import 'dart:convert';
-
-import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
-
-const cacheKey = 'dependencies_cache_key';
 
 final client = PubClient();
 
@@ -16,37 +11,22 @@ final github = GitHub(
 Map<String, PubPackage> mapPackages;
 
 /// Fetches all packages info from pub.dev
-Future<List<PackageDetail>> fetchAllDependencies(
-  Map<String, int> packagesCount, {
-  bool clearCache = false,
-}) async {
-  if (clearCache) {
-    cache.clear();
+Future<List<PackageDetail>> fetchPackages(
+  Map<String, int> packagesCount,
+) async {
+  final pkgFutures = <Future<PubPackage>>[];
+
+  // Get top packages
+
+  for (var pkg in packagesCount.keys) {
+    pkgFutures.add(client.packageInfo(pkg));
   }
-  // TODO: Handle this cache better in case of error
-  // and allow for refresh
 
-  final response = await cache.remember(
-    cacheKey,
-    () async {
-      final pkgFutures = <Future<PubPackage>>[];
+  final packages = await Future.wait(pkgFutures);
+  final topPackages = _getTopValidPackages(packages, packagesCount);
+  final results = await _complementPackageInfo(topPackages, packagesCount);
 
-      // Get top packages
-
-      for (var pkg in packagesCount.keys) {
-        pkgFutures.add(client.packageInfo(pkg));
-      }
-
-      final packages = await Future.wait(pkgFutures);
-      final topPackages = _getTopValidPackages(packages, packagesCount);
-      final results = await _complementPackageInfo(topPackages, packagesCount);
-
-      return jsonEncode(results);
-    },
-    Duration.secondsPerDay,
-  );
-  final json = jsonDecode(response) as List<dynamic>;
-  return json.map((value) => PackageDetail.fromJson(value)).toList();
+  return results;
 }
 
 List<PubPackage> _getTopValidPackages(
@@ -96,7 +76,7 @@ RepositorySlug _getRepoSlug(Uri repository, String homepage) {
       final paths = uri.path.split('/');
 
       // Some edge cases there wont be a repo attached to the url
-      if (paths.length <= 3) {
+      if (paths.length < 3) {
         author = null;
         repo = null;
       } else {

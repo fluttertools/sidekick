@@ -37,22 +37,22 @@ class ProjectsScreen extends HookWidget {
       return;
     }, [projects.list, settings.sidekick]);
 
-    if (filteredProjects.value.isEmpty && !projects.loading) {
-      return EmptyProjects(
-        onRetry: onRefresh,
-      );
+    if (projects.list.isEmpty &&
+        filteredProjects.value.isEmpty &&
+        !projects.loading) {
+      return const EmptyProjects();
     }
 
     return Screen(
       title: 'Projects',
       processing: projects.loading,
       actions: [
-        Caption('${filteredProjects.value.length} Projects'),
+        Caption('${projects.list.length} Projects'),
         const SizedBox(width: 10),
         Tooltip(
           message: 'Only display projects that have versions pinned',
           child: CheckButton(
-            label: 'Pinned',
+            label: 'FVM Only',
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;

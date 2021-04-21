@@ -4,11 +4,7 @@ import 'package:sidekick/components/atoms/empty_data_set.dart';
 import 'package:sidekick/screens/settings_screen.dart';
 
 class EmptyProjects extends StatelessWidget {
-  final Function() onRetry;
-  const EmptyProjects({
-    this.onRetry,
-    key,
-  }) : super(key: key);
+  const EmptyProjects({key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +12,9 @@ class EmptyProjects extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const SettingsScreen(),
+          builder: (context) => const SettingsScreen(
+            section: NavSection.projects,
+          ),
         ),
       );
     }
@@ -35,7 +33,8 @@ class EmptyProjects extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              '''Configure the location of your Flutter Projects. Projects information will be displayed here.''',
+              'Configure the location of your Flutter Projects. '
+              'Projects information will be displayed here.',
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),
@@ -50,13 +49,6 @@ class EmptyProjects extends StatelessWidget {
               label: const Text('Change Settings'),
             ),
             const SizedBox(height: 10),
-            onRetry != null
-                ? OutlinedButton.icon(
-                    onPressed: onRetry,
-                    icon: const Icon(MdiIcons.refresh, size: 20),
-                    label: const Text('Retry'),
-                  )
-                : Container()
           ],
         ),
       ),
