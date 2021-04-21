@@ -231,6 +231,7 @@ class TerminalStateNotifier extends StateNotifier<TerminalState> {
           _killIsolate();
         } else {
           state.lines = [line, ...state.lines];
+          _notifyListeners();
         }
       }
     } on Exception catch (e) {
