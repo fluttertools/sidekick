@@ -12,7 +12,9 @@ class EmptyPackages extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const SettingsScreen(),
+          builder: (context) => const SettingsScreen(
+            section: NavSection.projects,
+          ),
         ),
       );
     }

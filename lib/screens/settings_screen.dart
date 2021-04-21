@@ -10,7 +10,15 @@ import 'package:sidekick/screens/settings_scenes/settings_section_projects.dart'
 import 'package:sidekick/utils/notify.dart';
 import 'package:sidekick/utils/utils.dart';
 
+enum NavSection {
+  general,
+  projects,
+  fvm,
+  flutter,
+}
+
 const sections = ['General', 'Projects', 'FVM', 'Flutter'];
+
 const sectionIcons = [
   MdiIcons.tune,
   MdiIcons.folderSettings,
@@ -21,16 +29,20 @@ const sectionIcons = [
 typedef RenderSection = Widget Function(Settings, Function(void));
 
 class SettingsScreen extends HookWidget {
-  const SettingsScreen({Key key}) : super(key: key);
+  final NavSection section;
+  const SettingsScreen({
+    this.section = NavSection.general,
+    key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = useProvider(settingsProvider);
     final settings = useProvider(settingsProvider.state);
 
-    final currentSection = useState(0);
+    final currentSection = useState(section.index);
 
-    final controller = usePageController(initialPage: 0);
+    final controller = usePageController(initialPage: section.index);
 
     void changeSection(int idx) {
       currentSection.value = idx;
