@@ -26,7 +26,6 @@ class CacheInfoTile extends StatelessWidget {
         FvmListTile(
           title: const Text('Cache Location'),
           subtitle: Caption(version.cache.dir.path),
-          //TODO: Open in directory
           trailing: IconButton(
             icon: const Icon(
               Icons.open_in_new,
