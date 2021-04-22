@@ -101,16 +101,6 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     try {
       switch (item.action) {
         case QueueAction.install:
-
-          /// Check if version is installed
-          /// This is done to avoid same version install for two
-          /// different channels
-          // final version =
-          //     ref.read(fvmCacheProvider).getVersion(item.version.name);
-          // if (version == null) {
-          // } else {
-          //   notifyError('Version ${item.version.name} is already installed.');
-          // }
           await FVMClient.install(item.version.name);
           notify('Version ${item.version.name} has been installed.');
           break;

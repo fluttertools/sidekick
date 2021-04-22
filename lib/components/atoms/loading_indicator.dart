@@ -6,9 +6,9 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SpinKitFadingCube(
-      color: Colors.white24,
-      size: 75.0,
+    return SpinKitFadingCube(
+      color: Theme.of(context).accentColor,
+      size: 50.0,
     );
   }
 }

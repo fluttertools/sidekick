@@ -7,7 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:sidekick/app_shell.dart';
 import 'package:sidekick/constants.dart';
-import 'package:sidekick/models/sidekick_settings.model.dart';
+import 'package:sidekick/dto/sidekick_settings.dto.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:sidekick/theme.dart';
 import 'package:sidekick/utils/get_theme_mode.dart';

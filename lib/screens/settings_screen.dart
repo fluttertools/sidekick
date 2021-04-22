@@ -7,8 +7,8 @@ import 'package:sidekick/screens/settings_scenes/settings_section_flutter.dart';
 import 'package:sidekick/screens/settings_scenes/settings_section_fvm.dart';
 import 'package:sidekick/screens/settings_scenes/settings_section_general.dart';
 import 'package:sidekick/screens/settings_scenes/settings_section_projects.dart';
+import 'package:sidekick/utils/helpers.dart';
 import 'package:sidekick/utils/notify.dart';
-import 'package:sidekick/utils/utils.dart';
 
 enum NavSection {
   general,
