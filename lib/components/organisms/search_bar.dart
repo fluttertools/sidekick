@@ -20,7 +20,7 @@ class SearchBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final queryProvider = useProvider(searchQueryProvider);
-    final currentRoute = useProvider(navigationProvider.state);
+    final currentRoute = useProvider(navigationProvider);
     final results = useProvider(searchResultsProvider);
     final isLoading = useState(false);
     final controller = useFloatingSearchBarController();
@@ -42,7 +42,7 @@ class SearchBar extends HookWidget {
     // ignore: avoid_positional_boolean_parameters
     void onFocusChanged(bool focus) {
       if (!focus) {
-        context.read(navigationProvider).goBack();
+        context.read(navigationProvider.notifier).goBack();
       }
     }
 

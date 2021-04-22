@@ -25,7 +25,7 @@ class InfoDetail {
 }
 
 final selectedInfoProvider =
-    StateNotifierProvider<InfoProvider>((ref) => InfoProvider());
+    StateNotifierProvider<InfoProvider, InfoDetail>((ref) => InfoProvider());
 
 class InfoProvider extends StateNotifier<InfoDetail> {
   InfoProvider() : super(InfoDetail());

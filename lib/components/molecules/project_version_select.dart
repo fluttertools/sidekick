@@ -41,7 +41,7 @@ class ProjectVersionSelect extends StatelessWidget {
           ),
         ),
         onSelected: (version) async {
-          context.read(fvmQueueProvider).pinVersion(project, version);
+          context.read(fvmQueueProvider.notifier).pinVersion(project, version);
         },
         itemBuilder: (context) {
           return versions

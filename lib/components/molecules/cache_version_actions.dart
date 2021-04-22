@@ -84,20 +84,20 @@ class CacheVersionActions extends StatelessWidget {
       onSelected: (result) {
         if (result == InstalledActions.remove) {
           showDeleteDialog(context, item: version, onDelete: () {
-            context.read(fvmQueueProvider).remove(version);
+            context.read(fvmQueueProvider.notifier).remove(version);
           });
         }
 
         if (result == InstalledActions.detail) {
-          context.read(selectedInfoProvider).selectVersion(version);
+          context.read(selectedInfoProvider.notifier).selectVersion(version);
         }
 
         if (result == InstalledActions.global) {
-          context.read(fvmQueueProvider).setGloabl(version);
+          context.read(fvmQueueProvider.notifier).setGloabl(version);
         }
 
         if (result == InstalledActions.upgrade) {
-          context.read(fvmQueueProvider).upgrade(version);
+          context.read(fvmQueueProvider.notifier).upgrade(version);
         }
       },
       child: const Icon(MdiIcons.dotsVertical),

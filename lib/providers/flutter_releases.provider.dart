@@ -56,13 +56,13 @@ final _fetchFlutterReleases = FutureProvider<FlutterReleases>(
 // ignore: top_level_function_literal_block
 final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Filter only version that are valid releases
-  var payload = FlutterReleases();
+  FlutterReleases payload;
   ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
-  final installedVersions = ref.watch(fvmCacheProvider);
+  final installedVersions = ref.watch(fvmCacheProvider.notifier);
   final globalVersion = FVMClient.getGlobalVersionSync();
 
   // Watch this state change for refresh
-  ref.watch(fvmCacheProvider.state);
+  ref.watch(fvmCacheProvider);
 
   final flutterReleases = payload.releases;
   final flutterChannels = payload.channels;

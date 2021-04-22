@@ -70,7 +70,8 @@ class Settings {
 
 final settingsRepoProvider = Provider((_) => Settings());
 
-final settingsProvider = StateNotifierProvider<SettingsProvider>((ref) {
+final settingsProvider =
+    StateNotifierProvider<SettingsProvider, Settings>((ref) {
   return SettingsProvider(ref, initialState: Settings());
 });
 
@@ -85,7 +86,7 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   ProjectsProvider get _projectsProvider {
-    return ref.read(projectsProvider);
+    return ref.read(projectsProvider.notifier);
   }
 
   Future<void> _checkAppSettingsChanges(SidekickSettings settings) async {

@@ -22,8 +22,8 @@ class PlaygroundTerminal extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final terminalState = useProvider(terminalProvider.state);
-    final terminal = useProvider(terminalProvider);
+    final terminalState = useProvider(terminalProvider);
+    final terminal = useProvider(terminalProvider.notifier);
 
     final textController = useTextEditingController();
     final scrollController = useScrollController();

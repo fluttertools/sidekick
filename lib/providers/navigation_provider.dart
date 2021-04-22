@@ -10,7 +10,8 @@ enum NavigationRoutes {
   searchScreen,
 }
 
-final navigationProvider = StateNotifierProvider<NavigationProvider>((_) {
+final navigationProvider =
+    StateNotifierProvider<NavigationProvider, NavigationRoutes>((_) {
   return NavigationProvider();
 });
 

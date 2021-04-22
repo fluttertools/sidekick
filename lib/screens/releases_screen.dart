@@ -24,7 +24,7 @@ class ReleasesScreen extends HookWidget {
     final versions = useProvider(filterableReleasesProvider);
     final releases = useProvider(releasesStateProvider);
 
-    final settings = useProvider(settingsProvider.state);
+    final settings = useProvider(settingsProvider);
 
     return Screen(
       extendBody: false,

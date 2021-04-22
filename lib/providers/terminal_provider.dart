@@ -115,7 +115,7 @@ class ConsoleLine {
   }
 }
 
-final terminalProvider = StateNotifierProvider(
+final terminalProvider = StateNotifierProvider<TerminalStateNotifier, TerminalState>(
   (ref) => TerminalStateNotifier(ref),
 );
 

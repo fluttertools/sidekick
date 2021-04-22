@@ -14,7 +14,7 @@ class ChannelShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        context.read(selectedInfoProvider).selectVersion(channel);
+        context.read(selectedInfoProvider.notifier).selectVersion(channel);
       },
       child: Container(
         padding: const EdgeInsets.all(20),

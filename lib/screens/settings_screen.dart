@@ -37,8 +37,8 @@ class SettingsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = useProvider(settingsProvider);
-    final settings = useProvider(settingsProvider.state);
+    final provider = useProvider(settingsProvider.notifier);
+    final settings = useProvider(settingsProvider);
 
     final currentSection = useState(section.index);
 

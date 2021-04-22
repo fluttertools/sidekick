@@ -15,7 +15,7 @@ import 'package:state_notifier/state_notifier.dart';
 // ignore: top_level_function_literal_block
 final projectsPerVersionProvider = Provider((ref) {
   final list = <String, List<Project>>{};
-  final projects = ref.watch(projectsProvider.state);
+  final projects = ref.watch(projectsProvider);
 
   if (projects == null || projects.list.isEmpty) {
     return list;
@@ -35,7 +35,8 @@ final projectsPerVersionProvider = Provider((ref) {
   return list;
 });
 
-final projectsProvider = StateNotifierProvider<ProjectsProvider>((ref) {
+final projectsProvider =
+    StateNotifierProvider<ProjectsProvider, ProjectsProviderState>((ref) {
   return ProjectsProvider(ref);
 });
 

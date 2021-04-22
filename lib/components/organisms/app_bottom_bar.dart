@@ -9,7 +9,7 @@ class AppBottomBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final actions = useProvider(fvmQueueProvider.state);
+    final actions = useProvider(fvmQueueProvider);
     final expand = useState(false);
     final processing = actions.activeItem != null;
     void toggleExpand() {

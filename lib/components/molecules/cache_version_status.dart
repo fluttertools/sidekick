@@ -69,7 +69,7 @@ class CacheVersionStatus extends StatelessWidget {
           icon: const Icon(MdiIcons.triangle, size: 15),
           label: Text(version.release?.version),
           onPressed: () {
-            context.read(fvmQueueProvider).upgrade(version);
+            context.read(fvmQueueProvider.notifier).upgrade(version);
           },
         ),
       ],

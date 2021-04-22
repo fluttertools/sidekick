@@ -27,9 +27,9 @@ class AppShell extends HookWidget {
   @override
   Widget build(BuildContext context) {
     LayoutSize.init(context);
-    final navigation = useProvider(navigationProvider);
-    final currentRoute = useProvider(navigationProvider.state);
-    final selectedInfo = useProvider(selectedInfoProvider.state);
+    final navigation = useProvider(navigationProvider.notifier);
+    final currentRoute = useProvider(navigationProvider);
+    final selectedInfo = useProvider(selectedInfoProvider);
     // Index of item selected
     final selectedIndex = useState(0);
 

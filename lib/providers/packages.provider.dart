@@ -14,7 +14,7 @@ const cacheRefKey = 'cache_ref_key';
 
 // ignore: top_level_function_literal_block
 final packagesProvider = FutureProvider((ref) async {
-  final projects = ref.watch(projectsProvider.state);
+  final projects = ref.watch(projectsProvider);
 
   final packages = <String, int>{};
 
@@ -42,7 +42,7 @@ final packagesProvider = FutureProvider((ref) async {
   } else {
     // Get dependencies
     for (var project in projects.list) {
-      final pubspec = project.pubspec;
+      final pubspec = project.pubspecFile;
       final deps = pubspec.dependencies;
 
       for (final dep in deps) {

@@ -45,8 +45,8 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                           ),
                           Row(
                             children: [
-                              Caption('${configured.newPath}'),
-                              CopyButton('${configured.newPath}')
+                              Caption('${configured.correctPath}'),
+                              CopyButton('${configured.correctPath}')
                             ],
                           )
                         ],

@@ -43,7 +43,7 @@ class CacheVersionItem extends StatelessWidget {
       ),
       trailing: CacheVersionActions(version),
       onTap: () {
-        context.read(selectedInfoProvider).selectVersion(version);
+        context.read(selectedInfoProvider.notifier).selectVersion(version);
       },
     );
   }

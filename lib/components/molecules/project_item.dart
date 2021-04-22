@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -27,7 +26,6 @@ class ProjectItem extends HookWidget {
     final cachedVersions = useProvider(releasesStateProvider).allCached;
 
     final version = useProvider(getVersionProvider(project.pinnedVersion));
-    final description = project.pubspec.description?.valueOr(() => '');
 
     final needInstall = version != null && project.pinnedVersion != null;
 
@@ -64,23 +62,6 @@ class ProjectItem extends HookWidget {
                 ),
               ),
               const Divider(height: 0, thickness: 1),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Column(
-                        children: [
-                          Paragraph(
-                            description,
-                            maxLines: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               const Spacer(),
               const Divider(thickness: 1, height: 0),
               Row(

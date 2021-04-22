@@ -42,7 +42,8 @@ final unusedVersionProvider = Provider((ref) {
 });
 
 /// Releases  InfoProvider
-final fvmCacheProvider = StateNotifierProvider<FvmCacheProvider>((ref) {
+final fvmCacheProvider =
+    StateNotifierProvider<FvmCacheProvider, List<CacheVersion>>((ref) {
   return FvmCacheProvider(ref: ref);
 });
 

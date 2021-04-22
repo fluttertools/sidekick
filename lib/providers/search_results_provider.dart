@@ -39,7 +39,7 @@ final searchResultsProvider = Provider((ref) {
   final query = ref.watch(searchQueryProvider).state;
   final releaseState = ref.watch(releasesStateProvider);
 
-  final projects = ref.watch(projectsProvider.state);
+  final projects = ref.watch(projectsProvider);
 
   // If projects is not fetched or there is no query return empty results
   if (projects == null || query == null || query.isEmpty) {
