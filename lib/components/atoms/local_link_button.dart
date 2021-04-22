@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/utils/open_link.dart';
 import 'package:truncate/truncate.dart';
 
 class LocalLinkButton extends StatelessWidget {
@@ -16,8 +16,8 @@ class LocalLinkButton extends StatelessWidget {
       message: 'Open $localPath',
       child: TextButton(
         onPressed: () {
-          openLink(
-            "file://${localPath.replaceAll("\\", "/")}",
+          OpenFile.open(
+            localPath,
           );
         },
         child: Caption(

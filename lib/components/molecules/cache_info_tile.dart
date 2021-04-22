@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
 import 'package:sidekick/components/atoms/cache_date_display.dart';
-import 'package:sidekick/components/atoms/copy_button.dart';
 import 'package:sidekick/components/atoms/group_tile.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
@@ -27,7 +27,15 @@ class CacheInfoTile extends StatelessWidget {
           title: const Text('Cache Location'),
           subtitle: Caption(version.cache.dir.path),
           //TODO: Open in directory
-          trailing: CopyButton(version.cache.dir.path),
+          trailing: IconButton(
+            icon: const Icon(
+              Icons.open_in_new,
+              size: 20,
+            ),
+            onPressed: () async {
+              await OpenFile.open(version.cache.dir.path);
+            },
+          ),
         ),
       ],
     );
