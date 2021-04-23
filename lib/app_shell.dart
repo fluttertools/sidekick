@@ -109,7 +109,6 @@ class AppShell extends HookWidget {
                 fit: StackFit.expand,
                 children: [
                   Scaffold(
-                    backgroundColor: Colors.transparent,
                     appBar: const TopAppBar(),
                     bottomNavigationBar: const AppBottomBar(),
                     body: Container(
