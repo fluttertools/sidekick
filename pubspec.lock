@@ -299,9 +299,11 @@ packages:
   fvm:
     dependency: "direct main"
     description:
-      path: "../fvm"
-      relative: true
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: cbb43b9a2f840d1ff34e171f0a2adc4190bf11c2
+      url: "https://github.com/leoafarias/fvm.git"
+    source: git
     version: "2.0.0-dev.8"
   github:
     dependency: "direct main"
