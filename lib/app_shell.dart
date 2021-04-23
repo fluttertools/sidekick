@@ -70,6 +70,8 @@ class AppShell extends HookWidget {
     return KBShortcutManager(
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        endDrawer: const InfoDrawer(),
+        key: _scaffoldKey,
         body: Row(
           children: [
             NavigationRail(
@@ -108,9 +110,7 @@ class AppShell extends HookWidget {
                 children: [
                   Scaffold(
                     backgroundColor: Colors.transparent,
-                    endDrawer: const InfoDrawer(),
                     appBar: const TopAppBar(),
-                    key: _scaffoldKey,
                     bottomNavigationBar: const AppBottomBar(),
                     body: Container(
                       child: Row(
