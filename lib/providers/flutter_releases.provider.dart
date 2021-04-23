@@ -100,9 +100,13 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
     // Get sdk version
     String sdkVersion;
+    Release currentRelease;
 
     if (channelCache != null) {
       sdkVersion = FVMClient.getSdkVersionSync(channelCache);
+      if (sdkVersion != null) {
+        currentRelease = payload.getReleaseFromVersion(sdkVersion);
+      }
     }
 
     final channelDto = ChannelDto(
@@ -111,7 +115,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       needSetup: sdkVersion == null,
       sdkVersion: sdkVersion,
       // Get version for the channel
-      currentRelease: payload.getReleaseFromVersion(sdkVersion),
+      currentRelease: currentRelease,
       release: latestRelease,
       isGlobal: globalVersion == name,
     );

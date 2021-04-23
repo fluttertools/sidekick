@@ -12,19 +12,25 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   // Attach to console when present (e.g., 'flutter run') or create a
   // new console when running with a debugger.
   // TODO: Remove conditional https://github.com/flutter/flutter/issues/47891
-  if (!::AttachConsole(ATTACH_PARENT_PROCESS) && ::IsDebuggerPresent()) {
-      CreateAndAttachConsole();
-  } else {
-    STARTUPINFO si = { 0 };
+  if (!::AttachConsole(ATTACH_PARENT_PROCESS) && ::IsDebuggerPresent())
+  {
+    CreateAndAttachConsole();
+  }
+  else
+  {
+    STARTUPINFO si = {0};
     si.cb = sizeof(si);
     si.dwFlags = STARTF_USESHOWWINDOW;
     si.wShowWindow = SW_HIDE;
 
-    PROCESS_INFORMATION pi = { 0 };
+    PROCESS_INFORMATION pi = {0};
     WCHAR lpszCmd[MAX_PATH] = L"cmd.exe";
-    if (::CreateProcess(NULL, lpszCmd, NULL, NULL, FALSE, CREATE_NEW_CONSOLE | CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
-      do {
-        if (::AttachConsole(pi.dwProcessId)) {
+    if (::CreateProcess(NULL, lpszCmd, NULL, NULL, FALSE, CREATE_NEW_CONSOLE | CREATE_NO_WINDOW, NULL, NULL, &si, &pi))
+    {
+      do
+      {
+        if (::AttachConsole(pi.dwProcessId))
+        {
           ::TerminateProcess(pi.hProcess, 0);
           break;
         }
