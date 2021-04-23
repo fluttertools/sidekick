@@ -84,7 +84,7 @@ class SearchBar extends HookWidget {
                 if (query.isNotEmpty) {
                   isLoading.value = true;
                 }
-                queryProvider.state = query;
+                queryProvider.state = query ?? '';
                 await Future.delayed(const Duration(milliseconds: 250));
                 isLoading.value = false;
               },
@@ -94,7 +94,7 @@ class SearchBar extends HookWidget {
                 ),
               ],
               builder: (context, transition) {
-                if (results == null) {
+                if (results.isEmpty && queryProvider.state.isEmpty) {
                   return const SizedBox(height: 0);
                 }
                 if (results.isEmpty) {

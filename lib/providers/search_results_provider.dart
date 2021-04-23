@@ -32,18 +32,18 @@ class SearchResults {
   }
 }
 
-final searchQueryProvider = StateProvider<String>((_) => null);
+final searchQueryProvider = StateProvider<String>((_) => '');
 
 // ignore: top_level_function_literal_block
 final searchResultsProvider = Provider((ref) {
   final query = ref.watch(searchQueryProvider).state;
-  final releaseState = ref.watch(releasesStateProvider);
+  final releaseState = ref.read(releasesStateProvider);
 
-  final projects = ref.watch(projectsProvider);
+  final projects = ref.read(projectsProvider);
 
   // If projects is not fetched or there is no query return empty results
-  if (projects == null || query == null || query.isEmpty) {
-    return null;
+  if (projects == null || query == null) {
+    return SearchResults();
   }
 
   // Split query into multiple search terms
@@ -64,8 +64,8 @@ final searchResultsProvider = Provider((ref) {
     if (term.isEmpty) {
       return;
     }
-    // ignore: avoid_function_literals_in_foreach_calls
-    projects.list.forEach((project) {
+    // Loop projects
+    for (final project in projects.list) {
       // Limit results to only 5 projects
       if (projectResults.length >= 5) {
         return;
@@ -84,10 +84,10 @@ final searchResultsProvider = Provider((ref) {
 
         projectResults.add(project);
       }
-    });
+    }
 
-    // ignore: avoid_function_literals_in_foreach_calls
-    releaseState.versions.forEach((release) {
+    // Loop releases
+    for (final release in releaseState.versions) {
       // Get channel name to pass to map
       final channelName = release.release.channelName;
 
@@ -115,10 +115,10 @@ final searchResultsProvider = Provider((ref) {
             throw Exception('Invalid chanel');
         }
       }
-    });
+    }
 
-    // ignore: avoid_function_literals_in_foreach_calls
-    releaseState.channels.forEach((channel) {
+    //Loop channels
+    for (final channel in releaseState.channels) {
       // Only unique results
       if (uniques[channel.name] == true) return;
 
@@ -130,7 +130,7 @@ final searchResultsProvider = Provider((ref) {
         // Add to channel results
         channelResults.add(channel);
       }
-    });
+    }
   });
 
   return SearchResults(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class BlurBackground extends StatelessWidget {
   final double strength;
-  const BlurBackground({Key key, this.strength = 20.0}) : super(key: key);
+  const BlurBackground({Key key, this.strength = 15.0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
