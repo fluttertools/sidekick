@@ -30,9 +30,12 @@ class PackagesScreen extends HookWidget {
               itemBuilder: (context, index) {
                 final PackageDetail package = data[index];
                 final position = ++index;
-                return PackageItem(
-                  package,
-                  position: position,
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: PackageItem(
+                    package,
+                    position: position,
+                  ),
                 );
               },
             ),

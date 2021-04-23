@@ -37,7 +37,7 @@ class ReleasesScreen extends HookWidget {
                 duration: const Duration(milliseconds: 200),
                 height: settings.sidekick.advancedMode ? 80 : 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -69,7 +69,7 @@ class ReleasesScreen extends HookWidget {
             ),
             SliverAppBar(
               automaticallyImplyLeading: false,
-              expandedHeight: 120.0,
+              expandedHeight: 140.0,
               elevation: 1,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               pinned: true,
@@ -77,11 +77,16 @@ class ReleasesScreen extends HookWidget {
               actions: [Container()],
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
-                background: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: releases.channels.map((channel) {
-                    return Expanded(child: ChannelShowcase(channel));
-                  }).toList(),
+                background: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: releases.channels.map((channel) {
+                      return Expanded(
+                        child: ChannelShowcase(channel),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
               title: SliverAppBarSwitcher(

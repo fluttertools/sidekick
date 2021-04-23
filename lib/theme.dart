@@ -52,7 +52,11 @@ ThemeData customDarkTheme({
         ),
       ),
     ),
-    popupMenuTheme: const PopupMenuThemeData(color: Colors.black),
+    popupMenuTheme: PopupMenuThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
       color: Colors.black54,

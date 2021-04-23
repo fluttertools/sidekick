@@ -25,10 +25,10 @@ class CacheVersionActions extends StatelessWidget {
       children: [
         Icon(
           icon,
-          // size: 20,
+          size: 15,
         ),
         const SizedBox(width: 10),
-        Subheading(label),
+        Caption(label),
       ],
     );
   }
