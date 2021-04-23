@@ -62,29 +62,24 @@ Future<List<PackageDetail>> _complementPackageInfo(
   return await Future.wait(packagesDetail);
 }
 
-RepositorySlug _getRepoSlug(Uri repository, String homepage) {
+RepositorySlug _getRepoSlug(String homepage) {
   String author;
   String repo;
 
-  if (repository != null) {
-    final paths = repository.path.split('/');
-    author = paths[1];
-    repo = paths[2];
-  } else {
-    if (homepage != null && homepage.contains('github.com')) {
-      final uri = Uri.parse(homepage);
-      final paths = uri.path.split('/');
+  if (homepage != null && homepage.contains('github.com')) {
+    final uri = Uri.parse(homepage);
+    final paths = uri.path.split('/');
 
-      // Some edge cases there wont be a repo attached to the url
-      if (paths.length < 3) {
-        author = null;
-        repo = null;
-      } else {
-        author = paths[1];
-        repo = paths[2];
-      }
+    // Some edge cases there wont be a repo attached to the url
+    if (paths.length < 3) {
+      author = null;
+      repo = null;
+    } else {
+      author = paths[1];
+      repo = paths[2];
     }
   }
+
   if (author != null && repo != null) {
     return RepositorySlug(author, repo);
   } else {
@@ -97,10 +92,7 @@ Future<PackageDetail> _assignInfo(PubPackage package, int count) async {
   final pubspec = package.latestPubspec;
   Repository repo;
 
-  final repoSlug = _getRepoSlug(
-    pubspec.repository,
-    pubspec.homepage,
-  );
+  final repoSlug = _getRepoSlug(pubspec.homepage);
   try {
     if (repoSlug != null) {
       repo = await github.repositories.getRepository(repoSlug);

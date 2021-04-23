@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
+import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
 import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/services/settings_service.dart';
@@ -33,23 +34,26 @@ final packagesProvider = FutureProvider((ref) async {
   }
 
   // Retrieve cache if exits
-  final response = await cache.load(cacheKey);
+  final cacheRes = await cache.load(cacheKey);
 
   // Return cache if it exists
-  if (response != null) {
-    final json = jsonDecode(response) as List<dynamic>;
+  if (cacheRes != null) {
+    final json = jsonDecode(cacheRes) as List<dynamic>;
     return json.map((value) => PackageDetail.fromJson(value)).toList();
   } else {
     // Get dependencies
-    for (var project in projects.list) {
-      final pubspec = project.pubspecFile;
+    for (final project in projects.list) {
+      final pubspec = project.pubspec;
       final deps = pubspec.dependencies;
 
-      for (final dep in deps) {
-        // ignore: invalid_use_of_protected_member
-        if (dep.hosted != null && !isGooglePubPackage(dep.package())) {
+      for (final dep in deps.keys) {
+        // Get google deps
+        final googleDeps = await getGooglePackages();
+
+        if (deps[dep] is HostedDependency &&
+            googleDeps.contains(dep) == false) {
           // Increment count or set it to 1 if has not been set
-          packages.update(dep.package(), (val) => ++val, ifAbsent: () => 1);
+          packages.update(dep, (val) => ++val, ifAbsent: () => 1);
         }
       }
     }

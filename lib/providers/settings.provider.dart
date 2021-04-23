@@ -1,43 +1,9 @@
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/sidekick_settings.dto.dart';
+import 'package:sidekick/dto/settings.dto.dart';
 import 'package:sidekick/providers/projects_provider.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
-
-class FlutterSettings {
-  bool analytics;
-  bool macos;
-  bool linux;
-  bool windows;
-  bool web;
-  FlutterSettings({
-    this.analytics = true,
-    this.linux = false,
-    this.macos = false,
-    this.windows = false,
-    this.web = false,
-  });
-
-  factory FlutterSettings.fromMap(Map<String, bool> map) {
-    return FlutterSettings(
-      analytics: map['analytics'],
-      macos: map['macos'],
-      windows: map['windows'],
-      linux: map['linux'],
-      web: map['web'],
-    );
-  }
-  Map<String, bool> toMap() {
-    return {
-      "analytics": analytics,
-      "macos": macos,
-      "linux": linux,
-      "windows": windows,
-      "web": web,
-    };
-  }
-}
 
 class Settings {
   SidekickSettings sidekick;

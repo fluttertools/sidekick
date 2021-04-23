@@ -9,6 +9,8 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:sidekick/dto/project.dto.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
@@ -41,7 +43,7 @@ final projectsProvider =
 });
 
 class ProjectsProviderState {
-  List<Project> list;
+  List<FlutterProject> list;
   bool loading;
   String error;
 
@@ -127,7 +129,17 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
       final projects = await FVMClient.fetchProjects(directories);
 
       /// Check if its flutter project
-      state.list = projects.where((p) => p.isFlutterProject).toList();
+      final projectsWithFlutter = projects.where((p) => p.isFlutterProject);
+
+      /// Return flutter projects
+      final flutterProjects = projectsWithFlutter.map((p) async {
+        final yaml = await p.pubspecFile.readAsString();
+        final pubspec = Pubspec.parse(yaml);
+
+        return FlutterProject.fromProject(p, pubspec);
+      }).toList();
+
+      state.list = await Future.wait(flutterProjects);
     } else {
       state.list = [];
     }

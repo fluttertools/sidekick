@@ -64,11 +64,15 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Watch this state change for refresh
   ref.watch(fvmCacheProvider);
 
+//Creates empty releases state
+  final releasesState = AppReleasesState();
+  // Return empty state if not loaded
+  if (payload == null) {
+    return releasesState;
+  }
+
   final flutterReleases = payload.releases;
   final flutterChannels = payload.channels;
-
-  //Creates empty releases state
-  final releasesState = AppReleasesState();
 
   if (flutterReleases == null || installedVersions == null) {
     return releasesState;
@@ -76,7 +80,10 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
   //  MASTER: Set Master separetely because workflow is very different
   final masterCache = installedVersions.getChannel(kMasterChannel);
-  final masterVersion = FVMClient.getSdkVersionSync(masterCache);
+  String masterVersion;
+  if (masterCache != null) {
+    masterVersion = FVMClient.getSdkVersionSync(masterCache);
+  }
 
   releasesState.master = MasterDto(
     name: kMasterChannel,
@@ -92,7 +99,11 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     final channelCache = installedVersions.getChannel(name);
 
     // Get sdk version
-    final sdkVersion = FVMClient.getSdkVersionSync(channelCache);
+    String sdkVersion;
+
+    if (channelCache != null) {
+      sdkVersion = FVMClient.getSdkVersionSync(channelCache);
+    }
 
     final channelDto = ChannelDto(
       name: name,
@@ -114,7 +125,11 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
     // Check if version is found in installed versions
     final cacheVersion = installedVersions.getVersion(item.version);
-    final sdkVersion = FVMClient.getSdkVersionSync(cacheVersion);
+    String sdkVersion;
+
+    if (cacheVersion != null) {
+      sdkVersion = FVMClient.getSdkVersionSync(cacheVersion);
+    }
 
     final version = VersionDto(
       name: item.version,
