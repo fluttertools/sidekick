@@ -12,39 +12,41 @@ class ChannelShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {
-        context.read(selectedInfoProvider).selectVersion(channel);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Heading(channel.name),
-                Subheading(channel.release.version),
-                const SizedBox(height: 5),
-                Caption(
-                  DateTimeFormat.relative(
-                    channel.release.releaseDate,
-                    appendIfAfter: 'ago',
+    return Card(
+      child: InkWell(
+        onTap: () {
+          context.read(selectedInfoProvider.notifier).selectVersion(channel);
+        },
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Heading(channel.name),
+                  Subheading(channel.release.version),
+                  const SizedBox(height: 5),
+                  Caption(
+                    DateTimeFormat.relative(
+                      channel.release.releaseDate,
+                      appendIfAfter: 'ago',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                VersionInstallButton(channel),
-              ],
-            )
-          ],
+                ],
+              ),
+              const Spacer(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  VersionInstallButton(channel),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

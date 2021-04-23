@@ -18,12 +18,12 @@ class ProjectsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final projects = useProvider(projectsProvider.state);
+    final projects = useProvider(projectsProvider);
     final filteredProjects = useState(projects.list);
 
-    final settings = useProvider(settingsProvider.state);
+    final settings = useProvider(settingsProvider);
     void onRefresh() async {
-      await context.read(projectsProvider).reloadAll(withDelay: true);
+      await context.read(projectsProvider.notifier).reloadAll(withDelay: true);
       notify('Projects Refreshed');
     }
 
@@ -56,7 +56,7 @@ class ProjectsScreen extends HookWidget {
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
-              context.read(settingsProvider).save(settings);
+              context.read(settingsProvider.notifier).save(settings);
             },
           ),
         ),

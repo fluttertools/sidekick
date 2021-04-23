@@ -10,7 +10,7 @@ class InfoBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      height: true ? 80 : 0,
+      height: 80,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -23,15 +23,17 @@ class InfoBanner extends StatelessWidget {
             ),
           ),
           child: Row(
-            children: [
-              const SizedBox(width: 10),
-              const Subheading('Master'),
-              const SizedBox(width: 20),
-              const Expanded(
+            children: const [
+              SizedBox(width: 10),
+              Subheading('Master'),
+              SizedBox(width: 20),
+              Expanded(
                 child: Caption(
-                    '''The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.'''),
+                  '''The current tip-of-tree, absolute latest cutting edge build. '''
+                  '''Usually functional, though sometimes we accidentally break things.''',
+                ),
               ),
-              const SizedBox(width: 20),
+              SizedBox(width: 20),
             ],
           ),
         ),

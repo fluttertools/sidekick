@@ -6,8 +6,8 @@ ThemeData darkTheme() {
     brightness: Brightness.dark,
     primarySwatch: Colors.cyan,
     accentColor: Colors.cyan,
-    // cardColor: const Color(0xFF0E0E0E),
-    // scaffoldBackgroundColor: const Color(0xFF111111),
+    cardColor: const Color(0xFF2B2D2F),
+    scaffoldBackgroundColor: const Color(0xFF1D1E1F),
     dividerColor: Colors.white10,
     popupMenuTheme: const PopupMenuThemeData(color: Colors.black),
     appBarTheme: const AppBarTheme(

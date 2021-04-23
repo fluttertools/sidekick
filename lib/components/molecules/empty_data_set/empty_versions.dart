@@ -34,7 +34,7 @@ class EmptyVersions extends StatelessWidget {
               )),
               onPressed: () {
                 context
-                    .read(navigationProvider)
+                    .read(navigationProvider.notifier)
                     .goTo(NavigationRoutes.exploreScreen);
               },
               icon: const Icon(Icons.explore),

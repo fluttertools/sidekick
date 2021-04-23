@@ -15,8 +15,8 @@ class InfoDrawer extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = useProvider(selectedInfoProvider);
-    final selectedState = useProvider(selectedInfoProvider.state);
+    final provider = useProvider(selectedInfoProvider.notifier);
+    final selectedState = useProvider(selectedInfoProvider);
 
     final selected = selectedState.version;
 

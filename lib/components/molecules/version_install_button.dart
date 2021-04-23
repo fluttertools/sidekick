@@ -19,7 +19,7 @@ class VersionInstallButton extends HookWidget {
   Widget build(BuildContext context) {
     final isQueued = useState(false);
     final hovering = useState(false);
-    final queueProvider = useProvider(fvmQueueProvider.state);
+    final queueProvider = useProvider(fvmQueueProvider);
 
     useEffect(() {
       final isInstalling = queueProvider.activeItem != null &&
@@ -42,7 +42,7 @@ class VersionInstallButton extends HookWidget {
     Future<void> onInstall() async {
       isQueued.value = true;
       // Add it to queue for installation
-      context.read(fvmQueueProvider).install(version);
+      context.read(fvmQueueProvider.notifier).install(version);
     }
 
     Widget installIcon() {

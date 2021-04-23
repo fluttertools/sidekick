@@ -20,7 +20,7 @@ class SearchBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final queryProvider = useProvider(searchQueryProvider);
-    final currentRoute = useProvider(navigationProvider.state);
+    final currentRoute = useProvider(navigationProvider);
     final results = useProvider(searchResultsProvider);
     final isLoading = useState(false);
     final controller = useFloatingSearchBarController();
@@ -42,7 +42,7 @@ class SearchBar extends HookWidget {
     // ignore: avoid_positional_boolean_parameters
     void onFocusChanged(bool focus) {
       if (!focus) {
-        context.read(navigationProvider).goBack();
+        context.read(navigationProvider.notifier).goBack();
       }
     }
 
@@ -84,7 +84,7 @@ class SearchBar extends HookWidget {
                 if (query.isNotEmpty) {
                   isLoading.value = true;
                 }
-                queryProvider.state = query;
+                queryProvider.state = query ?? '';
                 await Future.delayed(const Duration(milliseconds: 250));
                 isLoading.value = false;
               },
@@ -94,7 +94,7 @@ class SearchBar extends HookWidget {
                 ),
               ],
               builder: (context, transition) {
-                if (results == null) {
+                if (results.isEmpty && queryProvider.state.isEmpty) {
                   return const SizedBox(height: 0);
                 }
                 if (results.isEmpty) {

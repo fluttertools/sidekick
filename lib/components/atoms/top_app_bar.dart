@@ -26,7 +26,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     /// Opens up search modal
     void openSearchModal() {
-      context.read(navigationProvider).goTo(NavigationRoutes.searchScreen);
+      context
+          .read(navigationProvider.notifier)
+          .goTo(NavigationRoutes.searchScreen);
     }
 
     return AppBar(

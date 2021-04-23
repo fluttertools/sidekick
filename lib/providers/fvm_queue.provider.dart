@@ -47,7 +47,7 @@ enum QueueAction {
 }
 
 /// Releases Provider
-final fvmQueueProvider = StateNotifierProvider<FvmQueueProvider>((ref) {
+final fvmQueueProvider = StateNotifierProvider<FvmQueueProvider, FvmQueue>((ref) {
   return FvmQueueProvider(ref: ref);
 });
 
@@ -58,7 +58,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
   }
 
   FvmSettings get settings {
-    return ref.read(settingsProvider.state).fvm;
+    return ref.read(settingsProvider).fvm;
   }
 
   void install(ReleaseDto version, {bool skipSetup}) async {
@@ -136,7 +136,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     // Set active item to null
     state.activeItem = null;
     // Run update on cache
-    await ref.read(fvmCacheProvider).reloadState();
+    await ref.read(fvmCacheProvider.notifier).reloadState();
     // Update queue
     state = state.update();
 
@@ -146,7 +146,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
 
   Future<void> pinVersion(Project project, String version) async {
     await FVMClient.pinVersion(project, version);
-    await ref.read(projectsProvider).reloadOne(project);
+    await ref.read(projectsProvider.notifier).reloadOne(project);
     await notify('Version $version pinned to ${project.name}');
   }
 

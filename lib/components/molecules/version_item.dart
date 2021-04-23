@@ -25,7 +25,7 @@ class VersionItem extends StatelessWidget {
       child: FvmListTile(
         title: Subheading(version.name),
         onTap: () {
-          context.read(selectedInfoProvider).selectVersion(version);
+          context.read(selectedInfoProvider.notifier).selectVersion(version);
         },
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

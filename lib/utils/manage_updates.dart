@@ -31,7 +31,7 @@ Future<void> downloadRelease(String release) async {
 
   if (!await file.exists()) {
     notify("Downloading...");
-    var res = await http.get(downloadUrl);
+    var res = await http.get(Uri.parse(downloadUrl));
     if (res.statusCode == 200) {
       await file.writeAsBytes(res.bodyBytes);
       notify("Release downloaded! Opening...");

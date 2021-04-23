@@ -32,10 +32,10 @@ class CacheVersionSelect extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const Caption('Choose'),
-                // const SizedBox(width: 20),
-                const Icon(MdiIcons.menuDown),
+              children: const [
+                Caption('Choose'),
+                //  SizedBox(width: 20),
+                Icon(MdiIcons.menuDown),
               ],
             ),
           ),

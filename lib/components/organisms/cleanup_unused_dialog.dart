@@ -39,7 +39,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
               )),
               onPressed: () async {
                 for (var version in unusedVersions) {
-                  context.read(fvmQueueProvider).remove(version);
+                  context.read(fvmQueueProvider.notifier).remove(version);
                 }
 
                 Navigator.of(context).pop();

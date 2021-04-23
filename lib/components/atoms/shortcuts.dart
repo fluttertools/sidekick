@@ -22,7 +22,7 @@ class KBShortcutManager extends HookWidget {
     final focusNode = useFocusNode();
     // Handles route change
     void handleRouteChange(NavigationRoutes route) {
-      context.read(navigationProvider).goTo(route);
+      context.read(navigationProvider.notifier).goTo(route);
     }
 
     return Shortcuts(

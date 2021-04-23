@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:settings_ui/settings_ui.dart';
-import 'package:sidekick/dto/sidekick_settings.dto.dart';
+import 'package:sidekick/dto/settings.dto.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/get_theme_mode.dart';
 import 'package:sidekick/utils/notify.dart';
@@ -76,6 +76,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           const Divider(),
           SettingsTile(
             title: "Theme",
+            titleTextStyle: Theme.of(context).textTheme.bodyText1,
             leading: const Icon(Icons.color_lens_rounded),
             trailing: DropdownButton(
               underline: Container(),
@@ -102,10 +103,11 @@ class SettingsSectionGeneral extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SettingsTile(
+          SettingsTile(
             title: "App version",
-            leading: Icon(Icons.info_outline_rounded),
-            trailing: Text(appVersion),
+            titleTextStyle: Theme.of(context).textTheme.bodyText1,
+            leading: const Icon(Icons.info_outline_rounded),
+            trailing: const Text(appVersion),
           ),
           const Divider(),
           SettingsTile(

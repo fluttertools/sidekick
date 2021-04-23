@@ -21,8 +21,8 @@ class PlaygroundScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final releases = useProvider(releasesStateProvider);
-    final terminal = useProvider(terminalProvider);
-    final processing = useProvider(terminalProvider.state).processing;
+    final terminal = useProvider(terminalProvider.notifier);
+    final processing = useProvider(terminalProvider).processing;
 
     final selectedRelease = useState<ReleaseDto>(null);
 

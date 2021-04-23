@@ -9,13 +9,15 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:sidekick/dto/project.dto.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // ignore: top_level_function_literal_block
 final projectsPerVersionProvider = Provider((ref) {
   final list = <String, List<Project>>{};
-  final projects = ref.watch(projectsProvider.state);
+  final projects = ref.watch(projectsProvider);
 
   if (projects == null || projects.list.isEmpty) {
     return list;
@@ -35,12 +37,13 @@ final projectsPerVersionProvider = Provider((ref) {
   return list;
 });
 
-final projectsProvider = StateNotifierProvider<ProjectsProvider>((ref) {
+final projectsProvider =
+    StateNotifierProvider<ProjectsProvider, ProjectsProviderState>((ref) {
   return ProjectsProvider(ref);
 });
 
 class ProjectsProviderState {
-  List<Project> list;
+  List<FlutterProject> list;
   bool loading;
   String error;
 
@@ -126,7 +129,17 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
       final projects = await FVMClient.fetchProjects(directories);
 
       /// Check if its flutter project
-      state.list = projects.where((p) => p.isFlutterProject).toList();
+      final projectsWithFlutter = projects.where((p) => p.isFlutterProject);
+
+      /// Return flutter projects
+      final flutterProjects = projectsWithFlutter.map((p) async {
+        final yaml = await p.pubspecFile.readAsString();
+        final pubspec = Pubspec.parse(yaml);
+
+        return FlutterProject.fromProject(p, pubspec);
+      }).toList();
+
+      state.list = await Future.wait(flutterProjects);
     } else {
       state.list = [];
     }
