@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/typography.dart';
+import 'package:sidekick/dto/project.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_queue.provider.dart';
 
 class ProjectVersionSelect extends StatelessWidget {
-  final Project project;
+  final FlutterProject project;
   final List<ReleaseDto> versions;
 
   const ProjectVersionSelect({

@@ -40,8 +40,8 @@ class FvmApp extends StatelessWidget {
           child: MaterialApp(
             title: kAppTitle,
             debugShowCheckedModeBanner: false,
-            theme: lightTheme(),
-            darkTheme: darkTheme(),
+            theme: lightTheme,
+            darkTheme: darkBlueTheme(),
             themeMode: getThemeMode(settings.themeMode),
             home: const AppShell(),
           ),

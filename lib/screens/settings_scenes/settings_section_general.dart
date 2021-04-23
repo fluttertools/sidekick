@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/dto/settings.dto.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/get_theme_mode.dart';
@@ -60,24 +58,23 @@ class SettingsSectionGeneral extends StatelessWidget {
         children: [
           Text('General', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile.switchTile(
-            title: "Advanced Mode",
-            subtitle: 'Enables more advanced and experimental functionality.',
-            leading: const Icon(MdiIcons.fire),
-            switchValue: settings.sidekick.advancedMode,
-            titleTextStyle: Theme.of(context).textTheme.bodyText1,
-            switchActiveColor: Theme.of(context).accentColor,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            onToggle: (value) {
+          SwitchListTile(
+            title: const Text("Advanced Mode"),
+            subtitle: const Text(
+              'Enables more advanced and experimental functionality.',
+            ),
+            value: settings.sidekick.advancedMode,
+            onChanged: (value) {
               settings.sidekick.advancedMode = value;
               onSave();
             },
           ),
           const Divider(),
-          SettingsTile(
-            title: "Theme",
-            titleTextStyle: Theme.of(context).textTheme.bodyText1,
-            leading: const Icon(Icons.color_lens_rounded),
+          ListTile(
+            title: const Text("Theme"),
+            subtitle: const Text(
+              'Select a theme or switch according to system settings..',
+            ),
             trailing: DropdownButton(
               underline: Container(),
               isDense: true,
@@ -103,18 +100,15 @@ class SettingsSectionGeneral extends StatelessWidget {
             ),
           ),
           const Divider(),
-          SettingsTile(
-            title: "App version",
-            titleTextStyle: Theme.of(context).textTheme.bodyText1,
-            leading: const Icon(Icons.info_outline_rounded),
-            trailing: const Text(appVersion),
+          const ListTile(
+            title: Text('Version'),
+            trailing: Text(appVersion),
           ),
           const Divider(),
-          SettingsTile(
-            title: "Reset to default settings",
-            leading: const Icon(MdiIcons.backupRestore),
+          ListTile(
+            title: const Text('Reset to default settings'),
             trailing: OutlinedButton(
-              onPressed: (handleReset),
+              onPressed: handleReset,
               child: const Text('Reset'),
             ),
           ),

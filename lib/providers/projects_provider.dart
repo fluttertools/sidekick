@@ -80,7 +80,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
   Future<void> scan() async {
     state.loading = true;
     state.list = [];
-    _forceStateUpdate();
+    _notifyUpdate();
     final settings = await SettingsService.read();
 
     // TODO: Support multiple paths
@@ -101,12 +101,12 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     await reloadAll();
   }
 
-  Future<void> pinVersion(Project project, String version) async {
+  Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await reloadOne(project);
   }
 
-  void _forceStateUpdate() {
+  void _notifyUpdate() {
     state = state.clone();
   }
 
@@ -116,7 +116,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     bool withDelay = false,
   }) async {
     state.loading = true;
-    _forceStateUpdate();
+    _notifyUpdate();
 
     /// Get settings
     final settings = await SettingsService.read();
@@ -151,16 +151,14 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     // Set loading to false
     state.loading = false;
 
-    _forceStateUpdate();
+    _notifyUpdate();
   }
 
-  Future<void> reloadOne(Project project) async {
+  Future<void> reloadOne(FlutterProject project) async {
     final index = state.list.indexWhere((item) => item == project);
-    // Add project to index
-    state.list[index] =
-        await FVMClient.getProjectByDirectory(project.projectDir);
-
+    // Update project
+    state.list[index] = project;
     // Update state
-    _forceStateUpdate();
+    _notifyUpdate();
   }
 }

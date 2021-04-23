@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
+import 'package:sidekick/dto/project.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/fvm_cache.provider.dart';
 import 'package:sidekick/providers/projects_provider.dart';
@@ -47,7 +48,8 @@ enum QueueAction {
 }
 
 /// Releases Provider
-final fvmQueueProvider = StateNotifierProvider<FvmQueueProvider, FvmQueue>((ref) {
+final fvmQueueProvider =
+    StateNotifierProvider<FvmQueueProvider, FvmQueue>((ref) {
   return FvmQueueProvider(ref: ref);
 });
 
@@ -144,7 +146,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
-  Future<void> pinVersion(Project project, String version) async {
+  Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reloadOne(project);
     await notify('Version $version pinned to ${project.name}');

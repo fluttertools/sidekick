@@ -86,18 +86,22 @@ class AppShell extends HookWidget {
               },
               destinations: [
                 NavButton(
+                  context,
                   label: 'Dashboard',
                   iconData: Icons.category,
                 ),
                 NavButton(
+                  context,
                   label: 'Projects',
                   iconData: MdiIcons.folderMultiple,
                 ),
                 NavButton(
+                  context,
                   label: 'Explore',
                   iconData: Icons.explore,
                 ),
                 NavButton(
+                  context,
                   label: 'Packages',
                   iconData: MdiIcons.package,
                 ),

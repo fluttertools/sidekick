@@ -1,7 +1,6 @@
 import 'package:file_chooser/file_chooser.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 import 'package:truncate/truncate.dart';
 
@@ -39,11 +38,11 @@ class SettingsSectionProjects extends StatelessWidget {
         children: [
           Text('Projects', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile(
-            title: 'Projects Directory',
-            subtitle:
-                'Directory which Sidekick will look for Flutter projects.',
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
+          ListTile(
+            title: const Text('Projects Directory'),
+            subtitle: const Text(
+              'Directory which Sidekick will look for Flutter projects.',
+            ),
             trailing: TextButton(
               onPressed: handleChooseDirectory,
               child: Padding(
@@ -66,14 +65,13 @@ class SettingsSectionProjects extends StatelessWidget {
             ),
           ),
           const Divider(),
-          SettingsTile.switchTile(
-            title: 'Only FVM configured',
-            subtitle: 'Will display only projects that have FVM configured.',
-            titleTextStyle: Theme.of(context).textTheme.bodyText1,
-            switchActiveColor: Theme.of(context).accentColor,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            switchValue: settings.sidekick.onlyProjectsWithFvm,
-            onToggle: (value) {
+          SwitchListTile(
+            title: const Text('Only FVM configured'),
+            subtitle: const Text(
+              'Will display only projects that have FVM configured.',
+            ),
+            value: settings.sidekick.onlyProjectsWithFvm,
+            onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
               onSave();
             },

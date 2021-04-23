@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:settings_ui/settings_ui.dart';
 import 'package:sidekick/providers/settings.provider.dart';
 
 class SettingsSectionFvm extends StatelessWidget {
@@ -20,27 +19,23 @@ class SettingsSectionFvm extends StatelessWidget {
         children: [
           Text('FVM', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SettingsTile.switchTile(
-            title: 'Git Cache',
-            subtitle: "This will cache the main Flutter repository"
-                " for faster and smaller installs",
-            switchActiveColor: Theme.of(context).accentColor,
-            switchValue: settings.fvm.gitCache ?? false,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            onToggle: (value) {
+          SwitchListTile(
+            title: const Text('Git Cache'),
+            subtitle: const Text("This will cache the main Flutter repository"
+                " for faster and smaller installs"),
+            value: settings.fvm.gitCache ?? false,
+            onChanged: (value) {
               settings.fvm.gitCache = value;
               onSave();
             },
           ),
           const Divider(),
-          SettingsTile.switchTile(
-            title: 'Skip setup Flutter on install',
-            subtitle: "This will only clone Flutter and not install"
-                "dependencies after a new version is installed.",
-            switchActiveColor: Theme.of(context).accentColor,
-            subtitleTextStyle: Theme.of(context).textTheme.caption,
-            switchValue: settings.fvm.skipSetup ?? false,
-            onToggle: (value) {
+          SwitchListTile(
+            title: const Text('Skip setup Flutter on install'),
+            subtitle: const Text("This will only clone Flutter and not install"
+                "dependencies after a new version is installed."),
+            value: settings.fvm.skipSetup ?? false,
+            onChanged: (value) {
               settings.fvm.skipSetup = value;
               onSave();
             },
