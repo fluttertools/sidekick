@@ -10,7 +10,6 @@ final pool = Pool(
   timeout: const Duration(seconds: 30),
 );
 
-/// Simple pool to manage compute
 class ComputePool {
   ComputePool._();
 
