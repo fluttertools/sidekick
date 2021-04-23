@@ -41,7 +41,7 @@ class FvmApp extends StatelessWidget {
             title: kAppTitle,
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
-            darkTheme: darkBlueTheme(),
+            darkTheme: darkTheme(),
             themeMode: getThemeMode(settings.themeMode),
             home: const AppShell(),
           ),

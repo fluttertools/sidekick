@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/list_tile.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/github_repo_info.dart';
@@ -56,29 +57,44 @@ class PackageItem extends StatelessWidget {
                         const SizedBox(width: 10),
                         const Text('·'),
                         const SizedBox(width: 10),
-                        TextButton(
-                          child: const Text('details'),
-                          onPressed: () async {
-                            await openLink(package.url);
-                          },
+                        Tooltip(
+                          message: 'Details',
+                          child: IconButton(
+                            iconSize: 20,
+                            splashRadius: 20,
+                            icon: const Icon(MdiIcons.informationOutline),
+                            onPressed: () async {
+                              await openLink(package.url);
+                            },
+                          ),
                         ),
                         const SizedBox(width: 10),
                         const Text('·'),
                         const SizedBox(width: 10),
-                        TextButton(
-                          child: const Text('changelog'),
-                          onPressed: () async {
-                            await openLink(package.changelogUrl);
-                          },
+                        Tooltip(
+                          message: 'Changelog',
+                          child: IconButton(
+                            iconSize: 20,
+                            splashRadius: 20,
+                            icon: const Icon(MdiIcons.textBox),
+                            onPressed: () async {
+                              await openLink(package.changelogUrl);
+                            },
+                          ),
                         ),
                         const SizedBox(width: 10),
                         const Text('·'),
                         const SizedBox(width: 10),
-                        TextButton(
-                          child: const Text('website'),
-                          onPressed: () async {
-                            await openLink(package.homepage);
-                          },
+                        Tooltip(
+                          message: 'Website',
+                          child: IconButton(
+                            iconSize: 20,
+                            splashRadius: 20,
+                            icon: const Icon(MdiIcons.earth),
+                            onPressed: () async {
+                              await openLink(package.homepage);
+                            },
+                          ),
                         ),
                         const SizedBox(width: 10),
                       ],

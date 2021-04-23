@@ -34,7 +34,13 @@ class CacheSizeDisplay extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 5),
-                LinearProgressIndicator(value: 1 - unusedPercentage),
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  child: LinearProgressIndicator(
+                    value: 1 - unusedPercentage,
+                    minHeight: 5,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

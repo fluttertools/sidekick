@@ -61,7 +61,7 @@ class SearchBar extends HookWidget {
           children: [
             Container(
               child: const BlurBackground(
-                strength: 20,
+                strength: 15,
               ),
             ),
             FloatingSearchBar(

@@ -32,6 +32,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
+      backgroundColor: Colors.transparent,
       title: const Caption(kAppTitle),
       centerTitle: true,
       actions: [

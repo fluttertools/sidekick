@@ -12,7 +12,7 @@ class SearchResultsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
+      color: Theme.of(context).scaffoldBackgroundColor,
       constraints: BoxConstraints(
         minHeight: 4,
         maxHeight: MediaQuery.of(context).size.height / 1.2,

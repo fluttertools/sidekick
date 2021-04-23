@@ -114,6 +114,7 @@ class AppShell extends HookWidget {
                 children: [
                   Scaffold(
                     appBar: const TopAppBar(),
+                    backgroundColor: Colors.transparent,
                     bottomNavigationBar: const AppBottomBar(),
                     body: Container(
                       child: Row(
