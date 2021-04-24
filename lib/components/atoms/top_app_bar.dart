@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/typography.dart';
@@ -34,7 +36,9 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: platformBackgroundColor(context),
-      title: const Caption(kAppTitle),
+      title: Platform.isMacOS
+          ? const Caption(kAppTitle)
+          : const SizedBox(height: 0, width: 0),
       centerTitle: true,
       actions: [
         const UpdateAvailableButton(),

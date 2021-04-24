@@ -35,7 +35,7 @@ dependencies:
   animations: ^2.0.0
   async: ^2.5.0
   date_time_format: ^2.0.1
-  file_chooser: ^0.1.6
+
   filesize: ^1.0.4
   flutter_cache: ^0.1.0
   flutter_hooks: ^0.16.0
@@ -51,7 +51,6 @@ dependencies:
   oktoast: ^3.0.0
   path_provider: ^2.0.1
   pub_api_client: ^2.0.1
-
   responsive_grid: ^2.0.0
   settings_ui: ^1.0.0
   truncate: ^3.0.1
@@ -59,6 +58,10 @@ dependencies:
   watcher: ^1.0.0
   open_file: ^3.2.0
   pubspec_parse: ^1.0.0
+  file_selector: ^0.8.2
+  file_selector_linux: ^0.0.2
+  file_selector_macos: ^0.0.4
+  file_selector_windows: ^0.0.2
 
 dev_dependencies:
   flutter_test:

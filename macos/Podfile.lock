@@ -1,5 +1,5 @@
 PODS:
-  - file_chooser (0.0.2):
+  - file_selector_macos (0.0.1):
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - path_provider_macos (0.0.1):
@@ -12,7 +12,7 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - file_chooser (from `Flutter/ephemeral/.symlinks/plugins/file_chooser/macos`)
+  - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
   - shared_preferences_macos (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos`)
@@ -20,8 +20,8 @@ DEPENDENCIES:
   - window_size (from `Flutter/ephemeral/.symlinks/plugins/window_size/macos`)
 
 EXTERNAL SOURCES:
-  file_chooser:
-    :path: Flutter/ephemeral/.symlinks/plugins/file_chooser/macos
+  file_selector_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
   path_provider_macos:
@@ -34,7 +34,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/window_size/macos
 
 SPEC CHECKSUMS:
-  file_chooser: 24432cf5dc836722b05c11c2a0a30d19c3c9b996
+  file_selector_macos: ff6dc948d4ddd34e8602a1f60b7d0b4cc6051a47
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
   path_provider_macos: a0a3fd666cb7cd0448e936fb4abad4052961002b
   shared_preferences_macos: 480ce071d0666e37cef23fe6c702293a3d21799e

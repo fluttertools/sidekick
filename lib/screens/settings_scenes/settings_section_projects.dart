@@ -1,4 +1,4 @@
-import 'package:file_chooser/file_chooser.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/providers/settings.provider.dart';
@@ -19,16 +19,13 @@ class SettingsSectionProjects extends StatelessWidget {
     final hasProjectPath = settings.sidekick.firstProjectDir != null;
 
     Future<void> handleChooseDirectory() async {
-      final fileResult = await showOpenPanel(
-        allowedFileTypes: [],
-        canSelectDirectories: true,
-      );
-
-      // Save if a path is selected
-      if (fileResult.paths.isNotEmpty) {
-        settings.sidekick.firstProjectDir = fileResult.paths.single;
+      final directoryPath = await getDirectoryPath(confirmButtonText: 'Choose');
+      if (directoryPath == null) {
+        // Operation was canceled by the user.
+        return;
       }
-
+      // Save if a path is selected
+      settings.sidekick.firstProjectDir = directoryPath;
       await onSave();
     }
 
