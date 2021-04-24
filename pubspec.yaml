@@ -42,12 +42,12 @@ dependencies:
   flutter_spinkit: ^5.0.0
   github: ^8.1.0
   google_fonts: ^2.0.0
-  hive: ^2.0.3
+  hive: ^2.0.4
   hive_flutter: ^1.0.0
-  hooks_riverpod: ^0.14.0
+  hooks_riverpod: ^0.14.0+2
   list_ext: ^1.0.2
   material_design_icons_flutter: ^4.0.5955
-  material_floating_search_bar: ^0.3.3
+  material_floating_search_bar: ^0.3.4
   oktoast: ^3.0.0
   path_provider: ^2.0.1
   pub_api_client: ^2.0.1
