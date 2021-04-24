@@ -70,8 +70,10 @@ class AppShell extends HookWidget {
 
     return KBShortcutManager(
       child: Scaffold(
-        backgroundColor: platformBackgroundColor(context),
+        appBar: const TopAppBar(),
+        bottomNavigationBar: const AppBottomBar(),
         endDrawer: const InfoDrawer(),
+        backgroundColor: platformBackgroundColor(context),
         key: _scaffoldKey,
         body: Row(
           children: [
@@ -81,7 +83,6 @@ class AppShell extends HookWidget {
               minWidth: kNavigationWidth,
               minExtendedWidth: kNavigationWidthExtended,
               extended: !LayoutSize.isSmall,
-              leading: const SizedBox(height: 20),
               onDestinationSelected: (index) {
                 navigation.goTo(NavigationRoutes.values[index]);
               },
@@ -114,9 +115,6 @@ class AppShell extends HookWidget {
                 fit: StackFit.expand,
                 children: [
                   Scaffold(
-                    appBar: const TopAppBar(),
-                    backgroundColor: Colors.transparent,
-                    bottomNavigationBar: const AppBottomBar(),
                     body: Container(
                       child: Row(
                         children: <Widget>[

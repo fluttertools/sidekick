@@ -119,11 +119,13 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     _notifyUpdate();
 
     /// Get settings
-    final settings = await SettingsService.read();
+    final settings = SettingsService.read();
 
     /// Get cached path for projects
     final projectPaths = settings.projectPaths;
-    if (projectPaths.isNotEmpty) {
+    if (projectPaths.isEmpty) {
+      state.list = [];
+    } else {
       final directories = projectPaths.map((p) => Directory(p)).toList();
       // Go get info for each project
       final projects = await FVMClient.fetchProjects(directories);
@@ -140,8 +142,6 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
       }).toList();
 
       state.list = await Future.wait(flutterProjects);
-    } else {
-      state.list = [];
     }
 
     /// This is used for better UI feedback

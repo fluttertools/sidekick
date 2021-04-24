@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-ThemeData darkPurpleTheme() {
-  return customDarkTheme(
+ThemeData get darkPurpleTheme {
+  return _customThemeBuilder(
     cardColor: const Color(0xFF180D2F),
     scaffoldBackgroundColor: const Color(0xFF0F0823),
     primarySwatch: Colors.deepOrange,
@@ -12,8 +12,8 @@ ThemeData darkPurpleTheme() {
   );
 }
 
-ThemeData darkBlueTheme() {
-  return customDarkTheme(
+ThemeData get darkBlueThemea {
+  return _customThemeBuilder(
     cardColor: const Color(0xFF092045),
     scaffoldBackgroundColor: const Color(0xFF081231),
     primarySwatch: Colors.cyan,
@@ -21,8 +21,8 @@ ThemeData darkBlueTheme() {
   );
 }
 
-ThemeData darkTheme() {
-  return customDarkTheme(
+ThemeData get darkTheme {
+  return _customThemeBuilder(
     cardColor: const Color(0xFF2B2D2F),
     scaffoldBackgroundColor: const Color(0xFF1D1E1F),
     primarySwatch: Colors.cyan,
@@ -30,16 +30,32 @@ ThemeData darkTheme() {
   );
 }
 
+ThemeData get lightTheme {
+  return _customThemeBuilder(
+    cardColor: const Color(0xFF092045),
+    scaffoldBackgroundColor: const Color(0xFF081231),
+    primarySwatch: Colors.cyan,
+    accentColor: Colors.cyan,
+  );
+}
+
 /// Dark theme
-ThemeData customDarkTheme({
+ThemeData _customThemeBuilder({
   Color cardColor,
   Color scaffoldBackgroundColor,
   Color primarySwatch,
   Color accentColor,
+  Brightness brightness = Brightness.dark,
 }) {
+  ThemeData baseTheme;
+  if (brightness == Brightness.dark) {
+    baseTheme = ThemeData.dark();
+  } else {
+    baseTheme = ThemeData.light();
+  }
   return ThemeData(
-    textTheme: GoogleFonts.ibmPlexSansTextTheme(ThemeData.dark().textTheme),
-    brightness: Brightness.dark,
+    textTheme: GoogleFonts.ibmPlexSansTextTheme(baseTheme.textTheme),
+    brightness: brightness,
     primarySwatch: primarySwatch,
     cardColor: cardColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
@@ -54,9 +70,21 @@ ThemeData customDarkTheme({
         ),
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.padded,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+      ),
+    ),
     popupMenuTheme: PopupMenuThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+      shape: _roundedShape,
+    ),
+    dialogTheme: DialogTheme(
+      shape: _roundedShape,
+      backgroundColor: scaffoldBackgroundColor,
+      titleTextStyle: const TextStyle(fontSize: 16),
+      contentTextStyle: const TextStyle(
+        fontSize: 12,
       ),
     ),
     appBarTheme: const AppBarTheme(
@@ -71,23 +99,9 @@ ThemeData customDarkTheme({
   );
 }
 
-ThemeData get lightTheme {
-  return ThemeData(
-    brightness: Brightness.light,
-    primarySwatch: Colors.blue,
-    accentColor: Colors.blue,
-    dividerColor: Colors.black12,
-    cardTheme: const CardTheme(
-      elevation: 3,
-      shadowColor: Colors.black45,
-    ),
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      color: Color(0xFFF6F4F6),
-      iconTheme: IconThemeData(),
-    ),
-  ).copyWith(
-    visualDensity: VisualDensity.adaptivePlatformDensity,
+RoundedRectangleBorder get _roundedShape {
+  return RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10.0),
   );
 }
 
