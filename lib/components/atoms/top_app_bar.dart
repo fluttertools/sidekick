@@ -5,6 +5,7 @@ import 'package:sidekick/components/molecules/update_available_button.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/screens/settings_screen.dart';
+import 'package:sidekick/theme.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({key}) : super(key: key);
@@ -32,7 +33,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: platformBackgroundColor(context),
       title: const Caption(kAppTitle),
       centerTitle: true,
       actions: [

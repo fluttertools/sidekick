@@ -17,6 +17,7 @@ import 'package:sidekick/screens/home_screen.dart';
 import 'package:sidekick/screens/packages_screen.dart';
 import 'package:sidekick/screens/projects_screen.dart';
 import 'package:sidekick/screens/releases_screen.dart';
+import 'package:sidekick/theme.dart';
 import 'package:sidekick/utils/layout_size.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -69,13 +70,13 @@ class AppShell extends HookWidget {
 
     return KBShortcutManager(
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: platformBackgroundColor(context),
         endDrawer: const InfoDrawer(),
         key: _scaffoldKey,
         body: Row(
           children: [
             NavigationRail(
-              backgroundColor: Colors.transparent,
+              backgroundColor: platformBackgroundColor(context),
               selectedIndex: selectedIndex.value,
               minWidth: kNavigationWidth,
               minExtendedWidth: kNavigationWidthExtended,

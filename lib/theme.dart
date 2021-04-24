@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -87,4 +89,12 @@ ThemeData get lightTheme {
   ).copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
+}
+
+Color platformBackgroundColor(BuildContext context) {
+  if (Platform.isMacOS) {
+    return Colors.transparent;
+  } else {
+    return Theme.of(context).scaffoldBackgroundColor;
+  }
 }
