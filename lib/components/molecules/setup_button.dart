@@ -15,6 +15,7 @@ class SetupButton extends StatelessWidget {
       child: IconButton(
         icon: const Icon(MdiIcons.alert),
         iconSize: 20,
+        splashRadius: 20,
         color: Colors.cyan,
         onPressed: () {
           context.read(fvmQueueProvider.notifier).setup(version);
