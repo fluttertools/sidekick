@@ -95,6 +95,6 @@ Color platformBackgroundColor(BuildContext context) {
   if (Platform.isMacOS) {
     return Colors.transparent;
   } else {
-    return Theme.of(context).scaffoldBackgroundColor;
+    return Theme.of(context).cardColor;
   }
 }
