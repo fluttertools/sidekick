@@ -119,7 +119,7 @@ class ProjectsProvider extends StateNotifier<ProjectsProviderState> {
     _notifyUpdate();
 
     /// Get settings
-    final settings = await SettingsService.read();
+    final settings = SettingsService.read();
 
     /// Get cached path for projects
     final projectPaths = settings.projectPaths;
