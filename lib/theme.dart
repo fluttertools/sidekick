@@ -47,8 +47,14 @@ ThemeData _customThemeBuilder({
   Color accentColor,
   Brightness brightness = Brightness.dark,
 }) {
+  ThemeData baseTheme;
+  if (brightness == Brightness.dark) {
+    baseTheme = ThemeData.dark();
+  } else {
+    baseTheme = ThemeData.light();
+  }
   return ThemeData(
-    textTheme: GoogleFonts.ibmPlexSansTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.ibmPlexSansTextTheme(baseTheme.textTheme),
     brightness: brightness,
     primarySwatch: primarySwatch,
     cardColor: cardColor,
