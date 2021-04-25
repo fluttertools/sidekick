@@ -1,14 +1,18 @@
 # Flutter Sidekick
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/leoafarias/sidekick?color=FFB82E&label=Release&style=flat-square)
+![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?color=FF5B2E&label=All%20contributors&style=flat-square)
+![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=442EFF&label=License&style=flat-square)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A simple app to make Flutter development more delightful.
+Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
 
-## This is very much work in progress.
+[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases)
 
-![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/sidekick.png?raw=true)
+![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
 - Manage Flutter versions
 - Explore releases
