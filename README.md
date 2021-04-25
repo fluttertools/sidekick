@@ -2,9 +2,9 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/leoafarias/sidekick?color=FFB82E&label=Release&style=flat-square)
-![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?color=FF5B2E&label=All%20contributors&style=flat-square)
-![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=442EFF&label=License&style=flat-square)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/leoafarias/sidekick?color=FFB82E&label=Release&style=for-the-badge)
+![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?color=FF5B2E&label=All%20contributors&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=442EFF&label=License&style=for-the-badge)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
