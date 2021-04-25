@@ -18,6 +18,7 @@ Sidekick is an app that provides a simple desktop interface to tools that enhanc
 - Explore releases
 - View most used packages
 - Search versions across apps
+- Version sandboxing (playground)
 - more...
 
 ## Contributors ✨
