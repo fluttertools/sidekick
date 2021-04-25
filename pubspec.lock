@@ -343,7 +343,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: cbb43b9a2f840d1ff34e171f0a2adc4190bf11c2
+      resolved-ref: "60ed0f266f32a3a3d16bfb90757bc1a2093e75b5"
       url: "https://github.com/leoafarias/fvm.git"
     source: git
     version: "2.0.0-dev.8"
@@ -662,13 +662,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.0+1"
-  settings_ui:
-    dependency: "direct main"
-    description:
-      name: settings_ui
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   shared_preferences:
     dependency: transitive
     description:

@@ -61,6 +61,7 @@ ThemeData _customThemeBuilder({
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     accentColor: accentColor,
     dividerColor: Colors.white10,
+    toggleableActiveColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         primary: Colors.grey,

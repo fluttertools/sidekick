@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/local_link_button.dart';
+import 'package:open_file/open_file.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/project_version_select.dart';
 import 'package:sidekick/components/molecules/version_install_button.dart';
@@ -51,12 +51,16 @@ class ProjectItem extends HookWidget {
                   leading: const Icon(MdiIcons.alphaPBox),
                   title: Subheading(project.name),
                   trailing: Tooltip(
-                    message: "Open terminal playground",
+                    message: project.projectDir.absolute.path,
                     child: IconButton(
+                      icon: const Icon(MdiIcons.openInNew),
                       iconSize: 20,
                       splashRadius: 20,
-                      icon: const Icon(MdiIcons.consoleLine),
-                      onPressed: openProjectPlayground,
+                      onPressed: () {
+                        OpenFile.open(
+                          project.projectDir.absolute.path,
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -84,7 +88,15 @@ class ProjectItem extends HookWidget {
               Row(
                 children: [
                   const SizedBox(width: 10),
-                  LocalLinkButton(project.projectDir.absolute.path),
+                  Tooltip(
+                    message: "Open terminal playground",
+                    child: IconButton(
+                      iconSize: 20,
+                      splashRadius: 20,
+                      icon: const Icon(MdiIcons.consoleLine),
+                      onPressed: openProjectPlayground,
+                    ),
+                  ),
                   const Spacer(),
                   versionSelect
                       ? Row(
