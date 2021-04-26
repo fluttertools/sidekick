@@ -8,7 +8,7 @@ import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/organisms/terminal.dart';
 import 'package:sidekick/dto/release.dto.dart';
 import 'package:sidekick/providers/flutter_releases.provider.dart';
-import 'package:sidekick/providers/terminal_provider.dart';
+import 'package:sidekick/providers/shell_provider.dart';
 
 class PlaygroundScreen extends HookWidget {
   final Project project;

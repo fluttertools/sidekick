@@ -2,6 +2,7 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/dto/settings.dto.dart';
 import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/services/flutter_config_service.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
@@ -76,7 +77,7 @@ class SettingsProvider extends StateNotifier<Settings> {
     // Return if nothing changed
     if (changed) {
       // Toggle analytics
-      await FVMClient.setFlutterConfig(settings.toMap());
+      await FlutterConfigService.setFluterConfig(settings.toMap());
     }
   }
 
@@ -96,7 +97,7 @@ class SettingsProvider extends StateNotifier<Settings> {
 
     //Go get async state
     final fvmSettings = await FVMClient.readSettings();
-    final flutterSettings = await FVMClient.getFlutterConfig();
+    final flutterSettings = await FlutterConfigService.getFlutterConfig();
     state = Settings(
       // Set state
       sidekick: sidekickSettings,

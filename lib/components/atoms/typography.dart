@@ -60,7 +60,7 @@ class StdoutText extends StatelessWidget {
       maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
-        color: Colors.cyan,
+        color: Theme.of(context).accentColor,
       ),
     );
   }

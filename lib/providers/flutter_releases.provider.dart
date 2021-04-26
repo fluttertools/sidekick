@@ -35,10 +35,6 @@ class AppReleasesState {
 
   /// Returns all releases and channels that are cached
   List<ReleaseDto> get allCached {
-    // final versionNames = all.map((version) => version.name).toSet();
-    // final _allCached = all.where((release) => release.isCached).toList();
-    // _allCached.retainWhere((version) => versionNames.remove(version.name));
-
     // Only get unique cached releases
     // Some releases replicate across channels
     // They can only be installed once and conflict
@@ -53,7 +49,6 @@ final _fetchFlutterReleases = FutureProvider<FlutterReleases>(
   (_) => FVMClient.getFlutterReleases(),
 );
 
-// ignore: top_level_function_literal_block
 final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Filter only version that are valid releases
   FlutterReleases payload;

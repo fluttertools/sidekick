@@ -88,7 +88,7 @@ class SettingsScreen extends HookWidget {
                       return ListTile(
                         leading: Icon(
                           sectionIcons[idx],
-                          size: 16,
+                          size: 20,
                         ),
                         title: Text(
                           section,

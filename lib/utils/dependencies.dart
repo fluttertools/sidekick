@@ -22,7 +22,8 @@ Future<List<PackageDetail>> fetchPackages(
     pkgFutures.add(client.packageInfo(pkg));
   }
 
-  final packages = await Future.wait(pkgFutures);
+  final packages = await Future.wait(pkgFutures, eagerError: true);
+
   final topPackages = _getTopValidPackages(packages, packagesCount);
   final results = await _complementPackageInfo(topPackages, packagesCount);
 

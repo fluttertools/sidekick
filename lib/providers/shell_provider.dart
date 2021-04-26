@@ -173,12 +173,12 @@ class TerminalStateNotifier extends StateNotifier<TerminalState> {
     );
   }
 
+  /// Send command isolate
   Future<void> sendIsolate(
     String cmd,
     ReleaseDto release,
     Project project, {
-
-    /// Supress display command on terminal
+    // Supress display command on terminal
     bool supressCmdOutput = false,
   }) async {
     try {
@@ -212,7 +212,7 @@ class TerminalStateNotifier extends StateNotifier<TerminalState> {
       // Receiver port for isolate
       final receivePort = ReceivePort();
       // Create model of Terminal Cmd to send to isolate
-      final terminalCmd = TerminalCmd(
+      final terminalCmd = ProcessCmd(
         execPath: execPath,
         workingDirectory: project.projectDir.path,
         args: args,

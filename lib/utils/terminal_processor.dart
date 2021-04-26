@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:sidekick/providers/terminal_provider.dart';
+import 'package:sidekick/providers/shell_provider.dart';
 
-class TerminalCmd {
+class ProcessCmd {
   final List<String> args;
   final String execPath;
   final String workingDirectory;
   final SendPort sendPort;
-  TerminalCmd({
+  ProcessCmd({
     this.args,
     this.execPath,
     this.workingDirectory,
@@ -18,7 +18,7 @@ class TerminalCmd {
   });
 }
 
-Future<void> isolateProcess(TerminalCmd cmd) async {
+Future<void> isolateProcess(ProcessCmd cmd) async {
   try {
     final process = await Process.start(
       cmd.execPath,
