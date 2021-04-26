@@ -51,7 +51,7 @@ jobs:
       - name: Enable desktop
         run: flutter config --enable-macos-desktop
 
-      - name: Analyze Flutter
+      - name: Get packages
         run: flutter pub get
 
       - name: Analyze
@@ -75,7 +75,7 @@ jobs:
       - name: Enable desktop
         run: flutter config --enable-windows-desktop
 
-      - name: Analyze Flutter
+      - name: Get packages
         run: flutter pub get
 
       - name: Analyze

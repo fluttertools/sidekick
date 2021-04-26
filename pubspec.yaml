@@ -17,7 +17,7 @@ dependencies:
     # path: ../fvm
     git:
       url: https://github.com/leoafarias/fvm.git
-      ref: master
+      ref: sidekick/compatible
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
