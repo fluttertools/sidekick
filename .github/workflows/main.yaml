@@ -25,7 +25,7 @@ jobs:
       - name: Enable desktop
         run: flutter config --enable-linux-desktop
 
-      - name: Analyze Flutter
+      - name: Get packages
         run: flutter pub get
 
       - name: Analyze
