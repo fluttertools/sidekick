@@ -30,15 +30,6 @@ ThemeData get darkTheme {
   );
 }
 
-ThemeData get lightTheme {
-  return _customThemeBuilder(
-    cardColor: const Color(0xFF092045),
-    scaffoldBackgroundColor: const Color(0xFF081231),
-    primarySwatch: Colors.cyan,
-    accentColor: Colors.cyan,
-  );
-}
-
 /// Dark theme
 ThemeData _customThemeBuilder({
   Color cardColor,
@@ -71,22 +62,15 @@ ThemeData _customThemeBuilder({
         ),
       ),
     ),
-    textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.padded,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-      ),
-    ),
+    textButtonTheme: _textButtonThemeData,
     popupMenuTheme: PopupMenuThemeData(
       shape: _roundedShape,
     ),
     dialogTheme: DialogTheme(
       shape: _roundedShape,
       backgroundColor: scaffoldBackgroundColor,
-      titleTextStyle: const TextStyle(fontSize: 16),
-      contentTextStyle: const TextStyle(
-        fontSize: 12,
-      ),
+      titleTextStyle: ThemeData.dark().textTheme.headline1,
+      contentTextStyle: ThemeData.dark().textTheme.bodyText1,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
@@ -100,6 +84,41 @@ ThemeData _customThemeBuilder({
   );
 }
 
+ThemeData get lightTheme {
+  return ThemeData(
+    brightness: Brightness.light,
+    primarySwatch: Colors.blue,
+    accentColor: Colors.blue,
+    dividerColor: Colors.black12,
+    textButtonTheme: _textButtonThemeData,
+    cardTheme: const CardTheme(
+      elevation: 3,
+      shadowColor: Colors.black45,
+    ),
+    dialogTheme: DialogTheme(
+      shape: _roundedShape,
+      titleTextStyle: ThemeData.light().textTheme.headline3,
+      contentTextStyle: ThemeData.light().textTheme.bodyText1,
+    ),
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      color: Color(0xFFF6F4F6),
+      iconTheme: IconThemeData(),
+    ),
+  ).copyWith(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+  );
+}
+
+get _textButtonThemeData {
+  TextButtonThemeData(
+    style: TextButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.padded,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+    ),
+  );
+}
+
 RoundedRectangleBorder get _roundedShape {
   return RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(10.0),
@@ -107,7 +126,7 @@ RoundedRectangleBorder get _roundedShape {
 }
 
 Color platformBackgroundColor(BuildContext context) {
-  if (Platform.isMacOS) {
+  if (Platform.isMacOS && Theme.of(context).brightness == Brightness.dark) {
     return Colors.transparent;
   } else {
     return Theme.of(context).cardColor;

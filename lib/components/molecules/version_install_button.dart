@@ -47,21 +47,21 @@ class VersionInstallButton extends HookWidget {
 
     Widget installIcon() {
       if ((isQueued.value && !version.isCached)) {
-        return const SizedBox(
+        return SizedBox(
           height: 20,
           width: 20,
           child: SpinKitFadingFour(
             size: 15,
-            color: Colors.cyan,
+            color: Theme.of(context).accentColor,
           ),
         );
       }
 
       if (version.isCached) {
-        return const Icon(
+        return Icon(
           Icons.check,
           size: 20,
-          color: Colors.cyan,
+          color: Theme.of(context).accentColor,
         );
       }
 
