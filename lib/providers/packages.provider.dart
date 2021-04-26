@@ -42,13 +42,13 @@ final packagesProvider = FutureProvider((ref) async {
     return json.map((value) => PackageDetail.fromJson(value)).toList();
   } else {
     // Get dependencies
+    final googleDeps = await getGooglePackages();
     for (final project in projects.list) {
       final pubspec = project.pubspec;
       final deps = pubspec.dependencies;
 
       for (final dep in deps.keys) {
         // Get google deps
-        final googleDeps = await getGooglePackages();
 
         if (deps[dep] is HostedDependency &&
             googleDeps.contains(dep) == false) {

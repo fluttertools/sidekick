@@ -87,7 +87,10 @@ class Console extends HookWidget {
                 right: 0,
                 child: Row(
                   children: [
-                    const SpinKitFadingFour(color: Colors.cyan, size: 15),
+                    SpinKitFadingFour(
+                      color: Theme.of(context).accentColor,
+                      size: 15,
+                    ),
                     IconButton(
                       onPressed: null,
                       icon: expand

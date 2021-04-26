@@ -25,6 +25,7 @@ void main() async {
     setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
   }
+
   runApp(ProviderScope(child: FvmApp()));
 }
 

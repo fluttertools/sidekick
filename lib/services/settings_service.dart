@@ -3,6 +3,7 @@ import 'package:sidekick/dto/settings.dto.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class SettingsService {
+  SettingsService._();
   static const key = 'settings_box';
   static Box<SidekickSettings> box;
 

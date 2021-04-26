@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/terminal_provider.dart';
+import 'package:sidekick/providers/shell_provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
 class PlaygroundTerminal extends HookWidget {
@@ -169,7 +169,10 @@ class PlaygroundTerminal extends HookWidget {
                 ),
               ),
               terminalState.processing
-                  ? const SpinKitFadingFour(color: Colors.cyan, size: 15)
+                  ? SpinKitFadingFour(
+                      color: Theme.of(context).accentColor,
+                      size: 15,
+                    )
                   : Container()
             ],
           ),

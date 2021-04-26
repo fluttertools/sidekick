@@ -39,16 +39,10 @@ class UpdateAvailableButton extends HookWidget {
                 Heading("Update available."),
               ],
             ),
-            content: Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Paragraph(
-                    "Current ${latest.value.currentVersion}\n"
-                    "New ${latest.value.latestVersion}",
-                  ),
-                ],
+            content: Container(
+              child: Paragraph(
+                "Current ${latest.value.currentVersion}\n"
+                "New ${latest.value.latestVersion}",
               ),
             ),
             actions: <Widget>[
