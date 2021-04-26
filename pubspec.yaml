@@ -51,6 +51,8 @@ dependencies:
   file_selector_linux: ^0.0.2
   file_selector_macos: ^0.0.4
   file_selector_windows: ^0.0.2
+  catcher: ^0.6.5
+  sentry: ^5.0.0
 
 dev_dependencies:
   flutter_test:

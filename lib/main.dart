@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:catcher/catcher.dart';
+import 'package:catcher/model/catcher_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:sentry/sentry.dart';
 import 'package:sidekick/app_shell.dart';
 import 'package:sidekick/constants.dart';
 import 'package:sidekick/dto/settings.dto.dart';
@@ -19,13 +22,34 @@ void main() async {
   await Hive.initFlutter();
 
   await SettingsService.init();
+  final debugOptions = CatcherOptions(DialogReportMode(), [ConsoleHandler()]);
+  final releaseOptions = CatcherOptions(
+    PageReportMode(),
+    [
+      SentryHandler(
+        SentryClient(
+          SentryOptions(
+            dsn:
+                "https://f77c25fdfecb4e45a801fe5575ba1461@o578792.ingest.sentry.io/5735216",
+          ),
+        ),
+      )
+    ],
+  );
+// Init sentry
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle(kAppTitle);
     setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
   }
-  runApp(ProviderScope(child: FvmApp()));
+  Catcher(
+    runAppFunction: () {
+      runApp(ProviderScope(child: FvmApp()));
+    },
+    debugConfig: debugOptions,
+    releaseConfig: releaseOptions,
+  );
 }
 
 class FvmApp extends StatelessWidget {
@@ -38,6 +62,7 @@ class FvmApp extends StatelessWidget {
 
         return OKToast(
           child: MaterialApp(
+            navigatorKey: Catcher.navigatorKey,
             title: kAppTitle,
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
