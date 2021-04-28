@@ -62,7 +62,6 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   ProviderReference ref;
   List<CacheVersion> channels;
   List<CacheVersion> versions;
-  CacheVersion global;
   List<CacheVersion> all;
 
   StreamSubscription<WatchEvent> directoryWatcher;

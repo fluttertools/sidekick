@@ -14,9 +14,10 @@ class FlutterConfigService {
     final globalVersion = await FVMClient.getGlobal();
 
     if (globalVersion == null) {
-      throw Exception(
-        'Can only check flutter settings with a global version configured',
-      );
+      // TODO: Need to change this
+      // Can only run with a global version configured
+      // Will cause settings to be all off
+      return '';
     }
 
     final result = await Process.run(globalVersion.flutterExec, args);
