@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:hive/hive.dart';
 import 'package:sidekick/dto/settings.dto.dart';
 
@@ -8,7 +10,11 @@ class SettingsService {
   static Box<SidekickSettings> box;
 
   static Future<void> init() async {
-    box = await Hive.openBox<SidekickSettings>(key);
+    try {
+      box = await Hive.openBox<SidekickSettings>(key);
+    } on FileSystemException {
+      exit(0);
+    }
   }
 
   static Future<void> save(SidekickSettings settings) async {
