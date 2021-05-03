@@ -41,14 +41,16 @@ class EmptyDataSet extends StatelessWidget {
 
   const EmptyDataSet({
     this.icon,
-    this.iconColor = Colors.white,
+    this.iconColor,
     this.backgroundColor = Colors.black,
     this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    final bgIcons = _buildIconsBackground(icon: icon, color: iconColor);
+    final bgIcons = _buildIconsBackground(
+        icon: icon,
+        color: iconColor ?? Theme.of(context).textTheme.bodyText1.color);
 
     return Stack(
       children: [
