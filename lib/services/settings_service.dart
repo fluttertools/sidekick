@@ -10,11 +10,7 @@ class SettingsService {
   static Box<SidekickSettings> box;
 
   static Future<void> init() async {
-    try {
-      box = await Hive.openBox<SidekickSettings>(key);
-    } on FileSystemException {
-      exit(0);
-    }
+    box = await Hive.openBox<SidekickSettings>(key);
   }
 
   static Future<void> save(SidekickSettings settings) async {
