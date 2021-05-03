@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:hive/hive.dart';
 import 'package:sidekick/dto/settings.dto.dart';
 
