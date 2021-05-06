@@ -2,17 +2,21 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/leoafarias/sidekick?color=FFB82E&label=Release&style=for-the-badge)
-![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?color=FF5B2E&label=All%20contributors&style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=442EFF&label=License&style=for-the-badge)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/leoafarias/sidekick?color=FFB82E&label=Release&style=for-the-badge)](https://github.com/leoafarias/sidekick/releases/latest)
+[![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?color=FF5B2E&label=All%20contributors&style=for-the-badge)](https://github.com/leoafarias/sidekick#contributors-)
+[![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=442EFF&label=License&style=for-the-badge)](https://github.com/leoafarias/sidekick/blob/main/LICENSE.md)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
 
-[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases)
+[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
+
+## ![Installation Instructions](https://github.com/leoafarias/sidekick/blob/main/INSTALLING.md)
+
+## Features
 
 - Manage Flutter versions
 - Explore releases

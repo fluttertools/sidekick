@@ -12,11 +12,13 @@ class AppReleasesState {
   List<ChannelDto> channels;
   List<VersionDto> versions;
   Map<String, ReleaseDto> allMap;
+  bool hasGlobal;
   AppReleasesState({
     this.channels,
     this.versions,
     this.master,
     this.allMap,
+    this.hasGlobal = false,
   }) {
     channels = <ChannelDto>[];
     versions = <VersionDto>[];
@@ -27,6 +29,7 @@ class AppReleasesState {
   List<ReleaseDto> get all {
     final releases = [...channels, ...versions];
     if (master != null) {
+      // Master goes first
       releases.insert(0, master);
     }
 
@@ -54,7 +57,6 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   FlutterReleases payload;
   ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
   final installedVersions = ref.watch(fvmCacheProvider.notifier);
-  final globalVersion = FVMClient.getGlobalVersionSync();
 
   // Watch this state change for refresh
   ref.watch(fvmCacheProvider);
@@ -72,6 +74,9 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   if (flutterReleases == null || installedVersions == null) {
     return releasesState;
   }
+
+  final globalVersion = FVMClient.getGlobalVersionSync();
+  releasesState.hasGlobal = globalVersion != null;
 
   //  MASTER: Set Master separetely because workflow is very different
   final masterCache = installedVersions.getChannel(kMasterChannel);
