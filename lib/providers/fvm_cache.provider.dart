@@ -60,9 +60,8 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }
 
   ProviderReference ref;
-  List<CacheVersion> channels;
-  List<CacheVersion> versions;
-  CacheVersion global;
+  List<CacheVersion> channels = [];
+  List<CacheVersion> versions = [];
   List<CacheVersion> all;
 
   StreamSubscription<WatchEvent> directoryWatcher;
@@ -86,18 +85,26 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }
 
   CacheVersion getChannel(String name) {
-    return channels.firstWhere(
-      (c) => c.name == name,
-      orElse: () => null,
-    );
+    if (channels.isNotEmpty) {
+      return channels.firstWhere(
+        (c) => c.name == name,
+        orElse: () => null,
+      );
+    } else {
+      return null;
+    }
   }
 
   CacheVersion getVersion(String name) {
-    // ignore: avoid_function_literals_in_foreach_calls
-    return versions.firstWhere(
-      (v) => v.name == name,
-      orElse: () => null,
-    );
+    if (versions.isNotEmpty) {
+      // ignore: avoid_function_literals_in_foreach_calls
+      return versions.firstWhere(
+        (v) => v.name == name,
+        orElse: () => null,
+      );
+    } else {
+      return null;
+    }
   }
 
   @override
