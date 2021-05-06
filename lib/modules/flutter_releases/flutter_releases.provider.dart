@@ -160,3 +160,60 @@ final getVersionProvider =
   final state = ref.watch(releasesStateProvider);
   return state.allMap[versionName];
 });
+
+enum Filter {
+  beta,
+  stable,
+  dev,
+  all,
+}
+
+extension FilterExtension on Filter {
+  /// Name of the channel
+  String get name {
+    final self = this;
+    return self.toString().split('.').last;
+  }
+}
+
+/// Returns a [Channel] from [name]
+Filter filterFromName(String name) {
+  switch (name) {
+    case 'stable':
+      return Filter.stable;
+    case 'dev':
+      return Filter.dev;
+    case 'beta':
+      return Filter.beta;
+    case 'all':
+      return Filter.all;
+    default:
+      return null;
+  }
+}
+
+final filterProvider = StateProvider<Filter>((_) => Filter.all);
+
+// ignore: top_level_function_literal_block
+final filterableReleasesProvider = Provider((ref) {
+  final filter = ref.watch(filterProvider).state;
+  final releases = ref.watch(releasesStateProvider);
+
+  if (filter == Filter.all) {
+    return releases.versions;
+  }
+
+  final versions = releases.versions.where((version) {
+    if (version.isChannel && version.name == filter.name) {
+      return true;
+    }
+
+    if (!version.isChannel && version.release.channelName == filter.name) {
+      return true;
+    }
+
+    return false;
+  });
+
+  return versions.toList();
+});

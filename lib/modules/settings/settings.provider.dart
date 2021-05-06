@@ -1,7 +1,7 @@
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/settings.dto.dart';
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/modules/projects/projects.provider.dart';
+import 'package:sidekick/modules/settings/settings.dto.dart';
 import 'package:sidekick/services/flutter_config_service.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:state_notifier/state_notifier.dart';

@@ -7,7 +7,7 @@ import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/molecules/cache_version_item.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_versions.dart';
 import 'package:sidekick/components/organisms/cleanup_unused_dialog.dart';
-import 'package:sidekick/providers/flutter_releases.provider.dart';
+import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key key}) : super(key: key);

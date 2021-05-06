@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:sidekick/dto/project.dto.dart';
 import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/modules/projects/projects.provider.dart';
+import 'package:sidekick/modules/settings/settings.provider.dart';
 import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:sidekick/providers/projects_provider.dart';
-import 'package:sidekick/providers/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 

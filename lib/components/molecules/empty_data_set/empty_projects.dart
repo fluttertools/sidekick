@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/empty_data_set.dart';
-import 'package:sidekick/screens/settings_screen.dart';
+import 'package:sidekick/modules/settings/settings.screen.dart';
 
 class EmptyProjects extends StatelessWidget {
   const EmptyProjects({key}) : super(key: key);

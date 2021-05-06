@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/update_available_button.dart';
 import 'package:sidekick/constants.dart';
+import 'package:sidekick/modules/settings/settings.screen.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
-import 'package:sidekick/screens/settings_screen.dart';
 import 'package:sidekick/theme.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {

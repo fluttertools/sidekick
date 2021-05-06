@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/dto/settings.dto.dart';
-import 'package:sidekick/providers/settings.provider.dart';
-import 'package:sidekick/utils/get_theme_mode.dart';
+import 'package:sidekick/modules/settings/settings.dto.dart';
+import 'package:sidekick/modules/settings/settings.provider.dart';
+import 'package:sidekick/modules/settings/settings.utils.dart';
 import 'package:sidekick/utils/notify.dart';
 import 'package:sidekick/version.dart';
 

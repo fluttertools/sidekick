@@ -4,8 +4,8 @@ import 'dart:isolate';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/dto/release.dto.dart';
+import 'package:sidekick/modules/sandbox/terminal_processor.dart';
 import 'package:sidekick/utils/notify.dart';
-import 'package:sidekick/utils/terminal_processor.dart';
 
 class TerminalState {
   List<ConsoleLine> lines;
@@ -115,17 +115,17 @@ class ConsoleLine {
   }
 }
 
-final terminalProvider =
-    StateNotifierProvider<TerminalStateNotifier, TerminalState>(
-  (ref) => TerminalStateNotifier(ref),
+final sandboxProvider =
+    StateNotifierProvider<SandboxStateNotifier, TerminalState>(
+  (ref) => SandboxStateNotifier(ref),
 );
 
-class TerminalStateNotifier extends StateNotifier<TerminalState> {
+class SandboxStateNotifier extends StateNotifier<TerminalState> {
   final ProviderReference ref;
 
   Isolate _isolate;
 
-  TerminalStateNotifier(this.ref) : super(TerminalState.empty());
+  SandboxStateNotifier(this.ref) : super(TerminalState.empty());
 
   void _notifyListeners() {
     state = state.copy();

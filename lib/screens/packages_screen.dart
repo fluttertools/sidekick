@@ -7,7 +7,7 @@ import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_packages.dart';
 import 'package:sidekick/components/molecules/package_item.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
-import 'package:sidekick/providers/packages.provider.dart';
+import 'package:sidekick/modules/packages/packages.provider.dart';
 
 class PackagesScreen extends HookWidget {
   const PackagesScreen({Key key}) : super(key: key);

@@ -9,8 +9,8 @@ import 'package:sidekick/components/atoms/screen.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/components/molecules/empty_data_set/empty_projects.dart';
 import 'package:sidekick/components/molecules/project_item.dart';
-import 'package:sidekick/providers/projects_provider.dart';
-import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/modules/projects/projects.provider.dart';
+import 'package:sidekick/modules/settings/settings.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
 class ProjectsScreen extends HookWidget {

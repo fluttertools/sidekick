@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:sidekick/dto/package_detail.dto.dart';
-import 'package:sidekick/providers/projects_provider.dart';
+import 'package:sidekick/modules/projects/projects.provider.dart';
 import 'package:sidekick/services/settings_service.dart';
 import 'package:sidekick/utils/dependencies.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/providers/settings.provider.dart';
+import 'package:sidekick/modules/settings/settings.provider.dart';
 
 class SettingsSectionFvm extends StatelessWidget {
   final Settings settings;

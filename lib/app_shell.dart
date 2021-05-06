@@ -11,12 +11,12 @@ import 'package:sidekick/components/organisms/app_bottom_bar.dart';
 import 'package:sidekick/components/organisms/info_drawer.dart';
 import 'package:sidekick/components/organisms/search_bar.dart';
 import 'package:sidekick/constants.dart';
+import 'package:sidekick/modules/flutter_releases/fluttter_releases.screen.dart';
+import 'package:sidekick/modules/projects/projects.screen.dart';
 import 'package:sidekick/providers/navigation_provider.dart';
 import 'package:sidekick/providers/selected_info_provider.dart';
 import 'package:sidekick/screens/home_screen.dart';
 import 'package:sidekick/screens/packages_screen.dart';
-import 'package:sidekick/screens/projects_screen.dart';
-import 'package:sidekick/screens/releases_screen.dart';
 import 'package:sidekick/theme.dart';
 import 'package:sidekick/utils/layout_size.dart';
 

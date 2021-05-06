@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/typography.dart';
 import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/shell_provider.dart';
+import 'package:sidekick/modules/sandbox/sandbox.provider.dart';
 import 'package:sidekick/utils/notify.dart';
 
 class PlaygroundTerminal extends HookWidget {
@@ -22,8 +22,8 @@ class PlaygroundTerminal extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final terminalState = useProvider(terminalProvider);
-    final terminal = useProvider(terminalProvider.notifier);
+    final terminalState = useProvider(sandboxProvider);
+    final terminal = useProvider(sandboxProvider.notifier);
 
     final textController = useTextEditingController();
     final scrollController = useScrollController();
@@ -81,12 +81,6 @@ class PlaygroundTerminal extends HookWidget {
       // if its not next command and idx is 0
       // Check if it has command history
 
-      // if (textController.text.isNotEmpty &&
-      //     textController.text != cmds[currentIdx] &&
-      //     currentIdx == 0) {
-      //   return;
-      // }
-      //
       if (textController.text.isNotEmpty &&
           textController.text != cmds[currentIdx]) {
         return;

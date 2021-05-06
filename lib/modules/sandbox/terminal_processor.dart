@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:sidekick/providers/shell_provider.dart';
+import 'package:sidekick/modules/sandbox/sandbox.provider.dart';
 
 class ProcessCmd {
   final List<String> args;

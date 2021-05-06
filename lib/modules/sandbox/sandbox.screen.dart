@@ -5,10 +5,10 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/organisms/terminal.dart';
 import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/flutter_releases.provider.dart';
-import 'package:sidekick/providers/shell_provider.dart';
+import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
+import 'package:sidekick/modules/sandbox/components/terminal.dart';
+import 'package:sidekick/modules/sandbox/sandbox.provider.dart';
 
 class PlaygroundScreen extends HookWidget {
   final Project project;
@@ -21,8 +21,8 @@ class PlaygroundScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final releases = useProvider(releasesStateProvider);
-    final terminal = useProvider(terminalProvider.notifier);
-    final processing = useProvider(terminalProvider).processing;
+    final terminal = useProvider(sandboxProvider.notifier);
+    final processing = useProvider(sandboxProvider).processing;
 
     final selectedRelease = useState<ReleaseDto>(null);
 
