@@ -6,11 +6,13 @@ void notify(String message, {bool error = false}) {
     message,
     dismissOtherToast: true,
     backgroundColor: error ? Colors.redAccent : Colors.white,
-    textStyle:
-        TextStyle(color: error ? Colors.white : Colors.black, fontSize: 12),
     radius: 5,
     textPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
     position: ToastPosition.bottom,
+    textStyle: TextStyle(
+      color: error ? Colors.white : Colors.black,
+      fontSize: 12,
+    ),
   );
 }
 
