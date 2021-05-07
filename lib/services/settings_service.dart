@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:sidekick/modules/settings/settings.dto.dart';
+
+import '../modules/settings/settings.dto.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class SettingsService {

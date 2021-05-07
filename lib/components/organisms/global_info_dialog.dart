@@ -3,9 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/copy_button.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/utils/open_link.dart';
+
+import '../../utils/open_link.dart';
+import '../atoms/copy_button.dart';
+import '../atoms/typography.dart';
 
 Future<void> showGlobalInfoDialog(BuildContext context) async {
   final configured = await FVMClient.checkIfGlobalConfigured();

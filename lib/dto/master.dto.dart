@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/channel.dto.dart';
+
+import 'channel.dto.dart';
 
 class MasterDto extends ChannelDto {
   /// Latest version of the channel

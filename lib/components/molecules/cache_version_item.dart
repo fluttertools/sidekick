@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/cache_version_actions.dart';
-import 'package:sidekick/components/molecules/cache_version_status.dart';
-import 'package:sidekick/components/organisms/global_info_dialog.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/selected_info_provider.dart';
+
+import '../../dto/release.dto.dart';
+import '../../providers/selected_info_provider.dart';
+import '../atoms/list_tile.dart';
+import '../atoms/typography.dart';
+import '../organisms/global_info_dialog.dart';
+import 'cache_version_actions.dart';
+import 'cache_version_status.dart';
 
 class CacheVersionItem extends StatelessWidget {
   final ReleaseDto version;

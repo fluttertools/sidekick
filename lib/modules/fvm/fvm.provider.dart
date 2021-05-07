@@ -1,15 +1,18 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
-import 'package:sidekick/modules/projects/projects.provider.dart';
-import 'package:sidekick/utils/debounce.dart';
-import 'package:sidekick/utils/dir_stat.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
+
+import '../../dto/release.dto.dart';
+import '../../utils/debounce.dart';
+import '../../utils/dir_stat.dart';
+import '../flutter_releases/flutter_releases.provider.dart';
+import '../projects/projects.provider.dart';
 
 final cacheSizeProvider =
     StateProvider<DirectorySizeInfo>((_) => DirectorySizeInfo());
@@ -113,3 +116,17 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     super.dispose();
   }
 }
+
+final fvmStdoutProvider = StreamProvider.autoDispose((ref) {
+  return StreamGroup.merge([
+    FVMClient.console.stdout.stream,
+    FVMClient.console.stderr.stream,
+    FVMClient.console.warning.stream,
+    FVMClient.console.info.stream,
+    FVMClient.console.fine.stream,
+    FVMClient.console.error.stream,
+  ])
+      .transform(utf8.decoder)
+      // .transform(const LineSplitter())
+      .asBroadcastStream();
+});

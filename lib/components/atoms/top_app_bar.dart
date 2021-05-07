@@ -2,12 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/update_available_button.dart';
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/modules/settings/settings.screen.dart';
-import 'package:sidekick/providers/navigation_provider.dart';
-import 'package:sidekick/theme.dart';
+
+import '../../constants.dart';
+import '../../modules/settings/settings.screen.dart';
+import '../../providers/navigation_provider.dart';
+import '../../theme.dart';
+import '../molecules/update_available_button.dart';
+import 'typography.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({key}) : super(key: key);

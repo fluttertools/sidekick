@@ -4,10 +4,11 @@ import 'package:flutter_cache/flutter_cache.dart' as cache;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:sidekick/dto/package_detail.dto.dart';
-import 'package:sidekick/modules/projects/projects.provider.dart';
-import 'package:sidekick/services/settings_service.dart';
-import 'package:sidekick/utils/dependencies.dart';
+
+import '../../dto/package_detail.dto.dart';
+import '../../services/settings_service.dart';
+import '../../utils/dependencies.dart';
+import '../projects/projects.provider.dart';
 
 const cacheKey = 'dependencies_cache_key';
 // Used to invalidate the cache

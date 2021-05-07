@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/molecules/cache_version_status_master.dart';
-import 'package:sidekick/components/molecules/setup_button.dart';
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/master.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/fvm_queue.provider.dart';
+
+import '../../dto/channel.dto.dart';
+import '../../dto/master.dto.dart';
+import '../../dto/release.dto.dart';
+import '../../modules/fvm/fvm_queue.provider.dart';
+import 'cache_version_status_master.dart';
+import 'setup_button.dart';
 
 class CacheVersionStatus extends StatelessWidget {
   final ReleaseDto version;

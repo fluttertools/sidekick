@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/release.dto.dart';
+
+import 'release.dto.dart';
 
 class VersionDto extends ReleaseDto {
   VersionDto({

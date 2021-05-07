@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
-import 'package:sidekick/components/atoms/cache_date_display.dart';
-import 'package:sidekick/components/atoms/group_tile.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/dto/release.dto.dart';
+
+import '../../dto/release.dto.dart';
+import '../atoms/cache_date_display.dart';
+import '../atoms/group_tile.dart';
+import '../atoms/list_tile.dart';
+import '../atoms/typography.dart';
 
 class CacheInfoTile extends StatelessWidget {
   final ReleaseDto version;

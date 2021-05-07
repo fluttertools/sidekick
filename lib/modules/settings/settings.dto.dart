@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 import 'package:list_ext/list_ext.dart';
-import 'package:sidekick/modules/settings/settings.utils.dart';
+
+import 'settings.utils.dart';
 
 class SidekickSettings {
   static const key = 'settings_key';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/blur_background.dart';
-import 'package:sidekick/components/atoms/typography.dart';
+
+import 'blur_background.dart';
+import 'typography.dart';
 
 class Screen extends StatelessWidget {
   final String title;

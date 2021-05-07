@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:github/github.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/utils/open_link.dart';
+
+import '../../utils/open_link.dart';
 
 class GithubRepoInfo extends StatelessWidget {
   final Repository repo;

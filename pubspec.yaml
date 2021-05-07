@@ -13,11 +13,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fvm:
-    # path: ../fvm
-    git:
-      url: https://github.com/leoafarias/fvm.git
-      ref: sidekick/compatible
+  fvm: ^2.0.4
+
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git

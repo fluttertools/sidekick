@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:sidekick/components/atoms/checkbox.dart';
-import 'package:sidekick/components/atoms/refresh_button.dart';
-import 'package:sidekick/components/atoms/screen.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/empty_data_set/empty_projects.dart';
-import 'package:sidekick/components/molecules/project_item.dart';
-import 'package:sidekick/modules/projects/projects.provider.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
-import 'package:sidekick/utils/notify.dart';
+
+import '../../components/atoms/checkbox.dart';
+import '../../components/atoms/refresh_button.dart';
+import '../../components/atoms/screen.dart';
+import '../../components/atoms/typography.dart';
+import '../../components/molecules/empty_data_set/empty_projects.dart';
+import '../../components/molecules/project_item.dart';
+import '../../utils/notify.dart';
+import '../settings/settings.provider.dart';
+import 'projects.provider.dart';
 
 class ProjectsScreen extends HookWidget {
   const ProjectsScreen({Key key}) : super(key: key);

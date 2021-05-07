@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sidekick/utils/notify.dart';
+
+import '../../utils/notify.dart';
 
 class CopyButton extends StatelessWidget {
   final String content;

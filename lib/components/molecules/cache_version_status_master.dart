@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/molecules/setup_button.dart';
-import 'package:sidekick/dto/channel.dto.dart';
+
+import '../../dto/channel.dto.dart';
+import 'setup_button.dart';
 
 class CacheVersionStatusMaster extends StatelessWidget {
   final ChannelDto masterChannel;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
-import 'package:sidekick/components/atoms/typography.dart';
 import 'package:truncate/truncate.dart';
+
+import 'typography.dart';
 
 class LocalLinkButton extends StatelessWidget {
   final String localPath;

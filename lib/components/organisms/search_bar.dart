@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:sidekick/components/atoms/blur_background.dart';
-import 'package:sidekick/components/organisms/search_results_list.dart';
-import 'package:sidekick/hooks/floating_search_bar_controller.dart';
-import 'package:sidekick/providers/navigation_provider.dart';
-import 'package:sidekick/providers/search_results_provider.dart';
+
+import '../../hooks/floating_search_bar_controller.dart';
+import '../../providers/navigation_provider.dart';
+import '../../providers/search_results_provider.dart';
+import '../atoms/blur_background.dart';
+import 'search_results_list.dart';
 
 class SearchBar extends HookWidget {
   // final bool showSearch;

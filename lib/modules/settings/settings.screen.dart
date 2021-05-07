@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/modules/settings/scenes/settings_section_flutter.dart';
-import 'package:sidekick/modules/settings/scenes/settings_section_fvm.dart';
-import 'package:sidekick/modules/settings/scenes/settings_section_general.dart';
-import 'package:sidekick/modules/settings/scenes/settings_section_projects.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
-import 'package:sidekick/utils/helpers.dart';
-import 'package:sidekick/utils/notify.dart';
+
+import '../../utils/helpers.dart';
+import '../../utils/notify.dart';
+import 'scenes/settings_section_flutter.dart';
+import 'scenes/settings_section_fvm.dart';
+import 'scenes/settings_section_general.dart';
+import 'scenes/settings_section_projects.dart';
+import 'settings.provider.dart';
 
 enum NavSection {
   general,

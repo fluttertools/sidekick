@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/dto/release.dto.dart';
+
+import '../../dto/release.dto.dart';
+import '../atoms/typography.dart';
 
 class CacheVersionSelect extends StatelessWidget {
   final List<ReleaseDto> versions;

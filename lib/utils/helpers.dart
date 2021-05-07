@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
-import 'package:sidekick/constants.dart';
+
+import '../constants.dart';
 
 extension StringExtension on String {
   String capitalize() {

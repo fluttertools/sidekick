@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:sidekick/utils/check_update.dart';
-import 'package:sidekick/utils/manage_updates.dart';
-import 'package:sidekick/version.dart';
+
+import '../../utils/check_update.dart';
+import '../../utils/manage_updates.dart';
+import '../../version.dart';
 
 class AppVersionInfo extends HookWidget {
   const AppVersionInfo({Key key}) : super(key: key);

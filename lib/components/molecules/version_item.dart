@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/selected_info_provider.dart';
+
+import '../../dto/release.dto.dart';
+import '../../providers/selected_info_provider.dart';
+import '../atoms/list_tile.dart';
+import '../atoms/typography.dart';
+import 'version_install_button.dart';
 
 class VersionItem extends StatelessWidget {
   final ReleaseDto version;

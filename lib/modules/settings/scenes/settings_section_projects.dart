@@ -1,8 +1,9 @@
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
 import 'package:truncate/truncate.dart';
+
+import '../settings.provider.dart';
 
 class SettingsSectionProjects extends StatelessWidget {
   final Settings settings;

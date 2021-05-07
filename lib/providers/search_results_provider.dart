@@ -1,9 +1,10 @@
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/version.dto.dart';
-import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
-import 'package:sidekick/modules/projects/projects.provider.dart';
+
+import '../dto/channel.dto.dart';
+import '../dto/version.dto.dart';
+import '../modules/flutter_releases/flutter_releases.provider.dart';
+import '../modules/projects/projects.provider.dart';
 
 enum SearchResultGroup { channel, project, stable, beta, dev }
 
@@ -58,22 +59,21 @@ final searchResultsProvider = Provider((ref) {
   // We look for multiple terms, make sure result only shows up once
   final uniques = <String, bool>{};
 
-  // ignore: avoid_function_literals_in_foreach_calls
-  searchTerms.forEach((term) {
+  for (final term in searchTerms) {
     // Skip if term is empty space
     if (term.isEmpty) {
-      return;
+      break;
     }
     // Loop projects
     for (final project in projects.list) {
       // Limit results to only 5 projects
       if (projectResults.length >= 5) {
-        return;
+        break;
       }
 
       // Limit to only unique results even if it matches in multiple terms
       // If already exists skip
-      if (uniques[project.name] == true) return;
+      if (uniques[project.name] == true) break;
 
       // Get projec pinnedVersion
       final pinnedVersion = project.pinnedVersion ?? '';
@@ -87,13 +87,14 @@ final searchResultsProvider = Provider((ref) {
       }
     }
 
-    // Loop releases
+    // Look through the releases to see if
+    // query matches release names
     for (final release in releaseState.versions) {
       // Get channel name to pass to map
       final channelName = release.release.channelName;
 
       // Only unique results
-      if (uniques[release.name] == true) return;
+      if (uniques[release.name] == true) break;
 
       // Match result that name or channel name starts with term
       if (release.name.startsWith(term) || channelName.startsWith(term)) {
@@ -121,7 +122,7 @@ final searchResultsProvider = Provider((ref) {
     //Loop channels
     for (final channel in releaseState.channels) {
       // Only unique results
-      if (uniques[channel.name] == true) return;
+      if (uniques[channel.name] == true) break;
 
       // Match if channel name starts with term
       if (channel.name.startsWith(term)) {
@@ -132,7 +133,8 @@ final searchResultsProvider = Provider((ref) {
         channelResults.add(channel);
       }
     }
-  });
+  }
+  ;
 
   return SearchResults(
     channels: channelResults,

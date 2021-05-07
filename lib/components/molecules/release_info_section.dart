@@ -1,8 +1,9 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/molecules/advanced_info_tile.dart';
-import 'package:sidekick/dto/release.dto.dart';
+
+import '../../dto/release.dto.dart';
+import '../atoms/list_tile.dart';
+import 'advanced_info_tile.dart';
 
 class ReleaseInfoSection extends StatelessWidget {
   final ReleaseDto version;

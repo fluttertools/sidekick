@@ -6,10 +6,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/modules/sandbox/sandbox.provider.dart';
-import 'package:sidekick/utils/notify.dart';
+
+import '../../../components/atoms/typography.dart';
+import '../../../dto/release.dto.dart';
+import '../../../utils/notify.dart';
+import '../sandbox.provider.dart';
 
 class PlaygroundTerminal extends HookWidget {
   final Project project;

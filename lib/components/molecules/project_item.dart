@@ -3,12 +3,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:open_file/open_file.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/project_version_select.dart';
-import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/dto/project.dto.dart';
-import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
-import 'package:sidekick/modules/sandbox/sandbox.screen.dart';
+
+import '../../dto/project.dto.dart';
+import '../../modules/flutter_releases/flutter_releases.provider.dart';
+import '../../modules/sandbox/sandbox.screen.dart';
+import '../atoms/typography.dart';
+import 'project_version_select.dart';
+import 'version_install_button.dart';
 
 class ProjectItem extends HookWidget {
   final FlutterProject project;

@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/modules/flutter_releases/flutter_releases.provider.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
+
+import '../../../components/atoms/typography.dart';
+import '../../flutter_releases/flutter_releases.provider.dart';
+import '../settings.provider.dart';
 
 class SettingsSectionFlutter extends HookWidget {
   final Settings settings;

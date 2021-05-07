@@ -4,21 +4,22 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/nav_button.dart';
-import 'package:sidekick/components/atoms/shortcuts.dart';
-import 'package:sidekick/components/atoms/top_app_bar.dart';
-import 'package:sidekick/components/organisms/app_bottom_bar.dart';
-import 'package:sidekick/components/organisms/info_drawer.dart';
-import 'package:sidekick/components/organisms/search_bar.dart';
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/modules/flutter_releases/fluttter_releases.screen.dart';
-import 'package:sidekick/modules/projects/projects.screen.dart';
-import 'package:sidekick/providers/navigation_provider.dart';
-import 'package:sidekick/providers/selected_info_provider.dart';
-import 'package:sidekick/screens/home_screen.dart';
-import 'package:sidekick/screens/packages_screen.dart';
-import 'package:sidekick/theme.dart';
-import 'package:sidekick/utils/layout_size.dart';
+
+import 'components/atoms/nav_button.dart';
+import 'components/atoms/shortcuts.dart';
+import 'components/atoms/top_app_bar.dart';
+import 'components/organisms/app_bottom_bar.dart';
+import 'components/organisms/info_drawer.dart';
+import 'components/organisms/search_bar.dart';
+import 'constants.dart';
+import 'modules/flutter_releases/fluttter_releases.screen.dart';
+import 'modules/projects/projects.screen.dart';
+import 'providers/navigation_provider.dart';
+import 'providers/selected_info_provider.dart';
+import 'screens/home_screen.dart';
+import 'screens/packages_screen.dart';
+import 'theme.dart';
+import 'utils/layout_size.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 

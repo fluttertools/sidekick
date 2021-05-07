@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/components/atoms/empty_data_set.dart';
-import 'package:sidekick/providers/navigation_provider.dart';
+
+import '../../../providers/navigation_provider.dart';
+import '../../atoms/empty_data_set.dart';
 
 class EmptyVersions extends StatelessWidget {
   const EmptyVersions({Key key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:sidekick/utils/dir_stat.dart';
+
+import '../../modules/fvm/fvm.provider.dart';
+import '../../utils/dir_stat.dart';
+import 'typography.dart';
 
 class CacheSizeDisplay extends HookWidget {
   const CacheSizeDisplay({Key key}) : super(key: key);

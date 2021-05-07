@@ -1,10 +1,11 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/providers/selected_info_provider.dart';
+
+import '../../dto/channel.dto.dart';
+import '../../providers/selected_info_provider.dart';
+import '../atoms/typography.dart';
+import 'version_install_button.dart';
 
 class ChannelShowcase extends StatelessWidget {
   final ChannelDto channel;

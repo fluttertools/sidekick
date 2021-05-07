@@ -1,7 +1,8 @@
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/release.dto.dart';
 import 'package:state_notifier/state_notifier.dart';
+
+import '../dto/release.dto.dart';
 
 class InfoDetail {
   ReleaseDto version;

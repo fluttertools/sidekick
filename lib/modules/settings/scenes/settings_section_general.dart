@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/modules/settings/settings.dto.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
-import 'package:sidekick/modules/settings/settings.utils.dart';
-import 'package:sidekick/utils/notify.dart';
-import 'package:sidekick/version.dart';
+
+import '../../../utils/notify.dart';
+import '../../../version.dart';
+import '../settings.dto.dart';
+import '../settings.provider.dart';
+import '../settings.utils.dart';
 
 class SettingsSectionGeneral extends StatelessWidget {
   final Settings settings;

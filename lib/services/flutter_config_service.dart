@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/utils/helpers.dart';
+
+import '../utils/helpers.dart';
 
 class FlutterConfigService {
   FlutterConfigService._();

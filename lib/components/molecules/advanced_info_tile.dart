@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/copy_button.dart';
-import 'package:sidekick/components/atoms/group_tile.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/utils/open_link.dart';
+
+import '../../dto/release.dto.dart';
+import '../../utils/open_link.dart';
+import '../atoms/copy_button.dart';
+import '../atoms/group_tile.dart';
+import '../atoms/list_tile.dart';
+import '../atoms/typography.dart';
 
 class AdvancedInfoTile extends StatelessWidget {
   final ReleaseDto version;

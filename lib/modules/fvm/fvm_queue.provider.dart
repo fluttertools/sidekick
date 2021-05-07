@@ -3,15 +3,14 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/dto/project.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/modules/projects/projects.provider.dart';
-import 'package:sidekick/modules/settings/settings.provider.dart';
-import 'package:sidekick/providers/fvm_cache.provider.dart';
-import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../utils/notify.dart';
+import '../../dto/project.dto.dart';
+import '../../dto/release.dto.dart';
+import '../../utils/notify.dart';
+import '../projects/projects.provider.dart';
+import '../settings/settings.provider.dart';
+import 'fvm.provider.dart';
 
 class FvmQueue {
   QueueItem activeItem;

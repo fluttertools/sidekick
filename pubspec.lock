@@ -341,12 +341,10 @@ packages:
   fvm:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "sidekick/compatible"
-      resolved-ref: "5704aa25eece507c3308b0107fc7532454fa36f9"
-      url: "https://github.com/leoafarias/fvm.git"
-    source: git
-    version: "2.0.0-dev.9"
+      name: fvm
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
   github:
     dependency: "direct main"
     description:

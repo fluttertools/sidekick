@@ -1,6 +1,7 @@
 import 'package:github/github.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:sidekick/version.dart';
+
+import '../version.dart';
 
 /// Latest Version update for package
 class LatestVersion {

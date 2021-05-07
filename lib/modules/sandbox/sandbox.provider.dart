@@ -3,9 +3,10 @@ import 'dart:isolate';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/modules/sandbox/terminal_processor.dart';
-import 'package:sidekick/utils/notify.dart';
+
+import '../../dto/release.dto.dart';
+import '../../utils/notify.dart';
+import 'terminal_processor.dart';
 
 class TerminalState {
   List<ConsoleLine> lines;

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/setup_button.dart';
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/utils/open_link.dart';
+
+import '../../constants.dart';
+import '../../dto/channel.dto.dart';
+import '../../dto/release.dto.dart';
+import '../../utils/open_link.dart';
+import '../atoms/list_tile.dart';
+import '../atoms/typography.dart';
+import 'setup_button.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
   final ReleaseDto version;
