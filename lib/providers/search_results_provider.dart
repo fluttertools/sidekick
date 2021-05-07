@@ -47,7 +47,7 @@ final searchResultsProvider = Provider((ref) {
   }
 
   // Split query into multiple search terms
-  final searchTerms = query.split(' ');
+  final searchTerms = query.toLowerCase().split(' ');
 
   final projectResults = <Project>[];
   final channelResults = <ChannelDto>[];
@@ -78,7 +78,8 @@ final searchResultsProvider = Provider((ref) {
       // Get projec pinnedVersion
       final pinnedVersion = project.pinnedVersion ?? '';
       // Add project if name or pinnedVersion start with term
-      if (project.name.startsWith(term) || pinnedVersion.startsWith(term)) {
+      if (project.name.toLowerCase().startsWith(term) ||
+          pinnedVersion.startsWith(term)) {
         // Add to track unique insertions
         uniques[project.name] = true;
 
