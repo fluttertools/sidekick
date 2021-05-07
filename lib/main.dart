@@ -10,9 +10,9 @@ import 'package:window_size/window_size.dart';
 import 'app_shell.dart';
 import 'constants.dart';
 import 'modules/settings/settings.dto.dart';
+import 'modules/settings/settings.service.dart';
 import 'modules/settings/settings.utils.dart';
 import 'screens/error_db_screen.dart';
-import 'services/settings_service.dart';
 import 'theme.dart';
 
 void main() async {

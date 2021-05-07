@@ -2,10 +2,10 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../../services/flutter_config_service.dart';
-import '../../services/settings_service.dart';
+import '../fvm/flutter_config.service.dart';
 import '../projects/projects.provider.dart';
 import 'settings.dto.dart';
+import 'settings.service.dart';
 
 class Settings {
   SidekickSettings sidekick;

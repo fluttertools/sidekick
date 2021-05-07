@@ -1,3 +1,4 @@
+// ignore_for_file: top_level_function_literal_block
 import 'dart:convert';
 
 import 'package:flutter_cache/flutter_cache.dart' as cache;
@@ -5,16 +6,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 
-import '../../dto/package_detail.dto.dart';
-import '../../services/settings_service.dart';
 import '../../utils/dependencies.dart';
 import '../projects/projects.provider.dart';
+import '../settings/settings.service.dart';
+import 'package.dto.dart';
 
 const cacheKey = 'dependencies_cache_key';
 // Used to invalidate the cache
 const cacheRefKey = 'cache_ref_key';
 
-// ignore: top_level_function_literal_block
 final packagesProvider = FutureProvider((ref) async {
   final projects = ref.watch(projectsProvider);
 

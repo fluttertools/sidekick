@@ -8,36 +8,39 @@ import '../../dto/release.dto.dart';
 import '../../utils/notify.dart';
 import 'terminal_processor.dart';
 
+/// Sandbox terminal state
 class TerminalState {
-  List<ConsoleLine> lines;
-  bool processing;
-  List<String> _cmdHistory;
-
+  /// Constructor
   TerminalState({
     this.lines,
     this.processing = false,
     List<String> cmdHistory,
   }) : _cmdHistory = cmdHistory;
 
+  /// Console lines
+  List<ConsoleLine> lines;
+
+  /// Is it processing
+  bool processing;
+  List<String> _cmdHistory;
+
+  /// Empty terminal state
   factory TerminalState.empty() {
     return TerminalState(
       lines: [],
       processing: false,
-      cmdHistory: [
-        'flutter 1',
-        'flutter 2',
-        'flutter 3',
-        'flutter 4',
-      ],
+      cmdHistory: [],
     );
   }
 
+  /// Command history
   List<String> get cmdHistory {
     // Add empty command as the current
     final history = ['', ..._cmdHistory];
     return history;
   }
 
+  /// Add command history
   void addToHistory(String cmd) {
     _cmdHistory.insert(0, cmd);
   }

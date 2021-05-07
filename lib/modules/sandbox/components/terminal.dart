@@ -12,15 +12,20 @@ import '../../../dto/release.dto.dart';
 import '../../../utils/notify.dart';
 import '../sandbox.provider.dart';
 
-class PlaygroundTerminal extends HookWidget {
-  final Project project;
-  final ReleaseDto release;
-  const PlaygroundTerminal({
+/// Sandbox terminal
+class SandboxConsole extends HookWidget {
+  /// Constructor
+  const SandboxConsole({
     this.project,
     this.release,
     Key key,
   }) : super(key: key);
 
+  /// Project
+  final Project project;
+
+  /// Release
+  final ReleaseDto release;
   @override
   Widget build(BuildContext context) {
     final terminalState = useProvider(sandboxProvider);
@@ -126,20 +131,20 @@ class PlaygroundTerminal extends HookWidget {
               controller: scrollController,
               reverse: true,
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              itemCount: terminalState.lines.length,
               itemBuilder: (context, index) {
                 final line = terminalState.lines[index];
                 switch (line.type) {
                   case OutputType.stderr:
-                    return StderrText(line.text);
+                    return ConsoleTextError(line.text);
                   case OutputType.info:
-                    return StdinfoText(line.text);
+                    return ConsoleTextInfo(line.text);
                   case OutputType.stdout:
-                    return StdoutText(line.text);
+                    return ConsoleText(line.text);
                   default:
                     return Container();
                 }
               },
-              itemCount: terminalState.lines.length,
             ),
           ),
         ),

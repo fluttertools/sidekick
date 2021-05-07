@@ -1,46 +1,53 @@
 import 'package:flutter/material.dart';
 
 import '../../dto/release.dto.dart';
+import '../../modules/common/atoms/copy_button.dart';
+import '../../modules/common/atoms/group_tile.dart';
+import '../../modules/common/molecules/list_tile.dart';
 import '../../utils/open_link.dart';
-import '../atoms/copy_button.dart';
-import '../atoms/group_tile.dart';
-import '../atoms/list_tile.dart';
 import '../atoms/typography.dart';
 
+/// Advanced info tile
 class AdvancedInfoTile extends StatelessWidget {
-  final ReleaseDto version;
-  const AdvancedInfoTile(this.version, {Key key}) : super(key: key);
+  /// Constructor
+  const AdvancedInfoTile(
+    this.release, {
+    Key key,
+  }) : super(key: key);
+
+  /// Release
+  final ReleaseDto release;
 
   @override
   Widget build(BuildContext context) {
-    if (version.release == null) {
+    if (release.release == null) {
       return const SizedBox(height: 0);
     }
 
-    return FvmGroupListTile(
+    return SkGroupTile(
       title: const Text('Advanced'),
       children: [
-        FvmListTile(
+        SkListTile(
           title: const Text('Download Zip'),
           subtitle: const Caption('Zip file with all release dependencies.'),
           trailing: IconButton(
             icon: const Icon(Icons.cloud_download),
             onPressed: () async {
-              await openLink(version.release.archiveUrl);
+              await openLink(release.release.archiveUrl);
             },
           ),
         ),
         const Divider(),
-        FvmListTile(
+        SkListTile(
           title: const Text('Hash'),
-          subtitle: Caption(version.release.hash),
-          trailing: CopyButton(version.release.hash),
+          subtitle: Caption(release.release.hash),
+          trailing: CopyButton(release.release.hash),
         ),
         const Divider(),
-        FvmListTile(
+        SkListTile(
           title: const Text('Sha256'),
-          subtitle: Caption(version.release.sha256),
-          trailing: CopyButton(version.release.sha256),
+          subtitle: Caption(release.release.sha256),
+          trailing: CopyButton(release.release.sha256),
         ),
       ],
     );

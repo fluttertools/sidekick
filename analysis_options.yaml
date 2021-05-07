@@ -4,3 +4,6 @@ analyzer:
     # Ignore generated files
     - "**/*.g.dart"
     - "lib/src/generated/*.dart"
+# linter:
+#   rules:
+

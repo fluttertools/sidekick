@@ -5,25 +5,26 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'components/atoms/nav_button.dart';
-import 'components/atoms/shortcuts.dart';
-import 'components/atoms/top_app_bar.dart';
 import 'components/organisms/app_bottom_bar.dart';
 import 'components/organisms/info_drawer.dart';
-import 'components/organisms/search_bar.dart';
 import 'constants.dart';
-import 'modules/flutter_releases/fluttter_releases.screen.dart';
+import 'modules/common/molecules/top_app_bar.dart';
+import 'modules/common/organisms/shortcut_manager.dart';
+import 'modules/fvm/fvm.screen.dart';
+import 'modules/packages/packages.screen.dart';
 import 'modules/projects/projects.screen.dart';
+import 'modules/releases/releases.screen.dart';
+import 'modules/search/components/search_bar.dart';
 import 'providers/navigation_provider.dart';
-import 'providers/selected_info_provider.dart';
-import 'screens/home_screen.dart';
-import 'screens/packages_screen.dart';
+import 'providers/selected_detail_provider.dart';
 import 'theme.dart';
 import 'utils/layout_size.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+/// Main widget of the app
 class AppShell extends HookWidget {
+  /// Constructor
   const AppShell({Key key}) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class AppShell extends HookWidget {
     LayoutSize.init(context);
     final navigation = useProvider(navigationProvider.notifier);
     final currentRoute = useProvider(navigationProvider);
-    final selectedInfo = useProvider(selectedInfoProvider);
+    final selectedInfo = useProvider(selectedDetailProvider).state;
     // Index of item selected
     final selectedIndex = useState(0);
 
@@ -47,7 +48,7 @@ class AppShell extends HookWidget {
     useValueChanged(selectedInfo, (_, __) {
       if (_scaffoldKey.currentState == null) return;
       final isOpen = _scaffoldKey.currentState.isEndDrawerOpen;
-      final hasInfo = selectedInfo.version != null;
+      final hasInfo = selectedInfo.release != null;
 
       // Open drawer if not large layout and its not open
       if (hasInfo && !isOpen) {
@@ -69,11 +70,23 @@ class AppShell extends HookWidget {
       return pages[index];
     }
 
-    return KBShortcutManager(
+    NavigationRailDestination renderNavButton(String label, IconData iconData) {
+      return NavigationRailDestination(
+        icon: Icon(iconData, size: 20),
+        selectedIcon: Icon(
+          iconData,
+          size: 20,
+          color: Theme.of(context).accentColor,
+        ),
+        label: Text(label),
+      );
+    }
+
+    return SkShortcutManager(
       child: Scaffold(
-        appBar: const TopAppBar(),
+        appBar: const SkAppBar(),
         bottomNavigationBar: const AppBottomBar(),
-        endDrawer: const InfoDrawer(),
+        endDrawer: const SelectedDetailDrawer(),
         backgroundColor: platformBackgroundColor(context),
         key: _scaffoldKey,
         body: Row(
@@ -88,25 +101,21 @@ class AppShell extends HookWidget {
                 navigation.goTo(NavigationRoutes.values[index]);
               },
               destinations: [
-                NavButton(
-                  context,
-                  label: 'Dashboard',
-                  iconData: Icons.category,
+                renderNavButton(
+                  'Dashboard',
+                  Icons.category,
                 ),
-                NavButton(
-                  context,
-                  label: 'Projects',
-                  iconData: MdiIcons.folderMultiple,
+                renderNavButton(
+                  'Projects',
+                  MdiIcons.folderMultiple,
                 ),
-                NavButton(
-                  context,
-                  label: 'Explore',
-                  iconData: Icons.explore,
+                renderNavButton(
+                  'Explore',
+                  Icons.explore,
                 ),
-                NavButton(
-                  context,
-                  label: 'Packages',
-                  iconData: MdiIcons.package,
+                renderNavButton(
+                  'Packages',
+                  MdiIcons.package,
                 ),
               ],
             ),

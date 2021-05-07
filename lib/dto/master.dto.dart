@@ -3,6 +3,7 @@ import 'package:fvm/fvm.dart';
 
 import 'channel.dto.dart';
 
+/// Master channel dto
 class MasterDto extends ChannelDto {
   /// Latest version of the channel
 

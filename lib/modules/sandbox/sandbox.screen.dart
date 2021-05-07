@@ -7,17 +7,20 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../components/atoms/typography.dart';
 import '../../dto/release.dto.dart';
-import '../flutter_releases/flutter_releases.provider.dart';
+import '../releases/releases.provider.dart';
 import 'components/terminal.dart';
 import 'sandbox.provider.dart';
 
-class PlaygroundScreen extends HookWidget {
-  final Project project;
-
-  const PlaygroundScreen({
+/// Sandbox screen
+class SandboxScreen extends HookWidget {
+  /// Constructor
+  const SandboxScreen({
     this.project,
     Key key,
   }) : super(key: key);
+
+  /// Project
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +167,7 @@ class PlaygroundScreen extends HookWidget {
                 ),
                 const Divider(height: 1),
                 Expanded(
-                  child: PlaygroundTerminal(
+                  child: SandboxConsole(
                     project: project,
                     release: selectedRelease.value,
                   ),

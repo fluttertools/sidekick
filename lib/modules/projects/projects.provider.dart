@@ -4,17 +4,16 @@
 // Get information about the config and match with the release
 // Allow to change the version on a project
 // When deleting a version notify that a project has that version attached to it
-
+// ignore_for_file: top_level_function_literal_block
 import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:sidekick/dto/project.dto.dart';
-import 'package:sidekick/services/settings_service.dart';
+import 'package:sidekick/modules/projects/project.dto.dart';
+import 'package:sidekick/modules/settings/settings.service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-// ignore: top_level_function_literal_block
 final projectsPerVersionProvider = Provider((ref) {
   final list = <String, List<Project>>{};
   final projects = ref.watch(projectsProvider);

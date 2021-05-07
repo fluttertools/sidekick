@@ -5,10 +5,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../utils/helpers.dart';
 import '../../utils/notify.dart';
-import 'scenes/settings_section_flutter.dart';
-import 'scenes/settings_section_fvm.dart';
-import 'scenes/settings_section_general.dart';
-import 'scenes/settings_section_projects.dart';
+import 'scenes/flutter_settings.scene.dart';
+import 'scenes/fvm_settings.scene.dart';
+import 'scenes/general_settings.scene.dart';
+import 'scenes/projects_settings.scene.dart';
 import 'settings.provider.dart';
 
 enum NavSection {
@@ -113,8 +113,8 @@ class SettingsScreen extends HookWidget {
                 controller: controller,
                 children: [
                   SettingsSectionGeneral(settings, handleSave),
-                  SettingsSectionProjects(settings, handleSave),
-                  SettingsSectionFvm(settings, handleSave),
+                  ProjectsSettingsScene(settings, handleSave),
+                  FvmSettingsScene(settings, handleSave),
                   SettingsSectionFlutter(settings, handleSave),
                 ],
               ),

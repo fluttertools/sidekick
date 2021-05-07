@@ -65,7 +65,7 @@ class Console extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      StdoutText(lines.value.first),
+                      ConsoleText(lines.value.first),
                     ],
                   ),
                 ),
@@ -77,7 +77,7 @@ class Console extends HookWidget {
                     itemBuilder: (context, index) {
                       final line = lines.value[index];
 
-                      return StdoutText(line);
+                      return ConsoleText(line);
                     },
                     itemCount: lines.value.length,
                   ),

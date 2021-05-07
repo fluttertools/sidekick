@@ -4,14 +4,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-import '../../components/atoms/checkbox.dart';
-import '../../components/atoms/refresh_button.dart';
-import '../../components/atoms/screen.dart';
 import '../../components/atoms/typography.dart';
-import '../../components/molecules/empty_data_set/empty_projects.dart';
-import '../../components/molecules/project_item.dart';
 import '../../utils/notify.dart';
+import '../common/atoms/checkbox.dart';
+import '../common/atoms/refresh_button.dart';
+import '../common/organisms/screen.dart';
 import '../settings/settings.provider.dart';
+import 'components/project_list_item.dart';
+import 'components/projects_empty.dart';
 import 'projects.provider.dart';
 
 class ProjectsScreen extends HookWidget {
@@ -44,7 +44,7 @@ class ProjectsScreen extends HookWidget {
       return const EmptyProjects();
     }
 
-    return Screen(
+    return SkScreen(
       title: 'Projects',
       processing: projects.loading,
       actions: [
@@ -52,7 +52,7 @@ class ProjectsScreen extends HookWidget {
         const SizedBox(width: 10),
         Tooltip(
           message: 'Only display projects that have versions pinned',
-          child: CheckButton(
+          child: SkCheckBox(
             label: 'FVM Only',
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
@@ -76,7 +76,7 @@ class ProjectsScreen extends HookWidget {
               children: filteredProjects.value.map((project) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 10, right: 10),
-                  child: ProjectItem(
+                  child: ProjectListItem(
                     project,
                     versionSelect: true,
                     key: Key(project.projectDir.path),

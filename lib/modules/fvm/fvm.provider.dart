@@ -1,3 +1,4 @@
+// ignore_for_file: top_level_function_literal_block
 import 'dart:async';
 import 'dart:convert';
 
@@ -11,14 +12,16 @@ import 'package:watcher/watcher.dart';
 import '../../dto/release.dto.dart';
 import '../../utils/debounce.dart';
 import '../../utils/dir_stat.dart';
-import '../flutter_releases/flutter_releases.provider.dart';
 import '../projects/projects.provider.dart';
+import '../releases/releases.provider.dart';
 
+/// Cache provider
 final cacheSizeProvider =
     StateProvider<DirectorySizeInfo>((_) => DirectorySizeInfo());
 
-// ignore: top_level_function_literal_block
-final unusedCacheSizeProvider = FutureProvider((ref) {
+/// Unused
+
+final unusedReleaseSizeProvider = FutureProvider((ref) {
   final unused = ref.watch(unusedVersionProvider);
   // Get all directories
   final directories = unused.map((version) => version.cache.dir).toList();
@@ -26,7 +29,6 @@ final unusedCacheSizeProvider = FutureProvider((ref) {
 });
 
 /// Provider that shows
-// ignore: top_level_function_literal_block
 final unusedVersionProvider = Provider((ref) {
   final unusedVersions = <ReleaseDto>[];
 

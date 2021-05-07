@@ -3,11 +3,15 @@ import 'package:fvm/fvm.dart';
 
 import 'release.dto.dart';
 
+/// Releae channel dto
 class ChannelDto extends ReleaseDto {
-  /// Latest version of the channel
+  /// Latest releae of a channel
   Release currentRelease;
+
+  /// SDK Version
   final String sdkVersion;
 
+  /// Constructor
   ChannelDto({
     @required String name,
     @required Release release,

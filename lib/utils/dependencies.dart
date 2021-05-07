@@ -1,7 +1,7 @@
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 
-import '../dto/package_detail.dto.dart';
+import '../modules/packages/package.dto.dart';
 
 final client = PubClient();
 
@@ -112,7 +112,7 @@ Future<PackageDetail> _assignInfo(PubPackage package, int count) async {
     homepage: package.latestPubspec.homepage,
     changelogUrl: package.changelogUrl,
     score: score,
-    count: count,
+    projectsCount: count,
     repo: repo,
   );
 }

@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../../dto/project.dto.dart';
 import '../../dto/release.dto.dart';
 import '../../utils/notify.dart';
+import '../projects/project.dto.dart';
 import '../projects/projects.provider.dart';
 import '../settings/settings.provider.dart';
 import 'fvm.provider.dart';
@@ -47,21 +47,26 @@ enum QueueAction {
 }
 
 /// Releases Provider
-final fvmQueueProvider =
-    StateNotifierProvider<FvmQueueProvider, FvmQueue>((ref) {
-  return FvmQueueProvider(ref: ref);
+final fvmQueueProvider = StateNotifierProvider<FvmQueueState, FvmQueue>((ref) {
+  return FvmQueueState(ref: ref);
 });
 
-class FvmQueueProvider extends StateNotifier<FvmQueue> {
-  final ProviderReference ref;
-  FvmQueueProvider({@required this.ref}) : super(null) {
+/// State of the FVM Queue
+class FvmQueueState extends StateNotifier<FvmQueue> {
+  /// Constructor
+  FvmQueueState({@required this.ref}) : super(null) {
     state = FvmQueue(activeItem: null, queue: Queue());
   }
 
+  /// Provider ref to be used later
+  final ProviderReference ref;
+
+  /// Retrieve FVM Settings
   FvmSettings get settings {
     return ref.read(settingsProvider).fvm;
   }
 
+  ///  Adds install action to queue
   void install(ReleaseDto version, {bool skipSetup}) async {
     skipSetup ??= settings.skipSetup;
     final action =
@@ -70,36 +75,41 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     _addToQueue(version, action: action);
   }
 
+  /// Adds setup action to queue
   void setup(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.setupOnly);
   }
 
+  /// adds upgrade action to queue
   void upgrade(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.channelUpgrade);
   }
 
+  /// Adds remove action to queue
   void remove(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.remove);
   }
 
-  void setGloabl(ReleaseDto version) {
+  /// Adds set global action to queue
+  void setGlobal(ReleaseDto version) {
     _addToQueue(version, action: QueueAction.setGlobal);
   }
 
+  /// Runs queue
   void runQueue() async {
-    final queue = state.queue;
-    final activeItem = state.activeItem;
-    // No need to run if empty
-    if (queue.isEmpty) return;
-    // If currently installing a version
-    if (activeItem != null) return;
-    // Gets next item of the queue
-    final item = state.next;
-    // Update queue
-    state = state.update();
-
-    // Run through actions
     try {
+      final queue = state.queue;
+      final activeItem = state.activeItem;
+      // No need to run if empty
+      if (queue.isEmpty) return;
+      // If currently installing a version
+      if (activeItem != null) return;
+      // Gets next item of the queue
+      final item = state.next;
+      // Update queue
+      state = state.update();
+
+      // Run through actions
       switch (item.action) {
         case QueueAction.install:
           await FVMClient.install(item.version.name);
@@ -132,7 +142,6 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     } on Exception catch (e) {
       notifyError(e.toString());
     }
-    // Check if action is to setup only
 
     // Set active item to null
     state.activeItem = null;
@@ -145,6 +154,7 @@ class FvmQueueProvider extends StateNotifier<FvmQueue> {
     runQueue();
   }
 
+  /// Pins a releae to a project
   Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reloadOne(project);
