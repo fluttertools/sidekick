@@ -78,7 +78,8 @@ final searchResultsProvider = Provider((ref) {
       // Get projec pinnedVersion
       final pinnedVersion = project.pinnedVersion ?? '';
       // Add project if name or pinnedVersion start with term
-      if (project.name.startsWith(term) || pinnedVersion.startsWith(term)) {
+      if (project.name.toLowerCase().startsWith(term) ||
+          pinnedVersion.startsWith(term)) {
         // Add to track unique insertions
         uniques[project.name] = true;
 
