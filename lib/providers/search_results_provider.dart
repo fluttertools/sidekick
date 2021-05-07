@@ -47,7 +47,7 @@ final searchResultsProvider = Provider((ref) {
   }
 
   // Split query into multiple search terms
-  final searchTerms = query.split(' ');
+  final searchTerms = query.toLowerCase().split(' ');
 
   final projectResults = <Project>[];
   final channelResults = <ChannelDto>[];
