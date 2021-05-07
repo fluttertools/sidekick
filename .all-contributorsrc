@@ -37,6 +37,16 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "PaulHalliday",
+      "name": "Paul Halliday",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19576417?v=4",
+      "profile": "https://youtube.com/c/PaulHalliday",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
