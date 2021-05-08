@@ -9,8 +9,8 @@
 import 'dart:async';
 
 import 'package:fvm/fvm.dart';
-import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/modules/settings/settings.service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import 'project.dto.dart';
@@ -25,7 +25,7 @@ final projectsPerVersionProvider = Provider((ref) {
     return list;
   }
 
-  for (var project in projects) {
+  for (final project in projects) {
     final version =
         project.pinnedVersion != null ? project.pinnedVersion : 'NONE';
     final versionProjects = list[version];
@@ -49,22 +49,7 @@ final projectsProvider =
 class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   /// Constructor
   ProjectsStateNotifier() : super(<FlutterProject>[]) {
-    _init();
-  }
-
-  StreamSubscription<BoxEvent> _subscription;
-
-  void _init() {
-    _subscription = ProjectsService.box.watch().listen((event) {
-      load();
-    });
     load();
-  }
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
   }
 
   /// Pins a release to project
@@ -76,7 +61,12 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   /// Triggers a full project reload. Adds a 1 second delay on update
   /// if [withDelay] is true for better UI feedback
   Future<void> load() async {
-    print('Loading projects');
+    print('LOAD PROJECT');
+
+    /// Do migration
+    /// TODO: Can be removed before 1.0
+    await _migrate();
+
     state = await ProjectsService.load();
   }
 
@@ -85,5 +75,28 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
     final index = state.indexWhere((item) => item == project);
     // Update project
     state[index] = project;
+  }
+
+  Future<void> _migrate() async {
+    /// Do migration
+    /// TODO: Can be removed before 1.0
+    final settings = SettingsService.read();
+
+    if (settings.projectPaths.isNotEmpty) {
+      for (final path in settings.projectPaths) {
+        final name = path.split('/').last;
+        ProjectsService.box.put(
+          name,
+          ProjectPath(
+            name: name,
+            path: path,
+          ),
+        );
+      }
+
+      /// Delete settings
+      settings.projectPaths = [];
+      await SettingsService.save(settings);
+    }
   }
 }

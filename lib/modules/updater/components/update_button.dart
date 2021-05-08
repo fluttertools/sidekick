@@ -17,7 +17,7 @@ class SkUpdateButton extends HookWidget {
     final updateInfo = useProvider(updaterProvider);
 
     /// Return empty if its not installed or does not need update
-    if (updateInfo == null || !updateInfo.ready) {
+    if (!updateInfo.ready) {
       return SizedBox(height: 0, width: 0);
     }
 
@@ -39,8 +39,7 @@ class SkUpdateButton extends HookWidget {
             ),
             content: Container(
               child: Paragraph(
-                "Current ${updateInfo.current}\n"
-                "New ${updateInfo.latest}",
+                "Sidekick version ${updateInfo.latest} is now available.",
               ),
             ),
             actions: <Widget>[

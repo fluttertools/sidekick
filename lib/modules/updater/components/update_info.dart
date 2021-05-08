@@ -17,10 +17,6 @@ class SkUpdateInfo extends HookWidget {
     final updater = useProvider(updaterProvider.notifier);
     final updateInfo = useProvider(updaterProvider);
 
-    if (updateInfo == null) {
-      return const SizedBox(height: 0, width: 0);
-    }
-
     if (updateInfo.ready) {
       return Row(
         mainAxisSize: MainAxisSize.min,

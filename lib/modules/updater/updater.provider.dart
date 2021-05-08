@@ -11,7 +11,7 @@ final updaterProvider =
 /// Update state notifier
 class UpdaterStateNotifier extends StateNotifier<SidekickUpdateInfo> {
   /// COnstructor
-  UpdaterStateNotifier() : super(null) {
+  UpdaterStateNotifier() : super(SidekickUpdateInfo.notReady()) {
     checkLatest();
   }
 

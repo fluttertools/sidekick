@@ -29,6 +29,7 @@ class ProjectsService {
 
     /// Get stored project directory
     final directories = box.values.map((p) => Directory(p.path)).toList();
+
     // Go get info for each project
     final projects = await FVMClient.fetchProjects(directories);
 

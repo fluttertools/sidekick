@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/version.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../constants.dart';
@@ -45,6 +46,9 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         const SkUpdateButton(),
+        const SizedBox(width: 10),
+        Center(child: Caption(appVersion)),
+        const SizedBox(width: 10),
         IconButton(
           icon: const Icon(Icons.search),
           iconSize: 20,

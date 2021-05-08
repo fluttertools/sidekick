@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import '../../version.dart';
+
 /// Latest Version update for Sidekick
 class SidekickUpdateInfo {
   /// Constructor
@@ -11,8 +13,19 @@ class SidekickUpdateInfo {
     @required this.current,
     @required this.latest,
     @required this.latestDownloadUrl,
-    @required this.latestInstallerFile,
+    this.latestInstallerFile,
   });
+
+  ///
+  factory SidekickUpdateInfo.notReady() {
+    return SidekickUpdateInfo(
+      needUpdate: false,
+      isInstalled: false,
+      current: appVersion,
+      latest: '',
+      latestDownloadUrl: '',
+    );
+  }
 
   /// Needs update
   final bool needUpdate;
@@ -34,7 +47,7 @@ class SidekickUpdateInfo {
 
   /// Need update and ready to install
   bool get ready {
-    return needUpdate && !isInstalled;
+    return needUpdate && isInstalled;
   }
 
   /// Clones sidekick update
