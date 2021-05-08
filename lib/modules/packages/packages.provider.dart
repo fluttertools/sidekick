@@ -8,30 +8,20 @@ import 'package:pubspec_parse/pubspec_parse.dart';
 
 import '../../utils/dependencies.dart';
 import '../projects/projects.provider.dart';
-import '../settings/settings.service.dart';
 import 'package.dto.dart';
 
 const cacheKey = 'dependencies_cache_key';
 // Used to invalidate the cache
 const cacheRefKey = 'cache_ref_key';
 
+/// Project packages
 final packagesProvider = FutureProvider((ref) async {
   final projects = ref.watch(projectsProvider);
 
   final packages = <String, int>{};
 
-  if (projects.list.isEmpty) {
+  if (projects.isEmpty) {
     return [];
-  }
-
-  final settings = SettingsService.read();
-  final cacheRef = await cache.load(cacheRefKey);
-
-  /// Save directory as a cache reference
-  /// Once directory changes drop the reference
-  if (settings.firstProjectDir != cacheRef) {
-    cache.destroy(cacheKey);
-    cache.remember(cacheRefKey, settings.firstProjectDir);
   }
 
   // Retrieve cache if exits
@@ -44,7 +34,7 @@ final packagesProvider = FutureProvider((ref) async {
   } else {
     // Get dependencies
     final googleDeps = await getGooglePackages();
-    for (final project in projects.list) {
+    for (final project in projects) {
       final pubspec = project.pubspec;
       final deps = pubspec.dependencies;
 

@@ -2,24 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../common/atoms/empty_dataset.dart';
-import '../../settings/settings.screen.dart';
 
+/// Packages empty screen
 class EmptyPackages extends StatelessWidget {
+  /// Constructor
   const EmptyPackages({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    void openSettingsScreen() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SettingsScreen(
-            section: NavSection.projects,
-          ),
-        ),
-      );
-    }
-
     return EmptyDataset(
       icon: const Icon(MdiIcons.package),
       child: Padding(
@@ -34,20 +24,12 @@ class EmptyPackages extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              '''Configure the location of your Flutter Projects. Package information will be displayed here.''',
+              'You need to add a Flutter project first. '
+              'Package information will be displayed here.',
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            ElevatedButton.icon(
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.resolveWith(
-                (states) => const EdgeInsets.fromLTRB(30, 15, 30, 15),
-              )),
-              onPressed: openSettingsScreen,
-              icon: const Icon(Icons.settings, size: 20),
-              label: const Text('Change Settings'),
-            )
           ],
         ),
       ),

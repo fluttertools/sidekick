@@ -94,7 +94,7 @@ final searchResultsProvider = Provider((ref) {
       break;
     }
     // Loop projects
-    for (final project in projects.list) {
+    for (final project in projects) {
       // Limit results to only 5 projects
       if (projectResults.length >= 5) {
         break;

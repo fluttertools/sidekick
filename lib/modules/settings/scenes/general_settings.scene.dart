@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import '../../../utils/notify.dart';
 import '../../../version.dart';
 import '../settings.dto.dart';
-import '../settings.provider.dart';
 import '../settings.utils.dart';
 
+/// Settings section general
 class SettingsSectionGeneral extends StatelessWidget {
-  final Settings settings;
-  final void Function() onSave;
-
+  /// Constructor
   const SettingsSectionGeneral(
     this.settings,
     this.onSave, {
     Key key,
   }) : super(key: key);
+
+  /// Settings
+  final AllSettings settings;
+
+  /// On save handler
+  final void Function() onSave;
 
   @override
   Widget build(BuildContext context) {
@@ -59,18 +63,6 @@ class SettingsSectionGeneral extends StatelessWidget {
         children: [
           Text('General', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
-          SwitchListTile(
-            title: const Text("Advanced Mode"),
-            subtitle: const Text(
-              'Enables more advanced and experimental functionality.',
-            ),
-            value: settings.sidekick.advancedMode,
-            onChanged: (value) {
-              settings.sidekick.advancedMode = value;
-              onSave();
-            },
-          ),
-          const Divider(),
           ListTile(
             title: const Text("Theme"),
             subtitle: const Text(

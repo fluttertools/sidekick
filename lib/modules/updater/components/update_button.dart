@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../utils/manage_updates.dart';
-import '../check_update.dart';
+import '../updater.provider.dart';
 
 /// Sidekick update button
 class SkUpdateButton extends HookWidget {
@@ -13,18 +13,13 @@ class SkUpdateButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final latest = useState<SidekickUpdateInfo>(null);
-    final needUpdate = useState(false);
-    // Check latest release on mount
-    void checkUpdate() async {
-      latest.value = await checkLatestRelease();
-      needUpdate.value = latest.value.needUpdate;
-    }
+    final updater = useProvider(updaterProvider.notifier);
+    final updateInfo = useProvider(updaterProvider);
 
-    useEffect(() {
-      checkUpdate();
-      return;
-    }, []);
+    /// Return empty if its not installed or does not need update
+    if (updateInfo == null || !updateInfo.ready) {
+      return SizedBox(height: 0, width: 0);
+    }
 
     void showUpdateDialog() {
       // flutter defined function
@@ -44,8 +39,8 @@ class SkUpdateButton extends HookWidget {
             ),
             content: Container(
               child: Paragraph(
-                "Current ${latest.value.currentVersion}\n"
-                "New ${latest.value.latestVersion}",
+                "Current ${updateInfo.current}\n"
+                "New ${updateInfo.latest}",
               ),
             ),
             actions: <Widget>[
@@ -59,8 +54,8 @@ class SkUpdateButton extends HookWidget {
               ElevatedButton(
                 child: const Text("Update Now"),
                 onPressed: () async {
+                  updater.openInstaller();
                   Navigator.of(context).pop();
-                  downloadRelease(latest.value.latestVersion);
                 },
               ),
             ],
@@ -69,23 +64,19 @@ class SkUpdateButton extends HookWidget {
       );
     }
 
-    if (needUpdate.value) {
-      return Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ActionChip(
-              onPressed: showUpdateDialog,
-              label: const Text(
-                'Update Available',
-                style: TextStyle(fontSize: 12),
-              ),
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ActionChip(
+            onPressed: showUpdateDialog,
+            label: const Text(
+              'Update Available',
+              style: TextStyle(fontSize: 12),
             ),
-          ],
-        ),
-      );
-    } else {
-      return Container();
-    }
+          ),
+        ],
+      ),
+    );
   }
 }

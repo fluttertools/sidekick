@@ -5,18 +5,22 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../releases/releases.provider.dart';
-import '../settings.provider.dart';
+import '../settings.dto.dart';
 
+/// Flutter settings section
 class SettingsSectionFlutter extends HookWidget {
-  final Settings settings;
-  final Function() onSave;
-
+  /// Constructor
   const SettingsSectionFlutter(
     this.settings,
     this.onSave, {
     Key key,
   }) : super(key: key);
 
+  /// Settings
+  final AllSettings settings;
+
+  /// On save handler
+  final Function() onSave;
   @override
   Widget build(BuildContext context) {
     final releases = useProvider(releasesStateProvider);

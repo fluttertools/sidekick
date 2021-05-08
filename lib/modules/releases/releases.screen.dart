@@ -8,7 +8,6 @@ import '../../components/molecules/version_install_button.dart';
 import '../../utils/helpers.dart';
 import '../common/atoms/sliver_animated_switcher.dart';
 import '../common/organisms/screen.dart';
-import '../settings/settings.provider.dart';
 import 'components/channel_showcase_item.dart';
 import 'components/release_list_item.dart';
 import 'releases.provider.dart';
@@ -22,8 +21,6 @@ class ReleasesScreen extends HookWidget {
     final versions = useProvider(filterableReleasesProvider);
     final releases = useProvider(releasesStateProvider);
 
-    final settings = useProvider(settingsProvider);
-
     return SkScreen(
       extendBody: false,
       title: 'Releases',
@@ -33,7 +30,8 @@ class ReleasesScreen extends HookWidget {
             SliverToBoxAdapter(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                height: settings.sidekick.advancedMode ? 80 : 0,
+                // TODO: Check if need to add the height
+                height: 80,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
                   child: Container(

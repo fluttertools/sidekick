@@ -14,41 +14,40 @@ import 'components/project_list_item.dart';
 import 'components/projects_empty.dart';
 import 'projects.provider.dart';
 
+/// Projects screen
 class ProjectsScreen extends HookWidget {
+  /// Constructor
   const ProjectsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final projects = useProvider(projectsProvider);
-    final filteredProjects = useState(projects.list);
+    final filteredProjects = useState(projects);
 
     final settings = useProvider(settingsProvider);
-    void onRefresh() async {
-      await context.read(projectsProvider.notifier).reloadAll(withDelay: true);
+    Future<void> onRefresh() async {
+      await context.read(projectsProvider.notifier).load();
       notify('Projects Refreshed');
     }
 
     useEffect(() {
       if (settings.sidekick.onlyProjectsWithFvm) {
         filteredProjects.value =
-            projects.list.where((p) => p.pinnedVersion != null).toList();
+            projects.where((p) => p.pinnedVersion != null).toList();
       } else {
-        filteredProjects.value = [...projects.list];
+        filteredProjects.value = [...projects];
       }
       return;
-    }, [projects.list, settings.sidekick]);
+    }, [projects, settings.sidekick]);
 
-    if (projects.list.isEmpty &&
-        filteredProjects.value.isEmpty &&
-        !projects.loading) {
+    if (projects.isEmpty && filteredProjects.value.isEmpty) {
       return const EmptyProjects();
     }
 
     return SkScreen(
       title: 'Projects',
-      processing: projects.loading,
       actions: [
-        Caption('${projects.list.length} Projects'),
+        Caption('${projects.length} Projects'),
         const SizedBox(width: 10),
         Tooltip(
           message: 'Only display projects that have versions pinned',
@@ -63,7 +62,6 @@ class ProjectsScreen extends HookWidget {
         ),
         const SizedBox(width: 10),
         RefreshButton(
-          refreshing: projects.loading,
           onPressed: onRefresh,
         ),
       ],

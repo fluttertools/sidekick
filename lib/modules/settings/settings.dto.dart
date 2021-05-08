@@ -1,54 +1,65 @@
 import 'dart:convert';
 
+import 'package:fvm/fvm.dart';
 import 'package:hive/hive.dart';
-import 'package:list_ext/list_ext.dart';
 
 import 'settings.utils.dart';
 
-class SidekickSettings {
-  static const key = 'settings_key';
-  List<String> flutterProjectsDir;
-  bool advancedMode;
-  bool onlyProjectsWithFvm;
-  List<String> projectPaths;
-  String themeMode;
+/// All Settings
+class AllSettings {
+  SidekickSettings sidekick;
+  FvmSettings fvm;
+  FlutterSettings flutter;
 
+  AllSettings({
+    this.sidekick,
+    this.fvm,
+    this.flutter,
+  }) {
+    if (fvm == null) {
+      fvm = FvmSettings();
+    }
+    if (sidekick == null) {
+      sidekick = SidekickSettings();
+    }
+
+    if (flutter == null) {
+      flutter = FlutterSettings();
+    }
+  }
+
+  AllSettings copy() => AllSettings(
+        sidekick: SidekickSettings.fromJson(sidekick.toJson()),
+        fvm: FvmSettings.fromJson(fvm.toJson()),
+        flutter: FlutterSettings.fromMap(flutter.toMap()),
+      );
+}
+
+/// Sidekick settings
+class SidekickSettings {
+  /// Constructor
   SidekickSettings({
-    this.flutterProjectsDir = const [],
-    this.advancedMode = false,
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
   });
+
+  /// Storage key
+  static const key = 'settings_key';
+
+  bool onlyProjectsWithFvm;
+  List<String> projectPaths;
+  String themeMode;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
 
   factory SidekickSettings.fromMap(Map<String, dynamic> json) {
     return SidekickSettings(
-      flutterProjectsDir:
-          (json['flutterProjectsDir'] as List<dynamic>).cast<String>(),
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
-      advancedMode: json['advancedMode'] as bool ?? false,
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
     );
-  }
-
-  String get firstProjectDir {
-    if (flutterProjectsDir.isNotNullOrEmpty) {
-      return flutterProjectsDir.first;
-    } else {
-      return null;
-    }
-  }
-
-  set firstProjectDir(String path) {
-    if (flutterProjectsDir.isNotNullOrEmpty) {
-      flutterProjectsDir.first = path;
-    } else {
-      flutterProjectsDir = [path];
-    }
   }
 
   /// Converts Master Secret to Json
@@ -56,9 +67,7 @@ class SidekickSettings {
 
   Map<String, dynamic> toMap() {
     return {
-      'flutterProjectsDir': flutterProjectsDir,
       'projectPaths': projectPaths,
-      'advancedMode': advancedMode,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
     };
@@ -82,12 +91,9 @@ class SidekickSettingsAdapter extends TypeAdapter<SidekickSettings> {
   }
 }
 
+/// Flutter settings
 class FlutterSettings {
-  bool analytics;
-  bool macos;
-  bool linux;
-  bool windows;
-  bool web;
+  /// Constructor
   FlutterSettings({
     this.analytics = true,
     this.linux = false,
@@ -96,6 +102,22 @@ class FlutterSettings {
     this.web = false,
   });
 
+  /// Analytics enabled
+  bool analytics;
+
+  /// MacOS enabled
+  bool macos;
+
+  /// Linux enabled
+  bool linux;
+
+  /// Windows enabled
+  bool windows;
+
+  /// Web enabled
+  bool web;
+
+  /// Flutter settings from map
   factory FlutterSettings.fromMap(Map<String, bool> map) {
     return FlutterSettings(
       analytics: map['analytics'],
@@ -105,6 +127,8 @@ class FlutterSettings {
       web: map['web'],
     );
   }
+
+  /// Flutter settings to map
   Map<String, bool> toMap() {
     return {
       "analytics": analytics,

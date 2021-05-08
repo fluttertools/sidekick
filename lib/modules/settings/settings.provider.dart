@@ -3,78 +3,36 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../fvm/flutter_config.service.dart';
-import '../projects/projects.provider.dart';
 import 'settings.dto.dart';
 import 'settings.service.dart';
 
-class Settings {
-  SidekickSettings sidekick;
-  FvmSettings fvm;
-  FlutterSettings flutter;
-
-  Settings({
-    this.sidekick,
-    this.fvm,
-    this.flutter,
-  }) {
-    if (fvm == null) {
-      fvm = FvmSettings();
-    }
-    if (sidekick == null) {
-      sidekick = SidekickSettings();
-    }
-
-    if (flutter == null) {
-      flutter = FlutterSettings();
-    }
-  }
-
-  Settings copy() => Settings(
-        sidekick: SidekickSettings.fromJson(sidekick.toJson()),
-        fvm: FvmSettings.fromJson(fvm.toJson()),
-        flutter: FlutterSettings.fromMap(flutter.toMap()),
-      );
-}
-
-final settingsRepoProvider = Provider((_) => Settings());
-
+/// Settings provider
 final settingsProvider =
-    StateNotifierProvider<SettingsProvider, Settings>((ref) {
-  return SettingsProvider(ref, initialState: Settings());
+    StateNotifierProvider<_SettingsStateNotifier, AllSettings>((ref) {
+  return _SettingsStateNotifier(ref, initialState: AllSettings());
 });
 
-class SettingsProvider extends StateNotifier<Settings> {
+class _SettingsStateNotifier extends StateNotifier<AllSettings> {
   ProviderReference ref;
-  SettingsProvider(
+  _SettingsStateNotifier(
     this.ref, {
-    Settings initialState,
+    AllSettings initialState,
   }) : super(initialState) {
     // Set initial settings from local storage
     _loadState();
   }
 
-  ProjectsProvider get _projectsProvider {
-    return ref.read(projectsProvider.notifier);
-  }
-
   Future<void> _checkAppSettingsChanges(SidekickSettings settings) async {
-    final changed = settings != prevState.sidekick;
-    final projectsChanged =
-        settings.firstProjectDir != prevState.sidekick.firstProjectDir;
+    final changed = settings != _prevState.sidekick;
 
     // Save sidekick settings changed
     if (changed) {
       await SettingsService.save(settings);
     }
-
-    // If project directory change rescan
-    if (projectsChanged) {
-      await _projectsProvider.scan();
-    }
   }
 
   Future<void> _checkAnalyticsChanges(FlutterSettings settings) async {
-    final changed = settings != prevState.flutter;
+    final changed = settings != _prevState.flutter;
     // Return if nothing changed
     if (changed) {
       // Toggle analytics
@@ -83,23 +41,23 @@ class SettingsProvider extends StateNotifier<Settings> {
   }
 
   Future<void> _checkFvmSettingsChanges(FvmSettings settings) async {
-    final changed = settings != prevState.fvm;
+    final changed = settings != _prevState.fvm;
     if (changed) {
       await FVMClient.saveSettings(settings);
     }
   }
 
-  Settings prevState;
+  AllSettings _prevState;
 
   Future<void> _loadState() async {
     /// Update app state right away
     final sidekickSettings = SettingsService.read();
-    state = Settings(sidekick: sidekickSettings);
+    state = AllSettings(sidekick: sidekickSettings);
 
     //Go get async state
     final fvmSettings = await FVMClient.readSettings();
     final flutterSettings = await FlutterConfigService.getFlutterConfig();
-    state = Settings(
+    state = AllSettings(
       // Set state
       sidekick: sidekickSettings,
       fvm: fvmSettings,
@@ -107,12 +65,13 @@ class SettingsProvider extends StateNotifier<Settings> {
     );
 
     /// First run if it's null set
-    if (prevState == null) {
-      prevState = state.copy();
+    if (_prevState == null) {
+      _prevState = state.copy();
     }
   }
 
-  Future<void> save(Settings settings) async {
+  /// Save settings
+  Future<void> save(AllSettings settings) async {
     // Check for changes
     try {
       // Trigger refresh
@@ -122,14 +81,15 @@ class SettingsProvider extends StateNotifier<Settings> {
       await _checkAppSettingsChanges(settings.sidekick);
       await _checkAnalyticsChanges(settings.flutter);
       // Set previous state only after success
-      prevState = state.copy();
+      _prevState = state.copy();
     } on Exception {
       // Revert settings in case of errors
-      state = prevState;
+      state = _prevState;
       rethrow;
     }
   }
 
+  /// Reload settings
   Future<void> reload() async {
     return _loadState();
   }

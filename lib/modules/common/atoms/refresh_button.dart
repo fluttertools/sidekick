@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 /// Refresh button
-class RefreshButton extends StatelessWidget {
+class RefreshButton extends HookWidget {
   /// Constructor
   const RefreshButton({
-    this.refreshing,
-    this.onPressed,
+    @required this.onPressed,
     Key key,
   }) : super(key: key);
 
-  /// Is refreshing
-  final bool refreshing;
-
   /// On press handler
-  final Function() onPressed;
+  final Future Function() onPressed;
+
   @override
   Widget build(BuildContext context) {
+    final refreshing = useState(false);
+    Future<void> handleOnPress() async {
+      refreshing.value = true;
+      await onPressed();
+      refreshing.value = false;
+    }
+
     // Renders the refreshing indicator
     Widget renderIndicator() {
       return const Padding(
@@ -33,10 +38,10 @@ class RefreshButton extends StatelessWidget {
 
     return OutlinedButton.icon(
       label: const Text('Refresh'),
-      icon: refreshing
+      icon: refreshing.value
           ? renderIndicator()
           : const Icon(MdiIcons.refresh, size: 20),
-      onPressed: onPressed,
+      onPressed: handleOnPress,
     );
   }
 }

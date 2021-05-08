@@ -157,7 +157,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   /// Pins a releae to a project
   Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
-    await ref.read(projectsProvider.notifier).reloadOne(project);
+    await ref.read(projectsProvider.notifier).reload(project);
     await notify('Version $version pinned to ${project.name}');
   }
 

@@ -9,6 +9,8 @@ import 'package:window_size/window_size.dart';
 
 import 'app_shell.dart';
 import 'constants.dart';
+import 'modules/projects/project.dto.dart';
+import 'modules/projects/projects.service.dart';
 import 'modules/settings/settings.dto.dart';
 import 'modules/settings/settings.service.dart';
 import 'modules/settings/settings.utils.dart';
@@ -18,10 +20,12 @@ import 'theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
+  Hive.registerAdapter(ProjectPathAdapter());
   await Hive.initFlutter();
 
   try {
     await SettingsService.init();
+    await ProjectsService.init();
   } on FileSystemException {
     print("There was an issue opening the DB");
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../settings.provider.dart';
+import '../settings.dto.dart';
 
 /// Fvm Settings Scene
 class FvmSettingsScene extends StatelessWidget {
@@ -12,7 +12,7 @@ class FvmSettingsScene extends StatelessWidget {
   }) : super(key: key);
 
   /// Settings
-  final Settings settings;
+  final AllSettings settings;
 
   /// Save handler
   final Function() onSave;

@@ -8,34 +8,39 @@ import '../../utils/notify.dart';
 import 'scenes/flutter_settings.scene.dart';
 import 'scenes/fvm_settings.scene.dart';
 import 'scenes/general_settings.scene.dart';
-import 'scenes/projects_settings.scene.dart';
 import 'settings.provider.dart';
 
+/// TODO: Unify the nav sections information
+/// Nav sections
 enum NavSection {
+  /// General
   general,
-  projects,
+
+  /// FVM
   fvm,
+
+  /// Flutter
   flutter,
 }
 
-const sections = ['General', 'Projects', 'FVM', 'Flutter'];
+const _sections = ['General', 'FVM', 'Flutter'];
 
-const sectionIcons = [
+const _sectionIcons = [
   MdiIcons.tune,
-  MdiIcons.folderSettings,
   MdiIcons.layers,
-  MdiIcons.console
+  MdiIcons.console,
 ];
 
-typedef RenderSection = Widget Function(Settings, Function(void));
-
+/// Settings screen
 class SettingsScreen extends HookWidget {
-  final NavSection section;
+  /// Constructor
   const SettingsScreen({
     this.section = NavSection.general,
     key,
   }) : super(key: key);
 
+  /// Current nav section
+  final NavSection section;
   @override
   Widget build(BuildContext context) {
     final provider = useProvider(settingsProvider.notifier);
@@ -84,11 +89,11 @@ class SettingsScreen extends HookWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: ListView(
-                  children: sections.mapIndexed(
+                  children: _sections.mapIndexed(
                     (section, idx) {
                       return ListTile(
                         leading: Icon(
-                          sectionIcons[idx],
+                          _sectionIcons[idx],
                           size: 20,
                         ),
                         title: Text(
@@ -113,7 +118,6 @@ class SettingsScreen extends HookWidget {
                 controller: controller,
                 children: [
                   SettingsSectionGeneral(settings, handleSave),
-                  ProjectsSettingsScene(settings, handleSave),
                   FvmSettingsScene(settings, handleSave),
                   SettingsSectionFlutter(settings, handleSave),
                 ],
