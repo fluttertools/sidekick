@@ -5,22 +5,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:sidekick/app_shell.dart';
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/dto/settings.dto.dart';
-import 'package:sidekick/screens/error_db_screen.dart';
-import 'package:sidekick/services/settings_service.dart';
-import 'package:sidekick/theme.dart';
-import 'package:sidekick/utils/get_theme_mode.dart';
 import 'package:window_size/window_size.dart';
+
+import 'app_shell.dart';
+import 'constants.dart';
+import 'modules/projects/project.dto.dart';
+import 'modules/projects/projects.service.dart';
+import 'modules/settings/settings.dto.dart';
+import 'modules/settings/settings.service.dart';
+import 'modules/settings/settings.utils.dart';
+import 'screens/error_db_screen.dart';
+import 'theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
+  Hive.registerAdapter(ProjectPathAdapter());
   await Hive.initFlutter();
 
   try {
     await SettingsService.init();
+    await ProjectsService.init();
   } on FileSystemException {
     print("There was an issue opening the DB");
   }

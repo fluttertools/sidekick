@@ -4,8 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/providers/fvm_console_provider.dart';
+
+import '../../modules/fvm/fvm.provider.dart';
+import 'typography.dart';
 
 class Console extends HookWidget {
   final bool expand;
@@ -20,7 +21,7 @@ class Console extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final output = useProvider(combinedConsoleProvider);
+    final output = useProvider(fvmStdoutProvider);
     final lines = useState<List<String>>(['']);
 
     useValueChanged(output, (_, __) {
@@ -64,7 +65,7 @@ class Console extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      StdoutText(lines.value.first),
+                      ConsoleText(lines.value.first),
                     ],
                   ),
                 ),
@@ -76,7 +77,7 @@ class Console extends HookWidget {
                     itemBuilder: (context, index) {
                       final line = lines.value[index];
 
-                      return StdoutText(line);
+                      return ConsoleText(line);
                     },
                     itemCount: lines.value.length,
                   ),
