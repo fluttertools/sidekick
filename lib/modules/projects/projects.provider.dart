@@ -7,12 +7,13 @@
 // ignore_for_file: top_level_function_literal_block
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/modules/settings/settings.service.dart';
 import 'package:state_notifier/state_notifier.dart';
 
+import '../settings/settings.service.dart';
 import 'project.dto.dart';
 import 'projects.service.dart';
 
@@ -61,10 +62,7 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   /// Triggers a full project reload. Adds a 1 second delay on update
   /// if [withDelay] is true for better UI feedback
   Future<void> load() async {
-    print('LOAD PROJECT');
-
     /// Do migration
-    /// TODO: Can be removed before 1.0
     await _migrate();
 
     state = await ProjectsService.load();
@@ -75,6 +73,25 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
     final index = state.indexWhere((item) => item == project);
     // Update project
     state[index] = project;
+
+    /// Notify state
+    state = [...state];
+  }
+
+  /// Adds a project
+  Future<void> addProject(String path) async {
+    final project = await FVMClient.getProjectByDirectory(Directory(path));
+    if (project.isFlutterProject) {
+      final ref = ProjectRef(name: path.split('/').last, path: path);
+      ProjectsService.box.put(path, ref);
+      load();
+    }
+  }
+
+  /// Removes a project
+  void removeProject(FlutterProject project) {
+    ProjectsService.box.delete(project.projectDir.path);
+    load();
   }
 
   Future<void> _migrate() async {
@@ -84,11 +101,10 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
 
     if (settings.projectPaths.isNotEmpty) {
       for (final path in settings.projectPaths) {
-        final name = path.split('/').last;
         ProjectsService.box.put(
-          name,
-          ProjectPath(
-            name: name,
+          path,
+          ProjectRef(
+            name: path.split('/').last,
             path: path,
           ),
         );

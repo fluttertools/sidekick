@@ -23,7 +23,7 @@ enum FvmReleaseActionOptions {
   upgrade,
 }
 
-/// Dislpay actions for a cached release
+/// Displays actions for a cached release
 class FvmReleaseActions extends StatelessWidget {
   /// Constructor
   const FvmReleaseActions(

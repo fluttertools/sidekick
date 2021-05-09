@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:open_file/open_file.dart';
+import 'package:sidekick/modules/projects/components/project_actions.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
@@ -55,19 +55,7 @@ class ProjectListItem extends HookWidget {
                 child: ListTile(
                   leading: const Icon(MdiIcons.alphaPBox),
                   title: Subheading(project.name),
-                  trailing: Tooltip(
-                    message: project.projectDir.absolute.path,
-                    child: IconButton(
-                      icon: const Icon(MdiIcons.openInNew),
-                      iconSize: 20,
-                      splashRadius: 20,
-                      onPressed: () {
-                        OpenFile.open(
-                          project.projectDir.absolute.path,
-                        );
-                      },
-                    ),
-                  ),
+                  trailing: ProjectActions(project),
                 ),
               ),
               const Divider(height: 0, thickness: 1),

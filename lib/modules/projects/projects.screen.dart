@@ -1,7 +1,9 @@
+import 'package:file_selector/file_selector.dart' as selector;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../components/atoms/typography.dart';
@@ -21,13 +23,26 @@ class ProjectsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final notifier = useProvider(projectsProvider.notifier);
     final projects = useProvider(projectsProvider);
+    final settings = useProvider(settingsProvider);
+
     final filteredProjects = useState(projects);
 
-    final settings = useProvider(settingsProvider);
     Future<void> onRefresh() async {
       await context.read(projectsProvider.notifier).load();
       notify('Projects Refreshed');
+    }
+
+    Future<void> handleChooseDirectory() async {
+      final directoryPath = await selector.getDirectoryPath(
+        confirmButtonText: 'Choose',
+      );
+      if (directoryPath == null) {
+        // Operation was canceled by the user.
+        return;
+      }
+      notifier.addProject(directoryPath);
     }
 
     useEffect(() {
@@ -39,10 +54,6 @@ class ProjectsScreen extends HookWidget {
       }
       return;
     }, [projects, settings.sidekick]);
-
-    if (projects.isEmpty && filteredProjects.value.isEmpty) {
-      return const EmptyProjects();
-    }
 
     return SkScreen(
       title: 'Projects',
@@ -64,25 +75,33 @@ class ProjectsScreen extends HookWidget {
         RefreshButton(
           onPressed: onRefresh,
         ),
-      ],
-      child: CupertinoScrollbar(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: ResponsiveGridList(
-              desiredItemWidth: 290,
-              minSpacing: 0,
-              children: filteredProjects.value.map((project) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 10, right: 10),
-                  child: ProjectListItem(
-                    project,
-                    versionSelect: true,
-                    key: Key(project.projectDir.path),
-                  ),
-                );
-              }).toList()),
+        const SizedBox(width: 10),
+        OutlinedButton.icon(
+          onPressed: handleChooseDirectory,
+          icon: Icon(MdiIcons.plus),
+          label: Text('Add Project'),
         ),
-      ),
+      ],
+      child: projects.isEmpty
+          ? EmptyProjects()
+          : CupertinoScrollbar(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: ResponsiveGridList(
+                    desiredItemWidth: 290,
+                    minSpacing: 0,
+                    children: filteredProjects.value.map((project) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 10),
+                        child: ProjectListItem(
+                          project,
+                          versionSelect: true,
+                          key: Key(project.projectDir.path),
+                        ),
+                      );
+                    }).toList()),
+              ),
+            ),
     );
   }
 }

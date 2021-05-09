@@ -15,11 +15,11 @@ class ProjectsService {
   static const _key = 'projects_service_box';
 
   /// Storage box
-  static Box<ProjectPath> box;
+  static Box<ProjectRef> box;
 
   /// Initializes the service
   static Future<void> init() async {
-    box = await Hive.openBox<ProjectPath>(_key);
+    box = await Hive.openBox<ProjectRef>(_key);
   }
 
   /// Loads all projects
@@ -46,4 +46,20 @@ class ProjectsService {
 
     return await Future.wait(flutterProjects);
   }
+
+  // /// Loads one project
+  // static Future<FlutterProject> loadOne(String path) async {
+  //   // Get project directory
+  //   final directory = Directory(path);
+
+  //   // Go get info for each project
+  //   final project = await FVMClient.getProjectByDirectory(directory);
+
+  //   /// Return flutter project
+
+  //   final yaml = await project.pubspecFile.readAsString();
+  //   final pubspec = Pubspec.parse(yaml);
+
+  //   return FlutterProject.fromProject(project, pubspec);
+  // }
 }

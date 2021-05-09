@@ -39,10 +39,10 @@ class FlutterProject extends Project {
   }
 }
 
-/// Path to project
-class ProjectPath {
+/// Ref to project path
+class ProjectRef {
   /// Constructor
-  const ProjectPath({
+  const ProjectRef({
     @required this.name,
     @required this.path,
   });
@@ -54,8 +54,8 @@ class ProjectPath {
   final String path;
 
   /// Creates a project path from map
-  factory ProjectPath.fromMap(Map<String, String> map) {
-    return ProjectPath(
+  factory ProjectRef.fromMap(Map<String, String> map) {
+    return ProjectRef(
       name: map['name'],
       path: map['path'],
     );
@@ -71,18 +71,18 @@ class ProjectPath {
 }
 
 /// Project path adapter
-class ProjectPathAdapter extends TypeAdapter<ProjectPath> {
+class ProjectPathAdapter extends TypeAdapter<ProjectRef> {
   @override
   int get typeId => 2; // this is unique, no other Adapter can have the same id.
 
   @override
-  ProjectPath read(BinaryReader reader) {
+  ProjectRef read(BinaryReader reader) {
     final value = Map<String, String>.from(reader.readMap());
-    return ProjectPath.fromMap(value);
+    return ProjectRef.fromMap(value);
   }
 
   @override
-  void write(BinaryWriter writer, ProjectPath obj) {
+  void write(BinaryWriter writer, ProjectRef obj) {
     writer.writeMap(obj.toMap());
   }
 }
