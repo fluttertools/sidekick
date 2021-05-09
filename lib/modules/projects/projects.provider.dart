@@ -11,9 +11,9 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 
+import '../../utils/notify.dart';
 import '../settings/settings.service.dart';
 import 'project.dto.dart';
 import 'projects.service.dart';
