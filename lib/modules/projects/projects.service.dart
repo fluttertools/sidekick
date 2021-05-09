@@ -37,11 +37,18 @@ class ProjectsService {
     final projectsWithFlutter = projects.where((p) => p.isFlutterProject);
 
     /// Return flutter projects
-    final flutterProjects = projectsWithFlutter.map((p) async {
-      final yaml = await p.pubspecFile.readAsString();
-      final pubspec = Pubspec.parse(yaml);
+    final flutterProjects = projectsWithFlutter.map((project) async {
+      final pubspecFile = project.pubspecFile;
 
-      return FlutterProject.fromProject(p, pubspec);
+      if (await pubspecFile.exists()) {
+        final yaml = await pubspecFile.readAsString();
+        final pubspec = Pubspec.parse(yaml);
+
+        return FlutterProject.fromProject(project, pubspec);
+      } else {
+        /// If it does not exist should be removed
+        box.delete(project.projectDir.path);
+      }
     }).toList();
 
     return await Future.wait(flutterProjects);

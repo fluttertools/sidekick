@@ -31,7 +31,7 @@ class FvmReleaseStatus extends StatelessWidget {
 
     // If pending setup
     if (release.needSetup) {
-      return SetupButton(version: release);
+      return SetupButton(release: release);
     }
 
     // If it's channel set current release;

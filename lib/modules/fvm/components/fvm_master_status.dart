@@ -18,7 +18,7 @@ class FvmMasterStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     // If pending setup
     if (masterChannel.needSetup) {
-      return SetupButton(version: masterChannel);
+      return SetupButton(release: masterChannel);
     }
 
     return Row(

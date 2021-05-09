@@ -11,6 +11,7 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/utils/notify.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../settings/settings.service.dart';
@@ -85,6 +86,8 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
       final ref = ProjectRef(name: path.split('/').last, path: path);
       ProjectsService.box.put(path, ref);
       load();
+    } else {
+      notify('Not a Flutter project');
     }
   }
 

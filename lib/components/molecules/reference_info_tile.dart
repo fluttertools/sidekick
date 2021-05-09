@@ -51,7 +51,7 @@ class ReferenceInfoTile extends StatelessWidget {
           title: const Text('Version'),
           trailing: channel.sdkVersion != null
               ? Chip(label: Text(channel.sdkVersion ?? ''))
-              : SetupButton(version: channel),
+              : SetupButton(release: channel),
         )
       ],
     );

@@ -13,12 +13,16 @@ class FlutterProject extends Project {
     @required FvmConfig config,
     @required Directory projectDir,
     @required this.pubspec,
+    this.invalid = false,
   }) : super(
           name: name,
           config: config,
           projectDir: projectDir,
           isFlutterProject: true,
         );
+
+  /// If a project does not have pubspec
+  final bool invalid;
 
   /// Create Flutter project from project
   factory FlutterProject.fromProject(Project project, Pubspec pubspec) {
@@ -27,6 +31,17 @@ class FlutterProject extends Project {
       config: project.config,
       projectDir: project.projectDir,
       pubspec: pubspec,
+    );
+  }
+
+  /// Create Flutter project from project
+  factory FlutterProject.fromInvalidProject(Project project) {
+    return FlutterProject._(
+      name: project.name,
+      config: project.config,
+      projectDir: project.projectDir,
+      pubspec: null,
+      invalid: true,
     );
   }
 
