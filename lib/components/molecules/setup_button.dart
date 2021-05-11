@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/fvm_queue.provider.dart';
 
+import '../../dto/release.dto.dart';
+import '../../modules/fvm/fvm_queue.provider.dart';
+
+/// Setup button
 class SetupButton extends StatelessWidget {
-  final ReleaseDto version;
-  const SetupButton({this.version, Key key}) : super(key: key);
+  /// Constructor
+  const SetupButton({
+    this.release,
+    Key key,
+  }) : super(key: key);
+
+  /// Release
+  final ReleaseDto release;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +23,10 @@ class SetupButton extends StatelessWidget {
       child: IconButton(
         icon: const Icon(MdiIcons.alert),
         iconSize: 20,
-        color: Colors.cyan,
+        splashRadius: 20,
+        color: Theme.of(context).accentColor,
         onPressed: () {
-          context.read(fvmQueueProvider.notifier).setup(version);
+          context.read(fvmQueueProvider.notifier).setup(release);
         },
       ),
     );

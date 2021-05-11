@@ -3,8 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/providers/fvm_queue.provider.dart';
+
+import '../../dto/release.dto.dart';
+import '../../modules/fvm/fvm_queue.provider.dart';
 
 const installedMsg = 'Version is installed';
 const notInstalledMsg = 'Version not installed. Click to install.';
@@ -47,21 +48,21 @@ class VersionInstallButton extends HookWidget {
 
     Widget installIcon() {
       if ((isQueued.value && !version.isCached)) {
-        return const SizedBox(
+        return SizedBox(
           height: 20,
           width: 20,
           child: SpinKitFadingFour(
             size: 15,
-            color: Colors.cyan,
+            color: Theme.of(context).accentColor,
           ),
         );
       }
 
       if (version.isCached) {
-        return const Icon(
+        return Icon(
           Icons.check,
           size: 20,
-          color: Colors.cyan,
+          color: Theme.of(context).accentColor,
         );
       }
 

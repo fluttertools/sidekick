@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/list_tile.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/setup_button.dart';
-import 'package:sidekick/constants.dart';
-import 'package:sidekick/dto/channel.dto.dart';
-import 'package:sidekick/dto/release.dto.dart';
-import 'package:sidekick/utils/open_link.dart';
+
+import '../../dto/channel.dto.dart';
+import '../../dto/release.dto.dart';
+import '../../modules/common/constants.dart';
+import '../../modules/common/molecules/list_tile.dart';
+import '../../modules/common/utils/open_link.dart';
+import '../atoms/typography.dart';
+import 'setup_button.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
   final ReleaseDto version;
@@ -17,12 +18,12 @@ class ReferenceInfoTile extends StatelessWidget {
     if (!version.isChannel) {
       return Column(
         children: [
-          FvmListTile(
+          SkListTile(
             title: const Text('Channel'),
             trailing: Chip(label: Text(version.release.channelName)),
           ),
           const Divider(),
-          FvmListTile(
+          SkListTile(
             title: const Text('Release Notes'),
             trailing: IconButton(
               icon: const Icon(
@@ -46,11 +47,11 @@ class ReferenceInfoTile extends StatelessWidget {
           child: Paragraph(channelDescriptions[version.name]),
         ),
         const Divider(height: 0),
-        FvmListTile(
+        SkListTile(
           title: const Text('Version'),
           trailing: channel.sdkVersion != null
               ? Chip(label: Text(channel.sdkVersion ?? ''))
-              : SetupButton(version: channel),
+              : SetupButton(release: channel),
         )
       ],
     );

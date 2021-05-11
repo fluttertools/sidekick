@@ -5,17 +5,7 @@ description: Flutter Version Manager.
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0-alpha.2
+version: 0.0.3
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -23,11 +13,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fvm:
-    # path: ../fvm
-    git:
-      url: https://github.com/leoafarias/fvm.git
-      ref: master
+  fvm: ^2.0.4
+
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
@@ -35,30 +22,32 @@ dependencies:
   animations: ^2.0.0
   async: ^2.5.0
   date_time_format: ^2.0.1
-  file_chooser: ^0.1.6
+
   filesize: ^1.0.4
   flutter_cache: ^0.1.0
   flutter_hooks: ^0.16.0
   flutter_spinkit: ^5.0.0
   github: ^8.1.0
   google_fonts: ^2.0.0
-  hive: ^2.0.3
+  hive: ^2.0.4
   hive_flutter: ^1.0.0
-  hooks_riverpod: ^0.14.0
+  hooks_riverpod: ^0.14.0+2
   list_ext: ^1.0.2
   material_design_icons_flutter: ^4.0.5955
-  material_floating_search_bar: ^0.3.3
+  material_floating_search_bar: ^0.3.4
   oktoast: ^3.0.0
   path_provider: ^2.0.1
   pub_api_client: ^2.0.1
-
   responsive_grid: ^2.0.0
-  settings_ui: ^1.0.0
   truncate: ^3.0.1
   url_launcher: ^6.0.3
   watcher: ^1.0.0
   open_file: ^3.2.0
   pubspec_parse: ^1.0.0
+  file_selector: ^0.8.2
+  file_selector_linux: ^0.0.2
+  file_selector_macos: ^0.0.4
+  file_selector_windows: ^0.0.2
 
 dev_dependencies:
   flutter_test:

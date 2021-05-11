@@ -2,30 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/cache_info_tile.dart';
-import 'package:sidekick/components/molecules/reference_info_tile.dart';
-import 'package:sidekick/components/molecules/release_info_section.dart';
-import 'package:sidekick/components/molecules/version_install_button.dart';
-import 'package:sidekick/providers/selected_info_provider.dart';
-import 'package:sidekick/utils/layout_size.dart';
 
-class InfoDrawer extends HookWidget {
-  const InfoDrawer({Key key}) : super(key: key);
+import '../../modules/common/utils/layout_size.dart';
+import '../../providers/selected_detail_provider.dart';
+import '../atoms/typography.dart';
+import '../molecules/cache_info_tile.dart';
+import '../molecules/reference_info_tile.dart';
+import '../molecules/release_info_section.dart';
+import '../molecules/version_install_button.dart';
+
+/// Drawer to display selected detail
+class SelectedDetailDrawer extends HookWidget {
+  /// Constructors
+  const SelectedDetailDrawer({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final provider = useProvider(selectedInfoProvider.notifier);
-    final selectedState = useProvider(selectedInfoProvider);
+    final detail = useProvider(selectedDetailProvider).state;
 
-    final selected = selectedState.version;
+    final selected = detail.release;
 
     void onClose() {
       // Close drawer if its not large layout
       if (!LayoutSize.isLarge) {
         Navigator.pop(context);
       }
-      provider.clearVersion();
+      // Clear selected detail provider
+      context.read(selectedDetailProvider).state = null;
     }
 
     if (selected == null) {
@@ -77,7 +80,7 @@ class InfoDrawer extends HookWidget {
             child: ListView(
               children: [
                 ReferenceInfoTile(selected),
-                CacheInfoTile(selected),
+                FvmInfoTile(selected),
                 ReleaseInfoSection(selected)
               ],
             ),

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// Paragraph
 class Paragraph extends StatelessWidget {
+  /// Constructor
+  const Paragraph(
+    this.text, {
+    this.maxLines,
+    this.overflow,
+    Key key,
+  }) : super(key: key);
+
+  /// Text
   final String text;
+
+  /// Max lines
   final int maxLines;
+
+  /// Overflow
   final TextOverflow overflow;
-  const Paragraph(this.text, {this.maxLines, this.overflow, Key key})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +34,16 @@ class Paragraph extends StatelessWidget {
   }
 }
 
+/// Caption
 class Caption extends StatelessWidget {
-  final String text;
-  const Caption(this.text, {Key key}) : super(key: key);
+  /// Constructor
+  const Caption(
+    this.text, {
+    Key key,
+  }) : super(key: key);
 
+  /// Text for caption
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -35,22 +53,16 @@ class Caption extends StatelessWidget {
   }
 }
 
-class TypographyHeadline extends StatelessWidget {
-  final String text;
-  const TypographyHeadline(this.text, {Key key}) : super(key: key);
+/// Stdout text
+class ConsoleText extends StatelessWidget {
+  /// Constructor
+  const ConsoleText(
+    this.text, {
+    Key key,
+  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.headline4,
-    );
-  }
-}
-
-class StdoutText extends StatelessWidget {
+  /// Content for stdout
   final String text;
-  const StdoutText(this.text, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,16 +72,19 @@ class StdoutText extends StatelessWidget {
       maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
-        color: Colors.cyan,
+        color: Theme.of(context).accentColor,
       ),
     );
   }
 }
 
-class StdinfoText extends StatelessWidget {
-  final String text;
-  const StdinfoText(this.text, {Key key}) : super(key: key);
+/// Console text info
+class ConsoleTextInfo extends StatelessWidget {
+  /// Constructor
+  const ConsoleTextInfo(this.text, {Key key}) : super(key: key);
 
+  /// Content
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -82,9 +97,13 @@ class StdinfoText extends StatelessWidget {
   }
 }
 
-class StderrText extends StatelessWidget {
+/// Stderr Text widget
+class ConsoleTextError extends StatelessWidget {
+  /// Constructor
+  const ConsoleTextError(this.text, {Key key}) : super(key: key);
+
+  /// Content
   final String text;
-  const StderrText(this.text, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +117,16 @@ class StderrText extends StatelessWidget {
   }
 }
 
+/// Heading
 class Heading extends StatelessWidget {
+  /// Constructor
+  const Heading(
+    this.text, {
+    Key key,
+  }) : super(key: key);
+
+  /// Content
   final String text;
-  const Heading(this.text, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -111,9 +137,16 @@ class Heading extends StatelessWidget {
   }
 }
 
+/// Subheading
 class Subheading extends StatelessWidget {
+  /// Constructor
+  const Subheading(
+    this.text, {
+    Key key,
+  }) : super(key: key);
+
+  /// content
   final String text;
-  const Subheading(this.text, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
