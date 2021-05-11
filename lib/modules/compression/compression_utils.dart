@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 import 'package:pool/pool.dart';
-import 'package:sidekick/modules/compression/models/image_asset.model.dart';
-import 'package:sidekick/utils/scan_directory.dart';
-import 'package:sidekick/utils/squash.dart';
+
+import '../../utils/scan_directory.dart';
+import '../../utils/squash.dart';
+import 'models/image_asset.model.dart';
 
 final pool = Pool(
   Platform.numberOfProcessors,

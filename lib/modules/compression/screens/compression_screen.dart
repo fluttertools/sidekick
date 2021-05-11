@@ -4,12 +4,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/components/molecules/empty_data_set/empty_versions.dart';
-import 'package:sidekick/modules/compression/components/compression_item.dart';
-import 'package:sidekick/modules/compression/compression_utils.dart';
-import 'package:sidekick/modules/compression/models/image_asset.model.dart';
-import 'package:sidekick/modules/compression/providers/compression.provider.dart';
+import 'package:sidekick/modules/fvm/components/fvm_empty_releases.dart';
+
+import '../../../components/atoms/typography.dart';
+import '../components/compression_item.dart';
+import '../compression.provider.dart';
+import '../compression_utils.dart';
+import '../models/image_asset.model.dart';
 
 class ImageCompressionScreen extends HookWidget {
   final Project project;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/modules/compression/components/compression_status.dart';
-import 'package:sidekick/modules/compression/models/compression_asset.model.dart';
+
+import '../models/compression_asset.model.dart';
+import 'compression_status.dart';
 
 class CompressionItem extends StatelessWidget {
   final CompressionAsset asset;

@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/modules/compression/compression_utils.dart';
-import 'package:sidekick/modules/compression/models/compression_asset.model.dart';
-import 'package:sidekick/modules/compression/models/image_asset.model.dart';
-import 'package:sidekick/utils/utils.dart';
+
+import '../../utils/utils.dart';
+import 'compression_utils.dart';
+import 'models/compression_asset.model.dart';
+import 'models/image_asset.model.dart';
 
 class TotalCompressionStat {
   final int original;

@@ -2,9 +2,10 @@ import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/components/atoms/typography.dart';
-import 'package:sidekick/modules/compression/components/before_after_dialog.dart';
-import 'package:sidekick/modules/compression/models/compression_asset.model.dart';
+
+import '../../../components/atoms/typography.dart';
+import '../models/compression_asset.model.dart';
+import 'before_after_dialog.dart';
 
 class CompressionStatus extends HookWidget {
   final CompressionAsset asset;

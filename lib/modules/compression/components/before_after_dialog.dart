@@ -1,7 +1,7 @@
 import 'package:before_after/before_after.dart';
 import 'package:flutter/material.dart';
-import 'package:sidekick/components/atoms/local_link_button.dart';
-import 'package:sidekick/modules/compression/models/image_asset.model.dart';
+
+import '../models/image_asset.model.dart';
 
 void showBeforeAndAfterDialog(
   BuildContext context, {
@@ -29,7 +29,7 @@ void showBeforeAndAfterDialog(
                 fit: BoxFit.contain,
               ),
             ),
-            LocalLinkButton(after.file.path)
+            // LocalLinkButton(after.file.path)
           ],
         ),
       );

@@ -1,4 +1,4 @@
-import 'package:sidekick/modules/compression/models/image_asset.model.dart';
+import 'image_asset.model.dart';
 
 enum Status {
   idle,
