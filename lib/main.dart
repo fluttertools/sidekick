@@ -9,7 +9,7 @@ import 'package:window_size/window_size.dart';
 
 import 'modules/common/app_shell.dart';
 import 'modules/common/constants.dart';
-import 'modules/common/organisms/error_db_screen.dart';
+import 'modules/common/organisms/hive_error_screen.dart';
 import 'modules/projects/project.dto.dart';
 import 'modules/projects/projects.service.dart';
 import 'modules/settings/settings.dto.dart';
@@ -44,7 +44,7 @@ class FvmApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (SettingsService.box == null) {
-      return const ErrorDBScreen();
+      return const HiveErrorScreen();
     }
 
     return ValueListenableBuilder(
