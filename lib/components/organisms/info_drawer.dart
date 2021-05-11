@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../modules/common/utils/layout_size.dart';
 import '../../providers/selected_detail_provider.dart';
-import '../../utils/layout_size.dart';
 import '../atoms/typography.dart';
 import '../molecules/cache_info_tile.dart';
 import '../molecules/reference_info_tile.dart';

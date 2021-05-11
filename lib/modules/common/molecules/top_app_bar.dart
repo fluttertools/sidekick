@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../constants.dart';
 import '../../../providers/navigation_provider.dart';
 import '../../../theme.dart';
 import '../../../version.dart';
 import '../../settings/settings.screen.dart';
 import '../../updater/components/update_button.dart';
+import '../constants.dart';
 
 /// Sidekick top app bar
 class SkAppBar extends StatelessWidget implements PreferredSizeWidget {

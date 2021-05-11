@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../components/molecules/version_install_button.dart';
-import '../../utils/helpers.dart';
+import '../../modules/common/utils/helpers.dart';
 import '../common/atoms/sliver_animated_switcher.dart';
 import '../common/organisms/screen.dart';
 import 'components/channel_showcase_item.dart';

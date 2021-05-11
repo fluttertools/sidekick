@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/notify.dart';
+import '../../../modules/common/utils/notify.dart';
 import '../../../version.dart';
 import '../settings.dto.dart';
 import '../settings.utils.dart';

@@ -7,8 +7,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:window_size/window_size.dart';
 
-import 'app_shell.dart';
-import 'constants.dart';
+import 'modules/common/app_shell.dart';
+import 'modules/common/constants.dart';
 import 'modules/projects/project.dto.dart';
 import 'modules/projects/projects.service.dart';
 import 'modules/settings/settings.dto.dart';
@@ -39,6 +39,7 @@ void main() async {
   runApp(ProviderScope(child: FvmApp()));
 }
 
+/// Fvm App
 class FvmApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

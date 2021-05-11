@@ -9,7 +9,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../../components/atoms/typography.dart';
 import '../../../dto/release.dto.dart';
-import '../../../utils/notify.dart';
+import '../../../modules/common/utils/notify.dart';
 import '../sandbox.provider.dart';
 
 /// Sandbox terminal

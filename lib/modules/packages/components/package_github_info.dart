@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:github/github.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../utils/open_link.dart';
+import '../../../modules/common/utils/open_link.dart';
 
 /// Github info for a package
 class PackageGithubInfo extends StatelessWidget {

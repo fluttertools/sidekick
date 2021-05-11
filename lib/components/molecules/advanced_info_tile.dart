@@ -4,7 +4,7 @@ import '../../dto/release.dto.dart';
 import '../../modules/common/atoms/copy_button.dart';
 import '../../modules/common/atoms/group_tile.dart';
 import '../../modules/common/molecules/list_tile.dart';
-import '../../utils/open_link.dart';
+import '../../modules/common/utils/open_link.dart';
 import '../atoms/typography.dart';
 
 /// Advanced info tile

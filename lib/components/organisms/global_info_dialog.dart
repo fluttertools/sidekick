@@ -5,7 +5,7 @@ import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../modules/common/atoms/copy_button.dart';
-import '../../utils/open_link.dart';
+import '../../modules/common/utils/open_link.dart';
 import '../atoms/typography.dart';
 
 Future<void> showGlobalInfoDialog(BuildContext context) async {

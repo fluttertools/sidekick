@@ -2,9 +2,9 @@ import 'package:github/github.dart';
 import 'package:http/http.dart' as http;
 import 'package:pub_semver/pub_semver.dart';
 
-import '../../constants.dart';
-import '../../utils/open_link.dart';
+import '../../modules/common/utils/open_link.dart';
 import '../../version.dart';
+import '../common/constants.dart';
 import 'updater.dto.dart';
 import 'updater.utils.dart';
 

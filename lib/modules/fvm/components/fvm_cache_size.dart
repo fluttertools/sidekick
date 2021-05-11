@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../utils/dir_stat.dart';
+import '../../../modules/common/utils/dir_stat.dart';
 import '../fvm.provider.dart';
 
 /// Fvm cache size

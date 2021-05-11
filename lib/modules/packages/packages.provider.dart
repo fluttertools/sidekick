@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 
-import '../../utils/dependencies.dart';
+import '../../modules/common/utils/dependencies.dart';
 import '../projects/projects.provider.dart';
 import 'package.dto.dart';
 

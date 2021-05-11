@@ -10,8 +10,8 @@ import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
 
 import '../../dto/release.dto.dart';
-import '../../utils/debounce.dart';
-import '../../utils/dir_stat.dart';
+import '../../modules/common/utils/debounce.dart';
+import '../../modules/common/utils/dir_stat.dart';
 import '../projects/projects.provider.dart';
 import '../releases/releases.provider.dart';
 

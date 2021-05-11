@@ -3,8 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../utils/helpers.dart';
-import '../../utils/notify.dart';
+import '../../modules/common/utils/helpers.dart';
+import '../../modules/common/utils/notify.dart';
 import 'scenes/flutter_settings.scene.dart';
 import 'scenes/fvm_settings.scene.dart';
 import 'scenes/general_settings.scene.dart';

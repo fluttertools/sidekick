@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../utils/notify.dart';
+import '../../../modules/common/utils/notify.dart';
 
 /// Copy button
 class CopyButton extends StatelessWidget {

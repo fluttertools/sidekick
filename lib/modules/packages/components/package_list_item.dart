@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../utils/open_link.dart';
+import '../../../modules/common/utils/open_link.dart';
 import '../../common/molecules/list_tile.dart';
 import '../package.dto.dart';
 import 'package_github_info.dart';

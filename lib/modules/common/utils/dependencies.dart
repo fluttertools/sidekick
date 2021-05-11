@@ -1,7 +1,7 @@
 import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 
-import '../modules/packages/package.dto.dart';
+import '../../packages/package.dto.dart';
 
 final client = PubClient();
 

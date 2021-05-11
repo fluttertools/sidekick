@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../modules/common/utils/notify.dart';
 import '../../modules/fvm/fvm.provider.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
-import '../../utils/notify.dart';
 
 Future<void> cleanupUnusedDialog(BuildContext context) async {
   final unusedVersions = context.read(unusedVersionProvider);

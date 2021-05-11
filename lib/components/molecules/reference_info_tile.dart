@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
 import '../../dto/channel.dto.dart';
 import '../../dto/release.dto.dart';
+import '../../modules/common/constants.dart';
 import '../../modules/common/molecules/list_tile.dart';
-import '../../utils/open_link.dart';
+import '../../modules/common/utils/open_link.dart';
 import '../atoms/typography.dart';
 import 'setup_button.dart';
 

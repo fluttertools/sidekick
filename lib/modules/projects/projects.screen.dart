@@ -7,7 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../components/atoms/typography.dart';
-import '../../utils/notify.dart';
+import '../../modules/common/utils/notify.dart';
 import '../common/atoms/checkbox.dart';
 import '../common/atoms/refresh_button.dart';
 import '../common/organisms/screen.dart';

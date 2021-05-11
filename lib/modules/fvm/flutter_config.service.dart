@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 
-import '../../utils/helpers.dart';
+import '../../modules/common/utils/helpers.dart';
 
 /// Flutter config service
 class FlutterConfigService {

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
-import '../../constants.dart';
+import '../common/constants.dart';
 
 final _platform = Platform.operatingSystem;
 
