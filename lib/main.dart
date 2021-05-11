@@ -9,12 +9,12 @@ import 'package:window_size/window_size.dart';
 
 import 'modules/common/app_shell.dart';
 import 'modules/common/constants.dart';
+import 'modules/common/organisms/error_db_screen.dart';
 import 'modules/projects/project.dto.dart';
 import 'modules/projects/projects.service.dart';
 import 'modules/settings/settings.dto.dart';
 import 'modules/settings/settings.service.dart';
 import 'modules/settings/settings.utils.dart';
-import 'screens/error_db_screen.dart';
 import 'theme.dart';
 
 void main() async {
