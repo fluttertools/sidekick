@@ -50,7 +50,7 @@ class ReleasesScreen extends HookWidget {
                         const SizedBox(width: 20),
                         const Expanded(
                           child: Caption(
-                            '''The current tip-of-tree, absolute latest cutting edge build.'''
+                            '''The current tip-of-tree, absolute latest cutting edge build. '''
                             '''Usually functional, though sometimes we accidentally break things.''',
                           ),
                         ),
