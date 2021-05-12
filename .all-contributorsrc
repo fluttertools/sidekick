@@ -47,6 +47,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "anticafe",
+      "name": "anticafe",
+      "avatar_url": "https://avatars.githubusercontent.com/u/340836?v=4",
+      "profile": "https://github.com/anticafe",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
