@@ -43,6 +43,7 @@ void main() async {
 class FvmApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Can only run one app instance at a time
     if (SettingsService.box == null) {
       return const HiveErrorScreen();
     }

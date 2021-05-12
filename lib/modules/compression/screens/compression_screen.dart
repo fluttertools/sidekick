@@ -4,20 +4,24 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/modules/fvm/components/fvm_empty_releases.dart';
 
 import '../../../components/atoms/typography.dart';
+import '../../fvm/components/fvm_empty_releases.dart';
 import '../components/compression_item.dart';
 import '../compression.provider.dart';
 import '../compression_utils.dart';
 import '../models/image_asset.model.dart';
 
+/// Image compression screen
 class ImageCompressionScreen extends HookWidget {
-  final Project project;
+  /// Constructor
   const ImageCompressionScreen({
     this.project,
     Key key,
   }) : super(key: key);
+
+  /// Project
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +36,28 @@ class ImageCompressionScreen extends HookWidget {
       processing.value = true;
       final assets = await scanForImages(project.projectDir);
       imageAssets.value = assets;
-      await context.read(compressionProvider).compressAll(assets);
+      await context.read(compressionProvider.notifier).compressAll(assets);
       processing.value = false;
       hasRun.value = true;
     }
 
     if (hasRun.value == false && processing.value == false) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Caption(
-            'Scan your assets for ${project.name}'
-            'located in ${project.projectDir.path}\n',
+      return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Caption(
+                'Scan your assets for ${project.name}'
+                'located in ${project.projectDir.path}\n',
+              ),
+              ElevatedButton(
+                onPressed: handleCompressImages,
+                child: const Text('Scan for images'),
+              )
+            ],
           ),
-          ElevatedButton(
-            onPressed: handleCompressImages,
-            child: const Text('Scan for images'),
-          )
-        ],
+        ),
       );
     }
 
@@ -70,7 +78,7 @@ class ImageCompressionScreen extends HookWidget {
     }
 
     return Scaffold(
-      // backgroundColor: Colors.black,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,

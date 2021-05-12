@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:pool/pool.dart';
 
-import '../../utils/scan_directory.dart';
-import '../../utils/squash.dart';
+import '../common/utils/scan_directory.dart';
 import 'models/image_asset.model.dart';
+import 'squash.dart';
 
 final pool = Pool(
   Platform.numberOfProcessors,

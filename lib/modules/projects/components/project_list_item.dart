@@ -5,6 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
+import '../../compression/screens/compression_screen.dart';
 import '../../releases/releases.provider.dart';
 import '../../sandbox/sandbox.screen.dart';
 import '../project.dto.dart';
@@ -39,6 +40,17 @@ class ProjectListItem extends HookWidget {
         context,
         MaterialPageRoute(
           builder: (context) => SandboxScreen(
+            project: project,
+          ),
+        ),
+      );
+    }
+
+    void openImageCompression() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ImageCompressionScreen(
             project: project,
           ),
         ),
@@ -88,6 +100,15 @@ class ProjectListItem extends HookWidget {
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.consoleLine),
                       onPressed: openProjectPlayground,
+                    ),
+                  ),
+                  Tooltip(
+                    message: "Compress images",
+                    child: IconButton(
+                      iconSize: 20,
+                      splashRadius: 20,
+                      icon: const Icon(MdiIcons.imageEdit),
+                      onPressed: openImageCompression,
                     ),
                   ),
                   const Spacer(),

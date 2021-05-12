@@ -2,23 +2,23 @@ import 'dart:io';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../utils/utils.dart';
+import '../common/utils/helpers.dart';
 import 'compression_utils.dart';
 import 'models/compression_asset.model.dart';
 import 'models/image_asset.model.dart';
 
 class TotalCompressionStat {
-  final int original;
-  final int savings;
   TotalCompressionStat({
     this.original = 0,
     this.savings = 0,
   });
+  final int original;
+  final int savings;
 }
 
 // Tracks progress of compression
 final compressionProgressProvider = Provider((ref) {
-  final assets = ref.watch(compressionProvider.state);
+  final assets = ref.watch(compressionProvider);
   // Turn into a list
   return assets.entries
       .map((e) => e.value)
@@ -27,7 +27,7 @@ final compressionProgressProvider = Provider((ref) {
 });
 
 final compressionStateProvider = Provider((ref) {
-  final assets = ref.watch(compressionProvider.state);
+  final assets = ref.watch(compressionProvider);
   // Turn into a list
   return assets.entries
       .map((e) => e.value)
@@ -37,7 +37,7 @@ final compressionStateProvider = Provider((ref) {
 
 // ignore: top_level_function_literal_block
 final compressionStatProvider = Provider((ref) {
-  final activitiesMap = ref.watch(compressionProvider.state);
+  final activitiesMap = ref.watch(compressionProvider);
   final activities = activitiesMap.entries.map((e) => e.value);
   // If its empty return empty total
   if (activities.isEmpty) {
@@ -56,7 +56,9 @@ final compressionStatProvider = Provider((ref) {
 });
 
 /// Image Compression Provider
-final compressionProvider = StateNotifierProvider<CompressionState>((ref) {
+final compressionProvider =
+    StateNotifierProvider<CompressionState, Map<String, CompressionAsset>>(
+        (ref) {
   return CompressionState(ref);
 });
 

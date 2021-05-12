@@ -49,6 +49,9 @@ dependencies:
   file_selector_macos: ^0.0.4
   file_selector_windows: ^0.0.2
   before_after: ^2.1.0
+  image: ^3.0.2
+  uuid: ^3.0.4
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:
