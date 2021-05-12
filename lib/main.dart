@@ -7,15 +7,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:window_size/window_size.dart';
 
-import 'modules/common/app_shell.dart';
-import 'modules/common/constants.dart';
-import 'modules/projects/project.dto.dart';
-import 'modules/projects/projects.service.dart';
-import 'modules/settings/settings.dto.dart';
-import 'modules/settings/settings.service.dart';
-import 'modules/settings/settings.utils.dart';
-import 'screens/error_db_screen.dart';
-import 'theme.dart';
+import 'src/modules/common/app_shell.dart';
+import 'src/modules/common/constants.dart';
+import 'src/modules/projects/project.dto.dart';
+import 'src/modules/projects/projects.service.dart';
+import 'src/modules/settings/settings.dto.dart';
+import 'src/modules/settings/settings.service.dart';
+import 'src/modules/settings/settings.utils.dart';
+import 'src/screens/error_db_screen.dart';
+import 'src/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

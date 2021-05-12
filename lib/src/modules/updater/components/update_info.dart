@@ -37,7 +37,7 @@ class SkUpdateInfo extends HookWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(width: 5),
-        const Text(appVersion),
+        const Text(packageVersion),
         const SizedBox(width: 20),
         Text("${updateInfo.latest}"),
         const SizedBox(width: 20),
