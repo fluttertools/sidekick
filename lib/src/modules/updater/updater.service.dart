@@ -21,7 +21,7 @@ class UpdaterService {
       ).repositories.getLatestRelease(kSidekickRepoSlug);
 
       final latestVersion = Version.parse((latestRelease.tagName));
-      final currentVersion = Version.parse(appVersion);
+      final currentVersion = Version.parse(packageVersion);
 
       final needUpdate = latestVersion > currentVersion;
 
