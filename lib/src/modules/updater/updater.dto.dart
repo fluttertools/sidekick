@@ -21,7 +21,7 @@ class SidekickUpdateInfo {
     return SidekickUpdateInfo(
       needUpdate: false,
       isInstalled: false,
-      current: appVersion,
+      current: packageVersion,
       latest: '',
       latestDownloadUrl: '',
     );

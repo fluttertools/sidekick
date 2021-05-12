@@ -47,7 +47,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         const SkUpdateButton(),
         const SizedBox(width: 10),
-        Center(child: Caption(appVersion)),
+        Center(child: Caption(packageVersion)),
         const SizedBox(width: 10),
         IconButton(
           icon: const Icon(Icons.search),

@@ -1,7 +1,7 @@
 # Flutter Sidekick
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
@@ -34,6 +34,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://eduardom.dev"><img src="https://avatars.githubusercontent.com/u/29983481?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Eduardo M.</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=aguilaair" title="Code">💻</a> <a href="#ideas-aguilaair" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/leoafarias/sidekick/commits?author=aguilaair" title="Documentation">📖</a></td>
     <td align="center"><a href="http://technodisaster.wtf"><img src="https://avatars.githubusercontent.com/u/52817235?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Jayesh Nirve</b></sub></a><br /><a href="#maintenance-Techno-Disaster" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://youtube.com/c/PaulHalliday"><img src="https://avatars.githubusercontent.com/u/19576417?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Paul Halliday</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=PaulHalliday" title="Code">💻</a> <a href="https://github.com/leoafarias/sidekick/issues?q=author%3APaulHalliday" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/anticafe"><img src="https://avatars.githubusercontent.com/u/340836?v=4?s=50" width="50px;" alt=""/><br /><sub><b>anticafe</b></sub></a><br /><a href="#a11y-anticafe" title="Accessibility">️️️️♿️</a></td>
   </tr>
 </table>
 

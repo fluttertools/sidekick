@@ -7,7 +7,7 @@ import 'package:image/image.dart';
 import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
-const uuid = Uuid();
+const _uuid = Uuid();
 
 /// Squash image compression
 class Squash {
@@ -43,7 +43,7 @@ class Squash {
 
     final tempPath = p.join(
       object.path,
-      'img_${uuid.v4()}.${imageExt.name}',
+      'img_${_uuid.v4()}.${imageExt.name}',
     );
 
     final tempFile = File(tempPath);

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../constants.dart';
+import '../../../modules/common/constants.dart';
 
 /// Returns a temp `Directory` for sidekick
 /// If [subDirectory] is provided it will add to the path

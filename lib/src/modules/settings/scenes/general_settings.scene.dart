@@ -95,7 +95,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           const Divider(),
           const ListTile(
             title: Text('Version'),
-            trailing: Text(appVersion),
+            trailing: Text(packageVersion),
           ),
           const Divider(),
           ListTile(
