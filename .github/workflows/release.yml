@@ -30,16 +30,11 @@ jobs:
       - name: Set new Flutter version
         run: cider version ${{ github.event.release.tag_name }}
 
-      - name: Write constants
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: lib/version.dart
-          contents: |
-            const appVersion = "${{ github.event.release.tag_name }}";
-          write-mode: overwrite
-
       - name: Flutter get packages
         run: flutter pub get
+
+      - name: Build Runner & version
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Flutter build app
         run: flutter build linux
@@ -86,16 +81,11 @@ jobs:
       - name: Set new Flutter version
         run: cider version ${{ github.event.release.tag_name }}
 
-      - name: Write constants
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: lib/version.dart
-          contents: |
-            const appVersion = "${{ github.event.release.tag_name }}";
-          write-mode: overwrite
-
       - name: Flutter get packages
         run: flutter pub get
+
+      - name: Build Runner & version
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Flutter build app
         run: flutter build macos
@@ -175,16 +165,11 @@ jobs:
               capabilities: "internetClient,removableStorage"
           write-mode: append
 
-      - name: Write constants
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: lib/version.dart
-          contents: |
-            const appVersion = "${{ github.event.release.tag_name }}";
-          write-mode: overwrite
-
       - name: Flutter get packages
         run: flutter pub get
+
+      - name: Build Runner & version
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Flutter build app
         run: flutter build windows
