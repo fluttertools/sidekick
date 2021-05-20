@@ -8,7 +8,7 @@ name: Release Artifacts
 jobs:
   build-linux:
     name: "Build Linux"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
