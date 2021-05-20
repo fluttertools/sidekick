@@ -35,27 +35,27 @@ AppDir:
       - usr/share/doc/*/changelog.*
       - usr/share/doc/*/NEWS.*
       - usr/share/doc/*/TODO.*
-  # test:
-  #   fedora:
-  #     image: appimagecrafters/tests-env:fedora-30
-  #     command: ./AppRun
-  #     use_host_x: true
-  #   debian:
-  #     image: appimagecrafters/tests-env:debian-stable
-  #     command: ./AppRun
-  #     use_host_x: true
-  #   arch:
-  #     image: appimagecrafters/tests-env:archlinux-latest
-  #     command: ./AppRun
-  #     use_host_x: true
-  #   centos:
-  #     image: appimagecrafters/tests-env:centos-7
-  #     command: ./AppRun
-  #     use_host_x: true
-  #   ubuntu:
-  #     image: appimagecrafters/tests-env:ubuntu-xenial
-  #     command: ./AppRun
-  #     use_host_x: true
+  test:
+    fedora:
+      image: appimagecrafters/tests-env:fedora-30
+      command: ./AppRun
+      use_host_x: true
+    debian:
+      image: appimagecrafters/tests-env:debian-stable
+      command: ./AppRun
+      use_host_x: true
+    arch:
+      image: appimagecrafters/tests-env:archlinux-latest
+      command: ./AppRun
+      use_host_x: true
+    centos:
+      image: appimagecrafters/tests-env:centos-7
+      command: ./AppRun
+      use_host_x: true
+    ubuntu:
+      image: appimagecrafters/tests-env:ubuntu-bionic
+      command: ./AppRun
+      use_host_x: true
 AppImage:
   arch: x86_64
   update-information: guess
