@@ -1,0 +1,25 @@
+name: sidekick
+version: "0.0.6"
+summary: Flutter Sidekick
+description: |
+  Sidekick é um aplicativo que fornece uma interface de desktop simples para ferramentas que aprimoram a experiência de desenvolvimento do Flutter para torná-lo ainda mais agradável.
+
+confinement: strict
+base: core18
+grade: stable
+icon: snap/gui/Sidekick.png
+
+apps:
+  sidekick:
+    command: desktop-launch Sidekick
+    extensions: [flutter-beta]
+    plugs:
+      - network
+      - desktop
+      - home
+
+parts:
+  sidekick:
+    source: https://github.com/leoafarias/sidekick.git
+    plugin: flutter
+    flutter-target: lib/main.dart

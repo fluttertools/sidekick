@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.6
+Terminal=false
+Type=Application
+Name=Flutter Sidekick
+Comment=Sidekick é um aplicativo que fornece uma interface de desktop simples para ferramentas que aprimoram a experiência de desenvolvimento do Flutter para torná-lo ainda mais agradável.
+Exec=sidekick %f
+Icon=${SNAP}/meta/gui/Sidekick.png
+Categories=Utility;
