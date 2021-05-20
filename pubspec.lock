@@ -42,7 +42,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -84,7 +84,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.3"
   build_runner_core:
     dependency: transitive
     description:
@@ -134,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  cli_notify:
+    dependency: transitive
+    description:
+      name: cli_notify
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   cli_util:
     dependency: transitive
     description:
@@ -287,7 +294,7 @@ packages:
       name: filesize
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "2.0.1"
   fixnum:
     dependency: transitive
     description:
@@ -313,14 +320,14 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.0"
+    version: "0.17.0"
   flutter_riverpod:
     dependency: transitive
     description:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+2"
+    version: "0.14.0+3"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -345,13 +352,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.1"
+  frontend_server_client:
+    dependency: transitive
+    description:
+      name: frontend_server_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   fvm:
     dependency: "direct main"
     description:
       name: fvm
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.4"
+    version: "2.0.5"
   github:
     dependency: "direct main"
     description:
@@ -372,7 +386,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   graphs:
     dependency: transitive
     description:
@@ -407,7 +421,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+2"
+    version: "0.14.0+4"
   http:
     dependency: transitive
     description:
@@ -512,6 +526,13 @@ packages:
       name: msix
       url: "https://pub.dartlang.org"
     source: hosted
+    version: "2.1.1"
+  oauth2:
+    dependency: transitive
+    description:
+      name: oauth2
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "2.0.0"
   oktoast:
     dependency: "direct main"
@@ -526,7 +547,7 @@ packages:
       name: open_file
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.2.1"
   package_config:
     dependency: transitive
     description:
@@ -624,7 +645,7 @@ packages:
       name: pub_api_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.5"
   pub_semver:
     dependency: transitive
     description:
@@ -666,7 +687,7 @@ packages:
       name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+1"
+    version: "0.14.0+3"
   shared_preferences:
     dependency: transitive
     description:
@@ -748,7 +769,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   stack_trace:
     dependency: transitive
     description:
@@ -804,7 +825,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.19"
+    version: "0.3.0"
   timing:
     dependency: transitive
     description:
@@ -812,6 +833,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  tint:
+    dependency: transitive
+    description:
+      name: tint
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   truncate:
     dependency: "direct main"
     description:
@@ -839,7 +867,7 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.3"
+    version: "6.0.4"
   url_launcher_linux:
     dependency: transitive
     description:
