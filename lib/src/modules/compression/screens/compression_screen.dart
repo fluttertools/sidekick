@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/compression/compression_utils.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../fvm/components/fvm_empty_releases.dart';
+import '../../common/atoms/empty_dataset.dart';
+import '../../common/atoms/loading_indicator.dart';
+import '../../common/utils/helpers.dart';
 import '../components/compression_item.dart';
 import '../compression.provider.dart';
-import '../compression_utils.dart';
-import '../models/image_asset.model.dart';
 
 /// Image compression screen
 class ImageCompressionScreen extends HookWidget {
@@ -25,60 +25,19 @@ class ImageCompressionScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final completed = useProvider(compressionProgressProvider);
-    final compressionState = useProvider(compressionStateProvider);
-    final totalStat = useProvider(compressionStatProvider);
-    final imageAssets = useState<List<ImageAsset>>([]);
-    final hasRun = useState(false);
-    final processing = useState(false);
+    final pod = compressStatePod(project.projectDir);
+    final notifier = usePod(pod.notifier);
+    final state = usePod(pod);
 
-    void handleCompressImages() async {
-      processing.value = true;
-      final assets = await scanForImages(project.projectDir);
-      imageAssets.value = assets;
-      await context.read(compressionProvider.notifier).compressAll(assets);
-      processing.value = false;
-      hasRun.value = true;
+    if (state.isLoading) {
+      return SkLoadingIndicator();
     }
 
-    if (hasRun.value == false && processing.value == false) {
-      return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Caption(
-                'Scan your assets for ${project.name}'
-                'located in ${project.projectDir.path}\n',
-              ),
-              ElevatedButton(
-                onPressed: handleCompressImages,
-                child: const Text('Scan for images'),
-              )
-            ],
-          ),
-        ),
-      );
-    }
-
-    if (processing.value == true) {
-      final totalAssets = imageAssets.value.length.toString();
-      final finishedAssets = completed.length.toString();
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Heading('Scanning project'),
-          Caption('$finishedAssets/$totalAssets')
-        ],
-      );
-    }
-
-    if (compressionState.isEmpty && hasRun.value) {
-      return const EmptyVersions();
+    if (state.assets.isEmpty) {
+      return EmptyDataset();
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -90,6 +49,30 @@ class ImageCompressionScreen extends HookWidget {
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: ListTile(
+            dense: true,
+            title: Text(project.name),
+            subtitle: Text(project.projectDir.path),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(state.stats.original.toString()),
+                const SizedBox(width: 10),
+                Text(state.stats.savings.toString()),
+                IconButton(
+                  splashRadius: 20,
+                  icon: const Icon(MdiIcons.play),
+                  onPressed: () async {
+                    await notifier.compress();
+                    await applyCompressionChanges(state.assets);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.close),
@@ -102,44 +85,13 @@ class ImageCompressionScreen extends HookWidget {
           const SizedBox(width: 10),
         ],
       ),
-      body: Column(
-        children: [
-          ListTile(
-            dense: true,
-            title: Text(project.name),
-            subtitle: Text(project.projectDir.path),
-            trailing: Flexible(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(totalStat.original.toString()),
-                  const SizedBox(width: 10),
-                  Text(totalStat.savings.toString()),
-                  IconButton(
-                    splashRadius: 20,
-                    icon: const Icon(MdiIcons.play),
-                    onPressed: () {
-                      handleCompressImages();
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const Divider(height: 0),
-          Expanded(
-            child: CupertinoScrollbar(
-              child: ListView.separated(
-                separatorBuilder: (_, __) => const Divider(),
-                itemCount: compressionState.length,
-                itemBuilder: (context, idx) {
-                  final image = compressionState[idx];
-                  return CompressionItem(image);
-                },
-              ),
-            ),
-          ),
-        ],
+      body: ListView.separated(
+        separatorBuilder: (_, __) => const Divider(),
+        itemCount: state.assets.length,
+        itemBuilder: (context, idx) {
+          final asset = state.assets[idx];
+          return CompressionItem(asset);
+        },
       ),
     );
   }

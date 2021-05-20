@@ -1,9 +1,13 @@
 import 'dart:io';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
 import '../constants.dart';
+
+/// Shorter version of useProvider
+final usePod = useProvider;
 
 /// String extensions
 extension StringExtension on String {

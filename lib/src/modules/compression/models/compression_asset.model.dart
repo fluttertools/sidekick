@@ -1,29 +1,49 @@
+import 'package:flutter/material.dart';
+
 import 'image_asset.model.dart';
 
+/// Compress Status
 enum Status {
+  /// Not started
   idle,
+
+  /// Started
   started,
+
+  /// Completed
   completed,
+
+  /// Completed with error
+  error,
 }
 
+/// Compression asset
 class CompressionAsset {
-  final ImageAsset original;
-  final ImageAsset compressed;
-  final Status status;
-  final bool hasError;
-  final String errorMsg;
+  ///Constructor
   CompressionAsset({
-    this.original,
+    @required this.original,
     this.compressed,
     this.status = Status.idle,
-    this.hasError = false,
     this.errorMsg = '',
   });
 
-  factory CompressionAsset.start(ImageAsset original) {
+  /// Original assset
+  final ImageAsset original;
+
+  /// Compressed asset
+  ImageAsset compressed;
+
+  /// status
+  Status status;
+
+  /// Error message
+  String errorMsg;
+
+  /// Compression asset with idle
+  factory CompressionAsset.idle(ImageAsset original) {
     return CompressionAsset(
       original: original,
-      status: Status.started,
+      status: Status.idle,
     );
   }
 
@@ -38,6 +58,12 @@ class CompressionAsset {
     }
   }
 
+  /// Id
+  String get id {
+    return original.id;
+  }
+
+  /// Total savings
   int get savings {
     if (isSmaller) {
       return original.size - compressed.size;
@@ -46,6 +72,7 @@ class CompressionAsset {
     }
   }
 
+  /// Percentage of savings
   String get savingsPercentage {
     if (status == Status.completed) {
       final percent = (100 - ((compressed.size / original.size) * 100));
@@ -55,22 +82,18 @@ class CompressionAsset {
     }
   }
 
-  CompressionAsset error(String message) {
-    return CompressionAsset(
-      original: original,
-      hasError: true,
-      errorMsg: message,
-      status: Status.completed,
-    );
+  /// Compression asset with start status
+  void start() => status = Status.started;
+
+  /// Compression status with error
+  void error(String message) {
+    status = Status.error;
+    errorMsg = message;
   }
 
-  CompressionAsset complete(
-    ImageAsset compressed,
-  ) {
-    return CompressionAsset(
-      original: original,
-      compressed: compressed,
-      status: Status.completed,
-    );
+  /// Complete a compresion status
+  void complete(ImageAsset compressedAsset) {
+    status = Status.completed;
+    compressed = compressedAsset;
   }
 }
