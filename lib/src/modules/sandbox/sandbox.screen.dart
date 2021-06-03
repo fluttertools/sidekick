@@ -31,8 +31,8 @@ class SandboxScreen extends HookWidget {
     final selectedRelease = useState<ReleaseDto>(null);
 
     useEffect(() {
-      if (selectedRelease.value == null && releases.allCached.isNotEmpty) {
-        selectedRelease.value = releases.allCached[0];
+      if (selectedRelease.value == null && releases.all.isNotEmpty) {
+        selectedRelease.value = releases.all[0];
       }
       return;
     }, []);
@@ -80,7 +80,7 @@ class SandboxScreen extends HookWidget {
                 ListTile(
                   dense: true,
                   title: const Text('Releases'),
-                  subtitle: Text('${releases.allCached.length} versions'),
+                  subtitle: Text('${releases.all.length} versions'),
                 ),
                 const Divider(height: 1),
                 Expanded(
@@ -88,7 +88,7 @@ class SandboxScreen extends HookWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListView(
-                        children: releases.allCached.map(
+                        children: releases.all.map(
                           (version) {
                             if (version.name == selectedRelease.value?.name) {
                               return Padding(

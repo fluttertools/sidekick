@@ -28,7 +28,7 @@ class ProjectListItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cachedVersions = useProvider(releasesStateProvider).allCached;
+    final cachedVersions = useProvider(releasesStateProvider).all;
 
     final version = useProvider(getVersionProvider(project.pinnedVersion));
 

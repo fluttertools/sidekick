@@ -10,12 +10,12 @@ import 'components/fvm_cache_size.dart';
 import 'components/fvm_empty_releases.dart';
 import 'components/fvm_release_list_item.dart';
 
-class HomeScreen extends HookWidget {
-  const HomeScreen({Key key}) : super(key: key);
+class FVMScreen extends HookWidget {
+  const FVMScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final cachedVersions = useProvider(releasesStateProvider).allCached;
+    final cachedVersions = useProvider(releasesStateProvider).all;
 
     if (cachedVersions == null) {
       return const Center(child: CircularProgressIndicator());
@@ -35,10 +35,10 @@ class HomeScreen extends HookWidget {
         Tooltip(
           message: 'Clean up unused versions.',
           child: OutlinedButton(
-            child: const Text('Clean up'),
             onPressed: () async {
               await cleanupUnusedDialog(context);
             },
+            child: const Text('Clean up'),
           ),
         )
       ],

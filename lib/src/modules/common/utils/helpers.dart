@@ -9,7 +9,7 @@ import '../constants.dart';
 extension StringExtension on String {
   ///Capitalizes a string
   String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1)}";
+    return '${this[0].toUpperCase()}${substring(1)}';
   }
 }
 

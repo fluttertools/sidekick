@@ -61,7 +61,7 @@ class AppShell extends HookWidget {
     // Render corret page widget based on index
     Widget renderPage(int index) {
       const pages = [
-        HomeScreen(),
+        FVMScreen(),
         ProjectsScreen(),
         ReleasesScreen(),
         PackagesScreen(),

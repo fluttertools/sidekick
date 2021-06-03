@@ -13,33 +13,30 @@ class AppReleasesState {
   MasterDto master;
   List<ChannelDto> channels;
   List<VersionDto> versions;
-  Map<String, ReleaseDto> allMap;
+
   bool hasGlobal;
   AppReleasesState({
     this.channels,
     this.versions,
     this.master,
-    this.allMap,
     this.hasGlobal = false,
   }) {
     channels = <ChannelDto>[];
     versions = <VersionDto>[];
-    allMap = {};
   }
 
   /// Returns all releases and channels
-  List<ReleaseDto> get all {
+  Map<String, ReleaseDto> get allMap {
     final releases = [...channels, ...versions];
     if (master != null) {
       // Master goes first
       releases.insert(0, master);
     }
-
-    return releases;
+    return {for (var release in releases) release.name: release};
   }
 
   /// Returns all releases and channels that are cached
-  List<ReleaseDto> get allCached {
+  List<ReleaseDto> get all {
     // Only get unique cached releases
     // Some releases replicate across channels
     // They can only be installed once and conflict
@@ -148,20 +145,15 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     releasesState.versions.add(version);
   }
 
-  /// Create a map with all the versions
-  final allVersions = [...releasesState.versions, ...releasesState.channels];
-  releasesState.allMap = {
-    for (var version in allVersions) version.name: version
-  };
-
   return releasesState;
 });
 
-final getVersionProvider =
-    Provider.family<ReleaseDto, String>((ref, versionName) {
-  final state = ref.watch(releasesStateProvider);
-  return state.allMap[versionName];
-});
+final getVersionProvider = Provider.family<ReleaseDto, String>(
+  (ref, versionName) {
+    final state = ref.watch(releasesStateProvider);
+    return state.allMap[versionName];
+  },
+);
 
 enum Filter {
   beta,
