@@ -29,6 +29,22 @@ class ProjectReleaseSelect extends StatelessWidget {
 
         // elevation: 1,
         padding: EdgeInsets.zero,
+        onSelected: (version) async {
+          await context.read(fvmQueueProvider.notifier).pinVersion(project, version);
+        },
+        itemBuilder: (context) {
+          return releases
+              .map(
+                (version) => PopupMenuItem(
+                  value: version.name,
+                  child: Text(
+                    version.name,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                ),
+              )
+              .toList();
+        },
         child: Container(
           padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
           constraints: const BoxConstraints(
@@ -45,22 +61,6 @@ class ProjectReleaseSelect extends StatelessWidget {
               const Icon(MdiIcons.menuDown),
             ],
           ),
-        ),
-        onSelected: (version) async {
-          context.read(fvmQueueProvider.notifier).pinVersion(project, version);
-        },
-        itemBuilder: (context) {
-          return releases
-              .map(
-                (version) => PopupMenuItem(
-                  value: version.name,
-                  child: Text(
-                    version.name,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                ),
-              )
-              .toList();
-        });
+        ));
   }
 }

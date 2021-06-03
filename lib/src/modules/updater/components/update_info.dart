@@ -26,8 +26,8 @@ class SkUpdateInfo extends HookWidget {
           ),
           const SizedBox(width: 5),
           TextButton(
-            child: const Text('Click here to download.'),
             onPressed: () {},
+            child: const Text('Click here to download.'),
           ),
         ],
       );
@@ -39,13 +39,13 @@ class SkUpdateInfo extends HookWidget {
         const SizedBox(width: 5),
         const Text(packageVersion),
         const SizedBox(width: 20),
-        Text("${updateInfo.latest}"),
+        Text('${updateInfo.latest}'),
         const SizedBox(width: 20),
         OutlinedButton.icon(
           icon: Icon(
             updateInfo.needUpdate ? Icons.file_download : Icons.refresh,
           ),
-          label: Text("Refresh"),
+          label: Text('Refresh'),
           onPressed: updater.checkLatest,
         ),
       ],

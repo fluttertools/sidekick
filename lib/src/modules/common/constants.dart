@@ -41,6 +41,6 @@ Map<String, String> channelDescriptions = {
 
 /// Sidekick repository slug
 final kSidekickRepoSlug = RepositorySlug(
-  "leoafarias",
-  "sidekick",
+  'leoafarias',
+  'sidekick',
 );

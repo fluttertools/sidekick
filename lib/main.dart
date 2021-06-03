@@ -27,7 +27,7 @@ void main() async {
     await SettingsService.init();
     await ProjectsService.init();
   } on FileSystemException {
-    print("There was an issue opening the DB");
+    print('There was an issue opening the DB');
   }
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {

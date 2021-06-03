@@ -86,7 +86,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     channels = localVersions.where((item) => item.isChannel).toList();
     versions = localVersions.where((item) => item.isChannel == false).toList();
     all = [...channels, ...versions];
-    _setTotalCacheSize();
+    await _setTotalCacheSize();
   }
 
   CacheVersion getChannel(String name) {

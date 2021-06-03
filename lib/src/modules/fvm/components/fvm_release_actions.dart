@@ -119,10 +119,10 @@ class FvmReleaseActions extends StatelessWidget {
           context.read(fvmQueueProvider.notifier).upgrade(release);
         }
       },
-      child: const Icon(MdiIcons.dotsVertical),
       itemBuilder: (context) {
         return renderMenuOptions();
       },
+      child: const Icon(MdiIcons.dotsVertical),
     );
   }
 }

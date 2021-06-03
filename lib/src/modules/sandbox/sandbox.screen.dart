@@ -94,6 +94,9 @@ class SandboxScreen extends HookWidget {
                               return Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: ElevatedButton(
+                                  onPressed: () {
+                                    selectedRelease.value = version;
+                                  },
                                   child: Row(
                                     children: [
                                       Padding(
@@ -102,15 +105,15 @@ class SandboxScreen extends HookWidget {
                                       ),
                                     ],
                                   ),
-                                  onPressed: () {
-                                    selectedRelease.value = version;
-                                  },
                                 ),
                               );
                             }
                             return Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: TextButton(
+                                onPressed: () {
+                                  selectedRelease.value = version;
+                                },
                                 child: Row(
                                   children: [
                                     Padding(
@@ -119,9 +122,6 @@ class SandboxScreen extends HookWidget {
                                     ),
                                   ],
                                 ),
-                                onPressed: () {
-                                  selectedRelease.value = version;
-                                },
                               ),
                             );
                           },
@@ -153,12 +153,12 @@ class SandboxScreen extends HookWidget {
                               color: Colors.deepOrange,
                             ),
                           ),
-                          child: const Text(
-                            'Cancel',
-                          ),
                           onPressed: () {
                             terminal.endProcess();
                           },
+                          child: const Text(
+                            'Cancel',
+                          ),
                         )
                       : const OutlinedButton(
                           onPressed: null,

@@ -27,8 +27,8 @@ class FvmSettingsScene extends StatelessWidget {
           const SizedBox(height: 20),
           SwitchListTile(
             title: const Text('Git Cache'),
-            subtitle: const Text("This will cache the main Flutter repository"
-                " for faster and smaller installs"),
+            subtitle: const Text('This will cache the main Flutter repository'
+                ' for faster and smaller installs'),
             value: settings.fvm.gitCache ?? false,
             onChanged: (value) {
               settings.fvm.gitCache = value;
@@ -38,8 +38,8 @@ class FvmSettingsScene extends StatelessWidget {
           const Divider(),
           SwitchListTile(
             title: const Text('Skip setup Flutter on install'),
-            subtitle: const Text("This will only clone Flutter and not install"
-                "dependencies after a new version is installed."),
+            subtitle: const Text('This will only clone Flutter and not install'
+                'dependencies after a new version is installed.'),
             value: settings.fvm.skipSetup ?? false,
             onChanged: (value) {
               settings.fvm.skipSetup = value;

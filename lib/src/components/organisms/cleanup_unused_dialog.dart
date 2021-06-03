@@ -25,13 +25,12 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
-                child: const Text("Cancel"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                child: const Text('Cancel'),
               ),
               TextButton(
-                child: const Text("Confirm"),
                 onPressed: () async {
                   final unusedSelected = unusedVersions.where(
                     (element) => selected.containsKey(element.name),
@@ -42,6 +41,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
 
                   Navigator.of(context).pop();
                 },
+                child: const Text('Confirm'),
               ),
             ],
             content: Container(

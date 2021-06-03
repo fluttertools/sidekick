@@ -72,7 +72,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
 
-    _addToQueue(version, action: action);
+    await _addToQueue(version, action: action);
   }
 
   /// Adds setup action to queue
@@ -122,7 +122,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.installAndSetup:
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
-          await notify('Version ${item.version.name} has been installed.');
+          notify('Version ${item.version.name} has been installed.');
           break;
         case QueueAction.channelUpgrade:
           await FVMClient.upgradeChannel(item.version.cache);
@@ -158,7 +158,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reload(project);
-    await notify('Version $version pinned to ${project.name}');
+    notify('Version $version pinned to ${project.name}');
   }
 
   Future<void> _addToQueue(ReleaseDto version, {QueueAction action}) async {

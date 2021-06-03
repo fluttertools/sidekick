@@ -50,7 +50,7 @@ class PackagesScreen extends HookWidget {
       loading: () => const SkLoadingIndicator(),
       error: (_, __) => Container(
         child: const Text(
-          "There was an issue loading your packages.",
+          'There was an issue loading your packages.',
         ),
       ),
     );

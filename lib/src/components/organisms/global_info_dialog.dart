@@ -18,7 +18,6 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
           title: const Heading('Global configuration'),
           actions: <Widget>[
             TextButton(
-              child: const Text("OK"),
               style: ButtonStyle(
                   padding: MaterialStateProperty.resolveWith(
                 (states) => const EdgeInsets.all(20),
@@ -26,6 +25,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              child: const Text('OK'),
             ),
           ],
           content: Container(
@@ -34,15 +34,15 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Subheading(
-                  "Flutter PATH is pointing to\n ",
+                  'Flutter PATH is pointing to\n ',
                 ),
-                Caption("${configured.currentPath}.\n\n"),
+                Caption('${configured.currentPath}.\n\n'),
                 !configured.isSetup
                     ? Column(
                         children: [
                           const Subheading(
-                            "Change the path to\n"
-                            "if you want to Flutter SDK through FVM",
+                            'Change the path to\n'
+                            'if you want to Flutter SDK through FVM',
                           ),
                           Row(
                             children: [

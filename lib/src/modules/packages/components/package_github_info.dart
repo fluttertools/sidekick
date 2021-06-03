@@ -27,7 +27,7 @@ class PackageGithubInfo extends StatelessWidget {
         const SizedBox(width: 10),
         TextButton.icon(
           onPressed: () {
-            openLink("${repo.htmlUrl}/stargazers");
+            openLink('${repo.htmlUrl}/stargazers');
           },
           icon: const Icon(Icons.star, size: 15),
           label: Text(repo.stargazersCount.toString()),
@@ -35,7 +35,7 @@ class PackageGithubInfo extends StatelessWidget {
         const SizedBox(width: 10),
         TextButton.icon(
           onPressed: () {
-            openLink("${repo.htmlUrl}/issues");
+            openLink('${repo.htmlUrl}/issues');
           },
           icon: const Icon(MdiIcons.alertCircleOutline, size: 15),
           label: Text(repo.openIssuesCount.toString()),
@@ -43,7 +43,7 @@ class PackageGithubInfo extends StatelessWidget {
         const SizedBox(width: 10),
         TextButton.icon(
           onPressed: () {
-            openLink("${repo.htmlUrl}/network/members");
+            openLink('${repo.htmlUrl}/network/members');
           },
           icon: const Icon(MdiIcons.sourceFork, size: 15),
           label: Text(repo.forksCount.toString()),

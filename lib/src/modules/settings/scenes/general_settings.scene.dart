@@ -24,12 +24,12 @@ class SettingsSectionGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     void handleReset() async {
       // flutter defined function
-      showDialog(
+      await showDialog(
         context: context,
         builder: (context) {
           // return object of type Dialog
           return AlertDialog(
-            title: const Text("Are you sure you want to reset settings?"),
+            title: const Text('Are you sure you want to reset settings?'),
             content: const Text(
               'This will only reset Sidekick specific preferences',
             ),
@@ -37,19 +37,19 @@ class SettingsSectionGeneral extends StatelessWidget {
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
-                child: const Text("Cancel"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                child: const Text('Cancel'),
               ),
               TextButton(
-                child: const Text("Confirm"),
                 onPressed: () async {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
                   onSave();
                   notify('App settings have been reset');
                 },
+                child: const Text('Confirm'),
               ),
             ],
           );
@@ -64,7 +64,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           Text('General', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           ListTile(
-            title: const Text("Theme"),
+            title: const Text('Theme'),
             subtitle: const Text(
               'Select a theme or switch according to system settings..',
             ),
@@ -74,16 +74,16 @@ class SettingsSectionGeneral extends StatelessWidget {
               value: settings.sidekick.themeMode.toString(),
               items: const [
                 DropdownMenuItem(
-                  child: Text("System"),
                   value: SettingsThemeMode.system,
+                  child: Text('System'),
                 ),
                 DropdownMenuItem(
-                  child: Text("Light"),
                   value: SettingsThemeMode.light,
+                  child: Text('Light'),
                 ),
                 DropdownMenuItem(
-                  child: Text("Dark"),
                   value: SettingsThemeMode.dark,
+                  child: Text('Dark'),
                 ),
               ],
               onChanged: (themeMode) async {

@@ -27,7 +27,7 @@ class ErrorDBScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    "There was an isssue opening Sidekick",
+                    'There was an isssue opening Sidekick',
                     style: Theme.of(context).textTheme.headline4,
                     textAlign: TextAlign.center,
                   ),
@@ -42,7 +42,7 @@ class ErrorDBScreen extends StatelessWidget {
                     height: 20,
                   ),
                   ElevatedButton.icon(
-                    label: const Text("Close"),
+                    label: const Text('Close'),
                     icon: const Icon(Icons.close),
                     onPressed: () {
                       exit(0);
@@ -58,6 +58,6 @@ class ErrorDBScreen extends StatelessWidget {
   }
 }
 
-const text = "Sidekick is having trouble reading its settings."
-    " Please make sure that there are no other instances of Sidekick running"
-    " and try again. If the problem persists, please open a Github Issue.";
+const text = 'Sidekick is having trouble reading its settings.'
+    ' Please make sure that there are no other instances of Sidekick running'
+    ' and try again. If the problem persists, please open a Github Issue.';

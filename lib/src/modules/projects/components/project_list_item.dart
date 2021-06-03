@@ -82,7 +82,7 @@ class ProjectListItem extends HookWidget {
                 children: [
                   const SizedBox(width: 10),
                   Tooltip(
-                    message: "Open terminal playground",
+                    message: 'Open terminal playground',
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,

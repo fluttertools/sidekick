@@ -77,10 +77,10 @@ class ProjectActions extends StatelessWidget {
           );
         }
       },
-      child: const Icon(MdiIcons.dotsVertical),
       itemBuilder: (context) {
         return renderMenuOptions();
       },
+      child: const Icon(MdiIcons.dotsVertical),
     );
   }
 }

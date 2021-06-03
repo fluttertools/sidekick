@@ -42,7 +42,7 @@ class ProjectsScreen extends HookWidget {
         // Operation was canceled by the user.
         return;
       }
-      notifier.addProject(directoryPath);
+      await notifier.addProject(directoryPath);
     }
 
     useEffect(() {

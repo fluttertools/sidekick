@@ -134,7 +134,6 @@ class AppShell extends HookWidget {
                               duration: const Duration(milliseconds: 250),
                               reverse: selectedIndex.value <
                                   (navigation.previous.index ?? 0),
-                              child: renderPage(selectedIndex.value),
                               transitionBuilder: (
                                 child,
                                 animation,
@@ -142,13 +141,14 @@ class AppShell extends HookWidget {
                               ) {
                                 return SharedAxisTransition(
                                   fillColor: Colors.transparent,
-                                  child: child,
                                   animation: animation,
                                   secondaryAnimation: secondaryAnimation,
                                   transitionType:
                                       SharedAxisTransitionType.vertical,
+                                  child: child,
                                 );
                               },
+                              child: renderPage(selectedIndex.value),
                             ),
                           ),
                         ],

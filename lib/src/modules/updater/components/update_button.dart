@@ -34,28 +34,28 @@ class SkUpdateButton extends HookWidget {
               children: const [
                 Icon(MdiIcons.alertDecagram),
                 SizedBox(width: 10),
-                Heading("Update available."),
+                Heading('Update available.'),
               ],
             ),
             content: Container(
               child: Paragraph(
-                "Sidekick version ${updateInfo.latest} is now available.",
+                'Sidekick version ${updateInfo.latest} is now available.',
               ),
             ),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
-                child: const Text("Later"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                child: const Text('Later'),
               ),
               ElevatedButton(
-                child: const Text("Update Now"),
                 onPressed: () async {
-                  updater.openInstaller();
+                  await updater.openInstaller();
                   Navigator.of(context).pop();
                 },
+                child: const Text('Update Now'),
               ),
             ],
           );

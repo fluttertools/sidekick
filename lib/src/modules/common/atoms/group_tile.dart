@@ -49,12 +49,12 @@ class SkGroupTile extends HookWidget {
         title: title,
         leading: leading,
         trailing: trailing,
-        children: children,
         tilePadding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
         backgroundColor: Colors.white12,
         onExpansionChanged: (expanded) {
           isExpanded.value = expanded;
         },
+        children: children,
       ),
     );
   }

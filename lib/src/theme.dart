@@ -110,8 +110,8 @@ ThemeData get lightTheme {
   );
 }
 
-get _textButtonThemeData {
-  TextButtonThemeData(
+TextButtonThemeData get _textButtonThemeData {
+  return TextButtonThemeData(
     style: TextButton.styleFrom(
       tapTargetSize: MaterialTapTargetSize.padded,
       padding: const EdgeInsets.symmetric(horizontal: 20),

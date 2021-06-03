@@ -16,16 +16,10 @@ class AllSettings {
     this.fvm,
     this.flutter,
   }) {
-    if (fvm == null) {
-      fvm = FvmSettings();
-    }
-    if (sidekick == null) {
-      sidekick = SidekickSettings();
-    }
+    fvm ??= FvmSettings();
+    sidekick ??= SidekickSettings();
 
-    if (flutter == null) {
-      flutter = FlutterSettings();
-    }
+    flutter ??= FlutterSettings();
   }
 
   AllSettings copy() => AllSettings(
@@ -131,11 +125,11 @@ class FlutterSettings {
   /// Flutter settings to map
   Map<String, bool> toMap() {
     return {
-      "analytics": analytics,
-      "macos": macos,
-      "linux": linux,
-      "windows": windows,
-      "web": web,
+      'analytics': analytics,
+      'macos': macos,
+      'linux': linux,
+      'windows': windows,
+      'web': web,
     };
   }
 }

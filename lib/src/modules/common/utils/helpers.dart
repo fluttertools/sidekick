@@ -16,13 +16,13 @@ extension StringExtension on String {
 /// Iterable extension
 extension ExtendedIterable<E> on Iterable<E> {
   /// Like Iterable<T>.map but callback have index as second argument
-  Iterable<T> mapIndexed<T>(T f(E e, int i)) {
+  Iterable<T> mapIndexed<T>(T Function(E e, int i) f) {
     var i = 0;
     return map((e) => f(e, i++));
   }
 
   /// For each with index
-  void forEachIndexed(void f(E e, int i)) {
+  void forEachIndexed(void Function(E e, int i) f) {
     var i = 0;
     forEach((e) => f(e, i++));
   }

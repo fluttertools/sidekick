@@ -65,9 +65,7 @@ class _SettingsStateNotifier extends StateNotifier<AllSettings> {
     );
 
     /// First run if it's null set
-    if (_prevState == null) {
-      _prevState = state.copy();
-    }
+    _prevState ??= state.copy();
   }
 
   /// Save settings

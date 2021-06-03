@@ -60,9 +60,9 @@ class SettingsSectionFlutter extends HookWidget {
             SwitchListTile(
               title: const Text('Analytics & Crash Reporting'),
               subtitle: const Text(
-                "When a flutter command crashes it attempts"
-                " to send a crash report to Google in order to help"
-                " Google contribute improvements to Flutter over time",
+                'When a flutter command crashes it attempts'
+                ' to send a crash report to Google in order to help'
+                ' Google contribute improvements to Flutter over time',
               ),
               value: !settings.flutter.analytics,
               onChanged: deactivate
