@@ -56,6 +56,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "arthurdenner",
+      "name": "Arthur Denner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13774309?v=4",
+      "profile": "https://linktr.ee/arthurdenner",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
