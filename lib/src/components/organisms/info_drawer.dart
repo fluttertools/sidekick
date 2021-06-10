@@ -20,7 +20,7 @@ class SelectedDetailDrawer extends HookWidget {
   Widget build(BuildContext context) {
     final detail = useProvider(selectedDetailProvider).state;
 
-    final selected = detail.release;
+    final selected = detail?.release;
 
     void onClose() {
       // Close drawer if its not large layout
