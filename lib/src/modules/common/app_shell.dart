@@ -48,7 +48,7 @@ class AppShell extends HookWidget {
     useValueChanged(selectedInfo, (_, __) {
       if (_scaffoldKey.currentState == null) return;
       final isOpen = _scaffoldKey.currentState.isEndDrawerOpen;
-      final hasInfo = selectedInfo.release != null;
+      final hasInfo = selectedInfo?.release != null;
 
       // Open drawer if not large layout and its not open
       if (hasInfo && !isOpen) {
