@@ -33,6 +33,10 @@ jobs:
       - name: Set release changelog
         run: cider release
 
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update changelog
+
       - name: Flutter get packages
         run: flutter pub get
 
