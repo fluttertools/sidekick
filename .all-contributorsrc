@@ -4,6 +4,8 @@
   ],
   "imageSize": 50,
   "commit": false,
+  "contributorsPerLine":5,
+  "skipCi": true,
   "contributors": [
     {
       "login": "leoafarias",
