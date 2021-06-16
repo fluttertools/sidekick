@@ -126,7 +126,10 @@ RoundedRectangleBorder get _roundedShape {
 }
 
 Color platformBackgroundColor(BuildContext context) {
-  if (Platform.isMacOS && Theme.of(context).brightness == Brightness.dark) {
+  final themeBrightness = Theme.of(context).brightness;
+  final platformBrightness = MediaQuery.of(context).platformBrightness;
+  final brightnessMatches = themeBrightness == platformBrightness;
+  if (Platform.isMacOS && brightnessMatches) {
     return Colors.transparent;
   } else {
     return Theme.of(context).cardColor;
