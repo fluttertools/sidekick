@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../components/molecules/version_install_button.dart';
@@ -23,7 +24,7 @@ class ReleasesScreen extends HookWidget {
 
     return SkScreen(
       extendBody: false,
-      title: 'Releases',
+      title: S.of(context).releases,
       child: CupertinoScrollbar(
         child: CustomScrollView(
           slivers: [
@@ -46,12 +47,12 @@ class ReleasesScreen extends HookWidget {
                     child: Row(
                       children: [
                         const SizedBox(width: 10),
-                        const Subheading('Master'),
+                        Subheading(S.of(context).master),
                         const SizedBox(width: 20),
-                        const Expanded(
+                        Expanded(
                           child: Caption(
-                            '''The current tip-of-tree, absolute latest cutting edge build. '''
-                            '''Usually functional, though sometimes we accidentally break things.''',
+                            S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuild +
+                            S.of(context).usuallyFunctionalThoughSometimesWeAccidentallyBreakThings,
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -112,7 +113,7 @@ class ReleasesScreen extends HookWidget {
                   children: [
                     Row(
                       children: [
-                        const Heading('Versions'),
+                        Heading(S.of(context).versions),
                         const SizedBox(width: 10),
                         Chip(label: Text(versions.length.toString())),
                       ],

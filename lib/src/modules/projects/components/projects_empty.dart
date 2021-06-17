@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../common/atoms/empty_dataset.dart';
 
@@ -18,14 +19,14 @@ class EmptyProjects extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'No Flutter Projects have been added yet.',
+              S.of(context).noFlutterProjectsHaveBeenAddedYet,
               style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              'Add your Flutter project '
-              'Projects information will be displayed here.',
+              S.of(context).addYourFlutterProject +
+              S.of(context).projectsInformationWillBeDisplayedHere,
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),

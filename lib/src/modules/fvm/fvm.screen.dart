@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/organisms/cleanup_unused_dialog.dart';
 import '../common/organisms/screen.dart';
@@ -26,19 +27,19 @@ class FVMScreen extends HookWidget {
     }
 
     return SkScreen(
-      title: 'Installed Versions',
+      title: S.of(context).installedVersions,
       actions: [
-        Text('${cachedVersions.length} versions'),
+        Text(S.of(context).numberOfCachedVersions(cachedVersions.length)),
         const SizedBox(width: 20),
         const FvmCacheSize(),
         const SizedBox(width: 20),
         Tooltip(
-          message: 'Clean up unused versions.',
+          message: S.of(context).cleanUpTooltip,
           child: OutlinedButton(
             onPressed: () async {
               await cleanupUnusedDialog(context);
             },
-            child: const Text('Clean up'),
+            child: Text(S.of(context).cleanUp),
           ),
         )
       ],

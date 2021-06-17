@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/release.dto.dart';
 import '../../modules/common/atoms/copy_button.dart';
@@ -25,11 +26,11 @@ class AdvancedInfoTile extends StatelessWidget {
     }
 
     return SkGroupTile(
-      title: const Text('Advanced'),
+      title: Text(S.of(context).advanced),
       children: [
         SkListTile(
-          title: const Text('Download Zip'),
-          subtitle: const Caption('Zip file with all release dependencies.'),
+          title: Text(S.of(context).downloadZip),
+          subtitle: Caption(S.of(context).zipFileWithAllReleaseDependencies),
           trailing: IconButton(
             icon: const Icon(Icons.cloud_download),
             onPressed: () async {
@@ -39,13 +40,13 @@ class AdvancedInfoTile extends StatelessWidget {
         ),
         const Divider(),
         SkListTile(
-          title: const Text('Hash'),
+          title: Text(S.of(context).hash),
           subtitle: Caption(release.release.hash),
           trailing: CopyButton(release.release.hash),
         ),
         const Divider(),
         SkListTile(
-          title: const Text('Sha256'),
+          title: Text(S.of(context).sha256),
           subtitle: Caption(release.release.sha256),
           trailing: CopyButton(release.release.sha256),
         ),

@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../dto/release.dto.dart';
@@ -42,10 +43,10 @@ class SandboxScreen extends HookWidget {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(MdiIcons.playBox),
-            SizedBox(width: 10),
-            Subheading('Playground'),
+          children: [
+            const Icon(MdiIcons.playBox),
+            const SizedBox(width: 10),
+            Subheading(S.of(context).playground),
           ],
         ),
         centerTitle: true,
@@ -79,8 +80,8 @@ class SandboxScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title: const Text('Releases'),
-                  subtitle: Text('${releases.all.length} versions'),
+                  title: Text(S.of(context).releases),
+                  subtitle: Text(S.of(context).releasesVersions(releases.all.length)),
                 ),
                 const Divider(height: 1),
                 Expanded(
@@ -156,13 +157,13 @@ class SandboxScreen extends HookWidget {
                           onPressed: () {
                             terminal.endProcess();
                           },
-                          child: const Text(
-                            'Cancel',
+                          child: Text(
+                            S.of(context).cancel,
                           ),
                         )
-                      : const OutlinedButton(
+                      : OutlinedButton(
                           onPressed: null,
-                          child: Text('Not running'),
+                          child: Text(S.of(context).notRunning),
                         ),
                 ),
                 const Divider(height: 1),

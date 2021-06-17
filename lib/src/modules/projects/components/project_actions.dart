@@ -3,6 +3,7 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:open_file/open_file.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../projects.provider.dart';
@@ -47,14 +48,14 @@ class ProjectActions extends StatelessWidget {
       PopupMenuItem(
         value: ProjectActionOptions.openDirectory,
         child: renderMenuButton(
-          label: 'Open',
+          label: S.current.open,
           icon: MdiIcons.openInNew,
         ),
       ),
       PopupMenuItem(
         value: ProjectActionOptions.remove,
         child: renderMenuButton(
-          label: 'Remove',
+          label: S.current.remove,
           icon: MdiIcons.delete,
         ),
       ),

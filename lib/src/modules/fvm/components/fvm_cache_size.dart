@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/utils/dir_stat.dart';
@@ -50,9 +51,9 @@ class FvmCacheSize extends HookWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Caption('In use'),
+                    Caption(S.of(context).inUse),
                     Caption(cacheSize.friendlySize),
-                    const Caption('Unused'),
+                    Caption(S.of(context).unused),
                   ],
                 )
               ],

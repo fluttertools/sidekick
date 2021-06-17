@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../dto/release.dto.dart';
@@ -25,7 +26,7 @@ class ProjectReleaseSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-        tooltip: 'Select a Flutter SDK Version',
+        tooltip: S.of(context).selectAFlutterSdkVersion,
 
         // elevation: 1,
         padding: EdgeInsets.zero,
@@ -56,7 +57,7 @@ class ProjectReleaseSelect extends StatelessWidget {
             children: [
               project.pinnedVersion != null
                   ? Caption(project.pinnedVersion)
-                  : const Caption('Choose'),
+                  : Caption(S.of(context).choose),
               // const SizedBox(width: 20),
               const Icon(MdiIcons.menuDown),
             ],

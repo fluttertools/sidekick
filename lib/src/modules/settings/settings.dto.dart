@@ -36,6 +36,7 @@ class SidekickSettings {
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
+    this.intl = 'en',
   });
 
   /// Storage key
@@ -44,6 +45,7 @@ class SidekickSettings {
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
   String themeMode;
+  String intl;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -53,6 +55,7 @@ class SidekickSettings {
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
+      intl: json['intl'] as String ?? 'en'
     );
   }
 
@@ -64,6 +67,7 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
+      'intl': intl,
     };
   }
 }
