@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 class ErrorDBScreen extends StatelessWidget {
   const ErrorDBScreen({Key key}) : super(key: key);
@@ -27,7 +28,7 @@ class ErrorDBScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    'There was an isssue opening Sidekick',
+                    S.of(context).thereWasAnIsssueOpeningSidekick,
                     style: Theme.of(context).textTheme.headline4,
                     textAlign: TextAlign.center,
                   ),
@@ -42,7 +43,7 @@ class ErrorDBScreen extends StatelessWidget {
                     height: 20,
                   ),
                   ElevatedButton.icon(
-                    label: const Text('Close'),
+                    label: Text(S.of(context).close),
                     icon: const Icon(Icons.close),
                     onPressed: () {
                       exit(0);

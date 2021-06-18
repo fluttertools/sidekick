@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../modules/common/utils/notify.dart';
@@ -31,12 +32,12 @@ class ProjectsScreen extends HookWidget {
 
     Future<void> onRefresh() async {
       await context.read(projectsProvider.notifier).load();
-      notify('Projects Refreshed');
+      notify(S.of(context).projectsRefreshed);
     }
 
     Future<void> handleChooseDirectory() async {
       final directoryPath = await selector.getDirectoryPath(
-        confirmButtonText: 'Choose',
+        confirmButtonText: S.of(context).choose,
       );
       if (directoryPath == null) {
         // Operation was canceled by the user.
@@ -56,14 +57,14 @@ class ProjectsScreen extends HookWidget {
     }, [projects, settings.sidekick]);
 
     return SkScreen(
-      title: 'Projects',
+      title: S.of(context).projects,
       actions: [
-        Caption('${projects.length} Projects'),
+        Caption(S.of(context).projectsProjects(projects.length)),
         const SizedBox(width: 10),
         Tooltip(
-          message: 'Only display projects that have versions pinned',
+          message: S.of(context).onlyDisplayProjectsThatHaveVersionsPinned,
           child: SkCheckBox(
-            label: 'FVM Only',
+            label: S.of(context).fvmOnly,
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
@@ -79,7 +80,7 @@ class ProjectsScreen extends HookWidget {
         OutlinedButton.icon(
           onPressed: handleChooseDirectory,
           icon: Icon(MdiIcons.plus),
-          label: Text('Add Project'),
+          label: Text(S.of(context).addProject),
         ),
       ],
       child: projects.isEmpty

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 /// Sliver header delegate
 class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -39,7 +40,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
           title,
         ),
         trailing: Text(
-          '${count.toString()} Found',
+          S.of(context).countFound(count.toString()),
         ),
         onTap: onPress,
       ),

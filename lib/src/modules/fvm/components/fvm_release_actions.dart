@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/delete_dialog.dart';
@@ -54,21 +55,21 @@ class FvmReleaseActions extends StatelessWidget {
       PopupMenuItem(
         value: FvmReleaseActionOptions.global,
         child: renderMenuButton(
-          label: 'Set as global',
+          label: S.current.setAsGlobal,
           icon: MdiIcons.earth,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.detail,
         child: renderMenuButton(
-          label: 'Details',
+          label: S.current.details,
           icon: MdiIcons.information,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.remove,
         child: renderMenuButton(
-          label: 'Remove',
+          label: S.current.remove,
           icon: MdiIcons.delete,
         ),
       ),
@@ -81,7 +82,7 @@ class FvmReleaseActions extends StatelessWidget {
         PopupMenuItem(
           value: FvmReleaseActionOptions.upgrade,
           child: renderMenuButton(
-            label: 'Upgrade',
+            label: S.current.upgrade,
             icon: MdiIcons.update,
           ),
         ),

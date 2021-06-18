@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pub_api_client/pub_api_client.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 
@@ -35,7 +36,7 @@ class PackageScoreDisplay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Heading(score.likeCount.toString()),
-              const Caption('Likes'),
+              Caption(S.of(context).likes),
             ],
           ),
           const VerticalDivider(width: 25),
@@ -44,7 +45,7 @@ class PackageScoreDisplay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Heading(score.grantedPoints.toString()),
-              const Caption('Pub Points'),
+              Caption(S.of(context).pubPoints),
             ],
           ),
           const VerticalDivider(width: 25),
@@ -53,7 +54,7 @@ class PackageScoreDisplay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Heading('${(score.popularityScore * 100).toStringAsFixed(0)}%'),
-              const Caption('Popularity'),
+              Caption(S.of(context).popularity),
             ],
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../releases/releases.provider.dart';
@@ -49,20 +50,17 @@ class SettingsSectionFlutter extends HookWidget {
                             width: 0.5,
                           ),
                         ),
-                        child: const Text(
-                          'A Flutter sdk version neeeds to be set as global '
-                          'in order to access Flutter settings',
+                        child: Text(
+                             S.of(context).flutterSDKGlobalDescription,
                         ),
                       ),
                       const SizedBox(height: 20)
                     ],
                   ),
             SwitchListTile(
-              title: const Text('Analytics & Crash Reporting'),
-              subtitle: const Text(
-                'When a flutter command crashes it attempts'
-                ' to send a crash report to Google in order to help'
-                ' Google contribute improvements to Flutter over time',
+              title: Text(S.of(context).analyticsCrashReporting),
+              subtitle: Text(
+                S.of(context).analyticsCrashReportSubtitle,
               ),
               value: !settings.flutter.analytics,
               onChanged: deactivate
@@ -73,10 +71,10 @@ class SettingsSectionFlutter extends HookWidget {
                     },
             ),
             const SizedBox(height: 20),
-            const Subheading('Platforms'),
+            Subheading(S.of(context).platforms),
             const SizedBox(height: 20),
             SwitchListTile(
-              title: const Text('Web'),
+              title: Text(S.of(context).web),
               value: settings.flutter.web,
               onChanged: deactivate
                   ? null

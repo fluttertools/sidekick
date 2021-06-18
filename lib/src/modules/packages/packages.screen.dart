@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../common/atoms/loading_indicator.dart';
 import '../common/organisms/screen.dart';
@@ -27,7 +28,7 @@ class PackagesScreen extends HookWidget {
           return const EmptyPackages();
         }
         return SkScreen(
-          title: 'Most Used Packages',
+          title: S.of(context).mostUsedPackages,
           child: CupertinoScrollbar(
             child: ListView.builder(
               // separatorBuilder: (_, __) => const Divider(),
@@ -49,8 +50,8 @@ class PackagesScreen extends HookWidget {
       },
       loading: () => const SkLoadingIndicator(),
       error: (_, __) => Container(
-        child: const Text(
-          'There was an issue loading your packages.',
+        child: Text(
+          S.of(context).thereWasAnIssueLoadingYourPackages,
         ),
       ),
     );

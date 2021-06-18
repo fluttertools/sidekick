@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   fvm: ^2.1.0
+  flutter_localizations:
+    sdk: flutter
 
   window_size:
     git:
@@ -60,3 +62,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
+flutter_intl:
+  enabled: true

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/utils/open_link.dart';
@@ -59,7 +60,7 @@ class PackageListItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Caption('${package.projectsCount.toString()} projects'),
+                        Caption(S.of(context).packageprojectscountProjects(package.projectsCount.toString())),
                         const SizedBox(width: 10),
                         const Text('·'),
                         const SizedBox(width: 10),
@@ -68,7 +69,7 @@ class PackageListItem extends StatelessWidget {
                         const Text('·'),
                         const SizedBox(width: 10),
                         Tooltip(
-                          message: 'Details',
+                          message: S.of(context).details,
                           child: IconButton(
                             iconSize: 20,
                             splashRadius: 20,
@@ -82,7 +83,7 @@ class PackageListItem extends StatelessWidget {
                         const Text('·'),
                         const SizedBox(width: 10),
                         Tooltip(
-                          message: 'Changelog',
+                          message: S.of(context).changelog,
                           child: IconButton(
                             iconSize: 20,
                             splashRadius: 20,
@@ -96,7 +97,7 @@ class PackageListItem extends StatelessWidget {
                         const Text('·'),
                         const SizedBox(width: 10),
                         Tooltip(
-                          message: 'Website',
+                          message: S.of(context).website,
                           child: IconButton(
                             iconSize: 20,
                             splashRadius: 20,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../providers/navigation_provider.dart';
 import '../../common/atoms/empty_dataset.dart';
@@ -17,13 +18,13 @@ class EmptyVersions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Flutter SDK not installed.',
+              S.of(context).flutterSdkNotInstalled,
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             Text(
-              '''You do not currently have any Flutter SDK versions installed. Versions or channels that have been installed will be displayed here.''',
+              S.of(context).noFlutterVersionInstalledMessage,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption,
             ),
@@ -39,7 +40,7 @@ class EmptyVersions extends StatelessWidget {
                     .goTo(NavigationRoutes.exploreScreen);
               },
               icon: const Icon(Icons.explore),
-              label: const Text('Explore Flutter Releases'),
+              label: Text(S.of(context).exploreFlutterReleases),
             )
           ],
         ),

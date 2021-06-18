@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
@@ -31,15 +32,15 @@ class SkUpdateButton extends HookWidget {
             contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
             buttonPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             title: Row(
-              children: const [
+              children: [
                 Icon(MdiIcons.alertDecagram),
                 SizedBox(width: 10),
-                Heading('Update available.'),
+                Heading(S.of(context).updateAvailable),
               ],
             ),
             content: Container(
               child: Paragraph(
-                'Sidekick version ${updateInfo.latest} is now available.',
+                S.of(context).sidekickVersionUpdateinfolatestIsNowAvailable(updateInfo.latest),
               ),
             ),
             actions: <Widget>[
@@ -48,14 +49,14 @@ class SkUpdateButton extends HookWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Later'),
+                child: Text(S.of(context).later),
               ),
               ElevatedButton(
                 onPressed: () async {
                   await updater.openInstaller();
                   Navigator.of(context).pop();
                 },
-                child: const Text('Update Now'),
+                child: Text(S.of(context).updateNow),
               ),
             ],
           );
@@ -69,8 +70,8 @@ class SkUpdateButton extends HookWidget {
         children: [
           ActionChip(
             onPressed: showUpdateDialog,
-            label: const Text(
-              'Update Available',
+            label: Text(
+              S.of(context).updateAvailable,
               style: TextStyle(fontSize: 12),
             ),
           ),
