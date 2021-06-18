@@ -24,7 +24,7 @@ dependencies:
   date_time_format: ^2.0.1
 
   filesize: ^2.0.1
-  flutter_cache: ^0.1.0
+
   flutter_hooks: ^0.17.0
   flutter_spinkit: ^5.0.0
   github: ^8.1.0
@@ -48,6 +48,7 @@ dependencies:
   file_selector_linux: ^0.0.2
   file_selector_macos: ^0.0.4
   file_selector_windows: ^0.0.2
+  dio: ^4.0.0
 
 dev_dependencies:
   flutter_test:

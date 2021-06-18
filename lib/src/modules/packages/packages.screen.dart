@@ -1,57 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:sidekick/src/modules/packages/scenes/github_trending.scene.dart';
+import 'package:sidekick/src/modules/packages/scenes/used_packages.scene.dart';
 
-import '../common/atoms/loading_indicator.dart';
-import '../common/organisms/screen.dart';
-import 'components/package_list_item.dart';
-import 'components/packages_empty.dart';
-import 'package.dto.dart';
-import 'packages.provider.dart';
-
-/// Packages screen
-class PackagesScreen extends HookWidget {
-  /// Constructor
-  const PackagesScreen({
-    Key key,
-  }) : super(key: key);
+class PackagesScreen extends StatelessWidget {
+  const PackagesScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final packages = useProvider(packagesProvider);
-
-    return packages.when(
-      data: (data) {
-        if (data.isEmpty) {
-          return const EmptyPackages();
-        }
-        return SkScreen(
-          title: S.of(context).mostUsedPackages,
-          child: CupertinoScrollbar(
-            child: ListView.builder(
-              // separatorBuilder: (_, __) => const Divider(),
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                final PackageDetail package = data[index];
-                final position = ++index;
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: PackageListItem(
-                    package,
-                    position: position,
-                  ),
-                );
-              },
-            ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          titleSpacing: 0,
+          toolbarHeight: 48,
+          title: TabBar(
+            labelColor: Theme.of(context).textTheme.bodyText1.color,
+            labelPadding: EdgeInsets.zero,
+            indicatorColor: Theme.of(context).accentColor,
+            tabs: [
+              Tab(text: '⚡  Trending'),
+              Tab(text: '📦  Most Used Packages'),
+            ],
           ),
-        );
-      },
-      loading: () => const SkLoadingIndicator(),
-      error: (_, __) => Container(
-        child: Text(
-          S.of(context).thereWasAnIssueLoadingYourPackages,
+        ),
+        body: TabBarView(
+          children: [
+            const TrendingSection(),
+            const MostUsedScene(),
+          ],
         ),
       ),
     );

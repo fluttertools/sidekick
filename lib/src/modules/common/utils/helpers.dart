@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
@@ -12,6 +13,8 @@ extension StringExtension on String {
     return '${this[0].toUpperCase()}${substring(1)}';
   }
 }
+
+final numberFormatter = NumberFormat('###,###,000');
 
 /// Iterable extension
 extension ExtendedIterable<E> on Iterable<E> {

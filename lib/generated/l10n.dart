@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -14,22 +15,23 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
+
   static S current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-      
+
       return S.current;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -1206,7 +1208,8 @@ class S {
   }
 
   /// `Sidekick version {updateInfoLatest} is now available.`
-  String sidekickVersionUpdateinfolatestIsNowAvailable(Object updateInfoLatest) {
+  String sidekickVersionUpdateinfolatestIsNowAvailable(
+      Object updateInfoLatest) {
     return Intl.message(
       'Sidekick version $updateInfoLatest is now available.',
       name: 'sidekickVersionUpdateinfolatestIsNowAvailable',
@@ -1246,7 +1249,8 @@ class S {
   }
 
   /// `A new version of Sidekick is available ({updateInfoLatest}).`
-  String aNewVersionOfSidekickIsAvailableUpdateinfolatest(Object updateInfoLatest) {
+  String aNewVersionOfSidekickIsAvailableUpdateinfolatest(
+      Object updateInfoLatest) {
     return Intl.message(
       'A new version of Sidekick is available ($updateInfoLatest).',
       name: 'aNewVersionOfSidekickIsAvailableUpdateinfolatest',
@@ -1285,26 +1289,6 @@ class S {
     );
   }
 
-  /// `This will cache the main Flutter repository for faster and smaller installs`
-  String get gitCacheSubtitle {
-    return Intl.message(
-      'This will cache the main Flutter repository for faster and smaller installs',
-      name: 'gitCacheSubtitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Git Cache`
-  String get gitCache {
-    return Intl.message(
-      'Git Cache',
-      name: 'gitCache',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `When a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time`
   String get analyticsCrashReportSubtitle {
     return Intl.message(
@@ -1326,10 +1310,12 @@ class S {
   }
 
   /// `The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.`
-  String get theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional {
+  String
+      get theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional {
     return Intl.message(
       'The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.',
-      name: 'theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional',
+      name:
+          'theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional',
       desc: '',
       args: [],
     );
