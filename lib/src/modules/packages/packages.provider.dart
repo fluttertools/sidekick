@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
+import 'package:sidekick/src/modules/packages/flutter_favorite.dto.dart';
 import 'package:sidekick/src/modules/packages/trending_package.dto.dart';
 
 import '../../modules/common/utils/dependencies.dart';
@@ -23,6 +24,22 @@ final githubTrendingProvider = FutureProvider<List<TrendingPackage>>(
     }
 
     return packages;
+  },
+);
+
+const flutterFavoritesUrl =
+    'https://raw.githubusercontent.com/leoafarias/flutter_flat_data/main/flutter-favorites.json';
+
+final flutterFavoritesProvider = FutureProvider<List<FlutterFavorite>>(
+  (ref) async {
+    final response = await Dio().get(flutterFavoritesUrl);
+    final data = jsonDecode(response.data);
+    final favorites = <FlutterFavorite>[];
+    for (final item in data) {
+      favorites.add(FlutterFavorite.fromMap(item));
+    }
+
+    return favorites;
   },
 );
 

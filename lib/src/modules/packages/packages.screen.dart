@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/src/modules/packages/scenes/flutter_favorite.scene.dart';
 import 'package:sidekick/src/modules/packages/scenes/github_trending.scene.dart';
 import 'package:sidekick/src/modules/packages/scenes/used_packages.scene.dart';
 
@@ -8,7 +9,7 @@ class PackagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -21,6 +22,7 @@ class PackagesScreen extends StatelessWidget {
             tabs: [
               Tab(text: '⚡  Trending'),
               Tab(text: '📦  Most Used Packages'),
+              Tab(text: '📦  Flutter Favorites'),
             ],
           ),
         ),
@@ -28,6 +30,7 @@ class PackagesScreen extends StatelessWidget {
           children: [
             const TrendingSection(),
             const MostUsedScene(),
+            const FlutterFavoriteScene(),
           ],
         ),
       ),
