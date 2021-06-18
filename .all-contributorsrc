@@ -4,7 +4,7 @@
   ],
   "imageSize": 50,
   "commit": false,
-  "contributorsPerLine":5,
+  "contributorsPerLine": 7,
   "skipCi": true,
   "contributors": [
     {
@@ -67,13 +67,21 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "MaximilianFlechtner",
+      "name": "Maximilian Flechtner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66118057?v=4",
+      "profile": "https://github.com/MaximilianFlechtner",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
     }
   ],
-  "contributorsPerLine": 7,
   "projectName": "sidekick",
   "projectOwner": "leoafarias",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true,
   "commitConvention": "none"
 }
