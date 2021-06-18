@@ -4,7 +4,7 @@
   ],
   "imageSize": 50,
   "commit": false,
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 5,
   "skipCi": true,
   "contributors": [
     {

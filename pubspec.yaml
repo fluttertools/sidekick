@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fvm: ^2.1.0
+  fvm: ^2.2.1
   flutter_localizations:
     sdk: flutter
 
