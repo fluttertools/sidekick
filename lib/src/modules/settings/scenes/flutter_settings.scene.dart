@@ -51,8 +51,7 @@ class SettingsSectionFlutter extends HookWidget {
                           ),
                         ),
                         child: Text(
-                          S.of(context).aFlutterSdkVersionNeeedsToBeSetAsGlobal +
-                          S.of(context).inOrderToAccessFlutterSettings,
+                             S.of(context).flutterSDKGlobalDescription,
                         ),
                       ),
                       const SizedBox(height: 20)
@@ -61,9 +60,7 @@ class SettingsSectionFlutter extends HookWidget {
             SwitchListTile(
               title: Text(S.of(context).analyticsCrashReporting),
               subtitle: Text(
-                S.of(context).whenAFlutterCommandCrashesItAttempts +
-                S.of(context).toSendACrashReportToGoogleInOrderTo +
-                S.of(context).googleContributeImprovementsToFlutterOverTime,
+                S.of(context).analyticsCrashReportSubtitle,
               ),
               value: !settings.flutter.analytics,
               onChanged: deactivate

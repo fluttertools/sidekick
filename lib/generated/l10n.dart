@@ -275,26 +275,6 @@ class S {
     );
   }
 
-  /// `The current tip-of-tree, absolute latest cutting edge build. `
-  String get theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuild {
-    return Intl.message(
-      'The current tip-of-tree, absolute latest cutting edge build. ',
-      name: 'theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuild',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Usually functional, though sometimes we accidentally break things.`
-  String get usuallyFunctionalThoughSometimesWeAccidentallyBreakThings {
-    return Intl.message(
-      'Usually functional, though sometimes we accidentally break things.',
-      name: 'usuallyFunctionalThoughSometimesWeAccidentallyBreakThings',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Channel`
   String get channel {
     return Intl.message(
@@ -536,40 +516,40 @@ class S {
   }
 
   /// `We recommend that you use this channel for all production app releases. Roughly once a quarter, a branch that has been stabilized on beta will become our next stable branch and we will create a stable release from that branch.`
-  String get weRecommendThatYouUseThisChannelForAllProduction {
+  String get stableChannelDescription {
     return Intl.message(
       'We recommend that you use this channel for all production app releases. Roughly once a quarter, a branch that has been stabilized on beta will become our next stable branch and we will create a stable release from that branch.',
-      name: 'weRecommendThatYouUseThisChannelForAllProduction',
+      name: 'stableChannelDescription',
       desc: '',
       args: [],
     );
   }
 
   /// `Branch created from master for a new beta release at the beginning of the month, usually the first Monday. This will include a branch for Dart, the Engine and the Framework.`
-  String get branchCreatedFromMasterForANewBetaReleaseAt {
+  String get betaChannelDescription {
     return Intl.message(
       'Branch created from master for a new beta release at the beginning of the month, usually the first Monday. This will include a branch for Dart, the Engine and the Framework.',
-      name: 'branchCreatedFromMasterForANewBetaReleaseAt',
+      name: 'betaChannelDescription',
       desc: '',
       args: [],
     );
   }
 
   /// `The latest fully-tested build. Usually functional, but see Bad Builds for a list of known "bad" dev builds.`
-  String get theLatestFullytestedBuildUsuallyFunctionalButSeeBadBuilds {
+  String get devChannelDescription {
     return Intl.message(
       'The latest fully-tested build. Usually functional, but see Bad Builds for a list of known "bad" dev builds.',
-      name: 'theLatestFullytestedBuildUsuallyFunctionalButSeeBadBuilds',
+      name: 'devChannelDescription',
       desc: '',
       args: [],
     );
   }
 
   /// `The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.`
-  String get theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional {
+  String get masterChannelDescription {
     return Intl.message(
       'The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.',
-      name: 'theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional',
+      name: 'masterChannelDescription',
       desc: '',
       args: [],
     );
@@ -775,26 +755,6 @@ class S {
     );
   }
 
-  /// `You need to add a Flutter project first. `
-  String get youNeedToAddAFlutterProjectFirst {
-    return Intl.message(
-      'You need to add a Flutter project first. ',
-      name: 'youNeedToAddAFlutterProjectFirst',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Package information will be displayed here.`
-  String get packageInformationWillBeDisplayedHere {
-    return Intl.message(
-      'Package information will be displayed here.',
-      name: 'packageInformationWillBeDisplayedHere',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Most Used Packages`
   String get mostUsedPackages {
     return Intl.message(
@@ -850,26 +810,6 @@ class S {
     return Intl.message(
       'No Flutter Projects have been added yet.',
       name: 'noFlutterProjectsHaveBeenAddedYet',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add your Flutter project `
-  String get addYourFlutterProject {
-    return Intl.message(
-      'Add your Flutter project ',
-      name: 'addYourFlutterProject',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Projects information will be displayed here.`
-  String get projectsInformationWillBeDisplayedHere {
-    return Intl.message(
-      'Projects information will be displayed here.',
-      name: 'projectsInformationWillBeDisplayedHere',
       desc: '',
       args: [],
     );
@@ -1065,61 +1005,11 @@ class S {
     );
   }
 
-  /// `A Flutter sdk version neeeds to be set as global `
-  String get aFlutterSdkVersionNeeedsToBeSetAsGlobal {
-    return Intl.message(
-      'A Flutter sdk version neeeds to be set as global ',
-      name: 'aFlutterSdkVersionNeeedsToBeSetAsGlobal',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `in order to access Flutter settings`
-  String get inOrderToAccessFlutterSettings {
-    return Intl.message(
-      'in order to access Flutter settings',
-      name: 'inOrderToAccessFlutterSettings',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Analytics & Crash Reporting`
   String get analyticsCrashReporting {
     return Intl.message(
       'Analytics & Crash Reporting',
       name: 'analyticsCrashReporting',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `When a flutter command crashes it attempts`
-  String get whenAFlutterCommandCrashesItAttempts {
-    return Intl.message(
-      'When a flutter command crashes it attempts',
-      name: 'whenAFlutterCommandCrashesItAttempts',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ` to send a crash report to Google in order to help`
-  String get toSendACrashReportToGoogleInOrderTo {
-    return Intl.message(
-      ' to send a crash report to Google in order to help',
-      name: 'toSendACrashReportToGoogleInOrderTo',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ` Google contribute improvements to Flutter over time`
-  String get googleContributeImprovementsToFlutterOverTime {
-    return Intl.message(
-      ' Google contribute improvements to Flutter over time',
-      name: 'googleContributeImprovementsToFlutterOverTime',
       desc: '',
       args: [],
     );
@@ -1140,26 +1030,6 @@ class S {
     return Intl.message(
       'Web',
       name: 'web',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `This will cache the main Flutter repository`
-  String get thisWillCacheTheMainFlutterRepository {
-    return Intl.message(
-      'This will cache the main Flutter repository',
-      name: 'thisWillCacheTheMainFlutterRepository',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// ` for faster and smaller installs`
-  String get forFasterAndSmallerInstalls {
-    return Intl.message(
-      ' for faster and smaller installs',
-      name: 'forFasterAndSmallerInstalls',
       desc: '',
       args: [],
     );
@@ -1410,6 +1280,76 @@ class S {
     return Intl.message(
       'Language',
       name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This will cache the main Flutter repository for faster and smaller installs`
+  String get gitCacheSubtitle {
+    return Intl.message(
+      'This will cache the main Flutter repository for faster and smaller installs',
+      name: 'gitCacheSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Git Cache`
+  String get gitCache {
+    return Intl.message(
+      'Git Cache',
+      name: 'gitCache',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time`
+  String get analyticsCrashReportSubtitle {
+    return Intl.message(
+      'When a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time',
+      name: 'analyticsCrashReportSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A Flutter sdk version neeeds to be set as global in order to access Flutter settings`
+  String get flutterSDKGlobalDescription {
+    return Intl.message(
+      'A Flutter sdk version neeeds to be set as global in order to access Flutter settings',
+      name: 'flutterSDKGlobalDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.`
+  String get theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional {
+    return Intl.message(
+      'The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things.',
+      name: 'theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add your Flutter project Projects information will be displayed here.`
+  String get addYourFlutterProjectProjectsInformationWillBeDisplayedHere {
+    return Intl.message(
+      'Add your Flutter project Projects information will be displayed here.',
+      name: 'addYourFlutterProjectProjectsInformationWillBeDisplayedHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to add a Flutter project first. Package information will be displayed here.`
+  String get youNeedToAddAFlutterProjectFirstPackageInformation {
+    return Intl.message(
+      'You need to add a Flutter project first. Package information will be displayed here.',
+      name: 'youNeedToAddAFlutterProjectFirstPackageInformation',
       desc: '',
       args: [],
     );

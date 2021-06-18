@@ -27,9 +27,8 @@ class FvmSettingsScene extends StatelessWidget {
           Text('FVM', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           SwitchListTile(
-            title: const Text('Git Cache'),
-            subtitle: Text(S.of(context).thisWillCacheTheMainFlutterRepository +
-                S.of(context).forFasterAndSmallerInstalls),
+            title: Text(S.of(context).gitCache),
+            subtitle: Text(S.of(context).gitCacheSubtitle),
             value: settings.fvm.gitCache ?? false,
             onChanged: (value) {
               settings.fvm.gitCache = value;

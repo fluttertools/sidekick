@@ -51,8 +51,7 @@ class ReleasesScreen extends HookWidget {
                         const SizedBox(width: 20),
                         Expanded(
                           child: Caption(
-                            S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuild +
-                            S.of(context).usuallyFunctionalThoughSometimesWeAccidentallyBreakThings,
+                              S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional
                           ),
                         ),
                         const SizedBox(width: 20),

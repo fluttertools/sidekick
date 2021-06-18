@@ -31,8 +31,7 @@ class InfoBanner extends StatelessWidget {
               SizedBox(width: 20),
               Expanded(
                 child: Caption(
-                  S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuild +
-                  S.of(context).usuallyFunctionalThoughSometimesWeAccidentallyBreakThings,
+                  S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional
                 ),
               ),
               SizedBox(width: 20),

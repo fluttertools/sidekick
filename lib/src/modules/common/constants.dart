@@ -31,13 +31,13 @@ const kFlutterTagsUrl = 'https://github.com/flutter/flutter/releases/tag/';
 /// Description for the channels
 Map<String, String> channelDescriptions = {
   'stable':
-      S.current.weRecommendThatYouUseThisChannelForAllProduction,
+      S.current.stableChannelDescription,
   'beta':
-      S.current.branchCreatedFromMasterForANewBetaReleaseAt,
+      S.current.betaChannelDescription,
   'dev':
-      S.current.theLatestFullytestedBuildUsuallyFunctionalButSeeBadBuilds,
+      S.current.devChannelDescription,
   'master':
-      S.current.theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional,
+      S.current.masterChannelDescription,
 };
 
 /// Sidekick repository slug

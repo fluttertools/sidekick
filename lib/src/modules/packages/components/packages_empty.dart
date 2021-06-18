@@ -25,8 +25,7 @@ class EmptyPackages extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).youNeedToAddAFlutterProjectFirst +
-              S.of(context).packageInformationWillBeDisplayedHere,
+               S.of(context).youNeedToAddAFlutterProjectFirstPackageInformation,
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),
