@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Added
+
+- Github trending repos
+- Flutter favorites
+
+## 0.1.0 - 2021-06-16
+
+### Fixed
+
+- Issue when theme brightness does not match platform brightness
+
+## 0.0.9 - 2021-06-15
+
 ### Changed
 
 - Updated releases endpoint
