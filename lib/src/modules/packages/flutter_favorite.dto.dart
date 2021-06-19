@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:pub_api_client/pub_api_client.dart';
+
 class FlutterFavorite {
   FlutterFavorite({
     this.name,
@@ -11,11 +13,7 @@ class FlutterFavorite {
     this.description,
     this.url,
     this.changelogUrl,
-    this.grantedPoints,
-    this.maxPoints,
-    this.likeCount,
-    this.popularityScore,
-    this.lastUpdated,
+    this.score,
   });
 
   final String name;
@@ -23,11 +21,8 @@ class FlutterFavorite {
   final String description;
   final String url;
   final String changelogUrl;
-  final String grantedPoints;
-  final String maxPoints;
-  final String likeCount;
-  final String popularityScore;
-  final DateTime lastUpdated;
+
+  final PackageScore score;
 
   factory FlutterFavorite.fromJson(String str) =>
       FlutterFavorite.fromMap(json.decode(str));
@@ -40,11 +35,15 @@ class FlutterFavorite {
         description: json['description'],
         url: json['url'],
         changelogUrl: json['changelogUrl'],
-        grantedPoints: json['grantedPoints'],
-        maxPoints: json['maxPoints'],
-        likeCount: json['likeCount'],
-        popularityScore: json['popularityScore'],
-        lastUpdated: DateTime.parse(json['lastUpdated']),
+        score: PackageScore(
+          grantedPoints: int.parse(json['grantedPoints']),
+          maxPoints: int.parse((json['maxPoints'])),
+          likeCount: int.parse((json['likeCount'])),
+          popularityScore: double.parse((json['popularityScore'])),
+          lastUpdated: DateTime.parse(
+            json['lastUpdated'],
+          ),
+        ),
       );
 
   Map<String, dynamic> toMap() => {
@@ -53,10 +52,6 @@ class FlutterFavorite {
         'description': description,
         'url': url,
         'changelogUrl': changelogUrl,
-        'grantedPoints': grantedPoints,
-        'maxPoints': maxPoints,
-        'likeCount': likeCount,
-        'popularityScore': popularityScore,
-        'lastUpdated': lastUpdated.toIso8601String(),
+        'score': score.toJson()
       };
 }

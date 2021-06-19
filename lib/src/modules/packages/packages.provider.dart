@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
 import 'package:sidekick/src/modules/packages/flutter_favorite.dto.dart';
+import 'package:sidekick/src/modules/packages/package.dto.dart';
 import 'package:sidekick/src/modules/packages/trending_package.dto.dart';
 
 import '../../modules/common/utils/dependencies.dart';
@@ -36,7 +37,9 @@ final flutterFavoritesProvider = FutureProvider<List<FlutterFavorite>>(
     final data = jsonDecode(response.data);
     final favorites = <FlutterFavorite>[];
     for (final item in data) {
-      favorites.add(FlutterFavorite.fromMap(item));
+      favorites.add(
+        FlutterFavorite.fromMap(item),
+      );
     }
 
     return favorites;
@@ -50,7 +53,7 @@ final packagesProvider = FutureProvider((ref) async {
   final packages = <String, int>{};
 
   if (projects.isEmpty) {
-    return [];
+    return <PackageDetail>[];
   }
 
   // Retrieve cache if exits
@@ -71,7 +74,5 @@ final packagesProvider = FutureProvider((ref) async {
     }
   }
 
-  final packageList = await fetchPackages(packages);
-
-  return packageList;
+  return fetchPackages(packages);
 });

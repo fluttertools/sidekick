@@ -20,9 +20,9 @@ class PackagesScreen extends StatelessWidget {
             labelPadding: EdgeInsets.zero,
             indicatorColor: Theme.of(context).accentColor,
             tabs: [
-              Tab(text: '⚡  Trending'),
-              Tab(text: '📦  Most Used Packages'),
-              Tab(text: '📦  Flutter Favorites'),
+              Tab(text: '⚡   Trending'),
+              Tab(text: '📦   Most Used Packages'),
+              Tab(text: '💙   Flutter Favorites'),
             ],
           ),
         ),
