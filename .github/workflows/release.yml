@@ -30,6 +30,27 @@ jobs:
       - name: Set new Flutter version
         run: cider version ${{ github.event.release.tag_name }}
 
+      - name: Set Sidekick.desktop version
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: Sidekick.desktop
+          contents: Version=${{ github.event.release.tag_name }}
+          write-mode: append
+
+      - name: Set Sidekick.desktop version (snap version)
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: snap/gui/sidekick.desktop
+          contents: Version=${{ github.event.release.tag_name }}
+          write-mode: append
+
+      - name: Set snapcraft.yaml version
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: snap/snapcraft.yaml
+          contents: 'version: "${{ github.event.release.tag_name }}"'
+          write-mode: append
+
       - name: Flutter get packages
         run: flutter pub get
 

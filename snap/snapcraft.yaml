@@ -1,5 +1,6 @@
+# This is a development snapcraft file, no version is specified. Uncomment the line below to build a snap.
+#version: "0.1.0"
 name: sidekick
-version: "0.0.6"
 summary: Flutter Sidekick
 description: |
   Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
