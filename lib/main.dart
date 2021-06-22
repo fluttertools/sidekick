@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:window_size/window_size.dart';
 
 import 'src/modules/common/app_shell.dart';
@@ -24,7 +25,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
-  await Hive.initFlutter();
+  final hiveDir = await getApplicationSupportDirectory();
+  await Hive.initFlutter(hiveDir.absolute.path);
 
   try {
     await SettingsService.init();
@@ -58,10 +60,10 @@ class FvmApp extends StatelessWidget {
         return OKToast(
           child: MaterialApp(
             localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
             title: kAppTitle,
