@@ -16,16 +16,10 @@ class AllSettings {
     this.fvm,
     this.flutter,
   }) {
-    if (fvm == null) {
-      fvm = FvmSettings();
-    }
-    if (sidekick == null) {
-      sidekick = SidekickSettings();
-    }
+    fvm ??= FvmSettings();
+    sidekick ??= SidekickSettings();
 
-    if (flutter == null) {
-      flutter = FlutterSettings();
-    }
+    flutter ??= FlutterSettings();
   }
 
   AllSettings copy() => AllSettings(
@@ -42,6 +36,7 @@ class SidekickSettings {
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
+    this.intl = 'en',
   });
 
   /// Storage key
@@ -50,6 +45,7 @@ class SidekickSettings {
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
   String themeMode;
+  String intl;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -59,6 +55,7 @@ class SidekickSettings {
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
+      intl: json['intl'] as String ?? 'en'
     );
   }
 
@@ -70,6 +67,7 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
+      'intl': intl,
     };
   }
 }
@@ -131,11 +129,11 @@ class FlutterSettings {
   /// Flutter settings to map
   Map<String, bool> toMap() {
     return {
-      "analytics": analytics,
-      "macos": macos,
-      "linux": linux,
-      "windows": windows,
-      "web": web,
+      'analytics': analytics,
+      'macos': macos,
+      'linux': linux,
+      'windows': windows,
+      'web': web,
     };
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../common/atoms/sliver_header_delegate.dart';
 import '../../common/atoms/sliver_section.dart';
@@ -31,7 +32,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: 'Channels',
+                  title: S.of(context).channels,
                   count: results.channels.length,
                 ),
               ),
@@ -50,7 +51,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: 'Projects',
+                  title: S.of(context).projects,
                   count: results.projects.length,
                 ),
               ),
@@ -66,7 +67,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: 'Stable Releases',
+                  title: S.of(context).stableReleases,
                   count: results.stableReleases.length,
                 ),
               ),
@@ -82,7 +83,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: 'Beta Releases',
+                  title: S.of(context).betaReleases,
                   count: results.betaReleases.length,
                 ),
               ),
@@ -98,7 +99,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: 'Dev Releases',
+                  title: S.of(context).devReleases,
                   count: results.devReleases.length,
                 ),
               ),

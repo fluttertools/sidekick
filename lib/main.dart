@@ -17,6 +17,9 @@ import 'src/modules/settings/settings.utils.dart';
 import 'src/screens/error_db_screen.dart';
 import 'src/theme.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'generated/l10n.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
@@ -27,7 +30,7 @@ void main() async {
     await SettingsService.init();
     await ProjectsService.init();
   } on FileSystemException {
-    print("There was an issue opening the DB");
+    print('There was an issue opening the DB');
   }
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -54,6 +57,13 @@ class FvmApp extends StatelessWidget {
 
         return OKToast(
           child: MaterialApp(
+            localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
             title: kAppTitle,
             debugShowCheckedModeBanner: false,
             theme: lightTheme,

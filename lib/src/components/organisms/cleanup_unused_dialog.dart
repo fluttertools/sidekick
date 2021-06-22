@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/utils/notify.dart';
 import '../../modules/fvm/fvm.provider.dart';
@@ -10,7 +11,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
   final unusedVersions = context.read(unusedVersionProvider);
 
   if (unusedVersions.isEmpty) {
-    notify('No unused Flutter SDK versions installed');
+    notify(S.of(context).noUnusedFlutterSdkVersionsInstalled);
     return;
   }
 
@@ -21,17 +22,16 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: const Text('Clean up unused versions'),
+            title: Text(S.of(context).cleanUpUnusedVersions),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
-                child: const Text("Cancel"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                child: Text(S.of(context).cancel),
               ),
               TextButton(
-                child: const Text("Confirm"),
                 onPressed: () async {
                   final unusedSelected = unusedVersions.where(
                     (element) => selected.containsKey(element.name),
@@ -42,6 +42,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
 
                   Navigator.of(context).pop();
                 },
+                child: Text(S.of(context).confirm),
               ),
             ],
             content: Container(
@@ -50,9 +51,9 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const Text(
-                        'These version are not pinned to a project '
-                        'Do you want to remove them to free up space?',
+                    Text(
+                        S.of(context).theseVersionAreNotPinnedToAProject +
+                        S.of(context).doYouWantToRemoveThemToFreeUpSpace,
                       ),
                       const SizedBox(height: 10),
                       ...ListTile.divideTiles(

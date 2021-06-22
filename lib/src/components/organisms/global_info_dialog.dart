@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/atoms/copy_button.dart';
 import '../../modules/common/utils/open_link.dart';
@@ -15,10 +16,9 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Heading('Global configuration'),
+          title: Heading(S.of(context).globalConfiguration),
           actions: <Widget>[
             TextButton(
-              child: const Text("OK"),
               style: ButtonStyle(
                   padding: MaterialStateProperty.resolveWith(
                 (states) => const EdgeInsets.all(20),
@@ -26,6 +26,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              child: Text(S.of(context).ok),
             ),
           ],
           content: Container(
@@ -33,16 +34,16 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Subheading(
-                  "Flutter PATH is pointing to\n ",
+                Subheading(
+                  S.of(context).flutterPathIsPointingTon,
                 ),
-                Caption("${configured.currentPath}.\n\n"),
+                Caption('${configured.currentPath}.\n\n'),
                 !configured.isSetup
                     ? Column(
                         children: [
-                          const Subheading(
-                            "Change the path to\n"
-                            "if you want to Flutter SDK through FVM",
+                            Subheading(
+                                S.of(context).changeThePathTo +
+                                S.of(context).ifYouWantToFlutterSdkThroughFvm,
                           ),
                           Row(
                             children: [
@@ -62,8 +63,8 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                     );
                   },
                   icon: const Icon(MdiIcons.informationOutline),
-                  label: const Text(
-                    'How to update your path?',
+                  label: Text(
+                    S.of(context).howToUpdateYourPath,
                   ),
                 )
               ],

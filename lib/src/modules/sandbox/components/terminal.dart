@@ -108,8 +108,8 @@ class SandboxConsole extends HookWidget {
       });
     }
 
-    handleKey(RawKeyEvent key) {
-      if (key.runtimeType.toString() == "RawKeyDownEvent") {
+    void handleKey(RawKeyEvent key) {
+      if (key.runtimeType.toString() == 'RawKeyDownEvent') {
         if (key.data.logicalKey == LogicalKeyboardKey.arrowUp) {
           if (terminalState.cmdHistory.length > currentCmdIdx.value) {
             moveCmdIndex(1);

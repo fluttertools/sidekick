@@ -36,7 +36,7 @@ final unusedVersionProvider = Provider((ref) {
   final releases = ref.watch(releasesStateProvider);
 
   final projects = ref.watch(projectsPerVersionProvider);
-  for (var version in releases.allCached) {
+  for (var version in releases.all) {
     // If its not in project and its not global
     if (projects[version.name] == null && version.isGlobal == false) {
       unusedVersions.add(version);
@@ -86,7 +86,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     channels = localVersions.where((item) => item.isChannel).toList();
     versions = localVersions.where((item) => item.isChannel == false).toList();
     all = [...channels, ...versions];
-    _setTotalCacheSize();
+    await _setTotalCacheSize();
   }
 
   CacheVersion getChannel(String name) {

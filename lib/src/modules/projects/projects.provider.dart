@@ -11,6 +11,7 @@ import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../modules/common/utils/notify.dart';
@@ -29,7 +30,7 @@ final projectsPerVersionProvider = Provider((ref) {
 
   for (final project in projects) {
     final version =
-        project.pinnedVersion != null ? project.pinnedVersion : 'NONE';
+        project.pinnedVersion ?? 'NONE';
     final versionProjects = list[version];
     if (versionProjects != null) {
       versionProjects.add(project);
@@ -84,10 +85,10 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
     final project = await FVMClient.getProjectByDirectory(Directory(path));
     if (project.isFlutterProject) {
       final ref = ProjectRef(name: path.split('/').last, path: path);
-      ProjectsService.box.put(path, ref);
-      load();
+      await ProjectsService.box.put(path, ref);
+      await load();
     } else {
-      notify('Not a Flutter project');
+      notify(S.current.notAFlutterProject);
     }
   }
 
@@ -104,7 +105,7 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
 
     if (settings.projectPaths.isNotEmpty) {
       for (final path in settings.projectPaths) {
-        ProjectsService.box.put(
+        await ProjectsService.box.put(
           path,
           ProjectRef(
             name: path.split('/').last,

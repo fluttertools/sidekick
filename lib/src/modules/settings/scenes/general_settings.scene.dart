@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../modules/common/utils/notify.dart';
 import '../../../version.dart';
@@ -24,32 +25,32 @@ class SettingsSectionGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
     void handleReset() async {
       // flutter defined function
-      showDialog(
+      await showDialog(
         context: context,
         builder: (context) {
           // return object of type Dialog
           return AlertDialog(
-            title: const Text("Are you sure you want to reset settings?"),
-            content: const Text(
-              'This will only reset Sidekick specific preferences',
+            title: Text(S.of(context).areYouSureYouWantToResetSettings),
+            content: Text(
+              S.of(context).thisWillOnlyResetSidekickSpecificPreferences,
             ),
             buttonPadding: const EdgeInsets.all(15),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
-                child: const Text("Cancel"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                child: Text(S.of(context).cancel),
               ),
               TextButton(
-                child: const Text("Confirm"),
                 onPressed: () async {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
                   onSave();
-                  notify('App settings have been reset');
+                  notify(S.of(context).appSettingsHaveBeenReset);
                 },
+                child: Text(S.of(context).confirm),
               ),
             ],
           );
@@ -61,29 +62,29 @@ class SettingsSectionGeneral extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text('General', style: Theme.of(context).textTheme.headline6),
+          Text(S.of(context).general, style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           ListTile(
-            title: const Text("Theme"),
-            subtitle: const Text(
-              'Select a theme or switch according to system settings..',
+            title: Text(S.of(context).theme),
+            subtitle: Text(
+              S.of(context).selectAThemeOrSwitchAccordingToSystemSettings,
             ),
             trailing: DropdownButton(
               underline: Container(),
               isDense: true,
               value: settings.sidekick.themeMode.toString(),
-              items: const [
+              items: [
                 DropdownMenuItem(
-                  child: Text("System"),
                   value: SettingsThemeMode.system,
+                  child: Text(S.of(context).system),
                 ),
                 DropdownMenuItem(
-                  child: Text("Light"),
                   value: SettingsThemeMode.light,
+                  child: Text(S.of(context).light),
                 ),
                 DropdownMenuItem(
-                  child: Text("Dark"),
                   value: SettingsThemeMode.dark,
+                  child: Text(S.of(context).dark),
                 ),
               ],
               onChanged: (themeMode) async {
@@ -93,16 +94,36 @@ class SettingsSectionGeneral extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const ListTile(
-            title: Text('Version'),
+          ListTile(
+            title: Text(S.of(context).language),
+            trailing: DropdownButton(
+              underline: Container(),
+              isDense: true,
+              value: settings.sidekick.intl ?? 'en',
+              items: S.delegate.supportedLocales.map((e) {
+                  return DropdownMenuItem(
+                        value: e.languageCode,
+                        child: Text(e.languageCode),
+                    );
+              }).toList(),
+              onChanged: (languageCode) async {
+                settings.sidekick.intl = languageCode;
+                await S.load(Locale.fromSubtags(languageCode: languageCode),);
+                onSave();
+              },
+            ),
+          ),
+          const Divider(),
+        ListTile(
+            title: Text(S.of(context).version),
             trailing: Text(packageVersion),
           ),
           const Divider(),
           ListTile(
-            title: const Text('Reset to default settings'),
+            title:  Text(S.of(context).resetToDefaultSettings),
             trailing: OutlinedButton(
               onPressed: handleReset,
-              child: const Text('Reset'),
+              child: Text(S.of(context).reset),
             ),
           ),
         ],

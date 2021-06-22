@@ -1,9 +1,10 @@
-include: package:effective_dart/analysis_options.yaml
+include: package:pedantic/analysis_options.yaml
 analyzer:
   exclude:
     # Ignore generated files
     - "**/*.g.dart"
     - "lib/src/generated/*.dart"
+    - "lib/generated/intl/*.dart"
 # linter:
 #   rules:
 

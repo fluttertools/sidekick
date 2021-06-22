@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../dto/release.dto.dart';
@@ -31,8 +32,8 @@ class SandboxScreen extends HookWidget {
     final selectedRelease = useState<ReleaseDto>(null);
 
     useEffect(() {
-      if (selectedRelease.value == null && releases.allCached.isNotEmpty) {
-        selectedRelease.value = releases.allCached[0];
+      if (selectedRelease.value == null && releases.all.isNotEmpty) {
+        selectedRelease.value = releases.all[0];
       }
       return;
     }, []);
@@ -42,10 +43,10 @@ class SandboxScreen extends HookWidget {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(MdiIcons.playBox),
-            SizedBox(width: 10),
-            Subheading('Playground'),
+          children: [
+            const Icon(MdiIcons.playBox),
+            const SizedBox(width: 10),
+            Subheading(S.of(context).playground),
           ],
         ),
         centerTitle: true,
@@ -79,8 +80,8 @@ class SandboxScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title: const Text('Releases'),
-                  subtitle: Text('${releases.allCached.length} versions'),
+                  title: Text(S.of(context).releases),
+                  subtitle: Text(S.of(context).releasesVersions(releases.all.length)),
                 ),
                 const Divider(height: 1),
                 Expanded(
@@ -88,12 +89,15 @@ class SandboxScreen extends HookWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListView(
-                        children: releases.allCached.map(
+                        children: releases.all.map(
                           (version) {
                             if (version.name == selectedRelease.value?.name) {
                               return Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: ElevatedButton(
+                                  onPressed: () {
+                                    selectedRelease.value = version;
+                                  },
                                   child: Row(
                                     children: [
                                       Padding(
@@ -102,15 +106,15 @@ class SandboxScreen extends HookWidget {
                                       ),
                                     ],
                                   ),
-                                  onPressed: () {
-                                    selectedRelease.value = version;
-                                  },
                                 ),
                               );
                             }
                             return Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: TextButton(
+                                onPressed: () {
+                                  selectedRelease.value = version;
+                                },
                                 child: Row(
                                   children: [
                                     Padding(
@@ -119,9 +123,6 @@ class SandboxScreen extends HookWidget {
                                     ),
                                   ],
                                 ),
-                                onPressed: () {
-                                  selectedRelease.value = version;
-                                },
                               ),
                             );
                           },
@@ -153,16 +154,16 @@ class SandboxScreen extends HookWidget {
                               color: Colors.deepOrange,
                             ),
                           ),
-                          child: const Text(
-                            'Cancel',
-                          ),
                           onPressed: () {
                             terminal.endProcess();
                           },
+                          child: Text(
+                            S.of(context).cancel,
+                          ),
                         )
-                      : const OutlinedButton(
+                      : OutlinedButton(
                           onPressed: null,
-                          child: Text('Not running'),
+                          child: Text(S.of(context).notRunning),
                         ),
                 ),
                 const Divider(height: 1),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/utils/layout_size.dart';
 import '../../providers/selected_detail_provider.dart';
@@ -19,8 +20,7 @@ class SelectedDetailDrawer extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final detail = useProvider(selectedDetailProvider).state;
-
-    final selected = detail.release;
+    final selected = detail?.release;
 
     void onClose() {
       // Close drawer if its not large layout
@@ -42,7 +42,7 @@ class SelectedDetailDrawer extends HookWidget {
           elevation: 0,
           child: Container(
             color: Theme.of(context).cardColor,
-            child: const Center(child: Caption('Nothing selected')),
+            child: Center(child: Caption(S.of(context).nothingSelected)),
           ),
         ),
       );

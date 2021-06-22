@@ -1,7 +1,7 @@
 # Flutter Sidekick
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
@@ -36,11 +36,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://youtube.com/c/PaulHalliday"><img src="https://avatars.githubusercontent.com/u/19576417?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Paul Halliday</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=PaulHalliday" title="Code">💻</a> <a href="https://github.com/leoafarias/sidekick/issues?q=author%3APaulHalliday" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/anticafe"><img src="https://avatars.githubusercontent.com/u/340836?v=4?s=50" width="50px;" alt=""/><br /><sub><b>anticafe</b></sub></a><br /><a href="#a11y-anticafe" title="Accessibility">️️️️♿️</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://linktr.ee/arthurdenner"><img src="https://avatars.githubusercontent.com/u/13774309?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Arthur Denner</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/issues?q=author%3Aarthurdenner" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/MaximilianFlechtner"><img src="https://avatars.githubusercontent.com/u/66118057?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Maximilian Flechtner</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=MaximilianFlechtner" title="Code">💻</a> <a href="#a11y-MaximilianFlechtner" title="Accessibility">️️️️♿️</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

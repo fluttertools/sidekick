@@ -1,6 +1,7 @@
 // ignore_for_file: top_level_function_literal_block
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/channel.dto.dart';
 import '../../dto/version.dto.dart';
@@ -143,7 +144,7 @@ final searchResultsProvider = Provider((ref) {
             devReleaseResults.add(release);
             break;
           default:
-            throw Exception('Invalid chanel');
+            throw Exception(S.current.invalidChanel);
         }
       }
     }
