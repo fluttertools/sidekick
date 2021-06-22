@@ -114,28 +114,34 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
       switch (item.action) {
         case QueueAction.install:
           await FVMClient.install(item.version.name);
-          notify(S.current.versionItemversionnameHasBeenInstalled(item.version.name));
+          notify(S.current
+              .versionItemversionnameHasBeenInstalled(item.version.name));
           break;
         case QueueAction.setupOnly:
           await FVMClient.setup(item.version.name);
-          notify(S.current.versionItemversionnameHasFinishedSetup(item.version.name));
+          notify(S.current
+              .versionItemversionnameHasFinishedSetup(item.version.name));
           break;
         case QueueAction.installAndSetup:
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
-          notify(S.current.versionItemversionnameHasBeenInstalled(item.version.name));
+          notify(S.current
+              .versionItemversionnameHasBeenInstalled(item.version.name));
           break;
         case QueueAction.channelUpgrade:
           await FVMClient.upgradeChannel(item.version.cache);
-          notify(S.current.channelItemversionnameHasBeenUpgraded(item.version.name));
+          notify(S.current
+              .channelItemversionnameHasBeenUpgraded(item.version.name));
           break;
         case QueueAction.remove:
           await FVMClient.remove(item.version.name);
-          notify(S.current.versionItemversionnameHasBeenRemoved(item.version.name));
+          notify(S.current
+              .versionItemversionnameHasBeenRemoved(item.version.name));
           break;
         case QueueAction.setGlobal:
           await FVMClient.setGlobalVersion(item.version.cache);
-          notify(S.current.versionItemversionnameHasBeenSetAsGlobal(item.version.name));
+          notify(S.current
+              .versionItemversionnameHasBeenSetAsGlobal(item.version.name));
           break;
         default:
           break;

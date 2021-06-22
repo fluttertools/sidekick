@@ -50,9 +50,9 @@ class ReleasesScreen extends HookWidget {
                         Subheading(S.of(context).master),
                         const SizedBox(width: 20),
                         Expanded(
-                          child: Caption(
-                              S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional
-                          ),
+                          child: Caption(S
+                              .of(context)
+                              .theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional),
                         ),
                         const SizedBox(width: 20),
                         VersionInstallButton(releases.master),

@@ -23,7 +23,8 @@ class SkUpdateInfo extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            S.of(context).aNewVersionOfSidekickIsAvailableUpdateinfolatest(updateInfo.latest),
+            S.of(context).aNewVersionOfSidekickIsAvailableUpdateinfolatest(
+                updateInfo.latest),
           ),
           const SizedBox(width: 5),
           TextButton(

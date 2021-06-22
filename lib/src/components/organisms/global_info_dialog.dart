@@ -41,8 +41,8 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                 !configured.isSetup
                     ? Column(
                         children: [
-                            Subheading(
-                                S.of(context).changeThePathTo +
+                          Subheading(
+                            S.of(context).changeThePathTo +
                                 S.of(context).ifYouWantToFlutterSdkThroughFvm,
                           ),
                           Row(

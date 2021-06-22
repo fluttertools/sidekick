@@ -40,7 +40,8 @@ class SkUpdateButton extends HookWidget {
             ),
             content: Container(
               child: Paragraph(
-                S.of(context).sidekickVersionUpdateinfolatestIsNowAvailable(updateInfo.latest),
+                S.of(context).sidekickVersionUpdateinfolatestIsNowAvailable(
+                    updateInfo.latest),
               ),
             ),
             actions: <Widget>[

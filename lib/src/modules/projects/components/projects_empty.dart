@@ -25,7 +25,9 @@ class EmptyProjects extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).addYourFlutterProjectProjectsInformationWillBeDisplayedHere,
+              S
+                  .of(context)
+                  .addYourFlutterProjectProjectsInformationWillBeDisplayedHere,
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),

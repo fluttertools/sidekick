@@ -37,7 +37,9 @@ class AppShell extends HookWidget {
     final selectedInfo = useProvider(selectedDetailProvider).state;
     final settings = useProvider(settingsProvider);
 
-    S.load(Locale.fromSubtags(languageCode: settings.sidekick.intl),);
+    S.load(
+      Locale.fromSubtags(languageCode: settings.sidekick.intl),
+    );
 
     // Index of item selected
     final selectedIndex = useState(0);

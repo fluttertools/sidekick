@@ -81,7 +81,8 @@ class SandboxScreen extends HookWidget {
                 ListTile(
                   dense: true,
                   title: Text(S.of(context).releases),
-                  subtitle: Text(S.of(context).releasesVersions(releases.all.length)),
+                  subtitle:
+                      Text(S.of(context).releasesVersions(releases.all.length)),
                 ),
                 const Divider(height: 1),
                 Expanded(
