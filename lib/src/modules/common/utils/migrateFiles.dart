@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,9 +8,10 @@ final migrationName = 'hive_location_migration';
 
 Future<void> checkMigration(Directory newPath) async {
   final prefs = await SharedPreferences.getInstance();
+  final hasMigrated = prefs.getBool(migrationName);
 
   /// Return if has migrated
-  if (prefs.getBool(migrationName)) return;
+  if (hasMigrated == true) return;
 
   final oldPath = await getApplicationDocumentsDirectory();
   final files = [
@@ -20,16 +22,11 @@ Future<void> checkMigration(Directory newPath) async {
   ];
 
   for (final fileName in files) {
-    final file = File(
-      oldPath.absolute.path + Platform.pathSeparator + fileName,
-    );
+    final file = File(p.join(oldPath.absolute.path, fileName));
+
     if (file.existsSync()) {
-      print('Legacy file found, starting migration...');
-      file.copySync(
-        newPath.absolute.path + Platform.pathSeparator + fileName,
-      );
+      file.copySync(p.join(newPath.absolute.path, fileName));
       file.deleteSync();
-      print('Done');
     }
   }
 
