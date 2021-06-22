@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sidekick/src/modules/common/utils/migrateDB.dart';
 import 'package:window_size/window_size.dart';
 
 import 'src/modules/common/app_shell.dart';
@@ -26,6 +27,19 @@ void main() async {
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
   final hiveDir = await getApplicationSupportDirectory();
+
+  // This should only be necessary on the first run after 0.1.1, as DB location has changed.
+  migrateFiles(
+    (await getApplicationDocumentsDirectory()),
+    [
+      'settings_box.lock',
+      'settings_box.hive',
+      'projects_service_box.lock',
+      'projects_service_box.hive'
+    ],
+    hiveDir,
+  );
+
   await Hive.initFlutter(hiveDir.absolute.path);
 
   try {
