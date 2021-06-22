@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sidekick/src/modules/common/utils/migrateDB.dart';
+import 'package:sidekick/src/modules/common/utils/migrateFiles.dart';
 import 'package:window_size/window_size.dart';
 
 import 'src/modules/common/app_shell.dart';
