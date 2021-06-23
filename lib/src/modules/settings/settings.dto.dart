@@ -52,11 +52,10 @@ class SidekickSettings {
 
   factory SidekickSettings.fromMap(Map<String, dynamic> json) {
     return SidekickSettings(
-      projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
-      onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
-      themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
-      intl: json['intl'] as String ?? 'en'
-    );
+        projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
+        onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
+        themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
+        intl: json['intl'] as String ?? 'en');
   }
 
   /// Converts Master Secret to Json

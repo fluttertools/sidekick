@@ -51,7 +51,7 @@ class SettingsSectionFlutter extends HookWidget {
                           ),
                         ),
                         child: Text(
-                             S.of(context).flutterSDKGlobalDescription,
+                          S.of(context).flutterSDKGlobalDescription,
                         ),
                       ),
                       const SizedBox(height: 20)

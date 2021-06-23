@@ -51,9 +51,9 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                    Text(
+                      Text(
                         S.of(context).theseVersionAreNotPinnedToAProject +
-                        S.of(context).doYouWantToRemoveThemToFreeUpSpace,
+                            S.of(context).doYouWantToRemoveThemToFreeUpSpace,
                       ),
                       const SizedBox(height: 10),
                       ...ListTile.divideTiles(

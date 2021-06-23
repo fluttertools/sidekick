@@ -1,7 +1,7 @@
 name: sidekick
 description: Flutter Version Manager.
 
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
 version: 0.1.0
 
@@ -49,6 +49,7 @@ dependencies:
   file_selector_macos: ^0.0.4
   file_selector_windows: ^0.0.2
   dio: ^4.0.0
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:

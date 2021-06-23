@@ -62,7 +62,8 @@ class SettingsSectionGeneral extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text(S.of(context).general, style: Theme.of(context).textTheme.headline6),
+          Text(S.of(context).general,
+              style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           ListTile(
             title: Text(S.of(context).theme),
@@ -101,26 +102,28 @@ class SettingsSectionGeneral extends StatelessWidget {
               isDense: true,
               value: settings.sidekick.intl ?? 'en',
               items: S.delegate.supportedLocales.map((e) {
-                  return DropdownMenuItem(
-                        value: e.languageCode,
-                        child: Text(e.languageCode),
-                    );
+                return DropdownMenuItem(
+                  value: e.languageCode,
+                  child: Text(e.languageCode),
+                );
               }).toList(),
               onChanged: (languageCode) async {
                 settings.sidekick.intl = languageCode;
-                await S.load(Locale.fromSubtags(languageCode: languageCode),);
+                await S.load(
+                  Locale.fromSubtags(languageCode: languageCode),
+                );
                 onSave();
               },
             ),
           ),
           const Divider(),
-        ListTile(
+          ListTile(
             title: Text(S.of(context).version),
             trailing: Text(packageVersion),
           ),
           const Divider(),
           ListTile(
-            title:  Text(S.of(context).resetToDefaultSettings),
+            title: Text(S.of(context).resetToDefaultSettings),
             trailing: OutlinedButton(
               onPressed: handleReset,
               child: Text(S.of(context).reset),

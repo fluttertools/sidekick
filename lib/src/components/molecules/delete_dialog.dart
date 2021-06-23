@@ -15,7 +15,8 @@ void showDeleteDialog(
       // return object of type Dialog
       return AlertDialog(
         title: Text(S.of(context).areYouSureYouWantToRemove),
-        content: Text(S.of(context).thisWillRemoveItemnameCacheFromYourSystem(item.name)),
+        content: Text(
+            S.of(context).thisWillRemoveItemnameCacheFromYourSystem(item.name)),
         buttonPadding: const EdgeInsets.all(15),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog

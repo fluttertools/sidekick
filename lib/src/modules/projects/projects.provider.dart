@@ -29,8 +29,7 @@ final projectsPerVersionProvider = Provider((ref) {
   }
 
   for (final project in projects) {
-    final version =
-        project.pinnedVersion ?? 'NONE';
+    final version = project.pinnedVersion ?? 'NONE';
     final versionProjects = list[version];
     if (versionProjects != null) {
       versionProjects.add(project);

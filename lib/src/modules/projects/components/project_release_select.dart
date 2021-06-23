@@ -31,7 +31,9 @@ class ProjectReleaseSelect extends StatelessWidget {
         // elevation: 1,
         padding: EdgeInsets.zero,
         onSelected: (version) async {
-          await context.read(fvmQueueProvider.notifier).pinVersion(project, version);
+          await context
+              .read(fvmQueueProvider.notifier)
+              .pinVersion(project, version);
         },
         itemBuilder: (context) {
           return releases
