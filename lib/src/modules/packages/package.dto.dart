@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:github/github.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 
 /// Package Detail
@@ -14,7 +13,6 @@ class PackageDetail {
     this.changelogUrl,
     this.score,
     this.projectsCount,
-    this.repo,
   });
 
   @required
@@ -51,9 +49,6 @@ class PackageDetail {
   final int projectsCount;
   @required
 
-  /// Repository
-  final Repository repo;
-
   /// Compare method
   int compareTo(PackageDetail other) {
     if (other.projectsCount > projectsCount) return -1;
@@ -71,8 +66,7 @@ class PackageDetail {
         changelogUrl = json['changelogUrl'],
         score =
             json['score'] != null ? PackageScore.fromJson(json['score']) : 0,
-        projectsCount = json['count'],
-        repo = json['repo'] != null ? Repository.fromJson(json['repo']) : null;
+        projectsCount = json['count'];
 
   /// Turn package detail to json
   Map<String, dynamic> toJson() => {
@@ -84,6 +78,5 @@ class PackageDetail {
         'changelogUrl': changelogUrl,
         'score': score,
         'count': projectsCount,
-        'repo': repo,
       };
 }

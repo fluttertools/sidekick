@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../atoms/typography.dart';
 
@@ -24,15 +25,14 @@ class InfoBanner extends StatelessWidget {
             ),
           ),
           child: Row(
-            children: const [
+            children: [
               SizedBox(width: 10),
-              Subheading('Master'),
+              Subheading(S.of(context).master),
               SizedBox(width: 20),
               Expanded(
-                child: Caption(
-                  '''The current tip-of-tree, absolute latest cutting edge build. '''
-                  '''Usually functional, though sometimes we accidentally break things.''',
-                ),
+                child: Caption(S
+                    .of(context)
+                    .theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional),
               ),
               SizedBox(width: 20),
             ],

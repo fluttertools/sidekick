@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
+import 'package:sidekick/generated/l10n.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../dto/release.dto.dart';
@@ -72,7 +73,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
 
-    _addToQueue(version, action: action);
+    await _addToQueue(version, action: action);
   }
 
   /// Adds setup action to queue
@@ -113,28 +114,34 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
       switch (item.action) {
         case QueueAction.install:
           await FVMClient.install(item.version.name);
-          notify('Version ${item.version.name} has been installed.');
+          notify(S.current
+              .versionItemversionnameHasBeenInstalled(item.version.name));
           break;
         case QueueAction.setupOnly:
           await FVMClient.setup(item.version.name);
-          notify('Version ${item.version.name} has finished setup.');
+          notify(S.current
+              .versionItemversionnameHasFinishedSetup(item.version.name));
           break;
         case QueueAction.installAndSetup:
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
-          await notify('Version ${item.version.name} has been installed.');
+          notify(S.current
+              .versionItemversionnameHasBeenInstalled(item.version.name));
           break;
         case QueueAction.channelUpgrade:
           await FVMClient.upgradeChannel(item.version.cache);
-          notify('Channel ${item.version.name} has been upgraded.');
+          notify(S.current
+              .channelItemversionnameHasBeenUpgraded(item.version.name));
           break;
         case QueueAction.remove:
           await FVMClient.remove(item.version.name);
-          notify('Version ${item.version.name} has been removed.');
+          notify(S.current
+              .versionItemversionnameHasBeenRemoved(item.version.name));
           break;
         case QueueAction.setGlobal:
           await FVMClient.setGlobalVersion(item.version.cache);
-          notify('Version ${item.version.name} has been set as global.');
+          notify(S.current
+              .versionItemversionnameHasBeenSetAsGlobal(item.version.name));
           break;
         default:
           break;
@@ -158,7 +165,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   Future<void> pinVersion(FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reload(project);
-    await notify('Version $version pinned to ${project.name}');
+    notify(S.current.versionVersionPinnedToProjectname(version, project.name));
   }
 
   Future<void> _addToQueue(ReleaseDto version, {QueueAction action}) async {

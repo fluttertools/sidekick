@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/release.dto.dart';
 import '../../modules/common/atoms/group_tile.dart';
@@ -24,15 +25,15 @@ class FvmInfoTile extends StatelessWidget {
       return const SizedBox(height: 0);
     }
     return SkGroupTile(
-      title: const Text('Local Cache Information'),
+      title: Text(S.of(context).localCacheInformation),
       children: [
         SkListTile(
-          title: const Text('Created Date'),
+          title: Text(S.of(context).createdDate),
           trailing: CacheDateDisplay(release),
         ),
         const Divider(height: 0),
         SkListTile(
-          title: const Text('Cache Location'),
+          title: Text(S.of(context).cacheLocation),
           subtitle: Caption(release.cache.dir.path),
           trailing: IconButton(
             icon: const Icon(

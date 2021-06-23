@@ -1,5 +1,6 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/release.dto.dart';
 import '../../modules/common/molecules/list_tile.dart';
@@ -18,7 +19,7 @@ class ReleaseInfoSection extends StatelessWidget {
     return Column(
       children: [
         SkListTile(
-          title: const Text('Release Date'),
+          title: Text(S.of(context).releaseDate),
           trailing: Text(DateTimeFormat.format(
             version.release.releaseDate,
             format: AmericanDateFormats.abbr,

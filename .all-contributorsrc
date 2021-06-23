@@ -4,6 +4,8 @@
   ],
   "imageSize": 50,
   "commit": false,
+  "contributorsPerLine": 5,
+  "skipCi": true,
   "contributors": [
     {
       "login": "leoafarias",
@@ -56,13 +58,30 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "arthurdenner",
+      "name": "Arthur Denner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13774309?v=4",
+      "profile": "https://linktr.ee/arthurdenner",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "MaximilianFlechtner",
+      "name": "Maximilian Flechtner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66118057?v=4",
+      "profile": "https://github.com/MaximilianFlechtner",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
     }
   ],
-  "contributorsPerLine": 7,
   "projectName": "sidekick",
   "projectOwner": "leoafarias",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true,
   "commitConvention": "none"
 }

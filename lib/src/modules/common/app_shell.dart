@@ -4,6 +4,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
+import 'package:sidekick/src/modules/settings/settings.provider.dart';
 
 import '../../components/organisms/app_bottom_bar.dart';
 import '../../components/organisms/info_drawer.dart';
@@ -33,6 +35,12 @@ class AppShell extends HookWidget {
     final navigation = useProvider(navigationProvider.notifier);
     final currentRoute = useProvider(navigationProvider);
     final selectedInfo = useProvider(selectedDetailProvider).state;
+    final settings = useProvider(settingsProvider);
+
+    S.load(
+      Locale.fromSubtags(languageCode: settings.sidekick.intl),
+    );
+
     // Index of item selected
     final selectedIndex = useState(0);
 
@@ -48,7 +56,7 @@ class AppShell extends HookWidget {
     useValueChanged(selectedInfo, (_, __) {
       if (_scaffoldKey.currentState == null) return;
       final isOpen = _scaffoldKey.currentState.isEndDrawerOpen;
-      final hasInfo = selectedInfo.release != null;
+      final hasInfo = selectedInfo?.release != null;
 
       // Open drawer if not large layout and its not open
       if (hasInfo && !isOpen) {
@@ -61,7 +69,7 @@ class AppShell extends HookWidget {
     // Render corret page widget based on index
     Widget renderPage(int index) {
       const pages = [
-        HomeScreen(),
+        FVMScreen(),
         ProjectsScreen(),
         ReleasesScreen(),
         PackagesScreen(),
@@ -102,19 +110,19 @@ class AppShell extends HookWidget {
               },
               destinations: [
                 renderNavButton(
-                  'Dashboard',
+                  S.of(context).navButtonDashboard,
                   Icons.category,
                 ),
                 renderNavButton(
-                  'Projects',
+                  S.of(context).navButtonProjects,
                   MdiIcons.folderMultiple,
                 ),
                 renderNavButton(
-                  'Explore',
+                  S.of(context).navButtonExplore,
                   Icons.explore,
                 ),
                 renderNavButton(
-                  'Packages',
+                  S.of(context).navButtonPackages,
                   MdiIcons.package,
                 ),
               ],
@@ -134,7 +142,6 @@ class AppShell extends HookWidget {
                               duration: const Duration(milliseconds: 250),
                               reverse: selectedIndex.value <
                                   (navigation.previous.index ?? 0),
-                              child: renderPage(selectedIndex.value),
                               transitionBuilder: (
                                 child,
                                 animation,
@@ -142,13 +149,14 @@ class AppShell extends HookWidget {
                               ) {
                                 return SharedAxisTransition(
                                   fillColor: Colors.transparent,
-                                  child: child,
                                   animation: animation,
                                   secondaryAnimation: secondaryAnimation,
                                   transitionType:
                                       SharedAxisTransitionType.vertical,
+                                  child: child,
                                 );
                               },
+                              child: renderPage(selectedIndex.value),
                             ),
                           ),
                         ],

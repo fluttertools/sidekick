@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/channel.dto.dart';
 import '../../dto/release.dto.dart';
@@ -19,12 +20,12 @@ class ReferenceInfoTile extends StatelessWidget {
       return Column(
         children: [
           SkListTile(
-            title: const Text('Channel'),
+            title: Text(S.of(context).channel),
             trailing: Chip(label: Text(version.release.channelName)),
           ),
           const Divider(),
           SkListTile(
-            title: const Text('Release Notes'),
+            title: Text(S.of(context).releaseNotes),
             trailing: IconButton(
               icon: const Icon(
                 Icons.open_in_new,
@@ -48,7 +49,7 @@ class ReferenceInfoTile extends StatelessWidget {
         ),
         const Divider(height: 0),
         SkListTile(
-          title: const Text('Version'),
+          title: Text(S.of(context).version),
           trailing: channel.sdkVersion != null
               ? Chip(label: Text(channel.sdkVersion ?? ''))
               : SetupButton(release: channel),

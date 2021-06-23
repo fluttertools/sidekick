@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../common/atoms/empty_dataset.dart';
 
@@ -18,14 +19,13 @@ class EmptyPackages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'No Packages Found',
+              S.of(context).noPackagesFound,
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              'You need to add a Flutter project first. '
-              'Package information will be displayed here.',
+              S.of(context).youNeedToAddAFlutterProjectFirstPackageInformation,
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),

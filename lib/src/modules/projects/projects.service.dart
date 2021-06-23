@@ -47,7 +47,7 @@ class ProjectsService {
         return FlutterProject.fromProject(project, pubspec);
       } else {
         /// If it does not exist should be removed
-        box.delete(project.projectDir.path);
+        await box.delete(project.projectDir.path);
       }
     }).toList();
 

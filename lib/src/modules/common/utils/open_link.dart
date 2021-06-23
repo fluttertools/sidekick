@@ -1,22 +1,23 @@
 import 'dart:io';
 
+import 'package:sidekick/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(String url) async {
   if (await canLaunch(url)) {
     await launch(url);
   } else {
-    throw '''Could not launch $url''';
+    throw S.current.couldNotLaunchUrl(url);
   }
 }
 
 Future<void> openPath(String url) async {
   if (Platform.isWindows) {
-    await Process.start('start', [url]);
+    await Process.start(S.current.start, [url]);
   }
 
   if (Platform.isMacOS) {
-    await Process.start('open', [url]);
+    await Process.start(S.current.open, [url]);
   }
 }
 

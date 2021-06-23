@@ -1,12 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sidekick/src/modules/common/utils/migrateFiles.dart';
 import 'package:window_size/window_size.dart';
 
+import 'generated/l10n.dart';
 import 'src/modules/common/app_shell.dart';
 import 'src/modules/common/constants.dart';
 import 'src/modules/projects/project.dto.dart';
@@ -21,13 +25,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
-  await Hive.initFlutter();
+  final hiveDir = await getApplicationSupportDirectory();
+
+  // This should only be necessary on the first run after 0.1.1, as DB location has changed.
+  await checkMigration(hiveDir);
+
+  await Hive.initFlutter(hiveDir.absolute.path);
 
   try {
     await SettingsService.init();
     await ProjectsService.init();
   } on FileSystemException {
-    print("There was an issue opening the DB");
+    print('There was an issue opening the DB');
   }
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -54,6 +63,13 @@ class FvmApp extends StatelessWidget {
 
         return OKToast(
           child: MaterialApp(
+            localizationsDelegates: [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
             title: kAppTitle,
             debugShowCheckedModeBanner: false,
             theme: lightTheme,

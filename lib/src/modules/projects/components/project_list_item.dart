@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
@@ -29,7 +30,7 @@ class ProjectListItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cachedVersions = useProvider(releasesStateProvider).allCached;
+    final cachedVersions = useProvider(releasesStateProvider).all;
 
     final version = useProvider(getVersionProvider(project.pinnedVersion));
 
@@ -94,7 +95,7 @@ class ProjectListItem extends HookWidget {
                 children: [
                   const SizedBox(width: 10),
                   Tooltip(
-                    message: "Open terminal playground",
+                    message: S.of(context).openTerminalPlayground,
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../version.dart';
 import '../updater.provider.dart';
@@ -22,12 +23,13 @@ class SkUpdateInfo extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'A new version of Sidekick is available (${updateInfo.latest}).',
+            S.of(context).aNewVersionOfSidekickIsAvailableUpdateinfolatest(
+                updateInfo.latest),
           ),
           const SizedBox(width: 5),
           TextButton(
-            child: const Text('Click here to download.'),
             onPressed: () {},
+            child: Text(S.of(context).clickHereToDownload),
           ),
         ],
       );
@@ -39,13 +41,13 @@ class SkUpdateInfo extends HookWidget {
         const SizedBox(width: 5),
         const Text(packageVersion),
         const SizedBox(width: 20),
-        Text("${updateInfo.latest}"),
+        Text('${updateInfo.latest}'),
         const SizedBox(width: 20),
         OutlinedButton.icon(
           icon: Icon(
             updateInfo.needUpdate ? Icons.file_download : Icons.refresh,
           ),
-          label: Text("Refresh"),
+          label: Text(S.of(context).refresh),
           onPressed: updater.checkLatest,
         ),
       ],

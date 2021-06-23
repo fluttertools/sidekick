@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../dto/release.dto.dart';
@@ -25,29 +26,14 @@ class ProjectReleaseSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-        tooltip: 'Select a Flutter SDK Version',
+        tooltip: S.of(context).selectAFlutterSdkVersion,
 
         // elevation: 1,
         padding: EdgeInsets.zero,
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
-          constraints: const BoxConstraints(
-            maxWidth: 165,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              project.pinnedVersion != null
-                  ? Caption(project.pinnedVersion)
-                  : const Caption('Choose'),
-              // const SizedBox(width: 20),
-              const Icon(MdiIcons.menuDown),
-            ],
-          ),
-        ),
         onSelected: (version) async {
-          context.read(fvmQueueProvider.notifier).pinVersion(project, version);
+          await context
+              .read(fvmQueueProvider.notifier)
+              .pinVersion(project, version);
         },
         itemBuilder: (context) {
           return releases
@@ -61,6 +47,23 @@ class ProjectReleaseSelect extends StatelessWidget {
                 ),
               )
               .toList();
-        });
+        },
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+          constraints: const BoxConstraints(
+            maxWidth: 165,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              project.pinnedVersion != null
+                  ? Caption(project.pinnedVersion)
+                  : Caption(S.of(context).choose),
+              // const SizedBox(width: 20),
+              const Icon(MdiIcons.menuDown),
+            ],
+          ),
+        ));
   }
 }

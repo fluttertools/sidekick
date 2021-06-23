@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
@@ -13,20 +13,22 @@ final usePod = useProvider;
 extension StringExtension on String {
   ///Capitalizes a string
   String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1)}";
+    return '${this[0].toUpperCase()}${substring(1)}';
   }
 }
+
+final numberFormatter = NumberFormat('###,###,000');
 
 /// Iterable extension
 extension ExtendedIterable<E> on Iterable<E> {
   /// Like Iterable<T>.map but callback have index as second argument
-  Iterable<T> mapIndexed<T>(T f(E e, int i)) {
+  Iterable<T> mapIndexed<T>(T Function(E e, int i) f) {
     var i = 0;
     return map((e) => f(e, i++));
   }
 
   /// For each with index
-  void forEachIndexed(void f(E e, int i)) {
+  void forEachIndexed(void Function(E e, int i) f) {
     var i = 0;
     forEach((e) => f(e, i++));
   }

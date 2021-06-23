@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/generated/l10n.dart';
 
 import '../../dto/release.dto.dart';
 
@@ -13,23 +14,24 @@ void showDeleteDialog(
     builder: (context) {
       // return object of type Dialog
       return AlertDialog(
-        title: const Text("Are you sure you want to remove?"),
-        content: Text('This will remove ${item.name} cache from your system.'),
+        title: Text(S.of(context).areYouSureYouWantToRemove),
+        content: Text(
+            S.of(context).thisWillRemoveItemnameCacheFromYourSystem(item.name)),
         buttonPadding: const EdgeInsets.all(15),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           TextButton(
-            child: const Text("Cancel"),
             onPressed: () {
               Navigator.of(context).pop();
             },
+            child: Text(S.of(context).cancel),
           ),
           TextButton(
-            child: const Text("Confirm"),
             onPressed: () async {
               Navigator.of(context).pop();
               onDelete();
             },
+            child: Text(S.of(context).confirm),
           ),
         ],
       );

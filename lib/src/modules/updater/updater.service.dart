@@ -27,7 +27,7 @@ class UpdaterService {
 
       /// Check if it has downloaded
       final file = await getDownloadFileLocation(latestVersion.toString());
-      final downloadUrl = await getDownloadReleaseUrl(latestVersion.toString());
+      final downloadUrl = getDownloadReleaseUrl(latestVersion.toString());
 
       return SidekickUpdateInfo(
           needUpdate: needUpdate,
@@ -58,8 +58,8 @@ class UpdaterService {
         return updateInfo.copyWith(isInstalled: true);
       } else {
         throw UpdaterException(
-          "There was an issue downloading the file, plese try again later.\n"
-          "Code ${res.statusCode}",
+          'There was an issue downloading the file, plese try again later.\n'
+          'Code ${res.statusCode}',
         );
       }
     }
@@ -69,7 +69,7 @@ class UpdaterService {
   static Future<void> openInstaller(SidekickUpdateInfo updateInfo) async {
     if (updateInfo.isInstalled) {
       final file = updateInfo.latestInstallerFile;
-      openLink("file://${file.absolute.path.replaceAll("\\", "/")}");
+      await openLink("file://${file.absolute.path.replaceAll("\\", "/")}");
     } else {
       throw UpdaterException(
         'Installer does not exists, you have to download it first',
