@@ -53,7 +53,9 @@ Future<List<PackageDetail>> _complementPackageInfo(
   final packagesDetail = <Future<PackageDetail>>[];
 
   for (var pkg in packages) {
-    packagesDetail.add(_assignInfo(pkg, packagesCount[pkg.name]));
+    if (pkg != null) {
+      packagesDetail.add(_assignInfo(pkg, packagesCount[pkg.name]));
+    }
   }
 
   return await Future.wait(packagesDetail);
