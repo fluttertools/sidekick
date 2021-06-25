@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/compression/compression_utils.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../common/atoms/empty_dataset.dart';
 import '../../common/atoms/loading_indicator.dart';
-import '../../common/utils/helpers.dart';
 import '../components/compression_item.dart';
 import '../compression.provider.dart';
 
@@ -26,8 +26,8 @@ class ImageCompressionScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final pod = compressStatePod(project.projectDir);
-    final notifier = usePod(pod.notifier);
-    final state = usePod(pod);
+    final notifier = useProvider(pod.notifier);
+    final state = useProvider(pod);
 
     if (state.isLoading) {
       return SkLoadingIndicator();

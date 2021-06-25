@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import '../constants.dart';
 
 /// Shorter version of useProvider
-final usePod = useProvider;
 
 /// String extensions
 extension StringExtension on String {
