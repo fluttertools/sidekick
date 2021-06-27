@@ -93,7 +93,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Clean up unused versions"),
         "clickHereToDownload":
             MessageLookupByLibrary.simpleMessage("Click here to download."),
-        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
@@ -217,9 +216,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional":
             MessageLookupByLibrary.simpleMessage(
                 "The current tip-of-tree, absolute latest cutting edge build. Usually functional, though sometimes we accidentally break things."),
-        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
-        "thereWasAnIsssueOpeningSidekick": MessageLookupByLibrary.simpleMessage(
-            "There was an isssue opening Sidekick"),
         "thereWasAnIssueLoadingYourPackages":
             MessageLookupByLibrary.simpleMessage(
                 "There was an issue loading your packages."),
