@@ -41,6 +41,7 @@ class EmptyDataset extends StatelessWidget {
     this.iconColor,
     this.backgroundColor = Colors.black,
     this.child,
+    this.opacity = 0.3,
   });
 
   /// Icon
@@ -51,6 +52,8 @@ class EmptyDataset extends StatelessWidget {
 
   /// Background color
   final Color backgroundColor;
+
+  final double opacity;
 
   /// child
   final Widget child;
@@ -63,14 +66,13 @@ class EmptyDataset extends StatelessWidget {
     return Stack(
       children: [
         Opacity(
-          opacity: 0.3,
+          opacity: opacity,
           child: Center(
             child: ClipRRect(
               clipBehavior: Clip.antiAlias,
               child: Container(
                 width: 350,
                 height: 350,
-                margin: const EdgeInsets.all(0.0),
                 child: Stack(
                   children: bgIcons,
                 ),
