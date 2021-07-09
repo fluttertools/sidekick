@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
+import '../../common/dto/release.dto.dart';
 
 void showDeleteDialog(
   BuildContext context, {

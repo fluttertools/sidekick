@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../common/atoms/sliver_header_delegate.dart';
-import '../../common/atoms/sliver_section.dart';
+import '../../../components/atoms/sliver_header_delegate.dart';
+import '../../../components/atoms/sliver_section.dart';
 import '../../projects/components/project_list_item.dart';
 import '../../releases/components/release_list_item.dart';
 import '../search.provider.dart';

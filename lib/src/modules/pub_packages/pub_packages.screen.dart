@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/src/modules/packages/scenes/flutter_favorite.scene.dart';
-import 'package:sidekick/src/modules/packages/scenes/github_trending.scene.dart';
-import 'package:sidekick/src/modules/packages/scenes/used_packages.scene.dart';
+import 'package:sidekick/src/modules/pub_packages/scenes/flutter_favorite.scene.dart';
+import 'package:sidekick/src/modules/pub_packages/scenes/github_trending.scene.dart';
+import 'package:sidekick/src/modules/pub_packages/scenes/used_packages.scene.dart';
 
 class PackagesScreen extends StatelessWidget {
   const PackagesScreen({Key key}) : super(key: key);

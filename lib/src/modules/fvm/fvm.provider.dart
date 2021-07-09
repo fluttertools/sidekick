@@ -9,7 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
 
-import '../../dto/release.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/debounce.dart';
 import '../../modules/common/utils/dir_stat.dart';
 import '../projects/projects.provider.dart';

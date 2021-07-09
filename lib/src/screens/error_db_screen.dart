@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sidekick/src/modules/common/atoms/empty_dataset.dart';
+import 'package:sidekick/src/modules/../components/atoms/empty_dataset.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
 
 class ErrorDBScreen extends StatelessWidget {

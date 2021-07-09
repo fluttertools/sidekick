@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/src/modules/common/atoms/loading_indicator.dart';
-import 'package:sidekick/src/modules/packages/components/packages_empty.dart';
-import 'package:sidekick/src/modules/packages/components/trending_package_list_item.dart';
-import 'package:sidekick/src/modules/packages/packages.provider.dart';
+import 'package:sidekick/src/modules/../components/atoms/loading_indicator.dart';
+import 'package:sidekick/src/modules/pub_packages/components/packages_empty.dart';
+import 'package:sidekick/src/modules/pub_packages/components/trending_package_list_item.dart';
+import 'package:sidekick/src/modules/pub_packages/pub_packages.provider.dart';
 
 class TrendingSection extends HookWidget {
   const TrendingSection({Key key}) : super(key: key);

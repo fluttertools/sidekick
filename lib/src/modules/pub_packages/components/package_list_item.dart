@@ -4,9 +4,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/list_tile.dart';
 import '../../../modules/common/utils/open_link.dart';
-import '../../common/molecules/list_tile.dart';
-import '../package.dto.dart';
+import '../dto/pub_package.dto.dart';
 import 'package_score_display.dart';
 
 /// Package list item

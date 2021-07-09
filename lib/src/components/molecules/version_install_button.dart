@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
 
 String installedMsg = S.current.versionIsInstalled;

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
-import '../../modules/common/atoms/group_tile.dart';
-import '../../modules/common/molecules/list_tile.dart';
-import '../atoms/cache_date_display.dart';
-import '../atoms/typography.dart';
+import '../../../components/atoms/group_tile.dart';
+import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/list_tile.dart';
+import '../../common/dto/release.dto.dart';
+import 'cache_date_display.dart';
 
 /// Info about Fvm version
 class FvmInfoTile extends StatelessWidget {

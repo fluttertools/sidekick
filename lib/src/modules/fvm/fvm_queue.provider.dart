@@ -6,7 +6,7 @@ import 'package:fvm/fvm.dart';
 import 'package:sidekick/generated/l10n.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../../dto/release.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/notify.dart';
 import '../projects/project.dto.dart';
 import '../projects/projects.provider.dart';

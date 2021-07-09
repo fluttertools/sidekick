@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../common/atoms/empty_dataset.dart';
+import '../../../components/atoms/empty_dataset.dart';
 
 /// Empty project screen
 class EmptyProjects extends StatelessWidget {

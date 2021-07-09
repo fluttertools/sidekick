@@ -4,13 +4,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../modules/common/utils/layout_size.dart';
-import '../../providers/selected_detail_provider.dart';
-import '../atoms/typography.dart';
-import '../molecules/cache_info_tile.dart';
-import '../molecules/reference_info_tile.dart';
-import '../molecules/release_info_section.dart';
-import '../molecules/version_install_button.dart';
+import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/version_install_button.dart';
+import '../../common/utils/layout_size.dart';
+import '../selected_detail.provider.dart';
+import 'cache_info_tile.dart';
+import 'reference_info_tile.dart';
+import 'release_info_section.dart';
 
 /// Drawer to display selected detail
 class SelectedDetailDrawer extends HookWidget {

@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
-import '../../modules/fvm/fvm_queue.provider.dart';
+import '../../common/dto/release.dto.dart';
+import '../fvm_queue.provider.dart';
 
 /// Setup button
 class SetupButton extends StatelessWidget {
