@@ -76,7 +76,7 @@ class Squash {
         );
         break;
       default:
-        throw Exception("Incompatible image format");
+        throw Exception('Incompatible image format');
     }
 
     return tempFile;
