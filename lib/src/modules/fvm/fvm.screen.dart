@@ -4,12 +4,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../components/organisms/cleanup_unused_dialog.dart';
-import '../common/organisms/screen.dart';
+import '../../components/organisms/screen.dart';
 import '../releases/releases.provider.dart';
 import 'components/fvm_cache_size.dart';
 import 'components/fvm_empty_releases.dart';
 import 'components/fvm_release_list_item.dart';
+import 'dialogs/cleanup_unused_dialog.dart';
 
 class FVMScreen extends HookWidget {
   const FVMScreen({Key key}) : super(key: key);

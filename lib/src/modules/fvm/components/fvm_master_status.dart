@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../components/molecules/setup_button.dart';
-import '../../../dto/channel.dto.dart';
+import '../../../modules/common/dto/channel.dto.dart';
+import 'fvm_setup_button.dart';
 
 /// Status for Master channel release
 class FvmMasterStatus extends StatelessWidget {

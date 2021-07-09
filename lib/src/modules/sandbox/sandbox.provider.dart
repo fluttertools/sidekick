@@ -4,7 +4,7 @@ import 'dart:isolate';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../dto/release.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/notify.dart';
 import 'terminal_processor.dart';
 

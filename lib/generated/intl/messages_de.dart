@@ -97,7 +97,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nicht verwendete Versionen bereinigen"),
         "clickHereToDownload": MessageLookupByLibrary.simpleMessage(
             "Klicken Sie hier zum Download."),
-        "close": MessageLookupByLibrary.simpleMessage("Schließen"),
         "confirm": MessageLookupByLibrary.simpleMessage("Bestätigen"),
         "copiedToClipboard": MessageLookupByLibrary.simpleMessage(
             "In die Zwischenablage kopiert"),
@@ -225,8 +224,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen."),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
-        "thereWasAnIsssueOpeningSidekick": MessageLookupByLibrary.simpleMessage(
-            "Es gab ein Problem beim Öffnen von Sidekick"),
         "thereWasAnIssueLoadingYourPackages":
             MessageLookupByLibrary.simpleMessage(
                 "Es gab ein Problem beim Laden Ihrer Pakete."),

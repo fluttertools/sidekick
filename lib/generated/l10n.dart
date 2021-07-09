@@ -1259,26 +1259,6 @@ class S {
     );
   }
 
-  /// `There was an isssue opening Sidekick`
-  String get thereWasAnIsssueOpeningSidekick {
-    return Intl.message(
-      'There was an isssue opening Sidekick',
-      name: 'thereWasAnIsssueOpeningSidekick',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Close`
-  String get close {
-    return Intl.message(
-      'Close',
-      name: 'close',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Language`
   String get language {
     return Intl.message(

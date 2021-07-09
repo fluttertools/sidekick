@@ -7,20 +7,20 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/generated/l10n.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
 
+import '../../components/molecules/top_app_bar.dart';
 import '../../components/organisms/app_bottom_bar.dart';
-import '../../components/organisms/info_drawer.dart';
+import '../../components/organisms/shortcut_manager.dart';
 import '../../modules/common/utils/layout_size.dart';
-import '../../providers/navigation_provider.dart';
-import '../../providers/selected_detail_provider.dart';
 import '../../theme.dart';
 import '../fvm/fvm.screen.dart';
-import '../packages/packages.screen.dart';
+import '../navigation/navigation.provider.dart';
 import '../projects/projects.screen.dart';
+import '../pub_packages/pub_packages.screen.dart';
 import '../releases/releases.screen.dart';
 import '../search/components/search_bar.dart';
+import '../selected_detail/components/info_drawer.dart';
+import '../selected_detail/selected_detail.provider.dart';
 import 'constants.dart';
-import 'molecules/top_app_bar.dart';
-import 'organisms/shortcut_manager.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 

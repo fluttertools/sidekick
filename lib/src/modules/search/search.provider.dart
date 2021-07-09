@@ -3,8 +3,8 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/channel.dto.dart';
-import '../../dto/version.dto.dart';
+import '../../modules/common/dto/channel.dto.dart';
+import '../../modules/common/dto/version.dto.dart';
 import '../projects/projects.provider.dart';
 import '../releases/releases.provider.dart';
 

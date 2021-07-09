@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../components/molecules/setup_button.dart';
-import '../../../dto/channel.dto.dart';
-import '../../../dto/master.dto.dart';
-import '../../../dto/release.dto.dart';
+import '../../../modules/common/dto/channel.dto.dart';
+import '../../../modules/common/dto/master.dto.dart';
+import '../../../modules/common/dto/release.dto.dart';
 import '../fvm_queue.provider.dart';
 import 'fvm_master_status.dart';
+import 'fvm_setup_button.dart';
 
 /// Display status for a cache release
 class FvmReleaseStatus extends StatelessWidget {

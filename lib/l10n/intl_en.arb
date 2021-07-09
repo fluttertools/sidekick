@@ -121,8 +121,6 @@
   "updateNow": "Update Now",
   "clickHereToDownload": "Click here to download.",
   "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "A new version of Sidekick is available ({updateInfoLatest}).",
-  "thereWasAnIsssueOpeningSidekick": "There was an isssue opening Sidekick",
-  "close": "Close",
   "language": "Language",
   "analyticsCrashReportSubtitle": "When a flutter command crashes it attempts to send a crash report to Google in order to help Google contribute improvements to Flutter over time",
   "flutterSDKGlobalDescription": "A Flutter sdk version neeeds to be set as global in order to access Flutter settings",
