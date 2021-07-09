@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sidekick/src/components/atoms/typography.dart';
 
-import '../../../components/atoms/typography.dart';
 import '../atoms/blur_background.dart';
 
 /// Generic Sidekick screen widget

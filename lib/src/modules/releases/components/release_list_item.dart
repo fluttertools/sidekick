@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/list_tile.dart';
 import '../../../components/molecules/version_install_button.dart';
-import '../../../dto/release.dto.dart';
-import '../../../providers/selected_detail_provider.dart';
-import '../../common/molecules/list_tile.dart';
+import '../../../modules/common/dto/release.dto.dart';
+import '../../selected_detail/selected_detail.provider.dart';
 
 /// Release list item
 class ReleaseListItem extends StatelessWidget {

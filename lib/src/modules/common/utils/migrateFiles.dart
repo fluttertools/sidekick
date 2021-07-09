@@ -21,13 +21,18 @@ Future<void> checkMigration(Directory newPath) async {
     'projects_service_box.hive'
   ];
 
-  for (final fileName in files) {
-    final file = File(p.join(oldPath.absolute.path, fileName));
+  try {
+    for (final fileName in files) {
+      final file = File(p.join(oldPath.absolute.path, fileName));
 
-    if (file.existsSync()) {
-      file.copySync(p.join(newPath.absolute.path, fileName));
-      file.deleteSync();
+      if (file.existsSync()) {
+        file.copySync(p.join(newPath.absolute.path, fileName));
+        file.deleteSync();
+      }
     }
+  } on Exception catch (err) {
+    // Silent error
+    print(err);
   }
 
   await prefs.setBool(migrationName, true);

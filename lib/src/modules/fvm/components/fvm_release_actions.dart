@@ -4,9 +4,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../components/molecules/delete_dialog.dart';
-import '../../../dto/release.dto.dart';
-import '../../../providers/selected_detail_provider.dart';
+import '../../../modules/common/dto/release.dto.dart';
+import '../../selected_detail/selected_detail.provider.dart';
+import '../dialogs/fvm_delete_dialog.dart';
 import '../fvm_queue.provider.dart';
 
 /// Possible actions for installed release

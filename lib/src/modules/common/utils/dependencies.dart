@@ -1,6 +1,6 @@
 import 'package:pub_api_client/pub_api_client.dart';
 
-import '../../packages/package.dto.dart';
+import '../../pub_packages/dto/pub_package.dto.dart';
 
 final client = PubClient();
 

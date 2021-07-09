@@ -7,11 +7,11 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:sidekick/generated/l10n.dart';
 
+import '../../components/atoms/checkbox.dart';
+import '../../components/atoms/refresh_button.dart';
 import '../../components/atoms/typography.dart';
+import '../../components/organisms/screen.dart';
 import '../../modules/common/utils/notify.dart';
-import '../common/atoms/checkbox.dart';
-import '../common/atoms/refresh_button.dart';
-import '../common/organisms/screen.dart';
 import '../settings/settings.provider.dart';
 import 'components/project_list_item.dart';
 import 'components/projects_empty.dart';

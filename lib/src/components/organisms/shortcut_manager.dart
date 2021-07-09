@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../providers/navigation_provider.dart';
+import 'package:sidekick/src/modules/navigation/navigation.provider.dart';
 
 /// Navigation intent
 class NavigationIntent extends Intent {

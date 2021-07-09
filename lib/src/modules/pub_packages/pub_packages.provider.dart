@@ -5,9 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub_api_client/pub_api_client.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
-import 'package:sidekick/src/modules/packages/flutter_favorite.dto.dart';
-import 'package:sidekick/src/modules/packages/package.dto.dart';
-import 'package:sidekick/src/modules/packages/trending_package.dto.dart';
+import 'package:sidekick/src/modules/pub_packages/dto/flutter_favorite.dto.dart';
+import 'package:sidekick/src/modules/pub_packages/dto/pub_package.dto.dart';
+import 'package:sidekick/src/modules/pub_packages/dto/trending_package.dto.dart';
 
 import '../../modules/common/utils/dependencies.dart';
 import '../projects/projects.provider.dart';

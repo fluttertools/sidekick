@@ -2,14 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../../components/atoms/typography.dart';
-import '../../../providers/navigation_provider.dart';
-import '../../../theme.dart';
-import '../../../version.dart';
-import '../../settings/settings.screen.dart';
-import '../../updater/components/update_button.dart';
-import '../constants.dart';
+import 'package:sidekick/src/components/atoms/typography.dart';
+import 'package:sidekick/src/modules/common/constants.dart';
+import 'package:sidekick/src/modules/navigation/navigation.provider.dart';
+import 'package:sidekick/src/modules/settings/settings.screen.dart';
+import 'package:sidekick/src/modules/updater/components/update_button.dart';
+import 'package:sidekick/src/theme.dart';
+import 'package:sidekick/src/version.dart';
 
 /// Sidekick top app bar
 class SkAppBar extends StatelessWidget implements PreferredSizeWidget {

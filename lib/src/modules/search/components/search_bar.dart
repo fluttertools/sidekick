@@ -4,9 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:sidekick/generated/l10n.dart';
 
+import '../../../components/atoms/blur_background.dart';
 import '../../../hooks/floating_search_bar_controller.dart';
-import '../../../providers/navigation_provider.dart';
-import '../../common/atoms/blur_background.dart';
+import '../../navigation/navigation.provider.dart';
 import '../search.provider.dart';
 import 'search_results_list.dart';
 

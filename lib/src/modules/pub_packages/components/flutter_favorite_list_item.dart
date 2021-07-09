@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/generated/l10n.dart';
-import 'package:sidekick/src/modules/packages/flutter_favorite.dto.dart';
+import 'package:sidekick/src/modules/pub_packages/dto/flutter_favorite.dto.dart';
 
 import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/list_tile.dart';
 import '../../../modules/common/utils/open_link.dart';
-import '../../common/molecules/list_tile.dart';
 import 'package_score_display.dart';
 
 /// Flutter favorite list item

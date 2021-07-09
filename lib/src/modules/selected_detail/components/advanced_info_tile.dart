@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
-import '../../modules/common/atoms/copy_button.dart';
-import '../../modules/common/atoms/group_tile.dart';
-import '../../modules/common/molecules/list_tile.dart';
-import '../../modules/common/utils/open_link.dart';
-import '../atoms/typography.dart';
+import '../../../components/atoms/copy_button.dart';
+import '../../../components/atoms/group_tile.dart';
+import '../../../components/atoms/typography.dart';
+import '../../../components/molecules/list_tile.dart';
+import '../../common/dto/release.dto.dart';
+import '../../common/utils/open_link.dart';
 
 /// Advanced info tile
 class AdvancedInfoTile extends StatelessWidget {

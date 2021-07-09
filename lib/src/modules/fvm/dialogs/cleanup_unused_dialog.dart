@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sidekick/generated/l10n.dart';
 
-import '../../modules/common/utils/notify.dart';
-import '../../modules/fvm/fvm.provider.dart';
-import '../../modules/fvm/fvm_queue.provider.dart';
+import '../../common/utils/notify.dart';
+import '../fvm.provider.dart';
+import '../fvm_queue.provider.dart';
 
 Future<void> cleanupUnusedDialog(BuildContext context) async {
   final unusedVersions = context.read(unusedVersionProvider);

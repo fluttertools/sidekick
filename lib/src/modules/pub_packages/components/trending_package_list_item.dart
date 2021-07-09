@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/components/molecules/list_tile.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
-import 'package:sidekick/src/modules/packages/trending_package.dto.dart';
+import 'package:sidekick/src/modules/pub_packages/dto/trending_package.dto.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../common/molecules/list_tile.dart';
 
 /// Trending package list item
 class TrendingGithubRepoItem extends StatelessWidget {

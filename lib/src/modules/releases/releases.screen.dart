@@ -4,11 +4,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/generated/l10n.dart';
 
+import '../../components/atoms/sliver_animated_switcher.dart';
 import '../../components/atoms/typography.dart';
 import '../../components/molecules/version_install_button.dart';
+import '../../components/organisms/screen.dart';
 import '../../modules/common/utils/helpers.dart';
-import '../common/atoms/sliver_animated_switcher.dart';
-import '../common/organisms/screen.dart';
 import 'components/channel_showcase_item.dart';
 import 'components/release_list_item.dart';
 import 'releases.provider.dart';
