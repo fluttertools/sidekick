@@ -86,6 +86,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "pedroermarinho",
+      "name": "Pedro Marinho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29618874?v=4",
+      "profile": "https://pedroermarinho.github.io",
+      "contributions": [
+        "infra",
+        "ideas"
+      ]
     }
   ],
   "projectName": "sidekick",
