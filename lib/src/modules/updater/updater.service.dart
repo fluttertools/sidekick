@@ -1,4 +1,4 @@
-import 'package:github/github.dart';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:pub_semver/pub_semver.dart';
 
@@ -8,6 +8,12 @@ import '../common/constants.dart';
 import 'updater.dto.dart';
 import 'updater.utils.dart';
 
+Future<String> getSidekickLatestRelease() async {
+  final response = await Dio().get(kSidekickLatestReleaseUrl);
+
+  return response.data['tag_name'];
+}
+
 /// Handles app Sidekick updates
 class UpdaterService {
   const UpdaterService._();
@@ -16,11 +22,8 @@ class UpdaterService {
   /// comparing with [current] returns `LatestVersion`
   static Future<SidekickUpdateInfo> checkLatestRelease() async {
     try {
-      final latestRelease = await GitHub(
-        auth: Authentication.anonymous(),
-      ).repositories.getLatestRelease(kSidekickRepoSlug);
-
-      final latestVersion = Version.parse((latestRelease.tagName));
+      final latestTag = await getSidekickLatestRelease();
+      final latestVersion = Version.parse((latestTag));
       final currentVersion = Version.parse(packageVersion);
 
       final needUpdate = latestVersion > currentVersion;

@@ -1,4 +1,3 @@
-import 'package:github/github.dart';
 import 'package:sidekick/generated/l10n.dart';
 
 /// Sidekick title
@@ -25,6 +24,9 @@ const kMasterChannel = 'master';
 /// Github sidekick url
 const kGithubSidekickUrl = 'https://github.com/leoafarias/sidekick';
 
+const kSidekickLatestReleaseUrl =
+    'https://api.github.com/repos/leoafarias/sidekick/releases/latest';
+
 /// Flutter tags
 const kFlutterTagsUrl = 'https://github.com/flutter/flutter/releases/tag/';
 
@@ -35,9 +37,3 @@ Map<String, String> channelDescriptions = {
   'dev': S.current.devChannelDescription,
   'master': S.current.masterChannelDescription,
 };
-
-/// Sidekick repository slug
-final kSidekickRepoSlug = RepositorySlug(
-  'leoafarias',
-  'sidekick',
-);

@@ -364,13 +364,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
-  github:
-    dependency: "direct main"
-    description:
-      name: github
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "8.1.0"
   glob:
     dependency: transitive
     description:
@@ -476,13 +469,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  list_ext:
-    dependency: "direct main"
-    description:
-      name: list_ext
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.2"
   logging:
     dependency: transitive
     description:
@@ -531,7 +517,7 @@ packages:
       name: msix
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.3"
   oauth2:
     dependency: transitive
     description:
@@ -845,13 +831,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  truncate:
-    dependency: "direct main"
-    description:
-      name: truncate
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   typed_data:
     dependency: transitive
     description:
