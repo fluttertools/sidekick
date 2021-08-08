@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:i18next/i18next.dart';
 import 'package:open_file/open_file.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/group_tile.dart';
 import '../../../components/atoms/typography.dart';
@@ -25,15 +25,15 @@ class FvmInfoTile extends StatelessWidget {
       return const SizedBox(height: 0);
     }
     return SkGroupTile(
-      title: Text(S.of(context).localCacheInformation),
+      title: Text(I18Next.of(context).t.localCacheInformation),
       children: [
         SkListTile(
-          title: Text(S.of(context).createdDate),
+          title: Text(I18Next.of(context).t.createdDate),
           trailing: CacheDateDisplay(release),
         ),
         const Divider(height: 0),
         SkListTile(
-          title: Text(S.of(context).cacheLocation),
+          title: Text(I18Next.of(context).t.cacheLocation),
           subtitle: Caption(release.cache.dir.path),
           trailing: IconButton(
             icon: const Icon(
