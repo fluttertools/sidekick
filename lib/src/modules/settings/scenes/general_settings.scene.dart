@@ -113,13 +113,13 @@ class SettingsSectionGeneral extends StatelessWidget {
             trailing: DropdownButton<Locale>(
               underline: Container(),
               isDense: true,
-              value: settings.sidekick.locale,
+              value: settings.sidekick.locale ?? I18Next.of(context).locale,
               items: languageManager.supportedLocales.map((locale) {
                 return DropdownMenuItem(
                   value: locale,
                   child: Text(
                     I18Next.of(context).t(
-                      'settings:sidekick.language${settings.sidekick.locale.toLanguageTag()}',
+                      'settings:sidekick.language.${locale.toLanguageTag()}',
                     ),
                   ),
                 );

@@ -125,12 +125,14 @@ class ReleasesScreen extends HookWidget {
                     value: filter.state.name,
                     icon: const Icon(Icons.filter_list),
                     underline: Container(),
-                    items: Filter.values.map((filter) {
+                    items: Filter.values.map((Filter filter) {
+                      final text = filter != Filter.all
+                          ? filter.name.capitalize()
+                          : I18Next.of(context).t('modules:releases.all');
+
                       return DropdownMenuItem(
                         value: filter.name,
-                        child: Text(
-                          filter.name.capitalize(),
-                        ),
+                        child: Text(text),
                       );
                     }).toList(),
                     onChanged: (value) {

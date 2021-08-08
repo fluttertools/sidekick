@@ -72,6 +72,9 @@
     }
   },
   "pubPackages": {
+    "trending": "Angesagt",
+    "mostUsedPackages": "Meist genutzte Packages",
+    "flutterFavorites": "Flutter Favoriten",
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "Sie müssen zuerst ein Flutter-Projekt hinzufügen. Die Paketinformationen werden hier angezeigt.",
       "noPackagesFound": "Keine Pakete gefunden",
@@ -85,6 +88,7 @@
     }
   },
   "releases": {
+    "all": "Alle",
     "releases": "Releases",
     "versions": "Versionen",
     "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen."

@@ -88,7 +88,7 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
-      'locale': locale.toLanguageTag(),
+      'locale': locale?.toLanguageTag() ?? Locale('en', 'GB').toLanguageTag(),
     };
   }
 }
