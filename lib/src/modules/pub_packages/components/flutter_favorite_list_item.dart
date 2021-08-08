@@ -54,7 +54,7 @@ class FlutterFavoriteListItem extends StatelessWidget {
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.informationOutline),
                       onPressed: () async {
-                        await openLink(package.url);
+                        await openLink(context, package.url);
                       },
                     ),
                   ),
@@ -69,7 +69,7 @@ class FlutterFavoriteListItem extends StatelessWidget {
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.textBox),
                       onPressed: () async {
-                        await openLink(package.changelogUrl);
+                        await openLink(context, package.changelogUrl);
                       },
                     ),
                   ),
@@ -84,7 +84,7 @@ class FlutterFavoriteListItem extends StatelessWidget {
                       splashRadius: 20,
                       icon: const Icon(MdiIcons.earth),
                       onPressed: () async {
-                        await openLink(package.url);
+                        await openLink(context, package.url);
                       },
                     ),
                   ),

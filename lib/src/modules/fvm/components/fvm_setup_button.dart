@@ -28,7 +28,7 @@ class SetupButton extends StatelessWidget {
         splashRadius: 20,
         color: Theme.of(context).colorScheme.secondary,
         onPressed: () {
-          context.read(fvmQueueProvider.notifier).setup(release);
+          context.read(fvmQueueProvider.notifier).setup(context, release);
         },
       ),
     );

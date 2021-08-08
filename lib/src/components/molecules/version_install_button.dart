@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
-
-String installedMsg = S.current.versionIsInstalled;
-String notInstalledMsg = S.current.versionNotInstalledClickToInstall;
 
 class VersionInstallButton extends HookWidget {
   final ReleaseDto version;
@@ -18,6 +16,10 @@ class VersionInstallButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final installedMsg =
+        I18Next.of(context).t('components:molecules.versionIsInstalled');
+    final notInstalledMsg = I18Next.of(context)
+        .t('components:molecules.versionNotInstalledClickToInstall');
     final isQueued = useState(false);
     final hovering = useState(false);
     final queueProvider = useProvider(fvmQueueProvider);
@@ -43,7 +45,7 @@ class VersionInstallButton extends HookWidget {
     Future<void> onInstall() async {
       isQueued.value = true;
       // Add it to queue for installation
-      context.read(fvmQueueProvider.notifier).install(version);
+      context.read(fvmQueueProvider.notifier).install(context, version);
     }
 
     Widget installIcon() {

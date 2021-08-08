@@ -40,7 +40,9 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                     (element) => selected.containsKey(element.name),
                   );
                   for (final version in unusedSelected) {
-                    context.read(fvmQueueProvider.notifier).remove(version);
+                    context
+                        .read(fvmQueueProvider.notifier)
+                        .remove(context, version);
                   }
 
                   Navigator.of(context).pop();

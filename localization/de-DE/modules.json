@@ -3,14 +3,31 @@
     "navButtonDashboard": "Dashboard",
     "navButtonProjects": "Projekte",
     "navButtonExplore": "Erkunden",
-    "navButtonPackages": "Pakete"
+    "navButtonPackages": "Pakete",
+    "stableChannelDescription": "Wir empfehlen, dass Sie diesen Kanal für alle Produktions-App-Veröffentlichungen verwenden. Ungefähr einmal im Quartal wird ein Zweig, der auf Beta stabilisiert wurde, unser nächster stabiler Zweig und wir erstellen eine stabile Version von diesem Zweig.",
+    "betaChannelDescription": "Zweig, der für eine neue Betaversion am Monatsanfang, in der Regel am ersten Montag, von master erstellt wird. Dieser wird einen Zweig für Dart, die Engine und das Framework enthalten.",
+    "devChannelDescription": "Der letzte vollständig getestete Build. Normalerweise funktionstüchtig, aber unter \"Schlechte Builds\" finden Sie eine Liste bekannter \"schlechter\" Dev-Builds.",
+    "masterChannelDescription": "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen.",
+    "utils": {
+      "start": "start",
+      "open": "öffnen",
+      "couldNotLaunchUrl": "Konnte {{url}} nicht öffnen"
+    }
   },
   "fvm": {
     "installedVersions": "Installierte Versionen",
     "cleanUp": "Säubern",
     "cleanUpTooltip": "Nicht verwendete Versionen bereinigen.",
     "numberOfCachedVersions": "{{cachedVersions}} Versionen",
+    "versionItemversionnameHasBeenInstalled": "Die Version {{itemVersionName}} wurde installiert.",
+    "versionItemversionnameHasFinishedSetup": "Version {{itemVersionName}} hat das Setup beendet.",
+    "channelItemversionnameHasBeenUpgraded": "Channel {{itemVersionName}} wurde aktualisiert.",
+    "versionItemversionnameHasBeenRemoved": "Die Version {{itemVersionName}} wurde entfernt.",
+    "versionItemversionnameHasBeenSetAsGlobal": "Version {{itemVersionName}} wurde als global festgelegt.",
+    "versionVersionPinnedToProjectname": "Version {{version}} angeheftet an {{projectName}}",
     "components": {
+      "upgrade": "Upgrade",
+      "setAsGlobal": "Als global festlegen",
       "inUse": "Verwendet",
       "unused": "Nicht verwendet",
       "flutterSdkNotInstalled": "Flutter SDK nicht installiert.",

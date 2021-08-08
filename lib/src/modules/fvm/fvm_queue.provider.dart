@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
+import 'package:i18next/i18next.dart';
 
 import 'package:state_notifier/state_notifier.dart';
 
@@ -68,36 +69,37 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   }
 
   ///  Adds install action to queue
-  void install(ReleaseDto version, {bool skipSetup}) async {
+  void install(BuildContext context, ReleaseDto version,
+      {bool skipSetup}) async {
     skipSetup ??= settings.skipSetup;
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
 
-    await _addToQueue(version, action: action);
+    await _addToQueue(context, version, action: action);
   }
 
   /// Adds setup action to queue
-  void setup(ReleaseDto version) {
-    _addToQueue(version, action: QueueAction.setupOnly);
+  void setup(BuildContext context, ReleaseDto version) {
+    _addToQueue(context, version, action: QueueAction.setupOnly);
   }
 
   /// adds upgrade action to queue
-  void upgrade(ReleaseDto version) {
-    _addToQueue(version, action: QueueAction.channelUpgrade);
+  void upgrade(BuildContext context, ReleaseDto version) {
+    _addToQueue(context, version, action: QueueAction.channelUpgrade);
   }
 
   /// Adds remove action to queue
-  void remove(ReleaseDto version) {
-    _addToQueue(version, action: QueueAction.remove);
+  void remove(BuildContext context, ReleaseDto version) {
+    _addToQueue(context, version, action: QueueAction.remove);
   }
 
   /// Adds set global action to queue
-  void setGlobal(ReleaseDto version) {
-    _addToQueue(version, action: QueueAction.setGlobal);
+  void setGlobal(BuildContext context, ReleaseDto version) {
+    _addToQueue(context, version, action: QueueAction.setGlobal);
   }
 
   /// Runs queue
-  void runQueue() async {
+  void runQueue(BuildContext context) async {
     try {
       final queue = state.queue;
       final activeItem = state.activeItem;
@@ -114,34 +116,70 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
       switch (item.action) {
         case QueueAction.install:
           await FVMClient.install(item.version.name);
-          notify(S.current
-              .versionItemversionnameHasBeenInstalled(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.versionItemversionnameHasBeenInstalled',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         case QueueAction.setupOnly:
           await FVMClient.setup(item.version.name);
-          notify(S.current
-              .versionItemversionnameHasFinishedSetup(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.versionItemversionnameHasFinishedSetup',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         case QueueAction.installAndSetup:
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
-          notify(S.current
-              .versionItemversionnameHasBeenInstalled(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.versionItemversionnameHasBeenInstalled',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         case QueueAction.channelUpgrade:
           await FVMClient.upgradeChannel(item.version.cache);
-          notify(S.current
-              .channelItemversionnameHasBeenUpgraded(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.channelItemversionnameHasBeenUpgraded',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         case QueueAction.remove:
           await FVMClient.remove(item.version.name);
-          notify(S.current
-              .versionItemversionnameHasBeenRemoved(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.versionItemversionnameHasBeenRemoved',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         case QueueAction.setGlobal:
           await FVMClient.setGlobalVersion(item.version.cache);
-          notify(S.current
-              .versionItemversionnameHasBeenSetAsGlobal(item.version.name));
+          notify(
+            I18Next.of(context).t(
+              'modules:fvm.versionItemversionnameHasBeenSetAsGlobal',
+              variables: {
+                'itemVersionName': item.version.name,
+              },
+            ),
+          );
           break;
         default:
           break;
@@ -158,19 +196,29 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     state = state.update();
 
     // Run queue again
-    runQueue();
+    runQueue(context);
   }
 
   /// Pins a releae to a project
-  Future<void> pinVersion(FlutterProject project, String version) async {
+  Future<void> pinVersion(
+      BuildContext context, FlutterProject project, String version) async {
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reload(project);
-    notify(S.current.versionVersionPinnedToProjectname(version, project.name));
+    notify(
+      I18Next.of(context).t(
+        'modules:fvm.versionVersionPinnedToProjectname',
+        variables: {
+          'version': version,
+          'projectName': project.name,
+        },
+      ),
+    );
   }
 
-  Future<void> _addToQueue(ReleaseDto version, {QueueAction action}) async {
+  Future<void> _addToQueue(BuildContext context, ReleaseDto version,
+      {QueueAction action}) async {
     state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
-    runQueue();
+    runQueue(context);
   }
 }

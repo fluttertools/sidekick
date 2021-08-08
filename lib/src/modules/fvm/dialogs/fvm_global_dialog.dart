@@ -64,6 +64,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                   onPressed: () {
                     final os = Platform.operatingSystem;
                     openLink(
+                      context,
                       'https://flutter.dev/docs/get-started/install/$os#update-your-path',
                     );
                   },
