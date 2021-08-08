@@ -85,7 +85,7 @@
       "stableReleases": "Stable Releases",
       "betaReleases": "Beta Releases",
       "devReleases": "Dev Releases",
-      "invalidChanel": "Ungültiger Channel"
+      "invalidChannel": "Ungültiger Channel"
     }
   },
   "selectedDetail": {
