@@ -57,7 +57,7 @@
     "projectsRefreshed": "ProjectsRefreshed",
     "projects": "Projects",
     "choose": "Choose",
-    "projectsProjects": "Projects",
+    "projectsProjects": "Projects {{projects}}",
     "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
     "fvmOnly": "FVMOnly",
     "addProject": "Add Project",

@@ -55,10 +55,10 @@
     }
   },
   "projects": {
-    "projectsRefreshed": "ProjectsRefreshed",
-    "projects": "Projects",
-    "choose": "Choose",
-    "projectsProjects": "Projects",
+    "projectsRefreshed": "تم تحديث المشروعات",
+    "projects": "المشروعات",
+    "choose": "اختر",
+    "projectsProjects": "المشاريع {{projects}}",
     "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
     "fvmOnly": "FVMOnly",
     "addProject": "Add Project",
