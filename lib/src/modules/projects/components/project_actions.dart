@@ -49,14 +49,14 @@ class ProjectActions extends StatelessWidget {
       PopupMenuItem(
         value: ProjectActionOptions.openDirectory,
         child: renderMenuButton(
-          label: I18Next.of(context).t('modules:projetcs.components.open'),
+          label: I18Next.of(context).t('modules:projects.components.open'),
           icon: MdiIcons.openInNew,
         ),
       ),
       PopupMenuItem(
         value: ProjectActionOptions.remove,
         child: renderMenuButton(
-          label: I18Next.of(context).t('modules:projetcs.components.remove'),
+          label: I18Next.of(context).t('modules:projects.components.remove'),
           icon: MdiIcons.delete,
         ),
       ),

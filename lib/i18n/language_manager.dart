@@ -15,6 +15,7 @@ class LanguageManager {
     const Locale('en', 'US'),
     const Locale('ar', 'SA'),
     const Locale('de', 'DE'),
+    const Locale('es', 'ES'),
   ];
 
   List<String> getListOfLocalesAsString() {

@@ -63,7 +63,7 @@
     "addProject": "Projekt hinzufügen",
     "notAFlutterProject": "Kein Flutter-Projekt",
     "components": {
-      "open": "öffnen",
+      "open": "Öffnen",
       "remove": "Löschen",
       "openTerminalPlayground": "Terminal Playground öffnen",
       "selectAFlutterSdkVersion": "Wählen Sie eine Flutter SDK Version",
