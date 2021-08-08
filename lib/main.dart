@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:i18next/i18next.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
@@ -69,6 +70,7 @@ class FvmApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               ...GlobalCupertinoLocalizations.delegates,
             ],
+            locale: settings.locale ?? I18Next.of(context).locale,
             supportedLocales: languageManager.supportedLocales,
             localeResolutionCallback:
                 (Locale locale, Iterable<Locale> supportedLocales) {
