@@ -74,7 +74,7 @@
   "pubPackages": {
     "trending": "شائع",
     "mostUsedPackages": "الحزم الأكثر استخداما",
-    "flutterFavourites": "مفضلة رفرفة",
+    "flutterFavorites": "مفضلة رفرفة",
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "تحتاج إلى إضافة مشروع Flutter أولاً. سيتم عرض معلومات الحزمة هنا.",
       "noPackagesFound": "لم يتم العثور على حزم",

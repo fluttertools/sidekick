@@ -74,7 +74,7 @@
   "pubPackages": {
     "trending": "Popular",
     "mostUsedPackages": "Most used packages",
-    "flutterFavourites": "Flutter Favourites",
+    "flutterFavorites": "Flutter Favourites",
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
       "noPackagesFound": "No packages found",
@@ -111,7 +111,7 @@
   },
   "selectedDetail": {
     "components": {
-      "advanced": "advanced",
+      "advanced": "Advanced",
       "downloadZip": "Download zip",
       "zipFileWithAllReleaseDependencies": "Zip file with all release dependencies",
       "hash": "Hash",
