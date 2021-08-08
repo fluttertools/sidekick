@@ -25,15 +25,18 @@ class FvmInfoTile extends StatelessWidget {
       return const SizedBox(height: 0);
     }
     return SkGroupTile(
-      title: Text(I18Next.of(context).t.localCacheInformation),
+      title: Text(I18Next.of(context)
+          .t('modules:selectedDetail.components.localCacheInformation')),
       children: [
         SkListTile(
-          title: Text(I18Next.of(context).t.createdDate),
+          title: Text(I18Next.of(context)
+              .t('modules:selectedDetail.components.createdDate')),
           trailing: CacheDateDisplay(release),
         ),
         const Divider(height: 0),
         SkListTile(
-          title: Text(I18Next.of(context).t.cacheLocation),
+          title: Text(I18Next.of(context)
+              .t('modules:selectedDetail.components.cacheLocation')),
           subtitle: Caption(release.cache.dir.path),
           trailing: IconButton(
             icon: const Icon(

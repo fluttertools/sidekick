@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../releases/releases.provider.dart';
@@ -50,16 +51,19 @@ class SettingsSectionFlutter extends HookWidget {
                           ),
                         ),
                         child: Text(
-                          I18Next.of(context).t.flutterSDKGlobalDescription,
+                          I18Next.of(context).t(
+                              'modules:settings.scenes.flutterSDKGlobalDescription'),
                         ),
                       ),
                       const SizedBox(height: 20)
                     ],
                   ),
             SwitchListTile(
-              title: Text(I18Next.of(context).t.analyticsCrashReporting),
+              title: Text(I18Next.of(context)
+                  .t('modules:settings.scenes.analyticsCrashReporting')),
               subtitle: Text(
-                I18Next.of(context).t.analyticsCrashReportSubtitle,
+                I18Next.of(context)
+                    .t('modules:settings.scenes.analyticsCrashReportSubtitle'),
               ),
               value: !settings.flutter.analytics,
               onChanged: deactivate
@@ -70,10 +74,11 @@ class SettingsSectionFlutter extends HookWidget {
                     },
             ),
             const SizedBox(height: 20),
-            Subheading(I18Next.of(context).t.platforms),
+            Subheading(
+                I18Next.of(context).t('modules:settings.scenes.platforms')),
             const SizedBox(height: 20),
             SwitchListTile(
-              title: Text(I18Next.of(context).t.web),
+              title: Text(I18Next.of(context).t('modules:settings.scenes.web')),
               value: settings.flutter.web,
               onChanged: deactivate
                   ? null

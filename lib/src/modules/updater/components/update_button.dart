@@ -35,15 +35,18 @@ class SkUpdateButton extends HookWidget {
               children: [
                 Icon(MdiIcons.alertDecagram),
                 SizedBox(width: 10),
-                Heading(I18Next.of(context).t.updateAvailable),
+                Heading(I18Next.of(context)
+                    .t('modules:updater.components.updateAvailable')),
               ],
             ),
             content: Container(
               child: Paragraph(
-                I18Next.of(context)
-                    .t
-                    .sidekickVersionUpdateinfolatestIsNowAvailable(
-                        updateInfo.latest),
+                I18Next.of(context).t(
+                  'modules:updater.components.sidekickVersionUpdateinfolatestIsNowAvailable',
+                  variables: {
+                    'updateInfoLatest': updateInfo.latest,
+                  },
+                ),
               ),
             ),
             actions: <Widget>[
@@ -52,14 +55,16 @@ class SkUpdateButton extends HookWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(I18Next.of(context).t.later),
+                child: Text(
+                    I18Next.of(context).t('modules:updater.components.later')),
               ),
               ElevatedButton(
                 onPressed: () async {
-                  await updater.openInstaller();
+                  await updater.openInstaller(context);
                   Navigator.of(context).pop();
                 },
-                child: Text(I18Next.of(context).t.updateNow),
+                child: Text(I18Next.of(context)
+                    .t('modules:updater.components.updateNow')),
               ),
             ],
           );
@@ -74,7 +79,8 @@ class SkUpdateButton extends HookWidget {
           ActionChip(
             onPressed: showUpdateDialog,
             label: Text(
-              I18Next.of(context).t.updateAvailable,
+              I18Next.of(context)
+                  .t('modules:updater.components.updateAvailable'),
               style: TextStyle(fontSize: 12),
             ),
           ),

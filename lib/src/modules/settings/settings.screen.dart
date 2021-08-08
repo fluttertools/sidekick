@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../modules/common/utils/helpers.dart';
@@ -48,7 +49,11 @@ class SettingsScreen extends HookWidget {
 
     final controller = usePageController(initialPage: section.index);
 
-    final _sections = [S.current.general, 'FVM', 'Flutter'];
+    final _sections = [
+      I18Next.of(context).t('modules:settings.scenes.general'),
+      'FVM',
+      'Flutter'
+    ];
 
     void changeSection(int idx) {
       currentSection.value = idx;
@@ -62,9 +67,10 @@ class SettingsScreen extends HookWidget {
     Future<void> handleSave() async {
       try {
         await provider.save(settings);
-        notify(I18Next.of(context).t.settingsHaveBeenSaved);
+        notify(I18Next.of(context).t('modules:settings.settingsHaveBeenSaved'));
       } on Exception catch (e) {
-        notifyError(I18Next.of(context).t.couldNotSaveSettings);
+        notifyError(
+            I18Next.of(context).t('modules:settings.couldNotSaveSettings'));
         notifyError(e.toString());
       }
     }
