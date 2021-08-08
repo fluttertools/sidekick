@@ -29,7 +29,6 @@
       "inUse": "قيد الإستخدام",
       "unused": "غير مستخدمة",
       "setAsGlobal": "تعيين كعامّ",
-      "remove": "إزالة",
       "upgrade": "ترقية",
       "flutterSdkNotInstalled": "لم يتم تثبيت Flutter SDK.",
       "noFlutterVersionInstalledMessage": "ليس لديك حاليا أي إصدارات Flutter SDK مثبتة. سيتم عرض الإصدارات أو القنوات التي تم تثبيتها هنا.",
@@ -59,108 +58,108 @@
     "projects": "المشروعات",
     "choose": "اختر",
     "projectsProjects": "المشاريع {{projects}}",
-    "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
-    "fvmOnly": "FVMOnly",
-    "addProject": "Add Project",
-    "notAFlutterProject": "Not a Flutter project",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "عرض فقط المشاريع التي لها إصدارات مثبتة",
+    "fvmOnly": "FVM فقط",
+    "addProject": "إضافة مشروع",
+    "notAFlutterProject": "ليس مشروع Flutter",
     "components": {
-      "open": "open",
-      "remove": "remove",
-      "openTerminalPlayground": "Open Terminal Playground",
-      "selectAFlutterSdkVersion": "select a Flutter SDK version",
-      "noFlutterProjectsHaveBeenAddedYet": "No Flutter projects have been added yet.",
-      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Add your Flutter project The project information will be displayed here."
+      "open": "فتح",
+      "remove": "إزالة",
+      "openTerminalPlayground": "فتح ملعب طرفي",
+      "selectAFlutterSdkVersion": "حدد إصدار Flutter SDK",
+      "noFlutterProjectsHaveBeenAddedYet": "لم يتم اضافة أي مشاريع Flutter.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "إضافة مشروع Flutter الخاص بك. مشروعاتك سيتم عرضها هنا."
     }
   },
   "pubPackages": {
-    "trending": "Popular",
-    "mostUsedPackages": "Most used packages",
-    "flutterFavourites": "Flutter Favourites",
+    "trending": "شائع",
+    "mostUsedPackages": "الحزم الأكثر استخداما",
+    "flutterFavourites": "مفضلة رفرفة",
     "components": {
-      "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
-      "noPackagesFound": "No packages found",
-      "likes": "Likes",
-      "pubPoints": "Pub Points",
-      "popularity": "Popularity",
-      "details": "Details",
-      "changelog": "Changelog",
-      "website": "Website",
-      "packageprojectscountProjects": "{{packageProjectsCount}} projects"
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "تحتاج إلى إضافة مشروع Flutter أولاً. سيتم عرض معلومات الحزمة هنا.",
+      "noPackagesFound": "لم يتم العثور على حزم",
+      "packageprojectscountProjects": "{{packageProjectsCount}} مشروع",
+      "changelog": "سجل التغييرات",
+      "website": "الموقع الإلكتروني",
+      "details": "تفاصيل",
+      "likes": "الإعجاب",
+      "pubPoints": "نقاط Pub",
+      "popularity": "الشعبية"
     }
   },
   "releases": {
-    "all": "All",
-    "releases": "Releases",
-    "versions": "Versions",
-    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "The current tip-of-tree, the absolute latest cutting edge build. Usually functional, although sometimes we accidentally break things."
+    "all": "الجميع",
+    "releases": "الإصدارات",
+    "versions": "النسخ",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "النسيج الحالي من الأشجار، أحدث حديث مطلق. عادة ما يعمل ، بالرغم من أننا في بعض الأحيان نقوم بتحطيم الأشياء عن طريق الخطأ."
   },
   "sandbox": {
-    "playground": "Playground",
-    "releasesVersions": "{{releases}} versions",
-    "notRunning": "Does not run"
+    "playground": "ملعب",
+    "releasesVersions": "الإصدارات {{releases}}",
+    "notRunning": "غير مشغل"
   },
   "search": {
     "components": {
-      "search": "Search... ",
-      "noResults": "No results",
-      "channels": "Channels",
-      "stableReleases": "Stable Releases",
-      "betaReleases": "Beta Releases",
-      "devReleases": "Dev Releases",
-      "invalidChanel": "Invalid Channel"
+      "search": "بحث... ",
+      "noResults": "لا توجد نتائج",
+      "channels": "القنوات",
+      "stableReleases": "الإصدارات المستقرة",
+      "betaReleases": "الإصدارات التجريبية",
+      "devReleases": "الإصدارات التجريبية \"مطورين\"",
+      "invalidChanel": "قناة غير صالحة"
     }
   },
   "selectedDetail": {
     "components": {
-      "advanced": "advanced",
-      "downloadZip": "Download zip",
-      "zipFileWithAllReleaseDependencies": "Zip file with all release dependencies",
-      "hash": "Hash",
+      "advanced": "متقدم",
+      "downloadZip": "تحميل Zip",
+      "zipFileWithAllReleaseDependencies": "ملف مضغوط مع جميع إعتمادات الإصدار.",
+      "hash": "تشفير",
       "sha256": "Sha256",
-      "localCacheInformation": "Local Cache Information",
-      "createdDate": "CreationDate",
-      "cacheLocation": "Cache location",
-      "nothingSelected": "Nothing selected",
-      "channel": "Channel",
-      "releaseNotes": "Release Notes",
-      "version": "Version",
-      "releaseDate": "Release date"
+      "localCacheInformation": "معلومات الذاكرة المؤقتة المحلية.",
+      "createdDate": "تاريخ الإنشاء",
+      "cacheLocation": "موقع التخزين المؤقت",
+      "nothingSelected": "لم يتم تحديد شيء",
+      "channel": "قناة",
+      "releaseNotes": "ملاحظات الإصدار",
+      "version": "نسخة",
+      "releaseDate": "تاريخ الإصدار"
     }
   },
   "settings": {
-    "settingsHaveBeenSaved": "The settings have been saved",
-    "couldNotSaveSettings": "Settings could not be saved",
+    "settingsHaveBeenSaved": "تم حفظ الإعدادات",
+    "couldNotSaveSettings": "تعذر حفظ الإعدادات",
     "scenes": {
-      "flutterSDKGlobalDescription": "A flutter sdk version must be set as global to access the flutter settings",
-      "analyticsCrashReporting": "Analytics & crash reporting",
-      "analyticsCrashReportSubtitle": "When a Flutter command crashes, an attempt is made to send a crash report to Google so that Google can contribute improvements to Flutter over time",
-      "platforms": "Platforms",
-      "web": "Web",
-      "skipSetupFlutterOnInstall": "Skip setup of Flutter during installation",
-      "thisWillOnlyCloneFlutterAndNotInstall": "This will only clone Flutter and not install it ",
-      "dependenciesAfterANewVersionIsInstalled": "Dependencies after a new version is installed.",
-      "areYouSureYouWantToResetSettings": "AreYouSureYouWantToResetSettings?",
-      "thisWillOnlyResetSidekickSpecificPreferences": "This will only reset Sidekick specific settings",
-      "appSettingsHaveBeenReset": "App settings have been reset",
-      "general": "General",
-      "selectAThemeOrSwitchAccordingToSystemSettings": "Select a theme or switch according to the system settings.",
-      "theme": "Theme",
-      "system": "System",
-      "light": "Light",
-      "dark": "Dark",
-      "language": "Language",
-      "resetToDefaultSettings": "Reset to Default Settings",
-      "reset": "Reset"
+      "flutterSDKGlobalDescription": "يحتاج ضبط إصدار sdk كعام للوصول إلى إعدادات Flutter",
+      "analyticsCrashReporting": "التحليلات والإبلاغ عن الأعطال",
+      "analyticsCrashReportSubtitle": "عندما يحدث خطأ في أمر Flutter فإنه يحاول إرسال تقرير أخطاء إلى جوجل من أجل مساعدة جوجل في المساهمة في تحسين Flutter بمرور الوقت.",
+      "platforms": "المنصات",
+      "web": "ويب",
+      "skipSetupFlutterOnInstall": "تخطي إعداد Flutterعند التثبيت",
+      "thisWillOnlyCloneFlutterAndNotInstall": "هذا سوف يستنسخ Flutter فقط و لا يقوم بالتثبيت",
+      "dependenciesAfterANewVersionIsInstalled": "الإعتمادات بعد تثبيت نسخة جديدة.",
+      "areYouSureYouWantToResetSettings": "هل أنت متأكد من أنك تريد إعادة تعيين الإعدادات؟",
+      "thisWillOnlyResetSidekickSpecificPreferences": "سيؤدي هذا فقط إلى إعادة تعيين التفضيلات المحددة لSidekick",
+      "appSettingsHaveBeenReset": "تم إعادة ضبط إعدادات التطبيق",
+      "general": "عامّ",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "حدد سمة أو تبديل وفقا لإعدادات النظام..",
+      "theme": "السمة",
+      "system": "النظام",
+      "light": "فاتح",
+      "dark": "مظلم",
+      "language": "اللغة",
+      "resetToDefaultSettings": "إعادة الضبط إلى الإعدادات الافتراضية",
+      "reset": "إعادة الضبط"
     }
   },
   "updater": {
     "components": {
-      "updateAvailable": "Update available.",
-      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick version {{updateInfoLatest}} is now Available",
-      "later": "Later",
-      "updateNow": "Update now",
-      "clickHereToDownload": "Click here to download",
-      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "A new version of Sidekick is available ({{updateInfoLatest}})."
+      "updateAvailable": "تحديث متوفر.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "الإصدار {{updateInfoLatest}} متوفر الآن.",
+      "later": "لاحقاً",
+      "updateNow": "التحديث الآن",
+      "clickHereToDownload": "انقر هنا للتحميل.",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "يتوفر إصدار جديد من Sidekick ({{updateInfoLatest}})."
     }
   }
 }
