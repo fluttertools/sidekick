@@ -131,7 +131,7 @@
     "couldNotSaveSettings": "No se han podido guardar los ajustes",
     "scenes": {
       "flutterSDKGlobalDescription": "Se debe establecer una versión del sdk de flutter como global para acceder a la configuración de flutter",
-      "analyticsCrashReporting": "Analytics & crash reporting",
+      "analyticsCrashReporting": "Análisis e informes de accidentes",
       "analyticsCrashReportSubtitle": "Cuando un comando de Flutter se bloquea, se intenta enviar un informe de fallos a Google para que este pueda contribuir a mejorar Flutter con el tiempo",
       "platforms": "Plataformas",
       "web": "Web",
