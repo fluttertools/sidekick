@@ -1,0 +1,134 @@
+{
+  "common": {
+    "navButtonDashboard": "dashboard",
+    "navButtonProjects": "Projects",
+    "navButtonExplore": "Explore",
+    "navButtonPackages": "Packages"
+  },
+  "fvm": {
+    "installedVersions": "Installed Versions",
+    "cleanUp": "Cleanup",
+    "cleanUpTooltip": "Clean unused versions",
+    "numberOfCachedVersions": "{{cachedVersions}} versions",
+    "components": {
+      "inUse": "Used",
+      "unused": "NotUsed",
+      "flutterSdkNotInstalled": "Flutter SDK not installed.",
+      "noFlutterVersionInstalledMessage": "You do not currently have any Flutter SDK versions installed. Versions or channels that have been installed are shown here.",
+      "exploreFlutterReleases": "Explore Flutter Releases",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "SDK has not completed setup"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "No unused Flutter SDK versions installed",
+      "cleanUpUnusedVersions": "Clean up unused versions",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "theseVersionAreNotPinnedToAProject": "These versions are not pinned to a project ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Do you want to remove it to free up space?",
+      "areYouSureYouWantToRemove": "areYouSureYouWantToRemove?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "This will remove {{itemname}} from the cache from your system."
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "ProjectsRefreshed",
+    "projects": "Projects",
+    "choose": "Choose",
+    "projectsProjects": "Projects",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
+    "fvmOnly": "FVMOnly",
+    "addProject": "Add Project",
+    "components": {
+      "openTerminalPlayground": "Open Terminal Playground",
+      "selectAFlutterSdkVersion": "select a Flutter SDK version",
+      "noFlutterProjectsHaveBeenAddedYet": "No Flutter projects have been added yet."
+    }
+  },
+  "pubPackages": {
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
+      "noPackagesFound": "No packages found",
+      "likes": "Likes",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularity",
+      "details": "details",
+      "changelog": "changelog",
+      "website": "website",
+      "packageprojectscountProjects": "{{packageProjectsCount}} projects"
+    }
+  },
+  "releases": {
+    "releases": "Releases",
+    "versions": "Versions"
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} versions",
+    "notRunning": "Does not run"
+  },
+  "search": {
+    "components": {
+      "search": "Search... ",
+      "noResults": "No results",
+      "channels": "Channels",
+      "stableReleases": "Stable Releases",
+      "betaReleases": "Beta Releases",
+      "devReleases": "Dev Releases",
+      "invalidChanel": "Invalid Channel"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "advanced",
+      "downloadZip": "Download zip",
+      "zipFileWithAllReleaseDependencies": "Zip file with all release dependencies",
+      "hash": "hash",
+      "sha256": "sha256",
+      "localCacheInformation": "Local Cache Information",
+      "createdDate": "CreationDate",
+      "cacheLocation": "Cache location",
+      "nothingSelected": "Nothing selected",
+      "channel": "Channel",
+      "releaseNotes": "Release Notes",
+      "version": "Version",
+      "releaseDate": "Release date"
+    }
+  },
+
+  "settings": {
+    "settingsHaveBeenSaved": "The settings have been saved",
+    "couldNotSaveSettings": "Settings could not be saved",
+    "scenes": {
+      "flutterSDKGlobalDescription": "A flutter sdk version must be set as global to access the flutter settings",
+      "analyticsCrashReporting": "Analytics & crash reporting",
+      "analyticsCrashReportSubtitle": "When a Flutter command crashes, an attempt is made to send a crash report to Google so that Google can contribute improvements to Flutter over time",
+      "platforms": "platforms",
+      "web": "web",
+      "skipSetupFlutterOnInstall": "skip setup of Flutter during installation",
+      "thisWillOnlyCloneFlutterAndNotInstall": "This will only clone Flutter and not install it ",
+      "dependenciesAfterANewVersionIsInstalled": "Dependencies after a new version is installed.",
+      "areYouSureYouWantToResetSettings": "AreYouSureYouWantToResetSettings?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "This will only reset Sidekick specific settings",
+      "appSettingsHaveBeenReset": "App settings have been reset",
+      "general": "General",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Select a theme or switch according to the system settings.",
+      "theme": "Theme",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "language": "Language",
+      "resetToDefaultSettings": "Reset to Default Settings",
+      "reset": "Reset"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Update available.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick version {{updateInfoLatest}} is now Available",
+      "later": "Later",
+      "updateNow": "update now",
+      "clickHereToDownload": "Click here to download",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "A new version of Sidekick is available ({{updateInfoLatest}})."
+    }
+  }
+}

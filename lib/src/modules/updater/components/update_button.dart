@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
@@ -35,13 +34,15 @@ class SkUpdateButton extends HookWidget {
               children: [
                 Icon(MdiIcons.alertDecagram),
                 SizedBox(width: 10),
-                Heading(S.of(context).updateAvailable),
+                Heading(I18Next.of(context).t.updateAvailable),
               ],
             ),
             content: Container(
               child: Paragraph(
-                S.of(context).sidekickVersionUpdateinfolatestIsNowAvailable(
-                    updateInfo.latest),
+                I18Next.of(context)
+                    .t
+                    .sidekickVersionUpdateinfolatestIsNowAvailable(
+                        updateInfo.latest),
               ),
             ),
             actions: <Widget>[
@@ -50,14 +51,14 @@ class SkUpdateButton extends HookWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(S.of(context).later),
+                child: Text(I18Next.of(context).t.later),
               ),
               ElevatedButton(
                 onPressed: () async {
                   await updater.openInstaller();
                   Navigator.of(context).pop();
                 },
-                child: Text(S.of(context).updateNow),
+                child: Text(I18Next.of(context).t.updateNow),
               ),
             ],
           );
@@ -72,7 +73,7 @@ class SkUpdateButton extends HookWidget {
           ActionChip(
             onPressed: showUpdateDialog,
             label: Text(
-              S.of(context).updateAvailable,
+              I18Next.of(context).t.updateAvailable,
               style: TextStyle(fontSize: 12),
             ),
           ),

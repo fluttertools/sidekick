@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../common/dto/release.dto.dart';
 import '../fvm_queue.provider.dart';
@@ -20,12 +20,13 @@ class SetupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: S.of(context).sdkHasNotFinishedSetup,
+      message: I18Next.of(context)
+          .t('modules:fvm.components.sdkHasNotFinishedSetup'),
       child: IconButton(
         icon: const Icon(MdiIcons.alert),
         iconSize: 20,
         splashRadius: 20,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         onPressed: () {
           context.read(fvmQueueProvider.notifier).setup(release);
         },

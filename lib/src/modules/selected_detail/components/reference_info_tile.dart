@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/list_tile.dart';
@@ -20,12 +19,12 @@ class ReferenceInfoTile extends StatelessWidget {
       return Column(
         children: [
           SkListTile(
-            title: Text(S.of(context).channel),
+            title: Text(I18Next.of(context).t.channel),
             trailing: Chip(label: Text(version.release.channelName)),
           ),
           const Divider(),
           SkListTile(
-            title: Text(S.of(context).releaseNotes),
+            title: Text(I18Next.of(context).t.releaseNotes),
             trailing: IconButton(
               icon: const Icon(
                 Icons.open_in_new,
@@ -49,7 +48,7 @@ class ReferenceInfoTile extends StatelessWidget {
         ),
         const Divider(height: 0),
         SkListTile(
-          title: Text(S.of(context).version),
+          title: Text(I18Next.of(context).t.version),
           trailing: channel.sdkVersion != null
               ? Chip(label: Text(channel.sdkVersion ?? ''))
               : SetupButton(release: channel),

@@ -1,5 +1,3 @@
-import 'package:sidekick/generated/l10n.dart';
-
 /// Sidekick title
 const kAppTitle = 'Sidekick';
 

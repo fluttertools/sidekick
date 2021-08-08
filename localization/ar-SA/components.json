@@ -1,0 +1,10 @@
+{
+  "atoms": {
+    "copiedToClipboard": "تم النسخ إلى الحافظة",
+    "refresh": "تحديث",
+    "countFound": "تم العثور على {{count}}"
+  },
+  "molecules": {
+    "master": "Master"
+  }
+}

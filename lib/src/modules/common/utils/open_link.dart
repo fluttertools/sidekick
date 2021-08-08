@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:sidekick/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(String url) async {

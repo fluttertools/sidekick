@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
@@ -54,7 +53,7 @@ class VersionInstallButton extends HookWidget {
           width: 20,
           child: SpinKitFadingFour(
             size: 15,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         );
       }
@@ -63,7 +62,7 @@ class VersionInstallButton extends HookWidget {
         return Icon(
           Icons.check,
           size: 20,
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
         );
       }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/empty_dataset.dart';
 
@@ -19,13 +19,15 @@ class EmptyPackages extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              S.of(context).noPackagesFound,
+              I18Next.of(context)
+                  .t('modules:pubPackages.components.noPackagesFound'),
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).youNeedToAddAFlutterProjectFirstPackageInformation,
+              I18Next.of(context).t(
+                  'modules:pubPackages.components.youNeedToAddAFlutterProjectFirstPackageInformation'),
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),

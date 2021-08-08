@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../releases/releases.provider.dart';
@@ -51,16 +50,16 @@ class SettingsSectionFlutter extends HookWidget {
                           ),
                         ),
                         child: Text(
-                          S.of(context).flutterSDKGlobalDescription,
+                          I18Next.of(context).t.flutterSDKGlobalDescription,
                         ),
                       ),
                       const SizedBox(height: 20)
                     ],
                   ),
             SwitchListTile(
-              title: Text(S.of(context).analyticsCrashReporting),
+              title: Text(I18Next.of(context).t.analyticsCrashReporting),
               subtitle: Text(
-                S.of(context).analyticsCrashReportSubtitle,
+                I18Next.of(context).t.analyticsCrashReportSubtitle,
               ),
               value: !settings.flutter.analytics,
               onChanged: deactivate
@@ -71,10 +70,10 @@ class SettingsSectionFlutter extends HookWidget {
                     },
             ),
             const SizedBox(height: 20),
-            Subheading(S.of(context).platforms),
+            Subheading(I18Next.of(context).t.platforms),
             const SizedBox(height: 20),
             SwitchListTile(
-              title: Text(S.of(context).web),
+              title: Text(I18Next.of(context).t.web),
               value: settings.flutter.web,
               onChanged: deactivate
                   ? null

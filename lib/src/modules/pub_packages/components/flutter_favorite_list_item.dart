@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 import 'package:sidekick/src/modules/pub_packages/dto/flutter_favorite.dto.dart';
 
 import '../../../components/atoms/typography.dart';
@@ -47,7 +47,8 @@ class FlutterFavoriteListItem extends StatelessWidget {
                   Caption(package.version),
                   Spacer(),
                   Tooltip(
-                    message: S.of(context).details,
+                    message: I18Next.of(context)
+                        .t('modules:pubPackages.components.details'),
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,
@@ -61,7 +62,8 @@ class FlutterFavoriteListItem extends StatelessWidget {
                   const Text('·'),
                   const SizedBox(width: 10),
                   Tooltip(
-                    message: S.of(context).changelog,
+                    message: I18Next.of(context)
+                        .t('modules:pubPackages.components.changelog'),
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,
@@ -75,7 +77,8 @@ class FlutterFavoriteListItem extends StatelessWidget {
                   const Text('·'),
                   const SizedBox(width: 10),
                   Tooltip(
-                    message: S.of(context).website,
+                    message: I18Next.of(context)
+                        .t('modules:pubPackages.components.website'),
                     child: IconButton(
                       iconSize: 20,
                       splashRadius: 20,

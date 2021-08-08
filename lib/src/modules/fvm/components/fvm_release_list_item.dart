@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/list_tile.dart';
@@ -34,7 +34,8 @@ class FvmReleaseListItem extends StatelessWidget {
           const SizedBox(width: 20),
           release.isGlobal
               ? ActionChip(
-                  label: Caption(S.of(context).global),
+                  label: Caption(
+                      I18Next.of(context).t('modules:fvm.components.global')),
                   avatar: const Icon(MdiIcons.information, size: 20),
                   onPressed: () {
                     showGlobalInfoDialog(context);

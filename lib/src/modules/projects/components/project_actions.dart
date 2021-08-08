@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:open_file/open_file.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../projects.provider.dart';
@@ -43,19 +43,20 @@ class ProjectActions extends StatelessWidget {
   }
 
   /// Renders menu options
-  List<PopupMenuEntry<ProjectActionOptions>> renderMenuOptions() {
+  List<PopupMenuEntry<ProjectActionOptions>> renderMenuOptions(
+      BuildContext context) {
     final menus = <PopupMenuEntry<ProjectActionOptions>>[
       PopupMenuItem(
         value: ProjectActionOptions.openDirectory,
         child: renderMenuButton(
-          label: S.current.open,
+          label: I18Next.of(context).t('modules:projetcs.components.open'),
           icon: MdiIcons.openInNew,
         ),
       ),
       PopupMenuItem(
         value: ProjectActionOptions.remove,
         child: renderMenuButton(
-          label: S.current.remove,
+          label: I18Next.of(context).t('modules:projetcs.components.remove'),
           icon: MdiIcons.delete,
         ),
       ),
@@ -79,7 +80,7 @@ class ProjectActions extends StatelessWidget {
         }
       },
       itemBuilder: (context) {
-        return renderMenuOptions();
+        return renderMenuOptions(context);
       },
       child: const Icon(MdiIcons.dotsVertical),
     );

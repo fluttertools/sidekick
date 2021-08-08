@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../../components/atoms/empty_dataset.dart';
 import '../../navigation/navigation.provider.dart';
@@ -18,13 +18,15 @@ class EmptyVersions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              S.of(context).flutterSdkNotInstalled,
+              I18Next.of(context)
+                  .t('modules:fvm.components.flutterSdkNotInstalled'),
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             Text(
-              S.of(context).noFlutterVersionInstalledMessage,
+              I18Next.of(context)
+                  .t('modules:fvm.components.noFlutterVersionInstalledMessage'),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption,
             ),
@@ -40,7 +42,10 @@ class EmptyVersions extends StatelessWidget {
                     .goTo(NavigationRoutes.exploreScreen);
               },
               icon: const Icon(Icons.explore),
-              label: Text(S.of(context).exploreFlutterReleases),
+              label: Text(
+                I18Next.of(context)
+                    .t('modules:fvm.components.exploreFlutterReleases'),
+              ),
             )
           ],
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../components/atoms/sliver_animated_switcher.dart';
 import '../../components/atoms/typography.dart';
@@ -24,7 +24,7 @@ class ReleasesScreen extends HookWidget {
 
     return SkScreen(
       extendBody: false,
-      title: S.of(context).releases,
+      title: I18Next.of(context).t('modules:releases.releases'),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -46,12 +46,15 @@ class ReleasesScreen extends HookWidget {
                   child: Row(
                     children: [
                       const SizedBox(width: 10),
-                      Subheading(S.of(context).master),
+                      Subheading(
+                        I18Next.of(context).t('components:molecules.master'),
+                      ),
                       const SizedBox(width: 20),
                       Expanded(
-                        child: Caption(S
-                            .of(context)
-                            .theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional),
+                        child: Caption(
+                          I18Next.of(context).t(
+                              'modules:releases.theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional'),
+                        ),
                       ),
                       const SizedBox(width: 20),
                       VersionInstallButton(releases.master),
@@ -111,7 +114,9 @@ class ReleasesScreen extends HookWidget {
                 children: [
                   Row(
                     children: [
-                      Heading(S.of(context).versions),
+                      Heading(
+                        I18Next.of(context).t('modules:releases.versions'),
+                      ),
                       const SizedBox(width: 10),
                       Chip(label: Text(versions.length.toString())),
                     ],

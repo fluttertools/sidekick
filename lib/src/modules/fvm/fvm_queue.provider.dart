@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
-import 'package:sidekick/generated/l10n.dart';
+
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../modules/common/dto/release.dto.dart';

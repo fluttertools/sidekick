@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../common/utils/notify.dart';
 import '../fvm.provider.dart';
@@ -11,7 +11,8 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
   final unusedVersions = context.read(unusedVersionProvider);
 
   if (unusedVersions.isEmpty) {
-    notify(S.of(context).noUnusedFlutterSdkVersionsInstalled);
+    notify(I18Next.of(context)
+        .t('modules:fvm.dialogs.noUnusedFlutterSdkVersionsInstalled'));
     return;
   }
 
@@ -22,14 +23,16 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: Text(S.of(context).cleanUpUnusedVersions),
+            title: Text(I18Next.of(context)
+                .t('modules:fvm.dialogs.cleanUpUnusedVersions')),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(S.of(context).cancel),
+                child:
+                    Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
               ),
               TextButton(
                 onPressed: () async {
@@ -42,7 +45,8 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
 
                   Navigator.of(context).pop();
                 },
-                child: Text(S.of(context).confirm),
+                child:
+                    Text(I18Next.of(context).t('modules:fvm.dialogs.confirm')),
               ),
             ],
             content: Container(
@@ -52,8 +56,10 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                   child: Column(
                     children: [
                       Text(
-                        S.of(context).theseVersionAreNotPinnedToAProject +
-                            S.of(context).doYouWantToRemoveThemToFreeUpSpace,
+                        I18Next.of(context).t(
+                                'modules:fvm.dialogs.theseVersionAreNotPinnedToAProject') +
+                            I18Next.of(context).t(
+                                'modules:fvm.dialogs.doYouWantToRemoveThemToFreeUpSpace'),
                       ),
                       const SizedBox(height: 10),
                       ...ListTile.divideTiles(

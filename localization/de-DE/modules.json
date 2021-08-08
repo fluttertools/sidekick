@@ -1,0 +1,144 @@
+{
+  "common": {
+    "navButtonDashboard": "Dashboard",
+    "navButtonProjects": "Projekte",
+    "navButtonExplore": "Erkunden",
+    "navButtonPackages": "Pakete"
+  },
+  "fvm": {
+    "installedVersions": "Installierte Versionen",
+    "cleanUp": "Säubern",
+    "cleanUpTooltip": "Nicht verwendete Versionen bereinigen.",
+    "numberOfCachedVersions": "{{cachedVersions}} Versionen",
+    "components": {
+      "inUse": "Verwendet",
+      "unused": "Nicht verwendet",
+      "flutterSdkNotInstalled": "Flutter SDK nicht installiert.",
+      "noFlutterVersionInstalledMessage": "Sie haben derzeit keine Flutter SDK Versionen installiert. Versionen oder Kanäle, die installiert wurden, werden hier angezeigt.",
+      "exploreFlutterReleases": "Erkunde Flutter Releases",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "SDK hat das Setup nicht abgeschlossen"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Keine unbenutzten Flutter SDK Versionen installiert",
+      "cleanUpUnusedVersions": "Nicht verwendete Versionen bereinigen",
+      "cancel": "Abbrechen",
+      "confirm": "Bestätigen",
+      "ok": "OK",
+      "globalConfiguration": "Globale Konfiguration",
+      "theseVersionAreNotPinnedToAProject": "Diese Versionen sind nicht an ein Projekt angeheftet ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Möchten Sie es entfernen, um Speicherplatz freizugeben?",
+      "areYouSureYouWantToRemove": "Sind Sie sicher, dass Sie entfernen möchten?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Dadurch wird {{itemname}} aus dem Cache von Ihrem System entfernt.",
+      "flutterPathIsPointingOn": "Flutter PATH verweist auf\n ",
+      "changeThePathTo": "Ändere den Path zu\n",
+      "ifYouWantToFlutterSdkThroughFvm": "wenn Sie Flutter SDK durch FVM",
+      "howToUpdateYourPath": "Wie soll man den Pfad aktualisieren?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Projekte aktualisiert",
+    "projects": "Projekte",
+    "choose": "Wählen Sie",
+    "projectsProjects": "{{projects}} Projekte",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Nur Projekte anzeigen, die Versionen angeheftet haben",
+    "fvmOnly": "Nur FVM",
+    "addProject": "Projekt hinzufügen",
+    "notAFlutterProject": "Kein Flutter-Projekt",
+    "components": {
+      "open": "öffnen",
+      "remove": "Löschen",
+      "openTerminalPlayground": "Terminal Playground öffnen",
+      "selectAFlutterSdkVersion": "Wählen Sie eine Flutter SDK Version",
+      "noFlutterProjectsHaveBeenAddedYet": "Es wurden noch keine Flutter-Projekte hinzugefügt.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Fügen Sie Ihr Flutter-Projekt hinzu Die Projektinformationen werden hier angezeigt."
+    }
+  },
+  "pubPackages": {
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Sie müssen zuerst ein Flutter-Projekt hinzufügen. Die Paketinformationen werden hier angezeigt.",
+      "noPackagesFound": "Keine Pakete gefunden",
+      "likes": "Likes",
+      "pubPoints": "Pub Punkte",
+      "popularity": "Popularität",
+      "details": "Details",
+      "changelog": "Änderungsprotokoll",
+      "website": "Website",
+      "packageprojectscountProjects": "{{packageProjectsCount}} Projekte"
+    }
+  },
+  "releases": {
+    "releases": "Releases",
+    "versions": "Versionen",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen."
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} Versionen",
+    "notRunning": "Läuft nicht"
+  },
+  "search": {
+    "components": {
+      "search": "Suche... ",
+      "noResults": "Keine Ergebnisse",
+      "channels": "Channels",
+      "stableReleases": "Stable Releases",
+      "betaReleases": "Beta Releases",
+      "devReleases": "Dev Releases",
+      "invalidChanel": "Ungültiger Channel"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Erweitert",
+      "downloadZip": "Zip herunterladen",
+      "zipFileWithAllReleaseDependencies": "Zip-Datei mit allen Release-Abhängigkeiten.",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Lokale Cache-Informationen",
+      "createdDate": "Erstelldatum",
+      "cacheLocation": "Cache-Speicherort",
+      "nothingSelected": "Nichts ausgewählt",
+      "channel": "Channel",
+      "releaseNotes": "Versionshinweise",
+      "version": "Version",
+      "releaseDate": "Veröffentlichungsdatum"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Die Einstellungen wurden gespeichert",
+    "couldNotSaveSettings": "Einstellungen konnten nicht gespeichert werden",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Eine Flutter-Sdk-Version muss als global eingestellt werden, um auf die Flutter-Einstellungen zugreifen zu können",
+      "analyticsCrashReporting": "Analytik & Crash-Berichterstattung",
+      "analyticsCrashReportSubtitle": "Wenn ein Flutter-Befehl abstürzt, wird versucht, einen Absturzbericht an Google zu senden, damit Google im Laufe der Zeit Verbesserungen an Flutter beisteuern kann",
+      "platforms": "Platformen",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Einrichtung von Flutter bei der Installation überspringen",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Dadurch wird Flutter nur geklont und nicht installiert ",
+      "dependenciesAfterANewVersionIsInstalled": "Abhängigkeiten, nachdem eine neue Version installiert wurde.",
+      "areYouSureYouWantToResetSettings": "Sind Sie sicher, dass Sie die Einstellungen zurücksetzen wollen?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Dadurch werden nur Sidekick-spezifische Einstellungen zurückgesetzt",
+      "appSettingsHaveBeenReset": "Die App-Einstellungen wurden zurückgesetzt",
+      "general": "Allgemein",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Wählen Sie ein Thema oder schalten Sie entsprechend den Systemeinstellungen um.",
+      "theme": "Theme",
+      "system": "System",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "language": "Sprache",
+      "resetToDefaultSettings": "Zurücksetzen auf Standardeinstellungen",
+      "reset": "Zurücksetzen"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Update verfügbar.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick version {{updateInfoLatest}} ist nun Verfügbar.",
+      "later": "Später",
+      "updateNow": "Jetzt aktualisieren",
+      "clickHereToDownload": "Klicken Sie hier zum Download.",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Eine neue Version von Sidekick ist verfügbar ({{updateInfoLatest}})."
+    }
+  }
+}

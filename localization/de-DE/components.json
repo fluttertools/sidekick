@@ -1,0 +1,10 @@
+{
+    "atoms": {
+        "copiedToClipboard": "In die Zwischenablage kopiert",
+        "refresh": "Aktualisieren",
+        "countFound": "{{count}} gefunden"
+    },
+    "molecules": {
+        "master": "Master"
+    }
+}

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/utils/helpers.dart';
 import '../../modules/common/utils/notify.dart';
@@ -23,7 +22,6 @@ enum NavSection {
   /// Flutter
   flutter,
 }
-
 
 const _sectionIcons = [
   MdiIcons.tune,
@@ -64,9 +62,9 @@ class SettingsScreen extends HookWidget {
     Future<void> handleSave() async {
       try {
         await provider.save(settings);
-        notify(S.of(context).settingsHaveBeenSaved);
+        notify(I18Next.of(context).t.settingsHaveBeenSaved);
       } on Exception catch (e) {
-        notifyError(S.of(context).couldNotSaveSettings);
+        notifyError(I18Next.of(context).t.couldNotSaveSettings);
         notifyError(e.toString());
       }
     }
