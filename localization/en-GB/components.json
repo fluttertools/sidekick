@@ -5,6 +5,8 @@
         "countFound": "{{count}} found"
     },
     "molecules": {
-        "master": "Master"
+        "master": "Master",
+        "versionIsInstalled": "Version is installed",
+        "versionNotInstalledClickToInstall": "Version not installed. Click to install."
     }
 }

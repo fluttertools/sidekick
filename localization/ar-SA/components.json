@@ -5,6 +5,8 @@
     "countFound": "تم العثور على {{count}}"
   },
   "molecules": {
-    "master": "Master"
+    "master": "Master",
+    "versionIsInstalled": "تم تثبيت الإصدار",
+    "versionNotInstalledClickToInstall": "الإصدار غير مثبت. انقر للتثبيت."
   }
 }

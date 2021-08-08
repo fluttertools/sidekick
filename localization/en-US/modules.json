@@ -3,14 +3,31 @@
     "navButtonDashboard": "dashboard",
     "navButtonProjects": "Projects",
     "navButtonExplore": "Explore",
-    "navButtonPackages": "Packages"
+    "navButtonPackages": "Packages",
+    "stableChannelDescription": "We recommend that you use this channel for all production app releases. About once a quarter, a branch that has been stabilised to beta becomes our next stable branch and we create a stable version of that branch.",
+    "betaChannelDescription": "Branch created for a new beta release at the beginning of the month, usually the first Monday, by master. This will contain a branch for Dart, the engine and the framework.",
+    "devChannelDescription": "The last fully tested build. Usually working, but see \"Bad builds\" for a list of known \"bad\" Dev builds.",
+    "masterChannelDescription": "The latest tip-of-tree, absolutely latest cutting edge build. Usually functional, though sometimes we accidentally break things.",
+    "utils": {
+      "start": "start",
+      "open": "open",
+      "couldNotLaunchUrl": "Could not open {{url}}"
+    }
   },
   "fvm": {
     "installedVersions": "Installed Versions",
     "cleanUp": "Cleanup",
     "cleanUpTooltip": "Clean unused versions",
     "numberOfCachedVersions": "{{cachedVersions}} versions",
+    "versionItemversionnameHasBeenInstalled": "Version {{itemVersionName}} has been installed.",
+    "versionItemversionnameHasFinishedSetup": "Version {{itemVersionName}} has completed setup.",
+    "channelItemversionnameHasBeenUpgraded": "Channel {{itemVersionName}} has been upgraded.",
+    "versionItemversionnameHasBeenRemoved": "Version {{itemVersionName}} has been removed.",
+    "versionItemversionnameHasBeenSetAsGlobal": "Version {{itemVersionName}} has been set as global.",
+    "versionVersionPinnedToProjectname": "Version {{version}} pinned to {{projectName}}",
     "components": {
+      "upgrade": "Upgrade",
+      "setAsGlobal": "Set as Global",
       "inUse": "Used",
       "unused": "NotUsed",
       "flutterSdkNotInstalled": "Flutter SDK not installed.",
@@ -24,10 +41,16 @@
       "cleanUpUnusedVersions": "Clean up unused versions",
       "cancel": "Cancel",
       "confirm": "Confirm",
+      "ok": "OK",
+      "globalConfiguration": "Globale Configuration",
       "theseVersionAreNotPinnedToAProject": "These versions are not pinned to a project ",
       "doYouWantToRemoveThemToFreeUpSpace": "Do you want to remove it to free up space?",
       "areYouSureYouWantToRemove": "areYouSureYouWantToRemove?",
-      "thisWillRemoveItemnameCacheFromYourSystem": "This will remove {{itemname}} from the cache from your system."
+      "thisWillRemoveItemnameCacheFromYourSystem": "This will remove {{itemname}} from the cache from your system.",
+      "flutterPathIsPointingOn": "Flutter PATH points to\n ",
+      "changeThePathTo": "Change the path to\n",
+      "ifYouWantToFlutterSdkThroughFvm": "if you want to update Flutter SDK through FVM",
+      "howToUpdateYourPath": "How to update the path?"
     }
   },
   "projects": {
@@ -38,28 +61,37 @@
     "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
     "fvmOnly": "FVMOnly",
     "addProject": "Add Project",
+    "notAFlutterProject": "Not a Flutter project",
     "components": {
+      "open": "open",
+      "remove": "remove",
       "openTerminalPlayground": "Open Terminal Playground",
       "selectAFlutterSdkVersion": "select a Flutter SDK version",
-      "noFlutterProjectsHaveBeenAddedYet": "No Flutter projects have been added yet."
+      "noFlutterProjectsHaveBeenAddedYet": "No Flutter projects have been added yet.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Add your Flutter project The project information will be displayed here."
     }
   },
   "pubPackages": {
+    "trending": "Popular",
+    "mostUsedPackages": "Most used packages",
+    "flutterFavourites": "Flutter Favourites",
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
       "noPackagesFound": "No packages found",
       "likes": "Likes",
       "pubPoints": "Pub Points",
       "popularity": "Popularity",
-      "details": "details",
-      "changelog": "changelog",
-      "website": "website",
+      "details": "Details",
+      "changelog": "Changelog",
+      "website": "Website",
       "packageprojectscountProjects": "{{packageProjectsCount}} projects"
     }
   },
   "releases": {
+    "all": "All",
     "releases": "Releases",
-    "versions": "Versions"
+    "versions": "Versions",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "The current tip-of-tree, the absolute latest cutting edge build. Usually functional, although sometimes we accidentally break things."
   },
   "sandbox": {
     "playground": "Playground",
@@ -82,8 +114,8 @@
       "advanced": "advanced",
       "downloadZip": "Download zip",
       "zipFileWithAllReleaseDependencies": "Zip file with all release dependencies",
-      "hash": "hash",
-      "sha256": "sha256",
+      "hash": "Hash",
+      "sha256": "Sha256",
       "localCacheInformation": "Local Cache Information",
       "createdDate": "CreationDate",
       "cacheLocation": "Cache location",
@@ -94,7 +126,6 @@
       "releaseDate": "Release date"
     }
   },
-
   "settings": {
     "settingsHaveBeenSaved": "The settings have been saved",
     "couldNotSaveSettings": "Settings could not be saved",
@@ -102,9 +133,9 @@
       "flutterSDKGlobalDescription": "A flutter sdk version must be set as global to access the flutter settings",
       "analyticsCrashReporting": "Analytics & crash reporting",
       "analyticsCrashReportSubtitle": "When a Flutter command crashes, an attempt is made to send a crash report to Google so that Google can contribute improvements to Flutter over time",
-      "platforms": "platforms",
-      "web": "web",
-      "skipSetupFlutterOnInstall": "skip setup of Flutter during installation",
+      "platforms": "Platforms",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Skip setup of Flutter during installation",
       "thisWillOnlyCloneFlutterAndNotInstall": "This will only clone Flutter and not install it ",
       "dependenciesAfterANewVersionIsInstalled": "Dependencies after a new version is installed.",
       "areYouSureYouWantToResetSettings": "AreYouSureYouWantToResetSettings?",
@@ -126,7 +157,7 @@
       "updateAvailable": "Update available.",
       "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick version {{updateInfoLatest}} is now Available",
       "later": "Later",
-      "updateNow": "update now",
+      "updateNow": "Update now",
       "clickHereToDownload": "Click here to download",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "A new version of Sidekick is available ({{updateInfoLatest}})."
     }
