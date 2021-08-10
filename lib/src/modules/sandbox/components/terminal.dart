@@ -170,7 +170,7 @@ class SandboxConsole extends HookWidget {
               ),
               terminalState.processing
                   ? SpinKitFadingFour(
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       size: 15,
                     )
                   : Container()

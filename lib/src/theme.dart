@@ -50,7 +50,9 @@ ThemeData _customThemeBuilder({
     primarySwatch: primarySwatch,
     cardColor: cardColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
-    accentColor: accentColor,
+    colorScheme: baseTheme.colorScheme.copyWith(
+      secondary: accentColor,
+    ),
     dividerColor: Colors.white10,
     toggleableActiveColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -88,7 +90,9 @@ ThemeData get lightTheme {
   return ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
-    accentColor: Colors.blue,
+    colorScheme: ThemeData.light().colorScheme.copyWith(
+          secondary: Colors.blue,
+        ),
     dividerColor: Colors.black12,
     textButtonTheme: _textButtonThemeData,
     cardTheme: const CardTheme(

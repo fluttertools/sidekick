@@ -72,7 +72,7 @@ class ConsoleText extends StatelessWidget {
       maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
     );
   }
