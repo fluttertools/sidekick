@@ -12,7 +12,7 @@ ThemeData get darkPurpleTheme {
   );
 }
 
-ThemeData get darkBlueThemea {
+ThemeData get darkBlueTheme {
   return _customThemeBuilder(
     cardColor: const Color(0xFF092045),
     scaffoldBackgroundColor: const Color(0xFF081231),
