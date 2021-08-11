@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
-import 'package:sidekick/src/modules/settings/settings.provider.dart';
 
 import '../../components/molecules/top_app_bar.dart';
 import '../../components/organisms/app_bottom_bar.dart';
@@ -35,11 +34,6 @@ class AppShell extends HookWidget {
     final navigation = useProvider(navigationProvider.notifier);
     final currentRoute = useProvider(navigationProvider);
     final selectedInfo = useProvider(selectedDetailProvider).state;
-    final settings = useProvider(settingsProvider);
-
-    S.load(
-      Locale.fromSubtags(languageCode: settings.sidekick.intl),
-    );
 
     // Index of item selected
     final selectedIndex = useState(0);
@@ -84,7 +78,7 @@ class AppShell extends HookWidget {
         selectedIcon: Icon(
           iconData,
           size: 20,
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
         ),
         label: Text(label),
       );
@@ -110,19 +104,19 @@ class AppShell extends HookWidget {
               },
               destinations: [
                 renderNavButton(
-                  S.of(context).navButtonDashboard,
+                  I18Next.of(context).t('modules:common.navButtonDashboard'),
                   Icons.category,
                 ),
                 renderNavButton(
-                  S.of(context).navButtonProjects,
+                  I18Next.of(context).t('modules:common.navButtonProjects'),
                   MdiIcons.folderMultiple,
                 ),
                 renderNavButton(
-                  S.of(context).navButtonExplore,
+                  I18Next.of(context).t('modules:common.navButtonExplore'),
                   Icons.explore,
                 ),
                 renderNavButton(
-                  S.of(context).navButtonPackages,
+                  I18Next.of(context).t('modules:common.navButtonPackages'),
                   MdiIcons.package,
                 ),
               ],

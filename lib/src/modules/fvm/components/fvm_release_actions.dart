@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/dto/release.dto.dart';
@@ -50,26 +50,28 @@ class FvmReleaseActions extends StatelessWidget {
   }
 
   /// Renders menu options
-  List<PopupMenuEntry<FvmReleaseActionOptions>> renderMenuOptions() {
+  List<PopupMenuEntry<FvmReleaseActionOptions>> renderMenuOptions(
+      BuildContext context) {
     final menus = <PopupMenuEntry<FvmReleaseActionOptions>>[
       PopupMenuItem(
         value: FvmReleaseActionOptions.global,
         child: renderMenuButton(
-          label: S.current.setAsGlobal,
+          label: I18Next.of(context).t('modules:fvm.components.setAsGlobal'),
           icon: MdiIcons.earth,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.detail,
         child: renderMenuButton(
-          label: S.current.details,
+          label:
+              I18Next.of(context).t('modules:pubPackages.components.details'),
           icon: MdiIcons.information,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.remove,
         child: renderMenuButton(
-          label: S.current.remove,
+          label: I18Next.of(context).t('modules:projects.components.remove'),
           icon: MdiIcons.delete,
         ),
       ),
@@ -82,7 +84,7 @@ class FvmReleaseActions extends StatelessWidget {
         PopupMenuItem(
           value: FvmReleaseActionOptions.upgrade,
           child: renderMenuButton(
-            label: S.current.upgrade,
+            label: I18Next.of(context).t('modules:fvm.components.upgrade'),
             icon: MdiIcons.update,
           ),
         ),
@@ -102,7 +104,7 @@ class FvmReleaseActions extends StatelessWidget {
       onSelected: (result) {
         if (result == FvmReleaseActionOptions.remove) {
           showDeleteDialog(context, item: release, onDelete: () {
-            context.read(fvmQueueProvider.notifier).remove(release);
+            context.read(fvmQueueProvider.notifier).remove(context, release);
           });
         }
 
@@ -113,15 +115,15 @@ class FvmReleaseActions extends StatelessWidget {
         }
 
         if (result == FvmReleaseActionOptions.global) {
-          context.read(fvmQueueProvider.notifier).setGlobal(release);
+          context.read(fvmQueueProvider.notifier).setGlobal(context, release);
         }
 
         if (result == FvmReleaseActionOptions.upgrade) {
-          context.read(fvmQueueProvider.notifier).upgrade(release);
+          context.read(fvmQueueProvider.notifier).upgrade(context, release);
         }
       },
       itemBuilder: (context) {
-        return renderMenuOptions();
+        return renderMenuOptions(context);
       },
       child: const Icon(MdiIcons.dotsVertical),
     );

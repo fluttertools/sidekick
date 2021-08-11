@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/checkbox.dart';
 import '../../components/atoms/refresh_button.dart';
@@ -32,18 +32,20 @@ class ProjectsScreen extends HookWidget {
 
     Future<void> onRefresh() async {
       await context.read(projectsProvider.notifier).load();
-      notify(S.of(context).projectsRefreshed);
+      notify(
+        I18Next.of(context).t('modules:projects.projectsRefreshed'),
+      );
     }
 
     Future<void> handleChooseDirectory() async {
       final directoryPath = await selector.getDirectoryPath(
-        confirmButtonText: S.of(context).choose,
+        confirmButtonText: I18Next.of(context).t('modules:projects.choose'),
       );
       if (directoryPath == null) {
         // Operation was canceled by the user.
         return;
       }
-      await notifier.addProject(directoryPath);
+      await notifier.addProject(context, directoryPath);
     }
 
     useEffect(() {
@@ -57,14 +59,22 @@ class ProjectsScreen extends HookWidget {
     }, [projects, settings.sidekick]);
 
     return SkScreen(
-      title: S.of(context).projects,
+      title: I18Next.of(context).t('modules:projects.projects'),
       actions: [
-        Caption(S.of(context).projectsProjects(projects.length)),
+        Caption(
+          I18Next.of(context).t(
+            'modules:projects.projectsProjects',
+            variables: {
+              'projects': projects.length,
+            },
+          ),
+        ),
         const SizedBox(width: 10),
         Tooltip(
-          message: S.of(context).onlyDisplayProjectsThatHaveVersionsPinned,
+          message: I18Next.of(context)
+              .t('modules:projects.onlyDisplayProjectsThatHaveVersionsPinned'),
           child: SkCheckBox(
-            label: S.of(context).fvmOnly,
+            label: I18Next.of(context).t('modules:projects.fvmOnly'),
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
@@ -80,7 +90,7 @@ class ProjectsScreen extends HookWidget {
         OutlinedButton.icon(
           onPressed: handleChooseDirectory,
           icon: Icon(MdiIcons.plus),
-          label: Text(S.of(context).addProject),
+          label: Text(I18Next.of(context).t('modules:projects.addProject')),
         ),
       ],
       child: projects.isEmpty

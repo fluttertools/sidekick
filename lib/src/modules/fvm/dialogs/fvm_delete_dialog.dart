@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../common/dto/release.dto.dart';
 
@@ -14,9 +14,16 @@ void showDeleteDialog(
     builder: (context) {
       // return object of type Dialog
       return AlertDialog(
-        title: Text(S.of(context).areYouSureYouWantToRemove),
+        title: Text(I18Next.of(context)
+            .t('modules:fvm.dialogs.areYouSureYouWantToRemove')),
         content: Text(
-            S.of(context).thisWillRemoveItemnameCacheFromYourSystem(item.name)),
+          I18Next.of(context).t(
+            'modules:fvm.dialogs.thisWillRemoveItemnameCacheFromYourSystem',
+            variables: {
+              'itemname': item.name,
+            },
+          ),
+        ),
         buttonPadding: const EdgeInsets.all(15),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
@@ -24,14 +31,14 @@ void showDeleteDialog(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(S.of(context).cancel),
+            child: Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
           ),
           TextButton(
             onPressed: () async {
               Navigator.of(context).pop();
               onDelete();
             },
-            child: Text(S.of(context).confirm),
+            child: Text(I18Next.of(context).t('modules:fvm.dialogs.confirm')),
           ),
         ],
       );

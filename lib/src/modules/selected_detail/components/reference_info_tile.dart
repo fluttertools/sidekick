@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/list_tile.dart';
@@ -20,19 +20,21 @@ class ReferenceInfoTile extends StatelessWidget {
       return Column(
         children: [
           SkListTile(
-            title: Text(S.of(context).channel),
+            title: Text(I18Next.of(context)
+                .t('modules:selectedDetail.components.channel')),
             trailing: Chip(label: Text(version.release.channelName)),
           ),
           const Divider(),
           SkListTile(
-            title: Text(S.of(context).releaseNotes),
+            title: Text(I18Next.of(context)
+                .t('modules:selectedDetail.components.releaseNotes')),
             trailing: IconButton(
               icon: const Icon(
                 Icons.open_in_new,
                 size: 20,
               ),
               onPressed: () async {
-                await openLink(kFlutterTagsUrl + version.name);
+                await openLink(context, kFlutterTagsUrl + version.name);
               },
             ),
           ),
@@ -45,11 +47,12 @@ class ReferenceInfoTile extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-          child: Paragraph(channelDescriptions[version.name]),
+          child: Paragraph(channelDescriptions(context)[version.name]),
         ),
         const Divider(height: 0),
         SkListTile(
-          title: Text(S.of(context).version),
+          title: Text(I18Next.of(context)
+              .t('modules:selectedDetail.components.version')),
           trailing: channel.sdkVersion != null
               ? Chip(label: Text(channel.sdkVersion ?? ''))
               : SetupButton(release: channel),

@@ -52,7 +52,7 @@ class ErrorDBScreen extends StatelessWidget {
                                 (states) => EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10))),
                         onPressed: () {
-                          openLink(
+                          openLink(context,
                               'https://github.com/leoafarias/sidekick/issues/new/choose');
                         },
                         label: Text('Create new issue'),

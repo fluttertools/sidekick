@@ -31,6 +31,7 @@ class TrendingGithubRepoItem extends StatelessWidget {
           title: Text('${package.owner}/${package.repoName}'),
           trailing: OutlinedButton(
             onPressed: () => openLink(
+              context,
               'https://github.com/${package.owner}/${package.repoName}',
             ),
             child: const Text('View'),

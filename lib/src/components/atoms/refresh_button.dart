@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 /// Refresh button
 class RefreshButton extends HookWidget {
@@ -38,7 +38,7 @@ class RefreshButton extends HookWidget {
     }
 
     return OutlinedButton.icon(
-      label: Text(S.of(context).refresh),
+      label: Text(I18Next.of(context).t('components:atoms.refresh')),
       icon: refreshing.value
           ? renderIndicator()
           : const Icon(MdiIcons.refresh, size: 20),

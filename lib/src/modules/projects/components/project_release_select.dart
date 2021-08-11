@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/dto/release.dto.dart';
@@ -26,14 +26,15 @@ class ProjectReleaseSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-        tooltip: S.of(context).selectAFlutterSdkVersion,
+        tooltip: I18Next.of(context)
+            .t('modules:projects.components.selectAFlutterSdkVersion'),
 
         // elevation: 1,
         padding: EdgeInsets.zero,
         onSelected: (version) async {
           await context
               .read(fvmQueueProvider.notifier)
-              .pinVersion(project, version);
+              .pinVersion(context, project, version);
         },
         itemBuilder: (context) {
           return releases
@@ -59,7 +60,7 @@ class ProjectReleaseSelect extends StatelessWidget {
             children: [
               project.pinnedVersion != null
                   ? Caption(project.pinnedVersion)
-                  : Caption(S.of(context).choose),
+                  : Caption(I18Next.of(context).t('modules:projects.choose')),
               // const SizedBox(width: 20),
               const Icon(MdiIcons.menuDown),
             ],

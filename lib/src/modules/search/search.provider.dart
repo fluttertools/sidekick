@@ -1,7 +1,6 @@
 // ignore_for_file: top_level_function_literal_block
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/dto/channel.dto.dart';
 import '../../modules/common/dto/version.dto.dart';
@@ -65,7 +64,7 @@ class SearchResults {
 /// Search query provider
 final searchQueryProvider = StateProvider<String>((_) => '');
 
-/// Searxh results provider
+/// Search results provider
 final searchResultsProvider = Provider((ref) {
   final query = ref.watch(searchQueryProvider).state;
   final releaseState = ref.read(releasesStateProvider);
@@ -144,7 +143,11 @@ final searchResultsProvider = Provider((ref) {
             devReleaseResults.add(release);
             break;
           default:
-            throw Exception(S.current.invalidChanel);
+
+            /// TODO: If this logic is removed, it should support passing actual Context
+            /* throw Exception(I18Next.of(context)
+                .t('modules:search.components.invalidChannel')); */
+            break;
         }
       }
     }

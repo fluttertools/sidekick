@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../../../components/atoms/copy_button.dart';
 import '../../../components/atoms/group_tile.dart';
@@ -26,27 +26,32 @@ class AdvancedInfoTile extends StatelessWidget {
     }
 
     return SkGroupTile(
-      title: Text(S.of(context).advanced),
+      title: Text(
+          I18Next.of(context).t('modules:selectedDetail.components.advanced')),
       children: [
         SkListTile(
-          title: Text(S.of(context).downloadZip),
-          subtitle: Caption(S.of(context).zipFileWithAllReleaseDependencies),
+          title: Text(I18Next.of(context)
+              .t('modules:selectedDetail.components.downloadZip')),
+          subtitle: Caption(I18Next.of(context).t(
+              'modules:selectedDetail.components.zipFileWithAllReleaseDependencies')),
           trailing: IconButton(
             icon: const Icon(Icons.cloud_download),
             onPressed: () async {
-              await openLink(release.release.archiveUrl);
+              await openLink(context, release.release.archiveUrl);
             },
           ),
         ),
         const Divider(),
         SkListTile(
-          title: Text(S.of(context).hash),
+          title: Text(
+              I18Next.of(context).t('modules:selectedDetail.components.hash')),
           subtitle: Caption(release.release.hash),
           trailing: CopyButton(release.release.hash),
         ),
         const Divider(),
         SkListTile(
-          title: Text(S.of(context).sha256),
+          title: Text(I18Next.of(context)
+              .t('modules:selectedDetail.components.sha256')),
           subtitle: Caption(release.release.sha256),
           trailing: CopyButton(release.release.sha256),
         ),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../modules/common/dto/release.dto.dart';
@@ -46,7 +46,7 @@ class SandboxScreen extends HookWidget {
           children: [
             const Icon(MdiIcons.playBox),
             const SizedBox(width: 10),
-            Subheading(S.of(context).playground),
+            Subheading(I18Next.of(context).t('modules:sandbox.playground')),
           ],
         ),
         centerTitle: true,
@@ -80,9 +80,16 @@ class SandboxScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title: Text(S.of(context).releases),
-                  subtitle:
-                      Text(S.of(context).releasesVersions(releases.all.length)),
+                  title:
+                      Text(I18Next.of(context).t('modules:releases.releases')),
+                  subtitle: Text(
+                    I18Next.of(context).t(
+                      'modules:sandbox.releasesVersions',
+                      variables: {
+                        'releases': releases.all.length,
+                      },
+                    ),
+                  ),
                 ),
                 const Divider(height: 1),
                 Expanded(
@@ -159,12 +166,13 @@ class SandboxScreen extends HookWidget {
                             terminal.endProcess();
                           },
                           child: Text(
-                            S.of(context).cancel,
+                            I18Next.of(context).t('modules:fvm.dialogs.cancel'),
                           ),
                         )
                       : OutlinedButton(
                           onPressed: null,
-                          child: Text(S.of(context).notRunning),
+                          child: Text(I18Next.of(context)
+                              .t('modules:sandbox.notRunning')),
                         ),
                 ),
                 const Divider(height: 1),

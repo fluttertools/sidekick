@@ -89,7 +89,7 @@ class Console extends HookWidget {
                 child: Row(
                   children: [
                     SpinKitFadingFour(
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       size: 15,
                     ),
                     IconButton(

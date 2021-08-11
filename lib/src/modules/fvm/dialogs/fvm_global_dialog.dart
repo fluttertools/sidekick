@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../../components/atoms/copy_button.dart';
 import '../../../components/atoms/typography.dart';
@@ -16,7 +16,9 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Heading(S.of(context).globalConfiguration),
+          title: Heading(
+            I18Next.of(context).t('modules:fvm.dialogs.globalConfiguration'),
+          ),
           actions: <Widget>[
             TextButton(
               style: ButtonStyle(
@@ -26,7 +28,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(S.of(context).ok),
+              child: Text(I18Next.of(context).t('modules:fvm.dialogs.ok')),
             ),
           ],
           content: Container(
@@ -35,15 +37,18 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Subheading(
-                  S.of(context).flutterPathIsPointingTon,
+                  I18Next.of(context)
+                      .t('modules:fvm.dialogs.flutterPathIsPointingOn'),
                 ),
                 Caption('${configured.currentPath}.\n\n'),
                 !configured.isSetup
                     ? Column(
                         children: [
                           Subheading(
-                            S.of(context).changeThePathTo +
-                                S.of(context).ifYouWantToFlutterSdkThroughFvm,
+                            I18Next.of(context)
+                                    .t('modules:fvm.dialogs.changeThePathTo') +
+                                I18Next.of(context).t(
+                                    'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
                           ),
                           Row(
                             children: [
@@ -59,12 +64,14 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                   onPressed: () {
                     final os = Platform.operatingSystem;
                     openLink(
+                      context,
                       'https://flutter.dev/docs/get-started/install/$os#update-your-path',
                     );
                   },
                   icon: const Icon(MdiIcons.informationOutline),
                   label: Text(
-                    S.of(context).howToUpdateYourPath,
+                    I18Next.of(context)
+                        .t('modules:fvm.dialogs.howToUpdateYourPath'),
                   ),
                 )
               ],

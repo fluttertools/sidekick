@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pub_semver/pub_semver.dart';
 
@@ -69,10 +70,12 @@ class UpdaterService {
   }
 
   /// Open installer
-  static Future<void> openInstaller(SidekickUpdateInfo updateInfo) async {
+  static Future<void> openInstaller(
+      BuildContext context, SidekickUpdateInfo updateInfo) async {
     if (updateInfo.isInstalled) {
       final file = updateInfo.latestInstallerFile;
-      await openLink("file://${file.absolute.path.replaceAll("\\", "/")}");
+      await openLink(
+          context, "file://${file.absolute.path.replaceAll("\\", "/")}");
     } else {
       throw UpdaterException(
         'Installer does not exists, you have to download it first',

@@ -75,7 +75,7 @@ class FvmReleaseStatus extends StatelessWidget {
           icon: const Icon(MdiIcons.triangle, size: 15),
           label: Text(release.release?.version),
           onPressed: () {
-            context.read(fvmQueueProvider.notifier).upgrade(release);
+            context.read(fvmQueueProvider.notifier).upgrade(context, release);
           },
         ),
       ],
