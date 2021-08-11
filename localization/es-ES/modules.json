@@ -4,10 +4,10 @@
     "navButtonProjects": "Proyectos",
     "navButtonExplore": "Explorar",
     "navButtonPackages": "Paquetes",
-    "stableChannelDescription": "Te recomendamos que utilices este canal para todos los lanzamientos de aplicaciones de producción. Aproximadamente una vez al trimestre, una rama estabilizada a beta se convierte en nuestra siguiente rama estable y creamos una versión estable de esa rama.",
-    "betaChannelDescription": "Rama creada para una nueva versión beta a principios de mes, normalmente el primer lunes, por el maestro. Contendrá una rama para Dart, el motor y el framework",
-    "devChannelDescription": "La última compilación totalmente probada. Generalmente funciona, pero vea \"malas construcciones\" para una lista de builds de desarrollo conocidos",
-    "masterChannelDescription": "La última punta del árbol, absolutamente la última construcción de vanguardia. Generalmente funcional, aunque a veces rompemos cosas accidentalmente",
+    "stableChannelDescription": "Te recomendamos que utilices este canal para todos los lanzamientos de aplicaciones de producción. Aproximadamente una vez al trimestre, una rama estabilizada en beta se convierte en nuestra siguiente rama estable y creamos una versión estable de esa rama.",
+    "betaChannelDescription": "Rama creada para una nueva versión beta a principios de mes, normalmente el primer lunes, por el master. Contendrá una rama para Dart, el motor y el framework",
+    "devChannelDescription": "La última compilación totalmente probada. Generalmente funciona, pero comprueba \"malas versiones\" para una lista de builds de desarrollo con errores",
+    "masterChannelDescription": "La última punta del árbol, absolutamente la última construcción de vanguardia. Generalmente funcional, aunque a veces se rompen cosas sin querer",
     "utils": {
       "start": "iniciar",
       "open": "abrir",
@@ -20,7 +20,7 @@
     "cleanUpTooltip": "Limpiar versiones no utilizadas",
     "numberOfCachedVersions": "{{cachedVersions}} versiones",
     "versionItemversionnameHasBeenInstalled": "La versión {{itemVersionName}} ha sido instalada",
-    "versionItemversionnameHasFinishedSetup": "La versión {{itemVersionName}} ha finalizado la configuración",
+    "versionItemversionnameHasFinishedSetup": "La versión {{itemVersionName}} ha sido configurada",
     "channelItemversionnameHasBeenUpgraded": "El canal {{itemVersionName}} ha sido actualizado",
     "versionItemversionnameHasBeenRemoved": "La versión {{itemVersionName}} ha sido eliminada",
     "versionItemversionnameHasBeenSetAsGlobal": "La versión {{itemVersionName}} se ha establecido como global",
@@ -44,8 +44,8 @@
       "ok": "OK",
       "globalConfiguration": "Configuración global",
       "theseVersionAreNotPinnedToAProject": "Estas versiones no están ancladas a un proyecto",
-      "doYouWantToRemoveThemToFreeUpSpace": "¿Quieres eliminarlos para liberar espacio?",
-      "areYouSureYouWantToRemove": "¿Estás seguro de que quieres eliminar?",
+      "doYouWantToRemoveThemToFreeUpSpace": "¿Quieres eliminar esto para liberar espacio?",
+      "areYouSureYouWantToRemove": "¿Estás seguro de que quieres eliminar esto?",
       "thisWillRemoveItemnameCacheFromYourSystem": "Esto eliminará {{itemname}} de la caché de su sistema",
       "flutterPathIsPointingOn": "Flutter PATH apunta a\n",
       "changeThePathTo": "Cambia la ruta a\n",
@@ -54,21 +54,21 @@
     }
   },
   "projects": {
-    "projectsRefreshed": "Proyectos renovados",
+    "projectsRefreshed": "Proyectos Refrescados",
     "projects": "Proyectos",
     "choose": "Elegir",
     "projectsProjects": "Proyectos {{projects}}",
-    "onlyDisplayProjectsThatHaveVersionsPinned": "Sólo mostrar proyectos que tengan versiones ancladas",
-    "fvmOnly": "FVM sólo",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Solo mostrar proyectos que tengan versiones ancladas",
+    "fvmOnly": "Solo FVM",
     "addProject": "Añadir proyecto",
     "notAFlutterProject": "No es un proyecto Flutter",
     "components": {
       "open": "Abrir",
       "remove": "Eliminar",
-      "openTerminalPlayground": "Zona de juegos de la terminal abierta",
+      "openTerminalPlayground": "Abrir el terminal de la zona de juegos",
       "selectAFlutterSdkVersion": "seleccionar una versión del SDK de Flutter",
       "noFlutterProjectsHaveBeenAddedYet": "Todavía no se ha añadido ningún proyecto de Flutter",
-      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Añade tu proyecto Flutter La información del proyecto se mostrará aquí"
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Añade tu proyecto Flutter. La información del proyecto se mostrará aquí"
     }
   },
   "pubPackages": {
@@ -78,7 +78,7 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "Necesitas añadir un proyecto de Flutter primero. La información del paquete se muestra aquí",
       "noPackagesFound": "No se han encontrado paquetes",
-      "likes": "Le gusta",
+      "likes": "Me gusta",
       "pubPoints": "Puntos de pub",
       "popularidad": "Popularidad",
       "details": "Detalles",
@@ -89,12 +89,12 @@
   },
   "releases": {
     "all": "Todos",
-    "releases": "Libera",
+    "releases": "Versiones",
     "versiones": "Versiones",
-    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "La punta del árbol actual, la última compilación absoluta de vanguardia. Normalmente es funcional, aunque a veces rompemos cosas accidentalmente"
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "La punta del árbol actual, la última compilación de absoluta de vanguardia. Normalmente es funcional, aunque a veces se rompen cosas sin querer"
   },
   "sandbox": {
-    "playground": "Parque infantil",
+    "playground": "Zona de juegos",
     "releasesVersions": "{{releases}} versiones",
     "notRunning": "No se ejecuta"
   },
@@ -103,16 +103,16 @@
       "search": "Buscar... ",
       "noResults": "No hay resultados",
       "channels": "Canales",
-      "stableReleases": "Stable Libera",
-      "betaReleases": "Beta Libera",
-      "devReleases": "Dev Libera",
+      "stableReleases": "Vesiones Estables",
+      "betaReleases": "Versiones Beta",
+      "devReleases": "Versiones Dev",
       "invalidChanel": "Canal inválido"
     }
   },
   "selectedDetail": {
     "components": {
       "advanced": "Avanzado",
-      "downloadZip": "DescargarZip",
+      "downloadZip": "Descargar Zip",
       "zipFileWithAllReleaseDependencies": "Archivo zip con todas las dependencias de la versión",
       "hash": "Hash",
       "sha256": "Sha256",
@@ -145,7 +145,7 @@
       "selectAThemeOrSwitchAccordingToSystemSettings": "Selecciona un tema o cambia según los ajustes del sistema",
       "theme": "Tema",
       "system": "Sistema",
-      "light": "Luz",
+      "light": "Claro",
       "dark": "Oscuro",
       "language": "Idioma",
       "resetToDefaultSettings": "Restablecer la configuración por defecto",
