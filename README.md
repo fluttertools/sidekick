@@ -8,7 +8,8 @@ Sidekick is an app that provides a simple desktop interface to tools that enhanc
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
-## [Installation Instructions](https://github.com/leoafarias/sidekick/blob/main/INSTALLING.md)
+### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
+### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
 
 ## Features
 
