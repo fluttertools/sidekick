@@ -96,6 +96,17 @@
         "infra",
         "ideas"
       ]
+    },
+    {
+      "login": "Ahmadre",
+      "name": "Rebar Ahmad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18512224?v=4",
+      "profile": "http://ahmadre.com",
+      "contributions": [
+        "code",
+        "doc",
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",

@@ -1,7 +1,7 @@
 # Flutter Sidekick
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
@@ -41,6 +41,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/MaximilianFlechtner"><img src="https://avatars.githubusercontent.com/u/66118057?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Maximilian Flechtner</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=MaximilianFlechtner" title="Code">💻</a> <a href="#a11y-MaximilianFlechtner" title="Accessibility">️️️️♿️</a></td>
     <td align="center"><a href="https://github.com/kamel912"><img src="https://avatars.githubusercontent.com/u/23658096?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Mohamed Kamel</b></sub></a><br /><a href="#translation-kamel912" title="Translation">🌍</a></td>
     <td align="center"><a href="https://pedroermarinho.github.io"><img src="https://avatars.githubusercontent.com/u/29618874?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Pedro Marinho</b></sub></a><br /><a href="#infra-pedroermarinho" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-pedroermarinho" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://ahmadre.com"><img src="https://avatars.githubusercontent.com/u/18512224?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Rebar Ahmad</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Code">💻</a> <a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Documentation">📖</a> <a href="#translation-Ahmadre" title="Translation">🌍</a></td>
   </tr>
 </table>
 
