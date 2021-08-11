@@ -40,8 +40,13 @@ class SidekickSettings {
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
     this.locale,
-    this.localizationsDelegate,
-  });
+  }) : localizationsDelegate = I18NextLocalizationDelegate(
+          locales: languageManager.supportedLocales.toList(),
+          dataSource: AssetBundleLocalizationDataSource(
+            bundlePath: 'localization',
+          ),
+          options: I18NextOptions(formatter: languageManager.formatter),
+        );
 
   /// Storage key
   static const key = 'settings_key';
@@ -63,20 +68,11 @@ class SidekickSettings {
             countryCode: language.split('-')[1])
         : null;
 
-    final localizationsDelegate = I18NextLocalizationDelegate(
-      locales: languageManager.supportedLocales.toList(),
-      dataSource: AssetBundleLocalizationDataSource(
-        bundlePath: 'localization',
-      ),
-      options: I18NextOptions(formatter: languageManager.formatter),
-    );
-
     return SidekickSettings(
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
       locale: locale,
-      localizationsDelegate: localizationsDelegate,
     );
   }
 
@@ -88,7 +84,8 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
-      'locale': locale?.toLanguageTag() ?? Locale('en', 'GB').toLanguageTag(),
+      'locale': locale?.toLanguageTag() ??
+          languageManager.supportedLocales.first.toLanguageTag(),
     };
   }
 }

@@ -70,7 +70,9 @@ class FvmApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               ...GlobalCupertinoLocalizations.delegates,
             ],
-            locale: settings.locale ?? I18Next.of(context).locale,
+            locale: settings.locale ??
+                I18Next.of(context)?.locale ??
+                languageManager.supportedLocales.first,
             supportedLocales: languageManager.supportedLocales,
             localeResolutionCallback:
                 (Locale locale, Iterable<Locale> supportedLocales) {
