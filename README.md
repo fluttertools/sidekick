@@ -1,6 +1,6 @@
 # Flutter Sidekick
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square) [![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square)](https://github.com/leoafarias/sidekick/graphs/contributors) [![Awesome Flutter](https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square)](https://github.com/Solido/awesome-flutter)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square) [![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square)](https://github.com/leoafarias/sidekick/graphs/contributors) [![Awesome Flutter](https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square)](https://github.com/Solido/awesome-flutter) ![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square)
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
 
