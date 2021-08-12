@@ -61,7 +61,7 @@ class SidekickSettings {
       SidekickSettings.fromMap(json.decode(str));
 
   factory SidekickSettings.fromMap(Map<String, dynamic> json) {
-    final language = json['locale'];
+    final language = json['i18Locale'];
     final locale = language != null
         ? Locale.fromSubtags(
             languageCode: (language as String).split('-')[0],
@@ -84,7 +84,7 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
-      'locale': locale?.toLanguageTag() ??
+      'i18Locale': locale?.toLanguageTag() ??
           languageManager.supportedLocales.first.toLanguageTag(),
     };
   }
