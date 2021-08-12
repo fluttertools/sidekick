@@ -1,5 +1,5 @@
 # Name of your workflow.
-name: flutter drive
+name: Test (E2E)
 # Trigger the workflow on push or pull request.
 on: [push, pull_request]
 # A workflow run is made up of one or more jobs.
@@ -27,7 +27,7 @@ jobs:
       uses: subosito/flutter-action@v1.4.0
     
     - name: Enable desktop
-      run: flutter config --enable-windows-desktop
+      run: flutter config --enable-macos-desktop
     
     - name: Run Integration Tests
       run: "flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos"
