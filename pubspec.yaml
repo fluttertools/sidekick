@@ -52,6 +52,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^1.1.0
+  integration_test:
+    sdk: flutter
   msix: ^2.1.1
   pedantic: ^1.11.0
 

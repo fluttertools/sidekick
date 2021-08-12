@@ -20,6 +20,14 @@ Sidekick is an app that provides a simple desktop interface to tools that enhanc
 - Version sandboxing (playground)
 - more...
 
+## E2E Integration-Testing
+
+To run your e2e Tests locally run:
+
+```bash
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
+```
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
