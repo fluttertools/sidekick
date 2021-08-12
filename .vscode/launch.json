@@ -19,6 +19,12 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
+    },
+    {
+      "name": "Integration Tests: Launch App",
+      "request": "launch",
+      "type": "dart",
+      "program": "integration_test/app_test.dart"
     }
   ]
 }

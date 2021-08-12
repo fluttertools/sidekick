@@ -22,7 +22,9 @@ import 'src/modules/settings/settings.utils.dart';
 import 'src/screens/error_db_screen.dart';
 import 'src/theme.dart';
 
-void main() async {
+Future main({
+  bool isTestMode = false,
+}) async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
@@ -44,6 +46,10 @@ void main() async {
     setWindowTitle(kAppTitle);
     setWindowMinSize(const Size(800, 500));
     setWindowMaxSize(Size.infinite);
+  }
+
+  if (isTestMode) {
+    return ProviderScope(child: FvmApp());
   }
 
   runApp(ProviderScope(child: FvmApp()));
