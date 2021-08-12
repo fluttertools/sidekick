@@ -21,14 +21,13 @@ jobs:
     runs-on: macos-latest
     # Contains a sequence of tasks.
     steps:
-    # The branch or tag ref that triggered the workflow will be 
-    # checked out.
-    # https://github.com/actions/checkout
-    - uses: actions/checkout@v1
-    # Sets up a flutter environment.
-    # https://github.com/marketplace/actions/flutter-action
-    - uses: subosito/flutter-action@v1
-      with:
-        channel: 'master' # or: 'dev' or 'beta'
-    - name: "Run Flutter Driver tests"
-      run: "flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart"
+    - uses: actions/checkout@v2.3.4
+
+    - name: Setup Flutter SDK
+      uses: subosito/flutter-action@v1.4.0
+    
+    - name: Enable desktop
+      run: flutter config --enable-windows-desktop
+    
+    - name: Run Integration Tests
+      run: "flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos"
