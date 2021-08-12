@@ -5,7 +5,7 @@ on: [push, pull_request]
 # A workflow run is made up of one or more jobs.
 jobs:
   # id of job, a string that is unique to the "jobs" node above.
-  drive:
+  flutter-drive:
     # Creates a build matrix for your jobs. You can define different
     # variations of an environment to run each job in.
     strategy:
@@ -20,11 +20,13 @@ jobs:
     # The type of machine to run the job on.
     runs-on: macos-latest
     # Contains a sequence of tasks.
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v2.3.4
 
     - name: Setup Flutter SDK
-      uses: subosito/flutter-action@v1.4.0
+      uses: subosito/flutter-action@master
 
     - name: Set Up XCode
       uses: devbotsxyz/xcode-select@v1.1.0
@@ -33,4 +35,4 @@ jobs:
       run: flutter config --enable-macos-desktop
     
     - name: Run Integration Tests
-      run: "flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos"
+      run: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos
