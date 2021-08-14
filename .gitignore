@@ -70,3 +70,5 @@ stage/
 /prime/
 /*.snap
 
+### FVM ###
+.fvm/
