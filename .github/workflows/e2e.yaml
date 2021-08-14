@@ -33,6 +33,9 @@ jobs:
     
     - name: Enable desktop
       run: flutter config --enable-macos-desktop
+
+    - name: Setup FVM as a dependency
+      run: flutter pub global activate fvm
     
     - name: Run Integration Tests
       run: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos
