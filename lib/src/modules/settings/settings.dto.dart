@@ -43,7 +43,7 @@ class SidekickSettings {
   }) : localizationsDelegate = I18NextLocalizationDelegate(
           locales: languageManager.supportedLocales.toList(),
           dataSource: AssetBundleLocalizationDataSource(
-            bundlePath: 'localization',
+            bundlePath: 'localizations',
           ),
           options: I18NextOptions(formatter: languageManager.formatter),
         );
