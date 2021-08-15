@@ -71,20 +71,17 @@ jobs:
     - uses: actions/checkout@v2.3.4
 
     - name: Install FVM & Flutter
+      uses: crazy-max/ghaction-chocolatey@v1
       run: |
-        brew tap leoafarias/fvm
-        brew install fvm
+        choco install fvm
         fvm install stable
         fvm doctor
 
     - name: Setup Flutter SDK
       uses: subosito/flutter-action@master
-
-    - name: Set Up XCode
-      uses: devbotsxyz/xcode-select@v1.1.0
     
     - name: Enable desktop
-      run: flutter config --enable-macos-desktop
+      run: flutter config --enable-windows-desktop
 
     - name: Run integration tests
       timeout-minutes: 30
@@ -124,12 +121,9 @@ jobs:
 
     - name: Setup Flutter SDK
       uses: subosito/flutter-action@master
-
-    - name: Set Up XCode
-      uses: devbotsxyz/xcode-select@v1.1.0
     
     - name: Enable desktop
-      run: flutter config --enable-macos-desktop
+      run: flutter config --enable-linux-desktop
 
     - name: Run integration tests
       timeout-minutes: 30
