@@ -5,7 +5,7 @@ on: [push, pull_request]
 # A workflow run is made up of one or more jobs.
 jobs:
   # id of job, a string that is unique to the "jobs" node above.
-  flutter-drive:
+  macos-e2e:
     # Creates a build matrix for your jobs. You can define different
     # variations of an environment to run each job in.
     strategy:
@@ -49,3 +49,93 @@ jobs:
         flutter doctor -v
         flutter pub get
         flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos
+
+  windows-e2e:
+    # Creates a build matrix for your jobs. You can define different
+    # variations of an environment to run each job in.
+    strategy:
+      # A set of different configurations of the virtual  
+      # environment.
+      matrix:
+        device:
+        - "Windows (windows)"
+      # When set to true, GitHub cancels all in-progress jobs if any        
+      # matrix job fails.
+      fail-fast: false
+    # The type of machine to run the job on.
+    runs-on: windows-latest
+    # Contains a sequence of tasks.
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - name: Install FVM & Flutter
+      run: |
+        brew tap leoafarias/fvm
+        brew install fvm
+        fvm install stable
+        fvm doctor
+
+    - name: Setup Flutter SDK
+      uses: subosito/flutter-action@master
+
+    - name: Set Up XCode
+      uses: devbotsxyz/xcode-select@v1.1.0
+    
+    - name: Enable desktop
+      run: flutter config --enable-macos-desktop
+
+    - name: Run integration tests
+      timeout-minutes: 30
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        flutter doctor -v
+        flutter pub get
+        flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d windows
+
+  linux-e2e:
+    # Creates a build matrix for your jobs. You can define different
+    # variations of an environment to run each job in.
+    strategy:
+      # A set of different configurations of the virtual  
+      # environment.
+      matrix:
+        device:
+        - "Linux (linux)"
+      # When set to true, GitHub cancels all in-progress jobs if any        
+      # matrix job fails.
+      fail-fast: false
+    # The type of machine to run the job on.
+    runs-on: ubuntu-latest
+    # Contains a sequence of tasks.
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - name: Install FVM & Flutter
+      run: |
+        brew tap leoafarias/fvm
+        brew install fvm
+        fvm install stable
+        fvm doctor
+
+    - name: Setup Flutter SDK
+      uses: subosito/flutter-action@master
+
+    - name: Set Up XCode
+      uses: devbotsxyz/xcode-select@v1.1.0
+    
+    - name: Enable desktop
+      run: flutter config --enable-macos-desktop
+
+    - name: Run integration tests
+      timeout-minutes: 30
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        flutter doctor -v
+        flutter pub get
+        flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d linux
