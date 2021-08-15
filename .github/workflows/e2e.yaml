@@ -133,9 +133,9 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt install -y cmake dbus libblkid-dev libgtk-3-dev liblzma-dev ninja-build pkg-config xvfb clang-format
-        sudo apt install -y network-manager upower
-        snap install flutter --classic
-        snap refresh flutter --channel candidate/20.04
+        sudo apt install -y network-manager upower snapd
+        sudo snap install flutter --classic
+        sudo snap refresh flutter --channel candidate/20.04
         flutter doctor -v
 
     - name: Run integration tests
