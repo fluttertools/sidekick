@@ -29,7 +29,8 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   hooks_riverpod: ^0.14.0+4
-  i18next: ^0.3.0
+  i18next:
+    git: https://github.com/Ahmadre/i18next.git
   material_design_icons_flutter: ^5.0.5955-rc.1
   material_floating_search_bar: ^0.3.4
   oktoast: ^3.0.0
@@ -59,10 +60,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
-    - localization/ar-SA/
-    - localization/de-DE/
-    - localization/en-GB/
-    - localization/en-US/
-    - localization/es-ES/
+    - localizations/ar-SA/
+    - localizations/de-DE/
+    - localizations/en-GB/
+    - localizations/en-US/
+    - localizations/es-ES/
 flutter_intl:
   enabled: true

@@ -437,10 +437,12 @@ packages:
   i18next:
     dependency: "direct main"
     description:
-      name: i18next
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
+      path: "."
+      ref: HEAD
+      resolved-ref: "0acf5daee6ad09f0c0e035b55d57ae8d6f3cdaf7"
+      url: "https://github.com/Ahmadre/i18next.git"
+    source: git
+    version: "0.4.1"
   injector:
     dependency: transitive
     description:
