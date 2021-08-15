@@ -24,7 +24,7 @@ class IDE {
   final String name;
   final String urlProtocol;
   final String command;
-  final IconData icon;
+  final Widget icon;
 
   const IDE(this.name, this.icon, {this.command, this.urlProtocol});
 
@@ -48,5 +48,5 @@ class IDE {
 }
 
 const supportedIDEs = [
-  IDE('VSCode', MdiIcons.microsoftVisualStudioCode, urlProtocol: 'vscode')
+  IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), urlProtocol: 'vscode')
 ];

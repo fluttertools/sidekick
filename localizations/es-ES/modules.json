@@ -152,7 +152,9 @@
       "dark": "Oscuro",
       "language": "Idioma",
       "resetToDefaultSettings": "Restablecer la configuración por defecto",
-      "reset": "Reiniciar"
+      "reset": "Reiniciar",
+      "ideSelection": "Selección de IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Selecciona el IDE con el que abrir tus projectos"
     }
   },
   "updater": {
