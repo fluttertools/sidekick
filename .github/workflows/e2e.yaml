@@ -48,18 +48,4 @@ jobs:
       run: |
         flutter doctor -v
         flutter pub get
-        xcrun simctl io booted recordVideo recording.mov &
-        sleep 5
-        export RECORDING_PID=${!}
-        echo "Recording process up with pid: ${RECORDING_PID}"
         flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d macos
-        sleep 5
-        kill -SIGINT $RECORDING_PID
-        sleep 10
-        cp recording.mov /tmp/sidekick_record
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@master
-      with:
-        name: online_record_${{ matrix.device }}
-        path: /tmp/sidekick_record
