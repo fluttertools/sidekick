@@ -1,6 +1,6 @@
 {
   "common": {
-    "navButtonDashboard": "dashboard",
+    "navButtonDashboard": "Dashboard",
     "navButtonProjects": "Projects",
     "navButtonExplore": "Explore",
     "navButtonPackages": "Packages",
@@ -78,6 +78,8 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
       "noPackagesFound": "No packages found",
+      "view" : "View",
+      "builtBy": "Built by",
       "likes": "Likes",
       "pubPoints": "Pub Points",
       "popularity": "Popularity",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/components/molecules/list_tile.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -34,7 +35,8 @@ class TrendingGithubRepoItem extends StatelessWidget {
               context,
               'https://github.com/${package.owner}/${package.repoName}',
             ),
-            child: const Text('View'),
+            child: Text(
+                I18Next.of(context).t('modules:pubPackages.components.view')),
           ),
           subtitle: Text(
             package.description,
@@ -60,7 +62,8 @@ class TrendingGithubRepoItem extends StatelessWidget {
                     SizedBox(width: 5),
                     Caption(numberFormatter.format(package.totalForks)),
                     SizedBox(width: 20),
-                    Caption('Built by '),
+                    Caption(I18Next.of(context)
+                        .t('modules:pubPackages.components.builtBy')),
                     ...package.topContributors
                         .map(
                           (e) => Padding(

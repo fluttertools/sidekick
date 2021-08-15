@@ -78,6 +78,8 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "تحتاج إلى إضافة مشروع Flutter أولاً. سيتم عرض معلومات الحزمة هنا.",
       "noPackagesFound": "لم يتم العثور على حزم",
+      "view" : "عرض",
+      "builtBy": "تم بناؤه بواسطة",
       "packageprojectscountProjects": "{{packageProjectsCount}} مشروع",
       "changelog": "سجل التغييرات",
       "website": "الموقع الإلكتروني",
