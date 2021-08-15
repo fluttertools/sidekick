@@ -70,8 +70,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.4
 
+    - uses: crazy-max/ghaction-chocolatey@v1
+      
     - name: Install FVM & Flutter
-      uses: crazy-max/ghaction-chocolatey@v1
       run: |
         choco install fvm
         fvm install stable
