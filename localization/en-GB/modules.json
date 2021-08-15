@@ -79,6 +79,8 @@
       "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
       "noPackagesFound": "No packages found",
       "likes": "Likes",
+      "view" : "View",
+      "builtBy": "Built by",
       "pubPoints": "Pub Points",
       "popularity": "Popularity",
       "details": "Details",

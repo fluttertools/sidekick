@@ -1,6 +1,6 @@
 {
   "common": {
-    "navButtonDashboard": "dashboard",
+    "navButtonDashboard": "Panel Principal",
     "navButtonProjects": "Proyectos",
     "navButtonExplore": "Explorar",
     "navButtonPackages": "Paquetes",
@@ -16,7 +16,7 @@
   },
   "fvm": {
     "installedVersions": "Versiones Instaladas",
-    "cleanUp": "Limpieza",
+    "cleanUp": "Limpiar",
     "cleanUpTooltip": "Limpiar versiones no utilizadas",
     "numberOfCachedVersions": "{{cachedVersions}} versiones",
     "versionItemversionnameHasBeenInstalled": "La versión {{itemVersionName}} ha sido instalada",
@@ -29,7 +29,7 @@
       "upgrade": "Actualizar",
       "setAsGlobal": "Establecido como global",
       "inUse": "En uso",
-      "unused": "No se utiliza",
+      "unused": "No utilizado",
       "flutterSdkNotInstalled": "El SDK de Flutter no está instalado",
       "noFlutterVersionInstalledMessage": "Actualmente no tiene ninguna versión del SDK de Flutter instalada. Las versiones o canales que se han instalado se muestran aquí",
       "exploreFlutterReleases": "Explorar los lanzamientos de Flutter",
@@ -78,6 +78,8 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "Necesitas añadir un proyecto de Flutter primero. La información del paquete se muestra aquí",
       "noPackagesFound": "No se han encontrado paquetes",
+      "view": "Ver",
+      "builtBy": "Creado por",
       "likes": "Me gusta",
       "pubPoints": "Puntos de pub",
       "popularity": "Popularidad",
@@ -90,7 +92,7 @@
   "releases": {
     "all": "Todos",
     "releases": "Versiones",
-    "versiones": "Versiones",
+    "versions": "Versiones",
     "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "La punta del árbol actual, la última compilación de absoluta de vanguardia. Normalmente es funcional, aunque a veces se rompen cosas sin querer"
   },
   "sandbox": {
