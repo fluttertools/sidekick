@@ -66,6 +66,7 @@
       "open": "Öffnen",
       "remove": "Löschen",
       "openTerminalPlayground": "Terminal Playground öffnen",
+      "openIde": "Öffnen in {{ideName}}",
       "selectAFlutterSdkVersion": "Wählen Sie eine Flutter SDK Version",
       "noFlutterProjectsHaveBeenAddedYet": "Es wurden noch keine Flutter-Projekte hinzugefügt.",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Fügen Sie Ihr Flutter-Projekt hinzu Die Projektinformationen werden hier angezeigt."

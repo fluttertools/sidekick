@@ -3,6 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/open_link.dart';
+import 'package:sidekick/src/modules/settings/settings.provider.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
@@ -44,6 +46,10 @@ class ProjectListItem extends HookWidget {
           ),
         ),
       );
+    }
+
+    void openVSCode() {
+      openVsCode(context, project.projectDir.absolute.toString());
     }
 
     return Container(
@@ -92,6 +98,20 @@ class ProjectListItem extends HookWidget {
                       onPressed: openProjectPlayground,
                     ),
                   ),
+                  if (context.read(settingsProvider).sidekick.themeMode ==
+                      'dark')
+                    Tooltip(
+                      message: I18Next.of(context)
+                          .t('modules:projects.components.openIde', variables: {
+                        'ideName': "VSCode",
+                      }),
+                      child: IconButton(
+                        iconSize: 20,
+                        splashRadius: 20,
+                        icon: const Icon(MdiIcons.microsoftVisualStudioCode),
+                        onPressed: openVSCode,
+                      ),
+                    ),
                   const Spacer(),
                   versionSelect
                       ? Row(
