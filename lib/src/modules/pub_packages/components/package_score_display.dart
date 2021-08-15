@@ -26,7 +26,7 @@ class PackageScoreDisplay extends StatelessWidget {
     }
 
     return Container(
-      width: 240,
+      width: 242,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
