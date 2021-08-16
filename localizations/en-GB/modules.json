@@ -152,7 +152,9 @@
       "dark": "Dark",
       "language": "Language",
       "resetToDefaultSettings": "Reset to Default Settings",
-      "reset": "Reset"
+      "reset": "Reset",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Select the IDE to open your projects with"
     }
   },
   "updater": {

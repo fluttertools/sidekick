@@ -152,7 +152,9 @@
       "dark": "مظلم",
       "language": "اللغة",
       "resetToDefaultSettings": "إعادة الضبط إلى الإعدادات الافتراضية",
-      "reset": "إعادة الضبط"
+      "reset": "إعادة الضبط",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "حدد IDE لفتح مشاريعك باستخدام"
     }
   },
   "updater": {
