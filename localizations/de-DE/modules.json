@@ -9,8 +9,6 @@
     "devChannelDescription": "Der letzte vollständig getestete Build. Normalerweise funktionstüchtig, aber unter \"Schlechte Builds\" finden Sie eine Liste bekannter \"schlechter\" Dev-Builds.",
     "masterChannelDescription": "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen.",
     "utils": {
-      "start": "start",
-      "open": "öffnen",
       "couldNotLaunchUrl": "Konnte {{url}} nicht öffnen"
     }
   },

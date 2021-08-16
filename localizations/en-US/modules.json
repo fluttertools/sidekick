@@ -9,8 +9,6 @@
     "devChannelDescription": "The last fully tested build. Usually working, but see \"Bad builds\" for a list of known \"bad\" Dev builds.",
     "masterChannelDescription": "The latest tip-of-tree, absolutely latest cutting edge build. Usually functional, though sometimes we accidentally break things.",
     "utils": {
-      "start": "start",
-      "open": "open",
       "couldNotLaunchUrl": "Could not open {{url}}"
     }
   },
