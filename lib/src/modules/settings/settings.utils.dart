@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SettingsThemeMode {
   static const light = 'light';

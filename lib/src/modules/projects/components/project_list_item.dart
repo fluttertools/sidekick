@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
 import 'package:sidekick/src/modules/settings/settings.utils.dart';
 
