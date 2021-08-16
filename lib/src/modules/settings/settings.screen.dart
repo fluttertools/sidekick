@@ -66,7 +66,6 @@ class SettingsScreen extends HookWidget {
 
     Future<void> handleSave() async {
       try {
-        print(settings.sidekick.toJson());
         await provider.save(settings);
         notify(I18Next.of(context).t('modules:settings.settingsHaveBeenSaved'));
       } on Exception catch (e) {

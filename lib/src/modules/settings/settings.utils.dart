@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/open_link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsThemeMode {
   static const light = 'light';
@@ -22,31 +24,13 @@ ThemeMode getThemeMode(String themeMode) {
 
 class IDE {
   final String name;
-  final String urlProtocol;
-  final String command;
+  final void Function(BuildContext context, String projectPath) launch;
   final Widget icon;
 
-  const IDE(this.name, this.icon, {this.command, this.urlProtocol});
-
-  factory IDE.fromJson(String str) => IDE.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory IDE.fromMap(Map<String, dynamic> json) => IDE(
-        json['name'],
-        json['icon'],
-        command: json['command'],
-        urlProtocol: json['urlProtocol'],
-      );
-
-  Map<String, dynamic> toMap() => {
-        'name': name,
-        'icon': icon,
-        'command': command,
-        'urlProtocol': urlProtocol,
-      };
+  const IDE(this.name, this.icon, this.launch);
 }
 
 const supportedIDEs = [
-  IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), urlProtocol: 'vscode')
+  IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), openVsCode),
+  IDE('XCode', Icon(MdiIcons.appleSafari), openXcode),
 ];

@@ -5,6 +5,7 @@ import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
+import 'package:sidekick/src/modules/settings/settings.utils.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
@@ -37,6 +38,11 @@ class ProjectListItem extends HookWidget {
 
     final needInstall = version != null && project.pinnedVersion != null;
 
+    final ideName = useProvider(settingsProvider).sidekick.ide;
+    final ide = ideName != null
+        ? supportedIDEs.firstWhere((element) => element.name == ideName)
+        : null;
+
     void openProjectPlayground() {
       Navigator.push(
         context,
@@ -48,8 +54,8 @@ class ProjectListItem extends HookWidget {
       );
     }
 
-    void openVSCode() {
-      openVsCode(context, project.projectDir.absolute.toString());
+    void openIde() {
+      ide.launch(context, project.projectDir.absolute.path);
     }
 
     return Container(
@@ -98,18 +104,17 @@ class ProjectListItem extends HookWidget {
                       onPressed: openProjectPlayground,
                     ),
                   ),
-                  if (context.read(settingsProvider).sidekick.themeMode ==
-                      'dark')
+                  if (ideName != null)
                     Tooltip(
                       message: I18Next.of(context)
                           .t('modules:projects.components.openIde', variables: {
-                        'ideName': "VSCode",
+                        'ideName': ide.name,
                       }),
                       child: IconButton(
                         iconSize: 20,
                         splashRadius: 20,
-                        icon: const Icon(MdiIcons.microsoftVisualStudioCode),
-                        onPressed: openVSCode,
+                        icon: ide.icon,
+                        onPressed: openIde,
                       ),
                     ),
                   const Spacer(),
