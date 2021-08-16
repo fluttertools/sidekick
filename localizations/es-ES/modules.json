@@ -9,8 +9,6 @@
     "devChannelDescription": "La última compilación totalmente probada. Generalmente funciona, pero comprueba \"malas versiones\" para una lista de builds de desarrollo con errores",
     "masterChannelDescription": "La última punta del árbol, absolutamente la última construcción de vanguardia. Generalmente funcional, aunque a veces se rompen cosas sin querer",
     "utils": {
-      "start": "iniciar",
-      "open": "abrir",
       "couldNotLaunchUrl": "No se pudo abrir {{url}}"
     }
   },
