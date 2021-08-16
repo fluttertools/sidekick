@@ -118,7 +118,7 @@ class SettingsSectionGeneral extends StatelessWidget {
             trailing: DropdownButton(
               underline: Container(),
               isDense: true,
-              value: settings.sidekick.ide.name ?? 'none',
+              value: settings.sidekick.ide ?? 'none',
               items: [
                 DropdownMenuItem(
                   value: 'none',
@@ -140,10 +140,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                     .toList()
               ],
               onChanged: (val) async {
-                settings.sidekick.ide = (val == 'none'
-                    ? null
-                    : supportedIDEs
-                        .firstWhere((element) => element.name == val));
+                settings.sidekick.ide = (val == 'none' ? null : val);
                 onSave();
               },
             ),
