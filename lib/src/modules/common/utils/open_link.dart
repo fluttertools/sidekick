@@ -17,13 +17,9 @@ Future<void> openLink(BuildContext context, String url) async {
 
 Future<void> openPath(BuildContext context, String url) async {
   if (Platform.isWindows) {
-    await Process.start(
-        I18Next.of(context).t('modules:common.utils.start'), [url]);
-  }
-
-  if (Platform.isMacOS) {
-    await Process.start(
-        I18Next.of(context).t('modules:common.utils.open'), [url]);
+    await Process.start('start', [url]);
+  } else if (Platform.isMacOS) {
+    await Process.start('open', [url]);
   }
 }
 
