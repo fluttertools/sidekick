@@ -23,9 +23,13 @@ Future<void> openPath(BuildContext context, String url) async {
   }
 }
 
-Future<void> openVsCode(BuildContext context, String url) async {
-  final vsCodeUri = 'vscode://file/$url';
-  return await openLink(context, vsCodeUri);
+Future<void> openVsCode(BuildContext context, String path) async {
+  if (Platform.isWindows || Platform.isLinux) {
+    await Process.run('code', [path], runInShell: true);
+  } else {
+    final vsCodeUri = 'vscode://file/$path';
+    return await openLink(context, vsCodeUri);
+  }
 }
 
 Future<void> openXcode(BuildContext context, String url) async {

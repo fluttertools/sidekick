@@ -64,6 +64,7 @@
       "open": "فتح",
       "remove": "إزالة",
       "openTerminalPlayground": "فتح ملعب طرفي",
+      "openIde": "فتح في {{idName}}",
       "selectAFlutterSdkVersion": "حدد إصدار Flutter SDK",
       "noFlutterProjectsHaveBeenAddedYet": "لم يتم اضافة أي مشاريع Flutter.",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "إضافة مشروع Flutter الخاص بك. مشروعاتك سيتم عرضها هنا."
@@ -149,7 +150,9 @@
       "dark": "مظلم",
       "language": "اللغة",
       "resetToDefaultSettings": "إعادة الضبط إلى الإعدادات الافتراضية",
-      "reset": "إعادة الضبط"
+      "reset": "إعادة الضبط",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "حدد IDE لفتح مشاريعك باستخدام"
     }
   },
   "updater": {

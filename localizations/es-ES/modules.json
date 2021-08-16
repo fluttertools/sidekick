@@ -64,6 +64,7 @@
       "open": "Abrir",
       "remove": "Eliminar",
       "openTerminalPlayground": "Abrir el terminal de la zona de juegos",
+      "openIde": "Abrir en {{ideName}}",
       "selectAFlutterSdkVersion": "seleccionar una versión del SDK de Flutter",
       "noFlutterProjectsHaveBeenAddedYet": "Todavía no se ha añadido ningún proyecto de Flutter",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Añade tu proyecto Flutter. La información del proyecto se mostrará aquí"
@@ -149,7 +150,9 @@
       "dark": "Oscuro",
       "language": "Idioma",
       "resetToDefaultSettings": "Restablecer la configuración por defecto",
-      "reset": "Reiniciar"
+      "reset": "Reiniciar",
+      "ideSelection": "Selección de IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Selecciona el IDE con el que abrir tus projectos"
     }
   },
   "updater": {
