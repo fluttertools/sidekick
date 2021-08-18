@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:i18next/i18next.dart';
-
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../modules/common/dto/release.dto.dart';
@@ -56,12 +55,16 @@ final fvmQueueProvider = StateNotifierProvider<FvmQueueState, FvmQueue>((ref) {
 /// State of the FVM Queue
 class FvmQueueState extends StateNotifier<FvmQueue> {
   /// Constructor
-  FvmQueueState({@required this.ref}) : super(null) {
+  FvmQueueState({
+    @required this.ref,
+  }) : super(null) {
     state = FvmQueue(activeItem: null, queue: Queue());
   }
 
   /// Provider ref to be used later
   final ProviderReference ref;
+
+  I18Next i18next;
 
   /// Retrieve FVM Settings
   FvmSettings get settings {
@@ -69,8 +72,11 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   }
 
   ///  Adds install action to queue
-  void install(BuildContext context, ReleaseDto version,
-      {bool skipSetup}) async {
+  void install(
+    BuildContext context,
+    ReleaseDto version, {
+    bool skipSetup,
+  }) async {
     skipSetup ??= settings.skipSetup;
     final action =
         skipSetup ? QueueAction.install : QueueAction.installAndSetup;
@@ -99,7 +105,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   }
 
   /// Runs queue
-  void runQueue(BuildContext context) async {
+  void runQueue() async {
     try {
       final queue = state.queue;
       final activeItem = state.activeItem;
@@ -117,7 +123,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.install:
           await FVMClient.install(item.version.name);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.versionItemversionnameHasBeenInstalled',
               variables: {
                 'itemVersionName': item.version.name,
@@ -128,7 +134,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.setupOnly:
           await FVMClient.setup(item.version.name);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.versionItemversionnameHasFinishedSetup',
               variables: {
                 'itemVersionName': item.version.name,
@@ -140,7 +146,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
           await FVMClient.install(item.version.name);
           await FVMClient.setup(item.version.name);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.versionItemversionnameHasBeenInstalled',
               variables: {
                 'itemVersionName': item.version.name,
@@ -151,7 +157,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.channelUpgrade:
           await FVMClient.upgradeChannel(item.version.cache);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.channelItemversionnameHasBeenUpgraded',
               variables: {
                 'itemVersionName': item.version.name,
@@ -162,7 +168,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.remove:
           await FVMClient.remove(item.version.name);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.versionItemversionnameHasBeenRemoved',
               variables: {
                 'itemVersionName': item.version.name,
@@ -173,7 +179,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
         case QueueAction.setGlobal:
           await FVMClient.setGlobalVersion(item.version.cache);
           notify(
-            I18Next.of(context).t(
+            i18next.t(
               'modules:fvm.versionItemversionnameHasBeenSetAsGlobal',
               variables: {
                 'itemVersionName': item.version.name,
@@ -196,16 +202,20 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     state = state.update();
 
     // Run queue again
-    runQueue(context);
+    runQueue();
   }
 
   /// Pins a releae to a project
   Future<void> pinVersion(
-      BuildContext context, FlutterProject project, String version) async {
+    BuildContext context,
+    FlutterProject project,
+    String version,
+  ) async {
+    i18next = I18Next.of(context);
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reload(project);
     notify(
-      I18Next.of(context).t(
+      i18next.t(
         'modules:fvm.versionVersionPinnedToProjectname',
         variables: {
           'version': version,
@@ -215,10 +225,14 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     );
   }
 
-  Future<void> _addToQueue(BuildContext context, ReleaseDto version,
-      {QueueAction action}) async {
+  Future<void> _addToQueue(
+    BuildContext context,
+    ReleaseDto version, {
+    QueueAction action,
+  }) async {
+    i18next = I18Next.of(context);
     state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
-    runQueue(context);
+    runQueue();
   }
 }

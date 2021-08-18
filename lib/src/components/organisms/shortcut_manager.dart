@@ -49,10 +49,6 @@ class SkShortcutManager extends HookWidget {
         ): const NavigationIntent(route: NavigationRoutes.exploreScreen),
         LogicalKeySet(
           LogicalKeyboardKey.metaLeft,
-          LogicalKeyboardKey.digit4,
-        ): const NavigationIntent(route: NavigationRoutes.packagesScreen),
-        LogicalKeySet(
-          LogicalKeyboardKey.metaLeft,
           LogicalKeyboardKey.keyF,
         ): const NavigationIntent(route: NavigationRoutes.searchScreen),
       },

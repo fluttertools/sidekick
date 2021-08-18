@@ -11,8 +11,8 @@ class LanguageManager {
   static final LanguageManager _languageManager = LanguageManager._internal();
 
   final List<Locale> _supportedLanguagesCodes = [
-    const Locale('en', 'GB'),
     const Locale('en', 'US'),
+    const Locale('en', 'GB'),
     const Locale('ar', 'SA'),
     const Locale('de', 'DE'),
     const Locale('es', 'ES'),
