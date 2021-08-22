@@ -9,8 +9,6 @@
     "devChannelDescription": "أحدث نسخة تم اختبارها بشكل كامل. عادة تعمل بشكل جيد، ولكن انظر  لقائمة النسخ المبنية السيئة المعروفة.",
     "masterChannelDescription": "احدث نسخة جاليا والتي عادة ما تعمل ، بالرغم من أننا في بعض الأحيان نواجه بعض الأخطاء.",
     "utils": {
-      "start": "ابدأ",
-      "open": "فتح",
       "couldNotLaunchUrl": "تعذر تشغيل {{url}}"
     }
   },
@@ -66,6 +64,7 @@
       "open": "فتح",
       "remove": "إزالة",
       "openTerminalPlayground": "فتح ملعب طرفي",
+      "openIde": "فتح في {{idName}}",
       "selectAFlutterSdkVersion": "حدد إصدار Flutter SDK",
       "noFlutterProjectsHaveBeenAddedYet": "لم يتم اضافة أي مشاريع Flutter.",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "إضافة مشروع Flutter الخاص بك. مشروعاتك سيتم عرضها هنا."
@@ -151,7 +150,9 @@
       "dark": "مظلم",
       "language": "اللغة",
       "resetToDefaultSettings": "إعادة الضبط إلى الإعدادات الافتراضية",
-      "reset": "إعادة الضبط"
+      "reset": "إعادة الضبط",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "حدد IDE لفتح مشاريعك باستخدام"
     }
   },
   "updater": {

@@ -9,8 +9,6 @@
     "devChannelDescription": "La última compilación totalmente probada. Generalmente funciona, pero comprueba \"malas versiones\" para una lista de builds de desarrollo con errores",
     "masterChannelDescription": "La última punta del árbol, absolutamente la última construcción de vanguardia. Generalmente funcional, aunque a veces se rompen cosas sin querer",
     "utils": {
-      "start": "iniciar",
-      "open": "abrir",
       "couldNotLaunchUrl": "No se pudo abrir {{url}}"
     }
   },
@@ -66,6 +64,7 @@
       "open": "Abrir",
       "remove": "Eliminar",
       "openTerminalPlayground": "Abrir el terminal de la zona de juegos",
+      "openIde": "Abrir en {{ideName}}",
       "selectAFlutterSdkVersion": "seleccionar una versión del SDK de Flutter",
       "noFlutterProjectsHaveBeenAddedYet": "Todavía no se ha añadido ningún proyecto de Flutter",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Añade tu proyecto Flutter. La información del proyecto se mostrará aquí"
@@ -151,7 +150,9 @@
       "dark": "Oscuro",
       "language": "Idioma",
       "resetToDefaultSettings": "Restablecer la configuración por defecto",
-      "reset": "Reiniciar"
+      "reset": "Reiniciar",
+      "ideSelection": "Selección de IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Selecciona el IDE con el que abrir tus projectos"
     }
   },
   "updater": {

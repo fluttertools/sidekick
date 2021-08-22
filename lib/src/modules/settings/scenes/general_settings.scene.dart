@@ -108,6 +108,45 @@ class SettingsSectionGeneral extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
+            title: Text(
+              I18Next.of(context).t('modules:settings.scenes.ideSelection'),
+            ),
+            subtitle: Text(
+              I18Next.of(context).t(
+                  'modules:settings.scenes.whatIdeDoYouWantToOpenYourProjectsWith'),
+            ),
+            trailing: DropdownButton(
+              underline: Container(),
+              isDense: true,
+              value: settings.sidekick.ide ?? 'none',
+              items: [
+                DropdownMenuItem(
+                  value: 'none',
+                  child: Text('None'),
+                ),
+                ...supportedIDEs
+                    .map((e) => DropdownMenuItem(
+                          value: e.name,
+                          child: Row(
+                            children: [
+                              e.icon,
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(e.name),
+                            ],
+                          ),
+                        ))
+                    .toList()
+              ],
+              onChanged: (val) async {
+                settings.sidekick.ide = (val == 'none' ? null : val);
+                onSave();
+              },
+            ),
+          ),
+          const Divider(),
+          ListTile(
             title:
                 Text(I18Next.of(context).t('modules:settings.scenes.language')),
             trailing: DropdownButton<Locale>(

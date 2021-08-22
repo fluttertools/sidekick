@@ -14,7 +14,6 @@ import '../../theme.dart';
 import '../fvm/fvm.screen.dart';
 import '../navigation/navigation.provider.dart';
 import '../projects/projects.screen.dart';
-import '../pub_packages/pub_packages.screen.dart';
 import '../releases/releases.screen.dart';
 import '../search/components/search_bar.dart';
 import '../selected_detail/components/info_drawer.dart';
@@ -66,7 +65,6 @@ class AppShell extends HookWidget {
         FVMScreen(),
         ProjectsScreen(),
         ReleasesScreen(),
-        PackagesScreen(),
       ];
 
       return pages[index];
@@ -114,10 +112,6 @@ class AppShell extends HookWidget {
                 renderNavButton(
                   I18Next.of(context).t('modules:common.navButtonExplore'),
                   Icons.explore,
-                ),
-                renderNavButton(
-                  I18Next.of(context).t('modules:common.navButtonPackages'),
-                  MdiIcons.package,
                 ),
               ],
             ),

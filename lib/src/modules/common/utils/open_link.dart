@@ -17,19 +17,19 @@ Future<void> openLink(BuildContext context, String url) async {
 
 Future<void> openPath(BuildContext context, String url) async {
   if (Platform.isWindows) {
-    await Process.start(
-        I18Next.of(context).t('modules:common.utils.start'), [url]);
-  }
-
-  if (Platform.isMacOS) {
-    await Process.start(
-        I18Next.of(context).t('modules:common.utils.open'), [url]);
+    await Process.start('start', [url]);
+  } else if (Platform.isMacOS) {
+    await Process.start('open', [url]);
   }
 }
 
-Future<void> openVsCode(BuildContext context, String url) async {
-  final vsCodeUri = 'vscode://file/$url';
-  return await openLink(context, vsCodeUri);
+Future<void> openVsCode(BuildContext context, String path) async {
+  if (Platform.isWindows || Platform.isLinux) {
+    await Process.run('code', [path], runInShell: true);
+  } else {
+    final vsCodeUri = 'vscode://file/$path';
+    return await openLink(context, vsCodeUri);
+  }
 }
 
 Future<void> openXcode(BuildContext context, String url) async {

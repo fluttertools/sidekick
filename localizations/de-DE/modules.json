@@ -9,8 +9,6 @@
     "devChannelDescription": "Der letzte vollständig getestete Build. Normalerweise funktionstüchtig, aber unter \"Schlechte Builds\" finden Sie eine Liste bekannter \"schlechter\" Dev-Builds.",
     "masterChannelDescription": "Der aktuelle Tip-of-Tree, der absolut neueste Cutting Edge Build. Normalerweise funktional, obwohl wir manchmal versehentlich Dinge kaputt machen.",
     "utils": {
-      "start": "start",
-      "open": "öffnen",
       "couldNotLaunchUrl": "Konnte {{url}} nicht öffnen"
     }
   },
@@ -66,6 +64,7 @@
       "open": "Öffnen",
       "remove": "Löschen",
       "openTerminalPlayground": "Terminal Playground öffnen",
+      "openIde": "Öffnen in {{ideName}}",
       "selectAFlutterSdkVersion": "Wählen Sie eine Flutter SDK Version",
       "noFlutterProjectsHaveBeenAddedYet": "Es wurden noch keine Flutter-Projekte hinzugefügt.",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Fügen Sie Ihr Flutter-Projekt hinzu Die Projektinformationen werden hier angezeigt."
@@ -151,7 +150,9 @@
       "dark": "Dunkel",
       "language": "Sprache",
       "resetToDefaultSettings": "Zurücksetzen auf Standardeinstellungen",
-      "reset": "Zurücksetzen"
+      "reset": "Zurücksetzen",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Wählen Sie die IDE aus, mit der Sie Ihre Projekte öffnen möchten "
     }
   },
   "updater": {

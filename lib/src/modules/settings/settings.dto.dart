@@ -40,6 +40,7 @@ class SidekickSettings {
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
     this.locale,
+    this.ide,
   }) : localizationsDelegate = I18NextLocalizationDelegate(
           locales: languageManager.supportedLocales.toList(),
           dataSource: AssetBundleLocalizationDataSource(
@@ -56,6 +57,7 @@ class SidekickSettings {
   String themeMode;
   I18NextLocalizationDelegate localizationsDelegate;
   Locale locale;
+  String ide;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -73,6 +75,7 @@ class SidekickSettings {
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
       locale: locale,
+      ide: json['ide'],
     );
   }
 
@@ -86,6 +89,7 @@ class SidekickSettings {
       'themeMode': themeMode,
       'i18Locale': locale?.toLanguageTag() ??
           languageManager.supportedLocales.first.toLanguageTag(),
+      'ide': ide,
     };
   }
 }

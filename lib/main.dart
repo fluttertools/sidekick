@@ -80,8 +80,10 @@ class FvmApp extends StatelessWidget {
                 I18Next.of(context)?.locale ??
                 languageManager.supportedLocales.first,
             supportedLocales: languageManager.supportedLocales,
-            localeResolutionCallback:
-                (Locale locale, Iterable<Locale> supportedLocales) {
+            localeResolutionCallback: (
+              Locale locale,
+              Iterable<Locale> supportedLocales,
+            ) {
               if (locale == null) {
                 if (settings.locale != null) {
                   return settings.locale;
