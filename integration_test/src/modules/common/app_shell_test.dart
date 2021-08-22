@@ -6,7 +6,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import 'package:sidekick/src/modules/fvm/fvm.screen.dart';
 import 'package:sidekick/src/modules/projects/projects.screen.dart';
-import 'package:sidekick/src/modules/pub_packages/pub_packages.screen.dart';
 import 'package:sidekick/src/modules/releases/releases.screen.dart';
 
 import '../settings/settings_screen.dart';
@@ -34,10 +33,6 @@ class AppShellTest {
         await tester.tap(find.byIcon(Icons.explore));
         await tester.pumpAndSettle();
         expect(find.byType(ReleasesScreen), findsOneWidget);
-
-        await tester.tap(find.byIcon(MdiIcons.package));
-        await tester.pumpAndSettle();
-        expect(find.byType(PackagesScreen), findsOneWidget);
 
         ///---Navigation-Rail
 
