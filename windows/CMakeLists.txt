@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(appSidekick LANGUAGES CXX)
+project(sidekick LANGUAGES CXX)
 
-set(BINARY_NAME "Sidekick")
+set(BINARY_NAME "sidekick")
 
 cmake_policy(SET CMP0063 NEW)
 
