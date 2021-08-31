@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
-import '../../common/atoms/sliver_header_delegate.dart';
-import '../../common/atoms/sliver_section.dart';
+import '../../../components/atoms/sliver_header_delegate.dart';
+import '../../../components/atoms/sliver_section.dart';
 import '../../projects/components/project_list_item.dart';
 import '../../releases/components/release_list_item.dart';
 import '../search.provider.dart';
@@ -32,7 +32,8 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: S.of(context).channels,
+                  title: I18Next.of(context)
+                      .t('modules:search.components.channels'),
                   count: results.channels.length,
                 ),
               ),
@@ -51,7 +52,7 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: S.of(context).projects,
+                  title: I18Next.of(context).t('modules:projects.projects'),
                   count: results.projects.length,
                 ),
               ),
@@ -67,7 +68,8 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: S.of(context).stableReleases,
+                  title: I18Next.of(context)
+                      .t('modules:search.components.stableReleases'),
                   count: results.stableReleases.length,
                 ),
               ),
@@ -83,7 +85,8 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: S.of(context).betaReleases,
+                  title: I18Next.of(context)
+                      .t('modules:search.components.betaReleases'),
                   count: results.betaReleases.length,
                 ),
               ),
@@ -99,7 +102,8 @@ class SearchResultsList extends StatelessWidget {
             slivers: [
               SliverPersistentHeader(
                 delegate: SliverHeaderDelegate(
-                  title: S.of(context).devReleases,
+                  title: I18Next.of(context)
+                      .t('modules:search.components.devReleases'),
                   count: results.devReleases.length,
                 ),
               ),

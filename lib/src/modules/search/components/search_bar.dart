@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:sidekick/generated/l10n.dart';
 
+import '../../../components/atoms/blur_background.dart';
 import '../../../hooks/floating_search_bar_controller.dart';
-import '../../../providers/navigation_provider.dart';
-import '../../common/atoms/blur_background.dart';
+import '../../navigation/navigation.provider.dart';
 import '../search.provider.dart';
 import 'search_results_list.dart';
 
@@ -67,7 +67,7 @@ class SearchBar extends HookWidget {
               ),
             ),
             FloatingSearchBar(
-              hint: S.of(context).search,
+              hint: I18Next.of(context).t('modules:search.components.search'),
               controller: controller,
               progress: isLoading.value,
               shadowColor: Colors.transparent,
@@ -102,7 +102,8 @@ class SearchBar extends HookWidget {
                 if (results.isEmpty) {
                   return Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Text(S.of(context).noResults),
+                    child: Text(I18Next.of(context)
+                        .t('modules:search.components.noResults')),
                   );
                 }
 

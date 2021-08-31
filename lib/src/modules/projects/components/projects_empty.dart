@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
-import '../../common/atoms/empty_dataset.dart';
+import '../../../components/atoms/empty_dataset.dart';
 
 /// Empty project screen
 class EmptyProjects extends StatelessWidget {
@@ -19,13 +19,15 @@ class EmptyProjects extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              S.of(context).noFlutterProjectsHaveBeenAddedYet,
+              I18Next.of(context).t(
+                  'modules:projects.components.noFlutterProjectsHaveBeenAddedYet'),
               style: Theme.of(context).textTheme.headline6,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).addYourFlutterProjectProjectsInformationWillBeDisplayedHere,
+              I18Next.of(context).t(
+                  'modules:projects.components.addYourFlutterProjectProjectsInformationWillBeDisplayedHere'),
               style: Theme.of(context).textTheme.caption,
               textAlign: TextAlign.center,
             ),

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
-import '../../dto/release.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
-
-String installedMsg = S.current.versionIsInstalled;
-String notInstalledMsg = S.current.versionNotInstalledClickToInstall;
 
 class VersionInstallButton extends HookWidget {
   final ReleaseDto version;
@@ -19,6 +16,10 @@ class VersionInstallButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final installedMsg =
+        I18Next.of(context).t('components:molecules.versionIsInstalled');
+    final notInstalledMsg = I18Next.of(context)
+        .t('components:molecules.versionNotInstalledClickToInstall');
     final isQueued = useState(false);
     final hovering = useState(false);
     final queueProvider = useProvider(fvmQueueProvider);
@@ -44,7 +45,7 @@ class VersionInstallButton extends HookWidget {
     Future<void> onInstall() async {
       isQueued.value = true;
       // Add it to queue for installation
-      context.read(fvmQueueProvider.notifier).install(version);
+      context.read(fvmQueueProvider.notifier).install(context, version);
     }
 
     Widget installIcon() {
@@ -54,7 +55,7 @@ class VersionInstallButton extends HookWidget {
           width: 20,
           child: SpinKitFadingFour(
             size: 15,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         );
       }
@@ -63,7 +64,7 @@ class VersionInstallButton extends HookWidget {
         return Icon(
           Icons.check,
           size: 20,
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
         );
       }
 
@@ -86,12 +87,13 @@ class VersionInstallButton extends HookWidget {
         }
       },
       child: Opacity(
-        opacity: version.isCached ? 0.3 : 1,
+        opacity: (version?.isCached ?? false) ? 0.3 : 1,
         child: IconButton(
-          onPressed: version.isCached ? onInstall : onInstall,
+          onPressed: (version?.isCached ?? false) ? onInstall : onInstall,
           splashRadius: 20,
           icon: Tooltip(
-              message: version.isCached ? installedMsg : notInstalledMsg,
+              message:
+                  (version?.isCached ?? false) ? installedMsg : notInstalledMsg,
               child: installIcon()),
         ),
       ),

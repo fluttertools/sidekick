@@ -1,8 +1,6 @@
 # Flutter Sidekick
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square) [![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square)](https://github.com/leoafarias/sidekick/graphs/contributors) [![Awesome Flutter](https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square)](https://github.com/Solido/awesome-flutter) ![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square)
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
 
@@ -10,7 +8,8 @@ Sidekick is an app that provides a simple desktop interface to tools that enhanc
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
-## [Installation Instructions](https://github.com/leoafarias/sidekick/blob/main/INSTALLING.md)
+### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
+### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
 
 ## Features
 
@@ -39,11 +38,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://linktr.ee/arthurdenner"><img src="https://avatars.githubusercontent.com/u/13774309?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Arthur Denner</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/issues?q=author%3Aarthurdenner" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/MaximilianFlechtner"><img src="https://avatars.githubusercontent.com/u/66118057?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Maximilian Flechtner</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=MaximilianFlechtner" title="Code">💻</a> <a href="#a11y-MaximilianFlechtner" title="Accessibility">️️️️♿️</a></td>
+    <td align="center"><a href="https://github.com/kamel912"><img src="https://avatars.githubusercontent.com/u/23658096?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Mohamed Kamel</b></sub></a><br /><a href="#translation-kamel912" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://pedroermarinho.github.io"><img src="https://avatars.githubusercontent.com/u/29618874?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Pedro Marinho</b></sub></a><br /><a href="#infra-pedroermarinho" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-pedroermarinho" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://ahmadre.com"><img src="https://avatars.githubusercontent.com/u/18512224?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Rebar Ahmad</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Code">💻</a> <a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Documentation">📖</a> <a href="#translation-Ahmadre" title="Translation">🌍</a> <a href="https://github.com/leoafarias/sidekick/issues?q=author%3AAhmadre" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:sidekick/generated/l10n.dart';
 
 import '../../modules/common/utils/helpers.dart';
 import '../../modules/common/utils/notify.dart';
@@ -23,8 +23,6 @@ enum NavSection {
   /// Flutter
   flutter,
 }
-
-var _sections = [S.current.general, 'FVM', 'Flutter'];
 
 const _sectionIcons = [
   MdiIcons.tune,
@@ -51,6 +49,12 @@ class SettingsScreen extends HookWidget {
 
     final controller = usePageController(initialPage: section.index);
 
+    final _sections = [
+      I18Next.of(context).t('modules:settings.scenes.general'),
+      'FVM',
+      'Flutter'
+    ];
+
     void changeSection(int idx) {
       currentSection.value = idx;
       controller.jumpToPage(idx);
@@ -63,9 +67,10 @@ class SettingsScreen extends HookWidget {
     Future<void> handleSave() async {
       try {
         await provider.save(settings);
-        notify(S.of(context).settingsHaveBeenSaved);
+        notify(I18Next.of(context).t('modules:settings.settingsHaveBeenSaved'));
       } on Exception catch (e) {
-        notifyError(S.of(context).couldNotSaveSettings);
+        notifyError(
+            I18Next.of(context).t('modules:settings.couldNotSaveSettings'));
         notifyError(e.toString());
       }
     }

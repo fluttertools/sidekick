@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
 
 import '../atoms/typography.dart';
 
@@ -27,12 +27,11 @@ class InfoBanner extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(width: 10),
-              Subheading(S.of(context).master),
+              Subheading(I18Next.of(context).t('components:molecules.master')),
               SizedBox(width: 20),
               Expanded(
-                child: Caption(
-                  S.of(context).theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional
-                ),
+                child: Caption(I18Next.of(context).t(
+                    'modules:releases.theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional')),
               ),
               SizedBox(width: 20),
             ],

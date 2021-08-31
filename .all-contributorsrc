@@ -77,6 +77,37 @@
         "code",
         "a11y"
       ]
+    },
+    {
+      "login": "kamel912",
+      "name": "Mohamed Kamel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23658096?v=4",
+      "profile": "https://github.com/kamel912",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "pedroermarinho",
+      "name": "Pedro Marinho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29618874?v=4",
+      "profile": "https://pedroermarinho.github.io",
+      "contributions": [
+        "infra",
+        "ideas"
+      ]
+    },
+    {
+      "login": "Ahmadre",
+      "name": "Rebar Ahmad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18512224?v=4",
+      "profile": "http://ahmadre.com",
+      "contributions": [
+        "code",
+        "doc",
+        "translation",
+        "bug"
+      ]
     }
   ],
   "projectName": "sidekick",

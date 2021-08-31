@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../components/molecules/version_install_button.dart';
-import '../../../dto/channel.dto.dart';
-import '../../../providers/selected_detail_provider.dart';
+import '../../../modules/common/dto/channel.dto.dart';
+import '../../selected_detail/selected_detail.provider.dart';
 
 /// Channel showcase widget
 class ChannelShowcaseItem extends StatelessWidget {

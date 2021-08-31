@@ -1,5 +1,5 @@
-import 'package:github/github.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:flutter/material.dart';
+import 'package:i18next/i18next.dart';
 
 /// Sidekick title
 const kAppTitle = 'Sidekick';
@@ -25,23 +25,18 @@ const kMasterChannel = 'master';
 /// Github sidekick url
 const kGithubSidekickUrl = 'https://github.com/leoafarias/sidekick';
 
+const kSidekickLatestReleaseUrl =
+    'https://api.github.com/repos/leoafarias/sidekick/releases/latest';
+
 /// Flutter tags
 const kFlutterTagsUrl = 'https://github.com/flutter/flutter/releases/tag/';
 
 /// Description for the channels
-Map<String, String> channelDescriptions = {
-  'stable':
-      S.current.stableChannelDescription,
-  'beta':
-      S.current.betaChannelDescription,
-  'dev':
-      S.current.devChannelDescription,
-  'master':
-      S.current.masterChannelDescription,
-};
-
-/// Sidekick repository slug
-final kSidekickRepoSlug = RepositorySlug(
-  'leoafarias',
-  'sidekick',
-);
+Map<String, String> channelDescriptions(BuildContext context) => {
+      'stable':
+          I18Next.of(context).t('modules:common.stableChannelDescription'),
+      'beta': I18Next.of(context).t('modules:common.betaChannelDescription'),
+      'dev': I18Next.of(context).t('modules:common.devChannelDescription'),
+      'master':
+          I18Next.of(context).t('modules:common.masterChannelDescription'),
+    };

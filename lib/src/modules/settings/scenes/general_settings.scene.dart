@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sidekick/generated/l10n.dart';
+import 'package:i18next/i18next.dart';
+import 'package:sidekick/i18n/language_manager.dart';
 
 import '../../../modules/common/utils/notify.dart';
 import '../../../version.dart';
@@ -30,9 +31,11 @@ class SettingsSectionGeneral extends StatelessWidget {
         builder: (context) {
           // return object of type Dialog
           return AlertDialog(
-            title: Text(S.of(context).areYouSureYouWantToResetSettings),
+            title: Text(I18Next.of(context)
+                .t('modules:settings.scenes.areYouSureYouWantToResetSettings')),
             content: Text(
-              S.of(context).thisWillOnlyResetSidekickSpecificPreferences,
+              I18Next.of(context).t(
+                  'modules:settings.scenes.thisWillOnlyResetSidekickSpecificPreferences'),
             ),
             buttonPadding: const EdgeInsets.all(15),
             actions: <Widget>[
@@ -41,16 +44,19 @@ class SettingsSectionGeneral extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(S.of(context).cancel),
+                child:
+                    Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
               ),
               TextButton(
                 onPressed: () async {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
                   onSave();
-                  notify(S.of(context).appSettingsHaveBeenReset);
+                  notify(I18Next.of(context)
+                      .t('modules:settings.scenes.appSettingsHaveBeenReset'));
                 },
-                child: Text(S.of(context).confirm),
+                child:
+                    Text(I18Next.of(context).t('modules:fvm.dialogs.confirm')),
               ),
             ],
           );
@@ -62,12 +68,16 @@ class SettingsSectionGeneral extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text(S.of(context).general, style: Theme.of(context).textTheme.headline6),
+          Text(I18Next.of(context).t('modules:settings.scenes.general'),
+              style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           ListTile(
-            title: Text(S.of(context).theme),
+            title: Text(
+              I18Next.of(context).t('modules:settings.scenes.theme'),
+            ),
             subtitle: Text(
-              S.of(context).selectAThemeOrSwitchAccordingToSystemSettings,
+              I18Next.of(context).t(
+                  'modules:settings.scenes.selectAThemeOrSwitchAccordingToSystemSettings'),
             ),
             trailing: DropdownButton(
               underline: Container(),
@@ -76,15 +86,18 @@ class SettingsSectionGeneral extends StatelessWidget {
               items: [
                 DropdownMenuItem(
                   value: SettingsThemeMode.system,
-                  child: Text(S.of(context).system),
+                  child: Text(
+                      I18Next.of(context).t('modules:settings.scenes.system')),
                 ),
                 DropdownMenuItem(
                   value: SettingsThemeMode.light,
-                  child: Text(S.of(context).light),
+                  child: Text(
+                      I18Next.of(context).t('modules:settings.scenes.light')),
                 ),
                 DropdownMenuItem(
                   value: SettingsThemeMode.dark,
-                  child: Text(S.of(context).dark),
+                  child: Text(
+                      I18Next.of(context).t('modules:settings.scenes.dark')),
                 ),
               ],
               onChanged: (themeMode) async {
@@ -95,35 +108,81 @@ class SettingsSectionGeneral extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            title: Text(S.of(context).language),
+            title: Text(
+              I18Next.of(context).t('modules:settings.scenes.ideSelection'),
+            ),
+            subtitle: Text(
+              I18Next.of(context).t(
+                  'modules:settings.scenes.whatIdeDoYouWantToOpenYourProjectsWith'),
+            ),
             trailing: DropdownButton(
               underline: Container(),
               isDense: true,
-              value: settings.sidekick.intl ?? 'en',
-              items: S.delegate.supportedLocales.map((e) {
-                  return DropdownMenuItem(
-                        value: e.languageCode,
-                        child: Text(e.languageCode),
-                    );
-              }).toList(),
-              onChanged: (languageCode) async {
-                settings.sidekick.intl = languageCode;
-                await S.load(Locale.fromSubtags(languageCode: languageCode),);
+              value: settings.sidekick.ide ?? 'none',
+              items: [
+                DropdownMenuItem(
+                  value: 'none',
+                  child: Text('None'),
+                ),
+                ...supportedIDEs
+                    .map((e) => DropdownMenuItem(
+                          value: e.name,
+                          child: Row(
+                            children: [
+                              e.icon,
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(e.name),
+                            ],
+                          ),
+                        ))
+                    .toList()
+              ],
+              onChanged: (val) async {
+                settings.sidekick.ide = (val == 'none' ? null : val);
                 onSave();
               },
             ),
           ),
           const Divider(),
-        ListTile(
-            title: Text(S.of(context).version),
+          ListTile(
+            title:
+                Text(I18Next.of(context).t('modules:settings.scenes.language')),
+            trailing: DropdownButton<Locale>(
+              underline: Container(),
+              isDense: true,
+              value: settings.sidekick.locale ?? I18Next.of(context).locale,
+              items: languageManager.supportedLocales.map((locale) {
+                return DropdownMenuItem(
+                  value: locale,
+                  child: Text(
+                    I18Next.of(context).t(
+                      'settings:sidekick.language.${locale.toLanguageTag()}',
+                    ),
+                  ),
+                );
+              }).toList(),
+              onChanged: (Locale locale) async {
+                settings.sidekick.locale = locale;
+                onSave();
+              },
+            ),
+          ),
+          const Divider(),
+          ListTile(
+            title: Text(I18Next.of(context)
+                .t('modules:selectedDetail.components.version')),
             trailing: Text(packageVersion),
           ),
           const Divider(),
           ListTile(
-            title:  Text(S.of(context).resetToDefaultSettings),
+            title: Text(I18Next.of(context)
+                .t('modules:settings.scenes.resetToDefaultSettings')),
             trailing: OutlinedButton(
               onPressed: handleReset,
-              child: Text(S.of(context).reset),
+              child:
+                  Text(I18Next.of(context).t('modules:settings.scenes.reset')),
             ),
           ),
         ],

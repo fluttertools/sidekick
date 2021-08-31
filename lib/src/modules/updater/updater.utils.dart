@@ -14,6 +14,11 @@ String getDownloadReleaseUrl(String release) {
   return '$_downloadBaseUrl/$release/sidekick-$_platform-$release.$_platformExt';
 }
 
+/// Latest Sidekick release
+String getLatestRelease(String release) {
+  return '$_downloadBaseUrl/$release/sidekick-$_platform-$release.$_platformExt';
+}
+
 /// File location for the download
 Future<File> getDownloadFileLocation(String release) async {
   final downloadDir = await getDownloadsDirectory();

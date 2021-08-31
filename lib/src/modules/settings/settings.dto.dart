@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hive/hive.dart';
+import 'package:i18next/i18next.dart';
+import 'package:sidekick/i18n/language_manager.dart';
 
 import 'settings.utils.dart';
 
@@ -36,8 +39,15 @@ class SidekickSettings {
     this.onlyProjectsWithFvm = false,
     this.projectPaths = const [],
     this.themeMode = SettingsThemeMode.system,
-    this.intl = 'en',
-  });
+    this.locale,
+    this.ide,
+  }) : localizationsDelegate = I18NextLocalizationDelegate(
+          locales: languageManager.supportedLocales.toList(),
+          dataSource: AssetBundleLocalizationDataSource(
+            bundlePath: 'localizations',
+          ),
+          options: I18NextOptions(formatter: languageManager.formatter),
+        );
 
   /// Storage key
   static const key = 'settings_key';
@@ -45,17 +55,27 @@ class SidekickSettings {
   bool onlyProjectsWithFvm;
   List<String> projectPaths;
   String themeMode;
-  String intl;
+  I18NextLocalizationDelegate localizationsDelegate;
+  Locale locale;
+  String ide;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
 
   factory SidekickSettings.fromMap(Map<String, dynamic> json) {
+    final language = json['i18Locale'];
+    final locale = language != null
+        ? Locale.fromSubtags(
+            languageCode: (language as String).split('-')[0],
+            countryCode: language.split('-')[1])
+        : null;
+
     return SidekickSettings(
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
       onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
-      intl: json['intl'] as String ?? 'en'
+      locale: locale,
+      ide: json['ide'],
     );
   }
 
@@ -67,7 +87,9 @@ class SidekickSettings {
       'projectPaths': projectPaths,
       'onlyProjectsWithFvm': onlyProjectsWithFvm,
       'themeMode': themeMode,
-      'intl': intl,
+      'i18Locale': locale?.toLanguageTag() ??
+          languageManager.supportedLocales.first.toLanguageTag(),
+      'ide': ide,
     };
   }
 }

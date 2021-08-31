@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../components/atoms/typography.dart';
-import '../../../dto/release.dto.dart';
+import '../../../modules/common/dto/release.dto.dart';
 import '../../../modules/common/utils/notify.dart';
 import '../sandbox.provider.dart';
 
@@ -170,7 +170,7 @@ class SandboxConsole extends HookWidget {
               ),
               terminalState.processing
                   ? SpinKitFadingFour(
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       size: 15,
                     )
                   : Container()

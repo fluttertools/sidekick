@@ -2,10 +2,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 
-import '../../dto/channel.dto.dart';
-import '../../dto/master.dto.dart';
-import '../../dto/release.dto.dart';
-import '../../dto/version.dto.dart';
+import '../../modules/common/dto/channel.dto.dart';
+import '../../modules/common/dto/master.dto.dart';
+import '../../modules/common/dto/release.dto.dart';
+import '../../modules/common/dto/version.dto.dart';
 import '../common/constants.dart';
 import '../fvm/fvm.provider.dart';
 

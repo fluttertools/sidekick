@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'updater.dto.dart';
@@ -29,7 +30,7 @@ class UpdaterStateNotifier extends StateNotifier<SidekickUpdateInfo> {
   }
 
   /// Opens installer
-  Future<void> openInstaller() async {
-    await UpdaterService.openInstaller(state);
+  Future<void> openInstaller(BuildContext context) async {
+    await UpdaterService.openInstaller(context, state);
   }
 }
