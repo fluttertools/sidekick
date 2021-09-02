@@ -1,0 +1,168 @@
+{
+  "common": {
+    "navButtonDashboard": "Instrumentpanel",
+    "navButtonProjects": "Projekt",
+    "navButtonExplore": "Utforska",
+    "navButtonPackages": "Paket",
+    "stableChannelDescription": "Vi rekommenderar att du använder denna kanal för alla skarpa produktions släpp. Uppdateras ungefär varje kvartal, en gren som blivit beta blir nästa stable-gren och vi skapar en stable-release av den grenen",
+    "betaChannelDescription": "Gren skapades för en ny betaversion i början av månaden, vanligtvis den första måndagen, utifrån master. Detta kommer att innehålla en gren för Dart, motorn och ramverket.",
+    "devChannelDescription": "Den senaste fullt testade versionen, funkar för det mesta med kolla \"Bad builds\" för listan över \"bad\" Dev versioner.",
+    "masterChannelDescription": "Den absolut senaste versionen. Vanligtvis funktionellt, men ibland kan vi råka ha sönder saker.",
+    "utils": {
+      "couldNotLaunchUrl": "Could not open {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "Installed Versions",
+    "cleanUp": "Cleanup",
+    "cleanUpTooltip": "Clean unused versions",
+    "numberOfCachedVersions": "{{cachedVersions}} versions",
+    "versionItemversionnameHasBeenInstalled": "Version {{itemVersionName}} har installerats.",
+    "versionItemversionnameHasFinishedSetup": "Version {{itemVersionName}} har färdigställt installationen.",
+    "channelItemversionnameHasBeenUpgraded": "Channel {{itemVersionName}} har uppgraderats.",
+    "versionItemversionnameHasBeenRemoved": "Version {{itemVersionName}} har tagits bort.",
+    "versionItemversionnameHasBeenSetAsGlobal": "Version {{itemVersionName}} har ställts in som global version.",
+    "versionVersionPinnedToProjectname": "{{version}}-version har fästs på {{projectName}}",
+    "components": {
+      "upgrade": "Uppgradera",
+      "setAsGlobal": "Sätt som global",
+      "inUse": "Använd",
+      "unused": "Inte använd",
+      "flutterSdkNotInstalled": "Flutter SDK har inte installerats.",
+      "noFlutterVersionInstalledMessage": "Du har förn ärvarande inga Flutter SDK versioner installerade. Versioner eller kanaler som installerats visas här.",
+      "exploreFlutterReleases": "Utförska Flutter utgåvor",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "Installationen av SDK:n har inte färdigställts"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Inga oanvända Flutter SDK versioner installerade",
+      "cleanUpUnusedVersions": "Rensa bort oanvända versioner",
+      "cancel": "Avbryt",
+      "confirm": "Godkänn",
+      "ok": "Ok",
+      "globalConfiguration": "Global konfiguration",
+      "theseVersionAreNotPinnedToAProject": "Dessa versioner är inte fästa på några projekt ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Vill du ta bort detta för att frigöra utrymme?",
+      "areYouSureYouWantToRemove": "Är du säker att du vill ta bort?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Detta kommer ta bort {{itemname}} från cachen från ditt system.",
+      "flutterPathIsPointingOn": "Flutter sökvägen (PATH) pekar på\n ",
+      "changeThePathTo": "Ändra sökvägen (path) till\n",
+      "ifYouWantToFlutterSdkThroughFvm": "om du vill uppdatera Flutter SDK genom FVM",
+      "howToUpdateYourPath": "Hur vill du uppdatera sökvägen (path)?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Uppdatera projekt",
+    "projects": "Projekt",
+    "choose": "Välj",
+    "projectsProjects": "Projekt {{projects}}",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Visa endast projekt som har en fastsatt version",
+    "fvmOnly": "Endast FVM",
+    "addProject": "Lägg till projekt",
+    "notAFlutterProject": "Inte ett Flutter projekt",
+    "components": {
+      "open": "Öppna",
+      "remove": "Ta bort",
+      "openTerminalPlayground": "Öppna Terminal-sandlåda",
+      "openIde": "Öppna i {{ideName}}",
+      "selectAFlutterSdkVersion": "välj en Flutter SDK version",
+      "noFlutterProjectsHaveBeenAddedYet": "Inga Flutter-projekt har ännu lagts till.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Lägg till ditt Flutter-projekt, projekt-informationen kommer visas här."
+    }
+  },
+  "pubPackages": {
+    "trending": "Populära",
+    "mostUsedPackages": "Mest använda paket",
+    "flutterFavorites": "Flutter Favoriter",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Du behöver lägga till ett Flutter projekt först. Paket informationen visas här",
+      "noPackagesFound": "Hittade inga paket",
+      "view": "Se",
+      "builtBy": "Byggd av",
+      "likes": "Gillar",
+      "pubPoints": "Pub poäng",
+      "popularity": "Populäritet",
+      "details": "Detaljer",
+      "changelog": "Ändringslogg",
+      "website": "Webbsida",
+      "packageprojectscountProjects": "{{packageProjectsCount}} projekt"
+    }
+  },
+  "releases": {
+    "all": "Alla",
+    "releases": "Releaser",
+    "versions": "Versioner",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Den absolut senaste versionen. Oftast funktionell, men det kan hända att vi ibland råkar ta sönder saker."
+  },
+  "sandbox": {
+    "playground": "Sandlåda",
+    "releasesVersions": "{{releases}} versioner",
+    "notRunning": "Inte aktivt"
+  },
+  "search": {
+    "components": {
+      "search": "Sök... ",
+      "noResults": "Inga resultat",
+      "channels": "Kaneler",
+      "stableReleases": "Stabil releaser",
+      "betaReleases": "Beta releaser",
+      "devReleases": "Dev releaser",
+      "invalidChanel": "Felaktig kanal"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Avancerad",
+      "downloadZip": "Ladda ner zip",
+      "zipFileWithAllReleaseDependencies": "Zip-fil med alla bereonden (dependencies) för release",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Lokal cache-information",
+      "createdDate": "Skapad den ",
+      "cacheLocation": "Plats för cachen",
+      "nothingSelected": "Nothing selected",
+      "channel": "Kanal",
+      "releaseNotes": "Release Notes",
+      "version": "Version",
+      "releaseDate": "Release date"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Inställningar har sparats",
+    "couldNotSaveSettings": "Inställningarna kunde inte sparas",
+    "scenes": {
+      "flutterSDKGlobalDescription": "En version av Flutter SDK:n behövs sättas globalt för att komma åt specifika Flutter inställningar.",
+      "analyticsCrashReporting": "Analytics & krashreportering",
+      "analyticsCrashReportSubtitle": "När flutter kommandon krashar, ett försök görs att skicka krashrapporten till Google så Google kan bidra med förbättringar till Flutter över tid",
+      "platforms": "Platform",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Hoppa över slutgiltiga inställninger under Flutter installationen",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Detta kommer endast klona Flutter och inte installera det ",
+      "dependenciesAfterANewVersionIsInstalled": "Beroenden (Dependencies) efter en ny version har installerats.",
+      "areYouSureYouWantToResetSettings": "Är du säker på att återställa inställningarna?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Detta kommer endast återställa Sidekick-specifika inställningar",
+      "appSettingsHaveBeenReset": "App-inställningar har återställts",
+      "general": "Allmän",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Välj tema utifrån systeminställningar.",
+      "theme": "Tema",
+      "system": "System",
+      "light": "Ljust",
+      "dark": "Mörk",
+      "language": "Språk",
+      "resetToDefaultSettings": "Återställ standardinställningar",
+      "reset": "Återställ",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Välj vilken IDE att öppna dina projekt med."
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Uppdatering tillgänglig.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick version {{updateInfoLatest}} is now Available",
+      "later": "Senare",
+      "updateNow": "Uppdatera nu",
+      "clickHereToDownload": "Klicka här för att ladda ner",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "En ny version av Sidekick finns tillgänglig ({{updateInfoLatest}})."
+    }
+  }
+}
