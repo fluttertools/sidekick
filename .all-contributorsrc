@@ -117,6 +117,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "broderbluff",
+      "name": "Patrik Persson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8105390?v=4",
+      "profile": "http://www.brimir.eu",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
