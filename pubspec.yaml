@@ -65,5 +65,6 @@ flutter:
     - localizations/en-GB/
     - localizations/en-US/
     - localizations/es-ES/
+    - localizations/sv-SE/
 flutter_intl:
   enabled: true
