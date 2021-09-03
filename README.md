@@ -44,6 +44,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Hu-Wentao"><img src="https://avatars.githubusercontent.com/u/35894003?v=4?s=50" width="50px;" alt=""/><br /><sub><b>胡文涛</b></sub></a><br /><a href="#infra-Hu-Wentao" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="http://www.brimir.eu"><img src="https://avatars.githubusercontent.com/u/8105390?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Patrik Persson</b></sub></a><br /><a href="#translation-broderbluff" title="Translation">🌍</a></td>
   </tr>
 </table>
 
