@@ -126,6 +126,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "kassadin",
+      "name": "kassadin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1104051?v=4",
+      "profile": "http://kassadin.github.io/",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
