@@ -49,7 +49,7 @@ class VersionInstallButton extends HookWidget {
     }
 
     Widget installIcon() {
-      if ((isQueued.value && !version.isCached)) {
+      if ((isQueued.value && !(version?.isCached ?? false))) {
         return SizedBox(
           height: 20,
           width: 20,
@@ -60,7 +60,7 @@ class VersionInstallButton extends HookWidget {
         );
       }
 
-      if (version.isCached) {
+      if ((version?.isCached ?? false)) {
         return Icon(
           Icons.check,
           size: 20,
