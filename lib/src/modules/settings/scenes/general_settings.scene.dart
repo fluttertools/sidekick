@@ -48,6 +48,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                     Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
               ),
               TextButton(
+                key: Key('tb_confirm'),
                 onPressed: () async {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
@@ -186,6 +187,7 @@ class SettingsSectionGeneral extends StatelessWidget {
             title: Text(I18Next.of(context)
                 .t('modules:settings.scenes.resetToDefaultSettings')),
             trailing: OutlinedButton(
+              key: Key('ob_reset'),
               onPressed: handleReset,
               child:
                   Text(I18Next.of(context).t('modules:settings.scenes.reset')),

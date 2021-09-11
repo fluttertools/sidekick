@@ -47,5 +47,8 @@ class SettingsScreenTest {
 
     /// Locale Tests
     await GeneralSettingsTest.changingLocaleWorks(tester);
+
+    /// Reset Tests
+    await GeneralSettingsTest.resetSettingsWorks(tester);    
   }
 }

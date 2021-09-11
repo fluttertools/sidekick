@@ -62,4 +62,21 @@ class GeneralSettingsTest {
       expect(localeButton.last, findsWidgets);
     }
   }
+
+  static Future resetSettingsWorks(WidgetTester tester) async {
+    expect(find.byKey(Key('ob_reset')), findsOneWidget);
+
+    await tester.tap(find.byKey(Key('ob_reset')));
+    await Future.delayed(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(Key('tb_confirm')), findsOneWidget);
+
+    await tester.tap(find.byKey(Key('tb_confirm')));
+    await Future.delayed(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+
+    /// Detect reset if 'Reset' text for en-GB Locale exists
+    expect(find.text('Reset'), findsOneWidget);
+  }
 }
