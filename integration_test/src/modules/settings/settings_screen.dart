@@ -8,6 +8,10 @@ import 'package:sidekick/src/modules/settings/scenes/fvm_settings.scene.dart';
 import 'package:sidekick/src/modules/settings/scenes/general_settings.scene.dart';
 import 'package:sidekick/src/modules/settings/settings.screen.dart';
 
+import 'package:sidekick/main.dart' as app;
+
+import 'scenes/general_settings.dart';
+
 class SettingsScreenTest {
   static Future navigationTests(WidgetTester tester) async {
     expect(find.byType(SkAppBar), findsOneWidget);
@@ -28,5 +32,20 @@ class SettingsScreenTest {
     await tester.tap(find.byType(CloseButton));
     await tester.pumpAndSettle();
     expect(find.byType(SkAppBar), findsOneWidget);
+  }
+
+  static Future changeSettingsTests(WidgetTester tester) async {
+    expect(find.byType(SkAppBar), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.settings));
+    await tester.pumpAndSettle();
+    expect(find.byType(SettingsScreen), findsOneWidget);
+    expect(find.byType(SettingsSectionGeneral), findsOneWidget);
+
+    /// Theme Tests
+    await GeneralSettingsTest.changingThemeWorks(tester);
+
+    /// Locale Tests
+    await GeneralSettingsTest.changingLocaleWorks(tester);
   }
 }

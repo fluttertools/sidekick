@@ -7,17 +7,20 @@
     {
       "name": "Flutter: Attach to Device",
       "type": "dart",
+      "program": "lib/main.dart",
       "request": "attach"
     },
     {
       "name": "Flutter",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
+      "program": "lib/main.dart"
     },
     {
       "name": "Flutter Profile",
       "request": "launch",
       "type": "dart",
+      "program": "lib/main.dart",
       "flutterMode": "profile"
     },
     {

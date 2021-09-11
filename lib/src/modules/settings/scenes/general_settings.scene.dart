@@ -80,21 +80,25 @@ class SettingsSectionGeneral extends StatelessWidget {
                   'modules:settings.scenes.selectAThemeOrSwitchAccordingToSystemSettings'),
             ),
             trailing: DropdownButton(
+              key: Key('db_theme'),
               underline: Container(),
               isDense: true,
               value: settings.sidekick.themeMode.toString(),
               items: [
                 DropdownMenuItem(
+                  key: Key('dmi_system'),
                   value: SettingsThemeMode.system,
                   child: Text(
                       I18Next.of(context).t('modules:settings.scenes.system')),
                 ),
                 DropdownMenuItem(
+                  key: Key('dmi_light'),
                   value: SettingsThemeMode.light,
                   child: Text(
                       I18Next.of(context).t('modules:settings.scenes.light')),
                 ),
                 DropdownMenuItem(
+                  key: Key('dmi_dark'),
                   value: SettingsThemeMode.dark,
                   child: Text(
                       I18Next.of(context).t('modules:settings.scenes.dark')),
@@ -150,11 +154,13 @@ class SettingsSectionGeneral extends StatelessWidget {
             title:
                 Text(I18Next.of(context).t('modules:settings.scenes.language')),
             trailing: DropdownButton<Locale>(
+              key: Key('db_locale'),
               underline: Container(),
               isDense: true,
               value: settings.sidekick.locale ?? I18Next.of(context).locale,
               items: languageManager.supportedLocales.map((locale) {
                 return DropdownMenuItem(
+                  key: Key('dmi_${locale.toLanguageTag()}'),
                   value: locale,
                   child: Text(
                     I18Next.of(context).t(
