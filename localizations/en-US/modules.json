@@ -57,7 +57,7 @@
     "choose": "Choose",
     "projectsProjects": "Projects {{projects}}",
     "onlyDisplayProjectsThatHaveVersionsPinned": "Only display projects that have versions pinned",
-    "fvmOnly": "FVMOnly",
+    "fvmOnly": "FVM Only",
     "addProject": "Add Project",
     "notAFlutterProject": "Not a Flutter project",
     "components": {
@@ -77,7 +77,7 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "You need to add a Flutter project first. The package information is displayed here.",
       "noPackagesFound": "No packages found",
-      "view" : "View",
+      "view": "View",
       "builtBy": "Built by",
       "likes": "Likes",
       "pubPoints": "Pub Points",
@@ -97,7 +97,7 @@
   "sandbox": {
     "playground": "Playground",
     "releasesVersions": "{{releases}} versions",
-    "notRunning": "Does not run"
+    "notRunning": "Not running"
   },
   "search": {
     "components": {

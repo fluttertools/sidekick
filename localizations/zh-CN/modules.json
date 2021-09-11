@@ -1,0 +1,168 @@
+{
+  "common": {
+    "navButtonDashboard": "概览",
+    "navButtonProjects": "项目",
+    "navButtonExplore": "探索",
+    "navButtonPackages": "Packages",
+    "stableChannelDescription": "我们推荐你使用这个渠道来发布所有的生产应用。大约每季度一次，一个已经稳定到 beta 版的分支会成为我们的下一个 stable 分支，我们会在这个分支上创建一个 stable 版本。",
+    "betaChannelDescription": "在月初，通常是第一个星期一，从 master 创建的新的 beta 分支。这将包含一个Dart、引擎和框架的分支。",
+    "devChannelDescription": "最后一个经过全面测试的版本。通常可以工作， 但请关注 \"Bad builds\"，了解已知的 \"bad\" Dev builds。",
+    "masterChannelDescription": "当前代码树的顶端，最新的版本。通常是功能性的，但有时会被砍掉。",
+    "utils": {
+      "couldNotLaunchUrl": "不能打开 {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "已安装的版本",
+    "cleanUp": "清理",
+    "cleanUpTooltip": "清理未使用的版本",
+    "numberOfCachedVersions": "{{cachedVersions}} 个版本",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} 版本已安装.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} 版本已完成设置.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} 分支已更新.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} 版本已删除.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} 已被设为全局.",
+    "versionVersionPinnedToProjectname": "{{version}} 版本被锁定在 {{projectName}} 上",
+    "components": {
+      "upgrade": "更新",
+      "setAsGlobal": "设为全局",
+      "inUse": "使用中",
+      "unused": "未使用",
+      "flutterSdkNotInstalled": "Flutter SDK 未安装.",
+      "noFlutterVersionInstalledMessage": "您目前没有安装任何 Flutter SDK版本。已经安装的版本或渠道在此显示。",
+      "exploreFlutterReleases": "探索 Flutter 发行",
+      "global": "全局",
+      "sdkHasNotFinishedSetup": "SDK未完成设置"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "没有安装未经使用的 Flutter SDK版本",
+      "cleanUpUnusedVersions": "清理未使用的版本",
+      "cancel": "取消",
+      "confirm": "确认",
+      "ok": "好的",
+      "globalConfiguration": "全局配置",
+      "theseVersionAreNotPinnedToAProject": "这些版本没有被钉在项目中 ",
+      "doYouWantToRemoveThemToFreeUpSpace": "你想删除它来释放空间吗？",
+      "areYouSureYouWantToRemove": "你确定要删除?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "这将从你的系统的缓存中删除 {{itemname}}。",
+      "flutterPathIsPointingOn": "Flutter PATH 指向\n ",
+      "changeThePathTo": "将 path 改为 \n",
+      "ifYouWantToFlutterSdkThroughFvm": "如果你想通过 FVM 来更新 Flutter SDK",
+      "howToUpdateYourPath": "如何更新 path ？"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "项目已刷新",
+    "projects": "项目",
+    "choose": "选择",
+    "projectsProjects": "{{projects}} 个项目",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "只显示已钉上版本的项目",
+    "fvmOnly": "FVM Only",
+    "addProject": "添加项目",
+    "notAFlutterProject": "不是 Flutter 项目",
+    "components": {
+      "open": "打开",
+      "remove": "删除",
+      "openTerminalPlayground": "打开 Terminal Playground",
+      "openIde": "在 {{ideName}} 中打开",
+      "selectAFlutterSdkVersion": "选择一个 Flutter SDK 版本",
+      "noFlutterProjectsHaveBeenAddedYet": "目前还没有添加任何 Flutter 项目。",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "添加您的 Flutter 项目，项目信息将显示在这里。"
+    }
+  },
+  "pubPackages": {
+    "trending": "热门",
+    "mostUsedPackages": "最常用的软件包",
+    "flutterFavorites": "Flutter Favourites",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "你需要先添加一个Flutter项目，然后包的信息会显示在这里。",
+      "noPackagesFound": "没有发现包",
+      "view": "查看",
+      "builtBy": "Built by",
+      "likes": "Likes",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularity",
+      "details": "详情",
+      "changelog": "更新日志",
+      "website": "网站",
+      "packageprojectscountProjects": "{{packageProjectsCount}} 个项目"
+    }
+  },
+  "releases": {
+    "all": "所有",
+    "releases": "发行版",
+    "versions": "个版本",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "当前代码树的顶端，最新的版本。通常是功能性的，但有时会被砍掉。"
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} 个版本",
+    "notRunning": "未运行"
+  },
+  "search": {
+    "components": {
+      "search": "搜索... ",
+      "noResults": "没有结果",
+      "channels": "渠道",
+      "stableReleases": "Stable 发行版",
+      "betaReleases": "Beta 发行版",
+      "devReleases": "Dev 发行版",
+      "invalidChanel": "无效渠道"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "高级",
+      "downloadZip": "下载 zip",
+      "zipFileWithAllReleaseDependencies": "包含所有发布依赖的Zip文件",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "本地缓存信息",
+      "createdDate": "创建日期",
+      "cacheLocation": "缓存位置",
+      "nothingSelected": "未选择",
+      "channel": "渠道",
+      "releaseNotes": "发布说明",
+      "version": "版本",
+      "releaseDate": "发布日期"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "设置已被保存",
+    "couldNotSaveSettings": "无法保存设置",
+    "scenes": {
+      "flutterSDKGlobalDescription": "必须将 Flutter SDK 版本设置为全局，才能访问 Flutter 设置。",
+      "analyticsCrashReporting": "分析和崩溃报告",
+      "analyticsCrashReportSubtitle": "当 Flutter 命令崩溃时，会尝试将崩溃报告发送给谷歌，以便谷歌能够随着时间的推移对 Flutter 做出改进",
+      "platforms": "平台",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "安装时跳过 Flutter 的设置",
+      "thisWillOnlyCloneFlutterAndNotInstall": "这将只克隆 Flutter，但不安装它的依赖，",
+      "dependenciesAfterANewVersionIsInstalled": "在安装新版本后。",
+      "areYouSureYouWantToResetSettings": "你确定要重置设置吗？",
+      "thisWillOnlyResetSidekickSpecificPreferences": "这将只重置 Sidekick 的特定设置",
+      "appSettingsHaveBeenReset": "应用程序设置已被重置",
+      "general": "通用",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "选择一个主题或根据系统设置进行切换.",
+      "theme": "主题",
+      "system": "系统",
+      "light": "浅色",
+      "dark": "深色",
+      "language": "语言",
+      "resetToDefaultSettings": "恢复默认设置",
+      "reset": "重置",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "选择打开项目时使用的 IDE"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "有可用更新.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick {{updateInfoLatest}} 版本已经可用",
+      "later": "以后",
+      "updateNow": "立即更新",
+      "clickHereToDownload": "点击下载",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "新版本的 Sidekick 已经可用  ({{updateInfoLatest}})."
+    }
+  }
+}
