@@ -14,7 +14,11 @@ class SettingsService {
 
   /// Initialize storage
   static Future<void> init() async {
-    box = await Hive.openBox<SidekickSettings>(key);
+    if (!Hive.isBoxOpen(key)) {
+      box = await Hive.openBox<SidekickSettings>(key);
+    } else {
+      box = Hive.box<SidekickSettings>(key);
+    }
   }
 
   /// Save sidekick settings

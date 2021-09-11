@@ -19,7 +19,11 @@ class ProjectsService {
 
   /// Initializes the service
   static Future<void> init() async {
-    box = await Hive.openBox<ProjectRef>(_key);
+    if (!Hive.isBoxOpen(_key)) {
+      box = await Hive.openBox<ProjectRef>(_key);
+    } else {
+      box = Hive.box<ProjectRef>(_key);
+    }
   }
 
   /// Loads all projects
