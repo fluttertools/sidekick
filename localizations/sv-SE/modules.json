@@ -3,7 +3,7 @@
     "navButtonDashboard": "Instrumentpanel",
     "navButtonProjects": "Projekt",
     "navButtonExplore": "Utforska",
-    "navButtonPackages": "Paket",
+    "appBarSettings": "Inställningar",
     "stableChannelDescription": "Vi rekommenderar att du använder denna kanal för alla skarpa produktions släpp. Uppdateras ungefär varje kvartal, en gren som blivit beta blir nästa stable-gren och vi skapar en stable-release av den grenen",
     "betaChannelDescription": "Gren skapades för en ny betaversion i början av månaden, vanligtvis den första måndagen, utifrån master. Detta kommer att innehålla en gren för Dart, motorn och ramverket.",
     "devChannelDescription": "Den senaste fullt testade versionen, funkar för det mesta med kolla \"Bad builds\" för listan över \"bad\" Dev versioner.",

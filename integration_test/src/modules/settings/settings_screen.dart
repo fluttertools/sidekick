@@ -8,8 +8,6 @@ import 'package:sidekick/src/modules/settings/scenes/fvm_settings.scene.dart';
 import 'package:sidekick/src/modules/settings/scenes/general_settings.scene.dart';
 import 'package:sidekick/src/modules/settings/settings.screen.dart';
 
-import 'package:sidekick/main.dart' as app;
-
 import 'scenes/general_settings.dart';
 
 class SettingsScreenTest {
@@ -49,6 +47,10 @@ class SettingsScreenTest {
     await GeneralSettingsTest.changingLocaleWorks(tester);
 
     /// Reset Tests
-    await GeneralSettingsTest.resetSettingsWorks(tester);    
+    await GeneralSettingsTest.resetSettingsWorks(tester);
+
+    await tester.tap(find.byType(CloseButton));
+    await tester.pumpAndSettle();
+    expect(find.byType(SkAppBar), findsOneWidget);
   }
 }

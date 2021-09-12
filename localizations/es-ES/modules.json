@@ -3,7 +3,7 @@
     "navButtonDashboard": "Panel Principal",
     "navButtonProjects": "Proyectos",
     "navButtonExplore": "Explorar",
-    "navButtonPackages": "Paquetes",
+    "appBarSettings": "Ajustes",
     "stableChannelDescription": "Te recomendamos que utilices este canal para todos los lanzamientos de aplicaciones de producción. Aproximadamente una vez al trimestre, una rama estabilizada en beta se convierte en nuestra siguiente rama estable y creamos una versión estable de esa rama.",
     "betaChannelDescription": "Rama creada para una nueva versión beta a principios de mes, normalmente el primer lunes, por el master. Contendrá una rama para Dart, el motor y el framework",
     "devChannelDescription": "La última compilación totalmente probada. Generalmente funciona, pero comprueba \"malas versiones\" para una lista de builds de desarrollo con errores",

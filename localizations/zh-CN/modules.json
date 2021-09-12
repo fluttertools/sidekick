@@ -3,7 +3,7 @@
     "navButtonDashboard": "概览",
     "navButtonProjects": "项目",
     "navButtonExplore": "探索",
-    "navButtonPackages": "Packages",
+    "appBarSettings": "设置",
     "stableChannelDescription": "我们推荐你使用这个渠道来发布所有的生产应用。大约每季度一次，一个已经稳定到 beta 版的分支会成为我们的下一个 stable 分支，我们会在这个分支上创建一个 stable 版本。",
     "betaChannelDescription": "在月初，通常是第一个星期一，从 master 创建的新的 beta 分支。这将包含一个Dart、引擎和框架的分支。",
     "devChannelDescription": "最后一个经过全面测试的版本。通常可以工作， 但请关注 \"Bad builds\"，了解已知的 \"bad\" Dev builds。",

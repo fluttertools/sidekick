@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/constants.dart';
 import 'package:sidekick/src/modules/navigation/navigation.provider.dart';
@@ -55,6 +56,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: openSearchModal,
         ),
         IconButton(
+          tooltip: I18Next.of(context).t('modules:common.appBarSettings'),
           icon: const Icon(Icons.settings),
           iconSize: 20,
           splashRadius: 15,

@@ -3,7 +3,7 @@
     "navButtonDashboard": "Dashboard",
     "navButtonProjects": "Projekte",
     "navButtonExplore": "Erkunden",
-    "navButtonPackages": "Pakete",
+    "appBarSettings": "Einstellungen",
     "stableChannelDescription": "Wir empfehlen, dass Sie diesen Kanal für alle Produktions-App-Veröffentlichungen verwenden. Ungefähr einmal im Quartal wird ein Zweig, der auf Beta stabilisiert wurde, unser nächster stabiler Zweig und wir erstellen eine stabile Version von diesem Zweig.",
     "betaChannelDescription": "Zweig, der für eine neue Betaversion am Monatsanfang, in der Regel am ersten Montag, von master erstellt wird. Dieser wird einen Zweig für Dart, die Engine und das Framework enthalten.",
     "devChannelDescription": "Der letzte vollständig getestete Build. Normalerweise funktionstüchtig, aber unter \"Schlechte Builds\" finden Sie eine Liste bekannter \"schlechter\" Dev-Builds.",

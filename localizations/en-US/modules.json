@@ -3,7 +3,7 @@
     "navButtonDashboard": "Dashboard",
     "navButtonProjects": "Projects",
     "navButtonExplore": "Explore",
-    "navButtonPackages": "Packages",
+    "appBarSettings": "Settings",
     "stableChannelDescription": "We recommend that you use this channel for all production app releases. About once a quarter, a branch that has been stabilised to beta becomes our next stable branch and we create a stable version of that branch.",
     "betaChannelDescription": "Branch created for a new beta release at the beginning of the month, usually the first Monday, by master. This will contain a branch for Dart, the engine and the framework.",
     "devChannelDescription": "The last fully tested build. Usually working, but see \"Bad builds\" for a list of known \"bad\" Dev builds.",
