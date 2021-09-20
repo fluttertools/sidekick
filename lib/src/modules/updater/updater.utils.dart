@@ -41,7 +41,10 @@ String get _platformExt {
         return 'dmg';
       }
       break;
-
+    case 'linux':
+      {
+        return 'AppImage';
+      }
     default:
       {
         return 'zip';
