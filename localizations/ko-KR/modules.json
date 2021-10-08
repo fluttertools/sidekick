@@ -136,7 +136,7 @@
       "analyticsCrashReportSubtitle": "문제 발생 시 발생한 문제를 Google에 보고하여 플러터 개선에 도움을 주세요.",
       "platforms": "플랫폼",
       "web": "웹",
-      "skipSetupFlutterOnInstall": "설치 중 플러터 설정 건너뛰기",
+      "skipSetupFlutterOnInstall": "플러터 버전 다운로드만 하기",
       "thisWillOnlyCloneFlutterAndNotInstall": "새로운 플러터 버전이 출시되면",
       "dependenciesAfterANewVersionIsInstalled": "다운로드만 하고 설치는 하지 않습니다.",
       "areYouSureYouWantToResetSettings": "설정을 초기화 하시겠습니까?",
