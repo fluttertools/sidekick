@@ -1,0 +1,168 @@
+{
+  "common": {
+    "navButtonDashboard": "대시보드",
+    "navButtonProjects": "프로젝트",
+    "navButtonExplore": "탐색",
+    "navButtonPackages": "패키지",
+    "stableChannelDescription": "프로덕션 앱을 출시하려는 경우 이 채널의 버전 사용이 권장됩니다. 베타 버전이 안정화 작업을 거치고 매 분기마다 이 stable 채널로 업데이트 됩니다. ",
+    "betaChannelDescription": "다트, 엔진 및 프레임워크에서 새로운 베타 버전이 출시되면 매월 첫번째 월요일에 이 beta 채널로 업데이트 됩니다.",
+    "devChannelDescription": "검증이 완료된 개발자 버전 중 가장 최신 버전입니다. 대부분 문제 없이 작동하지만 간혹 이슈가 있을 수 있으니 플러터 공식 깃헙 \"Bad Builds\"에서 이슈를 확인해주세요",
+    "masterChannelDescription": "현존하는 개발자 버전 중 가장 최신 버전입니다. 대부분 문제 없이 작동하지만, 간혹 예상치 못한 오류가 발생할 수 있습니다.",
+    "utils": {
+      "couldNotLaunchUrl": "{{url}} 을 열 수 없습니다."
+    }
+  },
+  "fvm": {
+    "installedVersions": "설치된 버전",
+    "cleanUp": "정리하기",
+    "cleanUpTooltip": "미사용 버전 정리하기",
+    "numberOfCachedVersions": "버전 {{cachedVersions}}개",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} 버전이 설치되었습니다.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} 버전이 설정되었습니다.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} 버전이 업데이트 되었습니다.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} 버전이 제거되었습니다.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} 버전이 전역 설정되었습니다.",
+    "versionVersionPinnedToProjectname": "{{version}} 버전이 {{projectName}}에 적용되었습니다.",
+    "components": {
+      "upgrade": "업데이트",
+      "setAsGlobal": "전역 설정",
+      "inUse": "사용 중",
+      "unused": "미사용",
+      "flutterSdkNotInstalled": "플러터 SDK 설치 안됨.",
+      "noFlutterVersionInstalledMessage": "현재 설치되어 있는 플러터 SDK가 없습니다. 설치된 버전이 있으면 여기에 표시됩니다.",
+      "exploreFlutterReleases": "플러터 버전 탐색",
+      "global": "글로벌",
+      "sdkHasNotFinishedSetup": "SDK 설정이 완료되지 않았습니다."
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "사용 중이지 않은 버전이 없습니다.",
+      "cleanUpUnusedVersions": "미사용 버전 정리하기",
+      "cancel": "취소",
+      "confirm": "확인",
+      "ok": "확인",
+      "globalConfiguration": "전역 설정",
+      "theseVersionAreNotPinnedToAProject": "이 버전들은 사용 중이지 않은 버전입니다. ",
+      "doYouWantToRemoveThemToFreeUpSpace": "정리할 버전을 체크하고 확인을 눌러주세요.",
+      "areYouSureYouWantToRemove": "정말 삭제하시겠습니까?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "확인을 누르면 {{itemname}} 버전이 삭제됩니다.",
+      "flutterPathIsPointingOn": "플러터 경로가 아래로 설정되어 있습니다.\n ",
+      "changeThePathTo": "FVM을 통해 플러터 SDK를 업데이트 하려면\n",
+      "ifYouWantToFlutterSdkThroughFvm": "아래 경로로 변경해주세요.",
+      "howToUpdateYourPath": "경로 설정 방법 보기 "
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "새로고침 완료",
+    "projects": "프로젝트",
+    "choose": "선택",
+    "projectsProjects": "프로젝트 {{projects}}개",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "버전이 설정되어 있는 프로젝트만 표시",
+    "fvmOnly": "FVM만 표시",
+    "addProject": "프로젝트 추가",
+    "notAFlutterProject": "플러터 프로젝트가 아닙니다.",
+    "components": {
+      "open": "폴더 열기",
+      "remove": "삭제",
+      "openTerminalPlayground": "터미널 열기",
+      "openIde": "{{ideName}}에서 열기",
+      "selectAFlutterSdkVersion": "플러터 SDK 버전 선택하기",
+      "noFlutterProjectsHaveBeenAddedYet": "아직 추가된 플러터 프로젝트가 없습니다..",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "플러터 프로젝트를 추가해주세요. 추가한 프로젝트는 여기에 표시됩니다."
+    }
+  },
+  "pubPackages": {
+    "trending": "인기",
+    "mostUsedPackages": "자주 사용한 패키지",
+    "flutterFavorites": "즐겨찾기",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "플러터 프로젝트를 먼저 추가해주세요. 패키지 정보가 여기에 표시됩니다.",
+      "noPackagesFound": "패키지 정보 없음",
+      "view": "보기",
+      "builtBy": "만든 사람",
+      "likes": "Likes",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularity",
+      "details": "패키지 정보",
+      "changelog": "변경 로그",
+      "website": "웹사이트",
+      "packageprojectscountProjects": "{{packageProjectsCount}} 프로젝트"
+    }
+  },
+  "releases": {
+    "all": "전체",
+    "releases": "릴리즈",
+    "versions": "버전",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "현존하는 개발자 버전 중 가장 최신 버전입니다. 대부분 문제 없이 작동하지만, 간혹 예상치 못한 오류가 발생할 수 있습니다."
+  },
+  "sandbox": {
+    "playground": "터미널",
+    "releasesVersions": "{{releases}}개 버전",
+    "notRunning": "정지 상태"
+  },
+  "search": {
+    "components": {
+      "search": "검색",
+      "noResults": "결과 없음",
+      "channels": "채널",
+      "stableReleases": "안정 버전",
+      "betaReleases": "베타 버전",
+      "devReleases": "개발자 버전",
+      "invalidChanel": "유효하지 않은 버전"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "더 보기",
+      "downloadZip": "다운로드",
+      "zipFileWithAllReleaseDependencies": "Zip 파일로 내려받기",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "로컬 캐시 정보",
+      "createdDate": "생성 날짜",
+      "cacheLocation": "캐시 경로",
+      "nothingSelected": "선택 없음",
+      "channel": "채널",
+      "releaseNotes": "릴리즈 노트",
+      "version": "버전",
+      "releaseDate": "릴리즈 날짜"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "설정이 저장되었습니다.",
+    "couldNotSaveSettings": "설정을 저장할 수 없습니다.",
+    "scenes": {
+      "flutterSDKGlobalDescription": "플러터 설정을 변경하려면 플러터 버전 전역 설정이 먼저 되어 있어야 합니다.",
+      "analyticsCrashReporting": "분석 및 충돌 보고",
+      "analyticsCrashReportSubtitle": "문제 발생 시 발생한 문제를 Google에 보고하여 플러터 개선에 도움을 주세요.",
+      "platforms": "플랫폼",
+      "web": "웹",
+      "skipSetupFlutterOnInstall": "설치 중 플러터 설정 건너뛰기",
+      "thisWillOnlyCloneFlutterAndNotInstall": "새로운 버전이 출시되면",
+      "dependenciesAfterANewVersionIsInstalled": "플러터를 클론만 하고 설치하지 않습니다.",
+      "areYouSureYouWantToResetSettings": "설정을 초기화 하시겠습니까?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "확인을 누르면 사이드킥 설정이 초기화됩니다.",
+      "appSettingsHaveBeenReset": "설정이 초기화 되었습니다.",
+      "general": "일반",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "변경할 테마를 선택해주세요.",
+      "theme": "테마",
+      "system": "시스템 설정",
+      "light": "라이트 모드",
+      "dark": "다크 모드",
+      "language": "언어",
+      "resetToDefaultSettings": "최초 설정값으로 되돌리기",
+      "reset": "초기화",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "프로젝트를 열 IDE를 선택해주세요"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "업데이트 가능",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "사이드킥 버전 {{updateInfoLatest}} 업데이트 가능합니다.",
+      "later": "나중에",
+      "updateNow": "지금 업데이트",
+      "clickHereToDownload": "클릭하여 다운로드",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "새로운 사이드킥 버전이 존재합니다. ({{updateInfoLatest}}) ."
+    }
+  }
+}

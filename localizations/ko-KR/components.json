@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "복사되었습니다",
+        "refresh": "새로고침",
+        "countFound": "{{count}}개 일치"
+    },
+    "molecules": {
+        "master": "Master",
+        "versionIsInstalled": "버전 설치 완료",
+        "versionNotInstalledClickToInstall": "버전이 설치되지 않았습니다. 설치하려면 클릭하세요"
+    }
+}
