@@ -17,7 +17,11 @@
         "ideas",
         "design",
         "doc",
-        "maintenance"
+        "maintenance",
+        "question",
+        "bug",
+        "infra",
+        "projectManagement"
       ]
     },
     {
@@ -28,7 +32,12 @@
       "contributions": [
         "code",
         "ideas",
-        "doc"
+        "doc",
+        "bug",
+        "infra",
+        "maintenance",
+        "review",
+        "tutorial"
       ]
     },
     {
