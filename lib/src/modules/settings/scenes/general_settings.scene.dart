@@ -172,7 +172,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           const Divider(),
           ListTile(
             title: Text(I18Next.of(context)
-                .t('modules:selectedDetail.components.version')),
+                .t('modules:settings.scenes.version')),
             trailing: Text(packageVersion),
           ),
           const Divider(),

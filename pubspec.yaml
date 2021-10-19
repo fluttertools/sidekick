@@ -65,8 +65,10 @@ flutter:
     - localizations/en-GB/
     - localizations/en-US/
     - localizations/es-ES/
+    - localizations/it-IT/
     - localizations/sv-SE/
     - localizations/zh-CN/
     - localizations/ko-KR/
+    
 flutter_intl:
   enabled: true
