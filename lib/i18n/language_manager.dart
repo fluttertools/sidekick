@@ -19,6 +19,7 @@ class LanguageManager {
     const Locale('sv', 'SE'),
     const Locale('zh', 'CN'),
     const Locale('ko', 'KR'),
+    const Locale('ja', 'JP'),
   ];
 
   List<String> getListOfLocalesAsString() {
