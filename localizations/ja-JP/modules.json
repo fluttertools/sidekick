@@ -1,0 +1,168 @@
+{
+  "common": {
+    "navButtonDashboard": "ダッシュボード",
+    "navButtonProjects": "プロジェクト",
+    "navButtonExplore": "探索",
+    "navButtonPackages": "パッケージ",
+    "stableChannelDescription": "すべてのプロダクションアプリのリリースにはこのチャンネルを使用することをお勧めします。ほぼ四半期に一度、beta版に安定化したブランチが次のstableブランチとなり、そのブランチの安定版が作成されます。",
+    "betaChannelDescription": "月の初め、通常は第一月曜日に、masterブランチからbeta版リリースのために作成されるブランチです。このブランチには、Dartのエンジンとフレームワークが含まれます。",
+    "devChannelDescription": "最新のフルテスト版です。一般的には動作しますが、バグのあるDevビルドのリストは\"Bad versions\"を確認してください。",
+    "masterChannelDescription": "現在のコードツリーの一番上、最新のバージョンです。 通常は機能的ですが、時には破壊的な内容も含まれます。",
+    "utils": {
+      "couldNotLaunchUrl": "{{url}}を開けませんでした"
+    }
+  },
+  "fvm": {
+    "installedVersions": "インストール済みのバージョン",
+    "cleanUp": "クリーンアップ",
+    "cleanUpTooltip": "使用していないバージョンを削除",
+    "numberOfCachedVersions": "{{cachedVersions}}バージョン",
+    "versionItemversionnameHasBeenInstalled": "バージョン{{itemVersionName}}がインストールされました",
+    "versionItemversionnameHasFinishedSetup": "バージョン{{itemVersionName}}のセットアップが終了しました",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}}チャンネルをアップグレードしました",
+    "versionItemversionnameHasBeenRemoved": "バージョン{{itemVersionName}}を削除しました",
+    "versionItemversionnameHasBeenSetAsGlobal": "バージョン{{itemVersionName}}をグローバルに設定しました",
+    "versionVersionPinnedToProjectname": "バージョン{{version}}を{{projectName}}に設定しました",
+    "components": {
+      "upgrade": "アップグレード",
+      "setAsGlobal": "グローバルに設定",
+      "inUse": "使用中",
+      "unused": "未使用",
+      "flutterSdkNotInstalled": "Flutter SDKがインストールされていません",
+      "noFlutterVersionInstalledMessage": "現在、Flutter SDKのどのバージョンもインストールされていません。インストールされているバージョンやチャンネルはここに表示されます。",
+      "exploreFlutterReleases": "Flutterのリリースを見る",
+      "global": "グローバル",
+      "sdkHasNotFinishedSetup": "SDKのセットアップが完了していません"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "未使用のFlutter SDKバージョンはインストールされていません",
+      "cleanUpUnusedVersions": "未使用のバージョンを削除します。",
+      "cancel": "キャンセル",
+      "confirm": "確認",
+      "ok": "OK",
+      "globalConfiguration": "グローバル設定",
+      "theseVersionAreNotPinnedToAProject": "これらのバージョンは、プロジェクトに設定されていません。 ",
+      "doYouWantToRemoveThemToFreeUpSpace": "容量を空けるために削除しますか？",
+      "areYouSureYouWantToRemove": "本当に削除しますか？",
+      "thisWillRemoveItemnameCacheFromYourSystem": "システムのキャッシュから{{itemname}}を削除します。",
+      "flutterPathIsPointingOn": "FlutterのPATH\n ",
+      "changeThePathTo": "次のパスに変更\n",
+      "ifYouWantToFlutterSdkThroughFvm": "FVMでFlutter SDKをアップデートしたい場合",
+      "howToUpdateYourPath": "Pathを更新するには？"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "プロジェクトを再読み込みしました",
+    "projects": "プロジェクト",
+    "choose": "選択",
+    "projectsProjects": "{{projects}}プロジェクト",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "バージョンが設定されているプロジェクトのみを表示",
+    "fvmOnly": "FVMのみ",
+    "addProject": "プロジェクトの追加",
+    "notAFlutterProject": "Flutterのプロジェクトではありません",
+    "components": {
+      "open": "開く",
+      "remove": "削除",
+      "openTerminalPlayground": "Terminal Playgroundを開く",
+      "openIde": "{{ideName}}で開く",
+      "selectAFlutterSdkVersion": "Flutter SDKのバージョンを選択",
+      "noFlutterProjectsHaveBeenAddedYet": "まだFlutterプロジェクトが追加されていません",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Flutterプロジェクトを追加するとプロジェクトの情報がここに表示されます。"
+    }
+  },
+  "pubPackages": {
+    "trending": "人気",
+    "mostUsedPackages": "最も使用されているパッケージ",
+    "flutterFavorites": "Flutter Favorite",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "まず、Flutterプロジェクトを追加する必要があります。パッケージ情報はここに表示されます。",
+      "noPackagesFound": "パッケージが見つかりません",
+      "view": "View",
+      "builtBy": "Built by",
+      "likes": "Likes",
+      "pubPoints": "Pub Points",
+      "popularity": "人気度",
+      "details": "詳細",
+      "changelog": "更新履歴",
+      "website": "Webサイト",
+      "packageprojectscountProjects": "{{packageProjectsCount}}プロジェクト"
+    }
+  },
+  "releases": {
+    "all": "All",
+    "releases": "リリース",
+    "versions": "バージョン",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "現在のコードツリーの一番上、最新のバージョンです。 通常は機能的ですが、時には破壊的な内容も含まれます。"
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}}バージョン",
+    "notRunning": "実行されていません"
+  },
+  "search": {
+    "components": {
+      "search": "検索...",
+      "noResults": "結果なし",
+      "channels": "チャンネル",
+      "stableReleases": "Stableリリース",
+      "betaReleases": "Betaリリース",
+      "devReleases": "Devリリース",
+      "invalidChanel": "無効なチャンネル"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "高度な内容",
+      "downloadZip": "zipをダウンロード",
+      "zipFileWithAllReleaseDependencies": "リリースに必要な依存関係をすべて含んだzipファイル",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "ローカルキャッシュの情報",
+      "createdDate": "作成日",
+      "cacheLocation": "キャッシュの場所",
+      "nothingSelected": "何も選択されていません",
+      "channel": "チャンネル",
+      "releaseNotes": "リリースノート",
+      "version": "バージョン",
+      "releaseDate": "リリース日"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "設定が保存されました",
+    "couldNotSaveSettings": "設定を保存できませんでした",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Flutterの設定にアクセスするには、Flutter sdkのバージョンをグローバルに設定する必要があります。",
+      "analyticsCrashReporting": "分析とクラッシュレポート",
+      "analyticsCrashReportSubtitle": "Flutterのコマンドがクラッシュした場合、クラッシュレポートをGoogleに送信し、GoogleがFlutterの改善に貢献できるようにしています。",
+      "platforms": "プラットフォーム",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "インストール時にFlutterのセットアップをスキップする",
+      "thisWillOnlyCloneFlutterAndNotInstall": "FlutterのCloneのみを行い、インストールはしません。 ",
+      "dependenciesAfterANewVersionIsInstalled": "新しいバージョンがインストールされた後の依存関係",
+      "areYouSureYouWantToResetSettings": "本当に設定をリセットしますか？",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Sidekick固有の設定のみがリセットされます",
+      "appSettingsHaveBeenReset": "アプリの設定がリセットされました",
+      "general": "一般",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "テーマもしくはシステムの設定に応じてテーマを変更するかを選択",
+      "theme": "テーマ",
+      "system": "システム",
+      "light": "Light",
+      "dark": "Dark",
+      "language": "言語",
+      "resetToDefaultSettings": "デフォルト設定にリセット",
+      "reset": "リセット",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "プロジェクトを開くIDEを選択"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "アップデートが利用可能です",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekickバージョン{{updateInfoLatest}}が利用可能です",
+      "later": "後で",
+      "updateNow": "今すぐ更新",
+      "clickHereToDownload": "クリックしてダウンロード",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekickの新しいバージョン({{updateInfoLatest}})が利用可能です"
+    }
+  }
+}

@@ -69,6 +69,7 @@ flutter:
     - localizations/sv-SE/
     - localizations/zh-CN/
     - localizations/ko-KR/
-    
+    - localizations/ja-JP/
+
 flutter_intl:
   enabled: true
