@@ -47,6 +47,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.brimir.eu"><img src="https://avatars.githubusercontent.com/u/8105390?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Patrik Persson</b></sub></a><br /><a href="#translation-broderbluff" title="Translation">🌍</a></td>
     <td align="center"><a href="http://kassadin.github.io/"><img src="https://avatars.githubusercontent.com/u/1104051?v=4?s=50" width="50px;" alt=""/><br /><sub><b>kassadin</b></sub></a><br /><a href="#translation-kassadin" title="Translation">🌍</a></td>
     <td align="center"><a href="http://petner.kr"><img src="https://avatars.githubusercontent.com/u/37838834?v=4?s=50" width="50px;" alt=""/><br /><sub><b>seenewmax</b></sub></a><br /><a href="#translation-seenewmax" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/Chrg1001"><img src="https://avatars.githubusercontent.com/u/40189653?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Chrg1001</b></sub></a><br /><a href="#translation-Chrg1001" title="Translation">🌍</a></td>
   </tr>
 </table>
 
