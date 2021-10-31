@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData get darkPurpleTheme {
@@ -133,8 +134,25 @@ Color platformBackgroundColor(BuildContext context) {
   final themeBrightness = Theme.of(context).brightness;
   final platformBrightness = MediaQuery.of(context).platformBrightness;
   final brightnessMatches = themeBrightness == platformBrightness;
-  if (Platform.isMacOS && brightnessMatches) {
-    return Colors.transparent;
+
+  // Brightness mathces doesn't work on Windows 10
+  if (brightnessMatches) {
+    if (Platform.isMacOS) {
+      return Colors.transparent;
+    } else if (Platform.isWindows) {
+      if (Platform.operatingSystemVersion.contains('11')) {
+        Window.setEffect(
+          effect: WindowEffect.mica,
+        );
+      } else if (Platform.operatingSystemVersion.contains('10')) {
+        Window.setEffect(
+          effect: WindowEffect.acrylic,
+        );
+      }
+      return Colors.transparent;
+    } else {
+      return Theme.of(context).cardColor;
+    }
   } else {
     return Theme.of(context).cardColor;
   }

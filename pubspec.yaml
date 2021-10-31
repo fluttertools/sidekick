@@ -20,6 +20,7 @@ dependencies:
   filesize: ^2.0.1
   flutter:
     sdk: flutter
+  flutter_acrylic: ^0.1.0
   flutter_hooks: ^0.17.0
   flutter_localizations:
     sdk: flutter
