@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -43,13 +44,20 @@ void main() async {
     print('There was an issue opening the DB');
   }
 
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle(kAppTitle);
-    setWindowMinSize(const Size(800, 500));
-    setWindowMaxSize(Size.infinite);
+  if (!(Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+    print('Sidekick is not supported on your platform');
+    exit(0);
   }
 
   runApp(ProviderScope(child: FvmApp()));
+
+  doWhenWindowReady(() {
+    final initialSize = Size(800, 500);
+    appWindow.minSize = initialSize;
+    appWindow.size = initialSize;
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }
 
 /// Fvm App

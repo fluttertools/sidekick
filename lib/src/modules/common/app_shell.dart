@@ -8,6 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/windowBorder.dart';
 
 import '../../components/molecules/top_app_bar.dart';
 import '../../components/organisms/app_bottom_bar.dart';

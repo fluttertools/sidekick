@@ -136,20 +136,24 @@ Color platformBackgroundColor(BuildContext context) {
   final brightnessMatches = themeBrightness == platformBrightness;
 
   // Brightness mathces doesn't work on Windows 10
-  if (brightnessMatches) {
+  if (!brightnessMatches) {
     if (Platform.isMacOS) {
       return Colors.transparent;
     } else if (Platform.isWindows) {
       if (Platform.operatingSystemVersion.contains('11')) {
         Window.setEffect(
           effect: WindowEffect.mica,
+          color: Theme.of(context).cardColor.withAlpha(140),
         );
+        return Colors.transparent;
       } else if (Platform.operatingSystemVersion.contains('10')) {
         Window.setEffect(
           effect: WindowEffect.acrylic,
+          color: Theme.of(context).cardColor.withAlpha(140),
         );
+        return Colors.transparent;
       }
-      return Colors.transparent;
+      return Theme.of(context).cardColor;
     } else {
       return Theme.of(context).cardColor;
     }
