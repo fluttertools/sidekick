@@ -130,6 +130,23 @@ RoundedRectangleBorder get _roundedShape {
   );
 }
 
+bool isNumeric(String s) {
+  if (s == null) {
+    return false;
+  }
+  return double.tryParse(s) != null;
+}
+
+double getWindowsBuild() {
+  final osVer =
+      Platform.operatingSystemVersion.replaceAll(RegExp(r'[^\w\s\.]+'), '');
+
+  final splitOsVer = osVer.split(' ');
+
+  final nums = splitOsVer.where((element) => isNumeric(element)).toList();
+  return double.parse(nums.last);
+}
+
 Color platformBackgroundColor(BuildContext context) {
   final themeBrightness = Theme.of(context).brightness;
   final platformBrightness = MediaQuery.of(context).platformBrightness;
@@ -140,13 +157,15 @@ Color platformBackgroundColor(BuildContext context) {
     if (Platform.isMacOS) {
       return Colors.transparent;
     } else if (Platform.isWindows) {
-      if (Platform.operatingSystemVersion.contains('11')) {
+      if (getWindowsBuild() >= 22449) {
+        print("Windows 11");
         Window.setEffect(
           effect: WindowEffect.mica,
-          color: Theme.of(context).cardColor.withAlpha(140),
+          color: Colors.transparent,
         );
         return Colors.transparent;
-      } else if (Platform.operatingSystemVersion.contains('10')) {
+      } else if (getWindowsBuild() >= 10240) {
+        print("Windows 10");
         Window.setEffect(
           effect: WindowEffect.aero,
           color: Theme.of(context).cardColor.withAlpha(220),
