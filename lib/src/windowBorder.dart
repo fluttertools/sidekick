@@ -52,10 +52,10 @@ class WindowButtons extends StatelessWidget {
             ? Colors.white
             : Colors.black,
         mouseOver: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
+            ? Colors.grey.shade600
             : Colors.grey.shade300,
         mouseDown: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
+            ? Colors.grey.shade700
             : Colors.grey.shade400,
         iconMouseOver: Theme.of(context).brightness == Brightness.dark
             ? Colors.white

@@ -136,7 +136,7 @@ Color platformBackgroundColor(BuildContext context) {
   final brightnessMatches = themeBrightness == platformBrightness;
 
   // Brightness mathces doesn't work on Windows 10
-  if (!brightnessMatches) {
+  if (brightnessMatches) {
     if (Platform.isMacOS) {
       return Colors.transparent;
     } else if (Platform.isWindows) {
