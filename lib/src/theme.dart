@@ -158,14 +158,14 @@ Color platformBackgroundColor(BuildContext context) {
       return Colors.transparent;
     } else if (Platform.isWindows) {
       if (getWindowsBuild() >= 22449) {
-        print("Windows 11");
+        print('Windows 11');
         Window.setEffect(
           effect: WindowEffect.mica,
           color: Colors.transparent,
         );
         return Colors.transparent;
       } else if (getWindowsBuild() >= 10240) {
-        print("Windows 10");
+        print('Windows 10');
         Window.setEffect(
           effect: WindowEffect.aero,
           color: Theme.of(context).cardColor.withAlpha(220),
