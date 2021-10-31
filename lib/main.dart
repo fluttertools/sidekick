@@ -12,7 +12,6 @@ import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
 import 'package:sidekick/src/modules/common/utils/migrateFiles.dart';
-import 'package:window_size/window_size.dart';
 
 import 'src/modules/common/app_shell.dart';
 import 'src/modules/common/constants.dart';
