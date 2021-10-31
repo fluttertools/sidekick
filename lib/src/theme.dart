@@ -148,8 +148,8 @@ Color platformBackgroundColor(BuildContext context) {
         return Colors.transparent;
       } else if (Platform.operatingSystemVersion.contains('10')) {
         Window.setEffect(
-          effect: WindowEffect.acrylic,
-          color: Theme.of(context).cardColor.withAlpha(140),
+          effect: WindowEffect.aero,
+          color: Theme.of(context).cardColor.withAlpha(220),
         );
         return Colors.transparent;
       }
