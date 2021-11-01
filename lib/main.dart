@@ -25,7 +25,10 @@ import 'src/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Window.initialize();
+  // Transparency compatibility for windows & linux
+  if (!Platform.isMacOS) {
+    await Window.initialize();
+  }
 
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
