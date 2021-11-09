@@ -127,8 +127,6 @@ final fvmStdoutProvider = StreamProvider.autoDispose((ref) {
     FVMClient.console.info.stream,
     FVMClient.console.fine.stream,
     FVMClient.console.error.stream,
-  ])
-      .transform(utf8.decoder)
-      // .transform(const LineSplitter())
-      .asBroadcastStream();
+  ]).transform(utf8.decoder);
+  // .transform(const LineSplitter())
 });
