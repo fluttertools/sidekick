@@ -1,0 +1,168 @@
+{
+  "common": {
+    "navButtonDashboard": "Panel głowny",
+    "navButtonProjects": "Projekty",
+    "navButtonExplore": "Przeglądaj",
+    "navButtonPackages": "Pakiety",
+    "stableChannelDescription": "Zalecamy korzystanie z tego kanału we wszystkich wydaniach aplikacji produkcyjnych. Mniej więcej raz na kwartał branch, który został ustabilizowany do wersji beta, staje się naszym kolejnym stabilnym branchem i tworzymy stabilną wersję z niego.",
+    "betaChannelDescription": "Branch stworzony dla nowej wersji beta na początku miesiąca, zwykle w pierwszy poniedziałek, z mastera. Będzie zawierać branch Darta, silnika i frameworka.",
+    "devChannelDescription": "Ostatnia w pełni przetestowana wersja. Zwykle działa, ale sprawdź „Bad builds”, aby uzyskać listę znanych „złych” wersji dev.",
+    "masterChannelDescription": "Aktualny wierzchołek drzewa, absolutnie najnowsza innowacyjna wersja. Zwykle sprawna, choć czasem przypadkiem coś psujemy.",
+    "utils": {
+      "couldNotLaunchUrl": "Nie udało się otworzyć {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "Zainstalowane wersje",
+    "cleanUp": "Zwolnij",
+    "cleanUpTooltip": "Usuń nieużywane wersje",
+    "numberOfCachedVersions": "{{cachedVersions}} wersji",
+    "versionItemversionnameHasBeenInstalled": "Wersja {{itemVersionName}} została zainstalowana.",
+    "versionItemversionnameHasFinishedSetup": "Wersja {{itemVersionName}} została skonfigurowana.",
+    "channelItemversionnameHasBeenUpgraded": "Kanał {{itemVersionName}} został zaktualizowany.",
+    "versionItemversionnameHasBeenRemoved": "Wersja {{itemVersionName}} została usunięta.",
+    "versionItemversionnameHasBeenSetAsGlobal": "Wersja {{itemVersionName}} została ustawiona jako globalna.",
+    "versionVersionPinnedToProjectname": "Wersja {{version}} została ustawiona dla {{projectName}}",
+    "components": {
+      "upgrade": "Aktualizuj",
+      "setAsGlobal": "Ustaw jako Globalną",
+      "inUse": "Zajęte",
+      "unused": "Wolne",
+      "flutterSdkNotInstalled": "Flutter SDK jest niezainstalowane.",
+      "noFlutterVersionInstalledMessage": "Nie masz obecnie zainstalowanych żadnych wersji Flutter SDK. Tutaj pokazane są wersje lub kanały, które zostały zainstalowane.",
+      "exploreFlutterReleases": "Przejrzyj wydania Flutter",
+      "global": "Globalny",
+      "sdkHasNotFinishedSetup": "SDK nie zakończyło konfiguracji"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Nie znaleziono nieużywanych wersji Flutter SDK",
+      "cleanUpUnusedVersions": "Usuń nieużywane wersje",
+      "cancel": "Anuluj",
+      "confirm": "Potwierdź",
+      "ok": "OK",
+      "globalConfiguration": "Konfiguracja globalna",
+      "theseVersionAreNotPinnedToAProject": "Te wersje nie są wykorzystywane przez żaden projekt ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Chcesz je usunąć by zwolnić miejsce na dysku?",
+      "areYouSureYouWantToRemove": "Czy na pewno chcesz usunąć?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Ta akcja usunie {{itemname}} z cache'a w twoim komputerze.",
+      "flutterPathIsPointingOn": "Obecny ścieżka Flutter PATH to\n ",
+      "changeThePathTo": "Zmień ścieżkę na\n",
+      "ifYouWantToFlutterSdkThroughFvm": "jeśli chcesz aktualizować Flutter SDK za pomocą FVM",
+      "howToUpdateYourPath": "Jak zaktualizować ścieżkę?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Projekty zostały odświeżone",
+    "projects": "Projekty",
+    "choose": "Wybierz",
+    "projectsProjects": "{{projects}} projekty",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Wyświetlaj tylko projekty z ustawioną wersją",
+    "fvmOnly": "Tylko FVM",
+    "addProject": "Dodaj projekt",
+    "notAFlutterProject": "Projekt nie jest projektem Flutter",
+    "components": {
+      "open": "Otwórz",
+      "remove": "Usuń",
+      "openTerminalPlayground": "Otwórz Terminal Playground",
+      "openIde": "Otwórz za pomocą {{ideName}}",
+      "selectAFlutterSdkVersion": "Wybierz wersję Flutter SDK",
+      "noFlutterProjectsHaveBeenAddedYet": "Nie dodano wersji Flutter.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Dodaj swój projekt Flutter Tutaj będą wyświetlane informacje o projekcie."
+    }
+  },
+  "pubPackages": {
+    "trending": "Popularne",
+    "mostUsedPackages": "Najczęściej używane pakiety",
+    "flutterFavorites": "Flutter Favourites",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Najpierw musisz dodać projekt Flutter. Tutaj wyświetlane są informacje o pakiecie.",
+      "noPackagesFound": "Nie znaleziono pakietów",
+      "likes": "Polubień",
+      "view": "Wyświetleń",
+      "builtBy": "Utworzone przez",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularność",
+      "details": "Detale",
+      "changelog": "Dziennik zmian",
+      "website": "Strona internetowa",
+      "packageprojectscountProjects": "{{packageProjectsCount}} projektów"
+    }
+  },
+  "releases": {
+    "all": "Wszystkie",
+    "releases": "Wydania",
+    "versions": "Wersje",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Aktualny wierzchołek drzewa, absolutnie najnowsza innowacyjna wersja. Zwykle sprawna, choć czasem przypadkiem coś psujemy."
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} wydań",
+    "notRunning": "Nie pracuje"
+  },
+  "search": {
+    "components": {
+      "search": "Szukaj... ",
+      "noResults": "Brak wyników",
+      "channels": "Kanały",
+      "stableReleases": "Wydania stabilne",
+      "betaReleases": "Wydania beta",
+      "devReleases": "Wydania developerskie",
+      "invalidChanel": "Niepoprawny kanał"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Zaawansowane",
+      "downloadZip": "Pobierz plik zip",
+      "zipFileWithAllReleaseDependencies": "Plik Zip zawierajacy wszystkie zależności potrzebne do wydania",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Informacje o lokalnym cache'u",
+      "createdDate": "Data utworzenia",
+      "cacheLocation": "Lokalizacja Cache'a",
+      "nothingSelected": "Nie wybrano",
+      "channel": "Kanał",
+      "releaseNotes": "Informacje o wydaniu",
+      "version": "Wersja",
+      "releaseDate": "Data publikacji"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Ustawienia zostały zapisane",
+    "couldNotSaveSettings": "Nie udało się zapisać ustawień",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Wersja Flutter SDK musi być ustawiona jako globalna, aby uzyskać dostęp do sekcji Flutter ustawień",
+      "analyticsCrashReporting": "Analityka i raportowanie o błędach",
+      "analyticsCrashReportSubtitle": "Gdy polecenie Flutter będzie miało problem z wykonaniem, podjęta zostaje próba wysłania raportu o awarii do Google, aby z czasem firma Google mogła wprowadzać ulepszenia we Flutter",
+      "platforms": "Platformy",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Pomiń konfigurację Flutter podczas instalacji",
+      "thisWillOnlyCloneFlutterAndNotInstall": "To tylko sklonuje Flutter, a nie zainstaluje ",
+      "dependenciesAfterANewVersionIsInstalled": "zależności po zainstalowaniu nowej wersji.",
+      "areYouSureYouWantToResetSettings": "Czy jesteś pewien, że chcesz przywrócić ustawienia domyślne?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Tylko ustawienia wewnątrz Sidekick zostaną zresetowane",
+      "appSettingsHaveBeenReset": "Przywrócono ustawienia domyślne",
+      "general": "Ogólne",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Wybierz motyw albo ustaw zgodny z ustawieniami systemowymi.",
+      "theme": "Motyw",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "language": "Język",
+      "resetToDefaultSettings": "Przywróć ustawienia domyślne",
+      "reset": "Przywróc",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Wybierz IDE za pomocą, którego projekty mają być otwierane"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Aktualizacja dostępna.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick w wersji {{updateInfoLatest}} jest już dostępny",
+      "later": "Później",
+      "updateNow": "Aktualizuj",
+      "clickHereToDownload": "Kliknij tutaj aby pobrać",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Nowa wersja Sidekick jest dostępna ({{updateInfoLatest}})."
+    }
+  }
+}
