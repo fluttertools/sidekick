@@ -49,6 +49,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://petner.kr"><img src="https://avatars.githubusercontent.com/u/37838834?v=4?s=50" width="50px;" alt=""/><br /><sub><b>seenewmax</b></sub></a><br /><a href="#translation-seenewmax" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/Chrg1001"><img src="https://avatars.githubusercontent.com/u/40189653?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Chrg1001</b></sub></a><br /><a href="#translation-Chrg1001" title="Translation">🌍</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/LosDanieloss"><img src="https://avatars.githubusercontent.com/u/10536371?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Daniel Łojewski</b></sub></a><br /><a href="#translation-LosDanieloss" title="Translation">🌍</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
