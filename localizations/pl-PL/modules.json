@@ -26,8 +26,8 @@
     "components": {
       "upgrade": "Aktualizuj",
       "setAsGlobal": "Ustaw jako Globalną",
-      "inUse": "Zajęte",
-      "unused": "Wolne",
+      "inUse": "W użyciu",
+      "unused": "Nieużywane",
       "flutterSdkNotInstalled": "Flutter SDK jest niezainstalowane.",
       "noFlutterVersionInstalledMessage": "Nie masz obecnie zainstalowanych żadnych wersji Flutter SDK. Tutaj pokazane są wersje lub kanały, które zostały zainstalowane.",
       "exploreFlutterReleases": "Przejrzyj wydania Flutter",
