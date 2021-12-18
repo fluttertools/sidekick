@@ -70,5 +70,6 @@ flutter:
     - localizations/ko-KR/
     - localizations/ja-JP/
     - localizations/pl-PL/
+    - localizations/it-IT/
 flutter_intl:
   enabled: true
