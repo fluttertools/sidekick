@@ -32,7 +32,7 @@
       "noFlutterVersionInstalledMessage": "Al momento non hai nessuna versione del Flutter SDK installata. Versioni o canali installati in precedenza li trovi qua.",
       "exploreFlutterReleases": "Esplora le release Flutter",
       "global": "Global",
-      "sdkHasNotFinishedSetup": "Installazione del SDK non completa"
+      "sdkHasNotFinishedSetup": "Installazione SDK non completa"
     },
     "dialogs": {
       "noUnusedFlutterSdkVersionsInstalled": "Nessuna versione non usata del Flutter SDK installata",
