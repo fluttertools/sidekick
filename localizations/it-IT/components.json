@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "Copiato negli appunti",
+        "refresh": "Aggiorna",
+        "countFound": "{{count}} risultato/i"
+    },
+    "molecules": {
+        "master": "Master",
+        "versionIsInstalled": "La versione è installata",
+        "versionNotInstalledClickToInstall": "Versione non installata. Premi per installare."
+    }
+}

@@ -71,4 +71,4 @@ stage/
 /*.snap
 
 ### FVM ###
-.fvm/
+.fvm/flutter_sdk

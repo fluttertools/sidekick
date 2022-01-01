@@ -17,7 +17,11 @@
         "ideas",
         "design",
         "doc",
-        "maintenance"
+        "maintenance",
+        "question",
+        "bug",
+        "infra",
+        "projectManagement"
       ]
     },
     {
@@ -28,7 +32,12 @@
       "contributions": [
         "code",
         "ideas",
-        "doc"
+        "doc",
+        "bug",
+        "infra",
+        "maintenance",
+        "review",
+        "tutorial"
       ]
     },
     {
@@ -132,6 +141,42 @@
       "name": "kassadin",
       "avatar_url": "https://avatars.githubusercontent.com/u/1104051?v=4",
       "profile": "http://kassadin.github.io/",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "seenewmax",
+      "name": "seenewmax",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37838834?v=4",
+      "profile": "http://petner.kr",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Chrg1001",
+      "name": "Chrg1001",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40189653?v=4",
+      "profile": "https://github.com/Chrg1001",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "LosDanieloss",
+      "name": "Daniel Łojewski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10536371?v=4",
+      "profile": "https://github.com/LosDanieloss",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "federicoviceconti",
+      "name": "Federico",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25590766?v=4",
+      "profile": "http://federicoviceconti.com",
       "contributions": [
         "translation"
       ]
