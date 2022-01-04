@@ -51,7 +51,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/LosDanieloss"><img src="https://avatars.githubusercontent.com/u/10536371?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Daniel Łojewski</b></sub></a><br /><a href="#translation-LosDanieloss" title="Translation">🌍</a></td>
-    <td align="center"><a href="http://federicoviceconti.com"><img src="https://avatars.githubusercontent.com/u/25590766?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Federico</b></sub></a><br /><a href="#translation-federicoviceconti" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://federicoviceconti.com"><img src="https://avatars.githubusercontent.com/u/25590766?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Federico</b></sub></a><br /><a href="#translation-federicoviceconti" title="Translation">🌍</a> <a href="https://github.com/leoafarias/sidekick/issues?q=author%3Afedericoviceconti" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
