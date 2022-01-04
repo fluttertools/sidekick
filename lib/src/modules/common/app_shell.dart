@@ -22,6 +22,12 @@ import 'constants.dart';
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+const pages = [
+  FVMScreen(),
+  ProjectsScreen(),
+  ReleasesScreen(),
+];
+
 /// Main widget of the app
 class AppShell extends HookWidget {
   /// Constructor
@@ -58,17 +64,6 @@ class AppShell extends HookWidget {
         });
       }
     });
-
-    // Render corret page widget based on index
-    Widget renderPage(int index) {
-      const pages = [
-        FVMScreen(),
-        ProjectsScreen(),
-        ReleasesScreen(),
-      ];
-
-      return pages[index];
-    }
 
     NavigationRailDestination renderNavButton(String label, IconData iconData) {
       return NavigationRailDestination(
@@ -115,7 +110,10 @@ class AppShell extends HookWidget {
                 ),
               ],
             ),
-            const VerticalDivider(thickness: 1, width: 1),
+            const VerticalDivider(
+              thickness: 1,
+              width: 1,
+            ),
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
@@ -144,7 +142,7 @@ class AppShell extends HookWidget {
                                   child: child,
                                 );
                               },
-                              child: renderPage(selectedIndex.value),
+                              child: pages[selectedIndex.value],
                             ),
                           ),
                         ],
