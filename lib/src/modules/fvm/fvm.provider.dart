@@ -119,11 +119,17 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }
 }
 
-final fvmStdoutProvider = StreamGroup.mergeBroadcast([
-  FVMClient.console.stdout.stream,
-  FVMClient.console.stderr.stream,
-  FVMClient.console.warning.stream,
-  FVMClient.console.info.stream,
-  FVMClient.console.fine.stream,
-  FVMClient.console.error.stream,
-]).transform(utf8.decoder);
+final fvmStdoutProvider = StreamGroup
+    .mergeBroadcast(_getConsoleStreams())
+    .transform(utf8.decoder);
+
+List<Stream<List<int>>> _getConsoleStreams() {
+  return [
+    FVMClient.console.stdout.stream,
+    FVMClient.console.stderr.stream,
+    FVMClient.console.warning.stream,
+    FVMClient.console.info.stream,
+    FVMClient.console.fine.stream,
+    FVMClient.console.error.stream,
+  ];
+}
