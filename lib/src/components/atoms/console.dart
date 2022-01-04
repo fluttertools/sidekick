@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../modules/fvm/fvm.provider.dart';
@@ -21,11 +20,11 @@ class Console extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final output = useProvider(fvmStdoutProvider);
+    final output = useStream(fvmStdoutProvider);
     final lines = useState<List<String>>(['']);
 
     useValueChanged(output, (_, __) {
-      lines.value.insert(0, output.data.value);
+      lines.value.insert(0, output.data);
       if (lines.value.length > 100) {
         lines.value.removeAt(lines.value.length - 1);
       }
@@ -65,7 +64,10 @@ class Console extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ConsoleText(lines.value.first),
+                      Container(
+                          width: MediaQuery.of(context).size.width - 100,
+                          child: ConsoleText(lines.value.first)
+                      ),
                     ],
                   ),
                 ),

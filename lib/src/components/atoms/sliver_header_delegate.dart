@@ -41,7 +41,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
         trailing: Text(
           I18Next.of(context).t('components:atoms.countFound', variables: {
-            'count': count.toString(),
+            'count': count,
           }),
         ),
         onTap: onPress,

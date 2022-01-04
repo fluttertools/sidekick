@@ -17,7 +17,7 @@ class AppBottomBar extends HookWidget {
       expand.value = !expand.value;
     }
 
-    if (processing == false) {
+    if (!processing) {
       return Container(height: 0);
     }
 

@@ -89,7 +89,7 @@ class VersionInstallButton extends HookWidget {
       child: Opacity(
         opacity: (version?.isCached ?? false) ? 0.3 : 1,
         child: IconButton(
-          onPressed: (version?.isCached ?? false) ? onInstall : onInstall,
+          onPressed: onInstall,
           splashRadius: 20,
           icon: Tooltip(
               message:
