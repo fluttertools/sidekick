@@ -10,7 +10,7 @@ import '../common/constants.dart';
 import '../fvm/fvm.provider.dart';
 
 class AppReleasesState {
-  bool isVersionReleaseFetchFinished;
+  bool fetching;
 
   MasterDto master;
   List<ChannelDto> channels;
@@ -22,7 +22,7 @@ class AppReleasesState {
     this.channels,
     this.versions,
     this.master,
-    this.isVersionReleaseFetchFinished = false,
+    this.fetching = true,
     this.hasGlobal = false,
   }) {
     channels = <ChannelDto>[];
@@ -71,7 +71,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     return releasesState;
   }
 
-  releasesState.isVersionReleaseFetchFinished = true;
+  releasesState.fetching = false;
 
   final flutterReleases = payload.releases;
   final flutterChannels = payload.channels;
