@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:i18next/i18next.dart';
 
 import '../atoms/typography.dart';
