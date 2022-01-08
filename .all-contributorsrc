@@ -162,6 +162,25 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "LosDanieloss",
+      "name": "Daniel Łojewski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10536371?v=4",
+      "profile": "https://github.com/LosDanieloss",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "federicoviceconti",
+      "name": "Federico",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25590766?v=4",
+      "profile": "http://federicoviceconti.com",
+      "contributions": [
+        "translation",
+        "bug"
+      ]
     }
   ],
   "projectName": "sidekick",
