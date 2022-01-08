@@ -68,7 +68,7 @@ class ConsoleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectableText(
       text,
-      //maxLines: 1,
+      maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
         color: Theme.of(context).colorScheme.secondary,
