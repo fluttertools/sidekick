@@ -66,10 +66,9 @@ class ConsoleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return SelectableText(
       text,
-      overflow: TextOverflow.ellipsis,
-      maxLines: 1,
+      //maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
         color: Theme.of(context).colorScheme.secondary,
@@ -87,7 +86,7 @@ class ConsoleTextInfo extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return SelectableText(
       text,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
@@ -107,7 +106,7 @@ class ConsoleTextError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return SelectableText(
       text,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
