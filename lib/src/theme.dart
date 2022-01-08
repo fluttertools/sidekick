@@ -152,23 +152,25 @@ Color platformBackgroundColor(BuildContext context) {
   final platformBrightness = MediaQuery.of(context).platformBrightness;
   final brightnessMatches = themeBrightness == platformBrightness;
 
-  // Brightness mathces doesn't work on Windows 10
+  // Brightness matches doesn't work on Windows 10
   if (brightnessMatches) {
     if (Platform.isMacOS) {
       return Colors.transparent;
-    } else if (Platform.isWindows) {
-      if (getWindowsBuild() >= 22449) {
+    }
+    if (Platform.isWindows) {
+      if (getWindowsBuild() >= 22000) {
         print('Windows 11');
         Window.setEffect(
-          effect: WindowEffect.mica,
-          color: Colors.transparent,
-        );
+            effect: WindowEffect.acrylic,
+            color: Theme.of(context).cardColor.withAlpha(0),
+            dark: false);
         return Colors.transparent;
       } else if (getWindowsBuild() >= 10240) {
+        // Acrylic causes issues on W10
         print('Windows 10');
         Window.setEffect(
           effect: WindowEffect.aero,
-          color: Theme.of(context).cardColor.withAlpha(220),
+          color: Theme.of(context).cardColor.withAlpha(200),
         );
         return Colors.transparent;
       }
