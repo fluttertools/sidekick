@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
@@ -17,7 +18,7 @@ class VersionInstallButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final installedMsg =
-        I18Next.of(context).t('components:molecules.versionIsInstalled');
+        context.i18n('components:molecules.versionIsInstalled');
     final notInstalledMsg = I18Next.of(context)
         .t('components:molecules.versionNotInstalledClickToInstall');
     final isQueued = useState(false);

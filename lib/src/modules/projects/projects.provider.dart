@@ -12,8 +12,7 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
-
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../modules/common/utils/notify.dart';
 import '../settings/settings.service.dart';
@@ -88,7 +87,7 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
       await ProjectsService.box.put(path, ref);
       await load();
     } else {
-      notify(I18Next.of(context).t('modules:projects.notAFlutterProject'));
+      notify(context.i18n('modules:projects.notAFlutterProject'));
     }
   }
 

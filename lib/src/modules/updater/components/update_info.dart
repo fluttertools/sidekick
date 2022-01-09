@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../version.dart';
 import '../updater.provider.dart';
@@ -23,7 +24,7 @@ class SkUpdateInfo extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            I18Next.of(context).t(
+            context.i18n(
               'modules:updater.components.aNewVersionOfSidekickIsAvailableUpdateinfolatest',
               variables: {
                 'updateInfoLatest': updateInfo.latest,
@@ -54,7 +55,7 @@ class SkUpdateInfo extends HookWidget {
           icon: Icon(
             updateInfo.needUpdate ? Icons.file_download : Icons.refresh,
           ),
-          label: Text(I18Next.of(context).t('components:atoms.refresh')),
+          label: Text(context.i18n('components:atoms.refresh')),
           onPressed: updater.checkLatest,
         ),
       ],

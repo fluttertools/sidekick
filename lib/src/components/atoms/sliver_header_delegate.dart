@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 /// Sliver header delegate
 class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -40,7 +40,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
           title,
         ),
         trailing: Text(
-          I18Next.of(context).t('components:atoms.countFound', variables: {
+          context.i18n('components:atoms.countFound', variables: {
             'count': count,
           }),
         ),

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/components/organisms/app_bottom_bar.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.dart';
 import 'package:sidekick/src/modules/search/components/search_bar.dart';
 import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
@@ -105,17 +105,17 @@ class AppShell extends HookWidget {
               destinations: [
                 renderNavButton(
                   context,
-                  I18Next.of(context).t('modules:common.navButtonDashboard'),
+                  context.i18n('modules:common.navButtonDashboard'),
                   Icons.category,
                 ),
                 renderNavButton(
                   context,
-                  I18Next.of(context).t('modules:common.navButtonProjects'),
+                  context.i18n('modules:common.navButtonProjects'),
                   MdiIcons.folderMultiple,
                 ),
                 renderNavButton(
                   context,
-                  I18Next.of(context).t('modules:common.navButtonExplore'),
+                  context.i18n('modules:common.navButtonExplore'),
                   Icons.explore,
                 ),
               ],

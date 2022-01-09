@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
 import 'package:sidekick/src/modules/settings/settings.utils.dart';
 
@@ -94,7 +95,7 @@ class ProjectListItem extends HookWidget {
                 children: [
                   const SizedBox(width: 10),
                   Tooltip(
-                    message: I18Next.of(context).t(
+                    message: context.i18n(
                         'modules:projects.components.openTerminalPlayground'),
                     child: IconButton(
                       iconSize: 20,

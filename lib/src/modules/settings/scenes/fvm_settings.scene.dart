@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../settings.dto.dart';
 
@@ -29,9 +30,9 @@ class FvmSettingsScene extends StatelessWidget {
           SwitchListTile(
             title: Text(I18Next.of(context)
                 .t('modules:settings.scenes.skipSetupFlutterOnInstall')),
-            subtitle: Text(I18Next.of(context).t(
+            subtitle: Text(context.i18n(
                     'modules:settings.scenes.thisWillOnlyCloneFlutterAndNotInstall') +
-                I18Next.of(context).t(
+                context.i18n(
                     'modules:settings.scenes.dependenciesAfterANewVersionIsInstalled')),
             value: settings.fvm.skipSetup ?? false,
             onChanged: (value) {
