@@ -16,13 +16,13 @@ class FVMScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cachedVersions = useProvider(releasesStateProvider).all;
+    final cachedVersions = useProvider(releasesStateProvider);
 
     if (cachedVersions == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (cachedVersions.isEmpty) {
+    if (cachedVersions.all.isEmpty) {
       return const EmptyVersions();
     }
 
@@ -33,7 +33,7 @@ class FVMScreen extends HookWidget {
           I18Next.of(context).t(
             'modules:fvm.numberOfCachedVersions',
             variables: {
-              'cachedVersions': cachedVersions.length,
+              'cachedVersions': cachedVersions.all.length,
             },
           ),
         ),
@@ -52,10 +52,12 @@ class FVMScreen extends HookWidget {
       ],
       child: CupertinoScrollbar(
         child: ListView.separated(
-          itemCount: cachedVersions.length,
+          itemCount: cachedVersions.all.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
-            return FvmReleaseListItem(cachedVersions[index]);
+            return FvmReleaseListItem(
+              cachedVersions.all[index],
+            );
           },
         ),
       ),

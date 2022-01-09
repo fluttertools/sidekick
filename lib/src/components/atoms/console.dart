@@ -66,13 +66,13 @@ class Console extends HookWidget {
                     children: [
                       Container(
                           width: MediaQuery.of(context).size.width - 100,
-                          child: ConsoleText(lines.value.first)
-                      ),
+                          child: ConsoleText(lines.value.first)),
                     ],
                   ),
                 ),
                 secondChild: CupertinoScrollbar(
                   child: ListView.builder(
+                    primary: false,
                     shrinkWrap: true,
                     reverse: true,
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),

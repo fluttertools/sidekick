@@ -10,29 +10,28 @@ import '../common/constants.dart';
 import '../fvm/fvm.provider.dart';
 
 class AppReleasesState {
-  MasterDto master;
-  List<ChannelDto> channels;
-  List<VersionDto> versions;
+  bool fetching;
+
+  MasterDto _master;
+  List<ChannelDto> _channels;
+  List<VersionDto> _versions;
+
+  Map<String, ReleaseDto> _allMap = {};
 
   bool hasGlobal;
+
+  List<ReleaseDto> _allCached = [];
+
   AppReleasesState({
-    this.channels,
-    this.versions,
-    this.master,
-    this.hasGlobal = false,
+    this.fetching = true,
   }) {
-    channels = <ChannelDto>[];
-    versions = <VersionDto>[];
+    _channels = <ChannelDto>[];
+    _versions = <VersionDto>[];
   }
 
   /// Returns all releases and channels
   Map<String, ReleaseDto> get allMap {
-    final releases = [...channels, ...versions];
-    if (master != null) {
-      // Master goes first
-      releases.insert(0, master);
-    }
-    return {for (var release in releases) release.name: release};
+    return _allMap;
   }
 
   /// Returns all releases and channels that are cached
@@ -40,10 +39,46 @@ class AppReleasesState {
     // Only get unique cached releases
     // Some releases replicate across channels
     // They can only be installed once and conflict
-    return allMap.entries
+    return _allCached;
+  }
+
+  void generateMap() {
+    final releases = [..._channels, ..._versions];
+    if (_master != null) {
+      // Master goes first
+      releases.insert(0, _master);
+    }
+    _allMap = {for (var release in releases) release.name: release};
+
+    /// Returns all releases and channels that are cached
+    _allCached = allMap.entries
         .where((entry) => entry.value.isCached)
         .map((entry) => entry.value)
         .toList();
+  }
+
+  List<VersionDto> get versions {
+    return _versions;
+  }
+
+  List<ChannelDto> get channels {
+    return _channels;
+  }
+
+  MasterDto get master {
+    return _master;
+  }
+
+  void addChannel(ChannelDto channel) {
+    _channels.add(channel);
+  }
+
+  void addVersion(VersionDto version) {
+    _versions.add(version);
+  }
+
+  void addMaster(MasterDto master) {
+    _master = master;
   }
 }
 
@@ -55,10 +90,10 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Filter only version that are valid releases
   FlutterReleases payload;
   ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
-  final installedVersions = ref.watch(fvmCacheProvider.notifier);
 
   // Watch this state change for refresh
   ref.watch(fvmCacheProvider);
+  final installedVersions = ref.read(fvmCacheProvider.notifier);
 
 //Creates empty releases state
   final releasesState = AppReleasesState();
@@ -66,6 +101,8 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   if (payload == null) {
     return releasesState;
   }
+
+  releasesState.fetching = false;
 
   final flutterReleases = payload.releases;
   final flutterChannels = payload.channels;
@@ -84,13 +121,13 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     masterVersion = FVMClient.getSdkVersionSync(masterCache);
   }
 
-  releasesState.master = MasterDto(
+  releasesState.addMaster(MasterDto(
     name: kMasterChannel,
     cache: masterCache,
     needSetup: masterVersion == null,
     sdkVersion: masterVersion,
     isGlobal: globalVersion == kMasterChannel,
-  );
+  ));
 
   // CHANNELS: Loop through available channels NOT including master
   for (var name in kReleaseChannels) {
@@ -119,7 +156,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       isGlobal: globalVersion == name,
     );
 
-    releasesState.channels.add(channelDto);
+    releasesState.addChannel(channelDto);
   }
 
   // VERSIONS loop to create versions
@@ -142,15 +179,17 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
       isGlobal: globalVersion == item.version,
     );
 
-    releasesState.versions.add(version);
+    releasesState.addVersion(version);
   }
+
+  releasesState.generateMap();
 
   return releasesState;
 });
 
 final getVersionProvider = Provider.family<ReleaseDto, String>(
   (ref, versionName) {
-    final state = ref.watch(releasesStateProvider);
+    final state = ref.read(releasesStateProvider);
     return state.allMap[versionName];
   },
 );
