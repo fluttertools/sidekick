@@ -6,7 +6,6 @@ import 'package:async/async.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:state_notifier/state_notifier.dart';
 import 'package:watcher/watcher.dart';
 
 import '../../modules/common/dto/release.dto.dart';
@@ -58,9 +57,13 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }) : super([]) {
     reloadState();
     // Load State again while listening to directory
-    directoryWatcher =
-        Watcher(FVMClient.context.cacheDir.path).events.listen((event) {
-      _debouncer.run(reloadState);
+    directoryWatcher = Watcher(
+      FVMClient.context.cacheDir.path,
+      pollingDelay: Duration(seconds: 20),
+    ).events.listen((event) {
+      if (event.type == ChangeType.ADD || event.type == ChangeType.REMOVE) {
+        _debouncer.run(reloadState);
+      }
     });
   }
 
@@ -68,6 +71,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   List<CacheVersion> channels = [];
   List<CacheVersion> versions = [];
   List<CacheVersion> all;
+  String lastChangeHash = '';
 
   StreamSubscription<WatchEvent> directoryWatcher;
   final _debouncer = Debouncer(const Duration(seconds: 20));
@@ -119,9 +123,8 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   }
 }
 
-final fvmStdoutProvider = StreamGroup
-    .mergeBroadcast(_getConsoleStreams())
-    .transform(utf8.decoder);
+final fvmStdoutProvider =
+    StreamGroup.mergeBroadcast(_getConsoleStreams()).transform(utf8.decoder);
 
 List<Stream<List<int>>> _getConsoleStreams() {
   return [
