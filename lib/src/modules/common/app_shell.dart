@@ -52,7 +52,7 @@ class AppShell extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // LayoutSize.init(context);
+    LayoutSize.init(context);
     final navigation = useProvider(navigationProvider.notifier);
     final currentRoute = useProvider(navigationProvider);
     final selectedInfo = useProvider(selectedDetailProvider).state;
