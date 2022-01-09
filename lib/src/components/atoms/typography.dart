@@ -66,7 +66,7 @@ class ConsoleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SelectableText(
+    return Text(
       text,
       maxLines: 1,
       style: GoogleFonts.ibmPlexMono().copyWith(
@@ -78,43 +78,6 @@ class ConsoleText extends StatelessWidget {
 }
 
 /// Console text info
-class ConsoleTextInfo extends StatelessWidget {
-  /// Constructor
-  const ConsoleTextInfo(this.text, {Key key}) : super(key: key);
-
-  /// Content
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return SelectableText(
-      text,
-      style: GoogleFonts.ibmPlexMono().copyWith(
-        fontSize: 12,
-        color: Colors.white,
-      ),
-    );
-  }
-}
-
-/// Stderr Text widget
-class ConsoleTextError extends StatelessWidget {
-  /// Constructor
-  const ConsoleTextError(this.text, {Key key}) : super(key: key);
-
-  /// Content
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return SelectableText(
-      text,
-      style: GoogleFonts.ibmPlexMono().copyWith(
-        fontSize: 12,
-        color: Colors.deepOrange,
-      ),
-    );
-  }
-}
 
 /// Heading
 class Heading extends StatelessWidget {
