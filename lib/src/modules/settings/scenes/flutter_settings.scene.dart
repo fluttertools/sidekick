@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../releases/releases.provider.dart';
@@ -51,7 +52,7 @@ class SettingsSectionFlutter extends HookWidget {
                           ),
                         ),
                         child: Text(
-                          I18Next.of(context).t(
+                          context.i18n(
                               'modules:settings.scenes.flutterSDKGlobalDescription'),
                         ),
                       ),
@@ -74,11 +75,10 @@ class SettingsSectionFlutter extends HookWidget {
                     },
             ),
             const SizedBox(height: 20),
-            Subheading(
-                I18Next.of(context).t('modules:settings.scenes.platforms')),
+            Subheading(context.i18n('modules:settings.scenes.platforms')),
             const SizedBox(height: 20),
             SwitchListTile(
-              title: Text(I18Next.of(context).t('modules:settings.scenes.web')),
+              title: Text(context.i18n('modules:settings.scenes.web')),
               value: settings.flutter.web,
               onChanged: deactivate
                   ? null

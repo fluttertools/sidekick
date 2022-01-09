@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../common/utils/notify.dart';
 import '../fvm.provider.dart';
@@ -31,8 +32,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child:
-                    Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
+                child: Text(context.i18n('modules:fvm.dialogs.cancel')),
               ),
               TextButton(
                 onPressed: () async {
@@ -47,8 +47,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
 
                   Navigator.of(context).pop();
                 },
-                child:
-                    Text(I18Next.of(context).t('modules:fvm.dialogs.confirm')),
+                child: Text(context.i18n('modules:fvm.dialogs.confirm')),
               ),
             ],
             content: Container(
@@ -58,9 +57,9 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                   child: Column(
                     children: [
                       Text(
-                        I18Next.of(context).t(
+                        context.i18n(
                                 'modules:fvm.dialogs.theseVersionAreNotPinnedToAProject') +
-                            I18Next.of(context).t(
+                            context.i18n(
                                 'modules:fvm.dialogs.doYouWantToRemoveThemToFreeUpSpace'),
                       ),
                       const SizedBox(height: 10),

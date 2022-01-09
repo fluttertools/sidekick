@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
 
+import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -8,6 +9,7 @@ import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/notify.dart';
 import 'terminal_processor.dart';
 
+//TODO: Refactor file and reorganize providers and helpers
 /// Sandbox terminal state
 class TerminalState {
   /// Constructor
@@ -46,7 +48,7 @@ class TerminalState {
   }
 
   void addConsoleLine(ConsoleLine line) {
-    lines.insert(0, line);
+    lines.add(line);
   }
 
   void addLine(String text) {
@@ -73,7 +75,7 @@ class TerminalState {
 
   TerminalState copy() {
     return TerminalState(
-      lines: lines,
+      lines: [...lines],
       processing: processing,
       cmdHistory: _cmdHistory,
     );
@@ -94,6 +96,27 @@ class ConsoleLine {
     this.type = OutputType.stdout,
     this.text,
   });
+
+  TextStyle get style {
+    final style = TextStyle(
+      fontSize: 12,
+      color: Colors.grey,
+    );
+
+    if (type == OutputType.stderr) {
+      return style.copyWith(
+        color: Colors.deepOrange,
+      );
+    }
+
+    if (type == OutputType.info) {
+      return style.copyWith(
+        color: Colors.white,
+      );
+    }
+
+    return style;
+  }
 
   factory ConsoleLine.empty() {
     return ConsoleLine(text: '');
@@ -204,14 +227,14 @@ class SandboxStateNotifier extends StateNotifier<TerminalState> {
       // Send command to terminal
       if (!supressCmdOutput) {
         // Add to command history
-        //
+
         state.addToHistory(cmd);
         state.addLine('\n$cmd\n');
       }
 
       // Set to processing
-      state.processing = true;
       // Notify listeners
+      state.processing = true;
       _notifyListeners();
       // Receiver port for isolate
       final receivePort = ReceivePort();
@@ -235,9 +258,9 @@ class SandboxStateNotifier extends StateNotifier<TerminalState> {
           receivePort.close();
           _killIsolate();
         } else {
-          state.lines = [line, ...state.lines];
-          _notifyListeners();
+          state.lines = [...state.lines, line];
         }
+        _notifyListeners();
       }
     } on Exception catch (e) {
       notifyError(e.toString());

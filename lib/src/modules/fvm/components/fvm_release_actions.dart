@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/dto/release.dto.dart';
@@ -56,22 +56,21 @@ class FvmReleaseActions extends StatelessWidget {
       PopupMenuItem(
         value: FvmReleaseActionOptions.global,
         child: renderMenuButton(
-          label: I18Next.of(context).t('modules:fvm.components.setAsGlobal'),
+          label: context.i18n('modules:fvm.components.setAsGlobal'),
           icon: MdiIcons.earth,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.detail,
         child: renderMenuButton(
-          label:
-              I18Next.of(context).t('modules:pubPackages.components.details'),
+          label: context.i18n('modules:pubPackages.components.details'),
           icon: MdiIcons.information,
         ),
       ),
       PopupMenuItem(
         value: FvmReleaseActionOptions.remove,
         child: renderMenuButton(
-          label: I18Next.of(context).t('modules:projects.components.remove'),
+          label: context.i18n('modules:projects.components.remove'),
           icon: MdiIcons.delete,
         ),
       ),
@@ -84,7 +83,7 @@ class FvmReleaseActions extends StatelessWidget {
         PopupMenuItem(
           value: FvmReleaseActionOptions.upgrade,
           child: renderMenuButton(
-            label: I18Next.of(context).t('modules:fvm.components.upgrade'),
+            label: context.i18n('modules:fvm.components.upgrade'),
             icon: MdiIcons.update,
           ),
         ),

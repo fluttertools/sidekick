@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 
 import '../../components/atoms/sliver_animated_switcher.dart';
 import '../../components/atoms/typography.dart';
@@ -24,8 +22,9 @@ class ReleasesScreen extends HookWidget {
 
     return SkScreen(
       extendBody: false,
-      title: I18Next.of(context).t('modules:releases.releases'),
+      title: context.i18n('modules:releases.releases'),
       child: CustomScrollView(
+        primary: false,
         slivers: [
           SliverToBoxAdapter(
             child: AnimatedContainer(
@@ -47,12 +46,12 @@ class ReleasesScreen extends HookWidget {
                     children: [
                       const SizedBox(width: 10),
                       Subheading(
-                        I18Next.of(context).t('components:molecules.master'),
+                        context.i18n('components:molecules.master'),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Caption(
-                          I18Next.of(context).t(
+                          context.i18n(
                               'modules:releases.theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional'),
                         ),
                       ),
@@ -115,7 +114,7 @@ class ReleasesScreen extends HookWidget {
                   Row(
                     children: [
                       Heading(
-                        I18Next.of(context).t('modules:releases.versions'),
+                        context.i18n('modules:releases.versions'),
                       ),
                       const SizedBox(width: 10),
                       Chip(label: Text(versions.length.toString())),
@@ -128,7 +127,7 @@ class ReleasesScreen extends HookWidget {
                     items: Filter.values.map((Filter filter) {
                       final text = filter != Filter.all
                           ? filter.name.capitalize()
-                          : I18Next.of(context).t('modules:releases.all');
+                          : context.i18n('modules:releases.all');
 
                       return DropdownMenuItem(
                         value: filter.name,
@@ -144,9 +143,12 @@ class ReleasesScreen extends HookWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return ReleaseListItem(versions[index]);
-            }, childCount: versions.length),
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ReleaseListItem(versions[index]);
+              },
+              childCount: versions.length,
+            ),
           ),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../../../modules/common/dto/release.dto.dart';
@@ -60,7 +61,7 @@ class ProjectReleaseSelect extends StatelessWidget {
             children: [
               project.pinnedVersion != null
                   ? Caption(project.pinnedVersion)
-                  : Caption(I18Next.of(context).t('modules:projects.choose')),
+                  : Caption(context.i18n('modules:projects.choose')),
               // const SizedBox(width: 20),
               const Icon(MdiIcons.menuDown),
             ],

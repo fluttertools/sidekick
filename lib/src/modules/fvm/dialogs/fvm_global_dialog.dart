@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/copy_button.dart';
 import '../../../components/atoms/typography.dart';
@@ -17,7 +18,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
       builder: (context) {
         return AlertDialog(
           title: Heading(
-            I18Next.of(context).t('modules:fvm.dialogs.globalConfiguration'),
+            context.i18n('modules:fvm.dialogs.globalConfiguration'),
           ),
           actions: <Widget>[
             TextButton(
@@ -28,7 +29,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(I18Next.of(context).t('modules:fvm.dialogs.ok')),
+              child: Text(context.i18n('modules:fvm.dialogs.ok')),
             ),
           ],
           content: Container(
@@ -47,7 +48,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                           Subheading(
                             I18Next.of(context)
                                     .t('modules:fvm.dialogs.changeThePathTo') +
-                                I18Next.of(context).t(
+                                context.i18n(
                                     'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
                           ),
                           Row(
