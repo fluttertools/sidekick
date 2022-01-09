@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../components/organisms/screen.dart';
 import '../releases/releases.provider.dart';
@@ -27,10 +27,10 @@ class FVMScreen extends HookWidget {
     }
 
     return SkScreen(
-      title: I18Next.of(context).t('modules:fvm.installedVersions'),
+      title: context.i18n('modules:fvm.installedVersions'),
       actions: [
         Text(
-          I18Next.of(context).t(
+          context.i18n(
             'modules:fvm.numberOfCachedVersions',
             variables: {
               'cachedVersions': cachedVersions.all.length,
@@ -41,12 +41,12 @@ class FVMScreen extends HookWidget {
         const FvmCacheSize(),
         const SizedBox(width: 20),
         Tooltip(
-          message: I18Next.of(context).t('modules:fvm.cleanUpTooltip'),
+          message: context.i18n('modules:fvm.cleanUpTooltip'),
           child: OutlinedButton(
             onPressed: () async {
               await cleanupUnusedDialog(context);
             },
-            child: Text(I18Next.of(context).t('modules:fvm.cleanUp')),
+            child: Text(context.i18n('modules:fvm.cleanUp')),
           ),
         )
       ],

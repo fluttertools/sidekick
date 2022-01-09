@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 /// Sidekick title
 const kAppTitle = 'Sidekick';
@@ -33,10 +33,8 @@ const kFlutterTagsUrl = 'https://github.com/flutter/flutter/releases/tag/';
 
 /// Description for the channels
 Map<String, String> channelDescriptions(BuildContext context) => {
-      'stable':
-          I18Next.of(context).t('modules:common.stableChannelDescription'),
-      'beta': I18Next.of(context).t('modules:common.betaChannelDescription'),
-      'dev': I18Next.of(context).t('modules:common.devChannelDescription'),
-      'master':
-          I18Next.of(context).t('modules:common.masterChannelDescription'),
+      'stable': context.i18n('modules:common.stableChannelDescription'),
+      'beta': context.i18n('modules:common.betaChannelDescription'),
+      'dev': context.i18n('modules:common.devChannelDescription'),
+      'master': context.i18n('modules:common.masterChannelDescription'),
     };

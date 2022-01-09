@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:i18next/i18next.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -28,6 +30,16 @@ extension ExtendedIterable<E> on Iterable<E> {
   void forEachIndexed(void Function(E e, int i) f) {
     var i = 0;
     forEach((e) => f(e, i++));
+  }
+}
+
+extension BuildContextExtension on BuildContext {
+  String i18n(String key, {Map<String, dynamic> variables}) {
+    return I18Next.of(this).t(key, variables: variables);
+  }
+
+  Locale get locale {
+    return I18Next.of(this).locale;
   }
 }
 
