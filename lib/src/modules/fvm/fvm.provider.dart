@@ -59,7 +59,6 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     // Load State again while listening to directory
     directoryWatcher = Watcher(
       FVMClient.context.cacheDir.path,
-      pollingDelay: Duration(seconds: 20),
     ).events.listen((event) {
       if (event.type == ChangeType.ADD || event.type == ChangeType.REMOVE) {
         _debouncer.run(reloadState);

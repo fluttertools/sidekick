@@ -33,7 +33,8 @@ class SkShortcutManager extends StatelessWidget {
       context.read(navigationProvider.notifier).goTo(route);
     }
 
-    return Shortcuts(
+    return FocusableActionDetector(
+      autofocus: true,
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(
           LogicalKeyboardKey.metaLeft,
@@ -52,17 +53,11 @@ class SkShortcutManager extends StatelessWidget {
           LogicalKeyboardKey.keyF,
         ): const NavigationIntent(route: NavigationRoutes.searchScreen),
       },
-      child: Actions(
-        actions: <Type, Action<Intent>>{
-          NavigationIntent: CallbackAction<NavigationIntent>(
-              onInvoke: (intent) => handleRouteChange(intent.route)),
-        },
-        child: Focus(
-          autofocus: true,
-          focusNode: focusNode,
-          child: child,
-        ),
-      ),
+      actions: <Type, Action<Intent>>{
+        NavigationIntent: CallbackAction<NavigationIntent>(
+            onInvoke: (intent) => handleRouteChange(intent.route)),
+      },
+      child: child,
     );
   }
 }

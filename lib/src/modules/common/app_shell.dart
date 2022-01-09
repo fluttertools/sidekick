@@ -5,8 +5,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/components/organisms/app_bottom_bar.dart';
 import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.dart';
 import 'package:sidekick/src/modules/search/components/search_bar.dart';
+import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
 
 import '../../components/molecules/top_app_bar.dart';
 import '../../components/organisms/shortcut_manager.dart';
@@ -85,8 +87,8 @@ class AppShell extends HookWidget {
       focusNode: focusNode,
       child: Scaffold(
         appBar: const SkAppBar(),
-        // bottomNavigationBar: const AppBottomBar(),
-        // endDrawer: const SelectedDetailDrawer(),
+        bottomNavigationBar: const AppBottomBar(),
+        endDrawer: const SelectedDetailDrawer(),
         backgroundColor: platformBackgroundColor(context),
         key: _scaffoldKey,
         body: Row(
