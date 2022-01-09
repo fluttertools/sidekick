@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:i18next/i18next.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/notify.dart';

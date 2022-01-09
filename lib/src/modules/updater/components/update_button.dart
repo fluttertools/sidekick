@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
@@ -41,7 +42,7 @@ class SkUpdateButton extends HookWidget {
             ),
             content: Container(
               child: Paragraph(
-                I18Next.of(context).t(
+                context.i18n(
                   'modules:updater.components.sidekickVersionUpdateinfolatestIsNowAvailable',
                   variables: {
                     'updateInfoLatest': updateInfo.latest,
@@ -55,8 +56,7 @@ class SkUpdateButton extends HookWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(
-                    I18Next.of(context).t('modules:updater.components.later')),
+                child: Text(context.i18n('modules:updater.components.later')),
               ),
               ElevatedButton(
                 onPressed: () async {

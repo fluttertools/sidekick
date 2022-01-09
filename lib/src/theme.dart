@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData get darkPurpleTheme {
@@ -129,12 +130,54 @@ RoundedRectangleBorder get _roundedShape {
   );
 }
 
+bool isNumeric(String s) {
+  if (s == null) {
+    return false;
+  }
+  return double.tryParse(s) != null;
+}
+
+double getWindowsBuild() {
+  final osVer =
+      Platform.operatingSystemVersion.replaceAll(RegExp(r'[^\w\s\.]+'), '');
+
+  final splitOsVer = osVer.split(' ');
+
+  final nums = splitOsVer.where((element) => isNumeric(element)).toList();
+  return double.parse(nums.last);
+}
+
 Color platformBackgroundColor(BuildContext context) {
   final themeBrightness = Theme.of(context).brightness;
   final platformBrightness = MediaQuery.of(context).platformBrightness;
   final brightnessMatches = themeBrightness == platformBrightness;
-  if (Platform.isMacOS && brightnessMatches) {
-    return Colors.transparent;
+
+  // Brightness matches doesn't work on Windows 10
+  if (brightnessMatches) {
+    if (Platform.isMacOS) {
+      return Colors.transparent;
+    }
+    if (Platform.isWindows) {
+      if (getWindowsBuild() >= 22000) {
+        print('Windows 11');
+        Window.setEffect(
+            effect: WindowEffect.acrylic,
+            color: Theme.of(context).cardColor.withAlpha(0),
+            dark: false);
+        return Colors.transparent;
+      } else if (getWindowsBuild() >= 10240) {
+        // Acrylic causes issues on W10
+        print('Windows 10');
+        Window.setEffect(
+          effect: WindowEffect.aero,
+          color: Theme.of(context).cardColor.withAlpha(200),
+        );
+        return Colors.transparent;
+      }
+      return Theme.of(context).cardColor;
+    } else {
+      return Theme.of(context).cardColor;
+    }
   } else {
     return Theme.of(context).cardColor;
   }

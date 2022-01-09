@@ -9,8 +9,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  animations: ^2.0.0
+  animations: ^2.0.2
   async: ^2.6.1
+  bitsdojo_window: ^0.1.1+1
   date_time_format: ^2.0.1
   dio: ^4.0.0
   file_selector: ^0.8.2
@@ -20,6 +21,7 @@ dependencies:
   filesize: ^2.0.1
   flutter:
     sdk: flutter
+  flutter_acrylic: ^0.1.0
   flutter_hooks: ^0.17.0
   flutter_localizations:
     sdk: flutter

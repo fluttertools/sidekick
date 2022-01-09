@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 
 /// Copy button
@@ -21,7 +21,7 @@ class CopyButton extends StatelessWidget {
       icon: const Icon(Icons.content_copy),
       onPressed: () async {
         await Clipboard.setData(ClipboardData(text: content));
-        notify(I18Next.of(context).t('components:atoms.copiedToClipboard'));
+        notify(context.i18n('components:atoms.copiedToClipboard'));
       },
     );
   }

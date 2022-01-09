@@ -71,8 +71,8 @@ class EmptyDataset extends StatelessWidget {
             child: ClipRRect(
               clipBehavior: Clip.antiAlias,
               child: Container(
-                width: 350,
-                height: 350,
+                width: 450,
+                height: 300,
                 child: Stack(
                   children: bgIcons,
                 ),
@@ -82,7 +82,7 @@ class EmptyDataset extends StatelessWidget {
         ),
         Center(
           child: Container(
-            width: 450,
+            width: 350,
             height: 350,
             child: child,
           ),

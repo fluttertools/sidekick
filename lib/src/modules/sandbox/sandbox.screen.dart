@@ -5,11 +5,12 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../modules/common/dto/release.dto.dart';
 import '../releases/releases.provider.dart';
-import 'components/terminal.dart';
+import 'components/sandbox_terminal.dart';
 import 'sandbox.provider.dart';
 
 /// Sandbox screen
@@ -46,7 +47,7 @@ class SandboxScreen extends HookWidget {
           children: [
             const Icon(MdiIcons.playBox),
             const SizedBox(width: 10),
-            Subheading(I18Next.of(context).t('modules:sandbox.playground')),
+            Subheading(context.i18n('modules:sandbox.playground')),
           ],
         ),
         centerTitle: true,
@@ -80,10 +81,9 @@ class SandboxScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title:
-                      Text(I18Next.of(context).t('modules:releases.releases')),
+                  title: Text(context.i18n('modules:releases.releases')),
                   subtitle: Text(
-                    I18Next.of(context).t(
+                    context.i18n(
                       'modules:sandbox.releasesVersions',
                       variables: {
                         'releases': releases.all.length,
@@ -166,7 +166,7 @@ class SandboxScreen extends HookWidget {
                             terminal.endProcess();
                           },
                           child: Text(
-                            I18Next.of(context).t('modules:fvm.dialogs.cancel'),
+                            context.i18n('modules:fvm.dialogs.cancel'),
                           ),
                         )
                       : OutlinedButton(
@@ -177,7 +177,7 @@ class SandboxScreen extends HookWidget {
                 ),
                 const Divider(height: 1),
                 Expanded(
-                  child: SandboxConsole(
+                  child: SandboxTerminal(
                     project: project,
                     release: selectedRelease.value,
                   ),
