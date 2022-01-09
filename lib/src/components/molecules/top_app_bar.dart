@@ -40,7 +40,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
 
     Widget renderTitle() {
-      if (Platform.isWindows) {
+      if (!Platform.isMacOS) {
         return Row(
           children: [
             SizedBox(width: 10),
@@ -77,7 +77,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: openSettingsScreen,
         ),
         const SizedBox(width: 10),
-        if (Platform.isWindows || Platform.isLinux) WindowButtons(),
+        if (!Platform.isMacOS) WindowButtons(),
       ],
       bottom: const PreferredSize(
         preferredSize: Size.fromHeight(1),
