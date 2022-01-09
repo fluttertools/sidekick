@@ -14,7 +14,6 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 
-import 'package:state_notifier/state_notifier.dart';
 
 import '../../modules/common/utils/notify.dart';
 import '../settings/settings.service.dart';
