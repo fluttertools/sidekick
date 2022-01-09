@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -7,15 +6,14 @@ import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../components/atoms/typography.dart';
 import '../../../modules/common/dto/release.dto.dart';
 import '../../../modules/common/utils/notify.dart';
 import '../sandbox.provider.dart';
 
 /// Sandbox terminal
-class SandboxConsole extends HookWidget {
+class SandboxTerminal extends HookWidget {
   /// Constructor
-  const SandboxConsole({
+  const SandboxTerminal({
     this.project,
     this.release,
     Key key,
@@ -41,9 +39,9 @@ class SandboxConsole extends HookWidget {
 
     final processing = terminalState.processing;
 
-    void submitCmd(
+    void onSubmit(
       String value,
-    ) async {
+    ) {
       try {
         /// Don't do anything if its empty
         if (value.isEmpty) return;
@@ -51,13 +49,11 @@ class SandboxConsole extends HookWidget {
         currentCmdIdx.value = 0;
         // Add to the beginning of list
         textController.clear();
-        await terminal.sendIsolate(
+        terminal.sendIsolate(
           value,
           release,
           project,
         );
-        // Clear controller
-        scrollController.jumpTo(0);
       } on Exception catch (e) {
         notifyError(e.toString());
       }
@@ -78,6 +74,20 @@ class SandboxConsole extends HookWidget {
         focus.requestFocus();
       }
     }, [processing]);
+
+    useEffect(() {
+      /// Scroll to bottom
+      if (scrollController.hasClients) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 250),
+            curve: Curves.ease,
+          );
+        });
+      }
+      return;
+    }, [terminalState.lines]);
 
     void moveCmdIndex(int step) {
       final cmds = terminalState.cmdHistory;
@@ -108,7 +118,7 @@ class SandboxConsole extends HookWidget {
       });
     }
 
-    void handleKey(RawKeyEvent key) {
+    void handlekeyDown(RawKeyEvent key) {
       if (key.runtimeType.toString() == 'RawKeyDownEvent') {
         if (key.data.logicalKey == LogicalKeyboardKey.arrowUp) {
           if (terminalState.cmdHistory.length > currentCmdIdx.value) {
@@ -124,27 +134,26 @@ class SandboxConsole extends HookWidget {
     }
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
-          child: CupertinoScrollbar(
-            child: ListView.builder(
-              controller: scrollController,
-              reverse: true,
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              itemCount: terminalState.lines.length,
-              itemBuilder: (context, index) {
-                final line = terminalState.lines[index];
-                switch (line.type) {
-                  case OutputType.stderr:
-                    return ConsoleTextError(line.text);
-                  case OutputType.info:
-                    return ConsoleTextInfo(line.text);
-                  case OutputType.stdout:
-                    return ConsoleText(line.text);
-                  default:
-                    return Container();
-                }
-              },
+          child: SingleChildScrollView(
+            primary: false,
+            controller: scrollController,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SelectableText.rich(
+                TextSpan(
+                  children: terminalState.lines
+                      .map(
+                        (e) => TextSpan(
+                          text: '${e.text}\n',
+                          style: e.style,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
             ),
           ),
         ),
@@ -155,12 +164,12 @@ class SandboxConsole extends HookWidget {
               Expanded(
                 child: RawKeyboardListener(
                   focusNode: keyListenerFocus,
-                  onKey: handleKey,
+                  onKey: handlekeyDown,
                   child: TextField(
                     focusNode: focus,
                     enabled: !terminalState.processing,
                     controller: textController,
-                    onSubmitted: submitCmd,
+                    onSubmitted: onSubmit,
                     decoration: const InputDecoration(
                       icon: Icon(MdiIcons.chevronRight),
                       border: InputBorder.none,

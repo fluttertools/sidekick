@@ -10,7 +10,7 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import '../../components/atoms/typography.dart';
 import '../../modules/common/dto/release.dto.dart';
 import '../releases/releases.provider.dart';
-import 'components/terminal.dart';
+import 'components/sandbox_terminal.dart';
 import 'sandbox.provider.dart';
 
 /// Sandbox screen
@@ -177,7 +177,7 @@ class SandboxScreen extends HookWidget {
                 ),
                 const Divider(height: 1),
                 Expanded(
-                  child: SandboxConsole(
+                  child: SandboxTerminal(
                     project: project,
                     release: selectedRelease.value,
                   ),
