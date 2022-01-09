@@ -39,13 +39,24 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
           .goTo(NavigationRoutes.searchScreen);
     }
 
+    Widget renderTitle() {
+      if (Platform.isWindows) {
+        return Row(
+          children: [
+            SizedBox(width: 10),
+            const Caption(kAppTitle),
+          ],
+        );
+      }
+      return const Caption(kAppTitle);
+    }
+
     return AppBar(
       backgroundColor: platformBackgroundColor(context),
-      title: Platform.isMacOS
-          ? const Caption(kAppTitle)
-          : const SizedBox(height: 0, width: 0),
-      centerTitle: true,
-      leading: Platform.isMacOS ? WindowButtons() : SizedBox(),
+      title: renderTitle(),
+      centerTitle: Platform.isWindows ? false : true,
+      titleSpacing: 0,
+      leading: Platform.isMacOS ? WindowButtons() : null,
       actions: [
         const SkUpdateButton(),
         const SizedBox(

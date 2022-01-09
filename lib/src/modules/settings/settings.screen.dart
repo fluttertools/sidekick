@@ -65,12 +65,15 @@ class SettingsScreen extends HookWidget {
     }
 
     Future<void> handleSave() async {
+      final savedMessage =
+          I18Next.of(context).t('modules:settings.settingsHaveBeenSaved');
+      final errorMessage =
+          I18Next.of(context).t('modules:settings.couldNotSaveSettings');
       try {
         await provider.save(settings);
-        notify(I18Next.of(context).t('modules:settings.settingsHaveBeenSaved'));
+        notify(savedMessage);
       } on Exception catch (e) {
-        notifyError(
-            I18Next.of(context).t('modules:settings.couldNotSaveSettings'));
+        notifyError(errorMessage);
         notifyError(e.toString());
       }
     }

@@ -355,7 +355,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.18.2"
+    version: "0.17.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -454,7 +454,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+5"
+    version: "0.14.0+4"
   http:
     dependency: transitive
     description:
