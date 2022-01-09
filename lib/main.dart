@@ -26,6 +26,7 @@ Future main({
   bool isTestMode = false,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+
   if (!Hive.isAdapterRegistered(SidekickSettingsAdapter().typeId)) {
     Hive.registerAdapter(SidekickSettingsAdapter());
   }
@@ -33,10 +34,12 @@ Future main({
     Hive.registerAdapter(ProjectPathAdapter());
   }
 
+
   // Transparency compatibility for windows & linux
   if (!Platform.isMacOS) {
     await Window.initialize();
   }
+
 
   final hiveDir = await getApplicationSupportDirectory();
 
@@ -59,6 +62,7 @@ Future main({
 
   if (isTestMode) {
     return ProviderScope(child: FvmApp());
+
   }
 
   runApp(ProviderScope(child: FvmApp()));
