@@ -57,11 +57,11 @@ class FvmApp extends StatelessWidget {
       return const ErrorDBScreen();
     }
 
+    final settings = SettingsService.read();
+
     return ValueListenableBuilder<Box<SidekickSettings>>(
       valueListenable: SettingsService.box.listenable(),
       builder: (context, box, widget) {
-        final settings = SettingsService.read();
-
         return OKToast(
           child: MaterialApp(
             localizationsDelegates: [

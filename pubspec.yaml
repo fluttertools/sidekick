@@ -9,7 +9,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  animations: ^2.0.0
+  animations: ^2.0.2
   async: ^2.6.1
   date_time_format: ^2.0.1
   dio: ^4.0.0
@@ -20,7 +20,7 @@ dependencies:
   filesize: ^2.0.1
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.17.0
+  flutter_hooks: ^0.18.2
   flutter_localizations:
     sdk: flutter
   flutter_spinkit: ^5.0.0

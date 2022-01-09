@@ -24,6 +24,8 @@ class VersionInstallButton extends HookWidget {
     final hovering = useState(false);
     final queueProvider = useProvider(fvmQueueProvider);
 
+    final isCached = version?.isCached == true;
+
     useEffect(() {
       final isInstalling = queueProvider.activeItem != null &&
           queueProvider.activeItem.version == version;
@@ -49,7 +51,7 @@ class VersionInstallButton extends HookWidget {
     }
 
     Widget installIcon() {
-      if ((isQueued.value && !version.isCached)) {
+      if ((isQueued.value && !isCached)) {
         return SizedBox(
           height: 20,
           width: 20,
@@ -60,7 +62,7 @@ class VersionInstallButton extends HookWidget {
         );
       }
 
-      if (version.isCached) {
+      if (isCached) {
         return Icon(
           Icons.check,
           size: 20,
@@ -87,14 +89,14 @@ class VersionInstallButton extends HookWidget {
         }
       },
       child: Opacity(
-        opacity: (version?.isCached ?? false) ? 0.3 : 1,
+        opacity: isCached ? 0.3 : 1,
         child: IconButton(
           onPressed: onInstall,
           splashRadius: 20,
           icon: Tooltip(
-              message:
-                  (version?.isCached ?? false) ? installedMsg : notInstalledMsg,
-              child: installIcon()),
+            message: isCached ? installedMsg : notInstalledMsg,
+            child: installIcon(),
+          ),
         ),
       ),
     );

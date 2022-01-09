@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,6 +25,7 @@ class ReleasesScreen extends HookWidget {
       extendBody: false,
       title: I18Next.of(context).t('modules:releases.releases'),
       child: CustomScrollView(
+        primary: false,
         slivers: [
           SliverToBoxAdapter(
             child: AnimatedContainer(
@@ -144,9 +144,12 @@ class ReleasesScreen extends HookWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return ReleaseListItem(versions[index]);
-            }, childCount: versions.length),
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ReleaseListItem(versions[index]);
+              },
+              childCount: versions.length,
+            ),
           ),
         ],
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/navigation/navigation.provider.dart';
 
@@ -16,24 +15,26 @@ class NavigationIntent extends Intent {
 }
 
 /// Shorcut manager
-class SkShortcutManager extends HookWidget {
+class SkShortcutManager extends StatelessWidget {
   /// Constructor
   const SkShortcutManager({
     Key key,
     this.child,
+    @required this.focusNode,
   }) : super(key: key);
 
   /// Child
   final Widget child;
+  final FocusNode focusNode;
   @override
   Widget build(BuildContext context) {
-    final focusNode = useFocusNode();
     // Handles route change
     void handleRouteChange(NavigationRoutes route) {
       context.read(navigationProvider.notifier).goTo(route);
     }
 
-    return Shortcuts(
+    return FocusableActionDetector(
+      autofocus: true,
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(
           LogicalKeyboardKey.metaLeft,
@@ -52,17 +53,11 @@ class SkShortcutManager extends HookWidget {
           LogicalKeyboardKey.keyF,
         ): const NavigationIntent(route: NavigationRoutes.searchScreen),
       },
-      child: Actions(
-        actions: <Type, Action<Intent>>{
-          NavigationIntent: CallbackAction<NavigationIntent>(
-              onInvoke: (intent) => handleRouteChange(intent.route)),
-        },
-        child: Focus(
-          autofocus: true,
-          focusNode: focusNode,
-          child: child,
-        ),
-      ),
+      actions: <Type, Action<Intent>>{
+        NavigationIntent: CallbackAction<NavigationIntent>(
+            onInvoke: (intent) => handleRouteChange(intent.route)),
+      },
+      child: child,
     );
   }
 }
