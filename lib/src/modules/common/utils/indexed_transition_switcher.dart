@@ -73,7 +73,7 @@ class _IndexedTransitionSwitcherState extends State<IndexedTransitionSwitcher>
         // Animate out the old child and unstage it when the animation is complete
         oldChild.secondaryController.value = 0;
         oldChild.primaryController
-            .reverse(from: 1)
+            .reverse(from: 0)
             .then((value) => setState(() {
                   oldChild.onStage = false;
                   oldChild.primaryController.reset();
