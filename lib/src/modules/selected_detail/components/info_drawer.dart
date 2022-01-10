@@ -80,6 +80,7 @@ class SelectedDetailDrawer extends HookWidget {
           ),
           body: CupertinoScrollbar(
             child: ListView(
+              primary: false,
               children: [
                 ReferenceInfoTile(selected),
                 FvmInfoTile(selected),
