@@ -8,6 +8,10 @@ Sidekick is an app that provides a simple desktop interface to tools that enhanc
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
+
+[![Download Sidekick MS Store](https://getbadgecdn.azureedge.net/images/English_L.png)](https://www.microsoft.com/store/productId/9NZ54K8CW0WG)
+
+
 ### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
 ### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
 
