@@ -55,8 +55,8 @@ Future<DirectorySizeInfo> getDirectorySize(Directory dir) async {
         }
       });
     }
-  } on Exception catch (e) {
-    print(e.toString());
+  } on Exception catch (_) {
+    //print(e.toString());
   }
 
   return DirectorySizeInfo(

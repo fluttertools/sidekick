@@ -15,12 +15,10 @@ class BlurBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
-      child: Container(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: strength, sigmaY: strength),
-          child: Container(
-            color: Colors.transparent,
-          ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: strength, sigmaY: strength),
+        child: Container(
+          color: Colors.transparent,
         ),
       ),
     );

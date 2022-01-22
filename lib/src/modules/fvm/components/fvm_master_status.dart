@@ -26,7 +26,7 @@ class FvmMasterStatus extends StatelessWidget {
       children: [
         const Icon(MdiIcons.checkCircle, size: 20),
         SizedBox(width: masterChannel.isChannel ? 10 : 0),
-        Text('${masterChannel.sdkVersion}'),
+        Text(masterChannel.sdkVersion),
       ],
     );
   }

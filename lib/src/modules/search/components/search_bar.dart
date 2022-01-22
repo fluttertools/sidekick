@@ -62,10 +62,8 @@ class SearchBar extends HookWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Container(
-              child: const BlurBackground(
-                strength: 15,
-              ),
+            const BlurBackground(
+              strength: 15,
             ),
             FloatingSearchBar(
               hint: context.i18n('modules:search.components.search'),

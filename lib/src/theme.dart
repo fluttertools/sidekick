@@ -159,7 +159,7 @@ Color platformBackgroundColor(BuildContext context) {
     }
     if (Platform.isWindows) {
       if (getWindowsBuild() >= 22000) {
-        print('Windows 11');
+        //print('Windows 11');
         Window.setEffect(
             effect: WindowEffect.acrylic,
             color: Theme.of(context).cardColor.withAlpha(0),
@@ -167,7 +167,7 @@ Color platformBackgroundColor(BuildContext context) {
         return Colors.transparent;
       } else if (getWindowsBuild() >= 10240) {
         // Acrylic causes issues on W10
-        print('Windows 10');
+        //print('Windows 10');
         Window.setEffect(
           effect: WindowEffect.aero,
           color: Theme.of(context).cardColor.withAlpha(200),

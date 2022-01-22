@@ -129,35 +129,33 @@ class AppShell extends HookWidget {
                 fit: StackFit.expand,
                 children: [
                   Scaffold(
-                    body: Container(
-                      child: Row(
-                        children: <Widget>[
-                          // This is the main content.
-                          Expanded(
-                            child: IndexedTransitionSwitcher(
-                              duration: const Duration(milliseconds: 250),
-                              reverse: selectedIndex.value <
-                                  (navigation.previous.index ?? 0),
-                              transitionBuilder: (
-                                child,
-                                animation,
-                                secondaryAnimation,
-                              ) {
-                                return SharedAxisTransition(
-                                  fillColor: Colors.transparent,
-                                  animation: animation,
-                                  secondaryAnimation: secondaryAnimation,
-                                  transitionType:
-                                      SharedAxisTransitionType.vertical,
-                                  child: child,
-                                );
-                              },
-                              index: selectedIndex.value,
-                              children: pages,
-                            ),
+                    body: Row(
+                      children: <Widget>[
+                        // This is the main content.
+                        Expanded(
+                          child: IndexedTransitionSwitcher(
+                            duration: const Duration(milliseconds: 250),
+                            reverse: selectedIndex.value <
+                                (navigation.previous.index ?? 0),
+                            transitionBuilder: (
+                              child,
+                              animation,
+                              secondaryAnimation,
+                            ) {
+                              return SharedAxisTransition(
+                                fillColor: Colors.transparent,
+                                animation: animation,
+                                secondaryAnimation: secondaryAnimation,
+                                transitionType:
+                                    SharedAxisTransitionType.vertical,
+                                child: child,
+                              );
+                            },
+                            index: selectedIndex.value,
+                            children: pages,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   const SearchBar(),

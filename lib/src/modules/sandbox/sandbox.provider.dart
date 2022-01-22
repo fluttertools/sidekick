@@ -98,7 +98,7 @@ class ConsoleLine {
   });
 
   TextStyle get style {
-    final style = TextStyle(
+    const style = TextStyle(
       fontSize: 12,
       color: Colors.grey,
     );

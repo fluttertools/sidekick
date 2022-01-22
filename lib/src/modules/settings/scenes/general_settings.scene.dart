@@ -116,7 +116,7 @@ class SettingsSectionGeneral extends StatelessWidget {
               isDense: true,
               value: settings.sidekick.ide ?? 'none',
               items: [
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: 'none',
                   child: Text('None'),
                 ),
@@ -126,7 +126,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                           child: Row(
                             children: [
                               e.icon,
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Text(e.name),
@@ -168,7 +168,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           ListTile(
             title: Text(I18Next.of(context)
                 .t('modules:selectedDetail.components.version')),
-            trailing: Text(packageVersion),
+            trailing: const Text(packageVersion),
           ),
           const Divider(),
           ListTile(

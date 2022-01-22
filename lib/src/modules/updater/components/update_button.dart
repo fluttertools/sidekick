@@ -20,7 +20,7 @@ class SkUpdateButton extends HookWidget {
 
     /// Return empty if its not installed or does not need update
     if (!updateInfo.ready) {
-      return SizedBox(height: 0, width: 0);
+      return const SizedBox(height: 0, width: 0);
     }
 
     void showUpdateDialog() {
@@ -34,20 +34,18 @@ class SkUpdateButton extends HookWidget {
             buttonPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             title: Row(
               children: [
-                Icon(MdiIcons.alertDecagram),
-                SizedBox(width: 10),
+                const Icon(MdiIcons.alertDecagram),
+                const SizedBox(width: 10),
                 Heading(I18Next.of(context)
                     .t('modules:updater.components.updateAvailable')),
               ],
             ),
-            content: Container(
-              child: Paragraph(
-                context.i18n(
-                  'modules:updater.components.sidekickVersionUpdateinfolatestIsNowAvailable',
-                  variables: {
-                    'updateInfoLatest': updateInfo.latest,
-                  },
-                ),
+            content: Paragraph(
+              context.i18n(
+                'modules:updater.components.sidekickVersionUpdateinfolatestIsNowAvailable',
+                variables: {
+                  'updateInfoLatest': updateInfo.latest,
+                },
               ),
             ),
             actions: <Widget>[
@@ -72,20 +70,17 @@ class SkUpdateButton extends HookWidget {
       );
     }
 
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ActionChip(
-            onPressed: showUpdateDialog,
-            label: Text(
-              I18Next.of(context)
-                  .t('modules:updater.components.updateAvailable'),
-              style: TextStyle(fontSize: 12),
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ActionChip(
+          onPressed: showUpdateDialog,
+          label: Text(
+            I18Next.of(context).t('modules:updater.components.updateAvailable'),
+            style: const TextStyle(fontSize: 12),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
