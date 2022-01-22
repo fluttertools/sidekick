@@ -64,8 +64,8 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Caption(packageVersion),
+          children: const [
+            Caption(packageVersion),
           ],
         ),
         const SizedBox(width: 10),
