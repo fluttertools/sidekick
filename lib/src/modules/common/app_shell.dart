@@ -141,9 +141,9 @@ class AppShell extends HookWidget {
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                         ),
-                        border: Border.all(
+                        border: Platform.isWindows ? Border.all(
                           color: Theme.of(context).dividerColor,
-                        ),
+                        ) : null,
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: ClipRRect(

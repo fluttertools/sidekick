@@ -31,7 +31,7 @@ void main() async {
   await windowManager.ensureInitialized();
 
   // Transparency compatibility for windows & linux
-  if (!Platform.isMacOS) {
+  if (!(Platform.isMacOS || Platform.isLinux)) {
     await Window.initialize();
   }
 
