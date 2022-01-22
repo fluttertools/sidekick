@@ -11,6 +11,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
 import 'package:sidekick/src/modules/common/utils/migrateFiles.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'src/modules/common/app_shell.dart';
 import 'src/modules/common/constants.dart';
@@ -24,6 +25,9 @@ import 'src/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await windowManager.ensureInitialized();
+
   // Transparency compatibility for windows & linux
   if (!Platform.isMacOS) {
     await Window.initialize();
@@ -52,8 +56,12 @@ void main() async {
 
   runApp(ProviderScope(child: FvmApp()));
 
+  final initialSize = Size(800, 500);
+  windowManager.setMinimumSize(initialSize);
+  windowManager.setSize(initialSize);
+  windowManager.setAsFrameless();
+
   doWhenWindowReady(() {
-    final initialSize = Size(800, 500);
     appWindow.minSize = initialSize;
     appWindow.size = initialSize;
     appWindow.alignment = Alignment.center;

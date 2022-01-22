@@ -79,13 +79,15 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
         const SizedBox(width: 10),
         if (!Platform.isMacOS) WindowButtons(),
       ],
-      bottom: const PreferredSize(
-        preferredSize: Size.fromHeight(1),
-        child: Divider(
-          height: 0,
-          thickness: 0.5,
-        ),
-      ),
+      bottom: !Platform.isWindows
+          ? const PreferredSize(
+              preferredSize: Size.fromHeight(1),
+              child: Divider(
+                height: 0,
+                thickness: 0.5,
+              ),
+            )
+          : null,
       automaticallyImplyLeading: false,
       // shadowColor: Colors.transparent,
       // backgroundColor: Colors.transparent,
