@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sidekick/src/modules/../components/atoms/empty_dataset.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
-import 'package:sidekick/src/windowBorder.dart';
+import 'package:sidekick/src/window_border.dart';
 import 'package:window_manager/window_manager.dart';
 
 class ErrorDBScreen extends StatelessWidget {
@@ -96,7 +96,7 @@ class ErrorDBScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  WindowButtons(),
+                  const WindowButtons(),
                 ],
               ),
             ),
