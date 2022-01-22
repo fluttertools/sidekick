@@ -90,12 +90,12 @@ class ProjectsScreen extends HookWidget {
         const SizedBox(width: 10),
         OutlinedButton.icon(
           onPressed: handleChooseDirectory,
-          icon: Icon(MdiIcons.plus),
+          icon: const Icon(MdiIcons.plus),
           label: Text(context.i18n('modules:projects.addProject')),
         ),
       ],
       child: projects.isEmpty
-          ? EmptyProjects()
+          ? const EmptyProjects()
           : CupertinoScrollbar(
               child: Padding(
                 padding: const EdgeInsets.only(left: 10),

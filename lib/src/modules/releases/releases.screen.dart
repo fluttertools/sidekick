@@ -87,13 +87,11 @@ class ReleasesScreen extends HookWidget {
               ),
             ),
             title: SliverAnimatedSwitcher(
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: releases.channels.map((channel) {
-                    return Expanded(child: ReleaseListItem(channel));
-                  }).toList(),
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: releases.channels.map((channel) {
+                  return Expanded(child: ReleaseListItem(channel));
+                }).toList(),
               ),
             ),
           ),
@@ -106,40 +104,38 @@ class ReleasesScreen extends HookWidget {
             ),
             automaticallyImplyLeading: false,
             // actions: [Container()],
-            title: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Heading(
-                        context.i18n('modules:releases.versions'),
-                      ),
-                      const SizedBox(width: 10),
-                      Chip(label: Text(versions.length.toString())),
-                    ],
-                  ),
-                  DropdownButton<String>(
-                    value: filter.state.name,
-                    icon: const Icon(Icons.filter_list),
-                    underline: Container(),
-                    items: Filter.values.map((Filter filter) {
-                      final text = filter != Filter.all
-                          ? filter.name.capitalize()
-                          : context.i18n('modules:releases.all');
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Heading(
+                      context.i18n('modules:releases.versions'),
+                    ),
+                    const SizedBox(width: 10),
+                    Chip(label: Text(versions.length.toString())),
+                  ],
+                ),
+                DropdownButton<String>(
+                  value: filter.state.name,
+                  icon: const Icon(Icons.filter_list),
+                  underline: Container(),
+                  items: Filter.values.map((Filter filter) {
+                    final text = filter != Filter.all
+                        ? filter.name.capitalize()
+                        : context.i18n('modules:releases.all');
 
-                      return DropdownMenuItem(
-                        value: filter.name,
-                        child: Text(text),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      filter.state = filterFromName(value);
-                    },
-                  ),
-                ],
-              ),
+                    return DropdownMenuItem(
+                      value: filter.name,
+                      child: Text(text),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    filter.state = filterFromName(value);
+                  },
+                ),
+              ],
             ),
           ),
           SliverList(

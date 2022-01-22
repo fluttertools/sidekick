@@ -48,7 +48,7 @@ class Console extends HookWidget {
               ? Colors.black45
               : const Color(0xFFF5F5F5),
           height: expand ? 160 : 40,
-          duration: Duration(milliseconds: 250),
+          duration: const Duration(milliseconds: 250),
           constraints: expand
               ? const BoxConstraints(maxHeight: 160)
               : const BoxConstraints(maxHeight: 40),
@@ -65,7 +65,7 @@ class Console extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                           width: MediaQuery.of(context).size.width - 100,
                           child: ConsoleText(lines.value.first)),
                     ],
@@ -96,7 +96,8 @@ class Console extends HookWidget {
                       size: 15,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 8),
                       child: expand
                           ? const Icon(MdiIcons.chevronDown)
                           : const Icon(MdiIcons.chevronUp),

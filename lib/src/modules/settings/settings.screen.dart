@@ -88,52 +88,50 @@ class SettingsScreen extends HookWidget {
           SizedBox(width: 10),
         ],
       ),
-      body: Container(
-        child: Row(
-          children: [
-            const SizedBox(width: 50),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: ListView(
-                  children: _sections.mapIndexed(
-                    (section, idx) {
-                      return ListTile(
-                        leading: Icon(
-                          _sectionIcons[idx],
-                          size: 20,
-                        ),
-                        title: Text(
-                          section,
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
-                        selectedTileColor: Theme.of(context).hoverColor,
-                        selected: currentSection.value == idx,
-                        onTap: () => changeSection(idx),
-                      );
-                    },
-                  ).toList(),
-                ),
+      body: Row(
+        children: [
+          const SizedBox(width: 50),
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: ListView(
+                children: _sections.mapIndexed(
+                  (section, idx) {
+                    return ListTile(
+                      leading: Icon(
+                        _sectionIcons[idx],
+                        size: 20,
+                      ),
+                      title: Text(
+                        section,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                      selectedTileColor: Theme.of(context).hoverColor,
+                      selected: currentSection.value == idx,
+                      onTap: () => changeSection(idx),
+                    );
+                  },
+                ).toList(),
               ),
             ),
-            const SizedBox(width: 60),
-            Expanded(
-              flex: 3,
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                controller: controller,
-                children: [
-                  SettingsSectionGeneral(settings, handleSave),
-                  FvmSettingsScene(settings, handleSave),
-                  SettingsSectionFlutter(settings, handleSave),
-                ],
-              ),
+          ),
+          const SizedBox(width: 60),
+          Expanded(
+            flex: 3,
+            child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              controller: controller,
+              children: [
+                SettingsSectionGeneral(settings, handleSave),
+                FvmSettingsScene(settings, handleSave),
+                SettingsSectionFlutter(settings, handleSave),
+              ],
             ),
-            const SizedBox(width: 50),
-          ],
-        ),
+          ),
+          const SizedBox(width: 50),
+        ],
       ),
     );
   }

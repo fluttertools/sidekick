@@ -81,7 +81,7 @@ class SandboxTerminal extends HookWidget {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           scrollController.animateTo(
             scrollController.position.maxScrollExtent,
-            duration: Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.ease,
           );
         });

@@ -40,8 +40,8 @@ class UpdaterService {
           isInstalled: await file.exists(),
           latestDownloadUrl: downloadUrl,
           latestInstallerFile: file);
-    } on Exception catch (err) {
-      print(err.toString());
+    } on Exception catch (_) {
+      //print(err.toString());
       return null;
     }
   }
@@ -77,7 +77,7 @@ class UpdaterService {
       await openLink(
           context, "file://${file.absolute.path.replaceAll("\\", "/")}");
     } else {
-      throw UpdaterException(
+      throw const UpdaterException(
         'Installer does not exists, you have to download it first',
       );
     }
@@ -93,5 +93,5 @@ class UpdaterException implements Exception {
   const UpdaterException([this.message = '']);
 
   @override
-  String toString() => '$message';
+  String toString() => message;
 }

@@ -10,7 +10,9 @@ class IndexedTransitionSwitcher extends StatefulWidget {
       @required this.children,
       @required this.transitionBuilder,
       this.reverse = false,
-      this.duration = const Duration(milliseconds: 300)});
+      this.duration = const Duration(milliseconds: 300),
+      Key key})
+      : super(key: key);
 
   /// The index of the child to show.
   final int index;

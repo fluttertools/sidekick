@@ -10,7 +10,7 @@ import 'package:sidekick/src/modules/settings/settings.screen.dart';
 import 'package:sidekick/src/modules/updater/components/update_button.dart';
 import 'package:sidekick/src/theme.dart';
 import 'package:sidekick/src/version.dart';
-import 'package:sidekick/src/windowBorder.dart';
+import 'package:sidekick/src/window_border.dart';
 
 /// Sidekick top app bar
 class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -42,9 +42,9 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
     Widget renderTitle() {
       if (!Platform.isMacOS) {
         return Row(
-          children: [
+          children: const [
             SizedBox(width: 10),
-            const Caption(kAppTitle),
+            Caption(kAppTitle),
           ],
         );
       }
@@ -56,13 +56,13 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: renderTitle(),
       centerTitle: Platform.isWindows ? false : true,
       titleSpacing: 0,
-      leading: Platform.isMacOS ? WindowButtons() : null,
+      leading: Platform.isMacOS ? const WindowButtons() : null,
       actions: [
         const SkUpdateButton(),
         const SizedBox(
           width: 10,
         ),
-        Center(child: Caption(packageVersion)),
+        const Caption(packageVersion),
         const SizedBox(width: 10),
         IconButton(
           icon: const Icon(Icons.search),
@@ -77,7 +77,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: openSettingsScreen,
         ),
         const SizedBox(width: 10),
-        if (!Platform.isMacOS) WindowButtons(),
+        if (!Platform.isMacOS) const WindowButtons(),
       ],
       bottom: const PreferredSize(
         preferredSize: Size.fromHeight(1),

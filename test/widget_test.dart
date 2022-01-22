@@ -13,7 +13,7 @@ import 'package:sidekick/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(FvmApp());
+    await tester.pumpWidget(const FvmApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
