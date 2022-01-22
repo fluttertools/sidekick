@@ -95,12 +95,12 @@ class Console extends HookWidget {
                       color: Theme.of(context).colorScheme.secondary,
                       size: 15,
                     ),
-                    IconButton(
-                      onPressed: null,
-                      icon: expand
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      child: expand
                           ? const Icon(MdiIcons.chevronDown)
                           : const Icon(MdiIcons.chevronUp),
-                    ),
+                    )
                   ],
                 ),
               ),
