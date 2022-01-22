@@ -61,7 +61,7 @@ void main() async {
   const initialSize = Size(800, 500);
   windowManager.setMinimumSize(initialSize);
   windowManager.setSize(initialSize);
-  windowManager.setAsFrameless();
+  if(!Platform.isMacOS) windowManager.setAsFrameless();
 
   doWhenWindowReady(() {
     appWindow.minSize = initialSize;
