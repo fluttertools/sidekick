@@ -49,7 +49,7 @@ class SkUpdateInfo extends HookWidget {
         const SizedBox(width: 5),
         const Text(packageVersion),
         const SizedBox(width: 20),
-        Text('${updateInfo.latest}'),
+        Text(updateInfo.latest),
         const SizedBox(width: 20),
         OutlinedButton.icon(
           icon: Icon(

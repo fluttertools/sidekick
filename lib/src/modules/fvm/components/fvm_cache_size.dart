@@ -31,36 +31,34 @@ class FvmCacheSize extends HookWidget {
       return const SizedBox(height: 0);
     }
 
-    return Container(
-      child: Row(
-        children: [
-          SizedBox(
-            width: 200,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 5),
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  child: LinearProgressIndicator(
-                    value: 1 - unusedPercentage,
-                    minHeight: 5,
-                  ),
+    return Row(
+      children: [
+        SizedBox(
+          width: 200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 5),
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: LinearProgressIndicator(
+                  value: 1 - unusedPercentage,
+                  minHeight: 5,
                 ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Caption(context.i18n('modules:fvm.components.inUse')),
-                    Caption(cacheSize.friendlySize),
-                    Caption(context.i18n('modules:fvm.components.unused')),
-                  ],
-                )
-              ],
-            ),
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Caption(context.i18n('modules:fvm.components.inUse')),
+                  Caption(cacheSize.friendlySize),
+                  Caption(context.i18n('modules:fvm.components.unused')),
+                ],
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

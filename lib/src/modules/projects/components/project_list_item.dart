@@ -58,18 +58,16 @@ class ProjectListItem extends HookWidget {
       ide.launch(context, project.projectDir.absolute.path);
     }
 
-    return Container(
+    return SizedBox(
       height: 170,
       child: Center(
         child: Card(
           child: Column(
             children: [
-              Container(
-                child: ListTile(
-                  leading: const Icon(MdiIcons.alphaPBox),
-                  title: Subheading(project.name),
-                  trailing: ProjectActions(project),
-                ),
+              ListTile(
+                leading: const Icon(MdiIcons.alphaPBox),
+                title: Subheading(project.name),
+                trailing: ProjectActions(project),
               ),
               const Divider(height: 0, thickness: 1),
               Padding(

@@ -167,7 +167,6 @@ final searchResultsProvider = Provider((ref) {
       }
     }
   }
-  ;
 
   return SearchResults(
     channels: channelResults,

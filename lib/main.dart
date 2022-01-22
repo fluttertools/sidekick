@@ -12,8 +12,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
-import 'package:sidekick/src/modules/common/utils/migrateFiles.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:sidekick/src/modules/common/utils/migrate_files.dart';
 
 import 'src/modules/common/app_shell.dart';
 import 'src/modules/common/constants.dart';
@@ -48,17 +48,17 @@ void main() async {
     await SettingsService.init();
     await ProjectsService.init();
   } on FileSystemException {
-    print('There was an issue opening the DB');
+    //print('There was an issue opening the DB');
   }
 
   if (!(Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
-    print('Sidekick is not supported on your platform');
+    //print('Sidekick is not supported on your platform');
     exit(0);
   }
 
-  runApp(ProviderScope(child: FvmApp()));
+  runApp(const ProviderScope(child: FvmApp()));
 
-  final initialSize = Size(800, 500);
+  const initialSize = Size(800, 500);
   windowManager.setMinimumSize(initialSize);
   windowManager.setSize(initialSize);
   windowManager.setAsFrameless();
@@ -73,6 +73,8 @@ void main() async {
 
 /// Fvm App
 class FvmApp extends StatelessWidget {
+  const FvmApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     if (SettingsService.box == null) {

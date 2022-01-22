@@ -138,7 +138,7 @@ class AppShell extends HookWidget {
                     body: Container(
                       decoration: BoxDecoration(
                         color: Colors.transparent,
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                         ),
                         border: Border.all(
@@ -149,7 +149,7 @@ class AppShell extends HookWidget {
                       child: ClipRRect(
                         // This is the main content.
                         borderRadius: Platform.isWindows
-                            ? BorderRadius.only(
+                            ? const BorderRadius.only(
                                 topLeft: Radius.circular(12),
                               )
                             : BorderRadius.zero,

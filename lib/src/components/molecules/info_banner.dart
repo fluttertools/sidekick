@@ -25,14 +25,14 @@ class InfoBanner extends StatelessWidget {
           ),
           child: Row(
             children: [
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Subheading(context.i18n('components:molecules.master')),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: Caption(context.i18n(
                     'modules:releases.theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional')),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
             ],
           ),
         ),

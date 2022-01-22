@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 const sidebarColor = Color(0xFFF6A00C);
 
 class LeftSide extends StatelessWidget {
+  const LeftSide({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,11 +25,13 @@ const backgroundStartColor = Color(0xFFFFD500);
 const backgroundEndColor = Color(0xFFF6A00C);
 
 class RightSide extends StatelessWidget {
+  const RightSide({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -38,13 +42,15 @@ class RightSide extends StatelessWidget {
               WindowTitleBarBox(
                   child: Row(children: [
                 Expanded(child: MoveWindow()),
-                WindowButtons()
+                const WindowButtons()
               ])),
             ])));
   }
 }
 
 class WindowButtons extends StatelessWidget {
+  const WindowButtons({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final buttonColors = WindowButtonColors(
@@ -65,8 +71,8 @@ class WindowButtons extends StatelessWidget {
             : Colors.black);
 
     final closeButtonColors = WindowButtonColors(
-        mouseOver: Color(0xFFD32F2F),
-        mouseDown: Color(0xFFB71C1C),
+        mouseOver: const Color(0xFFD32F2F),
+        mouseDown: const Color(0xFFB71C1C),
         iconNormal: Theme.of(context).brightness == Brightness.dark
             ? Colors.white
             : Colors.black,

@@ -36,13 +36,14 @@ const _iconsPosition = [
 /// Empty data set
 class EmptyDataset extends StatelessWidget {
   /// Constructor
-  const EmptyDataset({
-    this.icon,
-    this.iconColor,
-    this.backgroundColor = Colors.black,
-    this.child,
-    this.opacity = 0.3,
-  });
+  const EmptyDataset(
+      {this.icon,
+      this.iconColor,
+      this.backgroundColor = Colors.black,
+      this.child,
+      this.opacity = 0.3,
+      Key key})
+      : super(key: key);
 
   /// Icon
   final Widget icon;
@@ -70,7 +71,7 @@ class EmptyDataset extends StatelessWidget {
           child: Center(
             child: ClipRRect(
               clipBehavior: Clip.antiAlias,
-              child: Container(
+              child: SizedBox(
                 width: 450,
                 height: 300,
                 child: Stack(
@@ -81,7 +82,7 @@ class EmptyDataset extends StatelessWidget {
           ),
         ),
         Center(
-          child: Container(
+          child: SizedBox(
             width: 350,
             height: 350,
             child: child,

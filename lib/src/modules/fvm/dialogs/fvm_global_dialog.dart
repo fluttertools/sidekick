@@ -32,51 +32,49 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
               child: Text(context.i18n('modules:fvm.dialogs.ok')),
             ),
           ],
-          content: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Subheading(
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Subheading(
+                I18Next.of(context)
+                    .t('modules:fvm.dialogs.flutterPathIsPointingOn'),
+              ),
+              Caption('${configured.currentPath}.\n\n'),
+              !configured.isSetup
+                  ? Column(
+                      children: [
+                        Subheading(
+                          I18Next.of(context)
+                                  .t('modules:fvm.dialogs.changeThePathTo') +
+                              context.i18n(
+                                  'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
+                        ),
+                        Row(
+                          children: [
+                            Caption(configured.correctPath),
+                            CopyButton(configured.correctPath)
+                          ],
+                        )
+                      ],
+                    )
+                  : Container(),
+              const SizedBox(height: 10),
+              TextButton.icon(
+                onPressed: () {
+                  final os = Platform.operatingSystem;
+                  openLink(
+                    context,
+                    'https://flutter.dev/docs/get-started/install/$os#update-your-path',
+                  );
+                },
+                icon: const Icon(MdiIcons.informationOutline),
+                label: Text(
                   I18Next.of(context)
-                      .t('modules:fvm.dialogs.flutterPathIsPointingOn'),
+                      .t('modules:fvm.dialogs.howToUpdateYourPath'),
                 ),
-                Caption('${configured.currentPath}.\n\n'),
-                !configured.isSetup
-                    ? Column(
-                        children: [
-                          Subheading(
-                            I18Next.of(context)
-                                    .t('modules:fvm.dialogs.changeThePathTo') +
-                                context.i18n(
-                                    'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
-                          ),
-                          Row(
-                            children: [
-                              Caption('${configured.correctPath}'),
-                              CopyButton('${configured.correctPath}')
-                            ],
-                          )
-                        ],
-                      )
-                    : Container(),
-                const SizedBox(height: 10),
-                TextButton.icon(
-                  onPressed: () {
-                    final os = Platform.operatingSystem;
-                    openLink(
-                      context,
-                      'https://flutter.dev/docs/get-started/install/$os#update-your-path',
-                    );
-                  },
-                  icon: const Icon(MdiIcons.informationOutline),
-                  label: Text(
-                    I18Next.of(context)
-                        .t('modules:fvm.dialogs.howToUpdateYourPath'),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         );
       });

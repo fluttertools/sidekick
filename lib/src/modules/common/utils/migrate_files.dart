@@ -4,7 +4,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final migrationName = 'hive_location_migration';
+const migrationName = 'hive_location_migration';
 
 Future<void> checkMigration(Directory newPath) async {
   final prefs = await SharedPreferences.getInstance();
@@ -30,9 +30,9 @@ Future<void> checkMigration(Directory newPath) async {
         file.deleteSync();
       }
     }
-  } on Exception catch (err) {
+  } on Exception catch (_) {
     // Silent error
-    print(err);
+    //print(err);
   }
 
   await prefs.setBool(migrationName, true);

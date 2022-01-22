@@ -50,9 +50,7 @@ class FvmReleaseStatus extends StatelessWidget {
             size: 20,
           ),
           SizedBox(width: release.isChannel ? 10 : 0),
-          release.isChannel
-              ? Text('$currentRelease')
-              : const SizedBox(height: 0),
+          release.isChannel ? Text(currentRelease) : const SizedBox(height: 0),
         ],
       );
     }
