@@ -161,8 +161,8 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
-  build-windows:
-    name: "Build Windows"
+  build-windows-msstore:
+    name: "Build Windows for MS Store"
     runs-on: windows-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -200,8 +200,9 @@ jobs:
           contents: |
             msix_config:
               display_name: Sidekick
-              publisher_display_name: Sidekick Contributors
-              identity_name: app.fvm.sidekick
+              publisher_display_name: Eduardo M.
+              identity_name: 44484EduardoM.SidekickFlutter
+              publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
               msix_version: ${{steps.msixver.outputs.value }}.0
               logo_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
               start_menu_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
@@ -209,6 +210,92 @@ jobs:
               icons_background_color: transparent
               architecture: x64
               capabilities: "internetClient,removableStorage"
+              certificate_path: windows\SIDEKICK-CERT.pfx
+              certificate_password: ${{ secrets.WIN_CERT_PASS }}
+              store: true
+          write-mode: append
+
+      - name: Write MS Store true
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: lib/modifiers.dart
+          contents: |
+            // Generated file. Do not modify
+            const isMSStore = false;
+          write-mode: overwrite
+
+      - name: Flutter get packages
+        run: flutter pub get
+
+      - name: Build Runner & version
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Flutter build app
+        run: flutter build windows
+
+      - name: Create MSIX
+        run: flutter pub run msix:create
+
+      - name: Upload MSIX to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/windows/Runner/release/sidekick.msix
+          asset_name: sidekick-windows-${{ github.event.release.tag_name }}-MS-NS.msix
+          tag: ${{ github.ref }}
+    
+  build-windows-standard:
+    name: "Build Windows standard"
+    runs-on: windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@master
+
+      - name: Enable desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Install Cider
+        run: flutter pub global activate cider
+
+      - name: Set new Flutter version
+        run: cider version ${{ github.event.release.tag_name }}
+
+      - name: Set release changelog
+        run: cider release
+
+      - name: Generate MSIX-compatible version
+        uses: ashley-taylor/regex-property-action@1.2
+        id: msixver
+        with:
+          value: ${{ github.event.release.tag_name }}
+          regex: (\-\w+)|(\+\w+)
+          replacement: ""
+
+      - name: Write MSIX
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: pubspec.yaml
+          contents: |
+            msix_config:
+              display_name: Sidekick
+              publisher_display_name: Eduardo M.
+              identity_name: 44484EduardoM.SidekickFlutter
+              publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
+              msix_version: ${{steps.msixver.outputs.value }}.0
+              logo_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              start_menu_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              tile_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
+              icons_background_color: transparent
+              architecture: x64
+              capabilities: "internetClient,removableStorage"
+              certificate_path: windows\SIDEKICK-CERT.pfx
+              certificate_password: ${{ secrets.WIN_CERT_PASS }}
+              store: false
           write-mode: append
 
       - name: Flutter get packages
