@@ -243,6 +243,8 @@ jobs:
           file: build/windows/Runner/release/sidekick.msix
           asset_name: sidekick-windows-${{ github.event.release.tag_name }}-MS-NS.msix
           tag: ${{ github.ref }}
+
+      # TODO: Upload automatically to MS Store. MSFT is having some issues with their Azure AD so cannot be done yet.
     
   build-windows-standard:
     name: "Build Windows standard"
