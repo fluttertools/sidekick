@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import 'updater.dto.dart';
 import 'updater.service.dart';
+import '../../modifiers.dart';
 
 /// Updater provider
 final updaterProvider =
@@ -13,7 +13,7 @@ final updaterProvider =
 class UpdaterStateNotifier extends StateNotifier<SidekickUpdateInfo> {
   /// COnstructor
   UpdaterStateNotifier() : super(SidekickUpdateInfo.notReady()) {
-    checkLatest();
+    if (!isMSStore) checkLatest();
   }
 
   /// Check for latest release

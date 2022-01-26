@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sidekick/src/modules/../components/atoms/empty_dataset.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
+import 'package:sidekick/src/window_border.dart';
+import 'package:window_manager/window_manager.dart';
 
 class ErrorDBScreen extends StatelessWidget {
   const ErrorDBScreen({Key key}) : super(key: key);
@@ -12,68 +14,93 @@ class ErrorDBScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                EmptyDataset(
-                  icon: const Icon(Icons.error_outline_outlined),
-                  iconColor: Theme.of(context).errorColor,
-                  opacity: 1,
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  'There was an isssue opening Sidekick',
-                  style: Theme.of(context).textTheme.headline4,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  text,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+        body: Stack(
+          children: [
+            Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    TextButton.icon(
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.resolveWith((states) =>
-                              const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10))),
-                      onPressed: () {
-                        openLink(context,
-                            'https://github.com/leoafarias/sidekick/issues/new/choose');
-                      },
-                      label: const Text('Create new issue'),
-                      icon: const Icon(
-                        Icons.open_in_new,
-                      ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    EmptyDataset(
+                      icon: const Icon(Icons.error_outline_outlined),
+                      iconColor: Theme.of(context).errorColor,
+                      opacity: 1,
                     ),
                     const SizedBox(
-                      width: 10,
+                      height: 50,
                     ),
-                    ElevatedButton.icon(
-                      label: const Text('Close'),
-                      icon: const Icon(Icons.close),
-                      onPressed: () {
-                        exit(0);
-                      },
+                    Text(
+                      'There was an isssue opening Sidekick',
+                      style: Theme.of(context).textTheme.headline4,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      text,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextButton.icon(
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.resolveWith(
+                                  (states) => const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10))),
+                          onPressed: () {
+                            openLink(context,
+                                'https://github.com/leoafarias/sidekick/issues/new/choose');
+                          },
+                          label: const Text('Create new issue'),
+                          icon: const Icon(
+                            Icons.open_in_new,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        ElevatedButton.icon(
+                          label: const Text('Close'),
+                          icon: const Icon(Icons.close),
+                          onPressed: () {
+                            exit(0);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                      ],
                     )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
-          ),
+            SizedBox(
+              height: 30,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTapDown: (_) {
+                        windowManager.startDragging();
+                      },
+                    ),
+                  ),
+                  const WindowButtons(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
