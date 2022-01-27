@@ -155,6 +155,10 @@ Color platformBackgroundColor(BuildContext context) {
   // Brightness matches doesn't work on Windows 10
   if (brightnessMatches) {
     if (Platform.isMacOS) {
+      Window.setEffect(
+        effect: WindowEffect.sidebar,
+        color: Theme.of(context).cardColor.withAlpha(0),
+      );
       return Colors.transparent;
     }
     if (Platform.isWindows) {
