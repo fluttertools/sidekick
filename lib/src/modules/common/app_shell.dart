@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -120,42 +122,59 @@ class AppShell extends HookWidget {
                 ),
               ],
             ),
-            const VerticalDivider(
-              thickness: 1,
-              width: 1,
-            ),
+            if (!Platform.isWindows)
+              const VerticalDivider(
+                thickness: 1,
+                width: 1,
+              ),
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
                 children: [
                   Scaffold(
-                    body: Row(
-                      children: <Widget>[
-                        // This is the main content.
-                        Expanded(
-                          child: IndexedTransitionSwitcher(
-                            duration: const Duration(milliseconds: 250),
-                            reverse: selectedIndex.value <
-                                (navigation.previous.index ?? 0),
-                            transitionBuilder: (
-                              child,
-                              animation,
-                              secondaryAnimation,
-                            ) {
-                              return SharedAxisTransition(
-                                fillColor: Colors.transparent,
-                                animation: animation,
-                                secondaryAnimation: secondaryAnimation,
-                                transitionType:
-                                    SharedAxisTransitionType.vertical,
-                                child: child,
-                              );
-                            },
-                            index: selectedIndex.value,
-                            children: pages,
-                          ),
+                    backgroundColor: Platform.isWindows
+                        ? Colors.transparent
+                        : Theme.of(context).scaffoldBackgroundColor,
+                    body: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(12),
                         ),
-                      ],
+                        border: Platform.isWindows ? Border.all(
+                          color: Theme.of(context).dividerColor,
+                        ) : null,
+                      ),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: ClipRRect(
+                        // This is the main content.
+                        borderRadius: Platform.isWindows
+                            ? const BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                              )
+                            : BorderRadius.zero,
+                        child: IndexedTransitionSwitcher(
+                          duration: const Duration(milliseconds: 250),
+                          reverse: selectedIndex.value <
+                              (navigation.previous.index ?? 0),
+                          transitionBuilder: (
+                            child,
+                            animation,
+                            secondaryAnimation,
+                          ) {
+                            return SharedAxisTransition(
+                              fillColor:
+                                  Theme.of(context).scaffoldBackgroundColor,
+                              animation: animation,
+                              secondaryAnimation: secondaryAnimation,
+                              transitionType: SharedAxisTransitionType.vertical,
+                              child: child,
+                            );
+                          },
+                          index: selectedIndex.value,
+                          children: pages,
+                        ),
+                      ),
                     ),
                   ),
                   const SearchBar(),

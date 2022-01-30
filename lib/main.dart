@@ -1,3 +1,5 @@
+// ignore_for_file: unawaited_futures
+
 import 'dart:io';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
@@ -10,6 +12,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
+import 'package:window_manager/window_manager.dart';
 import 'package:sidekick/src/modules/common/utils/migrate_files.dart';
 
 import 'src/modules/common/app_shell.dart';
@@ -24,8 +27,11 @@ import 'src/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await windowManager.ensureInitialized();
+
   // Transparency compatibility for windows & linux
-  if (!Platform.isMacOS) {
+  if (!(Platform.isMacOS || Platform.isLinux)) {
     await Window.initialize();
   }
 
@@ -52,8 +58,12 @@ void main() async {
 
   runApp(const ProviderScope(child: FvmApp()));
 
+  const initialSize = Size(800, 500);
+  windowManager.setMinimumSize(initialSize);
+  windowManager.setSize(initialSize);
+  if(!Platform.isMacOS) windowManager.setAsFrameless();
+
   doWhenWindowReady(() {
-    const initialSize = Size(800, 500);
     appWindow.minSize = initialSize;
     appWindow.size = initialSize;
     appWindow.alignment = Alignment.center;

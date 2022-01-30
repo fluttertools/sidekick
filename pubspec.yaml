@@ -21,7 +21,9 @@ dependencies:
   filesize: ^2.0.1
   flutter:
     sdk: flutter
-  flutter_acrylic: ^0.1.0
+  flutter_acrylic: 
+    git: 
+      url: https://github.com/alexmercerind/flutter_acrylic.git
   flutter_hooks: ^0.17.0
   flutter_localizations:
     sdk: flutter
@@ -44,6 +46,7 @@ dependencies:
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.4
   watcher: ^1.0.0
+  window_manager: ^0.1.4
   window_size:
     git:
       url: git://github.com/google/flutter-desktop-embedding.git
