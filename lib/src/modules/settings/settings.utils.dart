@@ -21,7 +21,7 @@ ThemeMode getThemeMode(String themeMode) {
 
 class IDE {
   final String name;
-  final void Function(BuildContext context, String projectPath) launch;
+  final void Function(BuildContext context, String projectPath, {String customLoc}) launch;
   final Widget icon;
 
   const IDE(this.name, this.icon, this.launch);

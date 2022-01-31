@@ -137,11 +137,15 @@ class SettingsSectionGeneral extends StatelessWidget {
                     .toList()
               ],
               onChanged: (val) async {
-                settings.sidekick.ide = (val == 'none' ? null : val);
                 if (val == "Custom") {
                   final file = await openFile();
-                  settings.sidekick.customIdeLocation = file.path;
+                  if (file != null) {
+                    settings.sidekick.customIdeLocation = file.path;
+                  } else {
+                    return;
+                  }
                 }
+                settings.sidekick.ide = (val == 'none' ? null : val);
                 onSave();
               },
             ),

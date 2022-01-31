@@ -17,7 +17,8 @@ Future<void> openLink(BuildContext context, String url) async {
   }
 }
 
-Future<void> openPath(BuildContext context, String url) async {
+Future<void> openPath(BuildContext context, String url,
+    {String customLoc}) async {
   if (Platform.isWindows) {
     await Process.start('start', [url]);
   } else if (Platform.isMacOS) {
@@ -25,7 +26,8 @@ Future<void> openPath(BuildContext context, String url) async {
   }
 }
 
-Future<void> openVsCode(BuildContext context, String path) async {
+Future<void> openVsCode(BuildContext context, String path,
+    {String customLoc}) async {
   if (Platform.isWindows || Platform.isLinux) {
     await Process.run('code', [path], runInShell: true);
   } else {
@@ -34,15 +36,16 @@ Future<void> openVsCode(BuildContext context, String path) async {
   }
 }
 
-Future<void> openXcode(BuildContext context, String url) async {
+Future<void> openXcode(BuildContext context, String url,
+    {String customLoc}) async {
   final workspaceUri = '$url/ios/Runner.xcworkspace';
   return await openPath(context, workspaceUri);
 }
 
-Future<void> openCustom(BuildContext context, String path) async {
-  var settings = useProvider(settingsProvider);
+Future<void> openCustom(BuildContext context, String path,
+    {String customLoc}) async {
   await Process.run(
-    settings.sidekick.customIdeLocation,
+    customLoc,
     [path],
     runInShell: true,
   );
