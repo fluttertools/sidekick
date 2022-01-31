@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
-import 'package:sidekick/src/modules/settings/settings.provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(BuildContext context, String url) async {
