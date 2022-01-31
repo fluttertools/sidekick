@@ -44,38 +44,54 @@
 <br>
 
 <div align="center">
-  <sub>Translations:</sub>
-    <span>:cn:</span>
-    <span>:taiwan:</span>
-    <span>:poland:</span>
-    <span>:jp:</span>
-    <span>:fr:</span>
-    <span>:tr:</span>
-    <span>:es:</span>
-    <span>:portugal:</span>
-    <span>:kr:</span>
+  <sub>Sidekick is avbailable in the following languages:</sub>
+ <br>
+    🇸🇦
+    🇩🇪
+    🇬🇧
+    🇺🇸
+    🇪🇸
+    🇯🇵
+    🇸🇪
+    🇵🇹
+    🇰🇷
+    🇵🇱
+    🇮🇹
 </div>
 
-[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
+ <br>
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
-<a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+<div align="center">
+  <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+ <br>
+ </div>
+ 
+ <br>
+ 
+ <div align="center">
 
+## ✨ Features
 
-### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
-### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
+Manage Flutter versions
+ 
+Explore releases
+ 
+View most used packages
+ 
+Search versions across apps
+ 
+Version sandboxing (playground)
+ 
+more...
+ 
+ <a href="https://github.com/leoafarias/sidekick/releases/latest"><img src="https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true" width="500" /></a>
+ 
+ </div>
+ 
 
-## Features
-
-- Manage Flutter versions
-- Explore releases
-- View most used packages
-- Search versions across apps
-- Version sandboxing (playground)
-- more...
-
-## Contributors ✨
+## Contributors 🎉
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
