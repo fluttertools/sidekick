@@ -30,4 +30,5 @@ class IDE {
 const supportedIDEs = [
   IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), openVsCode),
   IDE('XCode', Icon(MdiIcons.appleSafari), openXcode),
+  IDE('Custom', Icon(Icons.code_rounded), openCustom),
 ];

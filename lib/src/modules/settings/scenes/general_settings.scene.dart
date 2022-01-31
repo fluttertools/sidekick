@@ -1,3 +1,4 @@
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:i18next/i18next.dart';
 import 'package:sidekick/i18n/language_manager.dart';
@@ -137,6 +138,10 @@ class SettingsSectionGeneral extends StatelessWidget {
               ],
               onChanged: (val) async {
                 settings.sidekick.ide = (val == 'none' ? null : val);
+                if (val == "Custom") {
+                  final file = await openFile();
+                  settings.sidekick.customIdeLocation = file.path;
+                }
                 onSave();
               },
             ),

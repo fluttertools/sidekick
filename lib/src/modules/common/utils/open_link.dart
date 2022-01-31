@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/settings/settings.provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(BuildContext context, String url) async {
@@ -35,4 +37,13 @@ Future<void> openVsCode(BuildContext context, String path) async {
 Future<void> openXcode(BuildContext context, String url) async {
   final workspaceUri = '$url/ios/Runner.xcworkspace';
   return await openPath(context, workspaceUri);
+}
+
+Future<void> openCustom(BuildContext context, String path) async {
+  var settings = useProvider(settingsProvider);
+  await Process.run(
+    settings.sidekick.customIdeLocation,
+    [path],
+    runInShell: true,
+  );
 }
