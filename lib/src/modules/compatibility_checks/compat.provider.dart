@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'compat.dto.dart';
-import 'compat.service.dart';
-import '../../modifiers.dart';
 
 /// Updater provider
 final compatProvider =
