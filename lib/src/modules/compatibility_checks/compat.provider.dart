@@ -1,20 +1,33 @@
+import 'dart:io';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.utils.dart';
 import 'compat.dto.dart';
 
 /// Updater provider
 final compatProvider =
-    StateNotifierProvider<UpdaterStateNotifier, CompatibilityCheck>(
-        (_) => UpdaterStateNotifier());
+    StateNotifierProvider<CompatStateNotifier, CompatibilityCheck>(
+        (_) => CompatStateNotifier());
 
 /// Update state notifier
-class UpdaterStateNotifier extends StateNotifier<CompatibilityCheck> {
+class CompatStateNotifier extends StateNotifier<CompatibilityCheck> {
   /// COnstructor
-  UpdaterStateNotifier() : super(CompatibilityCheck.notReady()) {
-    //TODO: Implement check
+  CompatStateNotifier() : super(CompatibilityCheck.notReady()) {
+    checkRequirements();
   }
 
   /// Check for latest release
   Future<void> checkRequirements() async {
-    // TODO: Implement Check
+    final chocoState = Platform.isWindows ? await isChocoInstalled() : false;
+    final brewState =
+        Platform.isLinux || Platform.isMacOS ? await isBrewInstalled() : false;
+    final fvmState = await isFvmInstalled();
+    final gitState = await isGitInstalled();
+    state = CompatibilityCheck(
+      git: gitState,
+      fvm: fvmState,
+      choco: chocoState,
+      brew: brewState,
+    );
   }
 }

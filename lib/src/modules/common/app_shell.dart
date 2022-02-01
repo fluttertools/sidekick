@@ -9,6 +9,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/src/components/organisms/app_bottom_bar.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 import 'package:sidekick/src/modules/search/components/search_bar.dart';
 import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
 
@@ -58,6 +59,7 @@ class AppShell extends HookWidget {
     final navigation = useProvider(navigationProvider.notifier);
     final currentRoute = useProvider(navigationProvider);
     final selectedInfo = useProvider(selectedDetailProvider).state;
+    final compatInfo = useProvider(compatProvider);
     final focusNode = useFocusNode();
 
     // Index of item selected
@@ -141,9 +143,11 @@ class AppShell extends HookWidget {
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                         ),
-                        border: Platform.isWindows ? Border.all(
-                          color: Theme.of(context).dividerColor,
-                        ) : null,
+                        border: Platform.isWindows
+                            ? Border.all(
+                                color: Theme.of(context).dividerColor,
+                              )
+                            : null,
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: ClipRRect(
