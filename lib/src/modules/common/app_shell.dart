@@ -11,6 +11,7 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.screen.dart';
 import 'package:sidekick/src/modules/search/components/search_bar.dart';
 import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
 
@@ -89,7 +90,15 @@ class AppShell extends HookWidget {
     });
 
     if (compatInfo.ready && !compatInfo.waiting) {
-      notify("Sidekick is missing key components to work");
+      notify("Sidekick is missing key components to work", error: true);
+      Future.delayed(Duration.zero).then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CompatCheckScreen(),
+          ),
+        );
+      });
     }
 
     return SkShortcutManager(
