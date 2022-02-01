@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import '../common/constants.dart';
@@ -26,11 +28,14 @@ class CompatService {
   }
 
   /// Download release
-  static Future<CompatibilityCheck> downloadAndInstallRequired(
-    CompatibilityCheck updateInfo,
-  ) async {
-    // TODO: Implement setup of required dependencies
-    return null;
+  static Future<ProcessResult> downloadAndInstallBrew() async {
+    //return Process.run("ipconfig", []);
+    return Process.run(
+        "/bin/bash",
+        [
+          '-c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
+        ],
+        runInShell: true);
   }
 }
 

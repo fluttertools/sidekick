@@ -30,4 +30,8 @@ class CompatStateNotifier extends StateNotifier<CompatibilityCheck> {
       brew: brewState,
     );
   }
+
+  void applyValid() {
+    state.copyWith(fvm: true, git: true);
+  }
 }
