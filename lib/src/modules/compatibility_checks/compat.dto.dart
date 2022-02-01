@@ -1,7 +1,21 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
-/// Latest Version update for Sidekick
+/// Check for required programs
 class CompatibilityCheck {
+  /// Git Install Status
+  bool git;
+
+  /// FVM Install Status
+  bool fvm;
+
+  /// Cohocolately Install Status
+  bool choco;
+
+  /// Brew Install Status
+  bool brew;
+
   /// Constructor
   CompatibilityCheck({
     @required this.git,
@@ -20,20 +34,66 @@ class CompatibilityCheck {
     );
   }
 
-  /// Git Install Status
-  bool git;
-
-  /// FVM Install Status
-  bool fvm;
-
-  /// Cohocolately Install Status
-  bool choco;
-
-  /// Brew Install Status
-  bool brew;
-
-  /// Need update and ready to install
+  /// check if the basic programs are installed
   bool get ready {
     return fvm && git;
+  }
+
+  CompatibilityCheck copyWith({
+    bool git,
+    bool fvm,
+    bool choco,
+    bool brew,
+  }) {
+    return CompatibilityCheck(
+      git: git ?? this.git,
+      fvm: fvm ?? this.fvm,
+      choco: choco ?? this.choco,
+      brew: brew ?? this.brew,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'git': git,
+      'fvm': fvm,
+      'choco': choco,
+      'brew': brew,
+    };
+  }
+
+  factory CompatibilityCheck.fromMap(Map<String, dynamic> map) {
+    return CompatibilityCheck(
+      git: map['git'] ?? false,
+      fvm: map['fvm'] ?? false,
+      choco: map['choco'] ?? false,
+      brew: map['brew'] ?? false,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CompatibilityCheck.fromJson(String source) =>
+      CompatibilityCheck.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'CompatibilityCheck(git: $git, fvm: $fvm, choco: $choco, brew: $brew)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CompatibilityCheck &&
+        other.git == git &&
+        other.fvm == fvm &&
+        other.choco == choco &&
+        other.brew == brew;
+  }
+
+  @override
+  int get hashCode {
+    return git.hashCode ^ fvm.hashCode ^ choco.hashCode ^ brew.hashCode;
   }
 }
