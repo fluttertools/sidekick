@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import '../common/constants.dart';
-import 'compat.dto.dart';
 
 Future<String> getSidekickLatestRelease() async {
   final response = await Dio().get(kSidekickLatestReleaseUrl);

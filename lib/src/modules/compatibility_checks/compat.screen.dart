@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sidekick/src/components/atoms/loading_indicator.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
@@ -153,7 +152,7 @@ class CompatCheckScreen extends HookWidget {
                               ),
                             );
                           },
-                          child: Text("Ignore"),
+                          child: const Text("Ignore"),
                         ),
                         const SizedBox(
                           width: 15,
@@ -195,7 +194,7 @@ class CompatCheckScreen extends HookWidget {
                                             ],
                                           ),
                                           content: Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                                 color: Theme.of(context)
                                                     .canvasColor,
@@ -239,7 +238,7 @@ class CompatCheckScreen extends HookWidget {
                               }
                             }
                           },
-                          child: Text("Install Missing"),
+                          child: const Text("Install Missing"),
                         )
                       ],
                     ),
