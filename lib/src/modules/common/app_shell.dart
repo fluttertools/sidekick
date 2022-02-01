@@ -9,6 +9,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/src/components/organisms/app_bottom_bar.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.dart';
+import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 import 'package:sidekick/src/modules/search/components/search_bar.dart';
 import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
@@ -86,6 +87,10 @@ class AppShell extends HookWidget {
         });
       }
     });
+
+    if (compatInfo.ready && !compatInfo.waiting) {
+      notify("Sidekick is missing key components to work");
+    }
 
     return SkShortcutManager(
       focusNode: focusNode,

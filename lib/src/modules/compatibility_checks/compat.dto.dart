@@ -16,12 +16,15 @@ class CompatibilityCheck {
   /// Brew Install Status
   bool brew;
 
+  bool waiting;
+
   /// Constructor
   CompatibilityCheck({
     @required this.git,
     @required this.fvm,
     @required this.choco,
     @required this.brew,
+    this.waiting = false,
   });
 
   ///
@@ -31,6 +34,7 @@ class CompatibilityCheck {
       choco: false,
       fvm: false,
       git: false,
+      waiting: true,
     );
   }
 
