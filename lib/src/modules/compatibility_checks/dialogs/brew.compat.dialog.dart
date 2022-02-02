@@ -64,12 +64,11 @@ class BrewDialog extends StatelessWidget {
           onPressed: () {
             isBrewInstalled().then(
               (value) {
-                print(value);
                 if (value) {
                   Navigator.of(context).pop();
                   showDialog(
                     context: context,
-                    builder: (context) => BrewDialog(),
+                    builder: (context) => const BrewDialog(),
                   );
                   CompatService.checkState();
                 } else {

@@ -1,21 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
-import 'package:sidekick/src/modules/common/utils/notify.dart';
-import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
-import 'package:sidekick/src/modules/compatibility_checks/compat.service.dart';
 import 'package:sidekick/src/modules/compatibility_checks/dialogs/choco.compat.dialog.dart';
 
 import '../../theme.dart';
-import 'compat.utils.dart';
 import 'dialogs/brew.compat.dialog.dart';
 
 /// Settings screen
@@ -169,7 +163,7 @@ class CompatCheckScreen extends HookWidget {
                               if (!provider.brew) {
                                 showDialog(
                                   context: context,
-                                  builder: (context) => BrewDialog(),
+                                  builder: (context) => const BrewDialog(),
                                 );
                                 return;
                               }
@@ -177,7 +171,7 @@ class CompatCheckScreen extends HookWidget {
                               if (provider.choco) {
                                 showDialog(
                                   context: context,
-                                  builder: (context) => ChocoDialog(),
+                                  builder: (context) => const ChocoDialog(),
                                 );
                                 return;
                               }

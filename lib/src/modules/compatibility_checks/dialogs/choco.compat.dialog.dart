@@ -33,8 +33,8 @@ class ChocoDialog extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: const SelectableText(
+              const Expanded(
+                child: SelectableText(
                   chocoInstallCmd,
                   //maxLines: 5,
                   textAlign: TextAlign.left,
@@ -66,12 +66,11 @@ class ChocoDialog extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             isChocoInstalled().then((value) {
-              print(value);
               if (value) {
                 Navigator.of(context).pop();
                 showDialog(
                   context: context,
-                  builder: (context) => BrewDialog(),
+                  builder: (context) => const BrewDialog(),
                 );
                 CompatService.checkState();
               } else {
