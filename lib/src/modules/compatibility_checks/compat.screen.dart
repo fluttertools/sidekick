@@ -1,16 +1,22 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
+import 'package:sidekick/src/modules/common/utils/notify.dart';
+import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.service.dart';
+import 'package:sidekick/src/modules/compatibility_checks/dialogs/choco.compat.dialog.dart';
 
 import '../../theme.dart';
+import 'compat.utils.dart';
+import 'dialogs/brew.compat.dialog.dart';
 
 /// Settings screen
 class CompatCheckScreen extends HookWidget {
@@ -98,7 +104,7 @@ class CompatCheckScreen extends HookWidget {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Heading("Chocolately"),
+                              const Heading("Chocolatey"),
                               Icon(provider.choco
                                   ? Icons.check_circle_outline_rounded
                                   : Icons.error_outline_rounded)
@@ -159,82 +165,21 @@ class CompatCheckScreen extends HookWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            if (Platform.isWindows) {
+                            if (Platform.isMacOS) {
                               if (!provider.brew) {
                                 showDialog(
                                   context: context,
-                                  builder: (context) {
-                                    var stream =
-                                        CompatService.downloadAndInstallBrew();
-
-                                    return FutureBuilder(
-                                      future: stream,
-                                      builder: (context, snapshot) {
-                                        if (snapshot.data == null) {
-                                          return Container();
-                                        }
-                                        return AlertDialog(
-                                          title: Row(
-                                            children: [
-                                              SizedBox(
-                                                height: 20,
-                                                width: 20,
-                                                child: SpinKitFadingFour(
-                                                  size: 15,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .secondary,
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                width: 15,
-                                              ),
-                                              const Heading(
-                                                  "Installing Brew..."),
-                                            ],
-                                          ),
-                                          content: Container(
-                                            padding: const EdgeInsets.all(8),
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .canvasColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(12)),
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  ConsoleText(
-                                                    (snapshot.data
-                                                            as ProcessResult)
-                                                        .stdout,
-                                                    maxLines: null,
-                                                  ),
-                                                  ConsoleText(
-                                                    (snapshot.data
-                                                            as ProcessResult)
-                                                        .stderr,
-                                                    color: Theme.of(context)
-                                                        .errorColor,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          actions: [
-                                            OutlinedButton(
-                                              onPressed: () {
-                                                stream.ignore();
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: const Text("Cancel"),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
+                                  builder: (context) => BrewDialog(),
                                 );
+                                return;
+                              }
+                            } else if (Platform.isWindows) {
+                              if (provider.choco) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => ChocoDialog(),
+                                );
+                                return;
                               }
                             }
                           },

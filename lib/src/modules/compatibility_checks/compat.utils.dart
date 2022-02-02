@@ -9,11 +9,12 @@ Future<bool> isChocoInstalled() async {
 }
 
 Future<bool> isBrewInstalled() async {
+  if (Platform.isWindows) return false;
   final brewRes = await Process.run("command", ["-v brew"], runInShell: true);
   if (brewRes.stdout.toString().trim() == "") {
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 
 Future<bool> isFvmInstalled() async {
@@ -34,3 +35,17 @@ Future<bool> isGitInstalled() async {
   }
   return false;
 }
+
+void launchTerminal() {
+  if (Platform.isMacOS) {
+    Process.runSync("open", ["-a Terminal"]);
+  } else if (Platform.isWindows) {
+    Process.runSync("cmd", [], runInShell: true);
+  }
+}
+
+const brewInstallCmd =
+    '/bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"';
+
+const chocoInstallCmd =
+    'Set-ExecutionPolicy AllSigned\nSet-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://community.chocolatey.org/install.ps1\'))';

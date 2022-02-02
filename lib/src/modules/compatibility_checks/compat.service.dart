@@ -27,9 +27,9 @@ class CompatService {
   }
 
   /// Download release
-  static Future<ProcessResult> downloadAndInstallBrew() async {
+  static Future<Process> downloadAndInstallBrew() async {
     //return Process.run("ipconfig", []);
-    return Process.run(
+    return Process.start(
         "/bin/bash",
         [
           '-c "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
