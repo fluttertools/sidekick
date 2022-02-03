@@ -89,7 +89,7 @@ class AppShell extends HookWidget {
       }
     });
 
-    if (compatInfo.ready && !compatInfo.waiting) {
+    if (!compatInfo.ready && !compatInfo.waiting) {
       notify("Sidekick is missing key components to work", error: true);
       Future.delayed(Duration.zero).then((value) {
         Navigator.pushReplacement(

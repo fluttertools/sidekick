@@ -32,6 +32,6 @@ class CompatStateNotifier extends StateNotifier<CompatibilityCheck> {
   }
 
   void applyValid() {
-    state.copyWith(fvm: true, git: true);
+    state = state.copyWith(fvm: true, git: true);
   }
 }

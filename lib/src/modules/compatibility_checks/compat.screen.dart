@@ -168,7 +168,7 @@ class CompatCheckScreen extends HookWidget {
                                 return;
                               }
                             } else if (Platform.isWindows) {
-                              if (provider.choco) {
+                              if (!provider.choco) {
                                 showDialog(
                                   context: context,
                                   builder: (context) => const ChocoDialog(),
