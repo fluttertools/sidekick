@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fvm/fvm.dart';
 import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -40,7 +41,32 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                 I18Next.of(context)
                     .t('modules:fvm.dialogs.flutterPathIsPointingOn'),
               ),
-              Caption('${configured.currentPath}.\n\n'),
+              // Caption('${configured.currentPath}.\n\n'),
+              Flexible(
+                child: Text.rich(
+                  TextSpan(children: [
+                    TextSpan(
+                        text: configured.currentPath,
+                        style: Theme.of(context).textTheme.caption),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: IconButton(
+                          icon: const Icon(Icons.copy, size: 14),
+                          onPressed: () {
+                            Clipboard.setData(
+                                ClipboardData(text: configured.currentPath));
+                            // ScaffoldMessenger.of(context)
+                            //     .showSnackBar(SnackBar(
+                            //   content: Text('${configured.currentPath}'),
+                            // ));
+                          }),
+                    )
+                  ]),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(height: 12),
+
               !configured.isSetup
                   ? Column(
                       children: [
