@@ -4,9 +4,9 @@
 
 Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
 
-[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
+[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
 
-![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/screenshot.png?raw=true)
+![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
 <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
 
