@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/leoafarias/sidekick/improvement/iconography-update/assets/svgs/3D-icon.svg" alt="Sidekick" width="100"></p>
+<p align="center"><img src="/assets/svgs/3D-icon.svg" alt="Sidekick" width="100"></p>
 
 <h1 align="center">Flutter Sidekick</h1>
  
