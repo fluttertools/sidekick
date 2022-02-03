@@ -19,9 +19,15 @@ ThemeMode getThemeMode(String themeMode) {
   }
 }
 
+typedef LaunchFunction = Future<void> Function(
+  BuildContext context,
+  String projectPath, {
+  String customLocation,
+});
+
 class IDE {
   final String name;
-  final void Function(BuildContext context, String projectPath, {String customLoc}) launch;
+  final LaunchFunction launch;
   final Widget icon;
 
   const IDE(this.name, this.icon, this.launch);
