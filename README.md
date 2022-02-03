@@ -1,29 +1,102 @@
-# Flutter Sidekick
+<p align="center"><img src="https://raw.githubusercontent.com/leoafarias/sidekick/improvement/iconography-update/assets/svgs/3D-icon.svg" alt="Sidekick" width="100"></p>
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square) [![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square)](https://github.com/leoafarias/sidekick/graphs/contributors) [![Awesome Flutter](https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square)](https://github.com/Solido/awesome-flutter) ![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square)
+<h1 align="center">Flutter Sidekick</h1>
+ 
+<div align="center">
+  <strong>A simple desktop interface for tools that enhance Flutter development experience to make it even more delightful.</strong>
+  
+  <sub>Available for Linux, macOS and Windows.</sub>
+</div>
 
-Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
+<br>
+
+
+<div align="center">
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square">
+  <img alt="GitHub Downloads for the last release" src="https://img.shields.io/github/downloads/leoafarias/sidekick/latest/total?label=Downloads%20for%20the%20latest%20release&style=flat-square">
+  <img alt="GitHub Downloads overall" src="https://img.shields.io/github/downloads/leoafarias/sidekick/total?label=Overall%20Downloads&style=flat-square">
+  <a href="https://github.com/leoafarias/sidekick/graphs/contributors"><img alt="GitHub All Contributors" src="https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square"></a>
+  <a href="https://github.com/Solido/awesome-flutter"><img alt="Awesome Flutter" src="https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square"></a>
+  <img alt="License" src="https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square">
+ </div>
+ 
+ <br>
+
+<div align="center">
+  <h3>
+    <a href="https://github.com/leoafarias/sidekick/releases/latest">
+      Download Latest
+    </a>
+    <span> | </span>
+    <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG">
+      Microsoft Store
+    </a>
+    <span> | </span>
+    <a href="https://github.com/leoafarias/sidekick/wiki/Installing">
+      Installation Instructions
+    </a>
+    <span> | </span>
+    <a href="https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language">
+      Adding a new Language
+    </a>
+  </h3>
+</div>
+
+<br>
 
 [![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
 
 ![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/screenshot.png?raw=true)
 
-<a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+
+<div align="center">
+  <sub>Sidekick is available in the following languages:</sub>
+ <br>
+    🇸🇦
+    🇩🇪
+    🇬🇧
+    🇺🇸
+    🇪🇸
+    🇯🇵
+    🇸🇪
+    🇵🇹
+    🇰🇷
+    🇵🇱
+    🇮🇹
+</div>
+
+ <br>
 
 
-### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
-### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
+<div align="center">
+  <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+ <br>
+ </div>
+ 
+ <br>
+ 
+ <div align="center">
 
-## Features
+## ✨ Features
+___
+Manage Flutter versions
 
-- Manage Flutter versions
-- Explore releases
-- View most used packages
-- Search versions across apps
-- Version sandboxing (playground)
-- more...
+Explore releases
 
-## Contributors ✨
+View most used packages
+
+Search versions across apps
+
+Version sandboxing (playground)
+
+more...
+ 
+ <a href="https://github.com/leoafarias/sidekick/releases/latest"><img src="https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true" width="500" /></a>
+ 
+ </div>
+ 
+
+## Contributors 🎉
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
