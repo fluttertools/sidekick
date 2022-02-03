@@ -90,11 +90,8 @@ Search versions across apps
 Version sandboxing (playground)
 
 more...
- 
- <a href="https://github.com/leoafarias/sidekick/releases/latest"><img src="https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true" width="500" /></a>
- 
- </div>
- 
+
+</div>
 
 ## Contributors 🎉
 
