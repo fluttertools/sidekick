@@ -50,7 +50,7 @@
 
 
 <div align="center">
-  <sub>Sidekick is avbailable in the following languages:</sub>
+  <sub>Sidekick is available in the following languages:</sub>
  <br>
     🇸🇦
     🇩🇪
@@ -67,7 +67,6 @@
 
  <br>
 
-![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
 
 <div align="center">
   <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
@@ -79,17 +78,17 @@
  <div align="center">
 
 ## ✨ Features
-
+___
 Manage Flutter versions
- 
+
 Explore releases
- 
+
 View most used packages
- 
+
 Search versions across apps
- 
+
 Version sandboxing (playground)
- 
+
 more...
  
  <a href="https://github.com/leoafarias/sidekick/releases/latest"><img src="https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true" width="500" /></a>
