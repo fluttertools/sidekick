@@ -10,6 +10,7 @@
 
 <br>
 
+
 <div align="center">
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square">
   <img alt="GitHub Downloads for the last release" src="https://img.shields.io/github/downloads/leoafarias/sidekick/latest/total?label=Downloads%20for%20the%20latest%20release&style=flat-square">
@@ -42,6 +43,11 @@
 </div>
 
 <br>
+
+[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
+
+![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/screenshot.png?raw=true)
+
 
 <div align="center">
   <sub>Sidekick is avbailable in the following languages:</sub>
