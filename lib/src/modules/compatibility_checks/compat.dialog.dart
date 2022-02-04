@@ -23,6 +23,8 @@ class CompatDialog extends HookWidget {
 
     return AlertDialog(
       title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Heading(context.i18n('modules:compatibility.dialog.dialogTitle')),
           const SizedBox(
@@ -76,10 +78,10 @@ class CompatDialog extends HookWidget {
         ElevatedButton(
           onPressed: () {
             notify(I18Next.of(context)
-                .t('modules:fvm.compatibility.dialog.dialogRestartNotication'));
+                .t('modules:compatibility.dialog.dialogRestartNotication'));
             Future.delayed(const Duration(seconds: 3)).then((_) => exit(0));
           },
-          child: Text(context.i18n('modules:fvm.compatibility.dialog.done')),
+          child: Text(context.i18n('modules:compatibility.dialog.done')),
         )
       ],
     );
