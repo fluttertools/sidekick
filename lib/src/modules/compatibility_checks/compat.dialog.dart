@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.dto.dart';
@@ -21,13 +22,15 @@ class CompatDialog extends HookWidget {
 
     return AlertDialog(
       title: Column(
-        children: const [
-          Heading("Install Required Components"),
-          SizedBox(
+        children: [
+          Heading(I18Next.of(context)
+              .t('modules:compatibility.dialog.dialogTitle')),
+          const SizedBox(
             width: 15,
           ),
-          Subheading(
-              "Copy this and paste it in the terminal. Follow the instructions.")
+          Subheading(I18Next.of(context).t(Platform.isWindows
+              ? 'modules:compatibility.dialog.dialogDescriptionWindows'
+              : 'modules:compatibility.dialog.dialogDescriptionMacLinux'))
         ],
       ),
       content: Container(
@@ -52,7 +55,8 @@ class CompatDialog extends HookWidget {
                     Clipboard.setData(
                       ClipboardData(text: command),
                     );
-                    notify("Copied to Clipboard");
+                    notify(I18Next.of(context)
+                        .t('components:atoms.copiedToClipboard'));
                   },
                   icon: const Icon(
                     Icons.copy,
@@ -67,14 +71,16 @@ class CompatDialog extends HookWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text("Cancel"),
+          child: Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
         ),
         ElevatedButton(
           onPressed: () {
-            notify("Great! Sidekick will now close. Please reopen it.");
+            notify(I18Next.of(context)
+                .t('modules:fvm.compatibility.dialog.dialogRestartNotication'));
             Future.delayed(const Duration(seconds: 3)).then((_) => exit(0));
           },
-          child: const Text("Done"),
+          child: Text(
+              I18Next.of(context).t('modules:fvm.compatibility.dialog.done')),
         )
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
@@ -37,13 +38,13 @@ class CompatCheckScreen extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Heading(
-                    "Sidekick failed to detect one or more necessary components"),
+                Heading(I18Next.of(context)
+                    .t('modules:compatibility.screen.title')),
                 const SizedBox(
                   height: 5,
                 ),
-                const Subheading(
-                    "This is the breakdown of what is and is not missing:"),
+                Subheading(I18Next.of(context)
+                    .t('modules:compatibility.screen.subtitle')),
                 const SizedBox(
                   height: 15,
                 ),
@@ -68,8 +69,8 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Subheading(
-                              "Git is used to download and update flutter versions. It is utilized by FVM"),
+                          Subheading(I18Next.of(context).t(
+                              'modules:compatibility.screen.gitDescription')),
                           const SizedBox(
                             height: 15,
                           ),
@@ -86,8 +87,8 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Subheading(
-                              "Flutter Version Management. Provides Sidekick with most of its core functionality."),
+                          Subheading(I18Next.of(context).t(
+                              'modules:compatibility.screen.fvmDescription')),
                           const SizedBox(
                             height: 15,
                           ),
@@ -104,8 +105,8 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Subheading(
-                              "Optional. May be used to install FVM if it is not present on Windows devices."),
+                          Subheading(I18Next.of(context).t(
+                              'modules:compatibility.screen.chocoDescription')),
                           const SizedBox(
                             height: 15,
                           ),
@@ -122,8 +123,8 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Subheading(
-                              "Optional. May be used to install FVM if it is not present on MacOS and Linux devices."),
+                          Subheading(I18Next.of(context).t(
+                              'modules:compatibility.screen.brewDescription')),
                         ],
                       ),
                     ),
@@ -135,8 +136,8 @@ class CompatCheckScreen extends HookWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Subheading(
-                        "Please install the missing components in order to use Sidekick!"),
+                    Subheading(I18Next.of(context)
+                        .t('modules:compatibility.screen.brewDescription')),
                     Row(
                       children: [
                         OutlinedButton(
@@ -149,7 +150,8 @@ class CompatCheckScreen extends HookWidget {
                               ),
                             );
                           },
-                          child: const Text("Ignore"),
+                          child: Text(I18Next.of(context)
+                              .t('modules:compatibility.screen.ignore')),
                         ),
                         const SizedBox(
                           width: 15,
@@ -161,7 +163,8 @@ class CompatCheckScreen extends HookWidget {
                               builder: (context) => const CompatDialog(),
                             );
                           },
-                          child: const Text("Install Missing"),
+                          child: Text(I18Next.of(context).t(
+                              'modules:compatibility.screen.installmissing')),
                         )
                       ],
                     ),
