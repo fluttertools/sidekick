@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.dto.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
@@ -23,12 +24,11 @@ class CompatDialog extends HookWidget {
     return AlertDialog(
       title: Column(
         children: [
-          Heading(I18Next.of(context)
-              .t('modules:compatibility.dialog.dialogTitle')),
+          Heading(context.i18n('modules:compatibility.dialog.dialogTitle')),
           const SizedBox(
             width: 15,
           ),
-          Subheading(I18Next.of(context).t(Platform.isWindows
+          Subheading(context.i18n(Platform.isWindows
               ? 'modules:compatibility.dialog.dialogDescriptionWindows'
               : 'modules:compatibility.dialog.dialogDescriptionMacLinux'))
         ],
@@ -71,7 +71,7 @@ class CompatDialog extends HookWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(I18Next.of(context).t('modules:fvm.dialogs.cancel')),
+          child: Text(context.i18n('modules:fvm.dialogs.cancel')),
         ),
         ElevatedButton(
           onPressed: () {
@@ -79,8 +79,7 @@ class CompatDialog extends HookWidget {
                 .t('modules:fvm.compatibility.dialog.dialogRestartNotication'));
             Future.delayed(const Duration(seconds: 3)).then((_) => exit(0));
           },
-          child: Text(
-              I18Next.of(context).t('modules:fvm.compatibility.dialog.done')),
+          child: Text(context.i18n('modules:fvm.compatibility.dialog.done')),
         )
       ],
     );

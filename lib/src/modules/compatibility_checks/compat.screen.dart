@@ -5,6 +5,7 @@ import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 
 import '../../theme.dart';
@@ -69,7 +70,7 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(I18Next.of(context).t(
+                          Subheading(context.i18n(
                               'modules:compatibility.screen.gitDescription')),
                           const SizedBox(
                             height: 15,
@@ -87,7 +88,7 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(I18Next.of(context).t(
+                          Subheading(context.i18n(
                               'modules:compatibility.screen.fvmDescription')),
                           const SizedBox(
                             height: 15,
@@ -105,7 +106,7 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(I18Next.of(context).t(
+                          Subheading(context.i18n(
                               'modules:compatibility.screen.chocoDescription')),
                           const SizedBox(
                             height: 15,
@@ -123,7 +124,7 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(I18Next.of(context).t(
+                          Subheading(context.i18n(
                               'modules:compatibility.screen.brewDescription')),
                         ],
                       ),
@@ -163,7 +164,7 @@ class CompatCheckScreen extends HookWidget {
                               builder: (context) => const CompatDialog(),
                             );
                           },
-                          child: Text(I18Next.of(context).t(
+                          child: Text(context.i18n(
                               'modules:compatibility.screen.installmissing')),
                         )
                       ],
