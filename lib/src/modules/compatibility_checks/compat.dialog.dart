@@ -6,11 +6,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
-import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.dto.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 
-import 'compat.service.dart';
 import 'compat.utils.dart';
 
 class CompatDialog extends HookWidget {
