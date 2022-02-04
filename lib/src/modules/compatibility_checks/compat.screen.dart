@@ -7,10 +7,9 @@ import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
-import 'package:sidekick/src/modules/compatibility_checks/dialogs/choco.compat.dialog.dart';
 
 import '../../theme.dart';
-import 'dialogs/brew.compat.dialog.dart';
+import 'compat.dialog.dart';
 
 /// Settings screen
 class CompatCheckScreen extends HookWidget {
@@ -159,23 +158,10 @@ class CompatCheckScreen extends HookWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            if (Platform.isMacOS) {
-                              if (!provider.brew) {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => const BrewDialog(),
-                                );
-                                return;
-                              }
-                            } else if (Platform.isWindows) {
-                              if (!provider.choco) {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => const ChocoDialog(),
-                                );
-                                return;
-                              }
-                            }
+                            showDialog(
+                              context: context,
+                              builder: (context) => const CompatDialog(),
+                            );
                           },
                           child: const Text("Install Missing"),
                         )

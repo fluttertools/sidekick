@@ -1,27 +1,35 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.dto.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 
-import '../compat.service.dart';
-import '../compat.utils.dart';
-import 'brew.compat.dialog.dart';
+import 'compat.service.dart';
+import 'compat.utils.dart';
 
-class ChocoDialog extends StatelessWidget {
-  const ChocoDialog({Key key}) : super(key: key);
+class CompatDialog extends HookWidget {
+  const CompatDialog({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final check = useProvider(compatProvider);
+    final command = _genCommand(check);
+
     return AlertDialog(
       title: Column(
         children: const [
-          Heading("Install Chocolatey"),
+          Heading("Install Required Components"),
           SizedBox(
             width: 15,
           ),
           Subheading(
-              "Copy this and paste it in PowerShell. Follow the instructions. You need administartive rights.")
+              "Copy this and paste it in the terminal. Follow the instructions.")
         ],
       ),
       content: Container(
@@ -33,18 +41,18 @@ class ChocoDialog extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Expanded(
+              Expanded(
                 child: SelectableText(
-                  chocoInstallCmd,
-                  //maxLines: 5,
-                  textAlign: TextAlign.left,
+                  command,
+                  //maxLines: 1,
+                  //textAlign: TextAlign.center,
                 ),
               ),
               IconButton(
                   splashRadius: 2,
                   onPressed: () {
                     Clipboard.setData(
-                      const ClipboardData(text: chocoInstallCmd),
+                      ClipboardData(text: command),
                     );
                     notify("Copied to Clipboard");
                   },
@@ -59,29 +67,36 @@ class ChocoDialog extends StatelessWidget {
       actions: [
         OutlinedButton(
           onPressed: () {
-            openLink(context, "https://chocolatey.org/install#individual");
+            Navigator.of(context).pop();
           },
-          child: const Text("Go to project site"),
+          child: const Text("Cancel"),
         ),
         ElevatedButton(
           onPressed: () {
-            isChocoInstalled().then((value) {
-              if (value) {
-                Navigator.of(context).pop();
-                showDialog(
-                  context: context,
-                  builder: (context) => const BrewDialog(),
-                );
-                CompatService.checkState();
-              } else {
-                notify("Choco is not detected,"
-                    " please make sure it is installed and try again");
-              }
-            });
+            notify("Great! Sidekick will now close. Please reopen it.");
+            Future.delayed(const Duration(seconds: 3)).then((_) => exit(0));
           },
           child: const Text("Done"),
         )
       ],
     );
   }
+}
+
+String _genCommand(CompatibilityCheck check) {
+  var command = "";
+  final useBrew = (Platform.isMacOS || Platform.isLinux);
+  if (!check.brew && useBrew) {
+    command += brewInstallCmd;
+  }
+  if (!check.choco && !useBrew) {
+    command += chocoInstallCmd;
+  }
+  if (!check.git) {
+    command += gitInstallCmd;
+  }
+  if (!check.fvm) {
+    command += fvmInstallCmd;
+  }
+  return command;
 }
