@@ -1,29 +1,99 @@
-# Flutter Sidekick
+<p align="center"><img src="/assets/svgs/3D-icon.svg" alt="Sidekick" width="100"></p>
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square) [![Github All Contributors](https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square)](https://github.com/leoafarias/sidekick/graphs/contributors) [![Awesome Flutter](https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square)](https://github.com/Solido/awesome-flutter) ![GitHub](https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square)
+<h1 align="center">Flutter Sidekick</h1>
+ 
+<div align="center">
+  <strong>A simple desktop interface for tools that enhance Flutter development experience to make it even more delightful.</strong>
+  
+  <sub>Available for Linux, macOS and Windows.</sub>
+</div>
 
-Sidekick is an app that provides a simple desktop interface to tools that enhance Flutter development experience to make it even more delightful.
-
-[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
-
-![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/screenshot.png?raw=true)
-
-<a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+<br>
 
 
-### [Installation Instructions](https://github.com/leoafarias/sidekick/wiki/Installing)
-### [Adding a new Language](https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language)
+<div align="center">
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/leoafarias/sidekick?style=flat-square">
+  <img alt="GitHub Downloads for the last release" src="https://img.shields.io/github/downloads/leoafarias/sidekick/latest/total?label=Downloads%20for%20the%20latest%20release&style=flat-square">
+  <img alt="GitHub Downloads overall" src="https://img.shields.io/github/downloads/leoafarias/sidekick/total?label=Overall%20Downloads&style=flat-square">
+  <a href="https://github.com/leoafarias/sidekick/graphs/contributors"><img alt="GitHub All Contributors" src="https://img.shields.io/github/all-contributors/leoafarias/sidekick?style=flat-square"></a>
+  <a href="https://github.com/Solido/awesome-flutter"><img alt="Awesome Flutter" src="https://img.shields.io/badge/awesome-flutter-purple?longCache=true&style=flat-square"></a>
+  <img alt="License" src="https://img.shields.io/github/license/leoafarias/sidekick?color=orange&style=flat-square">
+ </div>
+ 
+ <br>
 
-## Features
+<div align="center">
+  <h3>
+    <a href="https://github.com/leoafarias/sidekick/releases/latest">
+      Download Latest
+    </a>
+    <span> | </span>
+    <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG">
+      Microsoft Store
+    </a>
+    <span> | </span>
+    <a href="https://github.com/leoafarias/sidekick/wiki/Installing">
+      Installation Instructions
+    </a>
+    <span> | </span>
+    <a href="https://github.com/leoafarias/sidekick/wiki/Internationalization#adding-a-language">
+      Adding a new Language
+    </a>
+  </h3>
+</div>
 
-- Manage Flutter versions
-- Explore releases
-- View most used packages
-- Search versions across apps
-- Version sandboxing (playground)
-- more...
+<br>
 
-## Contributors ✨
+[![Download Sidekick](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/download-banner.png?raw=true)](https://github.com/leoafarias/sidekick/releases/latest)
+
+![Sidekick Screenshot](https://github.com/leoafarias/sidekick/blob/main/assets/promo-gh/screenshot.png?raw=true)
+
+
+<div align="center">
+  <sub>Sidekick is available in the following languages:</sub>
+ <br>
+    🇸🇦
+    🇩🇪
+    🇬🇧
+    🇺🇸
+    🇪🇸
+    🇯🇵
+    🇸🇪
+    🇵🇹
+    🇰🇷
+    🇵🇱
+    🇮🇹
+</div>
+
+ <br>
+
+
+<div align="center">
+  <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+ <br>
+ </div>
+ 
+ <br>
+ 
+ <div align="center">
+
+## ✨ Features
+___
+Manage Flutter versions
+
+Explore releases
+
+View most used packages
+
+Search versions across apps
+
+Version sandboxing (playground)
+
+more...
+
+</div>
+
+## Contributors 🎉
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -46,7 +116,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://ahmadre.com"><img src="https://avatars.githubusercontent.com/u/18512224?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Rebar Ahmad</b></sub></a><br /><a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Code">💻</a> <a href="https://github.com/leoafarias/sidekick/commits?author=Ahmadre" title="Documentation">📖</a> <a href="#translation-Ahmadre" title="Translation">🌍</a> <a href="https://github.com/leoafarias/sidekick/issues?q=author%3AAhmadre" title="Bug reports">🐛</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/Hu-Wentao"><img src="https://avatars.githubusercontent.com/u/35894003?v=4?s=50" width="50px;" alt=""/><br /><sub><b>胡文涛</b></sub></a><br /><a href="#infra-Hu-Wentao" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/Hu-Wentao"><img src="https://avatars.githubusercontent.com/u/35894003?v=4?s=50" width="50px;" alt=""/><br /><sub><b>胡文涛</b></sub></a><br /><a href="#infra-Hu-Wentao" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/leoafarias/sidekick/commits?author=Hu-Wentao" title="Code">💻</a></td>
     <td align="center"><a href="http://www.brimir.eu"><img src="https://avatars.githubusercontent.com/u/8105390?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Patrik Persson</b></sub></a><br /><a href="#translation-broderbluff" title="Translation">🌍</a></td>
     <td align="center"><a href="http://kassadin.github.io/"><img src="https://avatars.githubusercontent.com/u/1104051?v=4?s=50" width="50px;" alt=""/><br /><sub><b>kassadin</b></sub></a><br /><a href="#translation-kassadin" title="Translation">🌍</a></td>
     <td align="center"><a href="http://petner.kr"><img src="https://avatars.githubusercontent.com/u/37838834?v=4?s=50" width="50px;" alt=""/><br /><sub><b>seenewmax</b></sub></a><br /><a href="#translation-seenewmax" title="Translation">🌍</a></td>
