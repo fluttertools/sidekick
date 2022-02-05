@@ -84,9 +84,12 @@ jobs:
       - name: Flutter build app
         run: flutter build macos
 
+      - name: Install create-dmg
+        run: brew install create-dmg
+
       - name: Create dmg
         run: |
-          scripts/create_mac_dmg.sh
+          ./scripts/create_mac_dmg.sh
 
       - name: Compress artifacts
         run: zip -r macos-${{ github.event.release.tag_name }}.zip build/macos/Build/Products/Release
