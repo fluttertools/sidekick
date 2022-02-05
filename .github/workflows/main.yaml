@@ -54,7 +54,7 @@ jobs:
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
         with:
-          name: sidekick-windows-dev.dmg
+          name: sidekick-linux-dev.zip
           path: linux-dev.zip
       
   build-macos:
@@ -86,7 +86,7 @@ jobs:
 
       - name: Create dmg
         run: |
-          ./scripts/create_mac_dmg.sh
+          scripts/create_mac_dmg.sh
 
       - name: Compress artifacts
         run: zip -r macos-${{ github.event.release.tag_name }}.zip build/macos/Build/Products/Release
@@ -100,7 +100,7 @@ jobs:
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
         with:
-          name: sidekick-macos-dev.dmg
+          name: sidekick-macos-dev.zip
           path: macos-dev.zip
 
 
@@ -174,5 +174,5 @@ jobs:
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
         with:
-          name: sidekick-windows-dev.dmg
+          name: sidekick-windows-dev.zip
           path: windows-dev.zip
