@@ -164,5 +164,25 @@
       "clickHereToDownload": "クリックしてダウンロード",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekickの新しいバージョン({{updateInfoLatest}})が利用可能です"
     }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "必要なコンポーネントのインストール",
+      "dialogDescriptionMacLinux": "これをコピーしてターミナルに貼り付けます。指示に従います。",
+      "dialogDescriptionWindows": "これをコピーして PowerShell に貼り付けます。指示に従います。管理者として実行する必要があります。",
+      "dialogRestartNotication": "すごい！サイドキックが閉じます。もう一度開いてください。",
+      "done": "完成です"
+    },
+    "screen": {
+      "title": "サイドキックは、1 つ以上の必要なコンポーネントを検出できませんでした",
+      "subtitle": "これは、何が欠けているか、欠けていないかの内訳です:",
+      "gitDescription": "Gitは、フラッターバージョンのダウンロードと更新に使用されます。FVMによって利用される",
+      "fvmDescription": "フラッターバージョン管理。サイドキックのコア機能を提供します。",
+      "chocoDescription": "随意。FVM が Windows デバイスに存在しない場合は、FVM のインストールに使用できます。",
+      "brewDescription": "随意。FVM が MacOS および Linux デバイスに存在しない場合は、FVM のインストールに使用できます。",
+      "pleaseInstall": "サイドキックを使用するために不足しているコンポーネントをインストールしてください!",
+      "ignore": "不問に付す",
+      "installmissing": "インストールが見つかりません"
+    }
   }
 }

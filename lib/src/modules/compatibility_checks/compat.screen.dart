@@ -52,7 +52,7 @@ class CompatCheckScreen extends HookWidget {
                 Expanded(
                   child: Card(
                     child: Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,8 +137,10 @@ class CompatCheckScreen extends HookWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Subheading(I18Next.of(context)
-                        .t('modules:compatibility.screen.brewDescription')),
+                    Expanded(
+                      child: Subheading(I18Next.of(context)
+                          .t('modules:compatibility.screen.pleaseInstall')),
+                    ),
                     Row(
                       children: [
                         OutlinedButton(

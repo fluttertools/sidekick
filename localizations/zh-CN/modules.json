@@ -164,5 +164,25 @@
       "clickHereToDownload": "点击下载",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "新版本的 Sidekick 已经可用  ({{updateInfoLatest}})."
     }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "安装所需的组件",
+      "dialogDescriptionMacLinux": "复制此并将其粘贴到终端中。按照说明进行操作。",
+      "dialogDescriptionWindows": "复制此内容并粘贴到 PowerShell 中。按照说明进行操作。必须以管理员身份运行。",
+      "dialogRestartNotication": "伟大！Sidekick现在将关闭。请重新打开它。",
+      "done": "做"
+    },
+    "screen": {
+      "title": "Sidekick 未能检测到一个或多个必需组件",
+      "subtitle": "以下是缺少和不缺少的内容的细分：",
+      "gitDescription": "Git 用于下载和更新 flutter 版本。它被FVM使用",
+      "fvmDescription": "颤动版本管理。为 Sidekick 提供其大部分核心功能。",
+      "chocoDescription": "自选。如果 FVM 在 Windows 设备上不存在，则可用于安装 FVM。",
+      "brewDescription": "自选。如果 FVM 在 MacOS 和 Linux 设备上不存在，则可用于安装 FVM。",
+      "pleaseInstall": "请安装缺少的组件，以便使用 Sidekick！",
+      "ignore": "忽视",
+      "installmissing": "安装缺失"
+    }
   }
 }

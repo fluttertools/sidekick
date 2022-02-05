@@ -77,7 +77,7 @@
     "components": {
       "youNeedToAddAFlutterProjectFirstPackageInformation": "تحتاج إلى إضافة مشروع Flutter أولاً. سيتم عرض معلومات الحزمة هنا.",
       "noPackagesFound": "لم يتم العثور على حزم",
-      "view" : "عرض",
+      "view": "عرض",
       "builtBy": "تم بناؤه بواسطة",
       "packageprojectscountProjects": "{{packageProjectsCount}} مشروع",
       "changelog": "سجل التغييرات",
@@ -163,6 +163,26 @@
       "updateNow": "التحديث الآن",
       "clickHereToDownload": "انقر هنا للتحميل.",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "يتوفر إصدار جديد من Sidekick ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "تثبيت المكونات المطلوبة",
+      "dialogDescriptionMacLinux": "انسخ هذا والصقه في الجهاز. اتبع التعليمات.",
+      "dialogDescriptionWindows": "انسخ هذا والصقه في PowerShell. اتبع التعليمات. يجب تشغيله كمدير.",
+      "dialogRestartNotication": "عظيم! سيتم إغلاق الصاحب الآن. الرجاء إعادة فتحه.",
+      "done": "تم"
+    },
+    "screen": {
+      "title": "فشل Sidekick في اكتشاف واحد أو أكثر من المكونات الضرورية",
+      "subtitle": "هذا هو تفصيل ما هو مفقود وما هو غير مفقود:",
+      "gitDescription": "يتم استخدام Git لتنزيل إصدارات الرفرفة وتحديثها. يتم استخدامه من قبل FVM",
+      "fvmDescription": "Flutter Version Management. يزود Sidekick بمعظم وظائفه الأساسية.",
+      "chocoDescription": "اختياري. يمكن استخدامه لتثبيت FVM إذا لم يكن موجودًا على أجهزة Windows.",
+      "brewDescription": "اختياري. يمكن استخدامه لتثبيت FVM إذا لم يكن موجودًا على أجهزة MacOS و Linux.",
+      "pleaseInstall": "الرجاء تثبيت المكونات المفقودة من أجل استخدام Sidekick!",
+      "ignore": "تجاهل",
+      "installmissing": "تثبيت مفقود"
     }
   }
 }
