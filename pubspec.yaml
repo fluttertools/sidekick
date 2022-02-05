@@ -64,7 +64,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/logo.png
     - localizations/ar-SA/
     - localizations/de-DE/
     - localizations/en-GB/
