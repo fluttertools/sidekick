@@ -221,7 +221,7 @@ jobs:
           path: lib/modifiers.dart
           contents: |
             // Generated file. Do not modify
-            const isMSStore = false;
+            const isMSStore = true;
           write-mode: overwrite
 
       - name: Flutter get packages
