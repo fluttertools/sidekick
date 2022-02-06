@@ -19,7 +19,7 @@ class SkUpdateButton extends HookWidget {
     final updateInfo = useProvider(updaterProvider);
 
     /// Return empty if its not installed or does not need update
-    if (!updateInfo.ready) {
+    if (updateInfo == null || !updateInfo.ready) {
       return const SizedBox(height: 0, width: 0);
     }
 
