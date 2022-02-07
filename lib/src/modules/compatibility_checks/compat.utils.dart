@@ -53,5 +53,6 @@ const chocoInstallCmd =
 final gitInstallCmd =
     Platform.isWindows ? "choco install git -y\n" : "brew install git\n";
 
-final fvmInstallCmd =
-    Platform.isWindows ? "choco install fvm -y\n" : "brew install fvm\n";
+final fvmInstallCmd = Platform.isWindows
+    ? "choco install fvm -y\n"
+    : "brew tap leoafarias/fvm\nbrew install fvm\n";
