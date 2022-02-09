@@ -54,9 +54,17 @@ Future<void> openCustom(
   String path, {
   String customLocation,
 }) async {
-  await Process.run(
-    customLocation,
-    [path],
-    runInShell: true,
-  );
+  if (Platform.isMacOS) {
+    await Process.run(
+      "open",
+      ['-a $customLocation', path],
+      runInShell: true,
+    );
+  } else {
+    await Process.run(
+      customLocation,
+      [path],
+      runInShell: true,
+    );
+  }
 }
