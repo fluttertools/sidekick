@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -93,39 +95,40 @@ class CompatCheckScreen extends HookWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Heading("Chocolatey"),
-                              Icon(provider.choco
-                                  ? Icons.check_circle_outline_rounded
-                                  : Icons.error_outline_rounded)
-                            ],
-                          ),
+                          if (Platform.isWindows)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Heading("Chocolatey"),
+                                Icon(provider.choco
+                                    ? Icons.check_circle_outline_rounded
+                                    : Icons.error_outline_rounded)
+                              ],
+                            ),
+                          if (Platform.isLinux || Platform.isMacOS)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Heading("Brew"),
+                                Icon(provider.brew
+                                    ? Icons.check_circle_outline_rounded
+                                    : Icons.error_outline_rounded)
+                              ],
+                            ),
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(context.i18n(
-                              'modules:compatibility.screen.chocoDescription')),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Heading("Brew"),
-                              Icon(provider.brew
-                                  ? Icons.check_circle_outline_rounded
-                                  : Icons.error_outline_rounded)
-                            ],
-                          ),
+                          if (Platform.isWindows)
+                            Subheading(context.i18n(
+                                'modules:compatibility.screen.chocoDescription')),
+                          if (Platform.isLinux || Platform.isMacOS)
+                            Subheading(context.i18n(
+                                'modules:compatibility.screen.brewDescription')),
                           const SizedBox(
                             height: 5,
                           ),
-                          Subheading(context.i18n(
-                              'modules:compatibility.screen.brewDescription')),
                         ],
                       ),
                     ),
