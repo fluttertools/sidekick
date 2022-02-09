@@ -40,7 +40,7 @@ class CompatibilityCheck {
 
   /// check if the basic programs are installed
   bool get ready {
-    return fvm && git;
+    return git;
   }
 
   CompatibilityCheck copyWith({
