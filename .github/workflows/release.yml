@@ -204,7 +204,7 @@ jobs:
               identity_name: 44484EduardoM.SidekickFlutter
               publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
               msix_version: ${{steps.msixver.outputs.value }}.0
-              logo_path: assets\svgs\standard-icon.svg
+              logo_path: assets\promo-windows\icon.png
               architecture: x64
               capabilities: "internetClient,removableStorage"
               certificate_path: windows\SIDEKICK-CERT.pfx
@@ -286,7 +286,7 @@ jobs:
               identity_name: 44484EduardoM.SidekickFlutter
               publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
               msix_version: ${{steps.msixver.outputs.value }}.0
-              logo_path: assets\svgs\standard-icon.svg
+              logo_path: assets\promo-windows\icon.png
               architecture: x64
               capabilities: "internetClient,removableStorage"
               certificate_path: windows\SIDEKICK-CERT.pfx
