@@ -164,5 +164,25 @@
       "clickHereToDownload": "Haga clic aquí para descargar",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Hay una nueva versión de Sidekick disponible ({{updateInfoLatest}})"
     }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Instalar Componentes Necesarios",
+      "dialogDescriptionMacLinux": "Copia y pega esto en la consola. Sigue las instrucciones.",
+      "dialogDescriptionWindows": "Copia y pega esto en PowerShell. Sigue las instrucciones. Debes ejecutar PowerShell como administrador.",
+      "dialogRestartNotication": "¡Perfecto! Sidekick ahora se cerrará. Vuelve a abrirlo.",
+      "done": "Hecho"
+    },
+    "screen": {
+      "title": "Sidekick no ha podido detectar uno o mas componentes necesarios",
+      "subtitle": "Esto es lo que esta instalado y lo que falta:",
+      "gitDescription": "Git se usa para instalar y actualizar Flutter. FVM lo necesita.",
+      "fvmDescription": "Flutter Version Management. Proporciona a Sidekick con la mayroría de sus funciones.",
+      "chocoDescription": "Opcional. Puede ser usado para instalar FVM y Git en Windows.",
+      "brewDescription": "Opcional. Puede ser usado para instalar FVM y Git en MacOS y Linux.",
+      "pleaseInstall": "Porfavor, instala los componentes faltantes para utilizar Sidekick.",
+      "ignore": "Ignorar",
+      "installmissing": "Instalar Faltantes"
+    }
   }
 }

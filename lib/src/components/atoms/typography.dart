@@ -59,19 +59,25 @@ class ConsoleText extends StatelessWidget {
   const ConsoleText(
     this.text, {
     Key key,
+    this.maxLines = 1,
+    this.color,
   }) : super(key: key);
 
   /// Content for stdout
   final String text;
 
+  final int maxLines;
+
+  final Color color;
+
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: 1,
+      maxLines: maxLines,
       style: GoogleFonts.ibmPlexMono().copyWith(
         fontSize: 12,
-        color: Theme.of(context).colorScheme.secondary,
+        color: color ?? Theme.of(context).colorScheme.secondary,
       ),
     );
   }

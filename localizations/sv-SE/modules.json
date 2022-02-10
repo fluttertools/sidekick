@@ -164,5 +164,25 @@
       "clickHereToDownload": "Klicka här för att ladda ner",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "En ny version av Sidekick finns tillgänglig ({{updateInfoLatest}})."
     }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Installera nödvändiga komponenter",
+      "dialogDescriptionMacLinux": "Kopiera detta och klistra in det i terminalen. Följ instruktionerna.",
+      "dialogDescriptionWindows": "Kopiera detta och klistra in i PowerShell. Följ instruktionerna. Måste köras som administratör.",
+      "dialogRestartNotication": "Stor! Sidekick kommer nu att stänga. Var snäll och öppna den igen.",
+      "done": "Färdig"
+    },
+    "screen": {
+      "title": "Sidekick kunde inte identifiera en eller flera nödvändiga komponenter",
+      "subtitle": "Detta är uppdelningen av vad som är och inte saknas:",
+      "gitDescription": "Git används för att ladda ner och uppdatera fladdrande versioner. Det används av FVM",
+      "fvmDescription": "Flutter Version Management. Ger Sidekick de flesta av sina kärnfunktioner.",
+      "chocoDescription": "Valfri. Kan användas för att installera FVM om det inte finns på Windows-enheter.",
+      "brewDescription": "Valfri. Kan användas för att installera FVM om det inte finns på MacOS- och Linux-enheter.",
+      "pleaseInstall": "Installera de saknade komponenterna för att använda Sidekick!",
+      "ignore": "Bortse från",
+      "installmissing": "Installation saknas"
+    }
   }
 }

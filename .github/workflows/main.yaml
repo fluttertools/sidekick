@@ -139,10 +139,7 @@ jobs:
               identity_name: 44484EduardoM.SidekickFlutter
               publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
               msix_version: 1.0.0.0
-              logo_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
-              start_menu_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
-              tile_icon_path: .\macos\Runner\Assets.xcassets\AppIcon.appiconset\app_icon_128.png
-              icons_background_color: transparent
+              logo_path: assets\promo-windows\icon.png
               architecture: x64
               capabilities: "internetClient,removableStorage"
               certificate_path: windows\SIDEKICK-CERT.pfx
