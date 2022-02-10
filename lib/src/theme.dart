@@ -153,29 +153,27 @@ Color platformBackgroundColor(BuildContext context) {
   final brightnessMatches = themeBrightness == platformBrightness;
 
   // Brightness matches doesn't work on Windows 10
-  if (brightnessMatches) {
-    if (Platform.isMacOS) {
+
+  if (Platform.isWindows) {
+    if (getWindowsBuild() >= 22000) {
+      Window.setEffect(
+          effect: WindowEffect.mica,
+          color: Theme.of(context).cardColor.withAlpha(0),
+          dark: Theme.of(context).brightness == Brightness.dark);
+      return Colors.transparent;
+    } else if (getWindowsBuild() >= 10240) {
+      // Acrylic causes issues on W10
+      Window.setEffect(
+        effect: WindowEffect.aero,
+        color: Theme.of(context).cardColor.withAlpha(200),
+      );
       return Colors.transparent;
     }
-    if (Platform.isWindows) {
-      if (getWindowsBuild() >= 22000) {
-        Window.setEffect(
-            effect: WindowEffect.mica,
-            color: Theme.of(context).cardColor.withAlpha(0),
-            dark: Theme.of(context).brightness == Brightness.dark);
-        return Colors.transparent;
-      } else if (getWindowsBuild() >= 10240) {
-        // Acrylic causes issues on W10
-        Window.setEffect(
-          effect: WindowEffect.aero,
-          color: Theme.of(context).cardColor.withAlpha(200),
-        );
-        return Colors.transparent;
-      }
-      return Theme.of(context).cardColor;
-    } else {
-      return Theme.of(context).cardColor;
-    }
+    return Theme.of(context).cardColor;
+  }
+
+  if (brightnessMatches && Platform.isMacOS) {
+    return Colors.transparent;
   } else {
     return Theme.of(context).cardColor;
   }
