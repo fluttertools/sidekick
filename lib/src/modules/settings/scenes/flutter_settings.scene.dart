@@ -15,7 +15,7 @@ class SettingsSectionFlutter extends HookWidget {
   const SettingsSectionFlutter(
     this.settings,
     this.onSave, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Settings

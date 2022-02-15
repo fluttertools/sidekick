@@ -4,13 +4,13 @@ import 'settings.dto.dart';
 
 /// Settings service
 class SettingsService {
-  SettingsService._();
+  const SettingsService._();
 
   /// Storage key
   static const key = 'settings_box';
 
   /// Storage box
-  static Box<SidekickSettings> box;
+  static late Box<SidekickSettings> box;
 
   /// Initialize storage
   static Future<void> init() async {

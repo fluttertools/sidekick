@@ -34,19 +34,27 @@ extension ExtendedIterable<E> on Iterable<E> {
 }
 
 extension BuildContextExtension on BuildContext {
-  String i18n(String key, {Map<String, dynamic> variables}) {
-    return I18Next.of(this).t(key, variables: variables);
+  String i18n(String key, {Map<String, dynamic>? variables}) {
+    return i18next.t(key, variables: variables);
+  }
+
+  I18Next get i18next {
+    final i18next = I18Next.of(this);
+    if (i18next == null) {
+      throw Exception('I18Next is null');
+    }
+    return i18next;
   }
 
   Locale get locale {
-    return I18Next.of(this).locale;
+    return i18next.locale;
   }
 }
 
 /// Returns a temp `Directory` for sidekick
 /// If [subDirectory] is provided it will add to the path
 Future<Directory> getSidekickTempDir({
-  Directory subDirectory,
+  Directory? subDirectory,
 }) async {
   final rootTempDir = await getTemporaryDirectory();
   final appTempDir = Directory(path.join(rootTempDir.path, kAppBundleId));

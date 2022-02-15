@@ -8,17 +8,22 @@ import 'settings.service.dart';
 /// Settings provider
 final settingsProvider =
     StateNotifierProvider<_SettingsStateNotifier, AllSettings>((ref) {
-  return _SettingsStateNotifier(ref, initialState: AllSettings());
+  return _SettingsStateNotifier(
+    ref,
+    initialState: AllSettings.create(),
+  );
 });
 
 class _SettingsStateNotifier extends StateNotifier<AllSettings> {
   ProviderReference ref;
+
   _SettingsStateNotifier(
     this.ref, {
-    AllSettings initialState,
+    required AllSettings initialState,
   }) : super(initialState) {
     // Set initial settings from local storage
     _loadState();
+    _prevState = initialState;
   }
 
   Future<void> _checkAppSettingsChanges(SidekickSettings settings) async {
@@ -46,12 +51,12 @@ class _SettingsStateNotifier extends StateNotifier<AllSettings> {
     }
   }
 
-  AllSettings _prevState;
+  late AllSettings _prevState;
 
   Future<void> _loadState() async {
     /// Update app state right away
     final sidekickSettings = SettingsService.read();
-    state = AllSettings(sidekick: sidekickSettings);
+    state = AllSettings.create(sidekick: sidekickSettings);
 
     //Go get async state
     final fvmSettings = await FVMClient.readSettings();
@@ -62,9 +67,6 @@ class _SettingsStateNotifier extends StateNotifier<AllSettings> {
       fvm: fvmSettings,
       flutter: FlutterSettings.fromMap(flutterSettings),
     );
-
-    /// First run if it's null set
-    _prevState ??= state.copy();
   }
 
   /// Save settings

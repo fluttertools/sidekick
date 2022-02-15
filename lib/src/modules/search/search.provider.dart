@@ -1,6 +1,7 @@
 // ignore_for_file: top_level_function_literal_block
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sidekick/src/modules/projects/project.dto.dart';
 
 import '../../modules/common/dto/channel.dto.dart';
 import '../../modules/common/dto/version.dto.dart';
@@ -28,7 +29,7 @@ enum SearchResultGroup {
 /// Search results payload
 class SearchResults {
   /// Projects
-  final List<Project> projects;
+  final List<FlutterProject> projects;
 
   /// Channels
   final List<ChannelDto> channels;
@@ -72,14 +73,14 @@ final searchResultsProvider = Provider((ref) {
   final projects = ref.read(projectsProvider);
 
   // If projects is not fetched or there is no query return empty results
-  if (projects == null || query == null) {
+  if (projects.isEmpty || query.isEmpty) {
     return SearchResults();
   }
 
   // Split query into multiple search terms
   final searchTerms = query.toLowerCase().split(' ');
 
-  final projectResults = <Project>[];
+  final projectResults = <FlutterProject>[];
   final channelResults = <ChannelDto>[];
   final stableReleaseResults = <VersionDto>[];
   final betaReleaseResults = <VersionDto>[];
@@ -120,19 +121,20 @@ final searchResultsProvider = Provider((ref) {
     // query matches release names
     for (final release in releaseState.versions) {
       // Get channel name to pass to map
-      final channelName = release.release.channelName;
+      final channelName = release.release?.channelName;
 
       // Only unique results
       if (uniques[release.name] == true) break;
 
       // Match result that name or channel name starts with term
-      if (release.name.startsWith(term) || channelName.startsWith(term)) {
+      if (release.name.startsWith(term) ||
+          channelName?.startsWith(term) == true) {
         // Track unique insertions
         uniques[release.name] = true;
 
         // Map releases to channel groups
         // TODO: remove this logic and use filterable
-        switch (release.release.channel) {
+        switch (release.release?.channel) {
           case Channel.stable:
             stableReleaseResults.add(release);
             break;

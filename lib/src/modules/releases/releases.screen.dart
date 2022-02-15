@@ -12,7 +12,9 @@ import 'components/release_list_item.dart';
 import 'releases.provider.dart';
 
 class ReleasesScreen extends HookWidget {
-  const ReleasesScreen({Key key}) : super(key: key);
+  const ReleasesScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

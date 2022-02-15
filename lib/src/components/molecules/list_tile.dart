@@ -3,27 +3,27 @@ import 'package:flutter/material.dart';
 /// Generic FVM List Tile
 class SkListTile extends StatelessWidget {
   /// Title
-  final Widget title;
+  final Widget? title;
 
   /// Subitle
-  final Widget subtitle;
+  final Widget? subtitle;
 
   /// Trailing widget
-  final Widget trailing;
+  final Widget? trailing;
 
   /// Leading widget
-  final Widget leading;
+  final Widget? leading;
 
   /// On tap handler
-  final Function() onTap;
+  final Function()? onTap;
 
   /// Is it seleccted
   final bool selected;
 
   /// Constructor
   const SkListTile({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.subtitle,
     this.leading,
     this.trailing,

@@ -11,7 +11,7 @@ class SetupButton extends StatelessWidget {
   /// Constructor
   const SetupButton({
     this.release,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release

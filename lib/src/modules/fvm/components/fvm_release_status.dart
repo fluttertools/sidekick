@@ -14,17 +14,13 @@ class FvmReleaseStatus extends StatelessWidget {
   /// Constructor
   const FvmReleaseStatus(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release
   final ReleaseDto release;
   @override
   Widget build(BuildContext context) {
-    if (release == null) {
-      return const SizedBox(height: 0);
-    }
-
     // Will use for channel upgrade comparison
     var currentRelease = release.release?.version;
     var latestRelease = release.release?.version;
@@ -50,7 +46,9 @@ class FvmReleaseStatus extends StatelessWidget {
             size: 20,
           ),
           SizedBox(width: release.isChannel ? 10 : 0),
-          release.isChannel ? Text(currentRelease) : const SizedBox(height: 0),
+          release.isChannel
+              ? Text(currentRelease ?? '')
+              : const SizedBox(height: 0),
         ],
       );
     }

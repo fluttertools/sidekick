@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class SkGroupTile extends HookWidget {
   /// Constructor
   const SkGroupTile({
-    Key key,
+    Key? key,
     this.title,
     this.leading,
     this.trailing,

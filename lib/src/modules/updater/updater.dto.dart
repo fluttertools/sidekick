@@ -1,18 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
 import '../../version.dart';
 
 /// Latest Version update for Sidekick
 class SidekickUpdateInfo {
   /// Constructor
   SidekickUpdateInfo({
-    @required this.needUpdate,
-    @required this.isInstalled,
-    @required this.current,
-    @required this.latest,
-    @required this.latestDownloadUrl,
+    required this.needUpdate,
+    required this.isInstalled,
+    required this.current,
+    required this.latest,
+    required this.latestDownloadUrl,
     this.latestInstallerFile,
   });
 

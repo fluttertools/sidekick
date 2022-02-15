@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 /// Check for required programs
 class CompatibilityCheck {
   /// Git Install Status
@@ -20,10 +18,10 @@ class CompatibilityCheck {
 
   /// Constructor
   CompatibilityCheck({
-    @required this.git,
-    @required this.fvm,
-    @required this.choco,
-    @required this.brew,
+    required this.git,
+    required this.fvm,
+    required this.choco,
+    required this.brew,
     this.waiting = false,
   });
 

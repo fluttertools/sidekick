@@ -13,7 +13,7 @@ class FvmInfoTile extends StatelessWidget {
   /// Constructor
   const FvmInfoTile(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release

@@ -8,7 +8,7 @@ class CopyButton extends StatelessWidget {
   /// Constructor
   const CopyButton(
     this.content, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Content to copy

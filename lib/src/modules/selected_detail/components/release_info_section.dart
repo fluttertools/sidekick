@@ -8,7 +8,10 @@ import 'advanced_info_tile.dart';
 
 class ReleaseInfoSection extends StatelessWidget {
   final ReleaseDto version;
-  const ReleaseInfoSection(this.version, {Key key}) : super(key: key);
+  const ReleaseInfoSection(
+    this.version, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

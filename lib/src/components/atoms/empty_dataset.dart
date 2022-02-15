@@ -36,14 +36,14 @@ const _iconsPosition = [
 /// Empty data set
 class EmptyDataset extends StatelessWidget {
   /// Constructor
-  const EmptyDataset(
-      {this.icon,
-      this.iconColor,
-      this.backgroundColor = Colors.black,
-      this.child,
-      this.opacity = 0.3,
-      Key key})
-      : super(key: key);
+  const EmptyDataset({
+    this.icon,
+    this.iconColor,
+    this.backgroundColor = Colors.black,
+    this.child,
+    this.opacity = 0.3,
+    Key? key,
+  }) : super(key: key);
 
   /// Icon
   final Widget icon;

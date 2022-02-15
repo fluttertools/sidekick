@@ -15,7 +15,7 @@ class Console extends HookWidget {
     this.expand = false,
     this.processing = false,
     this.onExpand,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

@@ -7,7 +7,9 @@ import 'package:sidekick/src/window_border.dart';
 import 'package:window_manager/window_manager.dart';
 
 class ErrorDBScreen extends StatelessWidget {
-  const ErrorDBScreen({Key key}) : super(key: key);
+  const ErrorDBScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

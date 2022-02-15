@@ -12,8 +12,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sidekick/i18n/language_manager.dart';
-import 'package:window_manager/window_manager.dart';
 import 'package:sidekick/src/modules/common/utils/migrate_files.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'src/modules/common/app_shell.dart';
 import 'src/modules/common/constants.dart';
@@ -61,7 +61,7 @@ void main() async {
   const initialSize = Size(800, 500);
   windowManager.setMinimumSize(initialSize);
   windowManager.setSize(initialSize);
-  if(!Platform.isMacOS) windowManager.setAsFrameless();
+  if (!Platform.isMacOS) windowManager.setAsFrameless();
 
   doWhenWindowReady(() {
     appWindow.minSize = initialSize;
@@ -73,7 +73,9 @@ void main() async {
 
 /// Fvm App
 class FvmApp extends StatelessWidget {
-  const FvmApp({Key key}) : super(key: key);
+  const FvmApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

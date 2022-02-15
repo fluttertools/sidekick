@@ -11,7 +11,7 @@ import '../fvm.provider.dart';
 class FvmCacheSize extends HookWidget {
   /// Constructor
   const FvmCacheSize({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

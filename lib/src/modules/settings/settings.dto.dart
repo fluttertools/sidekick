@@ -10,19 +10,26 @@ import 'settings.utils.dart';
 
 /// All Settings
 class AllSettings {
-  SidekickSettings sidekick;
-  FvmSettings fvm;
-  FlutterSettings flutter;
+  final SidekickSettings sidekick;
+  final FvmSettings fvm;
+  final FlutterSettings flutter;
 
-  AllSettings({
-    this.sidekick,
-    this.fvm,
-    this.flutter,
+  const AllSettings({
+    required this.fvm,
+    required this.flutter,
+    required this.sidekick,
+  });
+
+  static AllSettings create({
+    SidekickSettings? sidekick,
+    FvmSettings? fvm,
+    FlutterSettings? flutter,
   }) {
-    fvm ??= FvmSettings();
-    sidekick ??= SidekickSettings();
-
-    flutter ??= FlutterSettings();
+    return AllSettings(
+      fvm: fvm ?? const FvmSettings(),
+      flutter: flutter ?? const FlutterSettings(),
+      sidekick: sidekick ?? SidekickSettings(),
+    );
   }
 
   AllSettings copy() => AllSettings(
@@ -56,8 +63,8 @@ class SidekickSettings {
   List<String> projectPaths;
   String themeMode;
   I18NextLocalizationDelegate localizationsDelegate;
-  Locale locale;
-  String ide;
+  Locale? locale;
+  String? ide;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -114,7 +121,7 @@ class SidekickSettingsAdapter extends TypeAdapter<SidekickSettings> {
 /// Flutter settings
 class FlutterSettings {
   /// Constructor
-  FlutterSettings({
+  const FlutterSettings({
     this.analytics = true,
     this.linux = false,
     this.macos = false,
@@ -123,28 +130,28 @@ class FlutterSettings {
   });
 
   /// Analytics enabled
-  bool analytics;
+  final bool analytics;
 
   /// MacOS enabled
-  bool macos;
+  final bool macos;
 
   /// Linux enabled
-  bool linux;
+  final bool linux;
 
   /// Windows enabled
-  bool windows;
+  final bool windows;
 
   /// Web enabled
-  bool web;
+  final bool web;
 
   /// Flutter settings from map
   factory FlutterSettings.fromMap(Map<String, bool> map) {
     return FlutterSettings(
-      analytics: map['analytics'],
-      macos: map['macos'],
-      windows: map['windows'],
-      linux: map['linux'],
-      web: map['web'],
+      analytics: map['analytics'] ?? false,
+      macos: map['macos'] ?? false,
+      windows: map['windows'] ?? false,
+      linux: map['linux'] ?? false,
+      web: map['web'] ?? false,
     );
   }
 

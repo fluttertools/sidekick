@@ -14,7 +14,9 @@ import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 import 'compat.utils.dart';
 
 class CompatDialog extends HookWidget {
-  const CompatDialog({Key key}) : super(key: key);
+  const CompatDialog({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

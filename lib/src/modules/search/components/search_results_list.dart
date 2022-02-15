@@ -12,7 +12,7 @@ class SearchResultsList extends StatelessWidget {
   /// Constructor
   const SearchResultsList(
     this.results, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Search results

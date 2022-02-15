@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -13,9 +12,9 @@ import '../project.dto.dart';
 class ProjectReleaseSelect extends StatelessWidget {
   /// Constructor
   const ProjectReleaseSelect({
-    @required this.project,
-    @required this.releases,
-    Key key,
+    required this.project,
+    required this.releases,
+    Key? key,
   }) : super(key: key);
 
   /// Project
@@ -27,8 +26,9 @@ class ProjectReleaseSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-        tooltip: I18Next.of(context)
-            .t('modules:projects.components.selectAFlutterSdkVersion'),
+        tooltip: context.i18n(
+          'modules:projects.components.selectAFlutterSdkVersion',
+        ),
 
         // elevation: 1,
         padding: EdgeInsets.zero,
@@ -60,8 +60,10 @@ class ProjectReleaseSelect extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               project.pinnedVersion != null
-                  ? Caption(project.pinnedVersion)
-                  : Caption(context.i18n('modules:projects.choose')),
+                  ? Caption(project.pinnedVersion!)
+                  : Caption(
+                      context.i18n('modules:projects.choose'),
+                    ),
               // const SizedBox(width: 20),
               const Icon(MdiIcons.menuDown),
             ],

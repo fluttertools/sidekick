@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -15,9 +14,9 @@ import 'search_results_list.dart';
 class SearchBar extends HookWidget {
   /// Constructor
   const SearchBar({
-    Key key,
-    // @required this.onFocusChanged,
-    // @required this.showSearch,
+    Key? key,
+    // required this.onFocusChanged,
+    // required this.showSearch,
   }) : super(key: key);
 
   @override
@@ -29,18 +28,19 @@ class SearchBar extends HookWidget {
     final controller = useFloatingSearchBarController();
     final showSearch = useState(false);
 
-    useValueChanged(currentRoute, (_, __) {
+    useEffect(() {
       showSearch.value = currentRoute == NavigationRoutes.searchScreen;
-    });
+      return;
+    }, [currentRoute]);
 
-    useValueChanged(showSearch.value, (_, __) {
+    useEffect(() {
       if (showSearch.value) {
         controller.open();
       } else {
         controller.clear();
         controller.close();
       }
-    });
+    }, [showSearch.value]);
 
     // ignore: avoid_positional_boolean_parameters
     void onFocusChanged(bool focus) {
@@ -101,8 +101,11 @@ class SearchBar extends HookWidget {
                 if (results.isEmpty) {
                   return Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Text(I18Next.of(context)
-                        .t('modules:search.components.noResults')),
+                    child: Text(
+                      context.i18n(
+                        'modules:search.components.noResults',
+                      ),
+                    ),
                   );
                 }
 

@@ -9,7 +9,10 @@ import '../../common/dto/release.dto.dart';
 /// Cache date
 class CacheDateDisplay extends HookWidget {
   /// Constructor
-  const CacheDateDisplay(this.release, {Key key}) : super(key: key);
+  const CacheDateDisplay(
+    this.release, {
+    Key? key,
+  }) : super(key: key);
 
   /// Release
   final ReleaseDto release;

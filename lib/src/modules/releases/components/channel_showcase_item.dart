@@ -10,7 +10,10 @@ import '../../selected_detail/selected_detail.provider.dart';
 /// Channel showcase widget
 class ChannelShowcaseItem extends StatelessWidget {
   /// Constructor
-  const ChannelShowcaseItem(this.channel, {Key key}) : super(key: key);
+  const ChannelShowcaseItem(
+    this.channel, {
+    Key? key,
+  }) : super(key: key);
 
   /// Channel
   final ChannelDto channel;

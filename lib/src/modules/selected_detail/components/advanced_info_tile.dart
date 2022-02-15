@@ -14,7 +14,7 @@ class AdvancedInfoTile extends StatelessWidget {
   /// Constructor
   const AdvancedInfoTile(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release

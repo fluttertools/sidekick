@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class SliverAnimatedSwitcher extends StatefulWidget {
   /// Constructor
   const SliverAnimatedSwitcher({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   /// Child

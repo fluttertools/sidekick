@@ -11,7 +11,10 @@ import '../../fvm/components/fvm_setup_button.dart';
 
 class ReferenceInfoTile extends StatelessWidget {
   final ReleaseDto version;
-  const ReferenceInfoTile(this.version, {Key key}) : super(key: key);
+  const ReferenceInfoTile(
+    this.version, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -6,10 +6,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class SkCheckBox extends HookWidget {
   /// Constructor
   const SkCheckBox({
-    this.label,
-    this.value,
-    this.onChanged,
-    Key key,
+    required this.label,
+    required this.value,
+    required this.onChanged,
+    Key? key,
   }) : super(key: key);
 
   /// Current value of checkbox

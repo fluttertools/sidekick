@@ -15,7 +15,9 @@ import 'release_info_section.dart';
 /// Drawer to display selected detail
 class SelectedDetailDrawer extends HookWidget {
   /// Constructors
-  const SelectedDetailDrawer({Key key}) : super(key: key);
+  const SelectedDetailDrawer({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

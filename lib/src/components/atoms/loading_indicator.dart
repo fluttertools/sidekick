@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class SkLoadingIndicator extends StatelessWidget {
   /// Constructor
   const SkLoadingIndicator({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

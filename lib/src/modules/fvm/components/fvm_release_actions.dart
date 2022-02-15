@@ -29,7 +29,7 @@ class FvmReleaseActions extends StatelessWidget {
   /// Constructor
   const FvmReleaseActions(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release
@@ -37,8 +37,8 @@ class FvmReleaseActions extends StatelessWidget {
 
   /// Render menu button
   Widget renderMenuButton({
-    IconData icon,
-    String label,
+    required IconData icon,
+    required String label,
   }) {
     return Row(
       children: [

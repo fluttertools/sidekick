@@ -38,8 +38,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
             mainAxisSize: MainAxisSize.min,
             children: [
               Subheading(
-                I18Next.of(context)
-                    .t('modules:fvm.dialogs.flutterPathIsPointingOn'),
+                context.i18n('modules:fvm.dialogs.flutterPathIsPointingOn'),
               ),
               // Caption('${configured.currentPath}.\n\n'),
               Flexible(
@@ -71,8 +70,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                   ? Column(
                       children: [
                         Subheading(
-                          I18Next.of(context)
-                                  .t('modules:fvm.dialogs.changeThePathTo') +
+                          context.i18n('modules:fvm.dialogs.changeThePathTo') +
                               context.i18n(
                                   'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
                         ),

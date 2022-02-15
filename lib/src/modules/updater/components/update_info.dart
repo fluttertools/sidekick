@@ -11,7 +11,7 @@ import '../updater.provider.dart';
 class SkUpdateInfo extends HookWidget {
   /// Constructor
   const SkUpdateInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

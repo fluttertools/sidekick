@@ -8,7 +8,7 @@ class Paragraph extends StatelessWidget {
     this.text, {
     this.maxLines,
     this.overflow,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Text
@@ -39,7 +39,7 @@ class Caption extends StatelessWidget {
   /// Constructor
   const Caption(
     this.text, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Text for caption
@@ -58,7 +58,7 @@ class ConsoleText extends StatelessWidget {
   /// Constructor
   const ConsoleText(
     this.text, {
-    Key key,
+    Key? key,
     this.maxLines = 1,
     this.color,
   }) : super(key: key);
@@ -90,7 +90,7 @@ class Heading extends StatelessWidget {
   /// Constructor
   const Heading(
     this.text, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Content
@@ -110,7 +110,7 @@ class Subheading extends StatelessWidget {
   /// Constructor
   const Subheading(
     this.text, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// content

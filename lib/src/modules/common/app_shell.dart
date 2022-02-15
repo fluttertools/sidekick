@@ -37,7 +37,9 @@ const pages = [
 /// Main widget of the app
 class AppShell extends HookWidget {
   /// Constructor
-  const AppShell({Key key}) : super(key: key);
+  const AppShell({
+    Key? key,
+  }) : super(key: key);
 
   NavigationRailDestination renderNavButton(
     BuildContext context,

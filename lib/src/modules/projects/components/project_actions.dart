@@ -22,7 +22,7 @@ class ProjectActions extends StatelessWidget {
   /// Constructor
   const ProjectActions(
     this.project, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Project
@@ -30,8 +30,8 @@ class ProjectActions extends StatelessWidget {
 
   /// Render menu button
   Widget renderMenuButton({
-    IconData icon,
-    String label,
+    required IconData icon,
+    required String label,
   }) {
     return Row(
       children: [
@@ -70,7 +70,9 @@ class ProjectActions extends StatelessWidget {
     return PopupMenuButton<ProjectActionOptions>(
       onSelected: (result) {
         if (result == ProjectActionOptions.remove) {
-          context.read(projectsProvider.notifier).removeProject(project);
+          context
+              .read(projectsProvider.notifier)
+              .removeProject(project.projectDir);
         }
 
         if (result == ProjectActionOptions.openDirectory) {

@@ -7,7 +7,7 @@ import '../../common/dto/release.dto.dart';
 void showDeleteDialog(
   BuildContext context, {
   ReleaseDto item,
-  @required Function onDelete,
+  required Function onDelete,
 }) {
   // flutter defined function
   showDialog(

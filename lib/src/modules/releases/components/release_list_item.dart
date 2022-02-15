@@ -10,7 +10,10 @@ import '../../selected_detail/selected_detail.provider.dart';
 /// Release list item
 class ReleaseListItem extends StatelessWidget {
   /// Constructor
-  const ReleaseListItem(this.release, {Key key}) : super(key: key);
+  const ReleaseListItem(
+    this.release, {
+    Key? key,
+  }) : super(key: key);
 
   /// Release in item
   final ReleaseDto release;

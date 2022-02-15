@@ -11,7 +11,9 @@ import '../updater.provider.dart';
 /// Sidekick update button
 class SkUpdateButton extends HookWidget {
   /// Constructor
-  const SkUpdateButton({Key key}) : super(key: key);
+  const SkUpdateButton({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class SkUpdateButton extends HookWidget {
         ActionChip(
           onPressed: showUpdateDialog,
           label: Text(
-            I18Next.of(context).t('modules:updater.components.updateAvailable'),
+            context.i18n('modules:updater.components.updateAvailable'),
             style: const TextStyle(fontSize: 12),
           ),
         ),

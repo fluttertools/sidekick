@@ -6,7 +6,9 @@ import '../../modules/fvm/fvm_queue.provider.dart';
 import '../atoms/console.dart';
 
 class AppBottomBar extends HookWidget {
-  const AppBottomBar({Key key}) : super(key: key);
+  const AppBottomBar({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

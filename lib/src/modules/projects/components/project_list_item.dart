@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
@@ -34,7 +33,7 @@ class ProjectListItem extends HookWidget {
   Widget build(BuildContext context) {
     final cachedVersions = useProvider(releasesStateProvider).all;
 
-    final version = useProvider(getVersionProvider(project.pinnedVersion));
+    final version = useProvider(getVersionProvider(project.pinnedVersion!));
 
     final needInstall = version != null && project.pinnedVersion != null;
 
@@ -55,7 +54,7 @@ class ProjectListItem extends HookWidget {
     }
 
     void openIde() {
-      ide.launch(context, project.projectDir.absolute.path);
+      ide?.launch(context, project.projectDir.absolute.path);
     }
 
     return SizedBox(
@@ -66,7 +65,7 @@ class ProjectListItem extends HookWidget {
             children: [
               ListTile(
                 leading: const Icon(MdiIcons.alphaPBox),
-                title: Subheading(project.name),
+                title: Subheading(project.name ?? ''),
                 trailing: ProjectActions(project),
               ),
               const Divider(height: 0, thickness: 1),
@@ -104,14 +103,16 @@ class ProjectListItem extends HookWidget {
                   ),
                   if (ideName != null)
                     Tooltip(
-                      message: I18Next.of(context)
-                          .t('modules:projects.components.openIde', variables: {
-                        'ideName': ide.name,
-                      }),
+                      message: context.i18n(
+                        'modules:projects.components.openIde',
+                        variables: {
+                          'ideName': ide?.name,
+                        },
+                      ),
                       child: IconButton(
                         iconSize: 20,
                         splashRadius: 20,
-                        icon: ide.icon,
+                        icon: ide?.icon ?? const Icon(MdiIcons.alphaPBox),
                         onPressed: openIde,
                       ),
                     ),

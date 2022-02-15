@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 class SliverSection extends StatelessWidget {
   /// Constructor
   const SliverSection({
-    Key key,
+    Key? key,
     this.slivers,
     this.shouldDisplay = false,
   }) : super(key: key);

@@ -12,7 +12,7 @@ import 'components/fvm_release_list_item.dart';
 import 'dialogs/cleanup_unused_dialog.dart';
 
 class FVMScreen extends HookWidget {
-  const FVMScreen({Key key}) : super(key: key);
+  const FVMScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
