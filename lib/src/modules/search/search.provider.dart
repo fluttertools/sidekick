@@ -147,7 +147,7 @@ final searchResultsProvider = Provider((ref) {
           default:
 
             /// TODO: If this logic is removed, it should support passing actual Context
-            /* throw Exception(I18Next.of(context)
+            /* throw Exception(I18Nextoff
                 .t('modules:search.components.invalidChannel')); */
             break;
         }

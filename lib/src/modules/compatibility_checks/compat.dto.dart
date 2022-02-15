@@ -42,10 +42,10 @@ class CompatibilityCheck {
   }
 
   CompatibilityCheck copyWith({
-    bool git,
-    bool fvm,
-    bool choco,
-    bool brew,
+    bool? git,
+    bool? fvm,
+    bool? choco,
+    bool? brew,
   }) {
     return CompatibilityCheck(
       git: git ?? this.git,

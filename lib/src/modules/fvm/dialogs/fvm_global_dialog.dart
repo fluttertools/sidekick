@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fvm/fvm.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -94,8 +93,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                 },
                 icon: const Icon(MdiIcons.informationOutline),
                 label: Text(
-                  I18Next.of(context)
-                      .t('modules:fvm.dialogs.howToUpdateYourPath'),
+                  context.i18n('modules:fvm.dialogs.howToUpdateYourPath'),
                 ),
               )
             ],

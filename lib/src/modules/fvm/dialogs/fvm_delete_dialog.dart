@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../common/dto/release.dto.dart';
 
 void showDeleteDialog(
   BuildContext context, {
-  ReleaseDto item,
+  required ReleaseDto item,
   required Function onDelete,
 }) {
   // flutter defined function
@@ -15,8 +14,8 @@ void showDeleteDialog(
     builder: (context) {
       // return object of type Dialog
       return AlertDialog(
-        title: Text(I18Next.of(context)
-            .t('modules:fvm.dialogs.areYouSureYouWantToRemove')),
+        title:
+            Text(context.i18n('modules:fvm.dialogs.areYouSureYouWantToRemove')),
         content: Text(
           context.i18n(
             'modules:fvm.dialogs.thisWillRemoveItemnameCacheFromYourSystem',

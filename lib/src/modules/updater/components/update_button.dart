@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -21,7 +20,7 @@ class SkUpdateButton extends HookWidget {
     final updateInfo = useProvider(updaterProvider);
 
     /// Return empty if its not installed or does not need update
-    if (updateInfo == null || !updateInfo.ready) {
+    if (!updateInfo.ready) {
       return const SizedBox(height: 0, width: 0);
     }
 
@@ -38,8 +37,8 @@ class SkUpdateButton extends HookWidget {
               children: [
                 const Icon(MdiIcons.alertDecagram),
                 const SizedBox(width: 10),
-                Heading(I18Next.of(context)
-                    .t('modules:updater.components.updateAvailable')),
+                Heading(
+                    context.i18n('modules:updater.components.updateAvailable')),
               ],
             ),
             content: Paragraph(
@@ -63,8 +62,8 @@ class SkUpdateButton extends HookWidget {
                   await updater.openInstaller(context);
                   Navigator.of(context).pop();
                 },
-                child: Text(I18Next.of(context)
-                    .t('modules:updater.components.updateNow')),
+                child:
+                    Text(context.i18n('modules:updater.components.updateNow')),
               ),
             ],
           );

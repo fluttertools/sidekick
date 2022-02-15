@@ -35,7 +35,7 @@ class SidekickUpdateInfo {
   final String current;
 
   /// Local installer file
-  final File latestInstallerFile;
+  final File? latestInstallerFile;
 
   /// Latest release download url
   final String latestDownloadUrl;
@@ -50,12 +50,12 @@ class SidekickUpdateInfo {
 
   /// Clones sidekick update
   SidekickUpdateInfo copyWith({
-    bool needUpdate,
-    bool isInstalled,
-    String current,
-    String latest,
-    String latestDownloadUrl,
-    File latestInstallerFile,
+    bool? needUpdate,
+    bool? isInstalled,
+    String? current,
+    String? latest,
+    String? latestDownloadUrl,
+    File? latestInstallerFile,
   }) {
     return SidekickUpdateInfo(
       needUpdate: needUpdate ?? this.needUpdate,

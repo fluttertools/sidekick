@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
@@ -59,8 +58,7 @@ class CompatDialog extends HookWidget {
                     Clipboard.setData(
                       ClipboardData(text: command),
                     );
-                    notify(I18Next.of(context)
-                        .t('components:atoms.copiedToClipboard'));
+                    notify(context.i18n('components:atoms.copiedToClipboard'));
                   },
                   icon: const Icon(
                     Icons.copy,
@@ -79,8 +77,8 @@ class CompatDialog extends HookWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            notify(I18Next.of(context)
-                .t('modules:compatibility.dialog.dialogRestartNotication'));
+            notify(context
+                .i18n('modules:compatibility.dialog.dialogRestartNotication'));
             Future.delayed(const Duration(seconds: 3)).then((_) => exit(0));
           },
           child: Text(context.i18n('modules:compatibility.dialog.done')),

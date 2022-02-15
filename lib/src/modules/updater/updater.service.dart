@@ -21,7 +21,7 @@ class UpdaterService {
 
   /// Helper method to easily check for updates on [packageName]
   /// comparing with [current] returns `LatestVersion`
-  static Future<SidekickUpdateInfo> checkLatestRelease() async {
+  static Future<SidekickUpdateInfo?> checkLatestRelease() async {
     try {
       final latestTag = await getSidekickLatestRelease();
       final latestVersion = Version.parse((latestTag));
@@ -57,7 +57,7 @@ class UpdaterService {
         Uri.parse(updateInfo.latestDownloadUrl),
       );
       if (res.statusCode == 200) {
-        await updateInfo.latestInstallerFile.writeAsBytes(res.bodyBytes);
+        await updateInfo.latestInstallerFile?.writeAsBytes(res.bodyBytes);
         // Return with new installed status
         return updateInfo.copyWith(isInstalled: true);
       } else {
@@ -75,7 +75,7 @@ class UpdaterService {
     if (updateInfo.isInstalled) {
       final file = updateInfo.latestInstallerFile;
       await openLink(
-          context, "file://${file.absolute.path.replaceAll("\\", "/")}");
+          context, "file://${file?.absolute.path.replaceAll("\\", "/")}");
     } else {
       throw const UpdaterException(
         'Installer does not exists, you have to download it first',

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/i18n/language_manager.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -32,8 +31,8 @@ class SettingsSectionGeneral extends StatelessWidget {
         builder: (context) {
           // return object of type Dialog
           return AlertDialog(
-            title: Text(I18Next.of(context)
-                .t('modules:settings.scenes.areYouSureYouWantToResetSettings')),
+            title: Text(context.i18n(
+                'modules:settings.scenes.areYouSureYouWantToResetSettings')),
             content: Text(
               context.i18n(
                   'modules:settings.scenes.thisWillOnlyResetSidekickSpecificPreferences'),
@@ -52,8 +51,8 @@ class SettingsSectionGeneral extends StatelessWidget {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
                   onSave();
-                  notify(I18Next.of(context)
-                      .t('modules:settings.scenes.appSettingsHaveBeenReset'));
+                  notify(context.i18n(
+                      'modules:settings.scenes.appSettingsHaveBeenReset'));
                 },
                 child: Text(context.i18n('modules:fvm.dialogs.confirm')),
               ),
@@ -97,7 +96,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                 ),
               ],
               onChanged: (themeMode) async {
-                settings.sidekick.themeMode = themeMode;
+                settings.sidekick.themeMode = themeMode as String;
                 onSave();
               },
             ),
@@ -136,7 +135,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                     .toList()
               ],
               onChanged: (val) async {
-                settings.sidekick.ide = (val == 'none' ? null : val);
+                settings.sidekick.ide = (val == 'none' ? null : val) as String;
                 onSave();
               },
             ),
@@ -158,7 +157,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                   ),
                 );
               }).toList(),
-              onChanged: (Locale locale) async {
+              onChanged: (locale) async {
                 settings.sidekick.locale = locale;
                 onSave();
               },
@@ -166,14 +165,14 @@ class SettingsSectionGeneral extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            title: Text(I18Next.of(context)
-                .t('modules:selectedDetail.components.version')),
+            title:
+                Text(context.i18n('modules:selectedDetail.components.version')),
             trailing: const Text(packageVersion),
           ),
           const Divider(),
           ListTile(
-            title: Text(I18Next.of(context)
-                .t('modules:settings.scenes.resetToDefaultSettings')),
+            title: Text(
+                context.i18n('modules:settings.scenes.resetToDefaultSettings')),
             trailing: OutlinedButton(
               onPressed: handleReset,
               child: Text(context.i18n('modules:settings.scenes.reset')),

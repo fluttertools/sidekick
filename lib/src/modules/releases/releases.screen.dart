@@ -58,7 +58,7 @@ class ReleasesScreen extends HookWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      VersionInstallButton(releases.master),
+                      VersionInstallButton(releases.master!),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -134,7 +134,7 @@ class ReleasesScreen extends HookWidget {
                     );
                   }).toList(),
                   onChanged: (value) {
-                    filter.state = filterFromName(value);
+                    filter.state = filterFromName(value!);
                   },
                 ),
               ],

@@ -10,11 +10,11 @@ import 'settings.utils.dart';
 
 /// All Settings
 class AllSettings {
-  final SidekickSettings sidekick;
-  final FvmSettings fvm;
-  final FlutterSettings flutter;
+  SidekickSettings sidekick;
+  FvmSettings fvm;
+  FlutterSettings flutter;
 
-  const AllSettings({
+  AllSettings({
     required this.fvm,
     required this.flutter,
     required this.sidekick,
@@ -27,7 +27,7 @@ class AllSettings {
   }) {
     return AllSettings(
       fvm: fvm ?? const FvmSettings(),
-      flutter: flutter ?? const FlutterSettings(),
+      flutter: flutter ?? FlutterSettings(),
       sidekick: sidekick ?? SidekickSettings(),
     );
   }
@@ -121,7 +121,7 @@ class SidekickSettingsAdapter extends TypeAdapter<SidekickSettings> {
 /// Flutter settings
 class FlutterSettings {
   /// Constructor
-  const FlutterSettings({
+  FlutterSettings({
     this.analytics = true,
     this.linux = false,
     this.macos = false,
@@ -130,19 +130,19 @@ class FlutterSettings {
   });
 
   /// Analytics enabled
-  final bool analytics;
+  bool analytics;
 
   /// MacOS enabled
-  final bool macos;
+  bool macos;
 
   /// Linux enabled
-  final bool linux;
+  bool linux;
 
   /// Windows enabled
-  final bool windows;
+  bool windows;
 
   /// Web enabled
-  final bool web;
+  bool web;
 
   /// Flutter settings from map
   factory FlutterSettings.fromMap(Map<String, bool> map) {

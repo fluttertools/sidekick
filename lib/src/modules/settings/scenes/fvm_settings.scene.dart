@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../settings.dto.dart';
@@ -28,8 +27,8 @@ class FvmSettingsScene extends StatelessWidget {
           Text('FVM', style: Theme.of(context).textTheme.headline6),
           const SizedBox(height: 20),
           SwitchListTile(
-            title: Text(I18Next.of(context)
-                .t('modules:settings.scenes.skipSetupFlutterOnInstall')),
+            title: Text(context
+                .i18n('modules:settings.scenes.skipSetupFlutterOnInstall')),
             subtitle: Text(context.i18n(
                     'modules:settings.scenes.thisWillOnlyCloneFlutterAndNotInstall') +
                 context.i18n(

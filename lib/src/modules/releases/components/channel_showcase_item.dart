@@ -20,6 +20,7 @@ class ChannelShowcaseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final releaseDate = channel.release?.releaseDate;
     return Card(
       child: InkWell(
         onTap: () {
@@ -37,13 +38,15 @@ class ChannelShowcaseItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Heading(channel.name),
-                  Subheading(channel.release.version),
+                  Subheading(channel.release?.version ?? ''),
                   const SizedBox(height: 5),
                   Caption(
-                    DateTimeFormat.relative(
-                      channel.release.releaseDate,
-                      appendIfAfter: 'ago',
-                    ),
+                    releaseDate != null
+                        ? DateTimeFormat.relative(
+                            releaseDate,
+                            appendIfAfter: 'ago',
+                          )
+                        : '',
                   ),
                 ],
               ),

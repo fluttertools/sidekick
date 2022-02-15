@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/copy_button.dart';
@@ -30,29 +29,28 @@ class AdvancedInfoTile extends StatelessWidget {
       title: Text(context.i18n('modules:selectedDetail.components.advanced')),
       children: [
         SkListTile(
-          title: Text(I18Next.of(context)
-              .t('modules:selectedDetail.components.downloadZip')),
+          title: Text(
+              context.i18n('modules:selectedDetail.components.downloadZip')),
           subtitle: Caption(context.i18n(
               'modules:selectedDetail.components.zipFileWithAllReleaseDependencies')),
           trailing: IconButton(
             icon: const Icon(Icons.cloud_download),
             onPressed: () async {
-              await openLink(context, release.release.archiveUrl);
+              await openLink(context, release.release?.archiveUrl ?? '');
             },
           ),
         ),
         const Divider(),
         SkListTile(
           title: Text(context.i18n('modules:selectedDetail.components.hash')),
-          subtitle: Caption(release.release.hash),
-          trailing: CopyButton(release.release.hash),
+          subtitle: Caption(release.release?.hash ?? ''),
+          trailing: CopyButton(release.release?.hash ?? ''),
         ),
         const Divider(),
         SkListTile(
-          title: Text(I18Next.of(context)
-              .t('modules:selectedDetail.components.sha256')),
-          subtitle: Caption(release.release.sha256),
-          trailing: CopyButton(release.release.sha256),
+          title: Text(context.i18n('modules:selectedDetail.components.sha256')),
+          subtitle: Caption(release.release?.sha256 ?? ''),
+          trailing: CopyButton(release.release?.sha256 ?? ''),
         ),
       ],
     );

@@ -55,7 +55,7 @@ class FvmReleaseStatus extends StatelessWidget {
 
     // If version is master
     if (release is MasterDto) {
-      return FvmMasterStatus(release);
+      return FvmMasterStatus(release as MasterDto);
     }
 
     // Default fallback
@@ -63,13 +63,13 @@ class FvmReleaseStatus extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(currentRelease),
+        Text(currentRelease ?? ''),
         const SizedBox(width: 10),
         const Icon(MdiIcons.arrowRight, size: 15),
         const SizedBox(width: 10),
         OutlinedButton.icon(
           icon: const Icon(MdiIcons.triangle, size: 15),
-          label: Text(release.release?.version),
+          label: Text(release.release?.version ?? ''),
           onPressed: () {
             context.read(fvmQueueProvider.notifier).upgrade(context, release);
           },
