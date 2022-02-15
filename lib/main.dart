@@ -98,7 +98,7 @@ class FvmApp extends StatelessWidget {
             locale: settings.locale ?? languageManager.supportedLocales.first,
             supportedLocales: languageManager.supportedLocales,
             localeResolutionCallback: (
-              Locale locale,
+              Locale? locale,
               Iterable<Locale> supportedLocales,
             ) {
               if (locale == null) {

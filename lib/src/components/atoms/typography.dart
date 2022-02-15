@@ -15,16 +15,16 @@ class Paragraph extends StatelessWidget {
   final String text;
 
   /// Max lines
-  final int maxLines;
+  final int? maxLines;
 
   /// Overflow
-  final TextOverflow overflow;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyText2.copyWith(
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(
             height: 1.3,
             fontSize: 12,
           ),
@@ -68,7 +68,7 @@ class ConsoleText extends StatelessWidget {
 
   final int maxLines;
 
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 18),
+      style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 18),
     );
   }
 }

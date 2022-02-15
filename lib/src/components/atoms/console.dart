@@ -10,7 +10,7 @@ import 'typography.dart';
 class Console extends HookWidget {
   final bool expand;
   final bool processing;
-  final Function() onExpand;
+  final Function()? onExpand;
   const Console({
     this.expand = false,
     this.processing = false,
@@ -23,12 +23,12 @@ class Console extends HookWidget {
     final output = useStream(fvmStdoutProvider);
     final lines = useState<List<String>>(['']);
 
-    useValueChanged(output, (_, __) {
-      lines.value.insert(0, output.data);
+    useEffect(() {
+      lines.value.insert(0, output.data ?? '');
       if (lines.value.length > 100) {
         lines.value.removeAt(lines.value.length - 1);
       }
-    });
+    }, [output]);
 
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 250),

@@ -6,7 +6,7 @@ class SliverSection extends StatelessWidget {
   /// Constructor
   const SliverSection({
     Key? key,
-    this.slivers,
+    required this.slivers,
     this.shouldDisplay = false,
   }) : super(key: key);
 

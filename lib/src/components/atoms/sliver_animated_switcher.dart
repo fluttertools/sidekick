@@ -20,8 +20,8 @@ class SliverAnimatedSwitcher extends StatefulWidget {
 }
 
 class _SliverAnimatedSwitcherState extends State<SliverAnimatedSwitcher> {
-  ScrollPosition _position;
-  bool _visible;
+  ScrollPosition? _position;
+  bool _visible = false;
   @override
   void dispose() {
     _removeListener();
