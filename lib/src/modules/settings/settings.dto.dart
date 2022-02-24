@@ -48,6 +48,7 @@ class SidekickSettings {
     this.themeMode = SettingsThemeMode.system,
     this.locale,
     this.ide,
+    this.customIdeLocation,
   }) : localizationsDelegate = I18NextLocalizationDelegate(
           locales: languageManager.supportedLocales.toList(),
           dataSource: AssetBundleLocalizationDataSource(
@@ -63,8 +64,9 @@ class SidekickSettings {
   List<String> projectPaths;
   String themeMode;
   I18NextLocalizationDelegate localizationsDelegate;
-  Locale? locale;
-  String? ide;
+  Locale locale;
+  String ide;
+  String customIdeLocation;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -83,6 +85,7 @@ class SidekickSettings {
       themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
       locale: locale,
       ide: json['ide'],
+      customIdeLocation: json['customIdeLocation'],
     );
   }
 
@@ -97,6 +100,7 @@ class SidekickSettings {
       'i18Locale': locale?.toLanguageTag() ??
           languageManager.supportedLocales.first.toLanguageTag(),
       'ide': ide,
+      'customIdeLocation': customIdeLocation,
     };
   }
 }

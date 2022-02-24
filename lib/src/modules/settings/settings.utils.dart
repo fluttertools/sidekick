@@ -19,9 +19,15 @@ ThemeMode getThemeMode(String themeMode) {
   }
 }
 
+typedef LaunchFunction = Future<void> Function(
+  BuildContext context,
+  String projectPath, {
+  String customLocation,
+});
+
 class IDE {
   final String name;
-  final void Function(BuildContext context, String projectPath) launch;
+  final LaunchFunction launch;
   final Widget icon;
 
   const IDE(this.name, this.icon, this.launch);
@@ -30,4 +36,5 @@ class IDE {
 const supportedIDEs = [
   IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), openVsCode),
   IDE('XCode', Icon(MdiIcons.appleSafari), openXcode),
+  IDE('Custom', Icon(Icons.code_rounded), openCustom),
 ];

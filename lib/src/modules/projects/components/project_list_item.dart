@@ -37,7 +37,10 @@ class ProjectListItem extends HookWidget {
 
     final needInstall = version != null && project.pinnedVersion != null;
 
-    final ideName = useProvider(settingsProvider).sidekick.ide;
+    final sidekickSettings = useProvider(settingsProvider).sidekick;
+
+    final ideName = sidekickSettings.ide;
+
     final ide = ideName != null
         ? supportedIDEs.firstWhere((element) => element.name == ideName)
         : null;
@@ -54,7 +57,11 @@ class ProjectListItem extends HookWidget {
     }
 
     void openIde() {
-      ide?.launch(context, project.projectDir.absolute.path);
+      ide.launch(
+        context,
+        project.projectDir.absolute.path,
+        customLocation: sidekickSettings.customIdeLocation,
+      );
     }
 
     return SizedBox(
