@@ -42,7 +42,7 @@ class ProjectListItem extends HookWidget {
     final ideName = sidekickSettings.ide;
 
     final ide = ideName != null
-        ? supportedIDEs.firstWhere((element) => element.name == ideName)
+        ? supportedIDEs.firstWhere((element) => element.name.name == ideName)
         : null;
 
     void openProjectPlayground() {
@@ -57,7 +57,7 @@ class ProjectListItem extends HookWidget {
     }
 
     void openIde() {
-      ide.launch(
+      ide?.launch(
         context,
         project.projectDir.absolute.path,
         customLocation: sidekickSettings.customIdeLocation,
@@ -72,7 +72,7 @@ class ProjectListItem extends HookWidget {
             children: [
               ListTile(
                 leading: const Icon(MdiIcons.alphaPBox),
-                title: Subheading(project.name ?? ''),
+                title: Subheading(project.name),
                 trailing: ProjectActions(project),
               ),
               const Divider(height: 0, thickness: 1),
@@ -136,7 +136,7 @@ class ProjectListItem extends HookWidget {
                                   ),
                             ProjectReleaseSelect(
                               project: project,
-                              releases: cachedVersions ?? [],
+                              releases: cachedVersions,
                             )
                           ],
                         )

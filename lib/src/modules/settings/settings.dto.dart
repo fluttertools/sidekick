@@ -64,9 +64,9 @@ class SidekickSettings {
   List<String> projectPaths;
   String themeMode;
   I18NextLocalizationDelegate localizationsDelegate;
-  Locale locale;
-  String ide;
-  String customIdeLocation;
+  Locale? locale;
+  String? ide;
+  String? customIdeLocation;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -81,8 +81,8 @@ class SidekickSettings {
 
     return SidekickSettings(
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
-      onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
-      themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
+      onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool? ?? false,
+      themeMode: json['themeMode'] as String? ?? SettingsThemeMode.system,
       locale: locale,
       ide: json['ide'],
       customIdeLocation: json['customIdeLocation'],

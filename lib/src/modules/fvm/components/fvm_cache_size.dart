@@ -27,10 +27,6 @@ class FvmCacheSize extends HookWidget {
 
     final unusedPercentage = unusedSize.value.totalSize / cacheSize.totalSize;
 
-    if (cacheSize == null) {
-      return const SizedBox(height: 0);
-    }
-
     return Row(
       children: [
         SizedBox(

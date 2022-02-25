@@ -130,7 +130,7 @@ RoundedRectangleBorder get _roundedShape {
   );
 }
 
-bool isNumeric(String s) {
+bool isNumeric(String? s) {
   if (s == null) {
     return false;
   }

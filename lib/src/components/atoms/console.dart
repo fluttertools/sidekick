@@ -28,6 +28,7 @@ class Console extends HookWidget {
       if (lines.value.length > 100) {
         lines.value.removeAt(lines.value.length - 1);
       }
+      return;
     }, [output]);
 
     return AnimatedCrossFade(

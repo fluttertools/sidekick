@@ -84,7 +84,7 @@ class FvmApp extends StatelessWidget {
     }
 
     return ValueListenableBuilder<Box<SidekickSettings>>(
-      valueListenable: SettingsService.box.listenable(),
+      valueListenable: SettingsService.box!.listenable(),
       builder: (context, box, widget) {
         final settings = SettingsService.read();
         return OKToast(

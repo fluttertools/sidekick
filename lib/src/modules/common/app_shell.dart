@@ -75,6 +75,7 @@ class AppShell extends HookWidget {
       if (currentRoute != NavigationRoutes.searchScreen) {
         selectedIndex.value = currentRoute.index;
       }
+      return;
     }, [currentRoute]);
 
     // Side effect when info is selected
@@ -89,6 +90,7 @@ class AppShell extends HookWidget {
           _scaffoldKey.currentState?.openEndDrawer();
         });
       }
+      return;
     }, [selectedInfo]);
 
     if (!compatInfo.ready && !compatInfo.waiting) {
@@ -175,8 +177,8 @@ class AppShell extends HookWidget {
                             : BorderRadius.zero,
                         child: IndexedTransitionSwitcher(
                           duration: const Duration(milliseconds: 250),
-                          reverse: selectedIndex.value <
-                              (navigation.previous.index ?? 0),
+                          reverse:
+                              selectedIndex.value < (navigation.previous.index),
                           transitionBuilder: (
                             child,
                             animation,

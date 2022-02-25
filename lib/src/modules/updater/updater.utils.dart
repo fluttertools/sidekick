@@ -38,12 +38,12 @@ String get _platformExt {
       {
         return 'msix';
       }
-      break;
+
     case 'macos':
       {
         return 'dmg';
       }
-      break;
+
     case 'linux':
       {
         return 'AppImage';
@@ -52,6 +52,5 @@ String get _platformExt {
       {
         return 'zip';
       }
-      break;
   }
 }

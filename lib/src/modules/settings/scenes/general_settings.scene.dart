@@ -129,7 +129,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Text(e.name),
+                              Text(e.name.name),
                             ],
                           ),
                         ))
@@ -144,7 +144,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                     return;
                   }
                 }
-                settings.sidekick.ide = (val == 'none' ? null : val);
+                settings.sidekick.ide = val == 'none' ? null : val as String;
                 onSave();
               },
             ),

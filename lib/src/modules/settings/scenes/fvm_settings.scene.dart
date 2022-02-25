@@ -29,11 +29,13 @@ class FvmSettingsScene extends StatelessWidget {
           SwitchListTile(
             title: Text(context
                 .i18n('modules:settings.scenes.skipSetupFlutterOnInstall')),
-            subtitle: Text(context.i18n(
-                    'modules:settings.scenes.thisWillOnlyCloneFlutterAndNotInstall') +
-                context.i18n(
-                    'modules:settings.scenes.dependenciesAfterANewVersionIsInstalled')),
-            value: settings.fvm.skipSetup ?? false,
+            subtitle: Text(
+              context.i18n(
+                      'modules:settings.scenes.thisWillOnlyCloneFlutterAndNotInstall') +
+                  context.i18n(
+                      'modules:settings.scenes.dependenciesAfterANewVersionIsInstalled'),
+            ),
+            value: settings.fvm.skipSetup,
             onChanged: (value) {
               settings.fvm.skipSetup = value;
               onSave();

@@ -18,7 +18,7 @@ class FVMScreen extends HookWidget {
   Widget build(BuildContext context) {
     final cachedVersions = useProvider(releasesStateProvider);
 
-    if (cachedVersions == null) {
+    if (cachedVersions.fetching) {
       return const Center(child: CircularProgressIndicator());
     }
 

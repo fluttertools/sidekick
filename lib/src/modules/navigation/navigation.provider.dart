@@ -27,7 +27,7 @@ class NavigationProvider extends StateNotifier<NavigationRoutes> {
   }
 
   void goBack() {
-    if (previous != null) {
+    if (previous != state) {
       goTo(previous);
     }
   }

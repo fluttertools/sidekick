@@ -73,6 +73,7 @@ class SandboxTerminal extends HookWidget {
       if (!terminalState.processing) {
         focus.requestFocus();
       }
+      return;
     }, [processing]);
 
     useEffect(() {

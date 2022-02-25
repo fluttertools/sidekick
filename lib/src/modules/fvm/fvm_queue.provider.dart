@@ -115,7 +115,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
       // If currently installing a version
       if (activeItem != null) return;
       // Gets next item of the queue
-      final item = state?.next;
+      final item = state.next;
 
       if (item == null) return;
       // Update queue

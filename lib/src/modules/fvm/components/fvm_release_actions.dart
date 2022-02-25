@@ -95,10 +95,6 @@ class FvmReleaseActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Return empty if there is no release
-    if (release == null) {
-      return const SizedBox(height: 0);
-    }
     return PopupMenuButton<FvmReleaseActionOptions>(
       onSelected: (result) {
         if (result == FvmReleaseActionOptions.remove) {
