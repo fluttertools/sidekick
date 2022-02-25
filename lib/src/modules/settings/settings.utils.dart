@@ -34,23 +34,23 @@ enum SupportedIDE {
 }
 
 class IDE {
-  final SupportedIDE name;
+  final String name;
   final LaunchFunction launch;
   final Widget icon;
 
-  const IDE(
-    this.name,
+  IDE(
+    SupportedIDE ideName,
     this.icon,
     this.launch,
-  );
+  ) : name = ideName.name;
 }
 
-const supportedIDEs = [
+final supportedIDEs = [
   IDE(
     SupportedIDE.VSCode,
-    Icon(MdiIcons.microsoftVisualStudioCode),
+    const Icon(MdiIcons.microsoftVisualStudioCode),
     openVsCode,
   ),
-  IDE(SupportedIDE.XCode, Icon(MdiIcons.appleSafari), openXcode),
-  IDE(SupportedIDE.Custom, Icon(Icons.code_rounded), openCustom),
+  IDE(SupportedIDE.XCode, const Icon(MdiIcons.appleSafari), openXcode),
+  IDE(SupportedIDE.Custom, const Icon(Icons.code_rounded), openCustom),
 ];

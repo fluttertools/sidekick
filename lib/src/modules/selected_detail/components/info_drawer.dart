@@ -45,8 +45,11 @@ class SelectedDetailDrawer extends HookWidget {
           child: Container(
             color: Theme.of(context).cardColor,
             child: Center(
-                child: Caption(context.i18n(
-                    'modules:selectedDetail.components.nothingSelected'))),
+              child: Caption(
+                context
+                    .i18n('modules:selectedDetail.components.nothingSelected'),
+              ),
+            ),
           ),
         ),
       );
@@ -77,7 +80,6 @@ class SelectedDetailDrawer extends HookWidget {
             margin: const EdgeInsets.all(0),
             child: VersionInstallButton(
               selected,
-              warningIcon: true,
             ),
           ),
           body: CupertinoScrollbar(

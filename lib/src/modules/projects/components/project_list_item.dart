@@ -42,7 +42,7 @@ class ProjectListItem extends HookWidget {
     final ideName = sidekickSettings.ide;
 
     final ide = ideName != null
-        ? supportedIDEs.firstWhere((element) => element.name.name == ideName)
+        ? supportedIDEs.firstWhere((element) => element.name == ideName)
         : null;
 
     void openProjectPlayground() {
@@ -128,8 +128,9 @@ class ProjectListItem extends HookWidget {
                       ? Row(
                           children: [
                             needInstall && version != null
-                                ? VersionInstallButton(version,
-                                    warningIcon: true)
+                                ? VersionInstallButton(
+                                    version,
+                                  )
                                 : const SizedBox(
                                     height: 0,
                                     width: 0,

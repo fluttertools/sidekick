@@ -129,7 +129,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Text(e.name.name),
+                              Text(e.name),
                             ],
                           ),
                         ))

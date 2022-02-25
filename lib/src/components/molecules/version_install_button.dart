@@ -11,10 +11,9 @@ import '../../modules/fvm/fvm_queue.provider.dart';
 
 class VersionInstallButton extends HookWidget {
   final ReleaseDto version;
-  final bool warningIcon;
+
   const VersionInstallButton(
     this.version, {
-    this.warningIcon = false,
     Key? key,
   }) : super(key: key);
 
@@ -66,6 +65,11 @@ class VersionInstallButton extends HookWidget {
         );
       }
 
+      // Display warning icon instead of download arrow
+      if (isCached && version.needSetup) {
+        return const Icon(MdiIcons.alert, size: 20);
+      }
+
       if (isCached) {
         return Icon(
           Icons.check,
@@ -74,10 +78,6 @@ class VersionInstallButton extends HookWidget {
         );
       }
 
-      // Display warning icon instead of download arrow
-      if (warningIcon) {
-        return const Icon(MdiIcons.alert, size: 20);
-      }
       return const Icon(Icons.arrow_downward, size: 20);
     }
 

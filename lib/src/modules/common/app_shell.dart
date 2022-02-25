@@ -85,7 +85,7 @@ class AppShell extends HookWidget {
       final hasInfo = selectedInfo?.release != null;
 
       // Open drawer if not large layout and its not open
-      if (hasInfo && isOpen == true) {
+      if (hasInfo && isOpen != true) {
         SchedulerBinding.instance?.addPostFrameCallback((_) {
           _scaffoldKey.currentState?.openEndDrawer();
         });
