@@ -26,7 +26,7 @@ class AllSettings {
     FlutterSettings? flutter,
   }) {
     return AllSettings(
-      fvm: fvm ?? const FvmSettings(),
+      fvm: fvm ?? FvmSettings(),
       flutter: flutter ?? FlutterSettings(),
       sidekick: sidekick ?? SidekickSettings(),
     );

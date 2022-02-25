@@ -179,7 +179,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   return releasesState;
 });
 
-final getVersionProvider = Provider.family<ReleaseDto?, String>(
+final getVersionProvider = Provider.family<ReleaseDto?, String?>(
   (ref, versionName) {
     final state = ref.read(releasesStateProvider);
     return state.allMap[versionName];

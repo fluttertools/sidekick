@@ -58,7 +58,9 @@ class ReleasesScreen extends HookWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      VersionInstallButton(releases.master!),
+                      releases.master != null
+                          ? VersionInstallButton(releases.master!)
+                          : Container(),
                       const SizedBox(width: 10),
                     ],
                   ),

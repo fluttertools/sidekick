@@ -33,7 +33,7 @@ class ProjectListItem extends HookWidget {
   Widget build(BuildContext context) {
     final cachedVersions = useProvider(releasesStateProvider).all;
 
-    final version = useProvider(getVersionProvider(project.pinnedVersion!));
+    final version = useProvider(getVersionProvider(project.pinnedVersion));
 
     final needInstall = version != null && project.pinnedVersion != null;
 
@@ -127,7 +127,7 @@ class ProjectListItem extends HookWidget {
                   versionSelect
                       ? Row(
                           children: [
-                            needInstall
+                            needInstall && version != null
                                 ? VersionInstallButton(version,
                                     warningIcon: true)
                                 : const SizedBox(
