@@ -12,9 +12,9 @@ import '../fvm/fvm.provider.dart';
 class AppReleasesState {
   bool fetching;
 
-  MasterDto _master;
-  List<ChannelDto> _channels;
-  List<VersionDto> _versions;
+  MasterDto? _master;
+  final List<ChannelDto> _channels = [];
+  final List<VersionDto> _versions = [];
 
   Map<String, ReleaseDto> _allMap = {};
 
@@ -24,10 +24,8 @@ class AppReleasesState {
 
   AppReleasesState({
     this.fetching = true,
-  }) {
-    _channels = <ChannelDto>[];
-    _versions = <VersionDto>[];
-  }
+    this.hasGlobal = false,
+  });
 
   /// Returns all releases and channels
   Map<String, ReleaseDto> get allMap {
@@ -46,7 +44,7 @@ class AppReleasesState {
     final releases = [..._channels, ..._versions];
     if (_master != null) {
       // Master goes first
-      releases.insert(0, _master);
+      releases.insert(0, _master!);
     }
     _allMap = {for (var release in releases) release.name: release};
 
@@ -65,7 +63,7 @@ class AppReleasesState {
     return _channels;
   }
 
-  MasterDto get master {
+  MasterDto? get master {
     return _master;
   }
 
@@ -88,7 +86,7 @@ final _fetchFlutterReleases = FutureProvider<FlutterReleases>(
 
 final releasesStateProvider = Provider<AppReleasesState>((ref) {
   // Filter only version that are valid releases
-  FlutterReleases payload;
+  FlutterReleases? payload;
   ref.watch(_fetchFlutterReleases).whenData((value) => payload = value);
 
   // Watch this state change for refresh
@@ -102,21 +100,17 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     return releasesState;
   }
 
+  final flutterReleases = payload!.releases;
+  final flutterChannels = payload!.channels;
+
   releasesState.fetching = false;
-
-  final flutterReleases = payload.releases;
-  final flutterChannels = payload.channels;
-
-  if (flutterReleases == null || installedVersions == null) {
-    return releasesState;
-  }
 
   final globalVersion = FVMClient.getGlobalVersionSync();
   releasesState.hasGlobal = globalVersion != null;
 
   //  MASTER: Set Master separetely because workflow is very different
   final masterCache = installedVersions.getChannel(kMasterChannel);
-  String masterVersion;
+  String? masterVersion;
   if (masterCache != null) {
     masterVersion = FVMClient.getSdkVersionSync(masterCache);
   }
@@ -125,7 +119,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     name: kMasterChannel,
     cache: masterCache,
     needSetup: masterVersion == null,
-    sdkVersion: masterVersion,
+    sdkVersion: masterVersion ?? '0.0.0',
     isGlobal: globalVersion == kMasterChannel,
   ));
 
@@ -135,13 +129,13 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
     final channelCache = installedVersions.getChannel(name);
 
     // Get sdk version
-    String sdkVersion;
-    Release currentRelease;
+    String? sdkVersion;
+    Release? currentRelease;
 
     if (channelCache != null) {
       sdkVersion = FVMClient.getSdkVersionSync(channelCache);
       if (sdkVersion != null) {
-        currentRelease = payload.getReleaseFromVersion(sdkVersion);
+        currentRelease = payload!.getReleaseFromVersion(sdkVersion);
       }
     }
 
@@ -161,11 +155,9 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
 
   // VERSIONS loop to create versions
   for (final item in flutterReleases) {
-    if (item == null) return null;
-
     // Check if version is found in installed versions
     final cacheVersion = installedVersions.getVersion(item.version);
-    String sdkVersion;
+    String? sdkVersion;
 
     if (cacheVersion != null) {
       sdkVersion = FVMClient.getSdkVersionSync(cacheVersion);
@@ -187,7 +179,7 @@ final releasesStateProvider = Provider<AppReleasesState>((ref) {
   return releasesState;
 });
 
-final getVersionProvider = Provider.family<ReleaseDto, String>(
+final getVersionProvider = Provider.family<ReleaseDto?, String?>(
   (ref, versionName) {
     final state = ref.read(releasesStateProvider);
     return state.allMap[versionName];
@@ -221,7 +213,7 @@ Filter filterFromName(String name) {
     case 'all':
       return Filter.all;
     default:
-      return null;
+      throw Exception('Unknown filter $name');
   }
 }
 
@@ -240,7 +232,7 @@ final filterableReleasesProvider = Provider((ref) {
       return true;
     }
 
-    if (!version.isChannel && version.release.channelName == filter.name) {
+    if (!version.isChannel && version.release?.channelName == filter.name) {
       return true;
     }
 

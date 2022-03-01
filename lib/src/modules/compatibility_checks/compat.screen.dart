@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
 import 'package:sidekick/src/modules/common/app_shell.dart';
@@ -41,13 +40,12 @@ class CompatCheckScreen extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Heading(I18Next.of(context)
-                    .t('modules:compatibility.screen.title')),
+                Heading(context.i18n('modules:compatibility.screen.title')),
                 const SizedBox(
                   height: 5,
                 ),
-                Subheading(I18Next.of(context)
-                    .t('modules:compatibility.screen.subtitle')),
+                Subheading(
+                    context.i18n('modules:compatibility.screen.subtitle')),
                 const SizedBox(
                   height: 15,
                 ),
@@ -141,8 +139,8 @@ class CompatCheckScreen extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Subheading(I18Next.of(context)
-                          .t('modules:compatibility.screen.pleaseInstall')),
+                      child: Subheading(context
+                          .i18n('modules:compatibility.screen.pleaseInstall')),
                     ),
                     Row(
                       children: [
@@ -156,8 +154,8 @@ class CompatCheckScreen extends HookWidget {
                               ),
                             );
                           },
-                          child: Text(I18Next.of(context)
-                              .t('modules:compatibility.screen.ignore')),
+                          child: Text(context
+                              .i18n('modules:compatibility.screen.ignore')),
                         ),
                         const SizedBox(
                           width: 15,

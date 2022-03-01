@@ -7,8 +7,8 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 class RefreshButton extends HookWidget {
   /// Constructor
   const RefreshButton({
-    @required this.onPressed,
-    Key key,
+    required this.onPressed,
+    Key? key,
   }) : super(key: key);
 
   /// On press handler

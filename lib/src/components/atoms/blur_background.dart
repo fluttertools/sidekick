@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class BlurBackground extends StatelessWidget {
   /// Constructor
   const BlurBackground({
-    Key key,
+    Key? key,
     this.strength = 20.0,
   }) : super(key: key);
 

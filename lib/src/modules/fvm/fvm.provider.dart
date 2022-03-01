@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:async/async.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,8 +24,8 @@ final cacheSizeProvider =
 final unusedReleaseSizeProvider = FutureProvider((ref) {
   final unused = ref.watch(unusedVersionProvider);
   // Get all directories
-  final directories = unused.map((version) => version.cache.dir).toList();
-  return getDirectoriesSize(directories);
+  final directories = unused.map((version) => version.cache?.dir);
+  return getDirectoriesSize(directories.whereNotNull());
 });
 
 /// Provider that shows
@@ -53,9 +54,10 @@ final fvmCacheProvider =
 
 class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
   FvmCacheProvider({
-    this.ref,
+    required this.ref,
   }) : super([]) {
     reloadState();
+
     // Load State again while listening to directory
     directoryWatcher = Watcher(
       FVMClient.context.cacheDir.path,
@@ -66,13 +68,13 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     });
   }
 
-  ProviderReference ref;
+  final ProviderReference ref;
   List<CacheVersion> channels = [];
   List<CacheVersion> versions = [];
-  List<CacheVersion> all;
+  List<CacheVersion> all = [];
   String lastChangeHash = '';
 
-  StreamSubscription<WatchEvent> directoryWatcher;
+  late StreamSubscription<WatchEvent> directoryWatcher;
   final _debouncer = Debouncer(const Duration(seconds: 20));
 
   Future<void> _setTotalCacheSize() async {
@@ -92,23 +94,21 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     await _setTotalCacheSize();
   }
 
-  CacheVersion getChannel(String name) {
+  CacheVersion? getChannel(String name) {
     if (channels.isNotEmpty) {
-      return channels.firstWhere(
+      return channels.firstWhereOrNull(
         (c) => c.name == name,
-        orElse: () => null,
       );
     } else {
       return null;
     }
   }
 
-  CacheVersion getVersion(String name) {
+  CacheVersion? getVersion(String name) {
     if (versions.isNotEmpty) {
       // ignore: avoid_function_literals_in_foreach_calls
-      return versions.firstWhere(
+      return versions.firstWhereOrNull(
         (v) => v.name == name,
-        orElse: () => null,
       );
     } else {
       return null;

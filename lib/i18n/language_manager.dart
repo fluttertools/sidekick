@@ -31,11 +31,11 @@ class LanguageManager {
             languageManager._supportedLanguagesCodes[i].languageCode
                 .toLowerCase() +
             '_' +
-            languageManager._supportedLanguagesCodes[i].countryCode
+            languageManager._supportedLanguagesCodes[i].countryCode!
                 .toUpperCase());
   }
 
-  String formatter(Object value, String format, Locale locale) {
+  String formatter(Object value, String? format, Locale locale) {
     switch (format) {
       case 'uppercase':
         return value.toString().toUpperCase();

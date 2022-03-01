@@ -14,9 +14,9 @@ import 'terminal_processor.dart';
 class TerminalState {
   /// Constructor
   TerminalState({
-    this.lines,
+    required this.lines,
     this.processing = false,
-    List<String> cmdHistory,
+    List<String> cmdHistory = const [],
   }) : _cmdHistory = cmdHistory;
 
   /// Console lines
@@ -91,7 +91,7 @@ enum OutputType {
 
 class ConsoleLine {
   final OutputType type;
-  final String text;
+  final String? text;
   ConsoleLine({
     this.type = OutputType.stdout,
     this.text,
@@ -150,7 +150,7 @@ final sandboxProvider =
 class SandboxStateNotifier extends StateNotifier<TerminalState> {
   final ProviderReference ref;
 
-  Isolate _isolate;
+  Isolate? _isolate;
 
   SandboxStateNotifier(this.ref) : super(TerminalState.empty());
 
@@ -165,7 +165,7 @@ class SandboxStateNotifier extends StateNotifier<TerminalState> {
 
   void _killIsolate() {
     if (_isolate != null) {
-      _isolate.kill();
+      _isolate!.kill();
     }
   }
 
@@ -215,9 +215,9 @@ class SandboxStateNotifier extends StateNotifier<TerminalState> {
       final firstArg = args.removeAt(0);
 
       if (firstArg == 'flutter') {
-        execPath = release.cache.flutterExec;
+        execPath = release.cache!.flutterExec;
       } else if (firstArg == 'dart') {
-        execPath = release.cache.dartExec;
+        execPath = release.cache!.dartExec;
       } else {
         state.addLineErr('Can only use "flutter" and "dart" commands');
         _notifyListeners();

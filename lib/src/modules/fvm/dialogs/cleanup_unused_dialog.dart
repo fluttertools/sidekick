@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../common/utils/notify.dart';
@@ -12,8 +11,8 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
   final unusedVersions = context.read(unusedVersionProvider);
 
   if (unusedVersions.isEmpty) {
-    notify(I18Next.of(context)
-        .t('modules:fvm.dialogs.noUnusedFlutterSdkVersionsInstalled'));
+    notify(context
+        .i18n('modules:fvm.dialogs.noUnusedFlutterSdkVersionsInstalled'));
     return;
   }
 
@@ -24,8 +23,8 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: Text(I18Next.of(context)
-                .t('modules:fvm.dialogs.cleanUpUnusedVersions')),
+            title:
+                Text(context.i18n('modules:fvm.dialogs.cleanUpUnusedVersions')),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
@@ -74,7 +73,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                               value: selected[version.name] ?? false,
                               onChanged: (value) {
                                 setState(() {
-                                  selected[version.name] = value;
+                                  selected[version.name] = value ?? false;
                                 });
                               },
                             );

@@ -5,7 +5,7 @@ const _iconSize = 100.0;
 const _iconsPosition = [
   // Center
   {
-    'size': 1,
+    'size': 1.0,
     'top': 0.0,
     'left': 0.0,
     'right': 0.0,
@@ -36,20 +36,20 @@ const _iconsPosition = [
 /// Empty data set
 class EmptyDataset extends StatelessWidget {
   /// Constructor
-  const EmptyDataset(
-      {this.icon,
-      this.iconColor,
-      this.backgroundColor = Colors.black,
-      this.child,
-      this.opacity = 0.3,
-      Key key})
-      : super(key: key);
+  const EmptyDataset({
+    required this.icon,
+    this.child,
+    this.iconColor,
+    this.backgroundColor = Colors.black,
+    this.opacity = 0.3,
+    Key? key,
+  }) : super(key: key);
 
   /// Icon
   final Widget icon;
 
   /// Icon Color
-  final Color iconColor;
+  final Color? iconColor;
 
   /// Background color
   final Color backgroundColor;
@@ -57,12 +57,13 @@ class EmptyDataset extends StatelessWidget {
   final double opacity;
 
   /// child
-  final Widget child;
+  final Widget? child;
+
   @override
   Widget build(BuildContext context) {
     final bgIcons = _buildIconsBackground(
         icon: icon,
-        color: iconColor ?? Theme.of(context).textTheme.bodyText1.color);
+        color: iconColor ?? Theme.of(context).textTheme.bodyText1!.color!);
 
     return Stack(
       children: [
@@ -93,7 +94,10 @@ class EmptyDataset extends StatelessWidget {
   }
 }
 
-List<Widget> _buildIconsBackground({Widget icon, Color color}) {
+List<Widget> _buildIconsBackground({
+  Widget? icon,
+  Color? color,
+}) {
   if (icon is Icon) {
     return _iconsPosition.map((i) {
       return Positioned(
@@ -103,8 +107,8 @@ List<Widget> _buildIconsBackground({Widget icon, Color color}) {
         right: i['right'],
         child: Icon(
           icon.icon,
-          size: _iconSize * i['size'],
-          color: color?.withOpacity(i['opacity']),
+          size: _iconSize * i['size']!.toInt(),
+          color: color?.withOpacity(i['opacity'] ?? 1.0),
         ),
       );
     }).toList();
@@ -116,10 +120,10 @@ List<Widget> _buildIconsBackground({Widget icon, Color color}) {
       left: i['left'],
       right: i['right'],
       child: Opacity(
-        opacity: i['opacity'],
+        opacity: i['opacity'] ?? 1.0,
         child: SizedBox(
-          height: _iconSize * i['size'],
-          width: _iconSize * i['size'],
+          height: _iconSize * i['size']!.toInt(),
+          width: _iconSize * i['size']!.toInt(),
           child: icon,
         ),
       ),

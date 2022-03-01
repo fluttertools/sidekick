@@ -14,9 +14,9 @@ import '../sandbox.provider.dart';
 class SandboxTerminal extends HookWidget {
   /// Constructor
   const SandboxTerminal({
-    this.project,
-    this.release,
-    Key key,
+    required this.project,
+    required this.release,
+    Key? key,
   }) : super(key: key);
 
   /// Project
@@ -61,7 +61,7 @@ class SandboxTerminal extends HookWidget {
 
     useEffect(() {
       /// Cannot modify state before render
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
+      WidgetsBinding.instance?.addPostFrameCallback((_) async {
         await terminal.reboot(release, project);
       });
       return;
@@ -73,12 +73,13 @@ class SandboxTerminal extends HookWidget {
       if (!terminalState.processing) {
         focus.requestFocus();
       }
+      return;
     }, [processing]);
 
     useEffect(() {
       /// Scroll to bottom
       if (scrollController.hasClients) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+        WidgetsBinding.instance?.addPostFrameCallback((_) {
           scrollController.animateTo(
             scrollController.position.maxScrollExtent,
             duration: const Duration(milliseconds: 250),
@@ -111,7 +112,7 @@ class SandboxTerminal extends HookWidget {
       currentCmdIdx.value = nextIdx;
 
       // Trigger cursor move post frame
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
+      WidgetsBinding.instance?.addPostFrameCallback((_) async {
         textController.selection = TextSelection.collapsed(
           offset: textController.text.length,
         );

@@ -12,7 +12,9 @@ import 'components/release_list_item.dart';
 import 'releases.provider.dart';
 
 class ReleasesScreen extends HookWidget {
-  const ReleasesScreen({Key key}) : super(key: key);
+  const ReleasesScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,9 @@ class ReleasesScreen extends HookWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      VersionInstallButton(releases.master),
+                      releases.master != null
+                          ? VersionInstallButton(releases.master!)
+                          : Container(),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -132,7 +136,7 @@ class ReleasesScreen extends HookWidget {
                     );
                   }).toList(),
                   onChanged: (value) {
-                    filter.state = filterFromName(value);
+                    filter.state = filterFromName(value!);
                   },
                 ),
               ],

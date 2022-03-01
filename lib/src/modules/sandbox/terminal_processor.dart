@@ -11,10 +11,10 @@ class ProcessCmd {
   final String workingDirectory;
   final SendPort sendPort;
   ProcessCmd({
-    this.args,
-    this.execPath,
-    this.workingDirectory,
-    this.sendPort,
+    required this.args,
+    required this.execPath,
+    required this.workingDirectory,
+    required this.sendPort,
   });
 }
 

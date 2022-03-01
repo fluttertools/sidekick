@@ -7,12 +7,12 @@ import '../atoms/blur_background.dart';
 class SkScreen extends StatelessWidget {
   /// Constructor
   const SkScreen({
-    @required this.title,
+    required this.title,
     this.actions = const [],
     this.processing = false,
     this.extendBody = true,
-    this.child,
-    Key key,
+    required this.child,
+    Key? key,
   }) : super(key: key);
 
   /// Screen title

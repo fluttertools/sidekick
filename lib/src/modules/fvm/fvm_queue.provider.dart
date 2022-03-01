@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/common/utils/notify.dart';
@@ -13,15 +14,18 @@ import '../settings/settings.provider.dart';
 import 'fvm.provider.dart';
 
 class FvmQueue {
-  QueueItem activeItem;
+  QueueItem? activeItem;
   final Queue<QueueItem> queue;
-  FvmQueue({@required this.activeItem, @required this.queue});
+  FvmQueue({
+    required this.activeItem,
+    required this.queue,
+  });
 
   bool get isEmpty {
     return queue.isEmpty;
   }
 
-  QueueItem get next {
+  QueueItem? get next {
     activeItem = queue.removeFirst();
     return activeItem;
   }
@@ -34,7 +38,7 @@ class FvmQueue {
 class QueueItem {
   final ReleaseDto version;
   final QueueAction action;
-  QueueItem({this.version, this.action});
+  QueueItem({required this.version, required this.action});
 }
 
 enum QueueAction {
@@ -55,15 +59,13 @@ final fvmQueueProvider = StateNotifierProvider<FvmQueueState, FvmQueue>((ref) {
 class FvmQueueState extends StateNotifier<FvmQueue> {
   /// Constructor
   FvmQueueState({
-    @required this.ref,
-  }) : super(null) {
-    state = FvmQueue(activeItem: null, queue: Queue());
-  }
+    required this.ref,
+  }) : super(FvmQueue(activeItem: null, queue: Queue()));
 
   /// Provider ref to be used later
   final ProviderReference ref;
 
-  I18Next i18next;
+  late I18Next i18next;
 
   /// Retrieve FVM Settings
   FvmSettings get settings {
@@ -74,7 +76,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   void install(
     BuildContext context,
     ReleaseDto version, {
-    bool skipSetup,
+    bool? skipSetup,
   }) async {
     skipSetup ??= settings.skipSetup;
     final action =
@@ -114,6 +116,8 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
       if (activeItem != null) return;
       // Gets next item of the queue
       final item = state.next;
+
+      if (item == null) return;
       // Update queue
       state = state.update();
 
@@ -154,7 +158,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
           );
           break;
         case QueueAction.channelUpgrade:
-          await FVMClient.upgradeChannel(item.version.cache);
+          await FVMClient.upgradeChannel(item.version.cache!);
           notify(
             i18next.t(
               'modules:fvm.channelItemversionnameHasBeenUpgraded',
@@ -176,7 +180,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
           );
           break;
         case QueueAction.setGlobal:
-          await FVMClient.setGlobalVersion(item.version.cache);
+          await FVMClient.setGlobalVersion(item.version.cache!);
           notify(
             i18next.t(
               'modules:fvm.versionItemversionnameHasBeenSetAsGlobal',
@@ -210,7 +214,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
     FlutterProject project,
     String version,
   ) async {
-    i18next = I18Next.of(context);
+    i18next = context.i18next;
     await FVMClient.pinVersion(project, version);
     await ref.read(projectsProvider.notifier).reload(project);
     notify(
@@ -227,9 +231,9 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   Future<void> _addToQueue(
     BuildContext context,
     ReleaseDto version, {
-    QueueAction action,
+    required QueueAction action,
   }) async {
-    i18next = I18Next.of(context);
+    i18next = context.i18next;
     state.queue.add(QueueItem(version: version, action: action));
     state = state.update();
     runQueue();

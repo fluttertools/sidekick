@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hive/hive.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
@@ -8,11 +7,14 @@ import 'package:pubspec_parse/pubspec_parse.dart';
 /// Flutter project
 class FlutterProject extends Project {
   /// Project constructor
+  @override
+  // ignore: overridden_fields
+  final String name;
   FlutterProject._({
-    @required String name,
-    @required FvmConfig config,
-    @required Directory projectDir,
-    @required this.pubspec,
+    required this.name,
+    required FvmConfig config,
+    required Directory projectDir,
+    required this.pubspec,
     this.invalid = false,
   }) : super(
           name: name,
@@ -27,7 +29,7 @@ class FlutterProject extends Project {
   /// Create Flutter project from project
   factory FlutterProject.fromProject(Project project, Pubspec pubspec) {
     return FlutterProject._(
-      name: project.name,
+      name: project.name ?? pubspec.name,
       config: project.config,
       projectDir: project.projectDir,
       pubspec: pubspec,
@@ -37,7 +39,7 @@ class FlutterProject extends Project {
   /// Create Flutter project from project
   factory FlutterProject.fromInvalidProject(Project project) {
     return FlutterProject._(
-      name: project.name,
+      name: project.name ?? '',
       config: project.config,
       projectDir: project.projectDir,
       pubspec: null,
@@ -46,11 +48,11 @@ class FlutterProject extends Project {
   }
 
   /// Pubspec
-  final Pubspec pubspec;
+  final Pubspec? pubspec;
 
   /// Project description
   String get description {
-    return pubspec.description ?? '';
+    return pubspec?.description ?? '';
   }
 }
 
@@ -58,8 +60,8 @@ class FlutterProject extends Project {
 class ProjectRef {
   /// Constructor
   const ProjectRef({
-    @required this.name,
-    @required this.path,
+    required this.name,
+    required this.path,
   });
 
   /// Project name
@@ -71,8 +73,8 @@ class ProjectRef {
   /// Creates a project path from map
   factory ProjectRef.fromMap(Map<String, String> map) {
     return ProjectRef(
-      name: map['name'],
-      path: map['path'],
+      name: map['name'] ?? '',
+      path: map['path'] ?? '',
     );
   }
 

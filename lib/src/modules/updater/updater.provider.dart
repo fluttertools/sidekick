@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../modifiers.dart';
 import 'updater.dto.dart';
 import 'updater.service.dart';
-import '../../modifiers.dart';
 
 /// Updater provider
 final updaterProvider =
@@ -18,7 +19,12 @@ class UpdaterStateNotifier extends StateNotifier<SidekickUpdateInfo> {
 
   /// Check for latest release
   Future<void> checkLatest() async {
-    state = await UpdaterService.checkLatestRelease();
+    final updateInfo = await UpdaterService.checkLatestRelease();
+
+    if (updateInfo == null) {
+      throw Exception('Failed to check for latest release');
+    }
+    state = updateInfo;
     if (state.needUpdate && !state.isInstalled) {
       await download();
     }

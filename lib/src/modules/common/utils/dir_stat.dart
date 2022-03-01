@@ -18,7 +18,7 @@ class DirectorySizeInfo {
 }
 
 Future<DirectorySizeInfo> getDirectoriesSize(
-    List<Directory> directories) async {
+    Iterable<Directory> directories) async {
   final futures = <Future<DirectorySizeInfo>>[];
   for (final directory in directories) {
     futures.add(getDirectorySize(directory));

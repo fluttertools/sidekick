@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../version.dart';
@@ -11,7 +10,7 @@ import '../updater.provider.dart';
 class SkUpdateInfo extends HookWidget {
   /// Constructor
   const SkUpdateInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -35,8 +34,7 @@ class SkUpdateInfo extends HookWidget {
           TextButton(
             onPressed: () {},
             child: Text(
-              I18Next.of(context)
-                  .t('modules:updater.components.clickHereToDownload'),
+              context.i18n('modules:updater.components.clickHereToDownload'),
             ),
           ),
         ],

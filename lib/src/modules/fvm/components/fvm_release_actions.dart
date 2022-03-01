@@ -29,7 +29,7 @@ class FvmReleaseActions extends StatelessWidget {
   /// Constructor
   const FvmReleaseActions(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release
@@ -37,8 +37,8 @@ class FvmReleaseActions extends StatelessWidget {
 
   /// Render menu button
   Widget renderMenuButton({
-    IconData icon,
-    String label,
+    required IconData icon,
+    required String label,
   }) {
     return Row(
       children: [
@@ -95,10 +95,6 @@ class FvmReleaseActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Return empty if there is no release
-    if (release == null) {
-      return const SizedBox(height: 0);
-    }
     return PopupMenuButton<FvmReleaseActionOptions>(
       onSelected: (result) {
         if (result == FvmReleaseActionOptions.remove) {

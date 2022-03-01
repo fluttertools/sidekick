@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hive/hive.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';
@@ -15,7 +16,7 @@ class ProjectsService {
   static const _key = 'projects_service_box';
 
   /// Storage box
-  static Box<ProjectRef> box;
+  static late Box<ProjectRef> box;
 
   /// Initializes the service
   static Future<void> init() async {
@@ -23,7 +24,7 @@ class ProjectsService {
   }
 
   /// Loads all projects
-  static Future<List<FlutterProject>> load() async {
+  static Future<Iterable<FlutterProject>> load() async {
     /// Return if its empty
     if (box.isEmpty) return <FlutterProject>[];
 
@@ -49,9 +50,10 @@ class ProjectsService {
         /// If it does not exist should be removed
         await box.delete(project.projectDir.path);
       }
-    }).toList();
+    });
 
-    return await Future.wait(flutterProjects);
+    final results = await Future.wait(flutterProjects);
+    return results.whereNotNull();
   }
 
   // /// Loads one project

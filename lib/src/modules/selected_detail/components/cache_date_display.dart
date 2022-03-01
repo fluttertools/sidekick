@@ -9,17 +9,20 @@ import '../../common/dto/release.dto.dart';
 /// Cache date
 class CacheDateDisplay extends HookWidget {
   /// Constructor
-  const CacheDateDisplay(this.release, {Key key}) : super(key: key);
+  const CacheDateDisplay(
+    this.release, {
+    Key? key,
+  }) : super(key: key);
 
   /// Release
-  final ReleaseDto release;
+  final ReleaseDto? release;
   @override
   Widget build(BuildContext context) {
-    final cacheDirStat = useState<FileStat>(null);
+    final cacheDirStat = useState<FileStat?>(null);
 
     void setCacheDir() async {
-      if (release != null && release.isCached == true) {
-        cacheDirStat.value = await release.cache.dir.stat();
+      if (release != null && release?.isCached == true) {
+        cacheDirStat.value = await release!.cache?.dir.stat();
       }
     }
 
@@ -32,8 +35,14 @@ class CacheDateDisplay extends HookWidget {
       return const SizedBox(height: 0);
     }
 
+    final cacheDir = cacheDirStat.value?.changed;
+
+    if (cacheDir == null) {
+      return const SizedBox(height: 0, width: 0);
+    }
+
     return Text(DateTimeFormat.format(
-      cacheDirStat.value.changed,
+      cacheDir,
       format: AmericanDateFormats.abbr,
     ));
   }

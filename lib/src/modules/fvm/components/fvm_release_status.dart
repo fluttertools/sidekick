@@ -14,17 +14,13 @@ class FvmReleaseStatus extends StatelessWidget {
   /// Constructor
   const FvmReleaseStatus(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release
   final ReleaseDto release;
   @override
   Widget build(BuildContext context) {
-    if (release == null) {
-      return const SizedBox(height: 0);
-    }
-
     // Will use for channel upgrade comparison
     var currentRelease = release.release?.version;
     var latestRelease = release.release?.version;
@@ -50,14 +46,16 @@ class FvmReleaseStatus extends StatelessWidget {
             size: 20,
           ),
           SizedBox(width: release.isChannel ? 10 : 0),
-          release.isChannel ? Text(currentRelease) : const SizedBox(height: 0),
+          release.isChannel
+              ? Text(currentRelease ?? '')
+              : const SizedBox(height: 0),
         ],
       );
     }
 
     // If version is master
     if (release is MasterDto) {
-      return FvmMasterStatus(release);
+      return FvmMasterStatus(release as MasterDto);
     }
 
     // Default fallback
@@ -65,13 +63,13 @@ class FvmReleaseStatus extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(currentRelease),
+        Text(currentRelease ?? ''),
         const SizedBox(width: 10),
         const Icon(MdiIcons.arrowRight, size: 15),
         const SizedBox(width: 10),
         OutlinedButton.icon(
           icon: const Icon(MdiIcons.triangle, size: 15),
-          label: Text(release.release?.version),
+          label: Text(release.release?.version ?? ''),
           onPressed: () {
             context.read(fvmQueueProvider.notifier).upgrade(context, release);
           },

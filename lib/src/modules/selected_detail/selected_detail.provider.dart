@@ -7,7 +7,7 @@ import '../common/dto/release.dto.dart';
 class SelectedDetail {
   /// Constructor
   SelectedDetail({
-    this.release,
+    required this.release,
     this.project,
   });
 
@@ -15,8 +15,8 @@ class SelectedDetail {
   ReleaseDto release;
 
   /// Project selected
-  Project project;
+  Project? project;
 }
 
 /// Selected Release Provider
-final selectedDetailProvider = StateProvider<SelectedDetail>((_) => null);
+final selectedDetailProvider = StateProvider<SelectedDetail?>((_) => null);

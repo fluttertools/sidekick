@@ -16,7 +16,7 @@ class FvmReleaseListItem extends StatelessWidget {
   /// Constructor
   const FvmReleaseListItem(
     this.release, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   /// Release

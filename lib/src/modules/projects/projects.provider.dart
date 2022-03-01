@@ -24,7 +24,7 @@ final projectsPerVersionProvider = Provider((ref) {
   final list = <String, List<Project>>{};
   final projects = ref.watch(projectsProvider);
 
-  if (projects == null || projects.isEmpty) {
+  if (projects.isEmpty) {
     return list;
   }
 
@@ -65,8 +65,8 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   Future<void> load() async {
     /// Do migration
     await _migrate();
-
-    state = await ProjectsService.load();
+    final projects = await ProjectsService.load();
+    state = projects.toList();
   }
 
   /// Reloads one project
@@ -92,8 +92,8 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   }
 
   /// Removes a project
-  void removeProject(FlutterProject project) {
-    ProjectsService.box.delete(project.projectDir.path);
+  void removeProject(Directory projectDir) {
+    ProjectsService.box.delete(projectDir.path);
     load();
   }
 

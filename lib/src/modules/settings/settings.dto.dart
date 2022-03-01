@@ -15,14 +15,21 @@ class AllSettings {
   FlutterSettings flutter;
 
   AllSettings({
-    this.sidekick,
-    this.fvm,
-    this.flutter,
-  }) {
-    fvm ??= FvmSettings();
-    sidekick ??= SidekickSettings();
+    required this.fvm,
+    required this.flutter,
+    required this.sidekick,
+  });
 
-    flutter ??= FlutterSettings();
+  static AllSettings create({
+    SidekickSettings? sidekick,
+    FvmSettings? fvm,
+    FlutterSettings? flutter,
+  }) {
+    return AllSettings(
+      fvm: fvm ?? FvmSettings(),
+      flutter: flutter ?? FlutterSettings(),
+      sidekick: sidekick ?? SidekickSettings(),
+    );
   }
 
   AllSettings copy() => AllSettings(
@@ -57,9 +64,9 @@ class SidekickSettings {
   List<String> projectPaths;
   String themeMode;
   I18NextLocalizationDelegate localizationsDelegate;
-  Locale locale;
-  String ide;
-  String customIdeLocation;
+  Locale? locale;
+  String? ide;
+  String? customIdeLocation;
 
   factory SidekickSettings.fromJson(String str) =>
       SidekickSettings.fromMap(json.decode(str));
@@ -74,8 +81,8 @@ class SidekickSettings {
 
     return SidekickSettings(
       projectPaths: (json['projectPaths'] as List<dynamic>).cast<String>(),
-      onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool ?? false,
-      themeMode: json['themeMode'] as String ?? SettingsThemeMode.system,
+      onlyProjectsWithFvm: json['onlyProjectsWithFvm'] as bool? ?? false,
+      themeMode: json['themeMode'] as String? ?? SettingsThemeMode.system,
       locale: locale,
       ide: json['ide'],
       customIdeLocation: json['customIdeLocation'],
@@ -144,11 +151,11 @@ class FlutterSettings {
   /// Flutter settings from map
   factory FlutterSettings.fromMap(Map<String, bool> map) {
     return FlutterSettings(
-      analytics: map['analytics'],
-      macos: map['macos'],
-      windows: map['windows'],
-      linux: map['linux'],
-      web: map['web'],
+      analytics: map['analytics'] ?? false,
+      macos: map['macos'] ?? false,
+      windows: map['windows'] ?? false,
+      linux: map['linux'] ?? false,
+      web: map['web'] ?? false,
     );
   }
 

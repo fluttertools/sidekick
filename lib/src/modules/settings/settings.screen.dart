@@ -59,10 +59,6 @@ class SettingsScreen extends HookWidget {
       controller.jumpToPage(idx);
     }
 
-    if (settings.sidekick == null) {
-      return Container();
-    }
-
     Future<void> handleSave() async {
       final savedMessage =
           context.i18n('modules:settings.settingsHaveBeenSaved');

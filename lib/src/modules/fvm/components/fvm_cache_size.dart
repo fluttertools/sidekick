@@ -11,7 +11,7 @@ import '../fvm.provider.dart';
 class FvmCacheSize extends HookWidget {
   /// Constructor
   const FvmCacheSize({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -26,10 +26,6 @@ class FvmCacheSize extends HookWidget {
     }
 
     final unusedPercentage = unusedSize.value.totalSize / cacheSize.totalSize;
-
-    if (cacheSize == null) {
-      return const SizedBox(height: 0);
-    }
 
     return Row(
       children: [

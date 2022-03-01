@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:fvm/fvm.dart';
 
 /// Flutter Relelease
 abstract class ReleaseDto {
   /// Constructor
   ReleaseDto({
-    @required this.name,
-    @required this.release,
-    @required this.needSetup,
-    @required this.cache,
+    required this.name,
+    required this.needSetup,
+    required this.cache,
+    required this.release,
     this.isChannel = false,
     this.isGlobal = false,
   });
@@ -17,10 +16,10 @@ abstract class ReleaseDto {
   final String name;
 
   /// Release
-  Release release;
+  Release? release;
 
   /// Cached release
-  CacheVersion cache;
+  CacheVersion? cache;
 
   /// If needs setup
   bool needSetup;

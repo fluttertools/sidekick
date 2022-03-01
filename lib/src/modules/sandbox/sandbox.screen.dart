@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -17,8 +16,8 @@ import 'sandbox.provider.dart';
 class SandboxScreen extends HookWidget {
   /// Constructor
   const SandboxScreen({
-    this.project,
-    Key key,
+    required this.project,
+    Key? key,
   }) : super(key: key);
 
   /// Project
@@ -30,7 +29,7 @@ class SandboxScreen extends HookWidget {
     final terminal = useProvider(sandboxProvider.notifier);
     final processing = useProvider(sandboxProvider).processing;
 
-    final selectedRelease = useState<ReleaseDto>(null);
+    final selectedRelease = useState<ReleaseDto?>(null);
 
     useEffect(() {
       if (selectedRelease.value == null && releases.all.isNotEmpty) {
@@ -152,7 +151,7 @@ class SandboxScreen extends HookWidget {
               children: [
                 ListTile(
                   dense: true,
-                  title: Text(project.name),
+                  title: Text(project.name ?? ''),
                   subtitle: Text(project.projectDir.path),
                   trailing: processing
                       ? OutlinedButton(
@@ -171,16 +170,19 @@ class SandboxScreen extends HookWidget {
                         )
                       : OutlinedButton(
                           onPressed: null,
-                          child: Text(I18Next.of(context)
-                              .t('modules:sandbox.notRunning')),
+                          child: Text(
+                            context.i18n('modules:sandbox.notRunning'),
+                          ),
                         ),
                 ),
                 const Divider(height: 1),
                 Expanded(
-                  child: SandboxTerminal(
-                    project: project,
-                    release: selectedRelease.value,
-                  ),
+                  child: selectedRelease.value != null
+                      ? SandboxTerminal(
+                          project: project,
+                          release: selectedRelease.value!,
+                        )
+                      : Container(),
                 ),
               ],
             ),

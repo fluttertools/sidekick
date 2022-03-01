@@ -5,8 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class SkGroupTile extends HookWidget {
   /// Constructor
   const SkGroupTile({
-    Key key,
-    this.title,
+    required this.title,
+    Key? key,
     this.leading,
     this.trailing,
     this.border = false,
@@ -17,10 +17,10 @@ class SkGroupTile extends HookWidget {
   final Widget title;
 
   /// Leading widget
-  final Widget leading;
+  final Widget? leading;
 
   /// Trailing widget
-  final Widget trailing;
+  final Widget? trailing;
 
   /// If shows border
   final bool border;

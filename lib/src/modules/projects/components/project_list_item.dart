@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:i18next/i18next.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/settings/settings.provider.dart';
@@ -58,7 +57,7 @@ class ProjectListItem extends HookWidget {
     }
 
     void openIde() {
-      ide.launch(
+      ide?.launch(
         context,
         project.projectDir.absolute.path,
         customLocation: sidekickSettings.customIdeLocation,
@@ -111,14 +110,16 @@ class ProjectListItem extends HookWidget {
                   ),
                   if (ideName != null)
                     Tooltip(
-                      message: I18Next.of(context)
-                          .t('modules:projects.components.openIde', variables: {
-                        'ideName': ide.name,
-                      }),
+                      message: context.i18n(
+                        'modules:projects.components.openIde',
+                        variables: {
+                          'ideName': ide?.name,
+                        },
+                      ),
                       child: IconButton(
                         iconSize: 20,
                         splashRadius: 20,
-                        icon: ide.icon,
+                        icon: ide?.icon ?? const Icon(MdiIcons.alphaPBox),
                         onPressed: openIde,
                       ),
                     ),
@@ -127,15 +128,16 @@ class ProjectListItem extends HookWidget {
                       ? Row(
                           children: [
                             needInstall
-                                ? VersionInstallButton(version,
-                                    warningIcon: true)
+                                ? VersionInstallButton(
+                                    version,
+                                  )
                                 : const SizedBox(
                                     height: 0,
                                     width: 0,
                                   ),
                             ProjectReleaseSelect(
                               project: project,
-                              releases: cachedVersions ?? [],
+                              releases: cachedVersions,
                             )
                           ],
                         )

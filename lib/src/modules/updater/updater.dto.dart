@@ -1,18 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
 import '../../version.dart';
 
 /// Latest Version update for Sidekick
 class SidekickUpdateInfo {
   /// Constructor
   SidekickUpdateInfo({
-    @required this.needUpdate,
-    @required this.isInstalled,
-    @required this.current,
-    @required this.latest,
-    @required this.latestDownloadUrl,
+    required this.needUpdate,
+    required this.isInstalled,
+    required this.current,
+    required this.latest,
+    required this.latestDownloadUrl,
     this.latestInstallerFile,
   });
 
@@ -37,7 +35,7 @@ class SidekickUpdateInfo {
   final String current;
 
   /// Local installer file
-  final File latestInstallerFile;
+  final File? latestInstallerFile;
 
   /// Latest release download url
   final String latestDownloadUrl;
@@ -52,12 +50,12 @@ class SidekickUpdateInfo {
 
   /// Clones sidekick update
   SidekickUpdateInfo copyWith({
-    bool needUpdate,
-    bool isInstalled,
-    String current,
-    String latest,
-    String latestDownloadUrl,
-    File latestInstallerFile,
+    bool? needUpdate,
+    bool? isInstalled,
+    String? current,
+    String? latest,
+    String? latestDownloadUrl,
+    File? latestInstallerFile,
   }) {
     return SidekickUpdateInfo(
       needUpdate: needUpdate ?? this.needUpdate,

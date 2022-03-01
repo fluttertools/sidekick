@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/open_link.dart';
@@ -22,19 +24,33 @@ ThemeMode getThemeMode(String themeMode) {
 typedef LaunchFunction = Future<void> Function(
   BuildContext context,
   String projectPath, {
-  String customLocation,
+  String? customLocation,
 });
+
+enum SupportedIDE {
+  VSCode,
+  XCode,
+  Custom,
+}
 
 class IDE {
   final String name;
   final LaunchFunction launch;
   final Widget icon;
 
-  const IDE(this.name, this.icon, this.launch);
+  IDE(
+    SupportedIDE ideName,
+    this.icon,
+    this.launch,
+  ) : name = ideName.name;
 }
 
-const supportedIDEs = [
-  IDE('VSCode', Icon(MdiIcons.microsoftVisualStudioCode), openVsCode),
-  IDE('XCode', Icon(MdiIcons.appleSafari), openXcode),
-  IDE('Custom', Icon(Icons.code_rounded), openCustom),
+final supportedIDEs = [
+  IDE(
+    SupportedIDE.VSCode,
+    const Icon(MdiIcons.microsoftVisualStudioCode),
+    openVsCode,
+  ),
+  IDE(SupportedIDE.XCode, const Icon(MdiIcons.appleSafari), openXcode),
+  IDE(SupportedIDE.Custom, const Icon(Icons.code_rounded), openCustom),
 ];

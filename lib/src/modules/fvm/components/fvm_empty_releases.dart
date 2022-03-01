@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:i18next/i18next.dart';
+import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../components/atoms/empty_dataset.dart';
 import '../../navigation/navigation.provider.dart';
 
 class EmptyVersions extends StatelessWidget {
-  const EmptyVersions({Key key}) : super(key: key);
+  const EmptyVersions({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,14 @@ class EmptyVersions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              I18Next.of(context)
-                  .t('modules:fvm.components.flutterSdkNotInstalled'),
+              context.i18n('modules:fvm.components.flutterSdkNotInstalled'),
               style: Theme.of(context).textTheme.headline5,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             Text(
-              I18Next.of(context)
-                  .t('modules:fvm.components.noFlutterVersionInstalledMessage'),
+              context.i18n(
+                  'modules:fvm.components.noFlutterVersionInstalledMessage'),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.caption,
             ),
@@ -43,8 +44,7 @@ class EmptyVersions extends StatelessWidget {
               },
               icon: const Icon(Icons.explore),
               label: Text(
-                I18Next.of(context)
-                    .t('modules:fvm.components.exploreFlutterReleases'),
+                context.i18n('modules:fvm.components.exploreFlutterReleases'),
               ),
             )
           ],

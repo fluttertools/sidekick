@@ -37,7 +37,9 @@ const pages = [
 /// Main widget of the app
 class AppShell extends HookWidget {
   /// Constructor
-  const AppShell({Key key}) : super(key: key);
+  const AppShell({
+    Key? key,
+  }) : super(key: key);
 
   NavigationRailDestination renderNavButton(
     BuildContext context,
@@ -68,26 +70,28 @@ class AppShell extends HookWidget {
     final selectedIndex = useState(0);
 
     // Side effect when route changes
-    useValueChanged(currentRoute, (_, __) {
+    useEffect(() {
       // Do not set index if its search
       if (currentRoute != NavigationRoutes.searchScreen) {
         selectedIndex.value = currentRoute.index;
       }
-    });
+      return;
+    }, [currentRoute]);
 
     // Side effect when info is selected
-    useValueChanged(selectedInfo, (_, __) {
+    useEffect(() {
       if (_scaffoldKey.currentState == null) return;
-      final isOpen = _scaffoldKey.currentState.isEndDrawerOpen;
+      final isOpen = _scaffoldKey.currentState?.isEndDrawerOpen;
       final hasInfo = selectedInfo?.release != null;
 
       // Open drawer if not large layout and its not open
-      if (hasInfo && !isOpen) {
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          _scaffoldKey.currentState.openEndDrawer();
+      if (hasInfo && isOpen != true) {
+        SchedulerBinding.instance?.addPostFrameCallback((_) {
+          _scaffoldKey.currentState?.openEndDrawer();
         });
       }
-    });
+      return;
+    }, [selectedInfo]);
 
     if (!compatInfo.ready && !compatInfo.waiting) {
       notify("Sidekick is missing key components to work", error: true);
@@ -173,8 +177,8 @@ class AppShell extends HookWidget {
                             : BorderRadius.zero,
                         child: IndexedTransitionSwitcher(
                           duration: const Duration(milliseconds: 250),
-                          reverse: selectedIndex.value <
-                              (navigation.previous.index ?? 0),
+                          reverse:
+                              selectedIndex.value < (navigation.previous.index),
                           transitionBuilder: (
                             child,
                             animation,
