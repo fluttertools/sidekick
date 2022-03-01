@@ -127,7 +127,7 @@ class ProjectListItem extends HookWidget {
                   versionSelect
                       ? Row(
                           children: [
-                            needInstall && version != null
+                            needInstall
                                 ? VersionInstallButton(
                                     version,
                                   )
