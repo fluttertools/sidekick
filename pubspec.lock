@@ -383,7 +383,7 @@ packages:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+3"
+    version: "1.0.3"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -470,7 +470,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+4"
+    version: "1.0.0-dev.2"
   http:
     dependency: transitive
     description:
@@ -759,7 +759,7 @@ packages:
       name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+3"
+    version: "1.0.3"
   shared_preferences:
     dependency: "direct main"
     description:
