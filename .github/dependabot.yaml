@@ -1,0 +1,14 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "pub"
+    directory: "/"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    reviewers:
+      - "aguilaair"
+      - "leoafarias"
+    schedule:
+      interval: "daily"
+      time: "09:00"
