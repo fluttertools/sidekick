@@ -17,7 +17,7 @@ dependencies:
   file_selector: ^0.8.2
   file_selector_linux: ^0.0.2
   file_selector_macos: ^0.0.4
-  file_selector_windows: ^0.0.2
+  file_selector_windows: ">=0.0.2 <0.9.0"
   filesize: ^2.0.1
   flutter:
     sdk: flutter
