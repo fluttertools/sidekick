@@ -10,5 +10,5 @@ updates:
       - "aguilaair"
       - "leoafarias"
     schedule:
-      interval: "daily"
+      interval: "weekly"
       time: "09:00"
