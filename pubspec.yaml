@@ -46,7 +46,7 @@ dependencies:
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.4
   watcher: ^1.0.0
-  window_manager: ^0.1.4
+  window_manager: ">=0.1.4 <0.3.0"
   window_size:
     git:
       url: https://github.com/google/flutter-desktop-embedding.git
