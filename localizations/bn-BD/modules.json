@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "ড্যাশবোর্ড",
+    "navButtonProjects": "প্রজেক্টস",
+    "navButtonExplore": "এক্সপ্লোর",
+    "navButtonPackages": "প্যাকেজেস",
+    "stableChannelDescription": "আমরা আপনাকে সমস্ত প্রোডাকশন অ্যাপ রিলিজের জন্য এই চ্যানেলটি ব্যবহার করার পরামর্শ দিচ্ছি। প্রতি তিন মাসে প্রায় একবার, একটি ব্র্যাঞ্চ যা বিটায় স্থিতিশীল হয়েছে তা আমাদের পরবর্তী স্টেবল ব্র্যাঞ্চে পরিণত হয় এবং আমরা সেই ব্র্যাঞ্চের একটি স্টেবল ভার্সন তৈরি করি।",
+    "betaChannelDescription": "মাসের শুরুতে, সাধারণত প্রথম সোমবার, মাস্টার দ্বারা একটি নতুন বিটা রিলিজের জন্য ব্র্যাঞ্চ তৈরি করা হয়। এতে ডার্ট, ইঞ্জিন এবং ফ্রেমওয়ার্কের জন্য একটি ব্র্যাঞ্চ থাকবে।",
+    "devChannelDescription": "সর্বশেষ সম্পূর্ণ পরীক্ষিত বিল্ড। সাধারণত কাজ করে, কিন্তু পরিচিত \"bad\" ডেভ বিল্ডের তালিকার জন্য \"Bad builds\" দেখুন।",
+    "masterChannelDescription": "একেবারে নিখুঁত সর্বশেষ বিল্ড। সাধারণত কার্যকরী, যদিও মাঝেমাঝে আমরা ঘটনাক্রমে কিছু ত্রুটির সম্মুখীন হই।",
+    "utils": {
+      "couldNotLaunchUrl": "খুলতে পারেনি {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "ইনস্টল করা ভার্সনসমূহ",
+    "cleanUp": "পরিষ্কার করুন",
+    "cleanUpTooltip": "অব্যবহৃত ভার্সনসমূহ পরিষ্কার করুন",
+    "numberOfCachedVersions": "{{cachedVersions}} ভার্সনসমূহ",
+    "versionItemversionnameHasBeenInstalled": "ভার্সন {{itemVersionName}} ইনস্টল করা হয়েছে।",
+    "versionItemversionnameHasFinishedSetup": "ভার্সন {{itemVersionName}} সেটআপ সম্পন্ন হয়েছে।",
+    "channelItemversionnameHasBeenUpgraded": "চ্যানেল {{itemVersionName}} আপগ্রেড করা হয়েছে।",
+    "versionItemversionnameHasBeenRemoved": "ভার্সন {{itemVersionName}} মুছে ফেলা হয়েছে।",
+    "versionItemversionnameHasBeenSetAsGlobal": "ভার্সন {{itemVersionName}} গ্লোবাল হিসাবে সেট করা হয়েছে।",
+    "versionVersionPinnedToProjectname": "ভার্সন {{version}} পিন করা হয়েছে {{projectName}}-এ",
+    "components": {
+      "upgrade": "আপগ্রেড করুন",
+      "setAsGlobal": "গ্লোবাল হিসাবে সেট করুন",
+      "inUse": "ব্যবহৃত",
+      "unused": "অব্যবহৃত",
+      "flutterSdkNotInstalled": "Flutter SDK ইনস্টল করা নেই৷",
+      "noFlutterVersionInstalledMessage": "আপনার কাছে বর্তমানে কোনো Flutter SDK ভার্সন ইনস্টল করা নেই৷ ইনস্টল করা ভার্সন বা চ্যানেলগুলি এখানে দেখানো হয়েছে৷",
+      "exploreFlutterReleases": "Flutter-এর রিলিজসমূহ এক্সপ্লোর করুন",
+      "global": "গ্লোবাল",
+      "sdkHasNotFinishedSetup": "SDK সেটআপ সম্পূর্ণ হয়নি"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "কোন অব্যবহৃত Flutter SDK ভার্সন ইনস্টল করা নেই",
+      "cleanUpUnusedVersions": "অব্যবহৃত ভার্সনসমূহ পরিষ্কার করুন",
+      "cancel": "বাতিল করুন",
+      "confirm": "নিশ্চিত করুন",
+      "ok": "ঠিক আছে",
+      "globalConfiguration": "গ্লোবাল কনফিগারেশন",
+      "theseVersionAreNotPinnedToAProject": "এই ভার্সনগুলো প্রজেক্টে পিন করা নেই ",
+      "doYouWantToRemoveThemToFreeUpSpace": "আপনি কি জায়গা খালি করতে এটি মুছে ফেলতে চান?",
+      "areYouSureYouWantToRemove": "আপনি কি নিশ্চিত আপনি মুছে ফেলতে চান?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "এটি আপনার সিস্টেমের ক্যাশ থেকে {{itemname}} মুছে ফেলবে৷",
+      "flutterPathIsPointingOn": "Flutter PATH নির্দেশ করে\n ",
+      "changeThePathTo": "PATH পরিবর্তন করুন\n",
+      "ifYouWantToFlutterSdkThroughFvm": "আপনি যদি FVM এর মাধ্যমে Flutter SDK আপডেট করতে চান",
+      "howToUpdateYourPath": "কিভাবে PATH আপডেট করবেন?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "রিফ্রেশ করা প্রজেক্টস",
+    "projects": "প্রজেক্টস",
+    "choose": "পছন্দ করুন",
+    "projectsProjects": "প্রজেক্টস {{projects}}",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "শুধুমাত্র সেই প্রজেক্টগুলো প্রদর্শন করুন যেগুলোর ভার্সনগুলো পিন করা আছে৷",
+    "fvmOnly": "শুধুমাত্র FVM",
+    "addProject": "প্রজেক্ট যোগ করুন",
+    "notAFlutterProject": "Flutter প্রজেক্ট নয়",
+    "components": {
+      "open": "খুলুন",
+      "remove": "মুছুন",
+      "openTerminalPlayground": "টার্মিনাল প্লেগ্রাউন্ড খুলুন",
+      "openIde": "{{ideName}}-এ খুলুন",
+      "selectAFlutterSdkVersion": "Flutter SDK ভার্সন নির্বাচন করুন",
+      "noFlutterProjectsHaveBeenAddedYet": "কোন Flutter প্রজেক্ট এখনো যোগ করা হয়নি।",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "আপনার Flutter প্রজেক্ট যোগ করুন প্রজেক্টের তথ্য এখানে প্রদর্শিত হবে।"
+    }
+  },
+  "pubPackages": {
+    "trending": "জনপ্রিয়",
+    "mostUsedPackages": "সর্বাধিক ব্যবহৃত প্যাকেজসমূহ",
+    "flutterFavorites": "ফ্লাটার ফেভারিটস",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "আপনাকে প্রথমে একটি Flutter প্রজেক্ট যোগ করতে হবে। প্যাকেজের তথ্য এখানে প্রদর্শিত হবে।",
+      "noPackagesFound": "কোন প্যাকেজ পাওয়া যায়নি",
+      "view": "ভিউ",
+      "builtBy": "বিল্ট বাই",
+      "likes": "লাইকস",
+      "pubPoints": "পাব পয়েন্টস",
+      "popularity": "জনপ্রিয়তা",
+      "details": "বিস্তারিত",
+      "changelog": "চেঞ্জলগ",
+      "website": "ওয়েবসাইট",
+      "packageprojectscountProjects": "{{packageProjectsCount}} প্রজেক্টস"
+    }
+  },
+  "releases": {
+    "all": "সব",
+    "releases": "রিলিজসমূহ",
+    "versions": "ভার্সনসমূহ",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "একেবারে নিখুঁত সর্বশেষ বিল্ড। সাধারণত কার্যকরী, যদিও মাঝেমাঝে আমরা ঘটনাক্রমে কিছু ত্রুটির সম্মুখীন হই।"
+  },
+  "sandbox": {
+    "playground": "প্লেগ্রাউন্ড",
+    "releasesVersions": "{{releases}} ভার্সনস",
+    "notRunning": "চলমান নয়"
+  },
+  "search": {
+    "components": {
+      "search": "খোঁজ করুন... ",
+      "noResults": "কোন ফলাফল নেই",
+      "channels": "চ্যানেলসমূহ",
+      "stableReleases": "স্টেবল রিলিজেস",
+      "betaReleases": "বিটা রিলিজেস",
+      "devReleases": "ডেভ রিলিজেস",
+      "invalidChanel": "অবৈধ চ্যানেল"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "এডভান্সড",
+      "downloadZip": "Zip ডাউনলোড করুন",
+      "zipFileWithAllReleaseDependencies": "সমস্ত রিলিজ ডেপেন্ডেন্সিগুলো সহ zip ফাইল",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "স্থানীয় ক্যাশ তথ্য",
+      "createdDate": "তৈরির তারিখ",
+      "cacheLocation": "ক্যাশ অবস্থান",
+      "nothingSelected": "কিছুই নির্বাচন করা হয়নি",
+      "channel": "চ্যানেল",
+      "releaseNotes": "রিলিজ নোটস",
+      "version": "ভার্সন",
+      "releaseDate": "রিলিজ ডেট"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "সেটিংস সংরক্ষণ করা হয়েছে",
+    "couldNotSaveSettings": "সেটিংস সংরক্ষণ করা যায়নি",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Flutter সেটিংস অ্যাক্সেস করতে Flutter SDK ভার্সনকে অবশ্যই গ্লোবাল হিসাবে সেট করতে হবে",
+      "analyticsCrashReporting": "এনালিটিক্স এবং ক্র্যাশ রিপোর্টিং",
+      "analyticsCrashReportSubtitle": "যখন একটি Flutter কমান্ড ক্র্যাশ হয়, তখন Google-এ একটি ক্র্যাশ রিপোর্ট পাঠানোর চেষ্টা করা হয় যাতে Google সময়ের সাথে সাথে Flutter-এর উন্নতিতে অবদান রাখতে পারে",
+      "platforms": "প্ল্যাটফর্মস",
+      "web": "ওয়েব",
+      "skipSetupFlutterOnInstall": "ইনস্টলেশনের সময় Flutter সেটআপ এড়িয়ে যান",
+      "thisWillOnlyCloneFlutterAndNotInstall": "এটি শুধুমাত্র Flutter ক্লোন করবে এবং এটি ইনস্টল করবে না ",
+      "dependenciesAfterANewVersionIsInstalled": "নতুন ভার্সন ইনস্টল করার পর ডেপেন্ডেন্সিসমূহ।",
+      "areYouSureYouWantToResetSettings": "আপনি কি সেটিংস রিসেট করার বিষয়ে নিশ্চিত?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "এটি শুধুমাত্র Sidekick-এর নির্দিষ্ট সেটিংস রিসেট করবে",
+      "appSettingsHaveBeenReset": "অ্যাপ সেটিংস রিসেট করা হয়েছে",
+      "general": "সাধারণ",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "একটি থিম নির্বাচন করুন অথবা সিস্টেম সেটিংস অনুযায়ী স্যুইচ করুন।",
+      "theme": "থিম",
+      "system": "সিস্টেম",
+      "light": "লাইট",
+      "dark": "ডার্ক",
+      "language": "ভাষা",
+      "resetToDefaultSettings": "ডিফল্ট সেটিংসে রিসেট করুন",
+      "reset": "রিসেট করুন",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "আপনার প্রজেক্ট খুলতে IDE নির্বাচন করুন"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "আপডেট ব্যবহারযোগ্য।",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick ভার্সন {{updateInfoLatest}} এখন ব্যবহারযোগ্য",
+      "later": "পরে",
+      "updateNow": "এখন আপডেট করুন",
+      "clickHereToDownload": "ডাউনলোড করতে এখানে ক্লিক করুন",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick-এর একটি নতুন ভার্সন ব্যবহারযোগ্য ({{updateInfoLatest}})৷"
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "আবশ্যক কম্পোনেন্টস ইনস্টল করুন",
+      "dialogDescriptionMacLinux": "এটি কপি করুন এবং টার্মিনালে পেস্ট করুন। নির্দেশাবলী অনুসরণ করুন।",
+      "dialogDescriptionWindows": "এটি কপি করুন এবং PowerShell এ পেস্ট করুন। নির্দেশাবলী অনুসরণ করুন। অবশ্যই PowerShell কে Run as administrator হিসাবে চালাতে হবে।",
+      "dialogRestartNotication": "দারুণ! Sidekick এখন বন্ধ হবে। দয়া করে এটা পুনরায় খুলুন।",
+      "done": "সম্পন্ন"
+    },
+    "screen": {
+      "title": "Sidekick এক বা একাধিক প্রয়োজনীয় কম্পোনেন্টস সনাক্ত করতে ব্যর্থ হয়েছে",
+      "subtitle": "এখানে কোনটি অনুপস্থিত এবং কোনটি নেই তার একটি ব্যাখ্যা রয়েছে:",
+      "gitDescription": "Flutter ভার্সন ডাউনলোড এবং আপডেট করতে Git ব্যবহৃত হয়। এটি FVM দ্বারা ব্যবহার করা হয়",
+      "fvmDescription": "Flutter ভার্সন ম্যানেজমেন্ট। Sidekick এর বেশিরভাগ মূল কার্যকারিতা প্রদান করে।",
+      "chocoDescription": "ঐচ্ছিক। এটি Windows ডিভাইসে উপস্থিত না থাকলে FVM ইনস্টল করতে ব্যবহার করা যেতে পারে।",
+      "brewDescription": "ঐচ্ছিক। FVM ইনস্টল করতে ব্যবহার করা যেতে পারে যদি এটি MacOS এবং Linux ডিভাইসে উপস্থিত না থাকে।",
+      "pleaseInstall": "Sidekick ব্যবহার করার জন্য অনুপস্থিত কম্পোনেন্টস ইনস্টল করুন!",
+      "ignore": "প্রত্যাখ্যান করুন",
+      "installmissing": "অনুপস্থিত ইনস্টল করুন"
+    }
+  }
+}
