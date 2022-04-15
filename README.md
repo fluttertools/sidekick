@@ -53,6 +53,7 @@
   <sub>Sidekick is available in the following languages:</sub>
  <br>
     🇸🇦
+    🇧🇩
     🇩🇪
     🇬🇧
     🇺🇸
