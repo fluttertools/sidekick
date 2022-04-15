@@ -65,6 +65,7 @@ flutter:
   uses-material-design: true
   assets:
     - localizations/ar-SA/
+    - localizations/bn-BD/
     - localizations/de-DE/
     - localizations/en-GB/
     - localizations/en-US/
@@ -75,5 +76,6 @@ flutter:
     - localizations/ja-JP/
     - localizations/pl-PL/
     - localizations/it-IT/
+
 flutter_intl:
   enabled: true
