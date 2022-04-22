@@ -182,10 +182,19 @@
         "translation",
         "bug"
       ]
+    },
+    {
+      "login": "HighError",
+      "name": "HighError",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46526245?v=4",
+      "profile": "https://github.com/HighError",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
-  "projectOwner": "leoafarias",
+  "projectOwner": "fluttertools",
   "repoType": "github",
   "repoHost": "https://github.com",
   "commitConvention": "none"
