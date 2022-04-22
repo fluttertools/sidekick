@@ -76,6 +76,7 @@ flutter:
     - localizations/ja-JP/
     - localizations/pl-PL/
     - localizations/it-IT/
+    - localizations/uk-UA/
 
 flutter_intl:
   enabled: true
