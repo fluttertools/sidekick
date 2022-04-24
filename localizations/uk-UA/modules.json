@@ -16,7 +16,7 @@
     "installedVersions": "Встановлені версії",
     "cleanUp": "Прибрати",
     "cleanUpTooltip": "Очистити невикористані версії",
-    "numberOfCachedVersions": "{{cachedVersions}} версії",
+    "numberOfCachedVersions": "{{cachedVersions}} версія (-ії/-й)",
     "versionItemversionnameHasBeenInstalled": "Версію {{itemVersionName}} встановлено.",
     "versionItemversionnameHasFinishedSetup": "Налаштування версії {{itemVersionName}} завершено.",
     "channelItemversionnameHasBeenUpgraded": "Канал {{itemVersionName}} оновлено.",
@@ -26,8 +26,8 @@
     "components": {
       "upgrade": "Оновити",
       "setAsGlobal": "Встановити як глобальний",
-      "inUse": "Використовується",
-      "unused": "Не використовується",
+      "inUse": "Вик.",
+      "unused": "Не вик.",
       "flutterSdkNotInstalled": "SDK Flutter не встановлено.",
       "noFlutterVersionInstalledMessage": "Наразі у вас немає встановлених версій Flutter SDK. Тут відображаються встановлені версії або канали.",
       "exploreFlutterReleases": "Ознайомтеся з випусками Flutter",
@@ -101,7 +101,7 @@
   },
   "search": {
     "components": {
-      "search": "Шукати... ",
+      "search": "Пошук... ",
       "noResults": "Немає результатів",
       "channels": "Канали",
       "stableReleases": "Стабільні релізи",
@@ -142,7 +142,7 @@
       "areYouSureYouWantToResetSettings": "Ви впевнені, що хочете скинути налаштування?",
       "thisWillOnlyResetSidekickSpecificPreferences": "Це лише скине налаштування Sidekick",
       "appSettingsHaveBeenReset": "Налаштування програми скинуто",
-      "general": "Основний",
+      "general": "Основне",
       "selectAThemeOrSwitchAccordingToSystemSettings": "Виберіть тему або перемикайтеся відповідно до налаштувань системи.",
       "theme": "Тема",
       "system": "Системна",
