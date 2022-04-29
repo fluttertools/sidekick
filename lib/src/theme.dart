@@ -31,7 +31,6 @@ ThemeData get darkTheme {
   );
 }
 
-/// Dark theme
 ThemeData _customThemeBuilder({
   Color? cardColor,
   Color? scaffoldBackgroundColor,

@@ -151,51 +151,48 @@ class AppShell extends HookWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Scaffold(
-                    backgroundColor: Platform.isWindows
-                        ? Colors.transparent
-                        : Theme.of(context).scaffoldBackgroundColor,
-                    body: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                        ),
-                        border: Platform.isWindows
-                            ? Border.all(
-                                color: Theme.of(context).dividerColor,
-                              )
-                            : null,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
                       ),
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: ClipRRect(
-                        // This is the main content.
-                        borderRadius: Platform.isWindows
-                            ? const BorderRadius.only(
-                                topLeft: Radius.circular(12),
-                              )
-                            : BorderRadius.zero,
-                        child: IndexedTransitionSwitcher(
-                          duration: const Duration(milliseconds: 250),
-                          reverse:
-                              selectedIndex.value < (navigation.previous.index),
-                          transitionBuilder: (
-                            child,
-                            animation,
-                            secondaryAnimation,
-                          ) {
-                            return SharedAxisTransition(
-                              fillColor:
-                                  Theme.of(context).scaffoldBackgroundColor,
-                              animation: animation,
-                              secondaryAnimation: secondaryAnimation,
-                              transitionType: SharedAxisTransitionType.vertical,
-                              child: child,
-                            );
-                          },
-                          index: selectedIndex.value,
-                          children: pages,
-                        ),
+                      border: Platform.isWindows
+                          ? Border.all(
+                              color: Theme.of(context).dividerColor,
+                            )
+                          : null,
+                    ),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: ClipRRect(
+                      // This is the main content.
+                      borderRadius: Platform.isWindows
+                          ? const BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                            )
+                          : BorderRadius.zero,
+                      child: IndexedTransitionSwitcher(
+                        // Need to update IndexTransitionSwitcher on theme change
+                        key: Key(Theme.of(context).brightness.toString()),
+                        duration: const Duration(milliseconds: 250),
+                        reverse:
+                            selectedIndex.value < (navigation.previous.index),
+                        transitionBuilder: (
+                          child,
+                          animation,
+                          secondaryAnimation,
+                        ) {
+                          return SharedAxisTransition(
+                            fillColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                            animation: animation,
+                            secondaryAnimation: secondaryAnimation,
+                            transitionType: SharedAxisTransitionType.vertical,
+                            child: child,
+                          );
+                        },
+                        index: selectedIndex.value,
+                        children: pages,
                       ),
                     ),
                   ),
