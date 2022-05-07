@@ -96,22 +96,27 @@ class ProjectsScreen extends HookWidget {
       ],
       child: projects.isEmpty
           ? const EmptyProjects()
-          : CupertinoScrollbar(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: ResponsiveGridList(
-                    desiredItemWidth: 290,
-                    minSpacing: 0,
-                    children: filteredProjects.value.map((project) {
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 10, right: 10),
-                        child: ProjectListItem(
-                          project,
-                          versionSelect: true,
-                          key: Key(project.projectDir.path),
-                        ),
-                      );
-                    }).toList()),
+          : Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SingleChildScrollView(
+                controller: ScrollController(initialScrollOffset: 60),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60),
+                  child: ResponsiveGridList(
+                      desiredItemWidth: 290,
+                      scroll: false,
+                      minSpacing: 0,
+                      children: filteredProjects.value.map((project) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 10, right: 10),
+                          child: ProjectListItem(
+                            project,
+                            versionSelect: true,
+                            key: Key(project.projectDir.path),
+                          ),
+                        );
+                      }).toList()),
+                ),
               ),
             ),
     );
