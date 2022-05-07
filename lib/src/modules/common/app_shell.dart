@@ -184,7 +184,9 @@ class AppShell extends HookWidget {
                         ) {
                           return SharedAxisTransition(
                             fillColor:
-                                Theme.of(context).scaffoldBackgroundColor,
+                                Theme.of(context).brightness == Brightness.light
+                                    ? lightTheme.scaffoldBackgroundColor
+                                    : darkTheme.scaffoldBackgroundColor,
                             animation: animation,
                             secondaryAnimation: secondaryAnimation,
                             transitionType: SharedAxisTransitionType.vertical,
