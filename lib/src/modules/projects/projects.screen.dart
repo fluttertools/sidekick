@@ -98,7 +98,7 @@ class ProjectsScreen extends HookWidget {
           : Padding(
               padding: const EdgeInsets.only(left: 10),
               child: SingleChildScrollView(
-                controller: ScrollController(initialScrollOffset: 60),
+                controller: ScrollController(),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 60),
                   child: ResponsiveGridList(
