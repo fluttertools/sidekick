@@ -208,7 +208,7 @@ jobs:
           path: pubspec.yaml
           contents: |
             msix_config:
-              display_name: Sidekick
+              display_name: Flutter Sidekick
               publisher_display_name: Eduardo M.
               identity_name: 44484EduardoM.SidekickFlutter
               publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
