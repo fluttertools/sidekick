@@ -94,6 +94,7 @@ ThemeData get lightTheme {
           secondary: Colors.blue,
         ),
     dividerColor: Colors.black12,
+    scaffoldBackgroundColor: const Color(0xfffafafa),
     textButtonTheme: _textButtonThemeData,
     cardTheme: const CardTheme(
       elevation: 3,

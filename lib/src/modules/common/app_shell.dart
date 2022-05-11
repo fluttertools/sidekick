@@ -154,9 +154,11 @@ class AppShell extends HookWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.transparent,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                      ),
+                      borderRadius: Platform.isWindows
+                          ? const BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                            )
+                          : null,
                       border: Platform.isWindows
                           ? Border.all(
                               color: Theme.of(context).dividerColor,
@@ -184,7 +186,9 @@ class AppShell extends HookWidget {
                         ) {
                           return SharedAxisTransition(
                             fillColor:
-                                Theme.of(context).scaffoldBackgroundColor,
+                                Theme.of(context).brightness == Brightness.light
+                                    ? lightTheme.scaffoldBackgroundColor
+                                    : darkTheme.scaffoldBackgroundColor,
                             animation: animation,
                             secondaryAnimation: secondaryAnimation,
                             transitionType: SharedAxisTransitionType.vertical,
