@@ -85,8 +85,6 @@ Manage Flutter versions
 
 Explore releases
 
-View most used packages
-
 Search versions across apps
 
 Version sandboxing (playground)
