@@ -3,7 +3,7 @@
 <h1 align="center">Flutter Sidekick</h1>
  
 <div align="center">
-  <strong>A simple desktop interface for tools that enhance Flutter development experience to make it even more delightful.</strong>
+  <strong>A simple desktop interface for tools that enhance Flutter's development experience to make it even more delightful.</strong>
   
   <sub>Available for Linux, macOS and Windows.</sub>
 </div>
