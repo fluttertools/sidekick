@@ -61,7 +61,7 @@ class SandboxTerminal extends HookWidget {
 
     useEffect(() {
       /// Cannot modify state before render
-      WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
         await terminal.reboot(release, project);
       });
       return;
@@ -79,7 +79,7 @@ class SandboxTerminal extends HookWidget {
     useEffect(() {
       /// Scroll to bottom
       if (scrollController.hasClients) {
-        WidgetsBinding.instance?.addPostFrameCallback((_) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           scrollController.animateTo(
             scrollController.position.maxScrollExtent,
             duration: const Duration(milliseconds: 250),
@@ -112,7 +112,7 @@ class SandboxTerminal extends HookWidget {
       currentCmdIdx.value = nextIdx;
 
       // Trigger cursor move post frame
-      WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
         textController.selection = TextSelection.collapsed(
           offset: textController.text.length,
         );
