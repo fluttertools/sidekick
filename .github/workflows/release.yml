@@ -224,7 +224,7 @@ jobs:
       - name: Write MS Store true
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: lib/modifiers.dart
+          path: lib/src/modifiers.dart
           contents: |
             // Generated file. Do not modify
             const isMSStore = true;
