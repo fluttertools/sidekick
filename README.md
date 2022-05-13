@@ -127,6 +127,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://federicoviceconti.com"><img src="https://avatars.githubusercontent.com/u/25590766?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Federico</b></sub></a><br /><a href="#translation-federicoviceconti" title="Translation">🌍</a> <a href="https://github.com/fluttertools/sidekick/issues?q=author%3Afedericoviceconti" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/HighError"><img src="https://avatars.githubusercontent.com/u/46526245?v=4?s=50" width="50px;" alt=""/><br /><sub><b>HighError</b></sub></a><br /><a href="#translation-HighError" title="Translation">🌍</a></td>
     <td align="center"><a href="http://g.dev/abdullahalmahmud"><img src="https://avatars.githubusercontent.com/u/53822204?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Abdullah Al Mahmud</b></sub></a><br /><a href="#translation-its-me-mahmud" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/abc873693"><img src="https://avatars.githubusercontent.com/u/15196250?v=4?s=50" width="50px;" alt=""/><br /><sub><b>RainVisitor</b></sub></a><br /><a href="#translation-abc873693" title="Translation">🌍</a></td>
   </tr>
 </table>
 
