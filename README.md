@@ -135,4 +135,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+### Notice
+Flutter and the related logo are trademarks of Google LLC. We are **not** endorsed by or affiliated with Google LLC.
+
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
