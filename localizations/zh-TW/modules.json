@@ -9,7 +9,7 @@
     "devChannelDescription": "最後一個經過全面測試的版本。通常可以工作， 但請關注 \"Bad builds\"，了解已知的 \"bad\" Dev builds。",
     "masterChannelDescription": "當前專案最新的版本。通常是功能性的，但有時會被砍掉。",
     "utils": {
-      "couldNotLaunchUrl": "不能打開 {{url}}"
+      "couldNotLaunchUrl": "無法開啟 {{url}}"
     }
   },
   "fvm": {
@@ -128,8 +128,8 @@
     }
   },
   "settings": {
-    "settingsHaveBeenSaved": "設定已被保存",
-    "couldNotSaveSettings": "無法保存設定",
+    "settingsHaveBeenSaved": "設定已被儲存",
+    "couldNotSaveSettings": "無法儲存設定",
     "scenes": {
       "flutterSDKGlobalDescription": "必須將 Flutter SDK 版本設定為全域，才能訪問 Flutter 設定。",
       "analyticsCrashReporting": "分析和崩潰報告",
