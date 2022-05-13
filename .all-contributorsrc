@@ -200,6 +200,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "abc873693",
+      "name": "RainVisitor",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15196250?v=4",
+      "profile": "https://github.com/abc873693",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
