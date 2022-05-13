@@ -72,6 +72,7 @@ flutter:
     - localizations/es-ES/
     - localizations/sv-SE/
     - localizations/zh-CN/
+    - localizations/zh-TW/
     - localizations/ko-KR/
     - localizations/ja-JP/
     - localizations/pl-PL/
