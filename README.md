@@ -1,6 +1,6 @@
 <p align="center"><img src="/assets/svgs/3D-icon.svg" alt="Sidekick" width="100"></p>
 
-<h1 align="center">Flutter Sidekick</h1>
+<h1 align="center">Sidekick for Flutter</h1>
  
 <div align="center">
   <strong>A simple desktop interface for tools that enhance Flutter's development experience to make it even more delightful.</strong>
