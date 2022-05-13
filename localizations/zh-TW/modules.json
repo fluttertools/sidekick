@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "總覽",
+    "navButtonProjects": "專案",
+    "navButtonExplore": "探索",
+    "navButtonPackages": "套件",
+    "stableChannelDescription": "我們推薦你使用這個頻道來發布所有的生產應用。大約每季一次，一個已經穩定到 beta 版的分支會成為我們的下一個 stable 分支，我們會在這個分支上建立一個 stable 版本。",
+    "betaChannelDescription": "在月初，通常是第一個星期一，從 master 建立的新的 beta 分支。這將包含一個Dart、引擎和框架的分支。",
+    "devChannelDescription": "最後一個經過全面測試的版本。通常可以工作， 但請關注 \"Bad builds\"，了解已知的 \"bad\" Dev builds。",
+    "masterChannelDescription": "當前專案最新的版本。通常是功能性的，但有時會被砍掉。",
+    "utils": {
+      "couldNotLaunchUrl": "不能打開 {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "已安裝的版本",
+    "cleanUp": "清除",
+    "cleanUpTooltip": "清除未使用的版本",
+    "numberOfCachedVersions": "{{cachedVersions}} 個版本",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} 版本已安裝.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} 版本已完成設定.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} 分支已更新.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} 版本已刪除.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} 已被設為全域.",
+    "versionVersionPinnedToProjectname": "{{version}} 版本被鎖定在 {{projectName}} 上",
+    "components": {
+      "upgrade": "更新",
+      "setAsGlobal": "設為全域",
+      "inUse": "使用中",
+      "unused": "未使用",
+      "flutterSdkNotInstalled": "Flutter SDK 未安裝.",
+      "noFlutterVersionInstalledMessage": "您目前沒有安裝任何 Flutter SDK版本。已經安裝的版本或頻道在此顯示。",
+      "exploreFlutterReleases": "探索 Flutter 發布",
+      "global": "全域",
+      "sdkHasNotFinishedSetup": "SDK未完成設定"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "沒有安裝未經使用的 Flutter SDK版本",
+      "cleanUpUnusedVersions": "清理未使用的版本",
+      "cancel": "取消",
+      "confirm": "確認",
+      "ok": "好的",
+      "globalConfiguration": "全域設定",
+      "theseVersionAreNotPinnedToAProject": "這些版本沒有被釘選在專案中 ",
+      "doYouWantToRemoveThemToFreeUpSpace": "你想刪除它來釋放空間嗎？",
+      "areYouSureYouWantToRemove": "你確定要刪除?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "這將從你的系統的快取中刪除 {{itemname}}。",
+      "flutterPathIsPointingOn": "Flutter PATH 指向\n ",
+      "changeThePathTo": "將 path 改為 \n",
+      "ifYouWantToFlutterSdkThroughFvm": "如果你想通過 FVM 來更新 Flutter SDK",
+      "howToUpdateYourPath": "如何更新 path ？"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "專案已刷新",
+    "projects": "專案",
+    "choose": "選擇",
+    "projectsProjects": "{{projects}} 個專案",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "只顯示已釘上版本的專案",
+    "fvmOnly": "FVM Only",
+    "addProject": "添加專案",
+    "notAFlutterProject": "不是 Flutter 專案",
+    "components": {
+      "open": "打開",
+      "remove": "刪除",
+      "openTerminalPlayground": "打開 Terminal Playground",
+      "openIde": "在 {{ideName}} 中打開",
+      "selectAFlutterSdkVersion": "選擇一個 Flutter SDK 版本",
+      "noFlutterProjectsHaveBeenAddedYet": "目前還沒有添加任何 Flutter 專案。",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "添加您的 Flutter 專案，專案訊息將顯示在這裡。"
+    }
+  },
+  "pubPackages": {
+    "trending": "熱門",
+    "mostUsedPackages": "最常用的套件",
+    "flutterFavorites": "Flutter Favourites",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "你需要先添加一個Flutter專案，然後包的訊息會顯示在這裡。",
+      "noPackagesFound": "沒有發現套件",
+      "view": "查看",
+      "builtBy": "Built by",
+      "likes": "Likes",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularity",
+      "details": "詳情",
+      "changelog": "更新日誌",
+      "website": "網站",
+      "packageprojectscountProjects": "{{packageProjectsCount}} 個專案"
+    }
+  },
+  "releases": {
+    "all": "所有",
+    "releases": "發行版",
+    "versions": "個版本",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "當前專案最新的版本。通常是功能性的，但有時會被砍掉。"
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} 個版本",
+    "notRunning": "未運行"
+  },
+  "search": {
+    "components": {
+      "search": "搜索... ",
+      "noResults": "沒有結果",
+      "channels": "通道",
+      "stableReleases": "Stable 發行版",
+      "betaReleases": "Beta 發行版",
+      "devReleases": "Dev 發行版",
+      "invalidChanel": "無效通道"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "進階",
+      "downloadZip": "下載 zip",
+      "zipFileWithAllReleaseDependencies": "包含所有發布依賴的Zip文件",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "本地快取訊息",
+      "createdDate": "建立日期",
+      "cacheLocation": "快取位置",
+      "nothingSelected": "未選擇",
+      "channel": "通道",
+      "releaseNotes": "發布說明",
+      "version": "版本",
+      "releaseDate": "發布日期"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "設定已被保存",
+    "couldNotSaveSettings": "無法保存設定",
+    "scenes": {
+      "flutterSDKGlobalDescription": "必須將 Flutter SDK 版本設定為全域，才能訪問 Flutter 設定。",
+      "analyticsCrashReporting": "分析和崩潰報告",
+      "analyticsCrashReportSubtitle": "當 Flutter 命令崩潰時，會嘗試將崩潰報告發送給Google，以便Google能夠隨著時間的推移對 Flutter 做出改進",
+      "platforms": "平台",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "安裝時跳過 Flutter 的設定",
+      "thisWillOnlyCloneFlutterAndNotInstall": "這將只下載 Flutter，但不安裝它的依賴，",
+      "dependenciesAfterANewVersionIsInstalled": "在安裝新版本後。",
+      "areYouSureYouWantToResetSettings": "你確定要重置設定嗎？",
+      "thisWillOnlyResetSidekickSpecificPreferences": "這將只重置 Sidekick 的特定設定",
+      "appSettingsHaveBeenReset": "應用程式設定已被重置",
+      "general": "一般",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "選擇一個主題或根據系統設定進行切換.",
+      "theme": "主題",
+      "system": "系統",
+      "light": "淺色",
+      "dark": "深色",
+      "language": "語言",
+      "resetToDefaultSettings": "恢復預設設定",
+      "reset": "重置",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "選擇打開專案時使用的 IDE"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "有可用更新.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick {{updateInfoLatest}} 版本已經可用",
+      "later": "以後",
+      "updateNow": "立即更新",
+      "clickHereToDownload": "點擊下載",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "新版本的 Sidekick 已經可用  ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "安裝所需的元件",
+      "dialogDescriptionMacLinux": "複製此並將其貼上到終端機中。按照說明進行操作。",
+      "dialogDescriptionWindows": "複製此內容並貼上到 PowerShell 中。按照說明進行操作。必須以管理員身份運行。",
+      "dialogRestartNotication": "很棒！Sidekick現在將關閉。請重新打開它。",
+      "done": "做"
+    },
+    "screen": {
+      "title": "Sidekick 未能偵測到一個或多個必需元件",
+      "subtitle": "以下是缺少和不缺少的內容的細分：",
+      "gitDescription": "Git 用於下載和更新 flutter 版本。它被FVM使用",
+      "fvmDescription": "Flutter版本管理。為 Sidekick 提供其大部分核心功能。",
+      "chocoDescription": "自選。如果 FVM 在 Windows 設備上不存在，則可用於安裝 FVM。",
+      "brewDescription": "自選。如果 FVM 在 MacOS 和 Linux 設備上不存在，則可用於安裝 FVM。",
+      "pleaseInstall": "請安裝缺少的元件，以便使用 Sidekick！",
+      "ignore": "忽視",
+      "installmissing": "安裝遺漏"
+    }
+  }
+}

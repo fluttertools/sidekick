@@ -19,6 +19,7 @@ class LanguageManager {
     const Locale('es', 'ES'),
     const Locale('sv', 'SE'),
     const Locale('zh', 'CN'),
+    const Locale('zh', 'TW'),
     const Locale('ko', 'KR'),
     const Locale('ja', 'JP'),
     const Locale('pl', 'PL'),

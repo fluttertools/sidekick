@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "複製",
+        "refresh": "更新",
+        "countFound": "{{count}} 個已找到"
+    },
+    "molecules": {
+        "master": "Master",
+        "versionIsInstalled": "版本已安裝",
+        "versionNotInstalledClickToInstall": "未安裝版本，點擊安裝."
+    }
+}
