@@ -51,7 +51,7 @@ const chocoInstallCmd =
     'Set-ExecutionPolicy AllSigned\nSet-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://community.chocolatey.org/install.ps1\'))\n';
 
 final gitInstallCmd =
-    Platform.isWindows ? "choco install git -y\n" : "brew install git\n";
+    Platform.isWindows ? "choco install git -yf\n" : "brew install git\n";
 
 final fvmInstallCmd = Platform.isWindows
     ? "choco install fvm -y\n"
