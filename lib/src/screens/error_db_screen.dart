@@ -37,7 +37,7 @@ class ErrorDBScreen extends StatelessWidget {
                       height: 50,
                     ),
                     Text(
-                      'There was an isssue opening Sidekick',
+                      'There was an issue opening Sidekick',
                       style: Theme.of(context).textTheme.headline4,
                       textAlign: TextAlign.center,
                     ),
