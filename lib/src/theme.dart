@@ -56,7 +56,6 @@ ThemeData _customThemeBuilder({
     ),
     dividerColor: Colors.white10,
     toggleableActiveColor: accentColor,
-    accentColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         primary: Colors.grey,
