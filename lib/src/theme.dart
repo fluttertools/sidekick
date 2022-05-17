@@ -26,8 +26,8 @@ ThemeData get darkTheme {
   return _customThemeBuilder(
     cardColor: const Color(0xFF2B2D2F),
     scaffoldBackgroundColor: const Color(0xFF1D1E1F),
-    primarySwatch: Colors.cyan,
-    accentColor: Colors.cyan,
+    primarySwatch: Colors.blue,
+    accentColor: Colors.white,
   );
 }
 
@@ -48,6 +48,7 @@ ThemeData _customThemeBuilder({
     textTheme: GoogleFonts.ibmPlexSansTextTheme(baseTheme.textTheme),
     brightness: brightness,
     primarySwatch: primarySwatch,
+    useMaterial3: true,
     cardColor: cardColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     colorScheme: baseTheme.colorScheme.copyWith(
@@ -55,6 +56,7 @@ ThemeData _customThemeBuilder({
     ),
     dividerColor: Colors.white10,
     toggleableActiveColor: accentColor,
+    accentColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         primary: Colors.grey,
@@ -69,14 +71,14 @@ ThemeData _customThemeBuilder({
       shape: _roundedShape,
     ),
     dialogTheme: DialogTheme(
-      shape: _roundedShape,
+      //shape: _roundedShape,
       backgroundColor: scaffoldBackgroundColor,
       titleTextStyle: ThemeData.dark().textTheme.headline1,
       contentTextStyle: ThemeData.dark().textTheme.bodyText1,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      color: Colors.black54,
+      //color: Colors.black54,
     ),
     chipTheme: ThemeData.dark().chipTheme.copyWith(
           backgroundColor: Colors.black12,
@@ -90,8 +92,9 @@ ThemeData get lightTheme {
   return ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
+    useMaterial3: true,
     colorScheme: ThemeData.light().colorScheme.copyWith(
-          secondary: Colors.blue,
+          //secondary: Colors.blue,
         ),
     dividerColor: Colors.black12,
     scaffoldBackgroundColor: const Color(0xfffafafa),
@@ -101,13 +104,13 @@ ThemeData get lightTheme {
       shadowColor: Colors.black45,
     ),
     dialogTheme: DialogTheme(
-      shape: _roundedShape,
+      //shape: _roundedShape,
       titleTextStyle: ThemeData.light().textTheme.headline3,
       contentTextStyle: ThemeData.light().textTheme.bodyText1,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      color: Color(0xFFF6F4F6),
+      //color: Color(0xFFF6F4F6),
       iconTheme: IconThemeData(),
     ),
   ).copyWith(
