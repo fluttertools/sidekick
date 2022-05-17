@@ -1,13 +1,13 @@
 {
   "common": {
-    "navButtonDashboard": "Panel głowny",
+    "navButtonDashboard": "Panel główny",
     "navButtonProjects": "Projekty",
     "navButtonExplore": "Przeglądaj",
     "navButtonPackages": "Pakiety",
-    "stableChannelDescription": "Zalecamy korzystanie z tego kanału we wszystkich wydaniach aplikacji produkcyjnych. Mniej więcej raz na kwartał branch, który został ustabilizowany do wersji beta, staje się naszym kolejnym stabilnym branchem i tworzymy stabilną wersję z niego.",
+    "stableChannelDescription": "Zalecamy korzystanie z tego kanału we wszystkich wydaniach aplikacji produkcyjnych. Mniej więcej raz na kwartał branch, który został ustabilizowany do wersji beta, staje się naszym kolejnym stabilnym branchem i tworzymy z niego stabilną wersję.",
     "betaChannelDescription": "Branch stworzony dla nowej wersji beta na początku miesiąca, zwykle w pierwszy poniedziałek, z mastera. Będzie zawierać branch Darta, silnika i frameworka.",
-    "devChannelDescription": "Ostatnia w pełni przetestowana wersja. Zwykle działa, ale sprawdź „Bad builds”, aby uzyskać listę znanych „złych” wersji dev.",
-    "masterChannelDescription": "Aktualny wierzchołek drzewa, absolutnie najnowsza innowacyjna wersja. Zwykle sprawna, choć czasem przypadkiem coś psujemy.",
+    "devChannelDescription": "Ostatnia w pełni przetestowana wersja. Zwykle działa, ale sprawdź „bad builds”, aby uzyskać listę znanych „złych” wersji dev.",
+    "masterChannelDescription": "Aktualny wierzchołek drzewa, absolutnie najnowszy, najnowocześniejszy build. Zwykle sprawny, choć czasem przypadkiem coś psujemy.",
     "utils": {
       "couldNotLaunchUrl": "Nie udało się otworzyć {{url}}"
     }
@@ -25,10 +25,10 @@
     "versionVersionPinnedToProjectname": "Wersja {{version}} została ustawiona dla {{projectName}}",
     "components": {
       "upgrade": "Aktualizuj",
-      "setAsGlobal": "Ustaw jako Globalną",
+      "setAsGlobal": "Ustaw jako globalną",
       "inUse": "W użyciu",
       "unused": "Nieużywane",
-      "flutterSdkNotInstalled": "Flutter SDK jest niezainstalowane.",
+      "flutterSdkNotInstalled": "Flutter SDK nie jest zainstalowany.",
       "noFlutterVersionInstalledMessage": "Nie masz obecnie zainstalowanych żadnych wersji Flutter SDK. Tutaj pokazane są wersje lub kanały, które zostały zainstalowane.",
       "exploreFlutterReleases": "Przejrzyj wydania Flutter",
       "global": "Globalny",
@@ -42,7 +42,7 @@
       "ok": "OK",
       "globalConfiguration": "Konfiguracja globalna",
       "theseVersionAreNotPinnedToAProject": "Te wersje nie są wykorzystywane przez żaden projekt ",
-      "doYouWantToRemoveThemToFreeUpSpace": "Chcesz je usunąć by zwolnić miejsce na dysku?",
+      "doYouWantToRemoveThemToFreeUpSpace": "Chcesz je usunąć, by zwolnić miejsce na dysku?",
       "areYouSureYouWantToRemove": "Czy na pewno chcesz usunąć?",
       "thisWillRemoveItemnameCacheFromYourSystem": "Ta akcja usunie {{itemname}} z cache'a w twoim komputerze.",
       "flutterPathIsPointingOn": "Obecny ścieżka Flutter PATH to\n ",
@@ -67,7 +67,7 @@
       "openIde": "Otwórz za pomocą {{ideName}}",
       "selectAFlutterSdkVersion": "Wybierz wersję Flutter SDK",
       "noFlutterProjectsHaveBeenAddedYet": "Nie dodano wersji Flutter.",
-      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Dodaj swój projekt Flutter Tutaj będą wyświetlane informacje o projekcie."
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Dodaj swój projekt Flutter. Tutaj będą wyświetlane informacje o projekcie."
     }
   },
   "pubPackages": {
@@ -82,7 +82,7 @@
       "builtBy": "Utworzone przez",
       "pubPoints": "Pub Points",
       "popularity": "Popularność",
-      "details": "Detale",
+      "details": "Szczegóły",
       "changelog": "Dziennik zmian",
       "website": "Strona internetowa",
       "packageprojectscountProjects": "{{packageProjectsCount}} projektów"
@@ -92,10 +92,10 @@
     "all": "Wszystkie",
     "releases": "Wydania",
     "versions": "Wersje",
-    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Aktualny wierzchołek drzewa, absolutnie najnowsza innowacyjna wersja. Zwykle sprawna, choć czasem przypadkiem coś psujemy."
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Aktualny wierzchołek drzewa, absolutnie najnowszy, najnowocześniejszy build. Zwykle sprawny, choć czasem przypadkiem coś psujemy."
   },
   "sandbox": {
-    "playground": "Playground",
+    "playground": "Piaskownica",
     "releasesVersions": "{{releases}} wydań",
     "notRunning": "Nie pracuje"
   },
@@ -114,12 +114,12 @@
     "components": {
       "advanced": "Zaawansowane",
       "downloadZip": "Pobierz plik zip",
-      "zipFileWithAllReleaseDependencies": "Plik Zip zawierajacy wszystkie zależności potrzebne do wydania",
+      "zipFileWithAllReleaseDependencies": "Plik zip zawierajacy wszystkie zależności potrzebne do wydania",
       "hash": "Hash",
       "sha256": "Sha256",
       "localCacheInformation": "Informacje o lokalnym cache'u",
       "createdDate": "Data utworzenia",
-      "cacheLocation": "Lokalizacja Cache'a",
+      "cacheLocation": "Lokalizacja cache'a",
       "nothingSelected": "Nie wybrano",
       "channel": "Kanał",
       "releaseNotes": "Informacje o wydaniu",
@@ -146,43 +146,43 @@
       "selectAThemeOrSwitchAccordingToSystemSettings": "Wybierz motyw albo ustaw zgodny z ustawieniami systemowymi.",
       "theme": "Motyw",
       "system": "System",
-      "light": "Light",
-      "dark": "Dark",
+      "light": "Jasny",
+      "dark": "Ciemny",
       "language": "Język",
       "resetToDefaultSettings": "Przywróć ustawienia domyślne",
-      "reset": "Przywróc",
+      "reset": "Przywróć",
       "ideSelection": "IDE",
-      "whatIdeDoYouWantToOpenYourProjectsWith": "Wybierz IDE za pomocą, którego projekty mają być otwierane"
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Wybierz IDE, za pomocą którego projekty mają być otwierane"
     }
   },
   "updater": {
     "components": {
-      "updateAvailable": "Aktualizacja dostępna.",
+      "updateAvailable": "Aktualizacja jest dostępna.",
       "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick w wersji {{updateInfoLatest}} jest już dostępny",
       "later": "Później",
       "updateNow": "Aktualizuj",
-      "clickHereToDownload": "Kliknij tutaj aby pobrać",
+      "clickHereToDownload": "Kliknij tutaj, aby pobrać",
       "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Nowa wersja Sidekick jest dostępna ({{updateInfoLatest}})."
     }
   },
   "compatibility": {
     "dialog": {
-      "dialogTitle": "Installera nödvändiga komponenter",
-      "dialogDescriptionMacLinux": "Kopiera detta och klistra in det i terminalen. Följ instruktionerna.",
-      "dialogDescriptionWindows": "Kopiera detta och klistra in i PowerShell. Följ instruktionerna. Måste köras som administratör.",
-      "dialogRestartNotication": "Stor! Sidekick kommer nu att stänga. Var snäll och öppna den igen.",
-      "done": "Färdig"
+      "dialogTitle": "Zainstaluj wymagane komponenty",
+      "dialogDescriptionMacLinux": "Skopiuj i wklej do terminala. Postępuj zgodnie z instrukcjami.",
+      "dialogDescriptionWindows": "Skopiuj i wklej do PowerShell. Postępuj zgodnie z instrukcjami. Musi być uruchamiany jako administrator.",
+      "dialogRestartNotication": "Świetnie! Sidekick zostanie teraz zamknięty. Otwórz go ponownie.",
+      "done": "Gotowe"
     },
     "screen": {
-      "title": "Sidekick kunde inte identifiera en eller flera nödvändiga komponenter",
-      "subtitle": "Detta är uppdelningen av vad som är och inte saknas:",
-      "gitDescription": "Git används för att ladda ner och uppdatera fladdrande versioner. Det används av FVM",
-      "fvmDescription": "Flutter Version Management. Ger Sidekick de flesta av sina kärnfunktioner.",
-      "chocoDescription": "Valfri. Kan användas för att installera FVM om det inte finns på Windows-enheter.",
-      "brewDescription": "Valfri. Kan användas för att installera FVM om det inte finns på MacOS- och Linux-enheter.",
-      "pleaseInstall": "Installera de saknade komponenterna för att använda Sidekick!",
-      "ignore": "Bortse från",
-      "installmissing": "Installation saknas"
+      "title": "Sidekick nie wykrył jednego lub więcej niezbędnych komponentów",
+      "subtitle": "Oto zestawienie tego, czego brakuje, a czego nie:",
+      "gitDescription": "Git jest używany do pobierania i aktualizacji wersji Fluttera. Jest on wykorzystywany przez FVM",
+      "fvmDescription": "Flutter Version Management (zarządzanie wersjami Flutter). Udostępnia Sidekickowi większość jego podstawowych funkcji.",
+      "chocoDescription": "Opcjonalnie. Można użyć do zainstalowania programu FVM, jeśli nie jest on obecny na urządzeniach z systemem Windows.",
+      "brewDescription": "Opcjonalnie. Można użyć do zainstalowania programu FVM, jeśli nie jest on obecny na urządzeniach z systemami MacOS i Linux.",
+      "pleaseInstall": "Aby móc korzystać z Sidekicka, należy zainstalować brakujące komponenty!",
+      "ignore": "Ignoruj",
+      "installmissing": "Instaluj brakujące"
     }
   }
 }
