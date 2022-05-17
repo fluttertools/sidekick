@@ -209,6 +209,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "m-ochyra",
+      "name": "Marcin Ochyra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5583015?v=4",
+      "profile": "https://github.com/m-ochyra",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
