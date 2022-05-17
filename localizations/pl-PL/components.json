@@ -7,6 +7,6 @@
     "molecules": {
         "master": "Master",
         "versionIsInstalled": "Wersja jest zainstalowana",
-        "versionNotInstalledClickToInstall": "Wersja nie jest zainstalowana. Kliknij aby zainstalować."
+        "versionNotInstalledClickToInstall": "Wersja nie jest zainstalowana. Kliknij, aby zainstalować."
     }
 }
