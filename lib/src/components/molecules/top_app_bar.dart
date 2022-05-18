@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/constants.dart';
@@ -56,6 +57,8 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: renderTitle(),
       centerTitle: Platform.isWindows ? false : true,
       titleSpacing: 0,
+      foregroundColor: platformBackgroundColor(context),
+      scrolledUnderElevation: 0,
       leading: Platform.isMacOS ? const WindowButtons() : null,
       actions: [
         const SkUpdateButton(),
@@ -72,12 +75,14 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.search),
           iconSize: 20,
+          color: Theme.of(context).colorScheme.onSurface,
           splashRadius: 15,
           onPressed: openSearchModal,
         ),
         IconButton(
           icon: const Icon(Icons.settings),
           iconSize: 20,
+          color: Theme.of(context).colorScheme.onSurface,
           splashRadius: 15,
           onPressed: openSettingsScreen,
         ),

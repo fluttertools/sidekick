@@ -92,33 +92,15 @@ class SandboxScreen extends HookWidget {
                 ),
                 const Divider(height: 1),
                 Expanded(
-                  child: CupertinoScrollbar(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: ListView(
-                        children: releases.all.map(
-                          (version) {
-                            if (version.name == selectedRelease.value?.name) {
-                              return Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    selectedRelease.value = version;
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(version.name),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: ListView(
+                      children: releases.all.map(
+                        (version) {
+                          if (version.name == selectedRelease.value?.name) {
                             return Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: TextButton(
+                              child: ElevatedButton(
                                 onPressed: () {
                                   selectedRelease.value = version;
                                 },
@@ -132,9 +114,25 @@ class SandboxScreen extends HookWidget {
                                 ),
                               ),
                             );
-                          },
-                        ).toList(),
-                      ),
+                          }
+                          return Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: TextButton(
+                              onPressed: () {
+                                selectedRelease.value = version;
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(version.name),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ).toList(),
                     ),
                   ),
                 ),

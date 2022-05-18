@@ -31,8 +31,6 @@ class ReleasesScreen extends HookWidget {
           SliverToBoxAdapter(
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              // TODO: Check if need to add the height
-              height: 80,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
                 child: Container(
@@ -69,6 +67,7 @@ class ReleasesScreen extends HookWidget {
             ),
           ),
           SliverAppBar(
+            scrolledUnderElevation: 0,
             automaticallyImplyLeading: false,
             expandedHeight: 140.0,
             elevation: 1,
@@ -101,6 +100,7 @@ class ReleasesScreen extends HookWidget {
           ),
           SliverAppBar(
             pinned: true,
+            scrolledUnderElevation: 0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             bottom: const PreferredSize(
               preferredSize: Size.fromHeight(1),

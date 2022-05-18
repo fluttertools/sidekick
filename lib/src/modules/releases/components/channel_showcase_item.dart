@@ -23,6 +23,8 @@ class ChannelShowcaseItem extends StatelessWidget {
     final releaseDate = channel.release?.releaseDate;
     return Card(
       child: InkWell(
+        splashFactory: InkSparkle.splashFactory,
+        borderRadius: BorderRadius.circular(12),
         onTap: () {
           context.read(selectedDetailProvider).state = SelectedDetail(
             release: channel,

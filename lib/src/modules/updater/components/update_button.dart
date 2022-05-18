@@ -35,7 +35,10 @@ class SkUpdateButton extends HookWidget {
             buttonPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
             title: Row(
               children: [
-                const Icon(MdiIcons.alertDecagram),
+                Icon(
+                  MdiIcons.alertDecagram,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
                 const SizedBox(width: 10),
                 Heading(
                     context.i18n('modules:updater.components.updateAvailable')),

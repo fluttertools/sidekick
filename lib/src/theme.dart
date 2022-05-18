@@ -17,8 +17,8 @@ ThemeData get darkBlueTheme {
   return _customThemeBuilder(
     cardColor: const Color(0xFF092045),
     scaffoldBackgroundColor: const Color(0xFF081231),
-    primarySwatch: Colors.cyan,
-    accentColor: Colors.cyan,
+    primarySwatch: Colors.blue,
+    accentColor: Colors.blue,
   );
 }
 
@@ -27,7 +27,7 @@ ThemeData get darkTheme {
     cardColor: const Color(0xFF2B2D2F),
     scaffoldBackgroundColor: const Color(0xFF1D1E1F),
     primarySwatch: Colors.blue,
-    accentColor: Colors.white,
+    accentColor: Colors.blue,
   );
 }
 
@@ -42,18 +42,22 @@ ThemeData _customThemeBuilder({
   if (brightness == Brightness.dark) {
     baseTheme = ThemeData.dark();
   } else {
-    baseTheme = ThemeData.light();
+    baseTheme = lightTheme;
   }
   return ThemeData(
     textTheme: GoogleFonts.ibmPlexSansTextTheme(baseTheme.textTheme),
     brightness: brightness,
     primarySwatch: primarySwatch,
     useMaterial3: true,
+    splashFactory: InkSparkle.splashFactory,
     cardColor: cardColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     colorScheme: baseTheme.colorScheme.copyWith(
       secondary: accentColor,
+      tertiary: accentColor,
     ),
+    primaryColor: primarySwatch,
+    primaryColorDark: primarySwatch,
     dividerColor: Colors.white10,
     toggleableActiveColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -93,9 +97,12 @@ ThemeData get lightTheme {
     primarySwatch: Colors.blue,
     useMaterial3: true,
     colorScheme: ThemeData.light().colorScheme.copyWith(
-          //secondary: Colors.blue,
+          primary: Colors.blue,
+          secondary: Colors.blue,
+          tertiary: Colors.blue,
         ),
     dividerColor: Colors.black12,
+    splashFactory: InkSparkle.splashFactory,
     scaffoldBackgroundColor: const Color(0xfffafafa),
     textButtonTheme: _textButtonThemeData,
     cardTheme: const CardTheme(
