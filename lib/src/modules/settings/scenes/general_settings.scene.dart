@@ -35,7 +35,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           return AlertDialog(
             title: Row(
               children: [
-                Icon(Icons.warning),
+                const Icon(Icons.warning),
                 const SizedBox(width: 10),
                 Heading(context.i18n(
                     'modules:settings.scenes.areYouSureYouWantToResetSettings')),
