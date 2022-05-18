@@ -1,6 +1,7 @@
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:sidekick/i18n/language_manager.dart';
+import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../../modules/common/utils/notify.dart';
@@ -32,8 +33,14 @@ class SettingsSectionGeneral extends StatelessWidget {
         builder: (context) {
           // return object of type Dialog
           return AlertDialog(
-            title: Text(context.i18n(
-                'modules:settings.scenes.areYouSureYouWantToResetSettings')),
+            title: Row(
+              children: [
+                Icon(Icons.warning),
+                const SizedBox(width: 10),
+                Heading(context.i18n(
+                    'modules:settings.scenes.areYouSureYouWantToResetSettings')),
+              ],
+            ),
             content: Text(
               context.i18n(
                   'modules:settings.scenes.thisWillOnlyResetSidekickSpecificPreferences'),
@@ -47,7 +54,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                 },
                 child: Text(context.i18n('modules:fvm.dialogs.cancel')),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () async {
                   Navigator.of(context).pop();
                   settings.sidekick = SidekickSettings();
@@ -80,7 +87,8 @@ class SettingsSectionGeneral extends StatelessWidget {
             ),
             trailing: DropdownButton(
               underline: Container(),
-              isDense: true,
+              isDense: false,
+              borderRadius: BorderRadius.circular(10),
               value: settings.sidekick.themeMode.toString(),
               items: [
                 DropdownMenuItem(
@@ -113,7 +121,8 @@ class SettingsSectionGeneral extends StatelessWidget {
             ),
             trailing: DropdownButton(
               underline: Container(),
-              isDense: true,
+              isDense: false,
+              borderRadius: BorderRadius.circular(10),
               value: settings.sidekick.ide ?? 'none',
               items: [
                 const DropdownMenuItem(
@@ -154,7 +163,8 @@ class SettingsSectionGeneral extends StatelessWidget {
             title: Text(context.i18n('modules:settings.scenes.language')),
             trailing: DropdownButton<Locale>(
               underline: Container(),
-              isDense: true,
+              isDense: false,
+              borderRadius: BorderRadius.circular(10),
               value: settings.sidekick.locale ?? context.locale,
               items: languageManager.supportedLocales.map((locale) {
                 return DropdownMenuItem(
