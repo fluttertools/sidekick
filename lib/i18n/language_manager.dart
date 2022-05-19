@@ -23,6 +23,7 @@ class LanguageManager {
     const Locale('ko', 'KR'),
     const Locale('ja', 'JP'),
     const Locale('pl', 'PL'),
+    const Locale('pt', 'BR'),
     const Locale('it', 'IT'),
     const Locale('uk', 'UA'),
   ];
