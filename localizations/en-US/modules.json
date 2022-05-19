@@ -169,7 +169,7 @@
     "dialog": {
       "dialogTitle": "Install Required Components",
       "dialogDescriptionMacLinux": "Copy this and paste it in the terminal. Follow the instructions.",
-      "dialogDescriptionWindows": "Copy this and paste into PowerShell. Follow the instructions. Must be run as administartor.",
+      "dialogDescriptionWindows": "Copy this and paste into PowerShell. Follow the instructions. Must be run as administrator.",
       "dialogRestartNotication": "Great! Sidekick will now close. Please reopen it.",
       "done": "Done"
     },
