@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "डैशबोर्ड",
+    "navButtonProjects": "प्रोजेक्ट",
+    "navButtonExplore": "खोजें",
+    "navButtonPackages": "पैकेज",
+    "stableChannelDescription": "हम आपको इस चैनल का उपयोग करने के लिए सिफारिश करना अनुशंसित करते हैं। हम किसी ब्रेक को बीटा करने के बाद हम अगले स्थिर ब्रेक के रूप में बनाते हैं और हम उनके स्थिर अवतरण बनाते हैं।",
+    "betaChannelDescription": "महीने के प्रारंभ में एक नया बीटा प्रस्ताव के लिए ब्रेक बनाया गया है। यह में डार्ट के लिए एक ब्रेक, इंजिनर और फ्रेमवर्ड के लिए एक ब्रेक होगा।",
+    "devChannelDescription": "अंतिम पूरी परीक्षण के लिए बनाया गया है। सामान्य रूप से कम से कम समय में काम करता है, पर यह समस्याएं की सूची में से एक है।",
+    "masterChannelDescription": "नवीनतम टिप-ऑफ-ट्री, बिल्कुल नवीनतम अत्याधुनिक बिल्ड। आमतौर पर कार्यात्मक, हालांकि कभी-कभी हम गलती से चीजों को तोड़ देते हैं।",   
+    "utils": {
+      "couldNotLaunchUrl": "{{url}} खोलने में असमर्थ" 
+    }
+  },
+  "fvm": {
+    "installedVersions": "इंस्टॉल किए गए संस्करण",
+    "cleanUp": "साफ करें",
+    "cleanUpTooltip": "अप्रयुक्त संस्करण को साफ करें",
+    "numberOfCachedVersions": "{{cachedVersions}} संस्करण",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} संस्करण इंस्टॉल किया गया है।",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} संस्करण सेटअप किया गया है।",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} चैनल अपग्रेड किया गया है।",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} संस्करण हटाया गया है।",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} संस्करण वैश्विक स्थिति में सेट किया गया है।",
+    "versionVersionPinnedToProjectname": "{{version}} पर पहचान किया गया है और {{projectName}} पर पहचान किया गया है।",  
+    "components": {
+      "upgrade": "अपग्रेड",
+      "setAsGlobal":"वैश्विक स्थिति में सेट करें",
+      "inUse": "उपयोग किया गया",
+      "unused": "अपयोग नहीं किया गया",
+      "flutterSdkNotInstalled": "Flutter SDK इंस्टॉल नहीं किया गया है।",
+      "noFlutterVersionInstalledMessage": "आपके पास कोई Flutter SDK संस्करण इंस्टॉल नहीं किया गया है। इंस्टॉल किए गए संस्करण या चैनल को यहां दिखाई देगी।",
+      "exploreFlutterReleases": "Flutter रिलीज खोजें",
+      "global":"वैश्विक",
+      "sdkHasNotFinishedSetup": "SDK सेटअप किया गया है"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "इंस्टॉल नहीं किए गए कोई Flutter SDK संस्करण नहीं है",
+      "cleanUpUnusedVersions": "अप्रयुक्त संस्करण को साफ करें",
+      "cancel": "रद्द करें",
+      "confirm": "पुष्टि करें",
+      "ok": "ठीक है",
+      "globalConfiguration": "वैश्विक समायोजन",
+      "theseVersionAreNotPinnedToAProject": "इन संस्करण को कोई प्रोजेक्ट पर पहचान नहीं किया गया है",    
+      "doYouWantToRemoveThemToFreeUpSpace": "आप इन संस्करण को स्पेस को उपलब्ध करने के लिए हटाना चाहते हैं?",
+      "areYouSureYouWantToRemove": "क्या आप निश्चित हैं कि आप इस संस्करण को हटाना चाहते हैं?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "यह आपके सिस्टम से {{itemname}} कैश से हटाया जाएगा।",
+      "flutterPathIsPointingOn": "Flutter PATH निम्नलिखित स्थान पर स्थानांतरित है\n ",    
+      "changeThePathTo": "स्थानांतरित करने के लिए पथ बदलें\n",
+      "ifYouWantToFlutterSdkThroughFvm": "यदि आप Flutter SDK के माध्यम से FVM के माध्यम से अपडेट करना चाहते हैं",
+      "howToUpdateYourPath": "पथ को अपडेट करने के लिए क्या करना चाहते हैं?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed":"ताज़ा प्रोजेक्ट",
+    "projects": "प्रोजेक्ट",
+    "choose": "चुनें",
+    "projectsProjects": "प्रोजेक्ट {{projects}}",  
+    "onlyDisplayProjectsThatHaveVersionsPinned":"केवल प्रोजेक्ट दिखाएँ जो संस्करण पहचान किया गया है",
+    "fvmOnly": "केवल FVM",
+    "addProject": "प्रोजेक्ट जोड़ें",
+    "notAFlutterProject": "Flutter प्रोजेक्ट नहीं है",
+    "components": {
+      "open": "खोलें",
+      "remove": "हटाएँ",
+      "openTerminalPlayground": "टर्मिनल प्लेगरेंड खोलें",
+      "openIde": "{{ideName}} में खोलें",    
+      "selectAFlutterSdkVersion": "एक Flutter SDK संस्करण चुनें",
+      "noFlutterProjectsHaveBeenAddedYet": "कोई Flutter प्रोजेक्ट अभी तक जोड़ा नहीं गया है",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere":"अपने Flutter प्रोजेक्ट जोड़ें प्रोजेक्ट जानकारी यहां प्रदर्शित की जाएगी"
+    }
+  },
+  "pubPackages": {
+    "trending": "लोकप्रिय",
+    "mostUsedPackages": "सबसे अधिक उपयोग की गई पैकेज",
+    "flutterFavorites":"Flutter पसंदीदा",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "आपको पहले किसी Flutter प्रोजेक्ट को जोड़ना होगा. पैकेज जानकारी यहां प्रदर्शित की जाएगी.",
+      "noPackagesFound":"कोई पैकेज नहीं मिला",
+      "view": "देखें",
+      "builtBy":"द्वारा बनाया गया",
+      "likes": "पसंद",
+      "pubPoints": "पब पॉइंट",
+      "popularity":"लोकप्रियता",
+      "details": "विवरण",
+      "changelog":"परिवर्तन सूची",
+      "website":"वेबसाइट",
+      "packageprojectscountProjects": "{{packageProjectsCount}} प्रोजेक्ट"
+    }
+  },
+  "releases": {
+    "all": "सभी",
+    "releases":"रिलीज",
+    "versions":"संस्करण",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "वर्तमान टिप-ओ-टी, अंतिम स्थिति के बिल्ड के ब्लॉड. सामान्य रूप से कस्टम हो जाता है, पर किसी भी समय हम अनदेखी बदलाव को हटाने में होते हैं."
+  },
+  "sandbox": {
+    "playground": "प्लेगरेंड",
+    "releasesVersions": "{{releases}} संस्करण",
+    "notRunning": "नहीं चल रहा है"
+  },
+  "search": {
+    "components": {
+      "search": "खोज...",
+      "noResults": "कोई परिणाम नहीं",
+      "channels": "चैनल",
+      "stableReleases": "स्टैबल रिलीज",
+      "betaReleases": "बीटा रिलीज",
+      "devReleases": "देव रिलीज",
+      "invalidChanel": "अमान्य चैनल"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "उन्नत",
+      "downloadZip": "ज़िप डाउनलोड करें",
+      "zipFileWithAllReleaseDependencies": "सभी रिलीज संबंधी ज़िप फ़ाइल",
+      "hash": "हैश",
+      "sha256":"Sha256",
+      "localCacheInformation": "लोकल कैश जानकारी",
+      "createdDate": "निर्मित दिनांक",
+      "cacheLocation": "कैश स्थान",
+      "nothingSelected":"कुछ चयनित नहीं",
+      "channel": "चैनल",
+      "releaseNotes": "रिलीज नोट्स",
+      "version":"संस्करण",
+      "releaseDate":"रिलीज दिनांक"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "सेटिंग्स सहेजे गए हैं",
+    "couldNotSaveSettings": "सेटिंग्स सहेजी नहीं जा सके",
+    "scenes": {
+      "flutterSDKGlobalDescription":"Flutter सेटिंग्स का उपयोग करने के लिए Flutter स्टिंग का एक संस्करण स्थापित करना आवश्यक है",
+      "analyticsCrashReporting":  "अन्यौल और क्रैश रिपोर्टिंग",
+      "analyticsCrashReportSubtitle": "जब एक Flutter कमांड को दुर्लभ करता है, तो एक क्रैश रिपोर्ट को गूगल के द्वारा भेजा जाता है के लिए जानकारी को प्राप्त करने के लिए Flutter सेटिंग्स को एक संस्करण स्थापित करना आवश्यक है",
+      "platforms": "प्लेटफॉर्म",
+      "web": "वेब",
+      "skipSetupFlutterOnInstall": "इंस्टॉल करते समय Flutter को स्थापित करें",
+      "thisWillOnlyCloneFlutterAndNotInstall": "यह केवल Flutter को क्लोन करेगा और इसे स्थापित नहीं करेगा",
+      "dependenciesAfterANewVersionIsInstalled": "एक नया संस्करण इंस्टॉल करने के बाद संबंधी विषयों को प्रतिलिपि करता है",
+      "areYouSureYouWantToResetSettings": "क्या आप सेटिंग्स रीसेट करना चाहते हैं?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "यह केवल साइडकिक विशिष्ट सेटिंग्स को रीसेट करेगा",
+      "appSettingsHaveBeenReset": "एप्लिकेशन सेटिंग्स रीसेट कर दिये गये हैं",
+      "general":"सामान्य",
+      "selectAThemeOrSwitchAccordingToSystemSettings":"सिस्टम सेटिंग्स के आधार पर थीम का चयन करें या सेटिंग्स को स्विच करें",
+      "theme": "थीम",
+      "system": "सिस्टम",
+      "light":"हल्का",
+      "dark": "गहरा",
+      "language": "भाषा",
+      "resetToDefaultSettings": "डिफ़ॉल्ट सेटिंग्स को रीसेट करें",
+      "reset": "रीसेट",
+      "ideSelection":"IDE चयन",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "आपकी प्रोजेक्ट्स को क्या आप खोलना चाहते हैं?"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable":"अद्यतन उपलब्ध है।",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "साइडकिक संस्करण {{updateInfoLatest}} अब उपलब्ध है",
+      "later": "बाद में",
+      "updateNow":"अभी अद्यतन करें",
+      "clickHereToDownload": "डाउनलोड करने के लिए यहां क्लिक करें",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest":  "एक नया संस्करण साइडकिक के लिए उपलब्ध है ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "आवश्यक अवयव इंस्टॉल करें",
+      "dialogDescriptionMacLinux": "इस को टर्मिनल में कॉपी करें और इनपुट करें। निर्देश करें।",
+      "dialogDescriptionWindows": "इस को पेस्सल में कॉपी करें और इनपुट करें। निर्देश करें। एडमिन्टर के रूप में चलाना जरूरी है।",
+      "dialogRestartNotication": "बहुत खूब! साइडकिक अभी बंद हो जाएगा। फिर से खोलें।",
+      "done": "पूर्ण"
+    },
+    "screen": {
+      "title": "साइडकिक एक या अधिक आवश्यक कंप्यूटर का पता लगाया नहीं जा सका",
+      "subtitle": "यह क्या है जो गलत है और क्या नहीं है:",
+      "gitDescription": "गिट विस्तार के लिए उपयोग किया जाता है और फ्लटर वर्ज़न के लिए अद्यतन करने के लिए उपयोग किया जाता है।",
+      "fvmDescription":"फ्लटर संस्करण प्रबंधन. साइडकिक के अधिकारी का सबसे अधिक काम करने के लिए उपयोग किया जाता है।",
+      "chocoDescription": "वैकल्पिक. यदि प्रदान नहीं किया जाता है तो फ्लटर वर्ज़न इंस्टॉल करने के लिए किया जा सकता है।",
+      "brewDescription": "वैकल्पिक. यदि प्रदान नहीं किया जाता है तो फ्लटर वर्ज़न इंस्टॉल करने के लिए किया जा सकता है।",
+      "pleaseInstall": "कृपया साइडकिक का उपयोग करने के लिए लापता कंप्यूटर इंस्टॉल करें।",
+      "ignore": "अनदेखा करें",
+      "installmissing": "लापता कंप्यूटर इंस्टॉल करें"
+    }
+  }
+}

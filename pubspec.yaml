@@ -103,6 +103,7 @@ flutter:
     - localizations/pt-BR/
     - localizations/it-IT/
     - localizations/uk-UA/
+    - localizations/hi-IN/
 
 flutter_intl:
   enabled: true

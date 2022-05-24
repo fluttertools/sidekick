@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard":  "क्लिपबोर्ड पर कॉपी किया गया",
+        "refresh": "रिफ्रेश",
+        "countFound": "{{count}} पाया गया"
+    },
+    "molecules": {
+        "master": "मास्टर",
+        "versionIsInstalled": "संस्करण स्थापित है",
+        "versionNotInstalledClickToInstall": "संस्करण स्थापित नहीं है. स्थापित करने के लिए क्लिक करें."
+    }
+}
