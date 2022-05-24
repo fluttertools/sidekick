@@ -131,6 +131,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/m-ochyra"><img src="https://avatars.githubusercontent.com/u/5583015?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Marcin Ochyra</b></sub></a><br /><a href="#translation-m-ochyra" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://gaurav.my.id"><img src="https://avatars.githubusercontent.com/u/51997260?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Gaurav Yadav</b></sub></a><br /><a href="#translation-gauravmehta13" title="Translation">🌍</a></td>
   </tr>
 </table>
 
