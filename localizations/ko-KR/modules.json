@@ -168,21 +168,21 @@
   "compatibility": {
     "dialog": {
       "dialogTitle": "필수 구성 요소 설치",
-      "dialogDescriptionMacLinux": "이것을 복사하여 터미널에 붙여넣습니다. 지침을 따르십시오.",
-      "dialogDescriptionWindows": "이를 복사하여 PowerShell에 붙여넣습니다. 지시를 따르다. 관리자로 실행해야 합니다.",
-      "dialogRestartNotication": "좋아요! 이제 조수가 닫힙니다. 다시 여십시오.",
+      "dialogDescriptionMacLinux": "이를 복사하여 터미널에 입력해주세요. 지침에 따라주세요.",
+      "dialogDescriptionWindows": "이를 복사하여 PowerShell에 입력해주세요. 지침에 따라주세요. 반드시 관리자 권한으로 실행해야 합니다.",
+      "dialogRestartNotication": "좋습니다! 이제 사이드킥이 종료됩니다. 사이트킥을 다시 실행해주세요.",
       "done": "완료"
     },
     "screen": {
-      "title": "Sidekick이 하나 이상의 필수 구성 요소를 감지하지 못했습니다.",
-      "subtitle": "이것은 무엇이 있고 없는지 분석한 것입니다:",
-      "gitDescription": "Git은 Flutter 버전을 다운로드하고 업데이트하는 데 사용됩니다. FVM",
-      "fvmDescription": "Flutter 버전 관리에서 활용합니다. Sidekick의 핵심 기능 대부분을 제공합니다.",
-      "chocoDescription": "선택 사항. Windows 장치에 FVM이 없는 경우 FVM을 설치하는 데 사용할 수 있습니다.",
-      "brewDescription": "선택 사항. MacOS 및 Linux 장치에 없는 경우 FVM을 설치하는 데 사용할 수 있습니다.",
-      "pleaseInstall": "Sidekick을 사용하려면 누락된 구성 요소를 설치하세요!",
+      "title": "사이드킥이 하나 이상의 필수 구성 요소를 찾지 못했습니다.",
+      "subtitle": "다음은 누락된 항목과 누락되지 않은 항목의 분석입니다:",
+      "gitDescription": "Git은 플러터 버전을 다운로드하고 업데이트하는 데 사용됩니다. FVM에서 사용합니다.",
+      "fvmDescription": "FVM (Flutter Version Management). 사이드킥의 핵심 기능 대부분을 제공합니다.",
+      "chocoDescription": "(선택 사항) Windows 기기에 FVM이 없는 경우, FVM을 설치하는 데 사용할 수 있습니다.",
+      "brewDescription": "(선택 사항) MacOS 및 Linux 기기에 FVM이 없는 경우, FVM을 설치하는 데 사용할 수 있습니다.",
+      "pleaseInstall": "사이드킥을 사용하시려면 누락된 구성 요소를 설치해주세요!",
       "ignore": "무시",
-      "installmissing": "누락된 설치"
+      "installmissing": "누락된 요소 설치"
     }
   }
 }
