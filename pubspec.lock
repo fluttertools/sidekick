@@ -372,7 +372,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.0"
+    version: "0.18.4"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -478,7 +478,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+4"
+    version: "0.14.0+5"
   http:
     dependency: transitive
     description:
