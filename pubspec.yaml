@@ -29,7 +29,7 @@ dependencies:
   flutter_acrylic:
     git:
       url: https://github.com/alexmercerind/flutter_acrylic.git
-  flutter_hooks: ^0.17.0
+  flutter_hooks: ^0.18.5
   flutter_localizations:
     sdk: flutter
   flutter_spinkit: ^5.0.0
