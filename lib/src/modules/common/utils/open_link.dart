@@ -43,7 +43,7 @@ Future<void> openVsCode(
   }
 }
 
-// Fucntion that uses which to detect the path of the executable. Yay copilot!
+// Function that uses which to detect the path of the executable. Yay copilot!
 Future<String?> which(String executable) async {
   final result = await Process.run('which', [executable]);
   if (result.exitCode != 0) {
