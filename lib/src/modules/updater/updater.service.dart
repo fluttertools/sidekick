@@ -74,8 +74,7 @@ class UpdaterService {
       BuildContext context, SidekickUpdateInfo updateInfo) async {
     if (updateInfo.isInstalled) {
       final file = updateInfo.latestInstallerFile;
-      await openLink(
-          context, "file://${file?.absolute.path.replaceAll("\\", "/")}");
+      await openLink("file://${file?.absolute.path.replaceAll("\\", "/")}");
     } else {
       throw const UpdaterException(
         'Installer does not exists, you have to download it first',

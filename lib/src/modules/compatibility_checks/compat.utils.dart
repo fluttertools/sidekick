@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:sidekick/src/modules/common/utils/open_link.dart';
 import 'package:sidekick/src/modules/common/utils/which.dart';
 
 Future<bool> isChocoInstalled() async {
@@ -37,9 +38,9 @@ Future<bool> isGitInstalled() async {
 
 void launchTerminal() {
   if (Platform.isMacOS) {
-    Process.runSync("open", ["-a Terminal"]);
+    openCustom('Terminal');
   } else if (Platform.isWindows) {
-    Process.runSync("cmd", [], runInShell: true);
+    openCustom('cmd');
   }
 }
 

@@ -36,7 +36,7 @@ class AdvancedInfoTile extends StatelessWidget {
           trailing: IconButton(
             icon: const Icon(Icons.cloud_download),
             onPressed: () async {
-              await openLink(context, release.release?.archiveUrl ?? '');
+              await openLink(release.release?.archiveUrl ?? '');
             },
           ),
         ),

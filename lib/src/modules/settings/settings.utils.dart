@@ -22,7 +22,6 @@ ThemeMode getThemeMode(String themeMode) {
 }
 
 typedef LaunchFunction = Future<void> Function(
-  BuildContext context,
   String projectPath, {
   String? customLocation,
 });
