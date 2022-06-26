@@ -32,9 +32,24 @@ Future<void> openVsCode(
   if (Platform.isWindows || Platform.isLinux) {
     await Process.run('code', [path], runInShell: true);
   } else {
-    final vsCodeUri = 'vscode://file/$path';
-    return await openLink(context, vsCodeUri);
+    // Check if VSCode is installed on path, it it is open the file, otherwise open the url.
+    final vscode = await which('code');
+    if (vscode != null) {
+      await Process.run('code', [path], runInShell: true);
+    } else {
+      final vsCodeUri = 'vscode://file/$path';
+      return await openLink(context, vsCodeUri);
+    }
   }
+}
+
+// Fucntion that uses which to detect the path of the executable. Yay copilot!
+Future<String?> which(String executable) async {
+  final result = await Process.run('which', [executable]);
+  if (result.exitCode != 0) {
+    return null;
+  }
+  return result.stdout.trim();
 }
 
 Future<void> openXcode(
