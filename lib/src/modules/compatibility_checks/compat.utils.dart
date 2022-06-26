@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:sidekick/src/modules/common/utils/which.dart';
+
 Future<bool> isChocoInstalled() async {
-  final chocoRes = await Process.run("choco", [], runInShell: true);
-  if (chocoRes.stdout.toString().contains("Chocolatey v")) {
+  final chocoRes = await which('choco');
+  if (chocoRes != null) {
     return true;
   }
   return false;
@@ -10,27 +12,24 @@ Future<bool> isChocoInstalled() async {
 
 Future<bool> isBrewInstalled() async {
   if (Platform.isWindows) return false;
-  final brewRes = await Process.run("command", ["-v brew"], runInShell: true);
-  if (brewRes.stdout.toString().trim() == "") {
-    return false;
+  final brewRes = await which("brew");
+  if (brewRes != null) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 Future<bool> isFvmInstalled() async {
-  final fvmRes = await Process.run("fvm", [], runInShell: true);
-  if (fvmRes.stdout.toString().contains(
-      "Flutter Version Management: A cli to manage Flutter SDK versions.")) {
+  final fvmRes = await which("git");
+  if (fvmRes != null) {
     return true;
   }
   return false;
 }
 
 Future<bool> isGitInstalled() async {
-  final fvmRes = await Process.run("git", [], runInShell: true);
-  if (fvmRes.stdout
-      .toString()
-      .contains("See 'git help git' for an overview of the system")) {
+  final gitRes = await which("git");
+  if (gitRes != null) {
     return true;
   }
   return false;
