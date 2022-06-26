@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sidekick/i18n/language_manager.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/updater/components/update_info.dart';
 
 import '../../../modules/common/utils/notify.dart';
 import '../../../version.dart';
@@ -186,7 +187,7 @@ class SettingsSectionGeneral extends StatelessWidget {
           ListTile(
             title:
                 Text(context.i18n('modules:selectedDetail.components.version')),
-            trailing: const Text(packageVersion),
+            trailing: const SkUpdateInfo(),
           ),
           const Divider(),
           ListTile(

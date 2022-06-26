@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.dialog.dart';
 
-import '../../../components/atoms/copy_button.dart';
 import '../../../components/atoms/typography.dart';
 import '../../common/utils/open_link.dart';
 
@@ -17,8 +17,9 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Heading(
+          title: Text(
             context.i18n('modules:fvm.dialogs.globalConfiguration'),
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           actions: <Widget>[
             TextButton(
@@ -36,8 +37,9 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Subheading(
+              Text(
                 context.i18n('modules:fvm.dialogs.flutterPathIsPointingOn'),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               // Caption('${configured.currentPath}.\n\n'),
               Flexible(
@@ -75,8 +77,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                         ),
                         Row(
                           children: [
-                            Caption(configured.correctPath),
-                            CopyButton(configured.correctPath)
+                            CommandCopy(command: configured.correctPath)
                           ],
                         )
                       ],

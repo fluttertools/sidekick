@@ -24,58 +24,41 @@ class CompatDialog extends HookWidget {
 
     return AlertDialog(
       title: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Heading(context.i18n('modules:compatibility.dialog.dialogTitle')),
-          const SizedBox(
-            width: 15,
-          ),
-          Subheading(context.i18n(Platform.isWindows
-              ? 'modules:compatibility.dialog.dialogDescriptionWindows'
-              : 'modules:compatibility.dialog.dialogDescriptionMacLinux'))
-        ],
-      ),
-      content: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-            color: Theme.of(context).canvasColor,
-            borderRadius: BorderRadius.circular(12)),
-        child: SingleChildScrollView(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
+          const Icon(Icons.install_desktop_rounded, size: 25),
+          const SizedBox(height: 10),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: SelectableText(
-                  command,
-                  //maxLines: 1,
-                  //textAlign: TextAlign.center,
+              Center(
+                child: Text(
+                  context.i18n('modules:compatibility.dialog.dialogTitle'),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
-              IconButton(
-                  splashRadius: 2,
-                  onPressed: () {
-                    Clipboard.setData(
-                      ClipboardData(text: command),
-                    );
-                    notify(context.i18n('components:atoms.copiedToClipboard'));
-                  },
-                  icon: const Icon(
-                    Icons.copy,
-                    size: 15,
-                  ))
+              const SizedBox(
+                height: 16,
+              ),
+              Text(
+                context.i18n(Platform.isWindows
+                    ? 'modules:compatibility.dialog.dialogDescriptionWindows'
+                    : 'modules:compatibility.dialog.dialogDescriptionMacLinux'),
+                style: Theme.of(context).textTheme.bodyMedium,
+              )
             ],
           ),
-        ),
+        ],
       ),
+      content: CommandCopy(command: command),
       actions: [
-        OutlinedButton(
+        TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           child: Text(context.i18n('modules:fvm.dialogs.cancel')),
         ),
-        ElevatedButton(
+        TextButton(
           onPressed: () {
             notify(context
                 .i18n('modules:compatibility.dialog.dialogRestartNotication'));
@@ -84,6 +67,52 @@ class CompatDialog extends HookWidget {
           child: Text(context.i18n('modules:compatibility.dialog.done')),
         )
       ],
+    );
+  }
+}
+
+class CommandCopy extends StatelessWidget {
+  const CommandCopy({
+    Key? key,
+    required this.command,
+  }) : super(key: key);
+
+  final String command;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Theme.of(context).canvasColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: SelectableText(
+                command,
+                //maxLines: 1,
+                //textAlign: TextAlign.center,
+              ),
+            ),
+            IconButton(
+                splashRadius: 2,
+                onPressed: () {
+                  Clipboard.setData(
+                    ClipboardData(text: command),
+                  );
+                  notify(context.i18n('components:atoms.copiedToClipboard'));
+                },
+                icon: const Icon(
+                  Icons.copy,
+                  size: 15,
+                ))
+          ],
+        ),
+      ),
     );
   }
 }

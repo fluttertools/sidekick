@@ -75,6 +75,7 @@ class AppShell extends HookWidget {
         selectedIndex.value = currentRoute.index;
       }
       return;
+      
     }, [currentRoute]);
 
     // Side effect when info is selected

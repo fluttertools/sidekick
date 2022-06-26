@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/updater/components/update.dialog.dart';
 
-import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
 
 /// Sidekick update button
@@ -16,7 +15,6 @@ class SkUpdateButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final updater = useProvider(updaterProvider.notifier);
     final updateInfo = useProvider(updaterProvider);
 
     /// Return empty if its not installed or does not need update
@@ -30,46 +28,7 @@ class SkUpdateButton extends HookWidget {
         context: context,
         builder: (context) {
           // return object of type Dialog
-          return AlertDialog(
-            contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-            buttonPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            title: Row(
-              children: [
-                Icon(
-                  MdiIcons.alertDecagram,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-                const SizedBox(width: 10),
-                Heading(
-                    context.i18n('modules:updater.components.updateAvailable')),
-              ],
-            ),
-            content: Paragraph(
-              context.i18n(
-                'modules:updater.components.sidekickVersionUpdateinfolatestIsNowAvailable',
-                variables: {
-                  'updateInfoLatest': updateInfo.latest,
-                },
-              ),
-            ),
-            actions: <Widget>[
-              // usually buttons at the bottom of the dialog
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(context.i18n('modules:updater.components.later')),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  await updater.openInstaller(context);
-                  Navigator.of(context).pop();
-                },
-                child:
-                    Text(context.i18n('modules:updater.components.updateNow')),
-              ),
-            ],
-          );
+          return const UpdateDialog();
         },
       );
     }

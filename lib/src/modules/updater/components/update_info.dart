@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/updater/components/update.dialog.dart';
 
 import '../../../version.dart';
+import '../../compatibility_checks/compat.dialog.dart';
 import '../updater.provider.dart';
 
 /// Sidekick version info
@@ -22,21 +24,20 @@ class SkUpdateInfo extends HookWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            context.i18n(
-              'modules:updater.components.aNewVersionOfSidekickIsAvailableUpdateinfolatest',
-              variables: {
-                'updateInfoLatest': updateInfo.latest,
-              },
+          TextButton.icon(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => const UpdateDialog(),
+              );
+            },
+            icon: const Icon(Icons.download_rounded),
+            label: Text(
+              "${context.i18n('modules:updater.components.updateAvailable')} (${updateInfo.latest})",
             ),
           ),
-          const SizedBox(width: 5),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              context.i18n('modules:updater.components.clickHereToDownload'),
-            ),
-          ),
+          const SizedBox(width: 10),
+          const Text(packageVersion),
         ],
       );
     }

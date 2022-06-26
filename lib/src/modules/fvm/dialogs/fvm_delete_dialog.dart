@@ -14,8 +14,10 @@ void showDeleteDialog(
     builder: (context) {
       // return object of type Dialog
       return AlertDialog(
-        title:
-            Text(context.i18n('modules:fvm.dialogs.areYouSureYouWantToRemove')),
+        title: Text(
+          context.i18n('modules:fvm.dialogs.areYouSureYouWantToRemove'),
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         content: Text(
           context.i18n(
             'modules:fvm.dialogs.thisWillRemoveItemnameCacheFromYourSystem',
@@ -23,8 +25,8 @@ void showDeleteDialog(
               'itemname': item.name,
             },
           ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
-        buttonPadding: const EdgeInsets.all(15),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           TextButton(
