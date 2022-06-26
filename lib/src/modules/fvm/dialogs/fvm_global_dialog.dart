@@ -42,29 +42,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               // Caption('${configured.currentPath}.\n\n'),
-              Flexible(
-                child: Text.rich(
-                  TextSpan(children: [
-                    TextSpan(
-                        text: configured.currentPath,
-                        style: Theme.of(context).textTheme.caption),
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: IconButton(
-                          icon: const Icon(Icons.copy, size: 14),
-                          onPressed: () {
-                            Clipboard.setData(
-                                ClipboardData(text: configured.currentPath));
-                            // ScaffoldMessenger.of(context)
-                            //     .showSnackBar(SnackBar(
-                            //   content: Text('${configured.currentPath}'),
-                            // ));
-                          }),
-                    )
-                  ]),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
+              CommandCopy(command: configured.correctPath),
               const SizedBox(height: 12),
 
               !configured.isSetup
@@ -75,11 +53,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                               context.i18n(
                                   'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
                         ),
-                        Row(
-                          children: [
-                            CommandCopy(command: configured.correctPath)
-                          ],
-                        )
+                        CommandCopy(command: configured.correctPath)
                       ],
                     )
                   : Container(),
