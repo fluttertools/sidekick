@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../common/utils/notify.dart';
@@ -23,14 +22,17 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title: Row(
+            title: Column(
               children: [
                 const Icon(
                   Icons.cleaning_services_rounded,
+                  size: 25,
                 ),
-                const SizedBox(width: 10),
-                Heading(
-                    context.i18n('modules:fvm.dialogs.cleanUpUnusedVersions')),
+                const SizedBox(height: 10),
+                Text(
+                  context.i18n('modules:fvm.dialogs.cleanUpUnusedVersions'),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
               ],
             ),
             actions: <Widget>[
@@ -41,7 +43,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                 },
                 child: Text(context.i18n('modules:fvm.dialogs.cancel')),
               ),
-              ElevatedButton(
+              TextButton(
                 onPressed: () async {
                   final unusedSelected = unusedVersions.where(
                     (element) => selected.containsKey(element.name),

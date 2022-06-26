@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -23,10 +22,6 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
           ),
           actions: <Widget>[
             TextButton(
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.resolveWith(
-                (states) => const EdgeInsets.all(20),
-              )),
               onPressed: () {
                 Navigator.of(context).pop();
               },

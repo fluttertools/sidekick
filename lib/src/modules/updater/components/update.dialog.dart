@@ -5,8 +5,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/updater/updater.provider.dart';
 
-import '../../../components/atoms/typography.dart';
-
 class UpdateDialog extends HookWidget {
   const UpdateDialog({Key? key}) : super(key: key);
   @override
@@ -22,6 +20,7 @@ class UpdateDialog extends HookWidget {
           Icon(
             MdiIcons.alertDecagram,
             color: Theme.of(context).colorScheme.onSurface,
+            size: 25,
           ),
           const SizedBox(height: 10),
           Text(context.i18n('modules:updater.components.updateAvailable'),

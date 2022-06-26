@@ -6,7 +6,6 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/updater/components/update_info.dart';
 
 import '../../../modules/common/utils/notify.dart';
-import '../../../version.dart';
 import '../settings.dto.dart';
 import '../settings.utils.dart';
 
