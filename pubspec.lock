@@ -53,46 +53,38 @@ packages:
   bitsdojo_window:
     dependency: "direct main"
     description:
-      path: bitsdojo_window
-      ref: master
-      resolved-ref: "19ba1449ad9fb16e0d44994586aba9faf766357a"
-      url: "https://github.com/CorvusYe/bitsdojo_window"
-    source: git
-    version: "0.1.1+1"
+      name: bitsdojo_window
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   bitsdojo_window_linux:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: bitsdojo_window_linux
-      ref: master
-      resolved-ref: "19ba1449ad9fb16e0d44994586aba9faf766357a"
-      url: "https://github.com/CorvusYe/bitsdojo_window"
-    source: git
-    version: "0.1.1"
+      name: bitsdojo_window_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   bitsdojo_window_macos:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: bitsdojo_window_macos
-      ref: master
-      resolved-ref: "19ba1449ad9fb16e0d44994586aba9faf766357a"
-      url: "https://github.com/CorvusYe/bitsdojo_window"
-    source: git
-    version: "0.1.0"
+      name: bitsdojo_window_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   bitsdojo_window_platform_interface:
     dependency: transitive
     description:
       name: bitsdojo_window_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.1.2"
   bitsdojo_window_windows:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: bitsdojo_window_windows
-      ref: master
-      resolved-ref: "19ba1449ad9fb16e0d44994586aba9faf766357a"
-      url: "https://github.com/CorvusYe/bitsdojo_window"
-    source: git
-    version: "0.1.0"
+      name: bitsdojo_window_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -1047,7 +1039,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.1"
+    version: "2.6.1"
   window_manager:
     dependency: "direct main"
     description:
