@@ -133,6 +133,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/m-ochyra"><img src="https://avatars.githubusercontent.com/u/5583015?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Marcin Ochyra</b></sub></a><br /><a href="#translation-m-ochyra" title="Translation">🌍</a></td>
     <td align="center"><a href="http://gaurav.my.id"><img src="https://avatars.githubusercontent.com/u/51997260?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Gaurav Yadav</b></sub></a><br /><a href="#translation-gauravmehta13" title="Translation">🌍</a></td>
     <td align="center"><a href="https://seongxwoo.notion.site/Kyle-b49a1520f7ea4d5a86acedcf201129f6"><img src="https://avatars.githubusercontent.com/u/16515307?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Kyle Seongwoo Jun</b></sub></a><br /><a href="#translation-kyle-seongwoo-jun" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://hypertuner.cloud"><img src="https://avatars.githubusercontent.com/u/3144291?v=4?s=50" width="50px;" alt=""/><br /><sub><b>Piotr Rogowski</b></sub></a><br /><a href="#maintenance-karniv00l" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
