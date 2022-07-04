@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "Dashboard",
+    "navButtonProjects": "Proyek",
+    "navButtonExplore": "Jelajah",
+    "navButtonPackages": "Paket",
+    "stableChannelDescription": "Sebaiknya gunakan channel ini untuk semua rilis aplikasi anda. Sekitar 3 bulan sekali, branch yang telah di stabilkan di beta akan menjadi branch stabil berikutnya dan kami membuat versi stabil dari branch tersebut.",
+    "betaChannelDescription": "Branch di buat untuk rilis beta baru di awal bulan, biasanya di hari senin di Branch Master. Nantinya akan berisi Branch untuk Dart, Engine dan Framework.",
+    "devChannelDescription": "Build terakhir yang sudah di test secara keseluruhan. Biasanya berfungsi dengan baik, tapi cek kembali \"Bad builds\" untuk melihat daftar yang diketahui dari Build Dev yang \"buruk\"",
+    "masterChannelDescription": "Tip-of-tree terbaru, build terakhir. Biasanya berfungsi dengan baik, meskipun terkadang kami tidak sengaja merusaknya.",
+    "utils": {
+      "couldNotLaunchUrl": "Tidak dapat membuka {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "Versi yang terpasang",
+    "cleanUp": "Bersihkan",
+    "cleanUpTooltip": "Hapus semua versi yang tidak terpakai dari sistem Anda",
+    "numberOfCachedVersions": "{{cachedVersions}} versi",
+    "versionItemversionnameHasBeenInstalled": "Versi {{itemVersionName}} telah terpasang.",
+    "versionItemversionnameHasFinishedSetup": "Versi {{itemVersionName}} telah selesai diatur.",
+    "channelItemversionnameHasBeenUpgraded": "Channel {{itemVersionName}} telah diperbarui.",
+    "versionItemversionnameHasBeenRemoved": "Versi {{itemVersionName}} telah dihapus.",
+    "versionItemversionnameHasBeenSetAsGlobal": "Versi {{itemVersionName}} telah ditetapkan sebagai versi global.",
+    "versionVersionPinnedToProjectname": "Versi {{version}} telah ditetapkan ke proyek {{projectName}}.",
+    "components": {
+      "upgrade": "Perbarui",
+      "setAsGlobal": "Tetapkan sebagai Global",
+      "inUse": "Terpakai",
+      "unused": "Tidak Terpakai",
+      "flutterSdkNotInstalled": "Flutter SDK tidak terinstall.",
+      "noFlutterVersionInstalledMessage": "Saat ini Anda belum menginstal versi Flutter SDK apa pun. Versi atau channel yang telah diinstal akan ditampilkan disini.",
+      "exploreFlutterReleases": "Jelajahi Rilis Flutter",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "SDK belum selesai diatur."
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Tidak ada versi Flutter SDK yang tidak terpakai yang terinstall.",
+      "cleanUpUnusedVersions": "Bersihkan versi yang tidak terpakai",
+      "cancel": "Batal",
+      "confirm": "Konfirmasi",
+      "ok": "OK",
+      "globalConfiguration": "Konfigurasi Global",
+      "theseVersionAreNotPinnedToAProject": "Versi ini tidak ditetapkan ke proyek.",
+      "doYouWantToRemoveThemToFreeUpSpace": "Apakah Anda ingin menghapusnya untuk membebaskan ruang?",
+      "areYouSureYouWantToRemove": "Apakah Anda yakin ingin menghapus?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Ini akan menghapus cache {{itemName}} dari sistem Anda.",
+      "flutterPathIsPointingOn": "Flutter path menunjukkan ke \n",
+      "changeThePathTo": "Ubah path ke\n",
+      "ifYouWantToFlutterSdkThroughFvm": "Jika Anda ingin menggunakan Flutter SDK melalui FVM",
+      "howToUpdateYourPath": "Bagaimana cara mengubah path Anda?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Proyek dimuat ulang",
+    "projects": "Proyek",
+    "choose": "Pilih",
+    "projectsProjects": "Proyek {{projects}}",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Hanya tampilkan proyek yang memiliki versi yang ditetapkan",
+    "fvmOnly": "Hanya FVM",
+    "addProject": "Tambah Proyek",
+    "notAFlutterProject": "Bukan proyek Flutter",
+    "components": {
+      "open": "Buka",
+      "remove": "Hapus",
+      "openTerminalPlayground": "Buka Terminal Playground",
+      "openIde": "Buka di {{ideName}}",
+      "selectAFlutterSdkVersion": "Pilih versi Flutter SDK",
+      "noFlutterProjectsHaveBeenAddedYet": "Belum ada proyek Flutter yang ditambahkan.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Tambahkan proyek Flutter Anda dan informasi proyek akan ditampilkan di sini."
+    }
+  },
+  "pubPackages": {
+    "trending": "Populer",
+    "mostUsedPackages": "Paket yang paling banyak digunakan",
+    "flutterFavorites": "Flutter Favorit",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Anda perlu menambahkan proyek Flutter terlebih dahulu. Informasi paket akan ditampilkan di sini.",
+      "noPackagesFound": "Tidak ada paket yang ditemukan.",
+      "view": "Lihat",
+      "builtBy": "Dibangun oleh",
+      "likes": "Suka",
+      "pubPoints": "Pub Points",
+      "popularity": "Popularitas",
+      "details": "Detail",
+      "changelog": "Changelog",
+      "website": "Website",
+      "packageprojectscountProjects": "{{packageProjectsCount}} proyek"
+    }
+  },
+  "releases": {
+    "all": "Semua",
+    "releases": "Rilis",
+    "versions": "Versi",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "tip-of-tree (absolut terbaru) yang terbaru, biasanya berfungsional, meskipun terkadang kami tidak sengaja merusaknya."
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} versi",
+    "notRunning": "Tidak berjalan"
+  },
+  "search": {
+    "components": {
+      "search": "Pencarian... ",
+      "noResults": "Tidak ditemukan",
+      "channels": "Channel",
+      "stableReleases": "Rilis Stabil",
+      "betaReleases": "Rilis Beta",
+      "devReleases": "Rilis Dev",
+      "invalidChanel": "Channel Tidak Valid"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Advanced",
+      "downloadZip": "Unduh ZIP",
+      "zipFileWithAllReleaseDependencies": "File ZIP dengan semua dependensi rilis",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Informasi Cache Lokal",
+      "createdDate": "Tanggal Dibuat",
+      "cacheLocation": "Lokasi Cache",
+      "nothingSelected": "Tidak ada yang dipilih",
+      "channel": "Channel",
+      "releaseNotes": "Catatan Rilis",
+      "version": "Versi",
+      "releaseDate": "Tanggal Rilis"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Pengaturan telah di simpan",
+    "couldNotSaveSettings": "Pengaturan tidak dapat disimpan",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Versi flutter sdk harus di atur ke global untuk mengakses pengaturan flutter",
+      "analyticsCrashReporting": "Analisa dan pelaporan crash",
+      "analyticsCrashReportSubtitle": "Saat perintah Flutter mengalami kerusakan, upaya dilakukan untuk mengirim laporan kerusakan ke pihak Google, sehingga Google dapat berkontribusi untuk memperbaiki Flutter di masa mendatang.",
+      "platforms": "Platform",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Lewati pengaturan Flutter saat instalasi",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Ini hanya akan mengclone Flutter, bukan menginstalnya.",
+      "dependenciesAfterANewVersionIsInstalled": "Dependensi setelah versi baru terinstal",
+      "areYouSureYouWantToResetSettings": "Apakah Anda yakin ingin me-reset pengaturan?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Ini hanya akan me-reset pengaturan yang spesifik di Sidekick",
+      "appSettingsHaveBeenReset": "Pengaturan aplikasi telah di-reset",
+      "general": "Umum",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Pilih tema atau beralih kepada pengaturan sistem",
+      "theme": "Tema",
+      "system": "Sistem",
+      "light": "Terang",
+      "dark": "Gelap",
+      "language": "Bahasa",
+      "resetToDefaultSettings": "Me-reset ke pengaturan default",
+      "reset": "Me-reset",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Pilih IDE yang ingin Anda buka untuk projek Anda"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Pembaruan tersedia",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick versi {{updateInfoLatest}} telah tersedia.",
+      "later": "Nanti",
+      "updateNow": "Perbarui sekarang",
+      "clickHereToDownload": "Klik disini untuk mengunduh",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick versi terbaru telah tersedia. ({{updateInfoLatest}})"
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Pasang Komponen yang Diperlukan",
+      "dialogDescriptionMacLinux": "Salin dan tempelkan ini di Terminal. Ikuti instruksi yang ada.",
+      "dialogDescriptionWindows": "Salin dan tempelkan ini di PowerShell. Ikuti instruksi yang ada. Harus dijalankan secara administrator.",
+      "dialogRestartNotication": "Bagus! Sidekick akan ditutup. Silahkan buka kembali untuk melanjutkan.",
+      "done": "Selesai"
+    },
+    "screen": {
+      "title": "Sidekick gagal mendeteksi satu atau lebih komponen yang diperlukan.",
+      "subtitle": "Ini adalah rincian dari apa yang ada dan yang tidak hilang:",
+      "gitDescription": "Git diperlukan untuk mengunduh dan memperbarui versi Flutter. Diperlukan oleh FVM.",
+      "fvmDescription": "Flutter Version Management, memberikan Sidekick sebagian besar fungsi utamanya.",
+      "chocoDescription": "Opsional. Dapat digunakan untuk memasang FVM jika tidak tersedia di perangkat Windows.",
+      "brewDescription": "Opsional. Dapat digunakan untuk memasang FVM jika tidak tersedia di perangkat Mac atau Linux.",
+      "pleaseInstall": "Silakan pasang komponen yang hilang untuk menggunakan Sidekick!",
+      "ignore": "Abaikan",
+      "installmissing": "Pasang yang Hilang"
+    }
+  }
+}
