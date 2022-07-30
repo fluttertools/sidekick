@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "Salin ke Clipboard",
+        "refresh": "Muat Ulang",
+        "countFound": "{{count}} ditemukan"
+    },
+    "molecules": {
+        "master": "Master",
+        "versionIsInstalled": "Versi telah terpasang",
+        "versionNotInstalledClickToInstall": "Versi tidak terpasang. Klik untuk memasang."
+    }
+}

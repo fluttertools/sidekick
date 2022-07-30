@@ -236,6 +236,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "karniv00l",
+      "name": "Piotr Rogowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3144291?v=4",
+      "profile": "http://hypertuner.cloud",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "projectName": "sidekick",
