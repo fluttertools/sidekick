@@ -1,31 +1,26 @@
 import 'dart:io';
 
-import 'package:flutter/widgets.dart';
-import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-Future<void> openLink(BuildContext context, String url) async {
+Future<void> openLink(String url) async {
   if (await canLaunch(url)) {
     await launch(url);
   } else {
-    throw context.i18n(
-      'modules:common.utils.couldNotLaunchUrl',
-      variables: {'url': url},
-    );
+    throw "Error";
   }
 }
 
-Future<void> openPath(BuildContext context, String url) async {
+Future<void> openPath(String url) async {
   if (Platform.isWindows) {
     await Process.start('start', [url]);
   } else if (Platform.isMacOS) {
     await Process.start('open', [url]);
+  } else if (Platform.isLinux) {
+    await Process.start('xdg-open', [url]);
   }
-  //TODO: missing linux
 }
 
 Future<void> openVsCode(
-  BuildContext context,
   String path, {
   String? customLocation,
 }) async {
@@ -33,26 +28,24 @@ Future<void> openVsCode(
     await Process.run('code', [path], runInShell: true);
   } else {
     final vsCodeUri = 'vscode://file/$path';
-    return await openLink(context, vsCodeUri);
+    return await openLink(vsCodeUri);
   }
 }
 
 Future<void> openXcode(
-  BuildContext context,
   String path, {
   String? customLocation,
 }) async {
   final workspaceUri = '$path/ios/Runner.xcworkspace';
-  return await openPath(context, workspaceUri);
+  return await openPath(workspaceUri);
 }
 
 Future<void> openCustom(
-  BuildContext context,
   String path, {
   String? customLocation,
 }) async {
   if (customLocation != null) {
-    return await openPath(context, path);
+    return await openPath(path);
   }
   if (Platform.isMacOS) {
     await Process.run(

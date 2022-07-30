@@ -58,7 +58,6 @@ class ProjectListItem extends HookWidget {
 
     void openIde() {
       ide?.launch(
-        context,
         project.projectDir.absolute.path,
         customLocation: sidekickSettings.customIdeLocation,
       );
