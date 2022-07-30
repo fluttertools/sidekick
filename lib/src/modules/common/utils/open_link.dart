@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'which.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(String url) async {
@@ -27,8 +28,14 @@ Future<void> openVsCode(
   if (Platform.isWindows || Platform.isLinux) {
     await Process.run('code', [path], runInShell: true);
   } else {
-    final vsCodeUri = 'vscode://file/$path';
-    return await openLink(vsCodeUri);
+    // Check if VSCode is installed on path, it it is open the file, otherwise open the url.
+    final vscode = await which('code');
+    if (vscode != null) {
+      await Process.run('code', [path], runInShell: true);
+    } else {
+      final vsCodeUri = 'vscode://file/$path';
+      return await openLink(vsCodeUri);
+    }
   }
 }
 
