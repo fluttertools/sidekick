@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'which.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openLink(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
+  if (await canLaunchUrlString(url)) {
+    await launchUrlString(url);
   } else {
     throw "Error";
   }
