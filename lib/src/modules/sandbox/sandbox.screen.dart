@@ -156,7 +156,7 @@ class SandboxScreen extends HookWidget {
                   trailing: processing
                       ? OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            primary: Colors.deepOrange,
+                            foregroundColor: Colors.deepOrange,
                             side: const BorderSide(
                               color: Colors.deepOrange,
                             ),
