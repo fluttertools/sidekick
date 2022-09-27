@@ -57,7 +57,7 @@ Future<void> openCustom(
   if (Platform.isMacOS) {
     await Process.run(
       "open",
-      ['-a ${customLocation.trim()}', path],
+      ["-a", customLocation, path],
       runInShell: true,
     );
   } else {
