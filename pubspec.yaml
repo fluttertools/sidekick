@@ -83,6 +83,7 @@ flutter:
     - localizations/uk-UA/
     - localizations/hi-IN/
     - localizations/id-ID/
+    - localizations/fr-FR/
 
 flutter_intl:
   enabled: true
