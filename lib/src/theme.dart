@@ -57,7 +57,7 @@ ThemeData _customThemeBuilder({
     toggleableActiveColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: Colors.grey,
+        foregroundColor: Colors.grey,
         backgroundColor: Colors.grey[850],
         side: BorderSide(
           color: Colors.grey[800] ?? Colors.grey,
