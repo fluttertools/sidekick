@@ -137,6 +137,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="http://hypertuner.cloud"><img src="https://avatars.githubusercontent.com/u/3144291?v=4?s=50" width="50px;" alt="Piotr Rogowski"/><br /><sub><b>Piotr Rogowski</b></sub></a><br /><a href="#maintenance-karniv00l" title="Maintenance">🚧</a></td>
       <td align="center"><a href="https://backpackmeet.tourdumondiste.com"><img src="https://avatars.githubusercontent.com/u/2006567?v=4?s=50" width="50px;" alt="Christophe Leemans"/><br /><sub><b>Christophe Leemans</b></sub></a><br /><a href="#translation-Gerfaut" title="Translation">🌍</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/abrahamSN"><img src="https://avatars.githubusercontent.com/u/13744168?v=4?s=50" width="50px;" alt="Abraham Setya Nugraha"/><br /><sub><b>Abraham Setya Nugraha</b></sub></a><br /><a href="#translation-abrahamSN" title="Translation">🌍</a></td>
+    </tr>
   </tbody>
 </table>
 
