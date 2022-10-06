@@ -22,7 +22,7 @@ jobs:
           channel: "stable"
 
       - name: Install Linux build tools
-        run: sudo apt-get update && sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev squashfs-tool
+        run: sudo apt-get update && sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev
 
       - name: Enable desktop
         run: flutter config --enable-linux-desktop
