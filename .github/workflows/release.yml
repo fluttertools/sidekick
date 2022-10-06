@@ -81,21 +81,21 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
-      - name: Build AppImage
-        uses: AppImageCrafters/build-appimage@master
-        with:
-          recipe: "AppImageBuilder.yml"
+      #- name: Build AppImage
+      #  uses: AppImageCrafters/build-appimage@master
+      #  with:
+      #    recipe: "AppImageBuilder.yml"
 
-      - name: Upload AppImage to release
-        uses: svenstaro/upload-release-action@2.2.1
-        with:
-          # GitHub token.
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          # Local file to upload.
-          file: Sidekick-latest-x86_64.AppImage
-          asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
+      #- name: Upload AppImage to release
+      #  uses: svenstaro/upload-release-action@2.2.1
+      #  with:
+      #    # GitHub token.
+      #    repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #    # Local file to upload.
+      #    file: Sidekick-latest-x86_64.AppImage
+      #    asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
           # Tag to use as a release.
-          tag: ${{ github.ref }}
+      #    tag: ${{ github.ref }}
 
   build-macos:
     name: "Build MacOS"
