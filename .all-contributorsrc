@@ -245,6 +245,24 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "Gerfaut",
+      "name": "Christophe Leemans",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2006567?v=4",
+      "profile": "https://backpackmeet.tourdumondiste.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "abrahamSN",
+      "name": "Abraham Setya Nugraha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13744168?v=4",
+      "profile": "https://github.com/abrahamSN",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
