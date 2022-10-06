@@ -11,7 +11,7 @@ environment:
 dependencies:
   animations: ^2.0.2
   async: ^2.6.1
-  bitsdojo_window: ^0.1.2
+  bitsdojo_window: ^0.1.5
   date_time_format: ^2.0.1
   dio: ^4.0.0
   file_selector: ^0.8.2
@@ -40,7 +40,9 @@ dependencies:
     git:
       url: https://github.com/lrorpilla/material_floating_search_bar
   oktoast: ^3.2.0
-  open_file: ^3.2.1
+  open_file:
+    git:
+      url: https://github.com/crazecoder/open_file
   path_provider: ^2.0.1
   pub_api_client: ^2.0.5
   pubspec_parse: ^1.0.0
