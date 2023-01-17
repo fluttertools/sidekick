@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -8,16 +7,16 @@ import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
 
 /// Sidekick update button
-class SkUpdateButton extends HookWidget {
+class SkUpdateButton extends ConsumerWidget {
   /// Constructor
   const SkUpdateButton({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final updater = useProvider(updaterProvider.notifier);
-    final updateInfo = useProvider(updaterProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updater = ref.watch(updaterProvider.notifier);
+    final updateInfo = ref.watch(updaterProvider);
 
     /// Return empty if its not installed or does not need update
     if (!updateInfo.ready) {

@@ -18,7 +18,7 @@ enum ProjectActionOptions {
 }
 
 /// Display actions for a project
-class ProjectActions extends StatelessWidget {
+class ProjectActions extends ConsumerWidget {
   /// Constructor
   const ProjectActions(
     this.project, {
@@ -66,13 +66,11 @@ class ProjectActions extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<ProjectActionOptions>(
       onSelected: (result) {
         if (result == ProjectActionOptions.remove) {
-          context
-              .read(projectsProvider.notifier)
-              .removeProject(project.projectDir);
+          ref.read(projectsProvider.notifier).removeProject(project.projectDir);
         }
 
         if (result == ProjectActionOptions.openDirectory) {

@@ -12,7 +12,7 @@ import 'fvm_release_actions.dart';
 import 'fvm_release_status.dart';
 
 /// FVM release list item
-class FvmReleaseListItem extends StatelessWidget {
+class FvmReleaseListItem extends ConsumerWidget {
   /// Constructor
   const FvmReleaseListItem(
     this.release, {
@@ -22,7 +22,7 @@ class FvmReleaseListItem extends StatelessWidget {
   /// Release
   final ReleaseDto release;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SkListTile(
       leading: release.isChannel
           ? const Icon(MdiIcons.alphaCCircle)
@@ -47,7 +47,7 @@ class FvmReleaseListItem extends StatelessWidget {
       ),
       trailing: FvmReleaseActions(release),
       onTap: () {
-        context.read(selectedDetailProvider).state = SelectedDetail(
+        ref.read(selectedDetailProvider.notifier).state = SelectedDetail(
           release: release,
         );
       },

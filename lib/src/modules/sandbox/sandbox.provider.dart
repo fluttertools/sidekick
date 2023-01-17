@@ -148,7 +148,7 @@ final sandboxProvider =
 );
 
 class SandboxStateNotifier extends StateNotifier<TerminalState> {
-  final ProviderReference ref;
+  final Ref ref;
 
   Isolate? _isolate;
 

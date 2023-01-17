@@ -11,7 +11,7 @@ import '../../../modules/common/utils/notify.dart';
 import '../sandbox.provider.dart';
 
 /// Sandbox terminal
-class SandboxTerminal extends HookWidget {
+class SandboxTerminal extends HookConsumerWidget {
   /// Constructor
   const SandboxTerminal({
     required this.project,
@@ -25,9 +25,9 @@ class SandboxTerminal extends HookWidget {
   /// Release
   final ReleaseDto release;
   @override
-  Widget build(BuildContext context) {
-    final terminalState = useProvider(sandboxProvider);
-    final terminal = useProvider(sandboxProvider.notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final terminalState = ref.watch(sandboxProvider);
+    final terminal = ref.watch(sandboxProvider.notifier);
 
     final textController = useTextEditingController();
     final scrollController = useScrollController();

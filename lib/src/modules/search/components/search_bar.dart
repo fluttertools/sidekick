@@ -11,7 +11,7 @@ import '../search.provider.dart';
 import 'search_results_list.dart';
 
 /// Search bar widget
-class SearchBar extends HookWidget {
+class SearchBar extends HookConsumerWidget {
   /// Constructor
   const SearchBar({
     Key? key,
@@ -20,10 +20,10 @@ class SearchBar extends HookWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final queryProvider = useProvider(searchQueryProvider);
-    final currentRoute = useProvider(navigationProvider);
-    final results = useProvider(searchResultsProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final queryProvider = ref.watch(searchQueryProvider.notifier);
+    final currentRoute = ref.watch(navigationProvider);
+    final results = ref.watch(searchResultsProvider);
     final isLoading = useState(false);
     final controller = useFloatingSearchBarController();
     final showSearch = useState(false);
@@ -46,7 +46,7 @@ class SearchBar extends HookWidget {
     // ignore: avoid_positional_boolean_parameters
     void onFocusChanged(bool focus) {
       if (!focus) {
-        context.read(navigationProvider.notifier).goBack();
+        ref.read(navigationProvider.notifier).goBack();
       }
     }
 

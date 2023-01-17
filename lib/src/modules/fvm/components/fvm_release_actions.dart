@@ -25,7 +25,7 @@ enum FvmReleaseActionOptions {
 }
 
 /// Displays actions for a cached release
-class FvmReleaseActions extends StatelessWidget {
+class FvmReleaseActions extends ConsumerWidget {
   /// Constructor
   const FvmReleaseActions(
     this.release, {
@@ -94,27 +94,27 @@ class FvmReleaseActions extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<FvmReleaseActionOptions>(
       onSelected: (result) {
         if (result == FvmReleaseActionOptions.remove) {
           showDeleteDialog(context, item: release, onDelete: () {
-            context.read(fvmQueueProvider.notifier).remove(context, release);
+            ref.read(fvmQueueProvider.notifier).remove(context, release);
           });
         }
 
         if (result == FvmReleaseActionOptions.detail) {
-          context.read(selectedDetailProvider).state = SelectedDetail(
+          ref.read(selectedDetailProvider.notifier).state = SelectedDetail(
             release: release,
           );
         }
 
         if (result == FvmReleaseActionOptions.global) {
-          context.read(fvmQueueProvider.notifier).setGlobal(context, release);
+          ref.read(fvmQueueProvider.notifier).setGlobal(context, release);
         }
 
         if (result == FvmReleaseActionOptions.upgrade) {
-          context.read(fvmQueueProvider.notifier).upgrade(context, release);
+          ref.read(fvmQueueProvider.notifier).upgrade(context, release);
         }
       },
       itemBuilder: (context) {
