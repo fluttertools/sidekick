@@ -361,10 +361,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "12d32dd2d2644547e0f35bfadd9803b73be172b7"
+      resolved-ref: cebfb68714845d88725fed0b2da2b649037150e0
       url: "https://github.com/alexmercerind/flutter_acrylic.git"
     source: git
-    version: "1.0.0+2"
+    version: "1.1.0+1"
   flutter_hooks:
     dependency: "direct main"
     description:
@@ -564,6 +564,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  macos_window_utils:
+    dependency: transitive
+    description:
+      name: macos_window_utils
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   matcher:
     dependency: transitive
     description:
@@ -1108,5 +1115,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.17.0 <3.0.0"
+  dart: ">=2.18.5 <3.0.0"
   flutter: ">=3.0.0"
