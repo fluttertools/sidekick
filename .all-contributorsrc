@@ -263,6 +263,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "areille",
+      "name": "areille",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32739983?v=4",
+      "profile": "https://github.com/areille",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
     }
   ],
   "projectName": "sidekick",
