@@ -13,7 +13,7 @@ import 'components/sandbox_terminal.dart';
 import 'sandbox.provider.dart';
 
 /// Sandbox screen
-class SandboxScreen extends HookWidget {
+class SandboxScreen extends HookConsumerWidget {
   /// Constructor
   const SandboxScreen({
     required this.project,
@@ -24,10 +24,10 @@ class SandboxScreen extends HookWidget {
   final Project project;
 
   @override
-  Widget build(BuildContext context) {
-    final releases = useProvider(releasesStateProvider);
-    final terminal = useProvider(sandboxProvider.notifier);
-    final processing = useProvider(sandboxProvider).processing;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final releases = ref.watch(releasesStateProvider);
+    final terminal = ref.watch(sandboxProvider.notifier);
+    final processing = ref.watch(sandboxProvider).processing;
 
     final selectedRelease = useState<ReleaseDto?>(null);
 

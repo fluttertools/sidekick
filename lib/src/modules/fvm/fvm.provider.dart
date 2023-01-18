@@ -68,7 +68,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
     });
   }
 
-  final ProviderReference ref;
+  final Ref ref;
   List<CacheVersion> channels = [];
   List<CacheVersion> versions = [];
   List<CacheVersion> all = [];
@@ -79,7 +79,7 @@ class FvmCacheProvider extends StateNotifier<List<CacheVersion>> {
 
   Future<void> _setTotalCacheSize() async {
     final stat = await getDirectorySize(FVMClient.context.cacheDir);
-    ref.read(cacheSizeProvider).state = stat;
+    ref.read(cacheSizeProvider.notifier).state = stat;
   }
 
   Future<void> reloadState() async {

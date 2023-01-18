@@ -8,7 +8,7 @@ import '../../../modules/common/dto/channel.dto.dart';
 import '../../selected_detail/selected_detail.provider.dart';
 
 /// Channel showcase widget
-class ChannelShowcaseItem extends StatelessWidget {
+class ChannelShowcaseItem extends ConsumerWidget {
   /// Constructor
   const ChannelShowcaseItem(
     this.channel, {
@@ -19,12 +19,12 @@ class ChannelShowcaseItem extends StatelessWidget {
   final ChannelDto channel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final releaseDate = channel.release?.releaseDate;
     return Card(
       child: InkWell(
         onTap: () {
-          context.read(selectedDetailProvider).state = SelectedDetail(
+          ref.read(selectedDetailProvider.notifier).state = SelectedDetail(
             release: channel,
           );
         },

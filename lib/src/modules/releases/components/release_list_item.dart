@@ -8,7 +8,7 @@ import '../../../modules/common/dto/release.dto.dart';
 import '../../selected_detail/selected_detail.provider.dart';
 
 /// Release list item
-class ReleaseListItem extends StatelessWidget {
+class ReleaseListItem extends ConsumerWidget {
   /// Constructor
   const ReleaseListItem(
     this.release, {
@@ -19,7 +19,7 @@ class ReleaseListItem extends StatelessWidget {
   final ReleaseDto release;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -32,7 +32,7 @@ class ReleaseListItem extends StatelessWidget {
       child: SkListTile(
         title: Subheading(release.name),
         onTap: () {
-          context.read(selectedDetailProvider).state = SelectedDetail(
+          ref.read(selectedDetailProvider.notifier).state = SelectedDetail(
             release: release,
           );
         },

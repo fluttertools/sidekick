@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
@@ -8,7 +7,7 @@ import '../../releases/releases.provider.dart';
 import '../settings.dto.dart';
 
 /// Flutter settings section
-class SettingsSectionFlutter extends HookWidget {
+class SettingsSectionFlutter extends ConsumerWidget {
   /// Constructor
   const SettingsSectionFlutter(
     this.settings,
@@ -22,8 +21,8 @@ class SettingsSectionFlutter extends HookWidget {
   /// On save handler
   final Function() onSave;
   @override
-  Widget build(BuildContext context) {
-    final releases = useProvider(releasesStateProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final releases = ref.watch(releasesStateProvider);
 
     final deactivate = !releases.hasGlobal;
 

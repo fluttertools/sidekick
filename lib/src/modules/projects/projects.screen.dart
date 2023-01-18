@@ -18,20 +18,20 @@ import 'components/projects_empty.dart';
 import 'projects.provider.dart';
 
 /// Projects screen
-class ProjectsScreen extends HookWidget {
+class ProjectsScreen extends HookConsumerWidget {
   /// Constructor
   const ProjectsScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final notifier = useProvider(projectsProvider.notifier);
-    final projects = useProvider(projectsProvider);
-    final settings = useProvider(settingsProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.watch(projectsProvider.notifier);
+    final projects = ref.watch(projectsProvider);
+    final settings = ref.watch(settingsProvider);
 
     final filteredProjects = useState(projects);
 
     Future<void> onRefresh() async {
-      await context.read(projectsProvider.notifier).load();
+      await ref.read(projectsProvider.notifier).load();
       notify(
         context.i18n('modules:projects.projectsRefreshed'),
       );
@@ -79,7 +79,7 @@ class ProjectsScreen extends HookWidget {
             value: settings.sidekick.onlyProjectsWithFvm,
             onChanged: (value) {
               settings.sidekick.onlyProjectsWithFvm = value;
-              context.read(settingsProvider.notifier).save(settings);
+              ref.read(settingsProvider.notifier).save(settings);
             },
           ),
         ),

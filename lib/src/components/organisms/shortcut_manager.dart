@@ -15,7 +15,7 @@ class NavigationIntent extends Intent {
 }
 
 /// Shorcut manager
-class SkShortcutManager extends StatelessWidget {
+class SkShortcutManager extends ConsumerWidget {
   /// Constructor
   const SkShortcutManager({
     Key? key,
@@ -27,10 +27,10 @@ class SkShortcutManager extends StatelessWidget {
   final Widget child;
   final FocusNode focusNode;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Handles route change
     void handleRouteChange(NavigationRoutes route) {
-      context.read(navigationProvider.notifier).goTo(route);
+      ref.read(navigationProvider.notifier).goTo(route);
     }
 
     return FocusableActionDetector(

@@ -30,7 +30,7 @@ const _sectionIcons = [
 ];
 
 /// Settings screen
-class SettingsScreen extends HookWidget {
+class SettingsScreen extends HookConsumerWidget {
   /// Constructor
   const SettingsScreen({
     this.section = NavSection.general,
@@ -40,9 +40,9 @@ class SettingsScreen extends HookWidget {
   /// Current nav section
   final NavSection section;
   @override
-  Widget build(BuildContext context) {
-    final provider = useProvider(settingsProvider.notifier);
-    final settings = useProvider(settingsProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(settingsProvider.notifier);
+    final settings = ref.watch(settingsProvider);
 
     final currentSection = useState(section.index);
 

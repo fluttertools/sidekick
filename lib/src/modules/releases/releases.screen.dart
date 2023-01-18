@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../components/atoms/sliver_animated_switcher.dart';
@@ -11,16 +10,16 @@ import 'components/channel_showcase_item.dart';
 import 'components/release_list_item.dart';
 import 'releases.provider.dart';
 
-class ReleasesScreen extends HookWidget {
+class ReleasesScreen extends ConsumerWidget {
   const ReleasesScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final filter = useProvider(filterProvider);
-    final versions = useProvider(filterableReleasesProvider);
-    final releases = useProvider(releasesStateProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filter = ref.watch(filterProvider.notifier);
+    final versions = ref.watch(filterableReleasesProvider);
+    final releases = ref.watch(releasesStateProvider);
 
     return SkScreen(
       extendBody: false,

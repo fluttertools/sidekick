@@ -228,7 +228,7 @@ Filter filterFromName(String name) {
 final filterProvider = StateProvider<Filter>((_) => Filter.all);
 
 final filterableReleasesProvider = Provider((ref) {
-  final filter = ref.watch(filterProvider).state;
+  final filter = ref.watch(filterProvider);
   final releases = ref.watch(releasesStateProvider);
 
   if (filter == Filter.all) {

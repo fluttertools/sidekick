@@ -9,7 +9,7 @@ import '../../fvm/fvm_queue.provider.dart';
 import '../project.dto.dart';
 
 /// Select project release
-class ProjectReleaseSelect extends StatelessWidget {
+class ProjectReleaseSelect extends ConsumerWidget {
   /// Constructor
   const ProjectReleaseSelect({
     required this.project,
@@ -24,7 +24,7 @@ class ProjectReleaseSelect extends StatelessWidget {
   final List<ReleaseDto> releases;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return PopupMenuButton<String>(
         tooltip: context.i18n(
           'modules:projects.components.selectAFlutterSdkVersion',
@@ -33,7 +33,7 @@ class ProjectReleaseSelect extends StatelessWidget {
         // elevation: 1,
         padding: EdgeInsets.zero,
         onSelected: (version) async {
-          await context
+          await ref
               .read(fvmQueueProvider.notifier)
               .pinVersion(context, project, version);
         },
