@@ -1,7 +1,7 @@
 name: Build (Linux, Mac OS, Windows)
 
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
@@ -34,22 +34,10 @@ jobs:
       - name: Flutter build app
         run: flutter build linux
 
-
       - name: Compress artifacts
         uses: TheDoctor0/zip-release@0.6.1
         with:
           filename: linux-dev.zip
-
-      - name: Build AppImage
-        uses: AppImageCrafters/build-appimage@master
-        with:
-          recipe: "AppImageBuilder.yml"
-
-      - name: Upload Build AppImage
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: sidekick-linux-dev.AppImage
-          path: Sidekick-latest-x86_64.AppImage
       
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
@@ -132,25 +120,6 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
-      - name: Write MSIX
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: pubspec.yaml
-          contents: |
-            msix_config:
-              display_name: Sidekick DEV Build
-              publisher_display_name: Eduardo M.
-              identity_name: 44484EduardoM.SidekickFlutter
-              publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
-              msix_version: 1.0.0.0
-              logo_path: assets\promo-windows\icon.png
-              architecture: x64
-              capabilities: "internetClient,removableStorage"
-              certificate_path: windows\SIDEKICK-CERT.pfx
-              certificate_password: ${{ secrets.WIN_CERT_PASS }}
-              store: false
-          write-mode: append
-
       - name: Write MS Store 
         uses: DamianReeves/write-file-action@v1.0
         with:
@@ -163,18 +132,9 @@ jobs:
       - name: Flutter build app
         run: flutter build windows
 
-      - name: Create MSIX
-        run: flutter pub run msix:create
-
       - name: Compress artifacts
         run: tar.exe -a -c -f windows-dev.zip build/windows/Runner/release
 
-      - name: Upload Build MSIX
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: sidekick-windows-dev.msix
-          path: build/windows/Runner/release/sidekick.msix
-      
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
         with:
