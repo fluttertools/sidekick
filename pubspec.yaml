@@ -84,6 +84,7 @@ flutter:
     - localizations/pt-BR/
     - localizations/it-IT/
     - localizations/uk-UA/
+    - localizations/ru-RU/
     - localizations/hi-IN/
     - localizations/id-ID/
     - localizations/fr-FR/

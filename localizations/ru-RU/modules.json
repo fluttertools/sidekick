@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "Панель приборов",
+    "navButtonProjects": "Проекты",
+    "navButtonExplore": "Исследуйте",
+    "navButtonPackages": "Пакеты",
+    "stableChannelDescription": "Мы рекомендуем использовать этот канал для всех выпусков рабочих программ. Приблизительно раз в квартал ветка, стабилизированная до бета-версии, становится нашей следующей стабильной ветвью, и мы создаем стабильную версию этой ветви.",
+    "betaChannelDescription": "Ветвь создана для новой бета-версии в начале месяца, обычно первого понедельника, мастером. Тут будет содержаться ветку для Dart, движок и фреймворк.",
+    "devChannelDescription": "Последняя полностью протестированная сборка. Обычно работает, но смотрите \"Bad builds\", чтобы просмотреть список известных \"bad\" сборок для разработчиков.",
+    "masterChannelDescription": "Последняя tip-of-tree, абсолютно последняя передовая сборка. Обычно работает, хотя иногда мы случайно что-то ломаем.",
+    "utils": {
+      "couldNotLaunchUrl": "Не удалось открыть {{url}}"
+    }
+  },
+  "fvm": {
+    "installedVersions": "Установленные версии",
+    "cleanUp": "Убрать",
+    "cleanUpTooltip": "Очистить неиспользованные версии",
+    "numberOfCachedVersions": "{{cachedVersions}} версия (-ий/-й)",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} установлена.",
+    "versionItemversionnameHasFinishedSetup": "Настройка версии {{itemVersionName}} завершена.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} канал обновлен.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} версия удалена.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} версия установлена ​​как глобальная.",
+    "versionVersionPinnedToProjectname": "{{version}} версия прикреплена к {{projectName}}",
+    "components": {
+      "upgrade": "Обновить",
+      "setAsGlobal": "Установить как глобальный",
+      "inUse": "Выкл.",
+      "unused": "Не иск.",
+      "flutterSdkNotInstalled": "SDK Flutter не установлен.",
+      "noFlutterVersionInstalledMessage": "В данный момент у вас нет установленных версий Flutter SDK. Здесь отображаются установленные версии или каналы.",
+      "exploreFlutterReleases": "Ознакомьтесь с выпусками Flutter",
+      "global": "Глобальная",
+      "sdkHasNotFinishedSetup": "Настройка SDK не завершена"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Нет неиспользованных версий Flutter SDK",
+      "cleanUpUnusedVersions": "Очистить неиспользованные версии",
+      "cancel": "Отменить",
+      "confirm": "Подтвердить",
+      "OK": "ОК",
+      "globalConfiguration": "Глобальная конфигурация",
+      "theseVersionAreNotPinnedToAProject": "Эти версии не прикреплены к проекту",
+      "doYouWantToRemoveThemToFreeUpSpace": "Вы хотите удалить это, чтобы освободить место?",
+      "areYouSureYouWantToRemove": "Вы уверены, что хотите удалить?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Это удалит {{itemname}} из кэша вашей системы.",
+      "flutterPathIsPointingOn": "Flutter PATH указывает на\n",
+      "changeThePathTo": "Измените путь на\n",
+      "ifYouWantToFlutterSdkThroughFvm": "если вы хотите обновить Flutter SDK через FVM",
+      "howToUpdateYourPath": "Как обновить путь?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Обновить проекты",
+    "projects": "Проекты",
+    "choose": "Выбрать",
+    "projectsProjects": "{{projects}} проект (-а/-ов)",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Показывать только проекты с закрепленными версиями",
+    "fvmOnly": "Только FVM",
+    "addProject": "Добавить проект",
+    "notAFlutterProject": "Не проект Flutter",
+    "components": {
+      "open": "Открыть",
+      "remove": "Удалить",
+      "openTerminalPlayground": "Открытый терминал Playground",
+      "openIde": "Открыть в {{ideName}}",
+      "selectAFlutterSdkVersion": "выберите версию Flutter SDK",
+      "noFlutterProjectsHaveBeenAddedYet": "Проект Flutter еще не добавлен.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Добавьте свой проект Flutter. Здесь будет отображаться информация о проекте."
+    }
+  },
+  "pubPackages": {
+    "trending": "Популярный",
+    "mostUsedPackages": "Наиболее используемые пакеты",
+    "flutterFavorites": "Избранное Flutter",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Сначала необходимо добавить проект Flutter. Здесь отображается информация о пакете.",
+      "noPackagesFound": "Пакеты не найдены",
+      "view": "Просмотрено",
+      "builtBy": "Собранный",
+      "likes": "Лайки",
+      "pubPoints": "Очки Pub",
+      "popularity": "Популярность",
+      "details": "Детали",
+      "changelog": "Журнал изменений",
+      "website": "Веб-сайт",
+      "packageprojectscountProjects": "{{packageProjectsCount}} проект(-а/ов)"
+    }
+  },
+  "releases": {
+    "all": "Все",
+    "releases": "Релизы",
+    "versions": "Версии",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Последняя tip-of-tree, абсолютно последняя передовая сборка. Обычно работает, хотя иногда мы случайно что-то ломаем."
+  },
+  "sandbox": {
+    "playground": "Playground",
+    "releasesVersions": "{{releases}} версий",
+    "notRunning": "Не работает"
+  },
+  "search": {
+    "components": {
+      "search": "Поиск... ",
+      "noResults": "Нет результатов",
+      "channels": "Каналы",
+      "stableReleases": "Стабильные релизы",
+      "betaReleases": "Бета-релизы",
+      "devReleases": "Релизы разработчиков",
+      "invalidChanel": "Некорректный канал"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Расширенный",
+      "downloadZip": "Скачать zip",
+      "zipFileWithAllReleaseDependencies": "Zip-файл со всеми зависимостями выпуска",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Информация о локальном кэше",
+      "createdDate": "Дата создания",
+      "cacheLocation": "Размещение кэша",
+      "nothingSelected": "Ничего не выбрано",
+      "channel": "Канал",
+      "releaseNotes": "Примечания к выпуску",
+      "version": "Версия",
+      "releaseDate": "Дата выпуска"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Настройки сохранены",
+    "couldNotSaveSettings": "Не удалось сохранить настройки",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Версия Flutter SDK должна быть установлена ​​как глобальная, чтобы получить доступ к настройкам flutter",
+      "analyticsCrashReporting": "Аналитика и отчеты об аварийном завершении работы",
+      "analyticsCrashReportSubtitle": "Когда команда Flutter аварийно завершает работу, делается попытка отправить отчет об аварийном завершении работы в Google, чтобы Google со временем мог улучшить Flutter.",
+      "platforms": "Платформы",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Пропустить настройки Flutter во время установки",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Это только клонирует Flutter, а не устанавливает его",
+      "dependenciesAfterANewVersionIsInstalled": "Зависимости после установки новой версии.",
+      "areYouSureYouWantToResetSettings": "Вы уверены, что хотите сбросить настройки?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Это только сбросит настройки Sidekick",
+      "appSettingsHaveBeenReset": "Настройки программы сброшены",
+      "general": "Основное",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Выберите тему или переключайтесь в соответствии с настройками системы.",
+      "theme": "Тема",
+      "system": "Системная",
+      "light": "Светлая",
+      "dark": "Темная",
+      "language": "Язык",
+      "resetToDefaultSettings": "Сброс настроек по умолчанию",
+      "reset": "Сбросить",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Выберите IDE, чтобы открыть свои проекты"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Доступное обновление.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Версия Sidekick {{updateInfoLatest}} теперь доступна",
+      "later": "Позже",
+      "updateNow": "Обновить сейчас",
+      "clickHereToDownload": "Нажмите здесь, чтобы загрузить",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Доступна новая версия Sidekick ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Установить необходимые компоненты",
+      "dialogDescriptionMacLinux": "Скопируйте это и вставьте в терминал. Следуйте инструкциям.",
+      "dialogDescriptionWindows": "Скопируйте это и вставьте в PowerShell. Следуйте инструкциям. PowerShell должен быть запущен с правами администратора.",
+      "dialogRestartNotication": "Отлично! Sidekick сейчас закроется. Пожалуйста, откройте его снова.",
+      "done": "Готово"
+    },
+    "screen": {
+      "title": "Sidekick не смог обнаружить один или несколько необходимых компонентов",
+      "subtitle": "Это разбивка того, что есть и чего хватает:",
+      "gitDescription": "Git используется для загрузки и обновления версий flutter. Он используется FVM",
+      "fvmDescription": "Управление версиями Flutter. Предоставляет Sidekick большинство своих основных функций.",
+      "chocoDescription": "По желанию. Может использоваться для установки FVM, если он отсутствует на устройствах Windows.",
+      "brewDescription": "По желанию. Может использоваться для установки FVM, если его нет на устройствах MacOS и Linux.",
+      "pleaseInstall": "Пожалуйста, установите недостающие компоненты, чтобы использовать Sidekick!",
+      "ignore": "Игнорировать",
+      "installmissing": "Установить недостающие компоненты"
+    }
+  }
+}
