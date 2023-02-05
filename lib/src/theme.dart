@@ -27,7 +27,7 @@ ThemeData get darkTheme {
     cardColor: const Color(0xFF2B2D2F),
     scaffoldBackgroundColor: const Color(0xFF1D1E1F),
     primarySwatch: Colors.blue,
-    accentColor: Colors.blue,
+    accentColor: Colors.blueAccent,
   );
 }
 
@@ -55,10 +55,28 @@ ThemeData _customThemeBuilder({
     colorScheme: baseTheme.colorScheme.copyWith(
       secondary: accentColor,
       tertiary: accentColor,
+      onSurface: Colors.white,
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
+          return null;
+        },
+      ),
     ),
     primaryColor: primarySwatch,
     primaryColorDark: primarySwatch,
     dividerColor: Colors.white10,
+    dividerTheme: const DividerThemeData(
+      color: Colors.white10,
+      thickness: 1,
+      space: 0,
+      indent: 0,
+      endIndent: 0,
+    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.grey,
@@ -100,7 +118,39 @@ ThemeData get lightTheme {
           secondary: Colors.blue,
           tertiary: Colors.blue,
         ),
+    chipTheme: ChipThemeData(
+      backgroundColor: Colors.grey.shade300,
+      secondarySelectedColor: Colors.grey.shade300,
+      brightness: Brightness.light,
+    ),
+    dialogBackgroundColor: Colors.white,
     dividerColor: Colors.black12,
+    dividerTheme: const DividerThemeData(
+      color: Colors.black12,
+      thickness: 1,
+      space: 0,
+      indent: 0,
+      endIndent: 0,
+    ),
+    cardColor: Colors.white,
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
+          return Colors.black54;
+        },
+      ),
+      trackColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.blue;
+          }
+          return Colors.black12;
+        },
+      ),
+    ),
     splashFactory: InkSparkle.splashFactory,
     scaffoldBackgroundColor: const Color(0xfffafafa),
     textButtonTheme: _textButtonThemeData,

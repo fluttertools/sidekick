@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/updater/updater.provider.dart';
 
-class UpdateDialog extends HookWidget {
+class UpdateDialog extends HookConsumerWidget {
   const UpdateDialog({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    final updateInfo = useProvider(updaterProvider);
-    final updater = useProvider(updaterProvider.notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updateInfo = ref.watch(updaterProvider);
+    final updater = ref.watch(updaterProvider.notifier);
 
     return AlertDialog(
       contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
