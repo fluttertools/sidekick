@@ -45,7 +45,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                   TextSpan(children: [
                     TextSpan(
                         text: configured.currentPath,
-                        style: Theme.of(context).textTheme.caption),
+                        style: Theme.of(context).textTheme.bodySmall),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.middle,
                       child: IconButton(

@@ -63,7 +63,7 @@ class EmptyDataset extends StatelessWidget {
   Widget build(BuildContext context) {
     final bgIcons = _buildIconsBackground(
         icon: icon,
-        color: iconColor ?? Theme.of(context).textTheme.bodyText1!.color!);
+        color: iconColor ?? Theme.of(context).textTheme.bodyLarge!.color!);
 
     return Stack(
       children: [

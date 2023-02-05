@@ -21,14 +21,14 @@ class EmptyProjects extends StatelessWidget {
             Text(
               context.i18n(
                   'modules:projects.components.noFlutterProjectsHaveBeenAddedYet'),
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
               context.i18n(
                   'modules:projects.components.addYourFlutterProjectProjectsInformationWillBeDisplayedHere'),
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),

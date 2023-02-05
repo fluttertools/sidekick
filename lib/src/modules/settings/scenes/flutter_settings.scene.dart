@@ -30,7 +30,7 @@ class SettingsSectionFlutter extends ConsumerWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text('Flutter', style: Theme.of(context).textTheme.headline6),
+          Text('Flutter', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 20),
           releases.hasGlobal
               ? Container()

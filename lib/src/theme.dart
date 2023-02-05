@@ -54,7 +54,6 @@ ThemeData _customThemeBuilder({
       secondary: accentColor,
     ),
     dividerColor: Colors.white10,
-    toggleableActiveColor: accentColor,
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.grey,
@@ -71,8 +70,8 @@ ThemeData _customThemeBuilder({
     dialogTheme: DialogTheme(
       shape: _roundedShape,
       backgroundColor: scaffoldBackgroundColor,
-      titleTextStyle: ThemeData.dark().textTheme.headline1,
-      contentTextStyle: ThemeData.dark().textTheme.bodyText1,
+      titleTextStyle: ThemeData.dark().textTheme.displayLarge,
+      contentTextStyle: ThemeData.dark().textTheme.bodyLarge,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
@@ -102,8 +101,8 @@ ThemeData get lightTheme {
     ),
     dialogTheme: DialogTheme(
       shape: _roundedShape,
-      titleTextStyle: ThemeData.light().textTheme.headline3,
-      contentTextStyle: ThemeData.light().textTheme.bodyText1,
+      titleTextStyle: ThemeData.light().textTheme.displaySmall,
+      contentTextStyle: ThemeData.light().textTheme.bodyLarge,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,

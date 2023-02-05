@@ -21,7 +21,7 @@ class EmptyVersions extends ConsumerWidget {
           children: [
             Text(
               context.i18n('modules:fvm.components.flutterSdkNotInstalled'),
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -29,7 +29,7 @@ class EmptyVersions extends ConsumerWidget {
               context.i18n(
                   'modules:fvm.components.noFlutterVersionInstalledMessage'),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(

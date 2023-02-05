@@ -101,7 +101,7 @@ class SettingsScreen extends HookConsumerWidget {
                       ),
                       title: Text(
                         section,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       selectedTileColor: Theme.of(context).hoverColor,
                       selected: currentSection.value == idx,
