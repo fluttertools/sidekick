@@ -273,6 +273,15 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "PeachyCad",
+      "name": "PeachyCad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65190267?v=4",
+      "profile": "https://github.com/PeachyCad",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
