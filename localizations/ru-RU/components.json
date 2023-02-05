@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "Скопировано в буфер обмена",
+        "refresh": "Обновить",
+        "countFound": "{{count}} найдено"
+    },
+    "molecules": {
+        "master": "Master",
+        "versionIsInstalled": "Версия установлена",
+        "versionNotInstalledClickToInstall": "Версия не установлена. Нажмите для установки."
+    }
+}
