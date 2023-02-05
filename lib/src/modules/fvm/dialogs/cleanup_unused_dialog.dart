@@ -6,8 +6,8 @@ import '../../common/utils/notify.dart';
 import '../fvm.provider.dart';
 import '../fvm_queue.provider.dart';
 
-Future<void> cleanupUnusedDialog(BuildContext context) async {
-  final unusedVersions = context.read(unusedVersionProvider);
+Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
+  final unusedVersions = ref.read(unusedVersionProvider);
 
   if (unusedVersions.isEmpty) {
     notify(context
@@ -49,7 +49,7 @@ Future<void> cleanupUnusedDialog(BuildContext context) async {
                     (element) => selected.containsKey(element.name),
                   );
                   for (final version in unusedSelected) {
-                    context
+                    ref
                         .read(fvmQueueProvider.notifier)
                         .remove(context, version);
                   }

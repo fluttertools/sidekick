@@ -1,0 +1,142 @@
+name: Build (Linux, Mac OS, Windows)
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-linux:
+    name: "Build Linux"
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2.6.1
+        with:
+          channel: 'stable'
+
+      - name: Install Linux build tools
+        run: sudo apt-get update && sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev squashfs-tools
+
+      - name: Enable desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Flutter build app
+        run: flutter build linux
+
+      - name: Compress artifacts
+        uses: TheDoctor0/zip-release@0.6.1
+        with:
+          filename: linux-dev.zip
+      
+      - name: Upload Build Zip
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: sidekick-linux-dev.zip
+          path: linux-dev.zip
+      
+  build-macos:
+    name: "Build MacOS"
+    runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2.6.1
+        with:
+          channel: 'stable'
+
+      - name: Set Up XCode
+        uses: devbotsxyz/xcode-select@v1.1.0
+
+      - name: Enable desktop
+        run: flutter config --enable-macos-desktop
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Flutter build app
+        run: flutter build macos
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Create dmg
+        run: |
+          ./scripts/create_mac_dmg.sh
+
+      - name: Compress artifacts
+        run: zip -r macos-dev.zip build/macos/Build/Products/Release
+
+      - name: Upload Build DMG
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: sidekick-macos-dev.dmg
+          path: build/macos/Build/Products/Release/Sidekick.dmg
+      
+      - name: Upload Build Zip
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: sidekick-macos-dev.zip
+          path: macos-dev.zip
+
+
+  build-windows:
+    name: "Build Windows"
+    runs-on: windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2.6.1
+        with:
+          channel: 'stable'
+
+      - name: Enable desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Write MS Store 
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: lib/modifiers.dart
+          contents: |
+            // Generated file. Do not modify
+            const isMSStore = false;
+          write-mode: overwrite
+
+      - name: Flutter build app
+        run: flutter build windows
+
+      - name: Compress artifacts
+        run: tar.exe -a -c -f windows-dev.zip build/windows/Runner/release
+
+      - name: Upload Build Zip
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: sidekick-windows-dev.zip
+          path: windows-dev.zip

@@ -8,17 +8,18 @@ import '../../../modules/common/utils/dir_stat.dart';
 import '../fvm.provider.dart';
 
 /// Fvm cache size
-class FvmCacheSize extends HookWidget {
+class FvmCacheSize extends HookConsumerWidget {
   /// Constructor
   const FvmCacheSize({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final cacheSize = useProvider(cacheSizeProvider).state;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cacheSize = ref.watch(cacheSizeProvider);
     final unusedSize = useState(DirectorySizeInfo());
-    useProvider(unusedReleaseSizeProvider)
+    ref
+        .watch(unusedReleaseSizeProvider)
         .whenData((value) => unusedSize.value = value);
 
     if (cacheSize.totalSize == 0) {

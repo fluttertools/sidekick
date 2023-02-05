@@ -1,11 +1,10 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
-import 'package:sidekick/src/window_border.dart';
 
 import '../../components/atoms/typography.dart';
 import '../../modules/common/dto/release.dto.dart';
@@ -14,7 +13,7 @@ import 'components/sandbox_terminal.dart';
 import 'sandbox.provider.dart';
 
 /// Sandbox screen
-class SandboxScreen extends HookWidget {
+class SandboxScreen extends HookConsumerWidget {
   /// Constructor
   const SandboxScreen({
     required this.project,
@@ -25,10 +24,10 @@ class SandboxScreen extends HookWidget {
   final Project project;
 
   @override
-  Widget build(BuildContext context) {
-    final releases = useProvider(releasesStateProvider);
-    final terminal = useProvider(sandboxProvider.notifier);
-    final processing = useProvider(sandboxProvider).processing;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final releases = ref.watch(releasesStateProvider);
+    final terminal = ref.watch(sandboxProvider.notifier);
+    final processing = ref.watch(sandboxProvider).processing;
 
     final selectedRelease = useState<ReleaseDto?>(null);
 
@@ -39,57 +38,61 @@ class SandboxScreen extends HookWidget {
       return;
     }, []);
 
-    return WillPopScope(
-      onWillPop: () async {
-        terminal.clearConsole();
-        return true;
-      },
-      child: Scaffold(
-        // backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(MdiIcons.playBox),
-              const SizedBox(width: 10),
-              Subheading(context.i18n('modules:sandbox.playground')),
-            ],
-          ),
-          centerTitle: true,
-          flexibleSpace: MoveWindow(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[Colors.red, Colors.blue],
-                ),
-              ),
-            ),
-          ),
-          actions: const [
-            WindowButtons(),
+    return Scaffold(
+      // backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(MdiIcons.playBox),
+            const SizedBox(width: 10),
+            Subheading(context.i18n('modules:sandbox.playground')),
           ],
         ),
-        body: Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  ListTile(
-                    dense: true,
-                    title: Text(context.i18n('modules:releases.releases')),
-                    subtitle: Text(
-                      context.i18n(
-                        'modules:sandbox.releasesVersions',
-                        variables: {
-                          'releases': releases.all.length,
-                        },
-                      ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.red, Colors.blue],
+            ),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            iconSize: 15,
+            splashRadius: 15,
+            onPressed: () {
+              terminal.clearConsole();
+              Navigator.of(context).pop();
+            },
+          ),
+          const SizedBox(width: 10),
+        ],
+      ),
+      body: Row(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                ListTile(
+                  dense: true,
+                  title: Text(context.i18n('modules:releases.releases')),
+                  subtitle: Text(
+                    context.i18n(
+                      'modules:sandbox.releasesVersions',
+                      variables: {
+                        'releases': releases.all.length,
+                      },
                     ),
                   ),
-                  const Divider(height: 1),
-                  Expanded(
+                ),
+                const Divider(height: 1),
+                Expanded(
+                  child: CupertinoScrollbar(
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListView(
@@ -134,57 +137,57 @@ class SandboxScreen extends HookWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const VerticalDivider(
-              width: 0,
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ListTile(
-                    dense: true,
-                    title: Text(project.name ?? ''),
-                    subtitle: Text(project.projectDir.path),
-                    trailing: processing
-                        ? OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              primary: Colors.deepOrange,
-                              side: const BorderSide(
-                                color: Colors.deepOrange,
-                              ),
-                            ),
-                            onPressed: () {
-                              terminal.endProcess();
-                            },
-                            child: Text(
-                              context.i18n('modules:fvm.dialogs.cancel'),
-                            ),
-                          )
-                        : OutlinedButton(
-                            onPressed: null,
-                            child: Text(
-                              context.i18n('modules:sandbox.notRunning'),
+          ),
+          const VerticalDivider(
+            width: 0,
+          ),
+          Expanded(
+            flex: 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  dense: true,
+                  title: Text(project.name ?? ''),
+                  subtitle: Text(project.projectDir.path),
+                  trailing: processing
+                      ? OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.deepOrange,
+                            side: const BorderSide(
+                              color: Colors.deepOrange,
                             ),
                           ),
-                  ),
-                  const Divider(height: 1),
-                  Expanded(
-                    child: selectedRelease.value != null
-                        ? SandboxTerminal(
-                            project: project,
-                            release: selectedRelease.value!,
-                          )
-                        : Container(),
-                  ),
-                ],
-              ),
+                          onPressed: () {
+                            terminal.endProcess();
+                          },
+                          child: Text(
+                            context.i18n('modules:fvm.dialogs.cancel'),
+                          ),
+                        )
+                      : OutlinedButton(
+                          onPressed: null,
+                          child: Text(
+                            context.i18n('modules:sandbox.notRunning'),
+                          ),
+                        ),
+                ),
+                const Divider(height: 1),
+                Expanded(
+                  child: selectedRelease.value != null
+                      ? SandboxTerminal(
+                          project: project,
+                          release: selectedRelease.value!,
+                        )
+                      : Container(),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

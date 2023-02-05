@@ -30,7 +30,7 @@ class ErrorDBScreen extends StatelessWidget {
                     ),
                     EmptyDataset(
                       icon: const Icon(Icons.error_outline_outlined),
-                      iconColor: Theme.of(context).errorColor,
+                      iconColor: Theme.of(context).colorScheme.error,
                       opacity: 1,
                     ),
                     const SizedBox(
@@ -38,7 +38,7 @@ class ErrorDBScreen extends StatelessWidget {
                     ),
                     Text(
                       'There was an issue opening Sidekick',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
@@ -60,7 +60,7 @@ class ErrorDBScreen extends StatelessWidget {
                                   (states) => const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10))),
                           onPressed: () {
-                            openLink(context,
+                            openLink(
                                 'https://github.com/leoafarias/sidekick/issues/new/choose');
                           },
                           label: const Text('Create new issue'),

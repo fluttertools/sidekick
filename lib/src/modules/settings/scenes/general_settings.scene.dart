@@ -75,7 +75,7 @@ class SettingsSectionGeneral extends StatelessWidget {
       child: ListView(
         children: [
           Text(context.i18n('modules:settings.scenes.general'),
-              style: Theme.of(context).textTheme.headline6),
+              style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 20),
           ListTile(
             title: Text(

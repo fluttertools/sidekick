@@ -3,8 +3,6 @@ name: Build (Linux, Mac OS, Windows)
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   build-linux:
@@ -17,12 +15,12 @@ jobs:
       - uses: actions/checkout@v2.4.0
 
       - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2.3.0
+        uses: subosito/flutter-action@v2.6.1
         with:
           channel: 'stable'
 
       - name: Install Linux build tools
-        run: sudo apt-get update && sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev
+        run: sudo apt-get update && sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev squashfs-tools
 
       - name: Enable desktop
         run: flutter config --enable-linux-desktop
@@ -69,7 +67,7 @@ jobs:
       - uses: actions/checkout@v2.4.0
 
       - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2.3.0
+        uses: subosito/flutter-action@v2.6.1
         with:
           channel: 'stable'
 
@@ -121,7 +119,7 @@ jobs:
       - uses: actions/checkout@v2.4.0
 
       - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2.3.0
+        uses: subosito/flutter-action@v2.6.1
         with:
           channel: 'stable'
 

@@ -5,13 +5,13 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import '../../../components/atoms/empty_dataset.dart';
 import '../../navigation/navigation.provider.dart';
 
-class EmptyVersions extends StatelessWidget {
+class EmptyVersions extends ConsumerWidget {
   const EmptyVersions({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return EmptyDataset(
       icon: const FlutterLogo(),
       child: Padding(
@@ -21,7 +21,7 @@ class EmptyVersions extends StatelessWidget {
           children: [
             Text(
               context.i18n('modules:fvm.components.flutterSdkNotInstalled'),
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -29,7 +29,7 @@ class EmptyVersions extends StatelessWidget {
               context.i18n(
                   'modules:fvm.components.noFlutterVersionInstalledMessage'),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
@@ -38,7 +38,7 @@ class EmptyVersions extends StatelessWidget {
                 (states) => const EdgeInsets.fromLTRB(30, 15, 30, 15),
               )),
               onPressed: () {
-                context
+                ref
                     .read(navigationProvider.notifier)
                     .goTo(NavigationRoutes.exploreScreen);
               },

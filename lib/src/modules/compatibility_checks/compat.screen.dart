@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/components/atoms/typography.dart';
 import 'package:sidekick/src/components/molecules/top_app_bar.dart';
@@ -13,7 +12,7 @@ import '../../theme.dart';
 import 'compat.dialog.dart';
 
 /// Settings screen
-class CompatCheckScreen extends HookWidget {
+class CompatCheckScreen extends ConsumerWidget {
   /// Constructor
   const CompatCheckScreen({
     key,
@@ -21,9 +20,9 @@ class CompatCheckScreen extends HookWidget {
 
   /// Current nav section
   @override
-  Widget build(BuildContext context) {
-    var provider = useProvider(compatProvider);
-    var providerState = useProvider(compatProvider.notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    var provider = ref.watch(compatProvider);
+    var providerState = ref.watch(compatProvider.notifier);
 
     return Scaffold(
       extendBodyBehindAppBar: false,

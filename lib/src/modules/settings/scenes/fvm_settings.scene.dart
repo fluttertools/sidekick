@@ -24,7 +24,7 @@ class FvmSettingsScene extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: ListView(
         children: [
-          Text('FVM', style: Theme.of(context).textTheme.headline6),
+          Text('FVM', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 20),
           SwitchListTile(
             title: Text(context

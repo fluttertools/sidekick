@@ -35,7 +35,7 @@ const pages = [
 ];
 
 /// Main widget of the app
-class AppShell extends HookWidget {
+class AppShell extends HookConsumerWidget {
   /// Constructor
   const AppShell({
     Key? key,
@@ -57,12 +57,12 @@ class AppShell extends HookWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     LayoutSize.init(context);
-    final navigation = useProvider(navigationProvider.notifier);
-    final currentRoute = useProvider(navigationProvider);
-    final selectedInfo = useProvider(selectedDetailProvider).state;
-    final compatInfo = useProvider(compatProvider);
+    final navigation = ref.watch(navigationProvider.notifier);
+    final currentRoute = ref.watch(navigationProvider);
+    final selectedInfo = ref.watch(selectedDetailProvider);
+    final compatInfo = ref.watch(compatProvider);
     final focusNode = useFocusNode();
 
     // Index of item selected

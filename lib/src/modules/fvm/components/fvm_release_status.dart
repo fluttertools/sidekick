@@ -10,7 +10,7 @@ import 'fvm_master_status.dart';
 import 'fvm_setup_button.dart';
 
 /// Display status for a cache release
-class FvmReleaseStatus extends StatelessWidget {
+class FvmReleaseStatus extends ConsumerWidget {
   /// Constructor
   const FvmReleaseStatus(
     this.release, {
@@ -20,7 +20,7 @@ class FvmReleaseStatus extends StatelessWidget {
   /// Release
   final ReleaseDto release;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Will use for channel upgrade comparison
     var currentRelease = release.release?.version;
     var latestRelease = release.release?.version;
@@ -71,7 +71,7 @@ class FvmReleaseStatus extends StatelessWidget {
           icon: const Icon(MdiIcons.triangle, size: 15),
           label: Text(release.release?.version ?? ''),
           onPressed: () {
-            context.read(fvmQueueProvider.notifier).upgrade(context, release);
+            ref.read(fvmQueueProvider.notifier).upgrade(context, release);
           },
         ),
       ],

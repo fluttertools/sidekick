@@ -15,7 +15,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 
 import '../../modules/common/utils/notify.dart';
-import '../settings/settings.service.dart';
 import 'project.dto.dart';
 import 'projects.service.dart';
 
@@ -63,8 +62,6 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   /// Triggers a full project reload. Adds a 1 second delay on update
   /// if [withDelay] is true for better UI feedback
   Future<void> load() async {
-    /// Do migration
-    await _migrate();
     final projects = await ProjectsService.load();
     state = projects.toList();
   }
@@ -95,27 +92,5 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   void removeProject(Directory projectDir) {
     ProjectsService.box.delete(projectDir.path);
     load();
-  }
-
-  Future<void> _migrate() async {
-    /// Do migration
-    /// TODO: Can be removed before 1.0
-    final settings = SettingsService.read();
-
-    if (settings.projectPaths.isNotEmpty) {
-      for (final path in settings.projectPaths) {
-        await ProjectsService.box.put(
-          path,
-          ProjectRef(
-            name: path.split('/').last,
-            path: path,
-          ),
-        );
-      }
-
-      /// Delete settings
-      settings.projectPaths = [];
-      await SettingsService.save(settings);
-    }
   }
 }

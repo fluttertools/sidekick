@@ -7,7 +7,7 @@ import '../../common/dto/release.dto.dart';
 import '../fvm_queue.provider.dart';
 
 /// Setup button
-class SetupButton extends StatelessWidget {
+class SetupButton extends ConsumerWidget {
   /// Constructor
   const SetupButton({
     required this.release,
@@ -18,7 +18,7 @@ class SetupButton extends StatelessWidget {
   final ReleaseDto release;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Tooltip(
       message: context.i18n('modules:fvm.components.sdkHasNotFinishedSetup'),
       child: IconButton(
@@ -27,7 +27,7 @@ class SetupButton extends StatelessWidget {
         splashRadius: 20,
         color: Theme.of(context).colorScheme.secondary,
         onPressed: () {
-          context.read(fvmQueueProvider.notifier).setup(context, release);
+          ref.read(fvmQueueProvider.notifier).setup(context, release);
         },
       ),
     );

@@ -5,14 +5,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
 import '../atoms/console.dart';
 
-class AppBottomBar extends HookWidget {
+class AppBottomBar extends HookConsumerWidget {
   const AppBottomBar({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final actions = useProvider(fvmQueueProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final actions = ref.watch(fvmQueueProvider);
     final expand = useState(false);
     final processing = actions.activeItem != null;
     void toggleExpand() {

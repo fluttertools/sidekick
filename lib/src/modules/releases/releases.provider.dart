@@ -1,4 +1,6 @@
 // ignore_for_file: top_level_function_literal_block
+import "package:system_info2/system_info2.dart";
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fvm/fvm.dart';
 
@@ -21,6 +23,8 @@ class AppReleasesState {
   bool hasGlobal;
 
   List<ReleaseDto> _allCached = [];
+
+  final arch = SysInfo.kernelArchitecture;
 
   AppReleasesState({
     this.fetching = true,
@@ -72,7 +76,11 @@ class AppReleasesState {
   }
 
   void addVersion(VersionDto version) {
-    _versions.add(version);
+    // TODO: Remove based on arch
+    final dupeList = _versions.where((element) => element.name == version.name);
+    if (dupeList.isEmpty) {
+      _versions.add(version);
+    }
   }
 
   void addMaster(MasterDto master) {
@@ -220,7 +228,7 @@ Filter filterFromName(String name) {
 final filterProvider = StateProvider<Filter>((_) => Filter.all);
 
 final filterableReleasesProvider = Provider((ref) {
-  final filter = ref.watch(filterProvider).state;
+  final filter = ref.watch(filterProvider);
   final releases = ref.watch(releasesStateProvider);
 
   if (filter == Filter.all) {

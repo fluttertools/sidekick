@@ -218,6 +218,70 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "gauravmehta13",
+      "name": "Gaurav Yadav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51997260?v=4",
+      "profile": "http://gaurav.my.id",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "kyle-seongwoo-jun",
+      "name": "Kyle Seongwoo Jun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16515307?v=4",
+      "profile": "https://seongxwoo.notion.site/Kyle-b49a1520f7ea4d5a86acedcf201129f6",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "karniv00l",
+      "name": "Piotr Rogowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3144291?v=4",
+      "profile": "http://hypertuner.cloud",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Gerfaut",
+      "name": "Christophe Leemans",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2006567?v=4",
+      "profile": "https://backpackmeet.tourdumondiste.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "abrahamSN",
+      "name": "Abraham Setya Nugraha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13744168?v=4",
+      "profile": "https://github.com/abrahamSN",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "areille",
+      "name": "areille",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32739983?v=4",
+      "profile": "https://github.com/areille",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "PeachyCad",
+      "name": "PeachyCad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65190267?v=4",
+      "profile": "https://github.com/PeachyCad",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",

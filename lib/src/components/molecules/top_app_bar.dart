@@ -13,7 +13,7 @@ import 'package:sidekick/src/version.dart';
 import 'package:sidekick/src/window_border.dart';
 
 /// Sidekick top app bar
-class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
+class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
   /// Constructor
   const SkAppBar({key}) : super(key: key);
 
@@ -21,7 +21,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(45);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Opens setting modal
     void openSettingsScreen() {
       Navigator.push(
@@ -34,9 +34,7 @@ class SkAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     /// Opens up search modal
     void openSearchModal() {
-      context
-          .read(navigationProvider.notifier)
-          .goTo(NavigationRoutes.searchScreen);
+      ref.read(navigationProvider.notifier).goTo(NavigationRoutes.searchScreen);
     }
 
     Widget renderTitle() {

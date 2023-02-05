@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../components/atoms/typography.dart';
@@ -12,15 +11,15 @@ import 'reference_info_tile.dart';
 import 'release_info_section.dart';
 
 /// Drawer to display selected detail
-class SelectedDetailDrawer extends HookWidget {
+class SelectedDetailDrawer extends ConsumerWidget {
   /// Constructors
   const SelectedDetailDrawer({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final detail = useProvider(selectedDetailProvider).state;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final detail = ref.watch(selectedDetailProvider);
     final selected = detail?.release;
 
     void onClose() {
@@ -29,7 +28,7 @@ class SelectedDetailDrawer extends HookWidget {
         Navigator.pop(context);
       }
       // Clear selected detail provider
-      context.read(selectedDetailProvider).state = null;
+      ref.read(selectedDetailProvider.notifier).state = null;
     }
 
     if (selected == null) {

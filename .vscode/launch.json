@@ -19,6 +19,15 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
+    },
+    {
+      "name": "Flutter Profile Verbose",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "-v"
+      ],
     }
   ]
 }

@@ -63,7 +63,7 @@ class FvmQueueState extends StateNotifier<FvmQueue> {
   }) : super(FvmQueue(activeItem: null, queue: Queue()));
 
   /// Provider ref to be used later
-  final ProviderReference ref;
+  final Ref ref;
 
   late I18Next i18next;
 

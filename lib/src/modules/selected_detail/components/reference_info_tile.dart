@@ -37,7 +37,7 @@ class ReferenceInfoTile extends StatelessWidget {
                 size: 20,
               ),
               onPressed: () async {
-                await openLink(context, kFlutterTagsUrl + version.name);
+                await openLink(kFlutterTagsUrl + version.name);
               },
             ),
           ),

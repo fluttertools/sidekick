@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import 'package:sidekick/src/modules/common/utils/notify.dart';
@@ -11,14 +10,14 @@ import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 
 import 'compat.utils.dart';
 
-class CompatDialog extends HookWidget {
+class CompatDialog extends ConsumerWidget {
   const CompatDialog({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final check = useProvider(compatProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final check = ref.watch(compatProvider);
     final command = _genCommand(check);
 
     return AlertDialog(

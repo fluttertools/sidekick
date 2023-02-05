@@ -9,7 +9,7 @@ import 'package:sidekick/src/modules/common/utils/helpers.dart';
 import '../../modules/common/dto/release.dto.dart';
 import '../../modules/fvm/fvm_queue.provider.dart';
 
-class VersionInstallButton extends HookWidget {
+class VersionInstallButton extends HookConsumerWidget {
   final ReleaseDto version;
 
   const VersionInstallButton(
@@ -18,7 +18,7 @@ class VersionInstallButton extends HookWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final installedMsg =
         context.i18n('components:molecules.versionIsInstalled');
     final notInstalledMsg = context.i18n(
@@ -26,7 +26,7 @@ class VersionInstallButton extends HookWidget {
     );
     final isQueued = useState(false);
     final hovering = useState(false);
-    final queueProvider = useProvider(fvmQueueProvider);
+    final queueProvider = ref.watch(fvmQueueProvider);
 
     final isCached = version.isCached == true;
 
@@ -50,7 +50,7 @@ class VersionInstallButton extends HookWidget {
     Future<void> onInstall() async {
       isQueued.value = true;
       // Add it to queue for installation
-      context.read(fvmQueueProvider.notifier).install(context, version);
+      ref.read(fvmQueueProvider.notifier).install(context, version);
     }
 
     Widget installIcon() {

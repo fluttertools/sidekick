@@ -24,7 +24,7 @@ class Paragraph extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             height: 1.3,
             fontSize: 12,
           ),
@@ -48,7 +48,7 @@ class Caption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.caption,
+      style: Theme.of(context).textTheme.bodySmall,
     );
   }
 }
@@ -100,7 +100,7 @@ class Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 18),
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
     );
   }
 }
@@ -120,7 +120,7 @@ class Subheading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.subtitle2,
+      style: Theme.of(context).textTheme.titleSmall,
     );
   }
 }

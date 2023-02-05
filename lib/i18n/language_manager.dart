@@ -23,19 +23,22 @@ class LanguageManager {
     const Locale('ko', 'KR'),
     const Locale('ja', 'JP'),
     const Locale('pl', 'PL'),
+    const Locale('pt', 'BR'),
     const Locale('it', 'IT'),
     const Locale('uk', 'UA'),
+    const Locale('ru', 'RU'),
+    const Locale('hi', 'IN'),
+    const Locale('id', 'ID'),
+    const Locale('fr', 'FR'),
   ];
 
   List<String> getListOfLocalesAsString() {
     return List<String>.generate(
         languageManager._supportedLanguagesCodes.length,
         (i) =>
-            languageManager._supportedLanguagesCodes[i].languageCode
-                .toLowerCase() +
+            languageManager._supportedLanguagesCodes[i].languageCode.toLowerCase() +
             '_' +
-            languageManager._supportedLanguagesCodes[i].countryCode!
-                .toUpperCase());
+            languageManager._supportedLanguagesCodes[i].countryCode!.toUpperCase());
   }
 
   String formatter(Object value, String? format, Locale locale) {
@@ -52,8 +55,7 @@ class LanguageManager {
     return value.toString();
   }
 
-  Iterable<Locale> get supportedLocales =>
-      _supportedLanguagesCodes.map<Locale>((language) => language);
+  Iterable<Locale> get supportedLocales => _supportedLanguagesCodes.map<Locale>((language) => language);
 }
 
 LanguageManager languageManager = LanguageManager();

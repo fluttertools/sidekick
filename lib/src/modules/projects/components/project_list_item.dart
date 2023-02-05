@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -15,7 +14,7 @@ import 'project_actions.dart';
 import 'project_release_select.dart';
 
 /// Project list item
-class ProjectListItem extends HookWidget {
+class ProjectListItem extends ConsumerWidget {
   /// Constructor
   const ProjectListItem(
     this.project, {
@@ -30,14 +29,14 @@ class ProjectListItem extends HookWidget {
   final bool versionSelect;
 
   @override
-  Widget build(BuildContext context) {
-    final cachedVersions = useProvider(releasesStateProvider).all;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cachedVersions = ref.watch(releasesStateProvider).all;
 
-    final version = useProvider(getVersionProvider(project.pinnedVersion));
+    final version = ref.watch(getVersionProvider(project.pinnedVersion));
 
     final needInstall = version != null && project.pinnedVersion != null;
 
-    final sidekickSettings = useProvider(settingsProvider).sidekick;
+    final sidekickSettings = ref.watch(settingsProvider).sidekick;
 
     final ideName = sidekickSettings.ide;
 
@@ -58,7 +57,6 @@ class ProjectListItem extends HookWidget {
 
     void openIde() {
       ide?.launch(
-        context,
         project.projectDir.absolute.path,
         customLocation: sidekickSettings.customIdeLocation,
       );

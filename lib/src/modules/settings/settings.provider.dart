@@ -15,7 +15,7 @@ final settingsProvider =
 });
 
 class _SettingsStateNotifier extends StateNotifier<AllSettings> {
-  ProviderReference ref;
+  Ref ref;
 
   _SettingsStateNotifier(
     this.ref, {

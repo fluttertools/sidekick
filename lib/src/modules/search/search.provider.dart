@@ -67,7 +67,7 @@ final searchQueryProvider = StateProvider<String>((_) => '');
 
 /// Search results provider
 final searchResultsProvider = Provider((ref) {
-  final query = ref.watch(searchQueryProvider).state;
+  final query = ref.watch(searchQueryProvider);
   final releaseState = ref.read(releasesStateProvider);
 
   final projects = ref.read(projectsProvider);
