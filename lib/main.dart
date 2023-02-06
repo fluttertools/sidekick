@@ -30,9 +30,7 @@ void main() async {
   await windowManager.ensureInitialized();
 
   // Transparency compatibility for windows & linux
-  if (!(Platform.isMacOS || Platform.isLinux)) {
-    await Window.initialize();
-  }
+  await Window.initialize();
 
   Hive.registerAdapter(SidekickSettingsAdapter());
   Hive.registerAdapter(ProjectPathAdapter());
