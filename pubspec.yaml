@@ -63,7 +63,7 @@ dev_dependencies:
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-  hive_generator: ^1.1.0
+  hive_generator: ^2.0.0
   msix: ^2.7.0
 
 flutter:
