@@ -1,7 +1,7 @@
 {
   "sidekick": {
     "language": {
-      "ar-SA": "عربى", 
+      "ar-SA": "عربى",
       "bn-BD": "বাংলা",
       "de-DE": "Deutsch",
       "en-GB": "English (GB)",
@@ -19,7 +19,8 @@
       "ru-RU": "Русский",
       "hi-IN": "हिन्दी",
       "id-ID": "Indonesia",
-      "fr-FR": "Français"
+      "fr-FR": "Français",
+      "tr-TR": "Türkçe"
     }
   }
 }
