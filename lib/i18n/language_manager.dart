@@ -30,6 +30,7 @@ class LanguageManager {
     const Locale('hi', 'IN'),
     const Locale('id', 'ID'),
     const Locale('fr', 'FR'),
+    const Locale('tr', 'TR'),
   ];
 
   List<String> getListOfLocalesAsString() {
