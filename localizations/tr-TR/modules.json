@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "Kontrol Paneli",
+    "navButtonProjects": "Projeler",
+    "navButtonExplore": "Keşfet",
+    "navButtonPackages": "Paketler",
+    "stableChannelDescription": "Prodüksiyonda kullanılacak tüm uygulamaların sürümleri için bu kanalı kullanmanızı öneririz. Yaklaşık üç ayda bir, beta olarak stabilize edilmiş bir dal (branch) bir sonraki stabil dalımız olur ve biz o dalın kararlı bir sürümünü oluştururuz.",
+    "betaChannelDescription": "Branch, ayın başında, genellikle ilk Pazartesi günü master tarafından yeni bir beta sürümü için oluşturulur. Bu dal, Dart, motor (engine) ve çerçeve (framework) için bir dal içerecektir.",
+    "devChannelDescription": "Tamamen test edilmiş son inşâ (build). Genellikle çalışır, ancak bilinen \"kötü\" Geliştirme (Dev) inşâlarının listesi için \"Kötü inşâlar\"a bakın.",
+    "masterChannelDescription": "En yeni ağaç ucu, kesinlikle bıçağın ağzındaki inşâ. Genellikle işlevseldir, ancak bazen yanlışlıkla bir şeyleri bozarız.",
+    "utils": {
+      "couldNotLaunchUrl": "{{url}} açılamadı"
+    }
+  },
+  "fvm": {
+    "installedVersions": "Yüklü Versiyonlar",
+    "cleanUp": "Temizle",
+    "cleanUpTooltip": "Kullanılmayan versiyonları temizle",
+    "numberOfCachedVersions": "{{cachedVersions}} versiyonlar",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} versiyonu yüklendi.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} versiyonun kurulumu tamamlandı.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} kanalı yükseltildi.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} versiyonu kaldırıldı.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} versiyonu global olarak ayarlandı.",
+    "versionVersionPinnedToProjectname": "{{version}} versiyonu {{projectName}} projesine sabitlendi",
+    "components": {
+      "upgrade": "Yükselt",
+      "setAsGlobal": "Global olarak ayarla",
+      "inUse": "Kullanılıyor",
+      "unused": "Kullanılmıyor",
+      "flutterSdkNotInstalled": "Flutter SDK kurulu değil.",
+      "noFlutterVersionInstalledMessage": "Şu anda yüklü bir Flutter SDK versiyonunuz yok. Yüklü olan versiyonlar veya kanallar burada gösterilir.",
+      "exploreFlutterReleases": "Flutter Sürümlerini Keşfet",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "SDK kurulumu tamamlanmadı"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Kullanılmayan hiçbir Flutter SDK versiyonu yüklü değil",
+      "cleanUpUnusedVersions": "Kullanılmayan versiyonları temizle",
+      "cancel": "İptal",
+      "confirm": "Onayla",
+      "ok": "Tamam",
+      "globalConfiguration": "Genel Ayar",
+      "theseVersionAreNotPinnedToAProject": "Bu versiyonlar bir projeye sabitlenmemiş",
+      "doYouWantToRemoveThemToFreeUpSpace": "Boş alan açmak için kaldırmak istiyor musunuz?",
+      "areYouSureYouWantToRemove": "Kaldırmak istediğinize emin misiniz?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Bu işlem {{itemname}}'i sisteminizin cache'inden kaldıracaktır.",
+      "flutterPathIsPointingOn": "Flutter PATH şuraya gösteriyor\n ",
+      "changeThePathTo": "PATH'i şuraya değiştir\n",
+      "ifYouWantToFlutterSdkThroughFvm": "FVM ile Flutter SDK güncellemek istiyorsanız",
+      "howToUpdateYourPath": "PATH nasıl güncellenir?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Yenilenen projeler",
+    "projects": "Projeler",
+    "choose": "Seç",
+    "projectsProjects": "Projeler {{projects}}",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Sadece sabitlenmiş versiyonları olan projeleri göster",
+    "fvmOnly": "Sadece FVM",
+    "addProject": "Proje Ekle",
+    "notAFlutterProject": "Flutter projesi değil",
+    "components": {
+      "open": "Aç",
+      "remove": "Kaldır",
+      "openTerminalPlayground": "Terminal Oyun alanını Aç",
+      "openIde": "{{ideName}}'de aç",
+      "selectAFlutterSdkVersion": "Flutter SDK versiyonu seç",
+      "noFlutterProjectsHaveBeenAddedYet": "Henüz Flutter projesi eklenmedi.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Flutter projesini ekleyin. Proje bilgileri burada görüntülenecektir."
+    }
+  },
+  "pubPackages": {
+    "trending": "Popüler",
+    "mostUsedPackages": "En çok kullanılan paketler",
+    "flutterFavorites": "Flutter Favorileri",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Önce bir Flutter projesi eklemeniz gerekir. Paket bilgileri burada görüntülenir.",
+      "noPackagesFound": "Paket bulunamadı",
+      "view": "Görüntüle",
+      "builtBy": "Oluşturan",
+      "likes": "Beğeniler",
+      "pubPoints": "Pub Puanları",
+      "popularity": "Popülerlik",
+      "details": "Detaylar",
+      "changelog": "Değişiklik Kaydı",
+      "website": "Web Sitesi",
+      "packageprojectscountProjects": "{{packageProjectsCount}} proje"
+    }
+  },
+  "releases": {
+    "all": "Hepsi",
+    "releases": "Sürümler",
+    "versions": "Versiyonlar",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Şu anki ağaç ucu, kesinlikle bıçağın ağzındaki en son inşâ. Genellikle işlevsel, ancak bazen yanlışlıkla şeyleri bozuyoruz."
+  },
+  "sandbox": {
+    "playground": "Oyun alanı",
+    "releasesVersions": "{{releases}} versiyonlar",
+    "notRunning": "Çalışmıyor"
+  },
+  "search": {
+    "components": {
+      "search": "Ara... ",
+      "noResults": "Sonuç bulunamadı",
+      "channels": "Kanallar",
+      "stableReleases": "Stabil Sürümler",
+      "betaReleases": "Beta Sürümler",
+      "devReleases": "Geliştirici Sürümler",
+      "invalidChanel": "Geçersiz kanal"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Gelişmiş",
+      "downloadZip": "Zip indir",
+      "zipFileWithAllReleaseDependencies": "Sürüm bağımlılıklarının hepsini içeren zip dosyası",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Yerel Cache Bilgileri",
+      "createdDate": "Oluşturulma Tarihi",
+      "cacheLocation": "Cache konumu",
+      "nothingSelected": "Hiçbir şey seçilmedi",
+      "channel": "Kanal",
+      "releaseNotes": "Sürüm Notları",
+      "version": "Versiyon",
+      "releaseDate": "Sürüm tarihi"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Ayarlar kaydedildi",
+    "couldNotSaveSettings": "Ayarlar kaydedilemedi",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Flutter ayarlarını kullanmak için bir Flutter SDK versiyonu global olarak ayarlanmalıdır",
+      "analyticsCrashReporting": "Analitik ve çökme raporlaması",
+      "analyticsCrashReportSubtitle": "Flutter komutu çöktüğünde, Google'a çökme raporu göndermeye çalışılır, böylece Google zaman içinde Flutter'a iyileştirmeler yapabilir",
+      "platforms": "Platformlar",
+      "web": "Web",
+      "skipSetupFlutterOnInstall": "Yükleme sırasında Flutter kurulumunu atla",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Bu sadece Flutter'ı klonlayacak ve kurmayacak ",
+      "dependenciesAfterANewVersionIsInstalled": "Yeni bir versiyon kurulduktan sonraki bağımlılıklar.",
+      "areYouSureYouWantToResetSettings": "Ayarları sıfırlamak istediğinizden emin misiniz?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Bu sadece Sidekick'a özel ayarları sıfırlayacak",
+      "appSettingsHaveBeenReset": "Uygulama ayarları sıfırlandı",
+      "general": "Genel",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Bir tema seçin veya sistem ayarlarına göre değiştirin.",
+      "theme": "Tema",
+      "system": "Sistem",
+      "light": "Açık",
+      "dark": "Koyu",
+      "language": "Dil",
+      "resetToDefaultSettings": "Varsayılan Ayarlara Sıfırla",
+      "reset": "Sıfırla",
+      "ideSelection": "IDE",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Projelerinizi açmak istediğiniz IDE'yi seçin"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Güncelleme mevcut.",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick versiyonu {{updateInfoLatest}} şimdi mevcut",
+      "later": "Sonra",
+      "updateNow": "Şimdi güncelle",
+      "clickHereToDownload": "İndirmek için buraya tıklayın",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick'in yeni bir versiyonu mevcut ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Gerekli Bileşenleri Kurun",
+      "dialogDescriptionMacLinux": "Bunu kopyalayın ve terminalde yapıştırın. Talimatları takip edin.",
+      "dialogDescriptionWindows": "Bunu kopyalayın ve PowerShell'e yapıştırın. Talimatları takip edin. Yönetici olarak çalıştırılmalıdır.",
+      "dialogRestartNotication": "Harika! Sidekick şimdi kapanacak. Lütfen yeniden açın.",
+      "done": "Tamam"
+    },
+    "screen": {
+      "title": "Sidekick, bir veya daha fazla gerekli bileşeni algılayamadı",
+      "subtitle": "Bu, eksik olanların ve eksik olmayanların ayrıntılarıdır:",
+      "gitDescription": "Flutter versiyonlarını indirmek ve güncellemek için Git kullanılır. FVM tarafından kullanılır",
+      "fvmDescription": "Flutter Version Management. Sidekick'in çoğu temel işlevselliğini sağlar.",
+      "chocoDescription": "İsteğe bağlı. Windows cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
+      "brewDescription": "İsteğe bağlı. MacOS ve Linux cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
+      "pleaseInstall": "Sidekick'i kullanmak için eksik bileşenleri yükleyin!",
+      "ignore": "Yoksay",
+      "installmissing": "Eksikleri Yükle"
+    }
+  }
+}

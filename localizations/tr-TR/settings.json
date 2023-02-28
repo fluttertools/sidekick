@@ -1,0 +1,25 @@
+{
+  "sidekick": {
+    "language": {
+      "ar-SA": "عربى", 
+      "bn-BD": "বাংলা",
+      "de-DE": "Deutsch",
+      "en-GB": "English (GB)",
+      "en-US": "English (US)",
+      "es-ES": "Español",
+      "ja-JP": "日本語",
+      "sv-SE": "Svenska",
+      "zh-CN": "中文(中国)",
+      "zh-TW": "中文(台灣)",
+      "ko-KR": "한국어",
+      "pl-PL": "Polski",
+      "pt-BR": "Português",
+      "it-IT": "Italiano",
+      "uk-UA": "Українська",
+      "ru-RU": "Русский",
+      "hi-IN": "हिन्दी",
+      "id-ID": "Indonesia",
+      "fr-FR": "Français"
+    }
+  }
+}
