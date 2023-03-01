@@ -6,7 +6,7 @@
   },
   "molecules": {
     "master": "Master",
-    "versionIsInstalled": "Versiyon yüklendi",
-    "versionNotInstalledClickToInstall": "Bu versiyon yüklü değil. Yüklemek için tıklayın."
+    "versionIsInstalled": "Sürüm yüklendi",
+    "versionNotInstalledClickToInstall": "Bu sürüm yüklü değil. Yüklemek için tıklayın."
   }
 }
