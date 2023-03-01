@@ -4,47 +4,47 @@
     "navButtonProjects": "Projeler",
     "navButtonExplore": "Keşfet",
     "navButtonPackages": "Paketler",
-    "stableChannelDescription": "Prodüksiyonda kullanılacak tüm uygulamaların sürümleri için bu kanalı kullanmanızı öneririz. Yaklaşık üç ayda bir, beta olarak stabilize edilmiş bir dal (branch) bir sonraki stabil dalımız olur ve biz o dalın kararlı bir sürümünü oluştururuz.",
-    "betaChannelDescription": "Branch, ayın başında, genellikle ilk Pazartesi günü master tarafından yeni bir beta sürümü için oluşturulur. Bu dal, Dart, motor (engine) ve çerçeve (framework) için bir dal içerecektir.",
-    "devChannelDescription": "Tamamen test edilmiş son inşâ (build). Genellikle çalışır, ancak bilinen \"kötü\" Geliştirme (Dev) inşâlarının listesi için \"Kötü inşâlar\"a bakın.",
-    "masterChannelDescription": "En yeni ağaç ucu, kesinlikle bıçağın ağzındaki inşâ. Genellikle işlevseldir, ancak bazen yanlışlıkla bir şeyleri bozarız.",
+    "stableChannelDescription": "Canlı ortamda kullanılacak tüm uygulamaların yayınları için bu kanalı kullanmanızı öneririz. Yaklaşık üç ayda bir, beta olarak stabilize edilmiş bir dal (branch) bir sonraki stabil dalımız olur ve biz o dalın kararlı bir yayınını oluştururuz.",
+    "betaChannelDescription": "Bu dal, her ayın başında, genellikle ilk Pazartesi günü master tarafından yeni bir beta yayını için oluşturulur. Bu dal, Dart, motor (engine) ve çerçeve (framework) için bir dal içerecektir.",
+    "devChannelDescription": "Tamamen test edilmiş son yapım (build). Genellikle çalışır, ancak bilinen \"kötü\" Geliştirme (Dev) yapımlarının listesi için \"Kötü yapımlar\"a bakın.",
+    "masterChannelDescription": "En yeni ağaç ucu, kesinlikle bıçağın ağzındaki yapım. Genellikle işlevseldir, ancak bazen yanlışlıkla bir şeyleri bozarız.",
     "utils": {
       "couldNotLaunchUrl": "{{url}} açılamadı"
     }
   },
   "fvm": {
-    "installedVersions": "Yüklü Versiyonlar",
+    "installedVersions": "Yüklü Sürümler",
     "cleanUp": "Temizle",
-    "cleanUpTooltip": "Kullanılmayan versiyonları temizle",
-    "numberOfCachedVersions": "{{cachedVersions}} versiyonlar",
-    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} versiyonu yüklendi.",
-    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} versiyonun kurulumu tamamlandı.",
+    "cleanUpTooltip": "Kullanılmayan sürümleri temizle",
+    "numberOfCachedVersions": "{{cachedVersions}} sürümler",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} sürümü yüklendi.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} sürümün kurulumu tamamlandı.",
     "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} kanalı yükseltildi.",
-    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} versiyonu kaldırıldı.",
-    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} versiyonu global olarak ayarlandı.",
-    "versionVersionPinnedToProjectname": "{{version}} versiyonu {{projectName}} projesine sabitlendi",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} sürümü kaldırıldı.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} sürümü global olarak ayarlandı.",
+    "versionVersionPinnedToProjectname": "{{version}} sürümü {{projectName}} projesine sabitlendi",
     "components": {
       "upgrade": "Yükselt",
       "setAsGlobal": "Global olarak ayarla",
       "inUse": "Kullanılıyor",
       "unused": "Kullanılmıyor",
       "flutterSdkNotInstalled": "Flutter SDK kurulu değil.",
-      "noFlutterVersionInstalledMessage": "Şu anda yüklü bir Flutter SDK versiyonunuz yok. Yüklü olan versiyonlar veya kanallar burada gösterilir.",
-      "exploreFlutterReleases": "Flutter Sürümlerini Keşfet",
+      "noFlutterVersionInstalledMessage": "Şu anda yüklü bir Flutter SDK sürümünüz yok. Yüklü olan sürümler veya kanallar burada gösterilir.",
+      "exploreFlutterReleases": "Flutter Yayınlarını Keşfet",
       "global": "Global",
       "sdkHasNotFinishedSetup": "SDK kurulumu tamamlanmadı"
     },
     "dialogs": {
-      "noUnusedFlutterSdkVersionsInstalled": "Kullanılmayan hiçbir Flutter SDK versiyonu yüklü değil",
-      "cleanUpUnusedVersions": "Kullanılmayan versiyonları temizle",
+      "noUnusedFlutterSdkVersionsInstalled": "Kullanılmayan hiçbir Flutter SDK sürümü yüklü değil",
+      "cleanUpUnusedVersions": "Kullanılmayan sürümleri temizle",
       "cancel": "İptal",
       "confirm": "Onayla",
       "ok": "Tamam",
       "globalConfiguration": "Genel Ayar",
-      "theseVersionAreNotPinnedToAProject": "Bu versiyonlar bir projeye sabitlenmemiş",
+      "theseVersionAreNotPinnedToAProject": "Bu sürümler bir projeye sabitlenmemiş",
       "doYouWantToRemoveThemToFreeUpSpace": "Boş alan açmak için kaldırmak istiyor musunuz?",
       "areYouSureYouWantToRemove": "Kaldırmak istediğinize emin misiniz?",
-      "thisWillRemoveItemnameCacheFromYourSystem": "Bu işlem {{itemname}}'i sisteminizin cache'inden kaldıracaktır.",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Bu işlem {{itemname}}'i sisteminizin ön belleğinden kaldıracaktır.",
       "flutterPathIsPointingOn": "Flutter PATH şuraya gösteriyor\n ",
       "changeThePathTo": "PATH'i şuraya değiştir\n",
       "ifYouWantToFlutterSdkThroughFvm": "FVM ile Flutter SDK güncellemek istiyorsanız",
@@ -56,7 +56,7 @@
     "projects": "Projeler",
     "choose": "Seç",
     "projectsProjects": "Projeler {{projects}}",
-    "onlyDisplayProjectsThatHaveVersionsPinned": "Sadece sabitlenmiş versiyonları olan projeleri göster",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Sadece sabitlenmiş sürümleri olan projeleri göster",
     "fvmOnly": "Sadece FVM",
     "addProject": "Proje Ekle",
     "notAFlutterProject": "Flutter projesi değil",
@@ -65,7 +65,7 @@
       "remove": "Kaldır",
       "openTerminalPlayground": "Terminal Oyun alanını Aç",
       "openIde": "{{ideName}}'de aç",
-      "selectAFlutterSdkVersion": "Flutter SDK versiyonu seç",
+      "selectAFlutterSdkVersion": "Flutter SDK sürümü seç",
       "noFlutterProjectsHaveBeenAddedYet": "Henüz Flutter projesi eklenmedi.",
       "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Flutter projesini ekleyin. Proje bilgileri burada görüntülenecektir."
     }
@@ -90,13 +90,13 @@
   },
   "releases": {
     "all": "Hepsi",
-    "releases": "Sürümler",
-    "versions": "Versiyonlar",
-    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Şu anki ağaç ucu, kesinlikle bıçağın ağzındaki en son inşâ. Genellikle işlevsel, ancak bazen yanlışlıkla şeyleri bozuyoruz."
+    "releases": "Yayınlar",
+    "versions": "Sürümler",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Şu anki ağaç ucu, kesinlikle bıçağın ağzındaki en son yapım. Genellikle işlevsel, ancak bazen yanlışlıkla şeyleri bozuyoruz."
   },
   "sandbox": {
     "playground": "Oyun alanı",
-    "releasesVersions": "{{releases}} versiyonlar",
+    "releasesVersions": "{{releases}} sürümler",
     "notRunning": "Çalışmıyor"
   },
   "search": {
@@ -104,9 +104,9 @@
       "search": "Ara... ",
       "noResults": "Sonuç bulunamadı",
       "channels": "Kanallar",
-      "stableReleases": "Stabil Sürümler",
-      "betaReleases": "Beta Sürümler",
-      "devReleases": "Geliştirici Sürümler",
+      "stableReleases": "Stabil Yayınlar",
+      "betaReleases": "Beta Yayınlar",
+      "devReleases": "Geliştirici Yayınlar",
       "invalidChanel": "Geçersiz kanal"
     }
   },
@@ -114,31 +114,31 @@
     "components": {
       "advanced": "Gelişmiş",
       "downloadZip": "Zip indir",
-      "zipFileWithAllReleaseDependencies": "Sürüm bağımlılıklarının hepsini içeren zip dosyası",
+      "zipFileWithAllReleaseDependencies": "Yayın bağımlılıklarının hepsini içeren zip dosyası",
       "hash": "Hash",
       "sha256": "Sha256",
-      "localCacheInformation": "Yerel Cache Bilgileri",
+      "localCacheInformation": "Yerel Ön Bellek Bilgileri",
       "createdDate": "Oluşturulma Tarihi",
-      "cacheLocation": "Cache konumu",
+      "cacheLocation": "Ön bellek konumu",
       "nothingSelected": "Hiçbir şey seçilmedi",
       "channel": "Kanal",
-      "releaseNotes": "Sürüm Notları",
-      "version": "Versiyon",
-      "releaseDate": "Sürüm tarihi"
+      "releaseNotes": "Yayın Notları",
+      "version": "Sürüm",
+      "releaseDate": "Yayın tarihi"
     }
   },
   "settings": {
     "settingsHaveBeenSaved": "Ayarlar kaydedildi",
     "couldNotSaveSettings": "Ayarlar kaydedilemedi",
     "scenes": {
-      "flutterSDKGlobalDescription": "Flutter ayarlarını kullanmak için bir Flutter SDK versiyonu global olarak ayarlanmalıdır",
+      "flutterSDKGlobalDescription": "Flutter ayarlarını kullanmak için bir Flutter SDK sürümü global olarak ayarlanmalıdır",
       "analyticsCrashReporting": "Analitik ve çökme raporlaması",
       "analyticsCrashReportSubtitle": "Flutter komutu çöktüğünde, Google'a çökme raporu göndermeye çalışılır, böylece Google zaman içinde Flutter'a iyileştirmeler yapabilir",
       "platforms": "Platformlar",
       "web": "Web",
       "skipSetupFlutterOnInstall": "Yükleme sırasında Flutter kurulumunu atla",
       "thisWillOnlyCloneFlutterAndNotInstall": "Bu sadece Flutter'ı klonlayacak ve kurmayacak ",
-      "dependenciesAfterANewVersionIsInstalled": "Yeni bir versiyon kurulduktan sonraki bağımlılıklar.",
+      "dependenciesAfterANewVersionIsInstalled": "Yeni bir sürüm kurulduktan sonraki bağımlılıklar.",
       "areYouSureYouWantToResetSettings": "Ayarları sıfırlamak istediğinizden emin misiniz?",
       "thisWillOnlyResetSidekickSpecificPreferences": "Bu sadece Sidekick'a özel ayarları sıfırlayacak",
       "appSettingsHaveBeenReset": "Uygulama ayarları sıfırlandı",
@@ -158,11 +158,11 @@
   "updater": {
     "components": {
       "updateAvailable": "Güncelleme mevcut.",
-      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick versiyonu {{updateInfoLatest}} şimdi mevcut",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick sürümü {{updateInfoLatest}} şimdi mevcut",
       "later": "Sonra",
       "updateNow": "Şimdi güncelle",
       "clickHereToDownload": "İndirmek için buraya tıklayın",
-      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick'in yeni bir versiyonu mevcut ({{updateInfoLatest}})."
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick'in yeni bir sürümü mevcut ({{updateInfoLatest}})."
     }
   },
   "compatibility": {
@@ -176,8 +176,8 @@
     "screen": {
       "title": "Sidekick, bir veya daha fazla gerekli bileşeni algılayamadı",
       "subtitle": "Bu, eksik olanların ve eksik olmayanların ayrıntılarıdır:",
-      "gitDescription": "Flutter versiyonlarını indirmek ve güncellemek için Git kullanılır. FVM tarafından kullanılır",
-      "fvmDescription": "Flutter Version Management. Sidekick'in çoğu temel işlevselliğini sağlar.",
+      "gitDescription": "Flutter sürümlerini indirmek ve güncellemek için Git kullanılır. FVM tarafından kullanılır",
+      "fvmDescription": "Flutter Sürüm Yönetimi. Sidekick'in çoğu temel işlevselliğini sağlar.",
       "chocoDescription": "İsteğe bağlı. Windows cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
       "brewDescription": "İsteğe bağlı. MacOS ve Linux cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
       "pleaseInstall": "Sidekick'i kullanmak için eksik bileşenleri yükleyin!",
