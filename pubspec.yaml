@@ -21,9 +21,7 @@ dependencies:
   filesize: ^2.0.1
   flutter:
     sdk: flutter
-  flutter_acrylic:
-    git:
-      url: https://github.com/alexmercerind/flutter_acrylic.git
+  flutter_acrylic: ^1.1.1
   flutter_hooks: ^0.18.5+1
   flutter_localizations:
     sdk: flutter
