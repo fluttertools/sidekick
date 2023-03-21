@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "Вақтинчалик хотирага нусхаланнди",
+        "refresh": "Янгилаш",
+        "countFound": "{{count}} та топилди"
+    },
+    "molecules": {
+        "master": "Асосий",
+        "versionIsInstalled": "Версия ўрнатилди",
+        "versionNotInstalledClickToInstall": "Версия ўрнатилмади. Ўрнатиш учун босинг."
+    }
+}

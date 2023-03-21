@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "Бошқарув панели",
+    "navButtonProjects": "Лойиҳалар",
+    "navButtonExplore": "Ўрганиш",
+    "navButtonPackages": "Тўпламлар",
+    "stableChannelDescription": "Ушбу канални ҳар қандай иловаларни тузиш учун ишлатишингизни тавсия қиламиз. Тахминан чоракда бир марта бета версияга барқарорлаштирилган бранч бизнинг кейинги барқарор бранчимизга айланади ва биз бу бранчнинг барқарор версиясини яратамиз.",
+    "betaChannelDescription": "Branch yangi beta versiya uchun oyning boshida, odatda birinchi dushanba kuni, usta(master) tomonidan tuziladi. Bu Dart, tizim(engine) va framework uchun branchlarni o'z ichiga oladi.",
+    "devChannelDescription": "Охирги тўлиқ синовдан ўтган тузилма. Одатда ишлайди, лекин маʼлум бўлган \"ёмон\" тузилмалар  ҳам бор. Рўйхат учун \"Ёмон тузилмалар\" бўлимига қаранг.",
+    "masterChannelDescription": "Дастурий таъминотнинг энг сўнгги версияси мавжуд бўлган энг илғор ва энг сўнгги версиясидир, лекин ҳали ҳам тузатилиши керак бўлган баъзи хатолар ёки муаммолар мавжуд бўлиши мумкин.",
+    "utils": {
+      "couldNotLaunchUrl": "{{url}} манзиини очиб бўлмади."
+    }
+  },
+  "fvm": {
+    "installedVersions": "Ўрнатилган версиялар",
+    "cleanUp": "Тозалаш",
+    "cleanUpTooltip": "Фойдаланилмаётган версияларни тозалаш",
+    "numberOfCachedVersions": "{{cachedVersions}} ta versiyalar",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} версия ўрнатилди.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} версиясини созлаш якунланди.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} канали  бэн такомиллаштирилди.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} версияси ўчирилди.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersonName}} версияси глобал тарзда ўрнатилди.",
+    "versionVersionPinnedToProjectname": "{{version}} versiyasi {{projecName}}га бириктирилди",
+    "components": {
+      "upgrade": "Такомиллаштириш",
+      "setAsGlobal": "Глобал деб белгилаш",
+      "inUse": "Фойдаланилган",
+      "unused": "Фойдаланилмаган ",
+      "flutterSdkNotInstalled": "Флуттер СДК ўрнатилмаган.",
+      "noFlutterVersionInstalledMessage": "Сизда ҳозрида бирорта СДК версияси ўрнатилмаган. Ўрнатилган канал ёки версиялар мавжуд бўлса, бу ерда кўрсатилади.",
+      "exploreFlutterReleases": "Флуттер нашрлари билан танишинг",
+      "global": "Глобал",
+      "sdkHasNotFinishedSetup": "СДК ни созлаш тугалланмаган"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Фойдаланилмаган Флуттер СДК версиялари ўрнатилмаган",
+      "cleanUpUnusedVersions": "Foydalanilmagan versiyalarni tozalash",
+      "cancel": "Бекор қилиш",
+      "confirm": "Тасдиқлаш",
+      "ok": "Ха",
+      "globalConfiguration": "Глобал созламалар",
+      "theseVersionAreNotPinnedToAProject": "Ушбу версиялар лойихага бириктирилмаган ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Жой бўшатиш учун уни олиб ташламоқчимисиз?",
+      "areYouSureYouWantToRemove": "Олиб ташлашга ишончингиз комилми?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Бу орқали {{itemname}} версия операция тизимингизнинг кеш хотирасидан ўчирилади.",
+      "flutterPathIsPointingOn": "Flutter PATH муҳити кўрсатувчи манзил \n ",
+      "changeThePathTo": "Ушбу манзилга ўзҳартириш \n",
+      "ifYouWantToFlutterSdkThroughFvm": "Агар сиз Flutter SDKни FVM ёрдамида ўзгартирмоқчи бўлсангиз",
+      "howToUpdateYourPath": "Манзилни қандай созлаш мумкин?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Лойихалар янгиланди",
+    "projects": "Лойихалар",
+    "choose": "Танлаш",
+    "projectsProjects": "{{projects}} лойихалар",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Фақат версиялари бириктирилган лойихаларни кўрсатиш",
+    "fvmOnly": "Фақат FVM",
+    "addProject": "Лойиҳа қўшиш",
+    "notAFlutterProject": "Flutter ёрдамида тузилган лойиха эмас.",
+    "components": {
+      "open": "Очиш",
+      "remove": "Ўчириш",
+      "openTerminalPlayground": "Терминал майдончасини очиш",
+      "openIde": "{{ideName}}да очиш",
+      "selectAFlutterSdkVersion": "Бирорта Flutter SDK версиясни танланг",
+      "noFlutterProjectsHaveBeenAddedYet": "Ҳали бирорта ҳам Flutter лойихаси қўшилмаган.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Flutter лойихангизни қўшинг. Лойиҳа маълумотлари шу ерда кўрсатилади."
+    }
+  },
+  "pubPackages": {
+    "trending": "Машҳур",
+    "mostUsedPackages": "Енг кўп ишлатиладиган тўпламлар",
+    "flutterFavorites": "Севимли Flutter",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Сиз аввал Flutter лойиҳасини қўшишингиз керак. Тўплам маълумотлари шу ёрда кўрсатилади.",
+      "noPackagesFound": "Бирорта ҳам тўплам топилмади",
+      "view": "Кўриш",
+      "builtBy": "Тузилганлиги",
+      "likes": "Йўқтиришлар",
+      "pubPoints": "Pub баллари",
+      "popularity": "Машҳурлиги",
+      "details": "Маълумотлари",
+      "changelog": "Озгаришлар журнали",
+      "website": "Веб-сайт",
+      "packageprojectscountProjects": "{{packageProjectsCount}}та лойихалар"
+    }
+  },
+  "releases": {
+    "all": "Барчаси",
+    "releases": "Нашрлар",
+    "versions": "Версиялар",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Дастурий таъминотнинг энг соҳиб версияси мавжуд бўлган энг илгор ва энг соҳиб версиясидир, лекин ҳали ҳам тузатилиши керак бўлган баъзи хатолар ёки муаммолар мавжуд бўлиши мумкин."
+  },
+  "sandbox": {
+    "playground": "Майдонча",
+    "releasesVersions": "{{releases}}та версиялар",
+    "notRunning": "Not running"
+  },
+  "search": {
+    "components": {
+      "search": "Излаш... ",
+      "noResults": "Натижалар йўқ",
+      "channels": "Каналлар",
+      "stableReleases": "Барқарор нашрлар",
+      "betaReleases": "Бета нашрлар",
+      "devReleases": "Ишлаб чиқарувчи нашрлари",
+      "invalidChanel": "Яроқсиз канал"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Юқори",
+      "downloadZip": "Zip шаклида юклаб олиш",
+      "zipFileWithAllReleaseDependencies": "Файлни нашрнинг барча қўшимчалари билан юклаш",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Маҳаллий кеш маълумотлари",
+      "createdDate": "Тузилган сана",
+      "cacheLocation": "Кеш манзили",
+      "nothingSelected": "Ҳеч нарса танланмаган",
+      "channel": "Канал",
+      "releaseNotes": "Нақш бўйича қайдлар",
+      "version": "Версия",
+      "releaseDate": "Нақш санаси"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Созламалар сақланди",
+    "couldNotSaveSettings": "Созламаларни сақлаб бўлмади",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Flutter созламаларига кириш учун бирорта бўлса ҳам Flutter SDK версияси глобал сифатида ўрнатилиши керак",
+      "analyticsCrashReporting": "Таҳлил ва носозлик ҳақида хисобот",
+      "analyticsCrashReportSubtitle": "Flutter буйруғи ишламай қолганда, вақт ўтиши билан Flutterни яхшилаш учун Гооглега ишдан чиқиш хисоботини юборишга уринилади",
+      "platforms": "Платформалар",
+      "web": "Веб",
+      "skipSetupFlutterOnInstall": "Ўрнатиш вақтида Flutterни юклаш ва созлашни ўтказиб юбориш",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Бунда фақатгина Flutter юклаб олинади. Ўрнатилмайди. ",
+      "dependenciesAfterANewVersionIsInstalled": "Янги версия ўрнатилгандан кейинги қўшимчалар.",
+      "areYouSureYouWantToResetSettings": "Ростдан ҳам созламаларни тикламоқчимисиз?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Бу фақат Sidekick`га хос созламаларни тиклади",
+      "appSettingsHaveBeenReset": "Дастур созламалари тикланди",
+      "general": "Умумий",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Мавзуни ўзгартиринг ёки тизим созламаларига кўра қолдиринг.",
+      "theme": "Мавзу",
+      "system": "Тизим",
+      "light": "Ёрқин",
+      "dark": "Тўқ",
+      "language": "Тил",
+      "resetToDefaultSettings": "Асл созламалар ҳолатига тиклаш",
+      "reset": "Тиклаш",
+      "ideSelection": "БРМ(IDE)",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Лойихаларингизни очиш учун БРМ(IDE)ни танланг"
+    },
+    "updater": {
+      "components": {
+        "updateAvailable": "Янгиланиш мавжуд",
+        "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick`нинг {{updateInfoLatest}} версияси нашр қилинди.",
+        "later": "Кейинроқ",
+        "updateNow": "Ҳозир янгилаш",
+        "clickHereToDownload": "Юклаб олиш учун босинг",
+        "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick`нинг янги версияси мавжуд ({{updateInfoLatest}})."
+      }
+    },
+    "compatibility": {
+      "dialog": {
+        "dialogTitle": "Талаб қилинган компонентларни қўшинг",
+        "dialogDescriptionMacLinux": "Бунинг нусхаланг ва Терминалда киритинг. Кўрсатмаларга амал қилинг.",
+        "dialogDescriptionWindows": "Бунинг нусхаланг ва PowerShellда киритинг. Кўрсатмаларга амал қилинг. Администратор бўлиб очилиши шарт.",
+        "dialogRestartNotication": "Ажойиб! Sidekick ҳозир йопилади. Илтимос, уни қайта очинг.",
+        "done": "Бажарилди"
+      },
+      "screen": {
+        "title": "Sidekick бир ёки бир нечта керакли қўшимчаларни топишда муваффақийатсизликка учради.",
+        "subtitle": "Бу нималар топилдию нималар топилмаганининг рўйхати:",
+        "gitDescription": "Git flutter версияларини юклаб олиш ва янгилаш учун фойдаланилади. У FVM томонидан қўлланилади.",
+        "fvmDescription": "Flutter Version Management. Sidekick`ни ўзининг асосий функциялари билан таъминлайди.",
+        "chocoDescription": "Ихтиёрий. Windows қурилмасида мавжуд бўлмаса, FVMми ўрнатиш учун ишлатилиши мумкин.",
+        "brewDescription": "Ихтиёрий. MacOS ва Linux қурилмаларида мавжуд бўлмаса, FVMми ўрнатиш учун ишлатилиши мумкин.",
+        "pleaseInstall": "Илтимос, Sidekick`дан фойдаланиш учун топилмайотган компонентларни ўрнатинг!",
+        "ignore": "Эътборсиз қолдириш",
+        "installmissing": "Топилмаганларни ўрнатиш"
+      }
+    }
+  }
+}

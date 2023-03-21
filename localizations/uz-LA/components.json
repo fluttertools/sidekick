@@ -1,0 +1,12 @@
+{
+    "atoms": {
+        "copiedToClipboard": "Vaqtinchalik xotiraga nusxalandi",
+        "refresh": "Yangilash",
+        "countFound": "{{count}} ta topildi"
+    },
+    "molecules": {
+        "master": "Asosiy",
+        "versionIsInstalled": "Versiya oʻrnatildi",
+        "versionNotInstalledClickToInstall": "Versiya o'rnatilmadi. O'rnatish uchun bosing."
+    }
+}
