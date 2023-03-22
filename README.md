@@ -142,6 +142,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="20%"><a href="https://github.com/areille"><img src="https://avatars.githubusercontent.com/u/32739983?v=4?s=50" width="50px;" alt="areille"/><br /><sub><b>areille</b></sub></a><br /><a href="https://github.com/fluttertools/sidekick/commits?author=areille" title="Code">💻</a> <a href="#maintenance-areille" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/PeachyCad"><img src="https://avatars.githubusercontent.com/u/65190267?v=4?s=50" width="50px;" alt="PeachyCad"/><br /><sub><b>PeachyCad</b></sub></a><br /><a href="#translation-PeachyCad" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/adnanjpg"><img src="https://avatars.githubusercontent.com/u/54329101?v=4?s=50" width="50px;" alt="adnan "/><br /><sub><b>adnan </b></sub></a><br /><a href="#translation-adnanjpg" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="20%"><a href="https://it-dev.uz"><img src="https://avatars.githubusercontent.com/u/60849894?v=4?s=50" width="50px;" alt="Otabek"/><br /><sub><b>Otabek</b></sub></a><br /><a href="#translation-otabekoff" title="Translation">🌍</a></td>
     </tr>
   </tbody>
 </table>
