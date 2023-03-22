@@ -1,0 +1,188 @@
+{
+  "common": {
+    "navButtonDashboard": "Boshqaruv paneli",
+    "navButtonProjects": "Loyihalar",
+    "navButtonExplore": "O'rganish",
+    "navButtonPackages": "To'plamlar",
+    "stableChannelDescription": "Ushbu kanalni har qanday ilovalarni tuzish uchun ishlatishingizni tavsiya qilamiz. Taxminan chorakda bir marta beta versiyaga barqarorlashtirilgan branch bizning keyingi barqaror branchimizga aylanadi va biz bu branchning barqaror versiyasini yaratamiz.",
+    "betaChannelDescription": "Branch yangi beta versiya uchun oyning boshida, odatda birinchi dushanba kuni, usta(master) tomonidan tuziladi. Bu Dart, tizim(engine) va framework uchun branchlarni o'z ichiga oladi.",
+    "devChannelDescription": "Oxirgi to'liq sinovdan o'tgan tuzilma. Odatda ishlaydi, lekin maʼlum boʻlgan “yomon” tuzilmalar  ham bor. Roʻyxat uchun “Yomon tuzilmalar” boʻlimiga qarang.",
+    "masterChannelDescription": "Dasturiy ta'minotning eng so'nggi versiyasi mavjud bo'lgan eng ilg'or va eng so'nggi versiyasidir, lekin hali ham tuzatilishi kerak bo'lgan ba'zi xatolar yoki muammolar mavjud bo'lishi mumkin.",
+    "utils": {
+      "couldNotLaunchUrl": "{{url}} manziini ochib bo'lmadi."
+    }
+  },
+  "fvm": {
+    "installedVersions": "O'rnatilgan versiyalar",
+    "cleanUp": "Tozalash",
+    "cleanUpTooltip": "Foydalanilmayotgan versiyalarni tozalash",
+    "numberOfCachedVersions": "{{cachedVersions}} ta versiyalar",
+    "versionItemversionnameHasBeenInstalled": "{{itemVersionName}} versiya o'rnatildi.",
+    "versionItemversionnameHasFinishedSetup": "{{itemVersionName}} versiyasini sozlash yakunlandi.",
+    "channelItemversionnameHasBeenUpgraded": "{{itemVersionName}} kanali  been takomillashtirildi.",
+    "versionItemversionnameHasBeenRemoved": "{{itemVersionName}} versiyasi o'chirildi.",
+    "versionItemversionnameHasBeenSetAsGlobal": "{{itemVersionName}} versiyasi global tarzda o'rnatildi.",
+    "versionVersionPinnedToProjectname": "{{version}} versiyasi {{projectName}}ga biriktirildi",
+    "components": {
+      "upgrade": "Takomillashtirish",
+      "setAsGlobal": "Global deb belgilash",
+      "inUse": "Foydalanilgan",
+      "unused": "Foydalanilmagan ",
+      "flutterSdkNotInstalled": "Flutter SDK o'rnatilmagan.",
+      "noFlutterVersionInstalledMessage": "Sizda hozrida birorta SDK versiyasi o'rnatilmagan. O'rnatilgan kanal yoki versiyalar mavjud bo'lsa, bu yerda ko'rsatiladi.",
+      "exploreFlutterReleases": "Flutter nashrlari bilan tanishing",
+      "global": "Global",
+      "sdkHasNotFinishedSetup": "SDK ni sozlash tugallanmagan"
+    },
+    "dialogs": {
+      "noUnusedFlutterSdkVersionsInstalled": "Foydalanilmagan Flutter SDK versiyalari oʻrnatilmagan",
+      "cleanUpUnusedVersions": "Foydalanilmagan versiyalarni tozalash",
+      "cancel": "Bekor qilish",
+      "confirm": "Tasdiqlash",
+      "ok": "Ha",
+      "globalConfiguration": "Global sozlamalar",
+      "theseVersionAreNotPinnedToAProject": "Ushbu versiyalar loyihaga biriktirilmagan ",
+      "doYouWantToRemoveThemToFreeUpSpace": "Joy bo'shatish uchun uni olib tashlamoqchimisiz?",
+      "areYouSureYouWantToRemove": "Olib tashlashga ishonchingiz komilmi?",
+      "thisWillRemoveItemnameCacheFromYourSystem": "Bu orqali {{itemname}} versiya operatsion tizimingizning kesh xotirasidan o'chiriladi.",
+      "flutterPathIsPointingOn": "Flutter PATH muhiti ko'rsatuvchi manzil \n ",
+      "changeThePathTo": "Ushbu manzilga ozhartirish \n",
+      "ifYouWantToFlutterSdkThroughFvm": "Agar siz Flutter SDKni FVM yordamida o'zgartirmoqchi bo'lsangiz",
+      "howToUpdateYourPath": "Manzilni qanday sozlash mumkin?"
+    }
+  },
+  "projects": {
+    "projectsRefreshed": "Loyihalar yangilangandi",
+    "projects": "Loyihalar",
+    "choose": "Tanlash",
+    "projectsProjects": "Loyihalar {{projects}}",
+    "onlyDisplayProjectsThatHaveVersionsPinned": "Faqat versiyalari biriktirilgan loyihalarni ko'rsatish",
+    "fvmOnly": "Faqat FVM",
+    "addProject": "Loyiha qo'shish",
+    "notAFlutterProject": "Flutter yordamida tuzilgan loyiha emas.",
+    "components": {
+      "open": "Ochish",
+      "remove": "O'chirish",
+      "openTerminalPlayground": "Terminal maydonchasini ochish",
+      "openIde": "{{ideName}}da ochish",
+      "selectAFlutterSdkVersion": "Birorta Flutter SDK versiyasni tanlang",
+      "noFlutterProjectsHaveBeenAddedYet": "Hali birorta ham Flutter loyihasi qo'shilmagan.",
+      "addYourFlutterProjectProjectsInformationWillBeDisplayedHere": "Flutter loyihangizni qo'shing. Loyiha ma'lumotlari shu yerda ko'rsatiladi."
+    }
+  },
+  "pubPackages": {
+    "trending": "Mashhur",
+    "mostUsedPackages": "Eng ko'p ishlatiladigan to'plamlar",
+    "flutterFavorites": "Sevimli Flutter",
+    "components": {
+      "youNeedToAddAFlutterProjectFirstPackageInformation": "Siz avval Flutter loyihasini qo'shishingiz kerak. To'plam ma'lumotlari shu yerda ko'rsatiladi.",
+      "noPackagesFound": "Birorta ham to'plam topilmadi",
+      "view": "Ko'rish",
+      "builtBy": "Tuzilganligi",
+      "likes": "Yoqtirishlar",
+      "pubPoints": "Pub ballari",
+      "popularity": "Mashhurligi",
+      "details": "Ma'lumotlari",
+      "changelog": "O'zlarishlar jurnali",
+      "website": "Veb-sayt",
+      "packageprojectscountProjects": "{{packageProjectsCount}}ta loyihalar"
+    }
+  },
+  "releases": {
+    "all": "Barchasi",
+    "releases": "Nashrlar",
+    "versions": "Versiyalar",
+    "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "Dasturiy ta'minotning eng so'nggi versiyasi mavjud bo'lgan eng ilg'or va eng so'nggi versiyasidir, lekin hali ham tuzatilishi kerak bo'lgan ba'zi xatolar yoki muammolar mavjud bo'lishi mumkin."
+  },
+  "sandbox": {
+    "playground": "Maydoncha",
+    "releasesVersions": "{{releases}}ta versiyalar",
+    "notRunning": "Not running"
+  },
+  "search": {
+    "components": {
+      "search": "Izlash... ",
+      "noResults": "Natijalar yo'q",
+      "channels": "Kanallar",
+      "stableReleases": "Barqaror nashrlar",
+      "betaReleases": "Beta nashrlar",
+      "devReleases": "Ishlab chiqaruvchi nashrlari",
+      "invalidChanel": "Yaroqsiz kanal"
+    }
+  },
+  "selectedDetail": {
+    "components": {
+      "advanced": "Yuqori",
+      "downloadZip": "Zip shaklida yuklab olish",
+      "zipFileWithAllReleaseDependencies": "Faylni nashrning barcha qo'shimchalari bilan yuklash",
+      "hash": "Hash",
+      "sha256": "Sha256",
+      "localCacheInformation": "Mahalliy kesh ma'lumotlari",
+      "createdDate": "Tuzilgan sana",
+      "cacheLocation": "Kesh manzili",
+      "nothingSelected": "Hech narsa tanlanmagan",
+      "channel": "Kanal",
+      "releaseNotes": "Nashr bo'yicha qaydlar",
+      "version": "Versiya",
+      "releaseDate": "Nashr sanasi"
+    }
+  },
+  "settings": {
+    "settingsHaveBeenSaved": "Sozlamalar saqlandi",
+    "couldNotSaveSettings": "Sozlamalarni saqalab bo'lmadi",
+    "scenes": {
+      "flutterSDKGlobalDescription": "Flutter sozlamalariga kirish uchun birorta bo'lsa ham Flutter SDK versiyasi global sifatida o'rnatilishi kerak",
+      "analyticsCrashReporting": "Tahlil va nosozlik haqida hisobot",
+      "analyticsCrashReportSubtitle": "Flutter buyrug'i ishlamay qolganda, vaqt o'tishi bilan Flutterni yaxshilash uchun Googlega ishdan chiqish hisobotini yuborishga uriniladi",
+      "platforms": "Platformalar",
+      "web": "Veb",
+      "skipSetupFlutterOnInstall": "O'rnatish vaqtida Flutterni yuklash va sozlashni o'tkazib yuborish",
+      "thisWillOnlyCloneFlutterAndNotInstall": "Bunda faqatgina Flutter yuklab olinadi. O'rnatilmaydi. ",
+      "dependenciesAfterANewVersionIsInstalled": "Yangi versiya o'rnatilgandan keyingi qo'shimchalar.",
+      "areYouSureYouWantToResetSettings": "Rostdan ham sozlamalarni tiklamoqchimsiz?",
+      "thisWillOnlyResetSidekickSpecificPreferences": "Bu faqat Sidekick`ga xos sozlamalarni tiklaydi",
+      "appSettingsHaveBeenReset": "Dastur sozlamalari tiklandi",
+      "general": "Umumiy",
+      "selectAThemeOrSwitchAccordingToSystemSettings": "Mavzuni o'zgartiring yoki tizim sozlamalariga ko'ra qoldiring.",
+      "theme": "Mavzu",
+      "system": "Tizim",
+      "light": "Yorqin",
+      "dark": "To'q",
+      "language": "Til",
+      "resetToDefaultSettings": "Asl sozlamalar holatiga tiklash",
+      "reset": "Tiklash",
+      "ideSelection": "BRM(IDE)",
+      "whatIdeDoYouWantToOpenYourProjectsWith": "Loyihalaringizni ochish uchun BRM(IDE)ni tanlang"
+    }
+  },
+  "updater": {
+    "components": {
+      "updateAvailable": "Yangilanish mavjud",
+      "sidekickVersionUpdateinfolatestIsNowAvailable": "Sidekick`ning {{updateInfoLatest}} versiyasi nashr qilindi.",
+      "later": "Keyinroq",
+      "updateNow": "Hozir yangilash",
+      "clickHereToDownload": "Yuklab olish uchun bosing",
+      "aNewVersionOfSidekickIsAvailableUpdateinfolatest": "Sidekick`ning yangi versiyasi mavjud ({{updateInfoLatest}})."
+    }
+  },
+  "compatibility": {
+    "dialog": {
+      "dialogTitle": "Talab qilingan komponentlarni qo'shing",
+      "dialogDescriptionMacLinux": "Buni nusxalang va Terminal'da kiriting. Ko'rsatmalarga amal qiling.",
+      "dialogDescriptionWindows": "Buni nusxalanga va PowerShell'da kiriting. Ko'rsatmalarga amal qiling. Administrator bo'lib ochilishi shart.",
+      "dialogRestartNotication": "Ajoyib! Sidekick hozir yopiladi. Iltimos, uni qayta oching.",
+      "done": "Bajarildi"
+    },
+    "screen": {
+      "title": "Sidekick bir yoki bir nechta kerakli qo'shimchalarni topishda muvaffaqiyatsizlikka uchradi.",
+      "subtitle": "Bu nimalar topildiyu nimalar topilmaganining ro'yxati:",
+      "gitDescription": "Git flutter versiyalarini yuklab olish va yangilash uchun foydalaniladi. U FVM tomonidan qo'llaniladi.",
+      "fvmDescription": "Flutter Version Management. Sidekick`ni o'zining asosiy funksiyalari bilan ta'minlaydi.",
+      "chocoDescription": "Ixtiyoriy. Windows qurilmasida mavjud bo'lmasa, FVMmi o'rnatish uchun ishlatilishi mumkin.",
+      "brewDescription": "Ixtiyoriy. MacOS va Linux qurilmalarida mavjud bo'lmasa, FVMmi o'rnatish uchun ishlatilishi mumkin.",
+      "pleaseInstall": "Iltimos, Sidekick`dan foydalanish uchun topilmayotggan komponentlarni o'rnating!",
+      "ignore": "E'tborsiz qoldirish",
+      "installmissing": "Topilmaganlarni o'rnatish"
+    }
+  }
+}
