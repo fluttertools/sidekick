@@ -291,6 +291,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "otabekoff",
+      "name": "Otabek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60849894?v=4",
+      "profile": "https://it-dev.uz",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",
