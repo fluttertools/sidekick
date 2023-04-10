@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -51,16 +50,14 @@ class FVMScreen extends ConsumerWidget {
           ),
         ),
       ],
-      child: CupertinoScrollbar(
-        child: ListView.separated(
-          itemCount: cachedVersions.all.length,
-          separatorBuilder: (_, __) => const Divider(height: 0),
-          itemBuilder: (context, index) {
-            return FvmReleaseListItem(
-              cachedVersions.all[index],
-            );
-          },
-        ),
+      child: ListView.separated(
+        itemCount: cachedVersions.all.length,
+        separatorBuilder: (_, __) => const Divider(height: 0),
+        itemBuilder: (context, index) {
+          return FvmReleaseListItem(
+            cachedVersions.all[index],
+          );
+        },
       ),
     );
   }

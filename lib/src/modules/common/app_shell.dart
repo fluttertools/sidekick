@@ -51,7 +51,6 @@ class AppShell extends HookConsumerWidget {
       selectedIcon: Icon(
         iconData,
         size: 20,
-        color: Theme.of(context).colorScheme.secondary,
       ),
       label: Text(label),
     );
@@ -76,6 +75,7 @@ class AppShell extends HookConsumerWidget {
         selectedIndex.value = currentRoute.index;
       }
       return;
+      
     }, [currentRoute]);
 
     // Side effect when info is selected
@@ -121,6 +121,10 @@ class AppShell extends HookConsumerWidget {
               minWidth: kNavigationWidth,
               minExtendedWidth: kNavigationWidthExtended,
               extended: !LayoutSize.isSmall,
+              useIndicator: true,
+              labelType:
+                  LayoutSize.isSmall ? NavigationRailLabelType.selected : null,
+              indicatorColor: Theme.of(context).primaryColor,
               onDestinationSelected: (index) {
                 navigation.goTo(NavigationRoutes.values[index]);
               },

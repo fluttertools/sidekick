@@ -1,12 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fvm/fvm.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
+import 'package:sidekick/src/modules/compatibility_checks/compat.dialog.dart';
 
-import '../../../components/atoms/copy_button.dart';
 import '../../../components/atoms/typography.dart';
 import '../../common/utils/open_link.dart';
 
@@ -17,15 +16,12 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Heading(
+          title: Text(
             context.i18n('modules:fvm.dialogs.globalConfiguration'),
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
           actions: <Widget>[
             TextButton(
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.resolveWith(
-                (states) => const EdgeInsets.all(20),
-              )),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -36,33 +32,12 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Subheading(
+              Text(
                 context.i18n('modules:fvm.dialogs.flutterPathIsPointingOn'),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               // Caption('${configured.currentPath}.\n\n'),
-              Flexible(
-                child: Text.rich(
-                  TextSpan(children: [
-                    TextSpan(
-                        text: configured.currentPath,
-                        style: Theme.of(context).textTheme.bodySmall),
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: IconButton(
-                          icon: const Icon(Icons.copy, size: 14),
-                          onPressed: () {
-                            Clipboard.setData(
-                                ClipboardData(text: configured.currentPath));
-                            // ScaffoldMessenger.of(context)
-                            //     .showSnackBar(SnackBar(
-                            //   content: Text('${configured.currentPath}'),
-                            // ));
-                          }),
-                    )
-                  ]),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
+              CommandCopy(command: configured.correctPath),
               const SizedBox(height: 12),
 
               !configured.isSetup
@@ -73,12 +48,7 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                               context.i18n(
                                   'modules:fvm.dialogs.ifYouWantToFlutterSdkThroughFvm'),
                         ),
-                        Row(
-                          children: [
-                            Caption(configured.correctPath),
-                            CopyButton(configured.correctPath)
-                          ],
-                        )
+                        CommandCopy(command: configured.correctPath)
                       ],
                     )
                   : Container(),

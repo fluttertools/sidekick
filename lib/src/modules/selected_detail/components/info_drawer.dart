@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -81,15 +80,13 @@ class SelectedDetailDrawer extends ConsumerWidget {
               selected,
             ),
           ),
-          body: CupertinoScrollbar(
-            child: ListView(
-              primary: false,
-              children: [
-                ReferenceInfoTile(selected),
-                FvmInfoTile(selected),
-                ReleaseInfoSection(selected)
-              ],
-            ),
+          body: ListView(
+            primary: false,
+            children: [
+              ReferenceInfoTile(selected),
+              FvmInfoTile(selected),
+              ReleaseInfoSection(selected)
+            ],
           ),
         ),
       ),

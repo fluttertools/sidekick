@@ -35,7 +35,7 @@ class FvmReleaseListItem extends ConsumerWidget {
           release.isGlobal
               ? ActionChip(
                   label: Caption(context.i18n('modules:fvm.components.global')),
-                  avatar: const Icon(MdiIcons.information, size: 20),
+                  avatar: const Icon(MdiIcons.information, size: 15),
                   onPressed: () {
                     showGlobalInfoDialog(context);
                   },

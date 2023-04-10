@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -23,8 +22,19 @@ Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            title:
-                Text(context.i18n('modules:fvm.dialogs.cleanUpUnusedVersions')),
+            title: Column(
+              children: [
+                const Icon(
+                  Icons.cleaning_services_rounded,
+                  size: 25,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  context.i18n('modules:fvm.dialogs.cleanUpUnusedVersions'),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ],
+            ),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               TextButton(
@@ -51,37 +61,35 @@ Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
             ],
             content: Container(
               constraints: const BoxConstraints(maxWidth: 350, maxHeight: 300),
-              child: CupertinoScrollbar(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Text(
-                        context.i18n(
-                                'modules:fvm.dialogs.theseVersionAreNotPinnedToAProject') +
-                            context.i18n(
-                                'modules:fvm.dialogs.doYouWantToRemoveThemToFreeUpSpace'),
-                      ),
-                      const SizedBox(height: 10),
-                      ...ListTile.divideTiles(
-                        context: context,
-                        color: Theme.of(context).dividerColor,
-                        tiles: [
-                          ...unusedVersions.map((version) {
-                            return CheckboxListTile(
-                              title: Text(version.name),
-                              dense: true,
-                              value: selected[version.name] ?? false,
-                              onChanged: (value) {
-                                setState(() {
-                                  selected[version.name] = value ?? false;
-                                });
-                              },
-                            );
-                          }).toList()
-                        ],
-                      ).toList()
-                    ],
-                  ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      context.i18n(
+                              'modules:fvm.dialogs.theseVersionAreNotPinnedToAProject') +
+                          context.i18n(
+                              'modules:fvm.dialogs.doYouWantToRemoveThemToFreeUpSpace'),
+                    ),
+                    const SizedBox(height: 10),
+                    ...ListTile.divideTiles(
+                      context: context,
+                      color: Theme.of(context).dividerColor,
+                      tiles: [
+                        ...unusedVersions.map((version) {
+                          return CheckboxListTile(
+                            title: Text(version.name),
+                            dense: true,
+                            value: selected[version.name] ?? false,
+                            onChanged: (value) {
+                              setState(() {
+                                selected[version.name] = value ?? false;
+                              });
+                            },
+                          );
+                        }).toList()
+                      ],
+                    ).toList()
+                  ],
                 ),
               ),
             ),

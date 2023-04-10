@@ -54,6 +54,8 @@ class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
       title: renderTitle(),
       centerTitle: Platform.isWindows ? false : true,
       titleSpacing: 0,
+      foregroundColor: platformBackgroundColor(context),
+      scrolledUnderElevation: 0,
       leading: Platform.isMacOS ? const WindowButtons() : null,
       actions: [
         const SkUpdateButton(),
@@ -70,12 +72,14 @@ class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.search),
           iconSize: 20,
+          color: Theme.of(context).colorScheme.onSurface,
           splashRadius: 15,
           onPressed: openSearchModal,
         ),
         IconButton(
           icon: const Icon(Icons.settings),
           iconSize: 20,
+          color: Theme.of(context).colorScheme.onSurface,
           splashRadius: 15,
           onPressed: openSettingsScreen,
         ),

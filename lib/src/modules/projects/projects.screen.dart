@@ -1,5 +1,4 @@
 import 'package:file_selector/file_selector.dart' as selector;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -96,24 +95,22 @@ class ProjectsScreen extends HookConsumerWidget {
       ],
       child: projects.isEmpty
           ? const EmptyProjects()
-          : CupertinoScrollbar(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: ResponsiveGridList(
-                    desiredItemWidth: 290,
-                    minSpacing: 0,
-                    children: filteredProjects.value.map((project) {
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 10, right: 10),
-                        child: ProjectListItem(
-                          project,
-                          versionSelect: true,
-                          key: Key(project.projectDir.path),
-                        ),
-                      );
-                    }).toList()),
-              ),
-            ),
+          : Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: ResponsiveGridList(
+                desiredItemWidth: 290,
+                minSpacing: 0,
+                children: filteredProjects.value.map((project) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 10, right: 10),
+                    child: ProjectListItem(
+                      project,
+                      versionSelect: true,
+                      key: Key(project.projectDir.path),
+                    ),
+                  );
+                }).toList()),
+          ),
     );
   }
 }

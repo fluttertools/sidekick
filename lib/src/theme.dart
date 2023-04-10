@@ -17,8 +17,8 @@ ThemeData get darkBlueTheme {
   return _customThemeBuilder(
     cardColor: const Color(0xFF092045),
     scaffoldBackgroundColor: const Color(0xFF081231),
-    primarySwatch: Colors.cyan,
-    accentColor: Colors.cyan,
+    primarySwatch: Colors.blue,
+    accentColor: Colors.blue,
   );
 }
 
@@ -26,8 +26,8 @@ ThemeData get darkTheme {
   return _customThemeBuilder(
     cardColor: const Color(0xFF2B2D2F),
     scaffoldBackgroundColor: const Color(0xFF1D1E1F),
-    primarySwatch: Colors.cyan,
-    accentColor: Colors.cyan,
+    primarySwatch: Colors.blue,
+    accentColor: Colors.blueAccent,
   );
 }
 
@@ -42,18 +42,41 @@ ThemeData _customThemeBuilder({
   if (brightness == Brightness.dark) {
     baseTheme = ThemeData.dark();
   } else {
-    baseTheme = ThemeData.light();
+    baseTheme = lightTheme;
   }
   return ThemeData(
     textTheme: GoogleFonts.ibmPlexSansTextTheme(baseTheme.textTheme),
     brightness: brightness,
     primarySwatch: primarySwatch,
+    useMaterial3: true,
+    splashFactory: InkSparkle.splashFactory,
     cardColor: cardColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     colorScheme: baseTheme.colorScheme.copyWith(
       secondary: accentColor,
+      tertiary: accentColor,
+      onSurface: Colors.white,
     ),
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
+          return null;
+        },
+      ),
+    ),
+    primaryColor: primarySwatch,
+    primaryColorDark: primarySwatch,
     dividerColor: Colors.white10,
+    dividerTheme: const DividerThemeData(
+      color: Colors.white10,
+      thickness: 1,
+      space: 0,
+      indent: 0,
+      endIndent: 0,
+    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.grey,
@@ -68,14 +91,14 @@ ThemeData _customThemeBuilder({
       shape: _roundedShape,
     ),
     dialogTheme: DialogTheme(
-      shape: _roundedShape,
+      //shape: _roundedShape,
       backgroundColor: scaffoldBackgroundColor,
       titleTextStyle: ThemeData.dark().textTheme.displayLarge,
       contentTextStyle: ThemeData.dark().textTheme.bodyLarge,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      color: Colors.black54,
+      //color: Colors.black54,
     ),
     chipTheme: ThemeData.dark().chipTheme.copyWith(
           backgroundColor: Colors.black12,
@@ -89,10 +112,46 @@ ThemeData get lightTheme {
   return ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
+    useMaterial3: true,
     colorScheme: ThemeData.light().colorScheme.copyWith(
+          primary: Colors.blue,
           secondary: Colors.blue,
+          tertiary: Colors.blue,
         ),
+    chipTheme: ChipThemeData(
+      backgroundColor: Colors.grey.shade300,
+      secondarySelectedColor: Colors.grey.shade300,
+      brightness: Brightness.light,
+    ),
+    dialogBackgroundColor: Colors.white,
     dividerColor: Colors.black12,
+    dividerTheme: const DividerThemeData(
+      color: Colors.black12,
+      thickness: 1,
+      space: 0,
+      indent: 0,
+      endIndent: 0,
+    ),
+    cardColor: Colors.white,
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
+          return Colors.black54;
+        },
+      ),
+      trackColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.blue;
+          }
+          return Colors.black12;
+        },
+      ),
+    ),
+    splashFactory: InkSparkle.splashFactory,
     scaffoldBackgroundColor: const Color(0xfffafafa),
     textButtonTheme: _textButtonThemeData,
     cardTheme: const CardTheme(
@@ -106,7 +165,7 @@ ThemeData get lightTheme {
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0,
-      color: Color(0xFFF6F4F6),
+      //color: Color(0xFFF6F4F6),
       iconTheme: IconThemeData(),
     ),
   ).copyWith(
