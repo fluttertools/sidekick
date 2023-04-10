@@ -231,6 +231,10 @@ Color platformBackgroundColor(BuildContext context) {
   }
 
   if (brightnessMatches && Platform.isMacOS) {
+    Window.setEffect(
+      effect: WindowEffect.sidebar,
+      color: Colors.transparent,
+    );
     return Colors.transparent;
   } else {
     return Theme.of(context).cardColor;

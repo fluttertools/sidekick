@@ -1,0 +1,12 @@
+{
+  "atoms": {
+    "copiedToClipboard": "Panoya Kopyalandı",
+    "refresh": "Yenile",
+    "countFound": "{{count}} sonuç bulundu"
+  },
+  "molecules": {
+    "master": "Master",
+    "versionIsInstalled": "Sürüm yüklendi",
+    "versionNotInstalledClickToInstall": "Bu sürüm yüklü değil. Yüklemek için tıklayın."
+  }
+}

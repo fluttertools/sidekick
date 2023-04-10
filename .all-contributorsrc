@@ -282,6 +282,24 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "adnanjpg",
+      "name": "adnan ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54329101?v=4",
+      "profile": "https://github.com/adnanjpg",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "otabekoff",
+      "name": "Otabek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60849894?v=4",
+      "profile": "https://it-dev.uz",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "projectName": "sidekick",

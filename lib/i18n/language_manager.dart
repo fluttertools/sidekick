@@ -26,10 +26,13 @@ class LanguageManager {
     const Locale('pt', 'BR'),
     const Locale('it', 'IT'),
     const Locale('uk', 'UA'),
+    const Locale('uz', 'LA'),
+    const Locale('uz', 'CY'),
     const Locale('ru', 'RU'),
     const Locale('hi', 'IN'),
     const Locale('id', 'ID'),
     const Locale('fr', 'FR'),
+    const Locale('tr', 'TR'),
   ];
 
   List<String> getListOfLocalesAsString() {

@@ -1,7 +1,7 @@
 import Cocoa
 import FlutterMacOS
-import flutter_acrylic
 import bitsdojo_window_macos
+import macos_window_utils
 
 class MainFlutterWindow: BitsdojoWindow {
   override func bitsdojo_window_configure() -> UInt {
@@ -9,15 +9,15 @@ class MainFlutterWindow: BitsdojoWindow {
   }
   
   override func awakeFromNib() {
-    let windowFrame = self.frame
-    let blurryContainerViewController = BlurryContainerViewController() // new
-    self.contentViewController = blurryContainerViewController // new
-    self.setFrame(windowFrame, display: true)
-    
-    /* Initialize the flutter_acrylic plugin */
-    MainFlutterWindowManipulator.start(mainFlutterWindow: self) // new
-    
-    RegisterGeneratedPlugins(registry: blurryContainerViewController.flutterViewController) // new
+      let windowFrame = self.frame
+      let macOSWindowUtilsViewController = MacOSWindowUtilsViewController()
+      self.contentViewController = macOSWindowUtilsViewController
+      self.setFrame(windowFrame, display: true)
+
+      /* Initialize the macos_window_utils plugin */
+      MainFlutterWindowManipulator.start(mainFlutterWindow: self)
+
+      RegisterGeneratedPlugins(registry: macOSWindowUtilsViewController.flutterViewController)
     super.awakeFromNib()
   }
 }
