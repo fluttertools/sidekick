@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -83,6 +84,7 @@ class SettingsScreen extends HookConsumerWidget {
           CloseButton(),
           SizedBox(width: 10),
         ],
+        flexibleSpace: MoveWindow(),
       ),
       body: Row(
         children: [
