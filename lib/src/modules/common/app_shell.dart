@@ -12,7 +12,7 @@ import 'package:sidekick/src/modules/common/utils/indexed_transition_switcher.da
 import 'package:sidekick/src/modules/common/utils/notify.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.provider.dart';
 import 'package:sidekick/src/modules/compatibility_checks/compat.screen.dart';
-import 'package:sidekick/src/modules/search/components/search_bar.dart';
+import 'package:sidekick/src/modules/search/components/search_bar.dart' as sb;
 import 'package:sidekick/src/modules/selected_detail/components/info_drawer.dart';
 
 import '../../components/molecules/top_app_bar.dart';
@@ -200,7 +200,7 @@ class AppShell extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  const SearchBar(),
+                  const sb.SearchBar(),
                 ],
               ),
             ),

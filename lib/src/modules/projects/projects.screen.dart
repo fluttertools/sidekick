@@ -33,6 +33,7 @@ class ProjectsScreen extends HookConsumerWidget {
     Future<void> onRefresh() async {
       await ref.read(projectsProvider.notifier).load();
       notify(
+        // ignore: use_build_context_synchronously
         context.i18n('modules:projects.projectsRefreshed'),
       );
     }
@@ -45,6 +46,7 @@ class ProjectsScreen extends HookConsumerWidget {
         // Operation was canceled by the user.
         return;
       }
+      // ignore: use_build_context_synchronously
       await notifier.addProject(context, directoryPath);
     }
 

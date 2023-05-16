@@ -84,6 +84,7 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
       await ProjectsService.box.put(path, ref);
       await load();
     } else {
+      // ignore: use_build_context_synchronously
       notify(context.i18n('modules:projects.notAFlutterProject'));
     }
   }

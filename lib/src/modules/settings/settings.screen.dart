@@ -48,7 +48,7 @@ class SettingsScreen extends HookConsumerWidget {
 
     final controller = usePageController(initialPage: section.index);
 
-    final _sections = [
+    final sections = [
       context.i18n('modules:settings.scenes.general'),
       'FVM',
       'Flutter'
@@ -92,7 +92,7 @@ class SettingsScreen extends HookConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 10),
               child: ListView(
-                children: _sections.mapIndexed(
+                children: sections.mapIndexed(
                   (section, idx) {
                     return ListTile(
                       leading: Icon(

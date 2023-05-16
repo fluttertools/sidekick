@@ -39,7 +39,7 @@ class IndexedTransitionSwitcher extends StatefulWidget {
   final bool reverse;
 
   @override
-  _IndexedTransitionSwitcherState createState() =>
+  State<IndexedTransitionSwitcher> createState() =>
       _IndexedTransitionSwitcherState();
 }
 

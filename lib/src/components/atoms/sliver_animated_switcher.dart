@@ -14,7 +14,7 @@ class SliverAnimatedSwitcher extends StatefulWidget {
   final Widget child;
 
   @override
-  _SliverAnimatedSwitcherState createState() {
+  State<SliverAnimatedSwitcher> createState() {
     return _SliverAnimatedSwitcherState();
   }
 }

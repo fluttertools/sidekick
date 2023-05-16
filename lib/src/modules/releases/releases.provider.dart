@@ -1,7 +1,7 @@
 // ignore_for_file: top_level_function_literal_block
 import "package:system_info2/system_info2.dart";
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:fvm/fvm.dart';
 
 import '../../modules/common/dto/channel.dto.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -7,7 +8,7 @@ import '../../../components/atoms/typography.dart';
 import '../updater.provider.dart';
 
 /// Sidekick update button
-class SkUpdateButton extends ConsumerWidget {
+class SkUpdateButton extends HookConsumerWidget {
   /// Constructor
   const SkUpdateButton({
     Key? key,
@@ -22,6 +23,8 @@ class SkUpdateButton extends ConsumerWidget {
     if (!updateInfo.ready) {
       return const SizedBox(height: 0, width: 0);
     }
+
+    final isMounted = useIsMounted();
 
     void showUpdateDialog() {
       // flutter defined function
@@ -59,7 +62,8 @@ class SkUpdateButton extends ConsumerWidget {
               ElevatedButton(
                 onPressed: () async {
                   await updater.openInstaller(context);
-                  Navigator.of(context).pop();
+                  // ignore: use_build_context_synchronously
+                  if (isMounted()) Navigator.of(context).pop();
                 },
                 child:
                     Text(context.i18n('modules:updater.components.updateNow')),

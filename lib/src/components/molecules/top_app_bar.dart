@@ -39,8 +39,8 @@ class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
     Widget renderTitle() {
       if (!Platform.isMacOS) {
-        return Row(
-          children: const [
+        return const Row(
+          children: [
             SizedBox(width: 10),
             Caption(kAppTitle),
           ],
@@ -60,9 +60,9 @@ class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
         const SizedBox(
           width: 10,
         ),
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Caption(packageVersion),
           ],
         ),

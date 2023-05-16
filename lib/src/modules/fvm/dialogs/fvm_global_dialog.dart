@@ -13,6 +13,7 @@ import '../../common/utils/open_link.dart';
 Future<void> showGlobalInfoDialog(BuildContext context) async {
   final configured = await FVMClient.checkIfGlobalConfigured();
 
+  // ignore: use_build_context_synchronously
   await showDialog(
       context: context,
       builder: (context) {
@@ -51,12 +52,10 @@ Future<void> showGlobalInfoDialog(BuildContext context) async {
                       child: IconButton(
                           icon: const Icon(Icons.copy, size: 14),
                           onPressed: () {
+                            if (configured.currentPath == null) return;
                             Clipboard.setData(
-                                ClipboardData(text: configured.currentPath));
-                            // ScaffoldMessenger.of(context)
-                            //     .showSnackBar(SnackBar(
-                            //   content: Text('${configured.currentPath}'),
-                            // ));
+                              ClipboardData(text: configured.currentPath!),
+                            );  
                           }),
                     )
                   ]),
