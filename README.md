@@ -71,7 +71,7 @@
 
 
 <div align="center">
-  <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://getbadgecdn.azureedge.net/images/English_L.png" width="200" /></a>
+  <a href="https://www.microsoft.com/store/productId/9NZ54K8CW0WG"><img src="https://get.microsoft.com/images/en-US%20dark.svg" width="200" /></a>
  <br>
  </div>
  
