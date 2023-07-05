@@ -27,7 +27,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_spinkit: ^5.0.0
-  fvm: ^2.2.6
+  fvm: ^2.4.1
   google_fonts: ^4.0.4
   hive: ^2.0.4
   hive_flutter: ^1.0.0
