@@ -102,3 +102,4 @@ flutter_intl:
 
 dependency_overrides:
   cli_util: ^0.4.0
+
