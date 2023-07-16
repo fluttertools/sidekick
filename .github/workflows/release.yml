@@ -81,21 +81,32 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
-      #- name: Build AppImage
-      #  uses: AppImageCrafters/build-appimage@master
-      #  with:
-      #    recipe: "AppImageBuilder.yml"
+      - name: Install appimage-builder deps
+        run: sudo apt install -y binutils coreutils desktop-file-utils fakeroot fuse libgdk-pixbuf2.0-dev patchelf python3-pip python3-setuptools squashfs-tools strace util-linux zsync
 
-      #- name: Upload AppImage to release
-      #  uses: svenstaro/upload-release-action@2.2.1
-      #  with:
-      #    # GitHub token.
-      #    repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #    # Local file to upload.
-      #    file: Sidekick-latest-x86_64.AppImage
-      #    asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
+      - name: Install appimagetool
+        run: |
+          sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+          sudo chmod +x /usr/local/bin/appimagetool
+
+      - name: Install appimage-builder
+        run: |
+          sudo pip3 install appimage-builder
+
+      - name: Build AppImage
+        run: |
+          appimage-builder --recipe AppImageBuilder.yml
+
+      - name: Upload AppImage to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          # GitHub token.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Local file to upload.
+          file: Sidekick-latest-x86_64.AppImage
+          asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
           # Tag to use as a release.
-      #    tag: ${{ github.ref }}
+          tag: ${{ github.ref }}
 
   build-macos:
     name: "Build MacOS"
