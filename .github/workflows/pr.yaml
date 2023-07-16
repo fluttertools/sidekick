@@ -53,9 +53,9 @@ jobs:
           sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
           sudo chmod +x /usr/local/bin/appimagetool
 
-      - name: Set setuptools to version ^65
+      - name: Set setuptools to version 65.7.0
         run: |
-          sudo pip3 install --upgrade setuptools=65
+          sudo pip3 install --upgrade setuptools==65.7.0
 
       - name: Install appimage-builder
         run: |
