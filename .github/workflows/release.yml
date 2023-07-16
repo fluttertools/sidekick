@@ -91,7 +91,7 @@ jobs:
 
       - name: Set setuptools to version ^65
         run: |
-          sudo pip3 install setuptools=65
+          sudo pip3 install --upgrade setuptools=65
 
       - name: Install appimage-builder
         run: |
