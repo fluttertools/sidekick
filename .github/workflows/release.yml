@@ -128,7 +128,7 @@ jobs:
           channel: "stable"
 
       - name: Set Up XCode
-        uses: devbotsxyz/xcode-select@v1.1.0
+        uses: BoundfoxStudios/action-xcode-select@v1
 
       - name: Install create-dmg
         run: brew install create-dmg

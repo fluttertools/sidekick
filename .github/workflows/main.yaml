@@ -40,11 +40,6 @@ jobs:
         with:
           filename: linux-dev.zip
 
-      - name: Build AppImage
-        uses: AppImageCrafters/build-appimage@master
-        with:
-          recipe: "AppImageBuilder.yml"
-
       - name: Upload Build AppImage
         uses: actions/upload-artifact@v2.3.1
         with:
@@ -103,7 +98,7 @@ jobs:
           channel: 'stable'
 
       - name: Set Up XCode
-        uses: devbotsxyz/xcode-select@v1.1.0
+        uses: BoundfoxStudios/action-xcode-select@v1
 
       - name: Enable desktop
         run: flutter config --enable-macos-desktop

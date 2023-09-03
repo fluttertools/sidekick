@@ -53,9 +53,17 @@ jobs:
           sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
           sudo chmod +x /usr/local/bin/appimagetool
 
-      - name: Set setuptools to version 65.7.0
+      - name: Install appimage-builder deps
+        run: sudo apt install -y binutils coreutils desktop-file-utils fakeroot fuse libgdk-pixbuf2.0-dev patchelf python3-pip python3-setuptools squashfs-tools strace util-linux zsync
+
+      - name: Install appimagetool
         run: |
-          sudo pip3 install --upgrade setuptools==65.7.0
+          sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
+          sudo chmod +x /usr/local/bin/appimagetool
+
+      - name: Set setuptools to version ^65
+        run: |
+          sudo pip3 install --upgrade setuptools=65
 
       - name: Install appimage-builder
         run: |
@@ -92,7 +100,7 @@ jobs:
           channel: 'stable'
 
       - name: Set Up XCode
-        uses: devbotsxyz/xcode-select@v1.1.0
+        uses: BoundfoxStudios/action-xcode-select@v1
 
       - name: Enable desktop
         run: flutter config --enable-macos-desktop
