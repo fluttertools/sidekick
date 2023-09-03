@@ -81,6 +81,11 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
+      - name: Install FUSE (appbuilder dep)
+        run: |
+          sudo add-apt-repository universe
+          sudo apt install libfuse2
+
       - name: Install appimagebuilder
         run: |
           wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
