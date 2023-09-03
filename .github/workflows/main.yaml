@@ -60,16 +60,11 @@ jobs:
         run: |
           appimage-builder --recipe AppImageBuilder.yml
 
-      - name: Upload AppImage to release
-        uses: svenstaro/upload-release-action@2.2.1
+      - name: Upload Build AppImage
+        uses: actions/upload-artifact@v2.3.1
         with:
-          # GitHub token.
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          # Local file to upload.
-          file: Sidekick-latest-x86_64.AppImage
-          asset_name: sidekick-linux-dev.AppImage
-          # Tag to use as a release.
-          tag: ${{ github.ref }}
+          name: sidekick-linux-dev.AppImage
+          path: Sidekick-latest-x86_64.AppImage
 
   build-macos:
     name: "Build MacOS"
