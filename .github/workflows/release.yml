@@ -81,17 +81,11 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
-      - name: Install appimage-builder deps
-        run: sudo apt install -y binutils coreutils desktop-file-utils fakeroot fuse libgdk-pixbuf2.0-dev patchelf python3-pip python3-setuptools squashfs-tools strace util-linux zsync
-
-      - name: Install appimagetool
+      - name: Install appimagebuilder
         run: |
-          sudo wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool
-          sudo chmod +x /usr/local/bin/appimagetool
-
-      - name: Install appimage-builder
-        run: |
-          sudo pip3 install appimage-builder
+          wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+          chmod +x appimage-builder-x86_64.AppImage
+          sudo mv appimage-builder-x86_64.AppImage /usr/local/bin/appimage-builder
 
       - name: Build AppImage
         run: |
