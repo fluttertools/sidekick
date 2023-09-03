@@ -45,10 +45,10 @@ jobs:
           name: sidekick-linux-dev.zip
           path: linux-dev.zip
 
-      - name: Install FUSE (appbuilder dep)
+      - name: Install appbuilder deps
         run: |
           sudo add-apt-repository universe
-          sudo apt install libfuse2
+          sudo apt install libfuse2 libgtk-3-0
 
       - name: Install appimagebuilder
         run: |
