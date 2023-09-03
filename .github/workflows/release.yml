@@ -81,21 +81,31 @@ jobs:
           # Tag to use as a release.
           tag: ${{ github.ref }}
 
-      #- name: Build AppImage
-      #  uses: AppImageCrafters/build-appimage@master
-      #  with:
-      #    recipe: "AppImageBuilder.yml"
+      - name: Install appbuilder deps
+        run: |
+          sudo add-apt-repository universe
+          sudo apt install libfuse2 libgtk-3-0
 
-      #- name: Upload AppImage to release
-      #  uses: svenstaro/upload-release-action@2.2.1
-      #  with:
-      #    # GitHub token.
-      #    repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #    # Local file to upload.
-      #    file: Sidekick-latest-x86_64.AppImage
-      #    asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
+      - name: Install appimagebuilder
+        run: |
+          wget -O appimage-builder-x86_64.AppImage https://github.com/AppImageCrafters/appimage-builder/releases/download/v1.1.0/appimage-builder-1.1.0-x86_64.AppImage
+          chmod +x appimage-builder-x86_64.AppImage
+          sudo mv appimage-builder-x86_64.AppImage /usr/local/bin/appimage-builder
+
+      - name: Build AppImage
+        run: |
+          appimage-builder --recipe AppImageBuilder.yml
+
+      - name: Upload AppImage to release
+        uses: svenstaro/upload-release-action@2.2.1
+        with:
+          # GitHub token.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # Local file to upload.
+          file: Sidekick-latest-x86_64.AppImage
+          asset_name: sidekick-linux-${{ github.event.release.tag_name }}.AppImage
           # Tag to use as a release.
-      #    tag: ${{ github.ref }}
+          tag: ${{ github.ref }}
 
   build-macos:
     name: "Build MacOS"
@@ -113,7 +123,7 @@ jobs:
           channel: "stable"
 
       - name: Set Up XCode
-        uses: devbotsxyz/xcode-select@v1.1.0
+        uses: BoundfoxStudios/action-xcode-select@v1
 
       - name: Install create-dmg
         run: brew install create-dmg
