@@ -156,6 +156,8 @@ jobs:
               capabilities: "internetClient,removableStorage"
               certificate_path: windows\SIDEKICK-CERT.pfx
               certificate_password: ${{ secrets.WIN_CERT_PASS }}
+              install-certificate: false
+              build_windows: false
               store: false
           write-mode: append
 

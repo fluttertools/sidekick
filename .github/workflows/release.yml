@@ -229,6 +229,7 @@ jobs:
               certificate_path: windows\SIDEKICK-CERT.pfx
               certificate_password: ${{ secrets.WIN_CERT_PASS }}
               store: true
+              build_windows: false
           write-mode: append
 
       - name: Write MS Store true
@@ -314,6 +315,7 @@ jobs:
               certificate_password: ${{ secrets.WIN_CERT_PASS }}
               store: false
               install-certificate: false
+              build_windows: false
           write-mode: append
 
       - name: Flutter get packages
