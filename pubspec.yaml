@@ -69,7 +69,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^2.0.0
-  msix: ^3.15.0
+  msix: ^3.16.0
 
 flutter:
   uses-material-design: true

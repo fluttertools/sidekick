@@ -313,6 +313,7 @@ jobs:
               certificate_path: windows\SIDEKICK-CERT.pfx
               certificate_password: ${{ secrets.WIN_CERT_PASS }}
               store: false
+              install-certificate: false
           write-mode: append
 
       - name: Flutter get packages
@@ -325,7 +326,7 @@ jobs:
         run: flutter build windows
 
       - name: Create MSIX
-        run: flutter pub run msix:create
+        run: flutter pub run msix:publish
 
       - name: Compress artifacts
         run: tar.exe -a -c -f windows-${{ github.event.release.tag_name }}.zip build/windows/Runner/release
