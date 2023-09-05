@@ -314,7 +314,7 @@ jobs:
               certificate_path: windows\SIDEKICK-CERT.pfx
               certificate_password: ${{ secrets.WIN_CERT_PASS }}
               store: false
-              install-certificate: false
+              install_certificate: false
               build_windows: false
           write-mode: append
 
