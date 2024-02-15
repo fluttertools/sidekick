@@ -197,7 +197,6 @@ final getVersionProvider = Provider.family<ReleaseDto?, String?>(
 enum Filter {
   beta,
   stable,
-  dev,
   all,
 }
 
@@ -214,8 +213,6 @@ Filter filterFromName(String name) {
   switch (name) {
     case 'stable':
       return Filter.stable;
-    case 'dev':
-      return Filter.dev;
     case 'beta':
       return Filter.beta;
     case 'all':

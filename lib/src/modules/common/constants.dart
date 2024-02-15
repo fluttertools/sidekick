@@ -17,7 +17,7 @@ const kNavigationWidth = 65.0;
 const kNavigationWidthExtended = 180.0;
 
 /// Channels without master
-const kReleaseChannels = ['stable', 'beta', 'dev'];
+const kReleaseChannels = ['stable', 'beta'];
 
 /// Master channel
 const kMasterChannel = 'master';
@@ -35,6 +35,5 @@ const kFlutterTagsUrl = 'https://github.com/flutter/flutter/releases/tag/';
 Map<String, String> channelDescriptions(BuildContext context) => {
       'stable': context.i18n('modules:common.stableChannelDescription'),
       'beta': context.i18n('modules:common.betaChannelDescription'),
-      'dev': context.i18n('modules:common.devChannelDescription'),
       'master': context.i18n('modules:common.masterChannelDescription'),
     };

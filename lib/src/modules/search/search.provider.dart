@@ -40,16 +40,12 @@ class SearchResults {
   /// Beta Releases
   final List<VersionDto> betaReleases;
 
-  /// Dev Releases
-  final List<VersionDto> devReleases;
-
   /// Constructor
   SearchResults({
     this.projects = const [],
     this.channels = const [],
     this.stableReleases = const [],
     this.betaReleases = const [],
-    this.devReleases = const [],
   });
 
   /// No results
@@ -57,8 +53,7 @@ class SearchResults {
     return projects.isEmpty &&
         channels.isEmpty &&
         stableReleases.isEmpty &&
-        betaReleases.isEmpty &&
-        devReleases.isEmpty;
+        betaReleases.isEmpty;
   }
 }
 
@@ -84,7 +79,6 @@ final searchResultsProvider = Provider((ref) {
   final channelResults = <ChannelDto>[];
   final stableReleaseResults = <VersionDto>[];
   final betaReleaseResults = <VersionDto>[];
-  final devReleaseResults = <VersionDto>[];
 
   // We look for multiple terms, make sure result only shows up once
   final uniques = <String, bool>{};
@@ -141,9 +135,6 @@ final searchResultsProvider = Provider((ref) {
           case Channel.beta:
             betaReleaseResults.add(release);
             break;
-          case Channel.dev:
-            devReleaseResults.add(release);
-            break;
           default:
 
             /// TODO: If this logic is removed, it should support passing actual Context
@@ -175,6 +166,5 @@ final searchResultsProvider = Provider((ref) {
     projects: projectResults,
     stableReleases: stableReleaseResults,
     betaReleases: betaReleaseResults,
-    devReleases: devReleaseResults,
   );
 });

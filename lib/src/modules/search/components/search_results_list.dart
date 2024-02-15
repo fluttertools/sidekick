@@ -96,22 +96,6 @@ class SearchResultsList extends StatelessWidget {
               ),
             ],
           ),
-          SliverSection(
-            shouldDisplay: results.devReleases.isNotEmpty,
-            slivers: [
-              SliverPersistentHeader(
-                delegate: SliverHeaderDelegate(
-                  title: context.i18n('modules:search.components.devReleases'),
-                  count: results.devReleases.length,
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return ReleaseListItem(results.devReleases[index]);
-                }, childCount: results.devReleases.length),
-              ),
-            ],
-          ),
         ],
       ),
     );
