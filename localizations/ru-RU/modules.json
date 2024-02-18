@@ -106,7 +106,6 @@
       "channels": "Каналы",
       "stableReleases": "Стабильные релизы",
       "betaReleases": "Бета-релизы",
-      "devReleases": "Релизы разработчиков",
       "invalidChanel": "Некорректный канал"
     }
   },

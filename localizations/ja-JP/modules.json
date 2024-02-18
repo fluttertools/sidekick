@@ -106,7 +106,6 @@
       "channels": "チャンネル",
       "stableReleases": "Stableリリース",
       "betaReleases": "Betaリリース",
-      "devReleases": "Devリリース",
       "invalidChanel": "無効なチャンネル"
     }
   },

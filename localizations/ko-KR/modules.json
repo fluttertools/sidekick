@@ -106,7 +106,6 @@
       "channels": "채널",
       "stableReleases": "안정 버전",
       "betaReleases": "베타 버전",
-      "devReleases": "개발자 버전",
       "invalidChanel": "유효하지 않은 버전"
     }
   },

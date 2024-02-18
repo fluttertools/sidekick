@@ -106,7 +106,6 @@
       "channels": "Channel",
       "stableReleases": "Rilis Stabil",
       "betaReleases": "Rilis Beta",
-      "devReleases": "Rilis Dev",
       "invalidChanel": "Channel Tidak Valid"
     }
   },

@@ -106,7 +106,6 @@
       "channels": "渠道",
       "stableReleases": "Stable 发行版",
       "betaReleases": "Beta 发行版",
-      "devReleases": "Dev 发行版",
       "invalidChanel": "无效渠道"
     }
   },

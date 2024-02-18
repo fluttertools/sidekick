@@ -106,7 +106,6 @@
       "channels": "Kanallar",
       "stableReleases": "Stabil Yayınlar",
       "betaReleases": "Beta Yayınlar",
-      "devReleases": "Geliştirici Yayınlar",
       "invalidChanel": "Geçersiz kanal"
     }
   },

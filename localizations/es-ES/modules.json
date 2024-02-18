@@ -106,7 +106,6 @@
       "channels": "Canales",
       "stableReleases": "Vesiones Estables",
       "betaReleases": "Versiones Beta",
-      "devReleases": "Versiones Dev",
       "invalidChanel": "Canal inválido"
     }
   },
