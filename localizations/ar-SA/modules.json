@@ -106,7 +106,6 @@
       "channels": "القنوات",
       "stableReleases": "الإصدارات المستقرة",
       "betaReleases": "الإصدارات التجريبية",
-      "devReleases": "الإصدارات التجريبية \"مطورين\"",
       "invalidChanel": "قناة غير صالحة"
     }
   },

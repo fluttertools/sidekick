@@ -106,7 +106,6 @@
       "channels": "Branches",
       "stableReleases": "Releases stables",
       "betaReleases": "Releases beta",
-      "devReleases": "Releases dev",
       "invalidChanel": "Branche invalide"
     }
   },

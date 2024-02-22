@@ -106,7 +106,6 @@
       "channels": "Kaneler",
       "stableReleases": "Stabil releaser",
       "betaReleases": "Beta releaser",
-      "devReleases": "Dev releaser",
       "invalidChanel": "Felaktig kanal"
     }
   },
