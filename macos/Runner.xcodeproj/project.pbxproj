@@ -207,7 +207,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "The Flutter Authors";
 				TargetAttributes = {
 					33CC10EC2044A3C60003C045 = {
@@ -268,6 +268,7 @@
 				"${BUILT_PRODUCTS_DIR}/bitsdojo_window_macos/bitsdojo_window_macos.framework",
 				"${BUILT_PRODUCTS_DIR}/file_selector_macos/file_selector_macos.framework",
 				"${BUILT_PRODUCTS_DIR}/macos_window_utils/macos_window_utils.framework",
+				"${BUILT_PRODUCTS_DIR}/open_file_mac/open_file_mac.framework",
 				"${BUILT_PRODUCTS_DIR}/path_provider_foundation/path_provider_foundation.framework",
 				"${BUILT_PRODUCTS_DIR}/screen_retriever/screen_retriever.framework",
 				"${BUILT_PRODUCTS_DIR}/shared_preferences_foundation/shared_preferences_foundation.framework",
@@ -280,6 +281,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/bitsdojo_window_macos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/file_selector_macos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/macos_window_utils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/open_file_mac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/path_provider_foundation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/screen_retriever.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/shared_preferences_foundation.framework",

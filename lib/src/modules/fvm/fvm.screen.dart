@@ -57,7 +57,7 @@ class FVMScreen extends ConsumerWidget {
         child: ListView.separated(
           controller: sdkScrollController,
           itemCount: cachedVersions.all.length,
-          separatorBuilder: (_, __) => const Divider(height: 200),
+          separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
             return FvmReleaseListItem(
               cachedVersions.all[index],
