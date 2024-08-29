@@ -29,6 +29,7 @@ class ProjectsScreen extends HookConsumerWidget {
     final settings = ref.watch(settingsProvider);
 
     final filteredProjects = useState(projects);
+    final projectsScrollController = ScrollController();
 
     Future<void> onRefresh() async {
       await ref.read(projectsProvider.notifier).load();
@@ -99,9 +100,11 @@ class ProjectsScreen extends HookConsumerWidget {
       child: projects.isEmpty
           ? const EmptyProjects()
           : CupertinoScrollbar(
+              controller: projectsScrollController,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: ResponsiveGridList(
+                    controller: projectsScrollController,
                     desiredItemWidth: 290,
                     minSpacing: 0,
                     children: filteredProjects.value.map((project) {

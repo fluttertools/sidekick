@@ -22,6 +22,7 @@ class SelectedDetailDrawer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final detail = ref.watch(selectedDetailProvider);
     final selected = detail?.release;
+    final detailScrollController = ScrollController();
 
     void onClose() {
       // Close drawer if its not large layout
@@ -82,7 +83,9 @@ class SelectedDetailDrawer extends ConsumerWidget {
             ),
           ),
           body: CupertinoScrollbar(
+            controller: detailScrollController,
             child: ListView(
+              controller: detailScrollController,
               primary: false,
               children: [
                 ReferenceInfoTile(selected),
