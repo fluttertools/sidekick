@@ -16,6 +16,7 @@ class FlutterProject extends Project {
     required Directory projectDir,
     required this.pubspec,
     this.invalid = false,
+    this.projectIcon = "",
   }) : super(
           name: name,
           config: config,
@@ -27,12 +28,14 @@ class FlutterProject extends Project {
   final bool invalid;
 
   /// Create Flutter project from project
-  factory FlutterProject.fromProject(Project project, Pubspec pubspec) {
+  factory FlutterProject.fromProject(Project project, Pubspec pubspec,
+      {String projectIcon = ""}) {
     return FlutterProject._(
       name: project.name ?? pubspec.name,
       config: project.config,
       projectDir: project.projectDir,
       pubspec: pubspec,
+      projectIcon: projectIcon,
     );
   }
 
@@ -44,6 +47,7 @@ class FlutterProject extends Project {
       projectDir: project.projectDir,
       pubspec: null,
       invalid: true,
+      projectIcon: "",
     );
   }
 
@@ -54,13 +58,17 @@ class FlutterProject extends Project {
   String get description {
     return pubspec?.description ?? '';
   }
+
+  /// Project Icon Raw String Data
+  late String projectIcon;
 }
 
 /// Ref to project path
 class ProjectRef {
   /// Constructor
-  const ProjectRef({
+  ProjectRef({
     required this.name,
+    required this.projectIcon,
     required this.path,
   });
 
@@ -70,20 +78,20 @@ class ProjectRef {
   /// Project path
   final String path;
 
+  /// Project Icon
+  final String projectIcon;
+
   /// Creates a project path from map
   factory ProjectRef.fromMap(Map<String, String> map) {
     return ProjectRef(
-      name: map['name'] ?? '',
-      path: map['path'] ?? '',
-    );
+        name: map['name'] ?? '',
+        path: map['path'] ?? '',
+        projectIcon: map['projectIcon'] ?? '');
   }
 
   /// Returns project path as a map
   Map<String, String> toMap() {
-    return {
-      'name': name,
-      'path': path,
-    };
+    return {'name': name, 'path': path, 'projectIcon': projectIcon};
   }
 }
 
