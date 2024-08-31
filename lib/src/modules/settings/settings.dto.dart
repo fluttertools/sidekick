@@ -54,7 +54,7 @@ class SidekickSettings {
           dataSource: AssetBundleLocalizationDataSource(
             bundlePath: 'localizations',
           ),
-          options: I18NextOptions(formatter: languageManager.formatter),
+          // options: I18NextOptions(formatter: languageManager.formatter),
         );
 
   /// Storage key

@@ -9,6 +9,7 @@ import '../fvm_queue.provider.dart';
 
 Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
   final unusedVersions = ref.read(unusedVersionProvider);
+  final scrollController = ScrollController();
 
   if (unusedVersions.isEmpty) {
     notify(context
@@ -52,7 +53,9 @@ Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
             content: Container(
               constraints: const BoxConstraints(maxWidth: 350, maxHeight: 300),
               child: CupertinoScrollbar(
+                controller: scrollController,
                 child: SingleChildScrollView(
+                  controller: scrollController,
                   child: Column(
                     children: [
                       Text(

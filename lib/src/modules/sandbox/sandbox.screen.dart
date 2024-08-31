@@ -31,6 +31,7 @@ class SandboxScreen extends HookConsumerWidget {
     final processing = ref.watch(sandboxProvider).processing;
 
     final selectedRelease = useState<ReleaseDto?>(null);
+    final sandboxScrollController = ScrollController();
 
     useEffect(() {
       if (selectedRelease.value == null && releases.all.isNotEmpty) {
@@ -96,9 +97,11 @@ class SandboxScreen extends HookConsumerWidget {
                 const Divider(height: 1),
                 Expanded(
                   child: CupertinoScrollbar(
+                    controller: sandboxScrollController,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListView(
+                        controller: sandboxScrollController,
                         children: releases.all.map(
                           (version) {
                             if (version.name == selectedRelease.value?.name) {

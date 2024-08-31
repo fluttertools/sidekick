@@ -16,6 +16,7 @@ class FVMScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cachedVersions = ref.watch(releasesStateProvider);
+    final sdkScrollController = ScrollController();
 
     if (cachedVersions.fetching) {
       return const Center(child: CircularProgressIndicator());
@@ -52,7 +53,9 @@ class FVMScreen extends ConsumerWidget {
         ),
       ],
       child: CupertinoScrollbar(
+        controller: sdkScrollController,
         child: ListView.separated(
+          controller: sdkScrollController,
           itemCount: cachedVersions.all.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {

@@ -22,6 +22,7 @@ class Console extends HookWidget {
   Widget build(BuildContext context) {
     final output = useStream(fvmStdoutProvider);
     final lines = useState<List<String>>(['']);
+    final consoleScrollController = ScrollController();
 
     useEffect(() {
       lines.value.insert(0, output.data ?? '');
@@ -73,7 +74,9 @@ class Console extends HookWidget {
                   ),
                 ),
                 secondChild: CupertinoScrollbar(
+                  controller: consoleScrollController,
                   child: ListView.builder(
+                    controller: consoleScrollController,
                     primary: false,
                     shrinkWrap: true,
                     reverse: true,
