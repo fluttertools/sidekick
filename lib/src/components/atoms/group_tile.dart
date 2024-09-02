@@ -6,12 +6,12 @@ class SkGroupTile extends HookWidget {
   /// Constructor
   const SkGroupTile({
     required this.title,
-    Key? key,
+    super.key,
     this.leading,
     this.trailing,
     this.border = false,
     this.children = const [],
-  }) : super(key: key);
+  });
 
   /// Title widget
   final Widget title;

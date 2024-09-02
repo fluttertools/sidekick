@@ -11,8 +11,8 @@ class CacheDateDisplay extends HookWidget {
   /// Constructor
   const CacheDateDisplay(
     this.release, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Release
   final ReleaseDto? release;

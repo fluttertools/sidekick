@@ -8,8 +8,8 @@ import 'package:window_manager/window_manager.dart';
 
 class ErrorDBScreen extends StatelessWidget {
   const ErrorDBScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class ErrorDBScreen extends StatelessWidget {
                       children: [
                         TextButton.icon(
                           style: ButtonStyle(
-                              padding: MaterialStateProperty.resolveWith(
+                              padding: WidgetStateProperty.resolveWith(
                                   (states) => const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10))),
                           onPressed: () {

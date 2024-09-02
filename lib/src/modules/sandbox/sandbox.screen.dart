@@ -18,8 +18,8 @@ class SandboxScreen extends HookConsumerWidget {
   /// Constructor
   const SandboxScreen({
     required this.project,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Project
   final Project project;

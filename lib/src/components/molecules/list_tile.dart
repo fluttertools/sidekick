@@ -22,14 +22,14 @@ class SkListTile extends StatelessWidget {
 
   /// Constructor
   const SkListTile({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.leading,
     this.trailing,
     this.onTap,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

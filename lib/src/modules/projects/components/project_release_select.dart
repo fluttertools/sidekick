@@ -14,8 +14,8 @@ class ProjectReleaseSelect extends ConsumerWidget {
   const ProjectReleaseSelect({
     required this.project,
     required this.releases,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Project
   final FlutterProject project;

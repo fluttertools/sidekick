@@ -16,8 +16,8 @@ class SandboxTerminal extends HookConsumerWidget {
   const SandboxTerminal({
     required this.project,
     required this.release,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Project
   final Project project;
@@ -119,14 +119,14 @@ class SandboxTerminal extends HookConsumerWidget {
       });
     }
 
-    void handlekeyDown(RawKeyEvent key) {
+    void handlekeyDown(KeyEvent key) {
       if (key.runtimeType.toString() == 'RawKeyDownEvent') {
-        if (key.data.logicalKey == LogicalKeyboardKey.arrowUp) {
+        if (key.logicalKey == LogicalKeyboardKey.arrowUp) {
           if (terminalState.cmdHistory.length > currentCmdIdx.value) {
             moveCmdIndex(1);
           }
         }
-        if (key.data.logicalKey == LogicalKeyboardKey.arrowDown) {
+        if (key.logicalKey == LogicalKeyboardKey.arrowDown) {
           if (currentCmdIdx.value > 0) {
             moveCmdIndex(-1);
           }
@@ -163,9 +163,9 @@ class SandboxTerminal extends HookConsumerWidget {
           child: Row(
             children: [
               Expanded(
-                child: RawKeyboardListener(
+                child: KeyboardListener(
                   focusNode: keyListenerFocus,
-                  onKey: handlekeyDown,
+                  onKeyEvent: handlekeyDown,
                   child: TextField(
                     focusNode: focus,
                     enabled: !terminalState.processing,

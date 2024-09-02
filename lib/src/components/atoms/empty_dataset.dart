@@ -42,8 +42,8 @@ class EmptyDataset extends StatelessWidget {
     this.iconColor,
     this.backgroundColor = Colors.black,
     this.opacity = 0.3,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Icon
   final Widget icon;

@@ -6,8 +6,8 @@ import '../atoms/typography.dart';
 // TODO: Make this generic
 class InfoBanner extends StatelessWidget {
   const InfoBanner({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
