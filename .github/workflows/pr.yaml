@@ -153,7 +153,7 @@ jobs:
         run: flutter build windows
 
       - name: Compress artifacts
-        run: tar.exe -zcvf windows-dev.zip build/windows/Runner/release
+        run: tar.exe -zcvf windows-dev.zip build\windows\x64\runner\Release
 
       - name: Upload Build Zip
         uses: actions/upload-artifact@v2.3.1
