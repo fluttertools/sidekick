@@ -21,7 +21,7 @@ Future<bool> isBrewInstalled() async {
 }
 
 Future<bool> isFvmInstalled() async {
-  final fvmRes = await which("git");
+  final fvmRes = await which("fvm");
   if (fvmRes != null) {
     return true;
   }
