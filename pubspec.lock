@@ -605,12 +605,11 @@ packages:
   i18next:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "01006cb864af334208a835dfe6e4ee34bf0dd592"
-      url: "https://github.com/Ahmadre/i18next.git"
-    source: git
-    version: "0.6.1"
+      name: i18next
+      sha256: "4a2eb141fa5e20aad966ac29b4dad2293ab150f98ac3f70c69da986f426e669f"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.3"
   image:
     dependency: transitive
     description:
@@ -782,68 +781,67 @@ packages:
   open_file:
     dependency: "direct main"
     description:
-      path: open_file
-      ref: HEAD
-      resolved-ref: fae7cb62566775bd07801c0f1fcd60d7cb1311af
-      url: "https://github.com/crazecoder/open_file"
-    source: git
-    version: "3.5.1"
+      name: open_file
+      sha256: de371f549b1320a48980952473fae1903d4927975506534c8ea4643642eb5f98
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.5.3"
   open_file_android:
     dependency: transitive
     description:
       name: open_file_android
-      sha256: "43f9ddb0e2eb76e560f44c83ea1959962699526b6f59ec88f87eca009271c56f"
+      sha256: b5e1a2e9c5ea8e256b015403e94299039627c7205c2a5e6bb426c33235b6ca9a
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   open_file_ios:
     dependency: transitive
     description:
       name: open_file_ios
-      sha256: "9f019f10045dc88c0c01acdac9ee038cbaa0dc898e756aa336d6b015cdb8ddb9"
+      sha256: "8d9c03495cf14ca70bdbf191894b822ba3b2629cc0046ee311cbbe504db66c44"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   open_file_linux:
     dependency: transitive
     description:
       name: open_file_linux
-      sha256: "2c7c8e6a9ce430b2fae8cbc5551466369d657402c1527eef49be5c9cc9c92944"
+      sha256: cd2088722048b9c40f8615c6d83005fe0726e0e447e9cdfb40c2b65477291f7d
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.4"
   open_file_mac:
     dependency: transitive
     description:
       name: open_file_mac
-      sha256: f878b6863af99e6abae4cde8c4c1fe2e58e1e7f3f0c4c5e4c65fb2e697cbd28d
+      sha256: "9d809f528cccc6dc9390caf50893eae9a6944e0f3b8a2558c7ad19e91c9244a1"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   open_file_platform_interface:
     dependency: transitive
     description:
       name: open_file_platform_interface
-      sha256: e410d18264a0f3166f0c7f5460e931920a14f680ec38e2a25c8e0a8a901da838
+      sha256: "14c50efb1a9667cb96e4fa68d601e6ad348fe337b02789834029b37ae3631498"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   open_file_web:
     dependency: transitive
     description:
       name: open_file_web
-      sha256: "34d1da10b30911066c939f11b79f420ecb85e0c3372eefa7c1adb37693dc930e"
+      sha256: ba35c6f38c21c2bb4268a80927bb828353dda0edfce92e274e0b9639e4f31360
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   open_file_windows:
     dependency: transitive
     description:
       name: open_file_windows
-      sha256: a13e754c131eabf3a8e5dce0adb2fff4e3827fe3acd71219da3a57f65a22920c
+      sha256: "2f4318d2d3958ec8d63b6dd4430c15b1fcb2fe7a2113e83c734584501a5c6d81"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   package_config:
     dependency: transitive
     description:
@@ -1385,15 +1383,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.4.2"
-  window_size:
-    dependency: "direct main"
-    description:
-      path: "plugins/window_size"
-      ref: HEAD
-      resolved-ref: eb3964990cf19629c89ff8cb4a37640c7b3d5601
-      url: "https://github.com/google/flutter-desktop-embedding.git"
-    source: git
-    version: "0.1.0"
   xdg_directories:
     dependency: transitive
     description:

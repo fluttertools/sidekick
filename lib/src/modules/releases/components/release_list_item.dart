@@ -12,8 +12,8 @@ class ReleaseListItem extends ConsumerWidget {
   /// Constructor
   const ReleaseListItem(
     this.release, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Release in item
   final ReleaseDto release;

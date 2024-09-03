@@ -15,7 +15,7 @@ import 'package:sidekick/src/window_border.dart';
 /// Sidekick top app bar
 class SkAppBar extends ConsumerWidget implements PreferredSizeWidget {
   /// Constructor
-  const SkAppBar({key}) : super(key: key);
+  const SkAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(45);

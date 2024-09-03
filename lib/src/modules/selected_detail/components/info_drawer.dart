@@ -15,8 +15,8 @@ import 'release_info_section.dart';
 class SelectedDetailDrawer extends ConsumerWidget {
   /// Constructors
   const SelectedDetailDrawer({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

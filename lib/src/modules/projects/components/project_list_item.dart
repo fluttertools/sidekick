@@ -24,8 +24,8 @@ class ProjectListItem extends ConsumerWidget {
   const ProjectListItem(
     this.project, {
     this.versionSelect = false,
-    key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Flutter project
   final FlutterProject project;

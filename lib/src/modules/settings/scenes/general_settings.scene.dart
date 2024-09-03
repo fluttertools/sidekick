@@ -14,8 +14,8 @@ class SettingsSectionGeneral extends StatelessWidget {
   const SettingsSectionGeneral(
     this.settings,
     this.onSave, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Settings
   final AllSettings settings;
@@ -133,7 +133,7 @@ class SettingsSectionGeneral extends StatelessWidget {
                             ],
                           ),
                         ))
-                    .toList()
+                    
               ],
               onChanged: (val) async {
                 if (val == "Custom") {

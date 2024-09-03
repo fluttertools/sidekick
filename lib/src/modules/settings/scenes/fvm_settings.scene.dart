@@ -9,8 +9,8 @@ class FvmSettingsScene extends StatelessWidget {
   const FvmSettingsScene(
     this.settings,
     this.onSave, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Settings
   final AllSettings settings;

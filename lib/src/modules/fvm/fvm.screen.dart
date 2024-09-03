@@ -11,7 +11,7 @@ import 'components/fvm_release_list_item.dart';
 import 'dialogs/cleanup_unused_dialog.dart';
 
 class FVMScreen extends ConsumerWidget {
-  const FVMScreen({Key? key}) : super(key: key);
+  const FVMScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

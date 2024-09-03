@@ -9,8 +9,8 @@ import '../updater.provider.dart';
 class SkUpdateInfo extends ConsumerWidget {
   /// Constructor
   const SkUpdateInfo({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
