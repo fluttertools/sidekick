@@ -13,8 +13,8 @@ import 'compat.utils.dart';
 
 class CompatDialog extends ConsumerWidget {
   const CompatDialog({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

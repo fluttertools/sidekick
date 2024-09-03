@@ -9,21 +9,21 @@ class CopyButton extends HookWidget {
   /// Constructor
   const CopyButton(
     this.content, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Content to copy
   final String content;
   @override
   Widget build(BuildContext context) {
-    final isMounted = useIsMounted();
+    final isMounted = context.mounted;
     return IconButton(
       iconSize: 20,
       splashRadius: 20,
       icon: const Icon(Icons.content_copy),
       onPressed: () async {
         await Clipboard.setData(ClipboardData(text: content));
-        if (isMounted()) {
+        if (isMounted) {
           // ignore: use_build_context_synchronously
           notify(context.i18n('components:atoms.copiedToClipboard'));
         }

@@ -14,8 +14,8 @@ class FvmReleaseStatus extends ConsumerWidget {
   /// Constructor
   const FvmReleaseStatus(
     this.release, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Release
   final ReleaseDto release;

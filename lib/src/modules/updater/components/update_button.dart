@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -11,8 +10,8 @@ import '../updater.provider.dart';
 class SkUpdateButton extends HookConsumerWidget {
   /// Constructor
   const SkUpdateButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +23,7 @@ class SkUpdateButton extends HookConsumerWidget {
       return const SizedBox(height: 0, width: 0);
     }
 
-    final isMounted = useIsMounted();
+    final isMounted = context.mounted;
 
     void showUpdateDialog() {
       // flutter defined function
@@ -63,7 +62,7 @@ class SkUpdateButton extends HookConsumerWidget {
                 onPressed: () async {
                   await updater.openInstaller(context);
                   // ignore: use_build_context_synchronously
-                  if (isMounted()) Navigator.of(context).pop();
+                  if (isMounted) Navigator.of(context).pop();
                 },
                 child:
                     Text(context.i18n('modules:updater.components.updateNow')),

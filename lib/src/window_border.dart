@@ -5,8 +5,8 @@ const sidebarColor = Color(0xFFF6A00C);
 
 class LeftSide extends StatelessWidget {
   const LeftSide({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ const backgroundEndColor = Color(0xFFF6A00C);
 
 class RightSide extends StatelessWidget {
   const RightSide({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +54,8 @@ class RightSide extends StatelessWidget {
 
 class WindowButtons extends StatelessWidget {
   const WindowButtons({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

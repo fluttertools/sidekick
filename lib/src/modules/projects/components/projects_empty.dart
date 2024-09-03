@@ -7,7 +7,7 @@ import '../../../components/atoms/empty_dataset.dart';
 /// Empty project screen
 class EmptyProjects extends StatelessWidget {
   /// Constructor
-  const EmptyProjects({key}) : super(key: key);
+  const EmptyProjects({super.key});
 
   @override
   Widget build(BuildContext context) {

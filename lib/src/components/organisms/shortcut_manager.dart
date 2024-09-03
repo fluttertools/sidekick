@@ -18,10 +18,10 @@ class NavigationIntent extends Intent {
 class SkShortcutManager extends ConsumerWidget {
   /// Constructor
   const SkShortcutManager({
-    Key? key,
+    super.key,
     required this.child,
     required this.focusNode,
-  }) : super(key: key);
+  });
 
   /// Child
   final Widget child;

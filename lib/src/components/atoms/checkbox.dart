@@ -9,8 +9,8 @@ class SkCheckBox extends HookWidget {
     required this.label,
     required this.value,
     required this.onChanged,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Current value of checkbox
   final bool value;

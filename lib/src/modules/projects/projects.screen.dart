@@ -20,7 +20,7 @@ import 'projects.provider.dart';
 /// Projects screen
 class ProjectsScreen extends HookConsumerWidget {
   /// Constructor
-  const ProjectsScreen({Key? key}) : super(key: key);
+  const ProjectsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
