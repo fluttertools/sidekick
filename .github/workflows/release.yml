@@ -220,8 +220,8 @@ jobs:
             msix_config:
               display_name: Flutter Sidekick
               publisher_display_name: Eduardo M.
-              identity_name: 44484EduardoM.SidekickFlutter
-              publisher: CN=1E781C91-227E-4505-B5B8-7E5EFE39D3A6
+              identity_name: SidekickContributors.SidekickFlutter
+              publisher: Sidekick Contributors
               msix_version: ${{steps.msixver.outputs.value }}.0
               logo_path: assets\promo-windows\icon.png
               architecture: x64
