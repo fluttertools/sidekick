@@ -14,10 +14,10 @@ import 'search_results_list.dart';
 class SearchBar extends HookConsumerWidget {
   /// Constructor
   const SearchBar({
-    Key? key,
+    super.key,
     // required this.onFocusChanged,
     // required this.showSearch,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

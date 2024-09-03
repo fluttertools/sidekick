@@ -38,8 +38,8 @@ const pages = [
 class AppShell extends HookConsumerWidget {
   /// Constructor
   const AppShell({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   NavigationRailDestination renderNavButton(
     BuildContext context,
@@ -96,12 +96,14 @@ class AppShell extends HookConsumerWidget {
     if (!compatInfo.ready && !compatInfo.waiting) {
       notify("Sidekick is missing key components to work", error: true);
       Future.delayed(Duration.zero).then((value) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CompatCheckScreen(),
-          ),
-        );
+        if (context.mounted) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CompatCheckScreen(),
+            ),
+          );
+        }
       });
     }
 

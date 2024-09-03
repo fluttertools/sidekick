@@ -71,8 +71,8 @@ void main() async {
 /// Fvm App
 class FvmApp extends StatelessWidget {
   const FvmApp({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

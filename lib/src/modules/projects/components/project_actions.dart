@@ -22,8 +22,8 @@ class ProjectActions extends ConsumerWidget {
   /// Constructor
   const ProjectActions(
     this.project, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Project
   final Project project;

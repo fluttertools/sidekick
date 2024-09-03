@@ -10,8 +10,8 @@ class ReleaseInfoSection extends StatelessWidget {
   final ReleaseDto version;
   const ReleaseInfoSection(
     this.version, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

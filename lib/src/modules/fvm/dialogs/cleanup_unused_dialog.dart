@@ -80,9 +80,9 @@ Future<void> cleanupUnusedDialog(BuildContext context, WidgetRef ref) async {
                                 });
                               },
                             );
-                          }).toList()
+                          })
                         ],
-                      ).toList()
+                      )
                     ],
                   ),
                 ),

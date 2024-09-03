@@ -12,8 +12,8 @@ import 'releases.provider.dart';
 
 class ReleasesScreen extends ConsumerWidget {
   const ReleasesScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
