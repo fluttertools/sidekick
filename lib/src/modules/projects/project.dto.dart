@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:fvm/fvm.dart';
 import 'package:hive/hive.dart';
@@ -12,14 +11,12 @@ class FlutterProject extends Project {
   final String name;
   FlutterProject._({
     required this.name,
-    required FvmConfig config,
-    required Directory projectDir,
+    required super.config,
+    required super.projectDir,
     required this.pubspec,
     this.invalid = false,
   }) : super(
           name: name,
-          config: config,
-          projectDir: projectDir,
           isFlutterProject: true,
         );
 

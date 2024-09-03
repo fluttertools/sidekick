@@ -12,8 +12,8 @@ class ChannelShowcaseItem extends ConsumerWidget {
   /// Constructor
   const ChannelShowcaseItem(
     this.channel, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Channel
   final ChannelDto channel;

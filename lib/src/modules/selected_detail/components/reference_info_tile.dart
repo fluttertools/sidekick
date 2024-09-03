@@ -13,8 +13,8 @@ class ReferenceInfoTile extends StatelessWidget {
   final ReleaseDto version;
   const ReferenceInfoTile(
     this.version, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

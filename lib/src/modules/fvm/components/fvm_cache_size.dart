@@ -11,8 +11,8 @@ import '../fvm.provider.dart';
 class FvmCacheSize extends HookConsumerWidget {
   /// Constructor
   const FvmCacheSize({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

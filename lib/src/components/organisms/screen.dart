@@ -12,8 +12,8 @@ class SkScreen extends StatelessWidget {
     this.processing = false,
     this.extendBody = true,
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Screen title
   final String title;

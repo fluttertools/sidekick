@@ -7,8 +7,8 @@ import '../../navigation/navigation.provider.dart';
 
 class EmptyVersions extends ConsumerWidget {
   const EmptyVersions({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +34,7 @@ class EmptyVersions extends ConsumerWidget {
             const SizedBox(height: 20),
             ElevatedButton.icon(
               style: ButtonStyle(
-                  padding: MaterialStateProperty.resolveWith(
+                  padding: WidgetStateProperty.resolveWith(
                 (states) => const EdgeInsets.fromLTRB(30, 15, 30, 15),
               )),
               onPressed: () {

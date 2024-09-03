@@ -35,7 +35,7 @@
       "sdkHasNotFinishedSetup": "SDK未完成设置"
     },
     "dialogs": {
-      "noUnusedFlutterSdkVersionsInstalled": "没有安装未经使用的 Flutter SDK版本",
+      "noUnusedFlutterSdkVersionsInstalled": "没有安装未使用的 Flutter SDK版本",
       "cleanUpUnusedVersions": "清理未使用的版本",
       "cancel": "取消",
       "confirm": "确认",
@@ -78,10 +78,10 @@
       "youNeedToAddAFlutterProjectFirstPackageInformation": "你需要先添加一个Flutter项目，然后包的信息会显示在这里。",
       "noPackagesFound": "没有发现包",
       "view": "查看",
-      "builtBy": "Built by",
+      "builtBy": "构建 by",
       "likes": "Likes",
-      "pubPoints": "Pub Points",
-      "popularity": "Popularity",
+      "pubPoints": "Pub 分数",
+      "popularity": "人气",
       "details": "详情",
       "changelog": "更新日志",
       "website": "网站",
@@ -91,7 +91,7 @@
   "releases": {
     "all": "所有",
     "releases": "发行版",
-    "versions": "个版本",
+    "versions": "版本库",
     "theCurrentTipoftreeAbsoluteLatestCuttingEdgeBuildUsuallyFunctional": "当前代码树的顶端，最新的版本。通常是功能性的，但有时会被砍掉。"
   },
   "sandbox": {
@@ -170,7 +170,7 @@
       "dialogDescriptionMacLinux": "复制此并将其粘贴到终端中。按照说明进行操作。",
       "dialogDescriptionWindows": "复制此内容并粘贴到 PowerShell 中。按照说明进行操作。必须以管理员身份运行。",
       "dialogRestartNotication": "伟大！Sidekick现在将关闭。请重新打开它。",
-      "done": "做"
+      "done": "完成"
     },
     "screen": {
       "title": "Sidekick 未能检测到一个或多个必需组件",

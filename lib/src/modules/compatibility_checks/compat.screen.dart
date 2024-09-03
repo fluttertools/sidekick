@@ -15,8 +15,8 @@ import 'compat.dialog.dart';
 class CompatCheckScreen extends ConsumerWidget {
   /// Constructor
   const CompatCheckScreen({
-    key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Current nav section
   @override

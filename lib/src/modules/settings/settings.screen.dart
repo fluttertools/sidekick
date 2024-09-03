@@ -35,8 +35,8 @@ class SettingsScreen extends HookConsumerWidget {
   /// Constructor
   const SettingsScreen({
     this.section = NavSection.general,
-    key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Current nav section
   final NavSection section;

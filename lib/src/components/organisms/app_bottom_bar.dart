@@ -7,8 +7,8 @@ import '../atoms/console.dart';
 
 class AppBottomBar extends HookConsumerWidget {
   const AppBottomBar({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

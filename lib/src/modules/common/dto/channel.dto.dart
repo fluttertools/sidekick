@@ -12,19 +12,14 @@ class ChannelDto extends ReleaseDto {
 
   /// Constructor
   ChannelDto({
-    required String name,
-    required Release? release,
-    required CacheVersion? cache,
-    required needSetup,
+    required super.name,
+    required super.release,
+    required super.cache,
+    required super.needSetup,
     required this.sdkVersion,
     required this.currentRelease,
-    required isGlobal,
+    required super.isGlobal,
   }) : super(
-          name: name,
-          release: release,
-          needSetup: needSetup,
           isChannel: true,
-          cache: cache,
-          isGlobal: isGlobal,
         );
 }

@@ -14,8 +14,8 @@ class VersionInstallButton extends HookConsumerWidget {
 
   const VersionInstallButton(
     this.version, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

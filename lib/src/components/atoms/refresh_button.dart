@@ -8,8 +8,8 @@ class RefreshButton extends HookWidget {
   /// Constructor
   const RefreshButton({
     required this.onPressed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// On press handler
   final Future Function() onPressed;

@@ -331,7 +331,7 @@ jobs:
         run: flutter pub run msix:publish
 
       - name: Compress artifacts
-        run: tar.exe -a -c -f windows-${{ github.event.release.tag_name }}.zip build/windows/Runner/release
+        run: tar.exe -zcvf windows-${{ github.event.release.tag_name }}.zip build/windows/Runner/release
 
       - name: Upload artifacts to release
         uses: svenstaro/upload-release-action@2.2.1

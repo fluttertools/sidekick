@@ -29,8 +29,8 @@ class FvmReleaseActions extends ConsumerWidget {
   /// Constructor
   const FvmReleaseActions(
     this.release, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Release
   final ReleaseDto release;

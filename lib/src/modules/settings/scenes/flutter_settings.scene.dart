@@ -12,8 +12,8 @@ class SettingsSectionFlutter extends ConsumerWidget {
   const SettingsSectionFlutter(
     this.settings,
     this.onSave, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Settings
   final AllSettings settings;
