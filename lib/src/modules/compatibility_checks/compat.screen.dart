@@ -74,14 +74,6 @@ class CompatCheckScreen extends ConsumerWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Subheading(context.i18n(
-                              'modules:compatibility.screen.fvmDescription')),
-                          const SizedBox(
-                            height: 15,
-                          ),
                           if (Platform.isWindows)
                             Row(
                               mainAxisSize: MainAxisSize.max,
