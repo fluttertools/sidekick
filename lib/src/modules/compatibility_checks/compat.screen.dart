@@ -74,16 +74,6 @@ class CompatCheckScreen extends ConsumerWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Heading("FVM"),
-                              Icon(provider.fvm
-                                  ? Icons.check_circle_outline_rounded
-                                  : Icons.error_outline_rounded)
-                            ],
-                          ),
                           const SizedBox(
                             height: 5,
                           ),
