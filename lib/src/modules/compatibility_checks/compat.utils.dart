@@ -20,13 +20,6 @@ Future<bool> isBrewInstalled() async {
   return false;
 }
 
-Future<bool> isFvmInstalled() async {
-  final fvmRes = await which("fvm");
-  if (fvmRes != null) {
-    return true;
-  }
-  return false;
-}
 
 Future<bool> isGitInstalled() async {
   final gitRes = await which("git");
@@ -52,7 +45,3 @@ const chocoInstallCmd =
 
 final gitInstallCmd =
     Platform.isWindows ? "choco install git -yf\n" : "brew install git\n";
-
-final fvmInstallCmd = Platform.isWindows
-    ? "choco install fvm -y\n"
-    : "brew tap leoafarias/fvm\nbrew install fvm\n";

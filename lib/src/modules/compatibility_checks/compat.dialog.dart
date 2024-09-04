@@ -99,8 +99,5 @@ String _genCommand(CompatibilityCheck check) {
   if (!check.git) {
     command += gitInstallCmd;
   }
-  if (!check.fvm) {
-    command += fvmInstallCmd;
-  }
   return command;
 }

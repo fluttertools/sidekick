@@ -5,9 +5,6 @@ class CompatibilityCheck {
   /// Git Install Status
   bool git;
 
-  /// FVM Install Status
-  bool fvm;
-
   /// Cohocolately Install Status
   bool choco;
 
@@ -19,7 +16,6 @@ class CompatibilityCheck {
   /// Constructor
   CompatibilityCheck({
     required this.git,
-    required this.fvm,
     required this.choco,
     required this.brew,
     this.waiting = false,
@@ -30,7 +26,6 @@ class CompatibilityCheck {
     return CompatibilityCheck(
       brew: false,
       choco: false,
-      fvm: false,
       git: false,
       waiting: true,
     );
@@ -49,7 +44,6 @@ class CompatibilityCheck {
   }) {
     return CompatibilityCheck(
       git: git ?? this.git,
-      fvm: fvm ?? this.fvm,
       choco: choco ?? this.choco,
       brew: brew ?? this.brew,
     );
@@ -58,7 +52,6 @@ class CompatibilityCheck {
   Map<String, dynamic> toMap() {
     return {
       'git': git,
-      'fvm': fvm,
       'choco': choco,
       'brew': brew,
     };
@@ -67,7 +60,6 @@ class CompatibilityCheck {
   factory CompatibilityCheck.fromMap(Map<String, dynamic> map) {
     return CompatibilityCheck(
       git: map['git'] ?? false,
-      fvm: map['fvm'] ?? false,
       choco: map['choco'] ?? false,
       brew: map['brew'] ?? false,
     );
@@ -80,7 +72,7 @@ class CompatibilityCheck {
 
   @override
   String toString() {
-    return 'CompatibilityCheck(git: $git, fvm: $fvm, choco: $choco, brew: $brew)';
+    return 'CompatibilityCheck(git: $git, choco: $choco, brew: $brew)';
   }
 
   @override
@@ -89,13 +81,12 @@ class CompatibilityCheck {
 
     return other is CompatibilityCheck &&
         other.git == git &&
-        other.fvm == fvm &&
         other.choco == choco &&
         other.brew == brew;
   }
 
   @override
   int get hashCode {
-    return git.hashCode ^ fvm.hashCode ^ choco.hashCode ^ brew.hashCode;
+    return git.hashCode ^ choco.hashCode ^ brew.hashCode;
   }
 }

@@ -21,11 +21,9 @@ class CompatStateNotifier extends StateNotifier<CompatibilityCheck> {
     final chocoState = Platform.isWindows ? await isChocoInstalled() : false;
     final brewState =
         Platform.isLinux || Platform.isMacOS ? await isBrewInstalled() : false;
-    final fvmState = await isFvmInstalled();
     final gitState = await isGitInstalled();
     state = CompatibilityCheck(
       git: gitState,
-      fvm: fvmState,
       choco: chocoState,
       brew: brewState,
     );
