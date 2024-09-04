@@ -176,9 +176,8 @@
       "title": "Sidekick no ha podido detectar uno o mas componentes necesarios",
       "subtitle": "Esto es lo que esta instalado y lo que falta:",
       "gitDescription": "Git se usa para instalar y actualizar Flutter. FVM lo necesita.",
-      "fvmDescription": "Flutter Version Management. Proporciona a Sidekick con la mayroría de sus funciones.",
-      "chocoDescription": "Opcional. Puede ser usado para instalar FVM y Git en Windows.",
-      "brewDescription": "Opcional. Puede ser usado para instalar FVM y Git en MacOS y Linux.",
+      "chocoDescription": "Opcional. Puede ser usado para instalar Git y Git en Windows.",
+      "brewDescription": "Opcional. Puede ser usado para instalar Git y Git en MacOS y Linux.",
       "pleaseInstall": "Porfavor, instala los componentes faltantes para utilizar Sidekick.",
       "ignore": "Ignorar",
       "installmissing": "Instalar Faltantes"

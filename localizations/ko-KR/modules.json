@@ -176,9 +176,8 @@
       "title": "사이드킥이 하나 이상의 필수 구성 요소를 찾지 못했습니다.",
       "subtitle": "다음은 누락된 항목과 누락되지 않은 항목의 분석입니다:",
       "gitDescription": "Git은 플러터 버전을 다운로드하고 업데이트하는 데 사용됩니다. FVM에서 사용합니다.",
-      "fvmDescription": "FVM (Flutter Version Management). 사이드킥의 핵심 기능 대부분을 제공합니다.",
-      "chocoDescription": "(선택 사항) Windows 기기에 FVM이 없는 경우, FVM을 설치하는 데 사용할 수 있습니다.",
-      "brewDescription": "(선택 사항) MacOS 및 Linux 기기에 FVM이 없는 경우, FVM을 설치하는 데 사용할 수 있습니다.",
+      "chocoDescription": "(선택 사항) Windows 기기에 FVM이 없는 경우, Git을 설치하는 데 사용할 수 있습니다.",
+      "brewDescription": "(선택 사항) MacOS 및 Linux 기기에 Git이 없는 경우, FVM을 설치하는 데 사용할 수 있습니다.",
       "pleaseInstall": "사이드킥을 사용하시려면 누락된 구성 요소를 설치해주세요!",
       "ignore": "무시",
       "installmissing": "누락된 요소 설치"

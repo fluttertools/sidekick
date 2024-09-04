@@ -176,9 +176,8 @@
       "title": "Sidekick bir yoki bir nechta kerakli qo'shimchalarni topishda muvaffaqiyatsizlikka uchradi.",
       "subtitle": "Bu nimalar topildiyu nimalar topilmaganining ro'yxati:",
       "gitDescription": "Git flutter versiyalarini yuklab olish va yangilash uchun foydalaniladi. U FVM tomonidan qo'llaniladi.",
-      "fvmDescription": "Flutter Version Management. Sidekick`ni o'zining asosiy funksiyalari bilan ta'minlaydi.",
-      "chocoDescription": "Ixtiyoriy. Windows qurilmasida mavjud bo'lmasa, FVMmi o'rnatish uchun ishlatilishi mumkin.",
-      "brewDescription": "Ixtiyoriy. MacOS va Linux qurilmalarida mavjud bo'lmasa, FVMmi o'rnatish uchun ishlatilishi mumkin.",
+      "chocoDescription": "Ixtiyoriy. Windows qurilmasida mavjud bo'lmasa, Gitmi o'rnatish uchun ishlatilishi mumkin.",
+      "brewDescription": "Ixtiyoriy. MacOS va Linux qurilmalarida mavjud bo'lmasa, Gitmi o'rnatish uchun ishlatilishi mumkin.",
       "pleaseInstall": "Iltimos, Sidekick`dan foydalanish uchun topilmayotggan komponentlarni o'rnating!",
       "ignore": "E'tborsiz qoldirish",
       "installmissing": "Topilmaganlarni o'rnatish"
