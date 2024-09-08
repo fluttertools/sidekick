@@ -176,9 +176,8 @@
       "title": "فشل Sidekick في اكتشاف واحد أو أكثر من المكونات الضرورية",
       "subtitle": "هذا هو تفصيل ما هو مفقود وما هو غير مفقود:",
       "gitDescription": "يتم استخدام Git لتنزيل إصدارات الرفرفة وتحديثها. يتم استخدامه من قبل FVM",
-      "fvmDescription": "Flutter Version Management. يزود Sidekick بمعظم وظائفه الأساسية.",
-      "chocoDescription": "اختياري. يمكن استخدامه لتثبيت FVM إذا لم يكن موجودًا على أجهزة Windows.",
-      "brewDescription": "اختياري. يمكن استخدامه لتثبيت FVM إذا لم يكن موجودًا على أجهزة MacOS و Linux.",
+      "chocoDescription": "اختياري. يمكن استخدامه لتثبيت Git إذا لم يكن موجودًا على أجهزة Windows.",
+      "brewDescription": "اختياري. يمكن استخدامه لتثبيت Git إذا لم يكن موجودًا على أجهزة MacOS و Linux.",
       "pleaseInstall": "الرجاء تثبيت المكونات المفقودة من أجل استخدام Sidekick!",
       "ignore": "تجاهل",
       "installmissing": "تثبيت مفقود"

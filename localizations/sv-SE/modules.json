@@ -176,9 +176,8 @@
       "title": "Sidekick kunde inte identifiera en eller flera nödvändiga komponenter",
       "subtitle": "Detta är uppdelningen av vad som är och inte saknas:",
       "gitDescription": "Git används för att ladda ner och uppdatera fladdrande versioner. Det används av FVM",
-      "fvmDescription": "Flutter Version Management. Ger Sidekick de flesta av sina kärnfunktioner.",
-      "chocoDescription": "Valfri. Kan användas för att installera FVM om det inte finns på Windows-enheter.",
-      "brewDescription": "Valfri. Kan användas för att installera FVM om det inte finns på MacOS- och Linux-enheter.",
+      "chocoDescription": "Valfri. Kan användas för att installera Git om det inte finns på Windows-enheter.",
+      "brewDescription": "Valfri. Kan användas för att installera Git om det inte finns på MacOS- och Linux-enheter.",
       "pleaseInstall": "Installera de saknade komponenterna för att använda Sidekick!",
       "ignore": "Bortse från",
       "installmissing": "Installation saknas"

@@ -176,9 +176,8 @@
       "title": "Sidekick 未能检测到一个或多个必需组件",
       "subtitle": "以下是缺少和不缺少的内容的细分：",
       "gitDescription": "Git 用于下载和更新 flutter 版本。它被FVM使用",
-      "fvmDescription": "颤动版本管理。为 Sidekick 提供其大部分核心功能。",
-      "chocoDescription": "自选。如果 FVM 在 Windows 设备上不存在，则可用于安装 FVM。",
-      "brewDescription": "自选。如果 FVM 在 MacOS 和 Linux 设备上不存在，则可用于安装 FVM。",
+      "chocoDescription": "自选。如果 Git 在 Windows 设备上不存在，则可用于安装 FVM。",
+      "brewDescription": "自选。如果 Git 在 MacOS 和 Linux 设备上不存在，则可用于安装 FVM。",
       "pleaseInstall": "请安装缺少的组件，以便使用 Sidekick！",
       "ignore": "忽视",
       "installmissing": "安装缺失"

@@ -176,9 +176,8 @@
       "title": "Sidekick, bir veya daha fazla gerekli bileşeni algılayamadı",
       "subtitle": "Bu, eksik olanların ve eksik olmayanların ayrıntılarıdır:",
       "gitDescription": "Flutter sürümlerini indirmek ve güncellemek için Git kullanılır. FVM tarafından kullanılır",
-      "fvmDescription": "Flutter Sürüm Yönetimi. Sidekick'in çoğu temel işlevselliğini sağlar.",
-      "chocoDescription": "İsteğe bağlı. Windows cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
-      "brewDescription": "İsteğe bağlı. MacOS ve Linux cihazlarında mevcut değilse FVM'yi yüklemek için kullanılabilir.",
+      "chocoDescription": "İsteğe bağlı. Windows cihazlarında mevcut değilse Git'yi yüklemek için kullanılabilir.",
+      "brewDescription": "İsteğe bağlı. MacOS ve Linux cihazlarında mevcut değilse Git'yi yüklemek için kullanılabilir.",
       "pleaseInstall": "Sidekick'i kullanmak için eksik bileşenleri yükleyin!",
       "ignore": "Yoksay",
       "installmissing": "Eksikleri Yükle"

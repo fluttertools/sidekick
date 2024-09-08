@@ -176,9 +176,8 @@
       "title": "Sidekick gagal mendeteksi satu atau lebih komponen yang diperlukan.",
       "subtitle": "Ini adalah rincian dari apa yang ada dan yang tidak hilang:",
       "gitDescription": "Git diperlukan untuk mengunduh dan memperbarui versi Flutter. Diperlukan oleh FVM.",
-      "fvmDescription": "Flutter Version Management, memberikan Sidekick sebagian besar fungsi utamanya.",
-      "chocoDescription": "Opsional. Dapat digunakan untuk memasang FVM jika tidak tersedia di perangkat Windows.",
-      "brewDescription": "Opsional. Dapat digunakan untuk memasang FVM jika tidak tersedia di perangkat Mac atau Linux.",
+      "chocoDescription": "Opsional. Dapat digunakan untuk memasang Git jika tidak tersedia di perangkat Windows.",
+      "brewDescription": "Opsional. Dapat digunakan untuk memasang Git jika tidak tersedia di perangkat Mac atau Linux.",
       "pleaseInstall": "Silakan pasang komponen yang hilang untuk menggunakan Sidekick!",
       "ignore": "Abaikan",
       "installmissing": "Pasang yang Hilang"
