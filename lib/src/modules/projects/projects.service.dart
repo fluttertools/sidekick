@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -35,17 +36,22 @@ class ProjectsService {
     final projects = await FVMClient.fetchProjects(directories);
 
     /// Check if its flutter project
-    final projectsWithFlutter = projects.where((p) => p.isFlutterProject);
+    final Iterable<Project> projectsWithFlutter =
+        projects.where((p) => p.isFlutterProject);
 
     /// Return flutter projects
     final flutterProjects = projectsWithFlutter.map((project) async {
-      final pubspecFile = project.pubspecFile;
+      if (box.get(project.projectDir.path) == null) {
+        await box.delete(project.projectDir.path);
+      }
 
+      final pubspecFile = project.pubspecFile;
       if (await pubspecFile.exists()) {
         final yaml = await pubspecFile.readAsString();
         final pubspec = Pubspec.parse(yaml);
-
-        return FlutterProject.fromProject(project, pubspec);
+        log(project.projectDir.path);
+        return FlutterProject.fromProject(project, pubspec,
+            projectIcon: box.get(project.projectDir.path)!.projectIcon);
       } else {
         /// If it does not exist should be removed
         await box.delete(project.projectDir.path);
@@ -53,6 +59,7 @@ class ProjectsService {
     });
 
     final results = await Future.wait(flutterProjects);
+    log(results.length.toString());
     return results.whereNotNull();
   }
 

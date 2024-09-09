@@ -7,8 +7,10 @@
 // ignore_for_file: top_level_function_literal_block
 
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -80,8 +82,30 @@ class ProjectsStateNotifier extends StateNotifier<List<FlutterProject>> {
   Future<void> addProject(BuildContext context, String path) async {
     final project = await FVMClient.getProjectByDirectory(Directory(path));
     if (project.isFlutterProject) {
-      final ref = ProjectRef(name: path.split('/').last, path: path);
+      final ref =
+          ProjectRef(name: path.split('/').last, path: path, projectIcon: "");
       await ProjectsService.box.put(path, ref);
+      await load();
+    } else {
+      // ignore: use_build_context_synchronously
+      notify(context.i18n('modules:projects.notAFlutterProject'));
+    }
+  }
+
+  /// Adds a project
+  Future<void> changeProjectIcon(
+      BuildContext context, Project project, XFile file) async {
+    // TODO: File should handle
+    // 1. handle svg size
+    // 2. handle svg unsupported element  https://pub.dev/packages/flutter_svg#precompiling-and-optimizing-svgs
+    if (project.isFlutterProject) {
+      project as FlutterProject;
+      await ProjectsService.box.put(
+          project.projectDir.path,
+          ProjectRef(
+              name: project.name,
+              path: project.projectDir.path,
+              projectIcon: await file.readAsString()));
       await load();
     } else {
       // ignore: use_build_context_synchronously

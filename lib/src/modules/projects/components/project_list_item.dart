@@ -1,4 +1,7 @@
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fvm/fvm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sidekick/src/modules/common/utils/helpers.dart';
@@ -10,8 +13,10 @@ import '../../../components/molecules/version_install_button.dart';
 import '../../releases/releases.provider.dart';
 import '../../sandbox/sandbox.screen.dart';
 import '../project.dto.dart';
+import '../projects.provider.dart';
 import 'project_actions.dart';
 import 'project_release_select.dart';
+import 'package:file_selector/file_selector.dart' as selector;
 
 /// Project list item
 class ProjectListItem extends ConsumerWidget {
@@ -30,6 +35,8 @@ class ProjectListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.watch(projectsProvider.notifier);
+
     final cachedVersions = ref.watch(releasesStateProvider).all;
 
     final version = ref.watch(getVersionProvider(project.pinnedVersion));
@@ -62,6 +69,23 @@ class ProjectListItem extends ConsumerWidget {
       );
     }
 
+    Future<void> handleChangeProjectIcon(Project project) async {
+      const XTypeGroup typeGroup = XTypeGroup(
+        label: 'images',
+        extensions: <String>['svg'],
+      );
+
+      final XFile? iconFile = await selector.openFile(
+          confirmButtonText: context.i18n('modules:projects.choose'),
+          acceptedTypeGroups: <XTypeGroup>[typeGroup]);
+      if (iconFile == null) {
+        // Operation was canceled by the user.
+        return;
+      }
+      // ignore: use_build_context_synchronously
+      await notifier.changeProjectIcon(context, project, iconFile);
+    }
+
     return SizedBox(
       height: 170,
       child: Center(
@@ -69,7 +93,13 @@ class ProjectListItem extends ConsumerWidget {
           child: Column(
             children: [
               ListTile(
-                leading: const Icon(MdiIcons.alphaPBox),
+                leading: project.projectIcon != ""
+                    ? SvgPicture.string(
+                        project.projectIcon,
+                        width: 24,
+                        height: 24,
+                      )
+                    : const Icon(MdiIcons.alphaPBox),
                 title: Subheading(project.name),
                 trailing: ProjectActions(project),
               ),
@@ -122,6 +152,12 @@ class ProjectListItem extends ConsumerWidget {
                       ),
                     ),
                   const Spacer(),
+
+                  /// TODO: Need Update UI
+                  TextButton(
+                    onPressed: () => handleChangeProjectIcon(project),
+                    child: Text("Change Icon"),
+                  ),
                   versionSelect
                       ? Row(
                           children: [
